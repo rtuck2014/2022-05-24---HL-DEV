@@ -1,0 +1,48 @@
+<section>
+	<h2 class="pageTitle">
+		<span ng-if="isTabMyTraining == true">{{labels.MyTraining_title_My_Training}} ({{transcriptItems.length}})</span>
+		<span ng-if="isTabCompleted == true">{{labels.Completed_Training_Link}} ({{transcriptItems.length}})</span>
+	</h2>
+	<ul ng-repeat="item in transcriptItems | orderBy: ['dueDateAsDate', 'title']">
+
+		<div class="trainingPlan" ng-class="{pastDue : item.isPastDue == true}" ng-init = "
+		v_showDisplayOnTranscript = item.displayOnTranscript != null && item.displayOnTranscript.length != 0; 
+		v_showStatus = item.status != null && item.status.length != 0; 
+		v_showKeywords = item.keywords != null && item.keywords.length != 0; 
+		v_showTrainingType = item.trainingType != null && item.trainingType.length != 0; 
+		v_showDuration = item.duration != null && item.duration.length != 0; 
+		v_showDueDate = item.dueDate != null && item.dueDate.length != 0; 
+		v_showCompletionDate = item.completionDate != null && item.completionDate.length != 0; 
+		v_showScore = item.score != null ;"
+		>
+			<li class="tpDueStatus"><span class="hdntxt">[[Past Due/On Schedule]]</span></li>
+			<li class="tpTitle">
+				<a href="{{item.titleLink}}" ng-click="navigate(item.titleLink)">
+					<h3>{{item.title}}</h3>
+				</a>
+			</li>
+			<li class="tpCustomField" ng-if="v_showDisplayOnTranscript" ng-repeat="itext in item.displayOnTranscript">
+				<span>{{itext}}</span>
+			</li>
+			<li class="mobile" ng-if="item.isAvailableForMobile == true" title="Available for Mobile"><i class="fa fa-mobile"></i></li>
+			<li class="tpStatus" ng-if="v_showStatus"><span class="lbl">{{labels.Assignments_Status}}:</span> <span>{{item.statusLabel}}</span></li>
+			<li class="dot" ng-if="v_showStatus && v_showKeywords"/>
+			<li class="tpKeywords" ng-if="v_showKeywords"><span class="lbl">{{labels.EUI_Keywords}}:</span> <span>{{item.keywords}}</span></li>
+			<li class="dot" ng-if="(v_showStatus || v_showKeywords) && v_showTrainingType"/>
+			<li class="tpType" ng-if="v_showTrainingType"><span class="lbl">{{labels.SearchCatalog_Column_Type}}:</span> <span>{{item.trainingTypeLabel}}</span></li>
+			<li class="dot" ng-if="(v_showStatus || v_showKeywords || v_showTrainingType) && v_showDuration"/>
+			<li class="tpDuration" ng-if="v_showDuration"><span class="lbl">{{labels.DURATION}}:</span> <span>{{item.duration}}</span></li>
+			<li class="dot" ng-if="(v_showStatus || v_showKeywords || v_showTrainingType || v_showDuration) && v_showDueDate"/>
+			<li class="tpDueDate" ng-if="v_showDueDate"><span class="lbl">{{labels.DUE_DATE}}:</span> <span>{{item.dueDate}}</span></li>
+			<li class="dot" ng-if="(v_showStatus || v_showKeywords || v_showTrainingType || v_showDuration || v_showDueDate) && v_showCompletionDate"/>
+			<li class="tpCompletion" ng-if="v_showCompletionDate"><span class="lbl">{{labels.Assignments_Completed}}:</span> <span>{{item.completionDate}}</span></li>
+			<li class="dot" ng-if="(v_showStatus || v_showKeywords || v_showTrainingType || v_showDuration || v_showDueDate || v_showCompletionDate) && v_showScore"/>
+			<li class="score" ng-if="v_showScore"><span class="lbl">{{labels.EUI_Your_Score}}:</span> <span>{{item.score}}</span></li>
+			<li class="tpCertificate" ng-if="item.enableCertificate == true" title="{{labels.CERTIFICATE_OF_COMPLETION}}"><a href="{{item.certificateLink}}" ng-click="navigate(item.certificateLink)" target="_blank"><i class="fa fa-star"></i></a></li>
+			<li class="tpDescription">{{item.description}}</li>
+			<li class="tpProgression" ng-if="item.progress >= 0">
+				<module-progress item="item" adjustcss="false"></module-progress>
+			</li>
+		</div>
+	</ul>
+</section>

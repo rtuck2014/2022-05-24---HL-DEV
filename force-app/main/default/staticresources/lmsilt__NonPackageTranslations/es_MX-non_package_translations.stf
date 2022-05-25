@@ -1,0 +1,487 @@
+# Language: Spanish (Mexico)
+Language code: es_MX
+Type: Bilingual
+
+------------------TRANSLATED-------------------
+
+# KEY	LABEL	TRANSLATION	OUT OF DATE
+
+CustomApp.lmscons__Learning_Cloud	Learning Cloud	Nube de aprendizaje	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Action.HelpText	The resulting action of clicking the CFS Link	La acción resultante de hacer clic en el Vínculo CFS	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Assigned.HelpText	True if the target learning object was assigned as a result of clicking the CFS Link	Verdadero si el objeto de aprendizaje objetivo fue asignado como resultado de hacer clic en el Vínculo CFS	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.HelpText	The status of the CFS Link when accessed by the User	El estado del Vínculo CFS cuando lo accede el Usuario	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Error.HelpText	If clicking on the CFS Link results in an error, this picklist provides the cause of the error.	"Si hace clic en el Vínculo CFS provoca un error, esta lista de selección proporciona la causa del error."	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.HelpText	The Target Learning Object's status on the User's Transcript when accessed by the User	El estado del Objeto de aprendizaje objetivo en la Expediente del usuario cuando lo accede el Usuario	-
+CustomField.lmscons__CFS_Link__c.lmscons__Channel.HelpText	Target channel (internal app, a community, portal, or site) for this link	"Canal objetivo (aplicación interna, una comunidad, portal o sitio) para este vínculo"	-
+CustomField.lmscons__CFS_Link__c.lmscons__End_Date.HelpText	Deep Link End Date; if this field is null, the Deep Link is always active (if marked Active)	"Fecha final del vínculo profundo; si este campo es nulo, el Vínculo profundo siempre está activo (si está marcado como Activo)"	-
+CustomField.lmscons__CFS_Link__c.lmscons__IsActive.HelpText	Checkbox that marks the deep link as active or not. If marked inactive, this will override the default behavior based on start date and end date. 	"Casilla de verificación que marca el vínculo profundo como activo o no. Si está marcado como inactivo, esto anulará el comportamiento predeterminado con base en la fecha de inicio y la fecha final. "	-
+CustomField.lmscons__CFS_Link__c.lmscons__Start_Date.HelpText	Deep Link Start Date; if this field is null, the Deep Link is active immediately (if marked Active)	"Fecha de inicio del vínculo profundo; si este campo es nulo, el Vínculo profundo está activo inmediatamente (si está marcado como Activo)"	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	Se debe marcar en caso de que sea necesario crear el entrenamiento recurrente para esta asignacion. Tambien recuerde determinar el numero de periodos de entrenamiento recurrente y tipo de periodo de entrenamiento recurrente (meses o anos)	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	Numero de periodos recurrentes de entrenamiento. Despues de aprobar estos periodos, la asignacion se reasignara.	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Fecha en la que se creo/reasigno la asignacion	-
+CustomField.lmscons__Curriculum__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	De manera predeterminada, el usuario debe completar todos los componentes. Para personalizar estos criterios, establezca los valores a una o ambas opciones.	-
+CustomField.lmscons__Curriculum__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	Puede especificar una unidad de tiempo despues de un valor de tiempo 'X', como Xd, Xh o Xm, para representar los dias (d), horas (h) y minutos (m), respectivamente.\nSi no especifica una unidad de tiempo, se asumira en minutos.	-
+CustomField.lmscons__Curriculum__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	De manera predeterminada, el usuario debe completar todos los componentes. Para personalizar estos criterios, establezca los valores a una o ambas opciones.	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	Se debe marcar en caso de que sea necesario crear el entrenamiento recurrente para esta asignacion. Tambien recuerde determinar el numero de periodos de entrenamiento recurrente y tipo de periodo de entrenamiento recurrente (meses o anos)	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.HelpText	Type of recurring training period (year or month)	Tipo de periodo de entrenamiento recurrente (ano o mes)	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	Numero de periodos recurrentes de entrenamiento. Despues de aprobar estos periodos, la asignacion se reasignara.	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Fecha en la que se creo/reasigno la asignacion	-
+CustomField.lmscons__Learning_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	De manera predeterminada, el usuario debe completar todos los componentes. Para personalizar estos criterios, establezca los valores a una o ambas opciones.	-
+CustomField.lmscons__Learning_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	Puede especificar una unidad de tiempo despues de un valor de tiempo 'X', como Xd, Xh o Xm, para representar los dias (d), horas (h) y minutos (m), respectivamente.\nSi no especifica una unidad de tiempo, se asumira en minutos.	-
+CustomField.lmscons__Learning_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	De manera predeterminada, el usuario debe completar todos los componentes. Para personalizar estos criterios, establezca los valores a una o ambas opciones.	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__Cornerstone_Callback_URL.HelpText	The URL of the notification page set up for your organization.	La URL de la pagina de notificacion esta configurada para su organizacion.	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__CyberUSecretSignKey.HelpText	Secret key to sign CyberU callbacks	Clave secreta para asignar las devoluciones de llamadas de CyberU	-
+CustomField.lmscons__Quiz__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	Puede especificar una unidad de tiempo despues de un valor de tiempo 'X', como Xd, Xh o Xm, para representar los dias (d), horas (h) y minutos (m), respectivamente.\nSi no especifica una unidad de tiempo, se asumira en minutos.	-
+CustomField.lmscons__Training_Content_License__c.lmscons__Seats.HelpText	Total number of seats included in this license. Leave blank for unlimited.	Numero total de asientos que se incluyen en esta licencia. Deje en blanco para numero ilimitado.	-
+CustomField.lmscons__Training_Content__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as  Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	Puede especificar una unidad de tiempo despues de un valor de tiempo 'X', como Xd, Xh o Xm, para representar los dias (d), horas (h) y minutos (m), respectivamente.\nISi no especifica una unidad de tiempo, se asumira en minutos.	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	Se debe marcar en caso de que sea necesario crear el entrenamiento recurrente para esta asignacion. Tambien recuerde determinar el numero de periodos de entrenamiento recurrente y tipo de periodo de entrenamiento recurrente (meses o anos)	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	Numero de periodos recurrentes de entrenamiento. Despues de aprobar estos periodos, la asignacion se reasignara.	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Fecha en la que se creo/reasigno la asignacion	-
+CustomField.lmscons__Training_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria,  please set values to one or both options.	De manera predeterminada, el usuario debe completar todos los componentes. Para personalizar estos criterios, establezca los valores a una o ambas opciones.	-
+CustomField.lmscons__Training_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	Puede especificar una unidad de tiempo despues de un valor de tiempo 'X', como Xd, Xh o Xm, para representar los dias (d), horas (h) y minutos (m), respectivamente.\nSi no especifica una unidad de tiempo, se asumira en minutos.	-
+CustomField.lmscons__Training_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	De manera predeterminada, el usuario debe completar todos los componentes. Para personalizar estos criterios, establezca los valores a una o ambas opciones.	-
+CustomField.lmscons__Training_Unit__c.lmscons__Remaining_Training_Units.HelpText	Number of units available for spending	Número de unidades disponibles para gastar	-
+CustomField.lmscons__Training_User_License__c.lmscons__Purchased.HelpText	Indicates if this user license has been purchased or only assigned.	Indica si esta licencia de usuario se compro o solo se asigno.	-
+CustomField.lmsilt__Development_Plan__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	Puede especificar una unidad de tiempo despues de un valor de tiempo 'X', como Xd, Xh o Xm, para representar los dias (d), horas (h) y minutos (m), respectivamente.\nSi no especifica una unidad de tiempo, se asumira en minutos.	-
+CustomField.lmsilt__Event__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	Puede especificar una unidad de tiempo despues de un valor de tiempo 'X', como Xd, Xh o Xm, para representar los dias (d), horas (h) y minutos (m), respectivamente.\nSi no especifica una unidad de tiempo, se asumira en minutos.	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Profile	Profile	Perfil	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Role	Role	Función	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.Error	Error	Error	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.Launch	Launch	Inicio	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.View Details	View Details	Visualizar detalles	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Active	Active	Activa	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Expired	Expired	Vencido	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Inactive	Inactive	Inactivo	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Not Started	Not Started	No se ha iniciado	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Inactive Link	Inactive Link	Vínculo inactivo	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Learning Object Not Found	Learning Object Not Found	Objeto de aprendizaje no encontrado	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Link Expired	Link Expired	Vínculo vencido	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Link Not Started	Link Not Started	Vínculo no iniciado	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.No Access	No Access	Sin acceso	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Assigned	Assigned	Asignado	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Completed	Completed	Completado	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Enrolled	Enrolled	Inscrito	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.In Progress	In Progress	En curso	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Unassigned	Unassigned	No asignado	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Days	Days	Dias	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Hours	Hours	Horas	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Indefinite	Indefinite	Indefinido	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Month	Month	Mes	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Weeks	Weeks	Semanas	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Years	Years	Anos	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Complete	Complete	Completar	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.New	New	Nuevo	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Processing	Processing	Procesando	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	Meses	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	Anos	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Completed	Completed	Completado	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.In Progress	In Progress	En proceso	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Not Started	Not Started	No iniciado	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Delivery_Type.Online	Online	En linea	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Administrator	Administrator	Administrador	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Developer	Developer	Desarrollador	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.IT Professional	IT Professional	IT profesional	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Profesional de ventas	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.da	da	Danés	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.de	de	Alemán	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.en_US	en_US	Inglés	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.es	es	Español	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fi	fi	Finlandés	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fr	fr	Francés	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.it	it	Italiano	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ja	ja	Japonés	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ko	ko	Coreano	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.nl_NL	nl_NL	Holandés	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.pt_BR	pt_BR	Portugués	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ru	ru	Ruso	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.sv	sv	Sueco	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.th	th	Tailandés	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_CN	zh_CN	Chino (simplificado)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_TW	zh_TW	Chino (tradicional)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com móvil	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Nube de ventas	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com móvil	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Error	Error	Error	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Info	Info	Info.	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Warning	Warning	Advertencia	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	Meses	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	Anos	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Completed	Completed	Completado	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.In Progress	In Progress	En proceso	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Not Started	Not Started	No iniciado	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Delivery_Type.Online	Online	En linea	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Administrator	Administrator	Administrador	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Developer	Developer	Desarrollador	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.IT Professional	IT Professional	IT profesional	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Profesional de ventas	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.da	da	Danés	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.de	de	Alemán	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.en_US	en_US	Inglés	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.es	es	Español	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fi	fi	Finlandés	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fr	fr	Francés	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.it	it	Italiano	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ja	ja	Japonés	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ko	ko	Coreano	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.nl_NL	nl_NL	Holandés	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.pt_BR	pt_BR	Portugués	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ru	ru	Ruso	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.sv	sv	Sueco	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.th	th	Tailandés	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_CN	zh_CN	Chino (simplificado)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_TW	zh_TW	Chino (tradicional)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com móvil	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Nube de ventas	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com móvil	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Completed	Completed	Completado	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Pending	Pending	Pendiente	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Download	Download	Descargar	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Purchase	Purchase	Compra	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Days	Days	Dias	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Hours	Hours	Horas	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Indefinite	Indefinite	Indefinido	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Months	Months	Meses	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Weeks	Weeks	Semanas	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Years	Years	Anos	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.English	English	Ingles	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.French	French	Frances	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Completed	Completed	Completado	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Failed	Failed	Fallo	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.In Progress	In Progress	En proceso	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Passed	Passed	Aprobado	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Retired	Retired	Eliminado	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Exit	Exit	Salir	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Message	Message	Mensaje	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.da	da	Danés	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.de	de	Alemán	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.en_US	en_US	Inglés	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.es	es	Español	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fi	fi	Finlandés	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fr	fr	Francés	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.it	it	Italiano	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ja	ja	Japonés	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ko	ko	Coreano	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.nl_NL	nl_NL	Holandés (Países Bajos)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.pt_BR	pt_BR	Portugués (Brasil)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ru	ru	Ruso	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.sv	sv	Sueco	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.th	th	Tailandés	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_CN	zh_CN	Chino (simplificado)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_TW	zh_TW	Chino (tradicional)	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Easy	Easy	Facil	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Hard	Hard	Dificil	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Medium	Medium	Mediano	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Long Text	Long Text	Texto largo	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Short Text	Short Text	Texto corto	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Free Text	Free Text	Texto libre	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Multi Select	Multi Select	Seleccion multiple	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Single Select	Single Select	Seleccion individual	-
+PicklistValue.lmscons__Question__c.lmscons__Type.True/False	True/False	Verdadero/Falso	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.da	da	Danés	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.de	de	Alemán	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.en_US	en_US	Inglés	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.es	es	Español	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fi	fi	Finlandés	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fr	fr	Francés	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.it	it	Italiano	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ja	ja	Japonés	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ko	ko	Coreano	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.nl_NL	nl_NL	Holandés	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.pt_BR	pt_BR	Portugués (Brasil)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ru	ru	Ruso	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.sv	sv	Sueco	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.th	th	Tailandés	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_CN	zh_CN	Chino (simplificado)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_TW	zh_TW	Chino (tradicional)	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Course	Course	Curso	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Curriculum	Curriculum	Currículo	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Learning Path	Learning Path	Ruta de aprendizaje	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Module	Module	Módulo	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Quiz	Quiz	Cuestionario	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.ALL	ALL	TODO	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NEW	NEW	NUEVO	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NON_COMPLETE	NON_COMPLETE	NON_COMPLETE	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Days	Days	Dias	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Hours	Hours	Horas	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Indefinite	Indefinite	Indefinido	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Month	Month	Mes	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Weeks	Weeks	Semanas	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Years	Years	Anos	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Implementation	Implementation	Implementacion	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Learning	Learning	Aprendizaje	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Sale	Sale	Venta	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Delivery_Type.Free eLearning	Free eLearning	Aprendizaje en linea gratuito	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Administrator	Administrator	Administrador	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Channel Manager	Channel Manager	Gerente de canales	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Developer	Developer	Desarrollador	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.IT Professional	IT Professional	IT profesional	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Implementation Team	Implementation Team	Equipo de implementación	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Marketing	Marketing	Mercadeo	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Partner	Partner	Socio:	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Manager	Sales Manager	Gerente de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Profesional de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Rep	Sales Rep	Representante de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Support Rep	Support Rep	Representante de soporte	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.da	da	Danés	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.de	de	Alemán	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.en_US	en_US	Inglés	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.es	es	Español	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fi	fi	Finlandés	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fr	fr	Francés	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.it	it	Italiano	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ja	ja	Japonés	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ko	ko	Coreano	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.nl_NL	nl_NL	Holandés	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.pt_BR	pt_BR	Portugués	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ru	ru	Ruso	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.sv	sv	Sueco	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.th	th	Tailandés	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_CN	zh_CN	Chino (simplificado)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_TW	zh_TW	Chino (tradicional)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Development Plan Task	Development Plan Task	Tarea del plan de desarrollo	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Event	Event	Evento	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Module	Module	Modulo	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Quiz	Quiz	Cuestionario	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Block	Block	Bloque	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Course	Course	Curso	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Administrator	Administrator	Administrador	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Channel Manager	Channel Manager	Gerente de canales	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Developer	Developer	Desarrollador	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Implementation Team	Implementation Team	Equipo de implementación	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Marketing	Marketing	Mercadeo	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Partner	Partner	Socio:	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Manager	Sales Manager	Gerente de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Rep	Sales Rep	Representante de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Support Rep	Support Rep	Representante de soporte	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com Offline	Force.com Offline	Force.com fuera de línea	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com platform	Force.com platform	Plataforma Force.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM CSS	Salesforce CRM CSS	CRM CSS de fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Content	Salesforce CRM Content	Contenido de CRM de fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Ideas	Salesforce CRM Ideas	Ideas de CRM de fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Marketing	Salesforce CRM Marketing	Mercadeo de CRM de fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Mobile	Salesforce CRM Mobile	Móvil de CRM de fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Redes de socios de CRM de fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM SFA	Salesforce CRM SFA	SFA CRM de fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	CRM de fuerza de ventas para Google Apps	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce to Salesforce	Salesforce to Salesforce	Fuerza de ventas a fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com Offline	Force.com Offline	Force.com fuera de línea	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com platform	Force.com platform	Plataforma Force.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM CSS	Salesforce CRM CSS	CRM CSS de fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Content	Salesforce CRM Content	Contenido de CRM de fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Ideas	Salesforce CRM Ideas	Ideas de CRM de fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Marketing	Salesforce CRM Marketing	Mercadeo de CRM de fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Mobile	Salesforce CRM Mobile	Móvil de CRM de fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Redes de socios de CRM de fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM SFA	Salesforce CRM SFA	SFA CRM de fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	CRM de fuerza de ventas para Google Apps	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce to Salesforce	Salesforce to Salesforce	Fuerza de ventas a fuerza de ventas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.FAILURE	FAILURE	FALLA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.SUCCESS	SUCCESS	SATISFACCION	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Completed	Completed	Completado	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Failed	Failed	Fallo	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.In Progress	In Progress	En proceso	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Passed	Passed	Aprobado	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Retired	Retired	Eliminado	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Months	Months	Meses	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Years	Years	Anos	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Completed	Completed	Completado	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.In Progress	In Progress	En proceso	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Not Started	Not Started	No iniciado	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Retired	Retired	Eliminado	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Delivery_Type.Online	Online	En línea	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.CSS	CSS	CSS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Content	Content	Contenido	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Customer Portal	Customer Portal	Portal de clientes	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.FDC	FDC	FDC	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Ideas	Ideas	Ideas	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Partner Portal	Partner Portal	Portal de socios	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.SFA	SFA	SFA	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Administrator	Administrator	Administrador	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Developer	Developer	Desarrollador	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.IT Professional	IT Professional	Profesional de TI	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Sales Professional	Sales Professional	Profesional de ventas	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.da	da	Danés	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.de	de	Alemán	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.en_US	en_US	Inglés	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.es	es	Español	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fi	fi	Finlandés	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fr	fr	Francés	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.it	it	Italiano	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ja	ja	Japonés	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ko	ko	Coreano	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.nl_NL	nl_NL	Holandés	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.pt_BR	pt_BR	Portugués	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ru	ru	Ruso	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.sv	sv	Sueco	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.th	th	Tailandés	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_CN	zh_CN	Chino (simplificado)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_TW	zh_TW	Chino (tradicional)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com móvil	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Nube de ventas	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com móvil	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.Completed	Completed	Completado	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.In Progress	In Progress	En proceso	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Completed	Completed	Completado	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Failed	Failed	Fallo	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.In Progress	In Progress	En proceso	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Passed	Passed	Aprobado	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Retired	Retired	Eliminado	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Unenrolled	Unenrolled	Inscripcion anulada	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Completed	Completed	Completado	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Failed	Failed	Falló	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.LO Error	LO Error	Error de Objetos de aprendizaje	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Pending	Pending	Pendiente	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Skipped	Skipped	Omitido	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.contains	contains	contiene	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.does not contain	does not contain	no contiene	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.equals	equals	es igual a	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.excludes	excludes	excluye	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater or equal	greater or equal	mayor o igual	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater than	greater than	mayor que	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.includes	includes	incluye	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less or equal	less or equal	menor o igual	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less than	less than	menor que	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.not equal to	not equal to	no es igual a	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.starts with	starts with	inicia con	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Account	Account	Cuenta	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Case	Case	Caso	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Contact	Contact	Contacto	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Lead	Lead	Guía	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Opportunity	Opportunity	Oportunidad	-
+PicklistValue.User.lmscons__CFS_Status.Active	Active	Activo	-
+PicklistValue.User.lmscons__CFS_Status.Deactivated	Deactivated	Desactivado	-
+PicklistValue.User.lmscons__CFS_Status.Not CFS user	Not CFS user	Sin usuario CFS	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Completed	Completed	Completado	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.In Progress	In Progress	En proceso	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Not Started	Not Started	No iniciado	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Relative Dates	Relative Dates	Fechas relativas	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Static Dates	Static Dates	Fechas estaticas	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Failed	Failed	Falló	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Success	Success	Éxito	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Import	Import	Importar	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Manual	Manual	Manual	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Delete	Delete	Eliminar	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Insert	Insert	Insertar	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Update	Update	Actualizar	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Completed	Completed	Completado	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.In Progress	In Progress	En curso	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Not Started	Not Started	No se ha iniciado	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Internal	Internal	Interno	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Private	Private	Privado	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Public	Public	Publico	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Completed	Completed	Completado	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.In Progress	In Progress	En proceso	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Not Started	Not Started	No iniciado	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Manager	Manager	Gerente	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Self	Self	Auto	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.User	User	Usuario	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Delivery_Type.Online	Online	En línea	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Administrator	Administrator	Administrador	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.IT Professional	IT Professional	Profesional de TI	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	Profesional de ventas	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.da	da	Danés	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.de	de	Alemán	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.en_US	en_US	Inglés	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.es	es	Español	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fi	fi	Finlandés	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fr	fr	Francés	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.it	it	Italiano	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ja	ja	Japonés	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ko	ko	Coreano	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.nl_NL	nl_NL	Holandés	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.pt_BR	pt_BR	Portugués (Brasil)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ru	ru	Ruso	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.sv	sv	Sueco	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.th	th	Tailandés	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_CN	zh_CN	Chino (simplificado)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_TW	zh_TW	Chino (tradicional)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Product_Category.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Products.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Active	Active	Activo	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Retired	Retired	Eliminado	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Administrator	Administrator	Administrador	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.IT Professional	IT Professional	Profesional de TI	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	Profesional de ventas	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.da	da	Danes	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.de	de	Aleman	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.en_US	en_US	Ingles	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.es	es	Espanol	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fi	fi	Terminar	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fr	fr	Frances	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.it	it	Italiano	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ja	ja	Japones	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ko	ko	Coreano	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.nl_NL	nl_NL	Holandes	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.pt_BR	pt_BR	Portugues	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ru	ru	Ruso	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.sv	sv	Suecia	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.th	th	Tailandes	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_CN	zh_CN	Chino (simplificado)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_TW	zh_TW	Chino (tradicional)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmsilt__Event__c.lmsilt__Product_Category.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmsilt__Event__c.lmsilt__Products.CFS Learning	CFS Learning	Aprendizaje CFS	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Attended	Attended	Asistio	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Not Attended	Not Attended	No asistio	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Optional	Optional	Opcional	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Recommended	Recommended	Recomendado	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Required	Required	Requerido	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Event	Event	Evento	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Module	Module	Modulo	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Task	Task	Tarea	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Pending	Pending	Pendiente	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Refunded	Refunded	Reembolsado	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Used	Used	Utilizado	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Admin	Admin	Admon.	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Instructor	Instructor	Instructor	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Manager	Manager	Gerente	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Select User	Select User	Seleccionar el usuario	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.User	User	Usuario	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Optional	Optional	Opcional	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Recommended	Recommended	Recomendado	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Required	Required	Requerido	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.After	After	Despues	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Anytime	Anytime	Cualquier momento	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Before	Before	Antes	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.During	During	Durante	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Active	Active	Activo	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Inactive	Inactive	Inactivo	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Attended	Attended	Asistió	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Not Attended	Not Attended	No asistió	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Partially Attended	Partially Attended	Asistencia parcial	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Failed	Failed	Falló	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Passed	Passed	Aprobado	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Cancelled	Cancelled	Cancelado	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Enrolled	Enrolled	Inscrito	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Waitlisted	Waitlisted	En lista de espera	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Withdrawn	Withdrawn	Retirado	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.AMER	AMER	América	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.APAC	APAC	Asia Pacífico	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.EMEA	EMEA	Europa, Oriente medio y África	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.JAPAN	JAPAN	JAPÓN	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Corporate Headquarters	Corporate Headquarters	Oficinas centrales corporativas	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Hotel	Hotel	Hotel	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Office	Office	Oficina	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Announce Name	Announce Name	Anunciar el nombre	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Beep	Beep	Pip	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.No Tone	No Tone	Sin tono	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.ILT	ILT	ILT	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.vILT	vILT	vILT	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PRIVATE	PRIVATE	PRIVADO	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PUBLIC	PUBLIC	PUBLICO	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.UNLISTED	UNLISTED	NO ESTA EN LA LISTA	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.GoToTraining	GoToTraining	Ir a entrenamiento	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.WebEx	WebEx	WebEx	-
+PicklistValue.lmsilt__Session__c.lmsilt__Telephony_Support.CALLIN	CALLIN	LLAMAR POR TELÉFONO	-

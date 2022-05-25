@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Engagement__c$Name</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Client_Number__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Engagement_Number__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$PIPELINE_Primary_Office__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$PIPELINE_Job_Type__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Stage__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Total_Estimated_Fee__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Total_Accrued_Fees__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Success_Probability__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Period_Accrued_Fees__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$External_Disclosure_Status__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Percentage of Completion Report on Engagements</description>
+    <format>Tabular</format>
+    <name>TEMPLATE - % of Completion Eng</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Engagements_with_Internal_Team__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Engagement__c$Close_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

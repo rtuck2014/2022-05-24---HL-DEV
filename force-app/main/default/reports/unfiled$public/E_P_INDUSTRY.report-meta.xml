@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Industry__c$Name</field>
+    </columns>
+    <columns>
+        <field>Industry__c$Id</field>
+    </columns>
+    <columns>
+        <field>Industry__c$Industry_Group__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>INDUSTRY</description>
+    <filter>
+        <criteriaItems>
+            <column>Industry__c$Industry_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>O&amp;G - Oil &amp; Gas</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>E&amp;P INDUSTRY</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Industries__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Industry__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

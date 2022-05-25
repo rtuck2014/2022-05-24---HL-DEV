@@ -1,0 +1,495 @@
+# Language: Chinese (Traditional)
+Language code: zh_TW
+Type: Bilingual
+
+------------------TRANSLATED-------------------
+
+# KEY	LABEL	TRANSLATION	OUT OF DATE
+
+CustomApp.lmscons__Learning_Cloud	Learning Cloud	學習雲	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Action.HelpText	The resulting action of clicking the CFS Link	點擊 CFS 連結後的動作	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Assigned.HelpText	True if the target learning object was assigned as a result of clicking the CFS Link	如果目標學習元件因為點擊 CFS 連結而獲指派便為真	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.HelpText	The status of the CFS Link when accessed by the User	使用者存取時 CFS 連結的狀態	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Error.HelpText	If clicking on the CFS Link results in an error, this picklist provides the cause of the error.	如果點擊 CFS 連結後出現錯誤，則此挑選清單便是錯誤發生的原因。	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.HelpText	The Target Learning Object's status on the User's Transcript when accessed by the User	使用者存取時，使用者培訓記錄上的目標學習元件狀態	-
+CustomField.lmscons__CFS_Link__c.lmscons__Channel.HelpText	Target channel (internal app, a community, portal, or site) for this link	此連結的目標通道 (內部應用程式、社群、入口網站或網站)	-
+CustomField.lmscons__CFS_Link__c.lmscons__End_Date.HelpText	Deep Link End Date; if this field is null, the Deep Link is always active (if marked Active)	深層連結結束日期；如果此欄位為空值，則深層連結永遠可用 (如果已標記為「可用」)	-
+CustomField.lmscons__CFS_Link__c.lmscons__IsActive.HelpText	Checkbox that marks the deep link as active or not. If marked inactive, this will override the default behavior based on start date and end date. 	用於標記深層連結可用或不可用的核取方塊。如果標記為不可用，則會覆寫基於開始日期和結束日期的預設行為。	-
+CustomField.lmscons__CFS_Link__c.lmscons__Start_Date.HelpText	Deep Link Start Date; if this field is null, the Deep Link is active immediately (if marked Active)	深層連結開始日期；如果此欄位為空值，則深層連結會立即可用 (如果已標記為「可用」)	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	如有需要為此任務建立定期培訓，應檢查以作不時之需。同樣謹記設定定期培訓期數目，以及定期培訓期類型（月或年）	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	定期培訓期數目。通過此任務期後將被重新指派。	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	建立/重新指派任務日期	-
+CustomField.lmscons__Curriculum__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	預設值為使用者必須完成所有組件。要自訂此條件，請將數值設定到一個或兩個選項。	-
+CustomField.lmscons__Curriculum__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	您可以在時間值「X」後指定時間單位，例如「Xd」、「Xh」或「Xm」，以分別代表天 (d)、小時 (h) 及分鐘 (m)。\n如您不指定時間單位，系統會以分鐘代表。	-
+CustomField.lmscons__Curriculum__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	預設值為使用者必須完成所有組件。要自訂此條件，請將數值設定到一個或兩個選項。	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	如有需要為此任務建立定期培訓，應檢查以作不時之需。同樣謹記設定定期培訓期數目，以及定期培訓期類型（月或年）	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.HelpText	Type of recurring training period (year or month)	定期培訓期類型（年或月）	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	定期培訓期數目。通過此任務期後將被重新指派。	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	建立/重新指派任務日期	-
+CustomField.lmscons__Learning_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	預設值為使用者必須完成所有組件。要自訂此條件，請將數值設定到一個或兩個選項。	-
+CustomField.lmscons__Learning_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	您可以在時間值「X」後指定時間單位，例如「Xd」、「Xh」或「Xm」，以分別代表天 (d)、小時 (h) 及分鐘 (m)。\n如您不指定時間單位，系統會以分鐘代表。	-
+CustomField.lmscons__Learning_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	預設值為使用者必須完成所有組件。要自訂此條件，請將數值設定到一個或兩個選項。	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__Cornerstone_Callback_URL.HelpText	The URL of the notification page set up for your organization.	設定您組織的通知頁網址。	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__CyberUSecretSignKey.HelpText	Secret key to sign CyberU callbacks	簽署 CyberU 回電的秘密鑰匙	-
+CustomField.lmscons__Quiz__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	您可以在時間值「X」後指定時間單位，例如「Xd」、「Xh」或「Xm」，以分別代表天 (d)、小時 (h) 及分鐘 (m)。\n如您不指定時間單位，系統會以分鐘代表。	-
+CustomField.lmscons__Training_Content_License__c.lmscons__Seats.HelpText	Total number of seats included in this license. Leave blank for unlimited.	包含在此授權的學額總數。為無限值留空。	-
+CustomField.lmscons__Training_Content__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as  Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	您可以在時間值「X」後指定時間單位，例如「Xd」、「Xh」或「Xm」，以分別代表天 (d)、小時 (h) 及分鐘 (m)。\n如您不指定時間單位，系統會以分鐘代表。	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	如有需要為此任務建立定期培訓，應檢查以作不時之需。同樣謹記設定定期培訓期數目，以及定期培訓期類型（月或年）	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	定期培訓期數目。通過此任務期後將被重新指派。	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	建立/重新指派任務日期	-
+CustomField.lmscons__Training_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria,  please set values to one or both options.	預設值為使用者必須完成所有組件。要自訂此條件，請將數值設定到一個或兩個選項。	-
+CustomField.lmscons__Training_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	您可以在時間值「X」後指定時間單位，例如「Xd」、「Xh」或「Xm」，以分別代表天 (d)、小時 (h) 及分鐘 (m)。\n如您不指定時間單位，系統會以分鐘代表。	-
+CustomField.lmscons__Training_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	預設值為使用者必須完成所有組件。要自訂此條件，請將數值設定到一個或兩個選項。	-
+CustomField.lmscons__Training_Unit__c.lmscons__Remaining_Training_Units.HelpText	Number of units available for spending	可供花費的單位數目	-
+CustomField.lmscons__Training_User_License__c.lmscons__Purchased.HelpText	Indicates if this user license has been purchased or only assigned.	表示使用者授權是否已被購買或只被指派。	-
+CustomField.lmsilt__Development_Plan__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	您可以在時間值「X」後指定時間單位，例如「Xd」、「Xh」或「Xm」，以分別代表天 (d)、小時 (h) 及分鐘 (m)。\n如您不指定時間單位，系統會以分鐘代表。	-
+CustomField.lmsilt__Event__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	您可以在時間值「X」後指定時間單位，例如「Xd」、「Xh」或「Xm」，以分別代表天 (d)、小時 (h) 及分鐘 (m)。\n如您不指定時間單位，系統會以分鐘代表。	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Profile	Profile	設定檔	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Role	Role	角色	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.Error	Error	錯誤	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.Launch	Launch	啟動	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.View Details	View Details	檢視詳細內容	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Active	Active	可用	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Expired	Expired	已過期	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Inactive	Inactive	不可用	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Not Started	Not Started	未開始	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Inactive Link	Inactive Link	不可用的連結	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Learning Object Not Found	Learning Object Not Found	找不到學習元件	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Link Expired	Link Expired	連結已過期	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Link Not Started	Link Not Started	連結沒有啟動	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.No Access	No Access	不可存取	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Assigned	Assigned	已指派	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Completed	Completed	已完成	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Enrolled	Enrolled	已註冊	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Unassigned	Unassigned	未指派	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Days	Days	天數	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Hours	Hours	時數	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Indefinite	Indefinite	無限	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Month	Month	月	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Weeks	Weeks	星期	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Years	Years	年	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Complete	Complete	完成	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.New	New	建立	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Processing	Processing	處理中	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	月	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	年	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Completed	Completed	已完成	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Not Started	Not Started	未開始	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Delivery_Type.Online	Online	網上	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Administrator	Administrator	系統管理員	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Developer	Developer	開發員	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.IT Professional	IT Professional	資訊科技專才	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Sales Professional	Sales Professional	銷售專才	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.da	da	丹麥語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.de	de	德語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.en_US	en_US	英語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.es	es	西班牙語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fi	fi	芬蘭語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fr	fr	法語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.it	it	意大利語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ja	ja	日語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ko	ko	韓語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.nl_NL	nl_NL	荷蘭語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.pt_BR	pt_BR	葡萄牙語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ru	ru	俄羅斯語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.sv	sv	瑞典語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.th	th	泰語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_CN	zh_CN	中文（簡體）	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_TW	zh_TW	中文（繁體）	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Force.com 連接	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com 流動	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	銷售雲	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.Force.com Connect	Force.com Connect	Force.com 連接	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com 流動	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Error	Error	錯誤	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Info	Info	資訊	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Warning	Warning	警告	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	月	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	年	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Completed	Completed	已完成	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Not Started	Not Started	未開始	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Delivery_Type.Online	Online	網上	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Administrator	Administrator	系統管理員	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Developer	Developer	開發員	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.IT Professional	IT Professional	資訊科技專才	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Sales Professional	Sales Professional	銷售專才	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.da	da	丹麥語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.de	de	德語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.en_US	en_US	英語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.es	es	西班牙語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fi	fi	芬蘭語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fr	fr	法語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.it	it	意大利語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ja	ja	日語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ko	ko	韓語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.nl_NL	nl_NL	荷蘭語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.pt_BR	pt_BR	葡萄牙語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ru	ru	俄羅斯語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.sv	sv	瑞典語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.th	th	泰語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_CN	zh_CN	中文（簡體）	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_TW	zh_TW	中文（繁體）	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Force.com 連接	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com 流動	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	銷售雲	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.Force.com Connect	Force.com Connect	Force.com 連接	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com 流動	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Completed	Completed	已完成	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Pending	Pending	待定	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Download	Download	下載	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Purchase	Purchase	購買	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Days	Days	天數	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Hours	Hours	時數	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Indefinite	Indefinite	無限	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Months	Months	月	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Weeks	Weeks	星期	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Years	Years	年	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.English	English	英語	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.French	French	法語	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Completed	Completed	已完成	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Failed	Failed	不合格	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Passed	Passed	合格	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Retired	Retired	已停用	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Exit	Exit	出口	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Message	Message	訊息	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.da	da	丹麥語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.de	de	德語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.en_US	en_US	英語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.es	es	西班牙語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fi	fi	芬蘭語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fr	fr	法語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.it	it	意大利語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ja	ja	日語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ko	ko	韓語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.nl_NL	nl_NL	荷蘭語（荷蘭）	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.pt_BR	pt_BR	葡萄牙語（巴西）	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ru	ru	俄羅斯語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.sv	sv	瑞典語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.th	th	泰語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_CN	zh_CN	中文（簡體）	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_TW	zh_TW	中文（繁體）	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Easy	Easy	簡單	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Hard	Hard	困難	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Medium	Medium	中等	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Long Text	Long Text	長文	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Short Text	Short Text	短文	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Free Text	Free Text	自由文	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Multi Select	Multi Select	多項選擇	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Single Select	Single Select	單次選擇	-
+PicklistValue.lmscons__Question__c.lmscons__Type.True/False	True/False	True/False	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.da	da	丹麥語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.de	de	德語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.en_US	en_US	英語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.es	es	西班牙語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fi	fi	芬蘭語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fr	fr	法語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.it	it	意大利語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ja	ja	日語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ko	ko	韓語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.nl_NL	nl_NL	荷蘭語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.pt_BR	pt_BR	葡萄牙語（巴西）	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ru	ru	俄羅斯語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.sv	sv	瑞典語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.th	th	泰語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_CN	zh_CN	中文（簡體）	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_TW	zh_TW	中文（繁體）	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Course	Course	課程	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Curriculum	Curriculum	課程	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Learning Path	Learning Path	學習途徑	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Module	Module	單元	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Quiz	Quiz	測驗	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.ALL	ALL	全部	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NEW	NEW	建立	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NON_COMPLETE	NON_COMPLETE	未完成	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Days	Days	天數	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Hours	Hours	時數	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Indefinite	Indefinite	無限	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Month	Month	月	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Weeks	Weeks	星期	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Years	Years	年	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Implementation	Implementation	實施	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Learning	Learning	學習	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Sale	Sale	銷售	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Delivery_Type.Free eLearning	Free eLearning	免費電子學習	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Administrator	Administrator	系統管理員	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Channel Manager	Channel Manager	頻道管理	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Developer	Developer	開發員	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.IT Professional	IT Professional	資訊科技專才	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Implementation Team	Implementation Team	實施團隊	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Marketing	Marketing	市場推廣	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Partner	Partner	合作夥伴	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Manager	Sales Manager	銷售經理	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Professional	Sales Professional	銷售專才	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Rep	Sales Rep	銷售代表	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Support Rep	Support Rep	支援代表	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.da	da	丹麥語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.de	de	德語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.en_US	en_US	英語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.es	es	西班牙語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fi	fi	芬蘭語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fr	fr	法語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.it	it	意大利語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ja	ja	日語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ko	ko	韓語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.nl_NL	nl_NL	荷蘭語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.pt_BR	pt_BR	葡萄牙語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ru	ru	俄羅斯語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.sv	sv	瑞典語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.th	th	泰語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_CN	zh_CN	中文（簡體）	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_TW	zh_TW	中文（繁體）	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Development Plan Task	Development Plan Task	發展計畫任務	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Event	Event	活動	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Module	Module	單元	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Quiz	Quiz	測驗	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Block	Block	封鎖	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Course	Course	課程	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Administrator	Administrator	系統管理員	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Channel Manager	Channel Manager	頻道管理	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Developer	Developer	開發員	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Implementation Team	Implementation Team	實施團隊	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Marketing	Marketing	市場推廣	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Partner	Partner	合作夥伴	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Manager	Sales Manager	銷售經理	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Rep	Sales Rep	銷售代表	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Support Rep	Support Rep	支援代表	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Force.com 連接	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com Offline	Force.com Offline	Force.com 離線	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com platform	Force.com platform	Force.com 平台	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM CSS	Salesforce CRM CSS	銷售團隊 CRM CSS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Content	Salesforce CRM Content	銷售團隊 CRM 內容	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Ideas	Salesforce CRM Ideas	銷售團隊 CRM 概念	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Marketing	Salesforce CRM Marketing	銷售團隊 CRM 市場推廣	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Mobile	Salesforce CRM Mobile	銷售團隊 CRM 流動	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	銷售團隊 CRM 夥伴網絡	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM SFA	Salesforce CRM SFA	銷售團隊 CRM SFA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Google Apps 的銷售團隊	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce to Salesforce	Salesforce to Salesforce	銷售團隊對銷售團隊	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com Connect	Force.com Connect	Force.com 連接	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com Offline	Force.com Offline	Force.com 離線	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com platform	Force.com platform	Force.com 平台	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM CSS	Salesforce CRM CSS	銷售團隊 CRM CSS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Content	Salesforce CRM Content	銷售團隊 CRM 內容	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Ideas	Salesforce CRM Ideas	銷售團隊 CRM 概念	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Marketing	Salesforce CRM Marketing	銷售團隊 CRM 市場推廣	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Mobile	Salesforce CRM Mobile	銷售團隊 CRM 流動	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	銷售團隊 CRM 夥伴網絡	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM SFA	Salesforce CRM SFA	銷售團隊 CRM SFA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Google Apps 的銷售團隊	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce to Salesforce	Salesforce to Salesforce	銷售團隊對銷售團隊	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.FAILURE	FAILURE	失敗	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.SUCCESS	SUCCESS	成功	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Completed	Completed	已完成	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Failed	Failed	不合格	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Passed	Passed	合格	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Retired	Retired	已停用	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Months	Months	月	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Years	Years	年	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Completed	Completed	已完成	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Not Started	Not Started	未開始	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Retired	Retired	已停用	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Delivery_Type.Online	Online	網上	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.CSS	CSS	串聯樣式表	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Content	Content	內容	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Customer Portal	Customer Portal	客戶入門網站	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.FDC	FDC	FDC	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Ideas	Ideas	概念	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Partner Portal	Partner Portal	夥伴入門網站	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.SFA	SFA	SFA	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Administrator	Administrator	系統管理員	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Developer	Developer	開發員	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.IT Professional	IT Professional	資訊科技專才	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Sales Professional	Sales Professional	銷售專才	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.da	da	丹麥語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.de	de	德語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.en_US	en_US	英語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.es	es	西班牙語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fi	fi	芬蘭語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fr	fr	法語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.it	it	意大利語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ja	ja	日語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ko	ko	韓語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.nl_NL	nl_NL	荷蘭語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.pt_BR	pt_BR	葡萄牙語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ru	ru	俄羅斯語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.sv	sv	瑞典語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.th	th	泰語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_CN	zh_CN	中文（簡體）	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_TW	zh_TW	中文（繁體）	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Force.com 連接	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com 流動	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	銷售雲	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.Force.com Connect	Force.com Connect	Force.com 連接	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com 流動	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.Completed	Completed	已完成	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Completed	Completed	已完成	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Failed	Failed	不合格	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Passed	Passed	合格	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Retired	Retired	已停用	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Unenrolled	Unenrolled	已取消註冊	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Completed	Completed	已完成	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Failed	Failed	不合格	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.LO Error	LO Error	LO 錯誤	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Pending	Pending	待定	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Skipped	Skipped	已跳過	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.contains	contains	包含	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.does not contain	does not contain	不包含	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.equals	equals	等於	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.excludes	excludes	不包括	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater or equal	greater or equal	大於或等於	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater than	greater than	大於	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.includes	includes	包括	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less or equal	less or equal	少於或等於	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less than	less than	少於	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.not equal to	not equal to	不等於	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.starts with	starts with	開始值	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Account	Account	帳戶	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Case	Case	個案	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Contact	Contact	聯絡人	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Lead	Lead	領導	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Opportunity	Opportunity	機會	-
+PicklistValue.User.lmscons__CFS_Status.Active	Active	現行	-
+PicklistValue.User.lmscons__CFS_Status.Deactivated	Deactivated	已停用	-
+PicklistValue.User.lmscons__CFS_Status.Not CFS user	Not CFS user	非 CFS 使用者	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Completed	Completed	已完成	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.In Progress	In Progress	進行中	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Not Started	Not Started	未開始	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Relative Dates	Relative Dates	檢討日期	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Static Dates	Static Dates	靜態日期	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Failed	Failed	不合格	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Success	Success	成功	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Import	Import	匯入	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Manual	Manual	手動	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Delete	Delete	刪除	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Insert	Insert	插入	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Update	Update	更新	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Completed	Completed	已完成	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.In Progress	In Progress	進行中	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Not Started	Not Started	未開始	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Internal	Internal	內部	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Private	Private	私人	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Public	Public	公共	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Completed	Completed	已完成	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.In Progress	In Progress	進行中	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Not Started	Not Started	未開始	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Manager	Manager	管理員	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Self	Self	自行	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.User	User	使用者	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Delivery_Type.Online	Online	網上	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Administrator	Administrator	系統管理員	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.IT Professional	IT Professional	資訊科技專才	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	銷售專才	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.da	da	丹麥語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.de	de	德語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.en_US	en_US	英語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.es	es	西班牙語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fi	fi	芬蘭語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fr	fr	法語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.it	it	意大利語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ja	ja	日語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ko	ko	韓語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.nl_NL	nl_NL	荷蘭語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.pt_BR	pt_BR	葡萄牙語（巴西）	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ru	ru	俄羅斯語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.sv	sv	瑞典語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.th	th	泰語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_CN	zh_CN	中文（簡體）	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_TW	zh_TW	中文（繁體）	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Product_Category.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Products.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Active	Active	現行	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Retired	Retired	已停用	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Administrator	Administrator	系統管理員	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.IT Professional	IT Professional	資訊科技專才	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	銷售專才	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.da	da	丹麥語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.de	de	德語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.en_US	en_US	英語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.es	es	西班牙語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fi	fi	芬蘭語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fr	fr	法語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.it	it	意大利語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ja	ja	日語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ko	ko	韓語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.nl_NL	nl_NL	荷蘭語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.pt_BR	pt_BR	葡萄牙語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ru	ru	俄羅斯語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.sv	sv	瑞典語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.th	th	泰語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_CN	zh_CN	中文（簡體）	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_TW	zh_TW	中文（繁體）	-
+PicklistValue.lmsilt__Event__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmsilt__Event__c.lmsilt__Product_Category.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmsilt__Event__c.lmsilt__Products.CFS Learning	CFS Learning	CFS 學習	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Attended	Attended	已出席	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Not Attended	Not Attended	沒有出席	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Optional	Optional	可選	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Recommended	Recommended	建議的	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Required	Required	必需	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Event	Event	活動	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Module	Module	單元	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Task	Task	任務	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Pending	Pending	待定	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Refunded	Refunded	已退款	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Used	Used	已使用	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Admin	Admin	管理	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Instructor	Instructor	導師	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Manager	Manager	管理員	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Select User	Select User	選擇使用者	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.User	User	使用者	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Optional	Optional	可選	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Recommended	Recommended	建議的	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Required	Required	必需	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.After	After	之後	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Anytime	Anytime	任何時間	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Before	Before	之前	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.During	During	期間	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Active	Active	現行	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Inactive	Inactive	非活躍	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Attended	Attended	已出席	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Not Attended	Not Attended	沒有出席	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Partially Attended	Partially Attended	部分出席	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Failed	Failed	不合格	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Passed	Passed	合格	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Cancelled	Cancelled	已取消	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Enrolled	Enrolled	已註冊	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Waitlisted	Waitlisted	已列入輪候名單	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Withdrawn	Withdrawn	已退出	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.AMER	AMER	AMER	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.APAC	APAC	APAC	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.EMEA	EMEA	EMEA	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.JAPAN	JAPAN	日本	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Corporate Headquarters	Corporate Headquarters	企業總部	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Hotel	Hotel	酒店	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Office	Office	辦公室	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Announce Name	Announce Name	播報名稱	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Beep	Beep	嗶聲	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.No Tone	No Tone	無聲	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.ILT	ILT	課室	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.vILT	vILT	虛擬	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PRIVATE	PRIVATE	私人	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PUBLIC	PUBLIC	公共	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.UNLISTED	UNLISTED	未列出	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.GoToTraining	GoToTraining	進入培訓	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.WebEx	WebEx	WebEx	-
+PicklistValue.lmsilt__Session__c.lmsilt__Telephony_Support.CALLIN	CALLIN	來電	-

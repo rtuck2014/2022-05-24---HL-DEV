@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.Accounts_Coverage__r$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Contacts.Accounts_Coverage__r.Coverage_Contacts__r$Name</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Test</description>
+    <filter>
+        <criteriaItems>
+            <column>Account.Contacts.Accounts_Coverage__r$Primary_Sector__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Contacts.Accounts_Coverage__r$Coverage_Level__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Calling Officer,Primary</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Contacts.Accounts_Coverage__r$Coverage_Team_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Active</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Contacts.Accounts_Coverage__r$Company_Coverage_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Engaged,Opportunity,Qualified Lead,Warm Lead,Leads to Qualify,Keep In Touch</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <name>Cloud Services - DD</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Companies_w_Coverage_Team_w_or_wo_Contacts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Account$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

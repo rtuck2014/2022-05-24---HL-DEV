@@ -1,0 +1,34 @@
+<div ng-if="containerItems != null">
+	<h3 class="pageSubtitle">
+		<span ng-if="containerItems.length > 0">{{labels.EUI_Training_Included}} ({{containerItems.length}})</span>
+		<span ng-if="containerItems.length == 0">{{labels.EUI_No_Training_Included}}</span>
+	</h3>
+	<article ng-show="containerItems.length > 0" ng-repeat="item in containerItems | orderBy: ['sequence', 'dueDate', 'title']">
+		<ul class="trainingItem" ng-class="{pastDue : item.isPastDue == true}" ng-init = "priorTrainingMsg = '<h2>' + labels.EUI_Complete_Prior_Training + '</h2><br/>' + item.lastIncompleteItemTitle;">
+			<li class="dueStatus"><span class="hdntxt">[[Past Due/On Schedule]]</span></li>
+			<li class="title" ng-switch="item.contextualAction">
+				<a ng-switch-when="PAST_MAX_ATTEMPTS" href="#" ng-click="openLoadingLightBox(labels.Quiz_max_attempts_reached);"><h4>{{item.title}}</h4></a>
+				<a ng-switch-when="UNAUTHORIZED" href="#" ng-click="openLoadingLightBox(labels.You_are_not_authorized_to_view_or_take_training);"><h4>{{item.title}}</h4></a>
+				<a ng-switch-when="PRIOR_TRAINING" href="#" ng-click="openLoadingLightBox(priorTrainingMsg);"><h4>{{item.title}}</h4></a>
+				<span ng-switch-when="VIEW_PARENT_PREREQ"><h4>{{item.title}}</h4></span>
+				<a ng-switch-default href="{{item.titleLink}}" ng-click="navigate(item.titleLink)"><h4>{{item.title}}</h4></a>
+			</li>
+			<property ng-if="item.propertyList && item.propertyList.length > 0" ng-repeat="property in item.propertyList">
+				<li class="{{property.class}}"><span class="lbl">{{property.label}}</span> <span>{{property.value}}</span></li>
+				<li class="dot"  ng-if="!$last" />
+			</property>
+			<li class="certificate" ng-if="item.showCertificate" title="{{labels.CERTIFICATE_OF_COMPLETION}}"><a href="{{item.certificateLink}}" target="_blank" ng-click="navigate(item.certificateLink)"><i class="fa fa-star"></i></a></li>
+			<li class="description">{{item.description}}</li>
+			<li class="progression" ng-if="item.progress >= 0">
+				<module-progress id="related{{item.objectId}}" item="item" adjustcss="true"></module-progress>
+			</li>
+			<li class="buttons" ng-switch="item.contextualAction">
+				<button ng-switch-when="LAUNCH" type="button" ng-click="launch(item);">{{labels.MyTraining_LaunchCourse}}</button>
+				<button ng-switch-when="PRIOR_TRAINING" type="button" ng-click="openLoadingLightBox(priorTrainingMsg);">{{labels.EUI_Complete_Prior_Training_Short}}</button>
+				<button ng-switch-when="VIEW_PARENT_PREREQ" class="btn" type="button" ng-click="autoScrollToElement('spnPrereqs');">{{labels.EUI_View_Prerequisites}}</button>
+				<button ng-switch-when="VIEW_PREREQ" class="btn" type="button" ng-click="navigateButton(item.titleLink)">{{labels.EUI_View_Prerequisites}}</button>
+				<button ng-switch-when="PAST_MAX_ATTEMPTS" type="button" ng-click="openLoadingLightBox(labels.Quiz_max_attempts_reached);">{{labels.MyTraining_LaunchCourse}}</button>
+			</li>
+		</ul>
+	</article>
+</div>

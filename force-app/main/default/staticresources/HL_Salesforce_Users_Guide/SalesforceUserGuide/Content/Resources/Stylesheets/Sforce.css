@@ -1,0 +1,473 @@
+@namespace MadCap url(http://www.madcapsoftware.com/Schemas/MadCap.xsd);
+/*<meta conditions="" />*/
+
+body
+{
+	font-family: Arial;
+	font-size: 13px;
+	line-height: 1.7em;
+	margin: 17px;
+	max-width: 750px;
+	color: #ffffff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+	font-weight: bold;
+	color: #749AB6;
+}
+
+p.example
+{
+	border: solid 1px #BECFDC;
+	background-color: #DEE8F0;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	padding: 14px 20px;
+	color: #4a4a56;
+}
+
+p.note
+{
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	color: #4a4a56;
+	background-color: #dee8f0;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-left-color: #becfdc;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: #becfdc;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #becfdc;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #becfdc;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	padding-left: 11px;
+	padding-right: 5px;
+	padding-top: 11px;
+	padding-bottom: 5px;
+}
+
+a
+{
+	color: #0000ff;
+}
+
+MadCap|expanding
+{
+	mc-open-image: url('file:///C:/Program Files (x86)/MadCap Software/MadCap Flare V8/Flare.app/Resources/Images/WebHelp/minus.png');
+	mc-closed-image: url('file:///C:/Program Files (x86)/MadCap Software/MadCap Flare V8/Flare.app/Resources/Images/WebHelp/plus.png');
+	mc-image-position: left;
+}
+
+MadCap|dropDown
+{
+	mc-open-image: url('file:///C:/Program Files (x86)/MadCap Software/MadCap Flare V8/Flare.app/Resources/Images/WebHelp/minus.png');
+	mc-closed-image: url('file:///C:/Program Files (x86)/MadCap Software/MadCap Flare V8/Flare.app/Resources/Images/WebHelp/plus.png');
+}
+
+MadCap|toggler
+{
+	mc-open-image: url('file:///C:/Program Files (x86)/MadCap Software/MadCap Flare V8/Flare.app/Resources/Images/WebHelp/minus.png');
+	mc-closed-image: url('file:///C:/Program Files (x86)/MadCap Software/MadCap Flare V8/Flare.app/Resources/Images/WebHelp/plus.png');
+	color: inherit;
+}
+
+MadCap|popupHead
+{
+	color: #5B8EC1;
+}
+
+MadCap|popupBody
+{
+	color: #EBEBEB;
+	border: none;
+	background-color: rgba(0, 0, 0, .85);
+	padding: 11px 15px;
+}
+
+MadCap|glossaryTerm
+{
+	font-style: normal;
+	text-transform: none;
+	font-weight: bold;
+	color: #808000;
+}
+
+MadCap|glossaryTerm.Expanding
+{
+	color: inherit;
+	font-weight: inherit;
+}
+
+MadCap|glossaryTerm.Hyperlink
+{
+	font-weight: inherit;
+	font-family: Arial;
+	color: #0000ff;
+}
+
+MadCap|glossaryTerm.Popup
+{
+	font-weight: normal;
+	color: #0000ff;
+}
+
+MadCap|conceptLink
+{
+	color: #000000;
+}
+
+MadCap|keywordLink
+{
+	color: #000000;
+}
+
+MadCap|relatedTopics
+{
+	color: #000000;
+}
+
+MadCap|helpControlMenu
+{
+	color: #707070;
+	background-color: #FFFFFF;
+	border: none;
+}
+
+MadCap|helpControlMenuItem
+{
+	color: inherit;
+	font-size: inherit;
+	font-family: inherit;
+}
+
+MadCap|helpControlMenuItem.Highlighted
+{
+	color: #000000;
+	background-color: #E5EFF7;
+}
+
+ul
+{
+	list-style-type: disc;
+	font-family: Arial;
+	color: #000000;
+	font-size: 11pt;
+}
+
+li
+{
+	font-family: Arial;
+	color: #000000;
+	font-size: 11pt;
+}
+
+li.li2
+{
+	list-style-type: disc;
+	font-size: 11pt;
+}
+
+h1
+{
+	font-family: Arial;
+	font-weight: bold;
+	color: #000000;
+	font-size: 18pt;
+}
+
+h2
+{
+	font-family: Arial;
+	color: #000000;
+	font-size: 16pt;
+}
+
+h3
+{
+	font-family: Arial;
+	color: #000000;
+	font-size: 14pt;
+}
+
+h4
+{
+	font-size: 1em;
+	font-family: Arial;
+	color: #4a4a56;
+}
+
+h5
+{
+	font-size: 1em;
+	font-family: Arial;
+	color: #4a4a56;
+}
+
+h6
+{
+	font-size: 1em;
+	font-family: Arial;
+	color: #4a4a56;
+}
+
+p
+{
+	font-family: Arial;
+	color: #000000;
+	font-size: 11pt;
+}
+
+ol
+{
+	font-family: Arial;
+	color: #000000;
+	font-size: 11pt;
+}
+
+MadCap|breadcrumbsProxy
+{
+	font-family: Tahoma;
+	color: #b8c3b5;
+	font-style: italic;
+	font-size: 8pt;
+	text-align: left;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+}
+
+p.ConceptContext
+{
+	font-family: Arial;
+}
+
+p.CoverPageHeader
+{
+	font-size: 12pt;
+	border-bottom-color: #000000;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	padding-bottom: 2px;
+}
+
+img
+{
+	border-left-style: solid;
+	border-left-width: 0px;
+	border-right-style: solid;
+	border-right-width: 0px;
+	border-top-style: solid;
+	border-top-width: 0px;
+	border-bottom-style: solid;
+	border-bottom-width: 0px;
+}
+
+p.important
+{
+	border: solid 1px #BFD62F;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	padding: 10px;
+	padding-bottom: 5px;
+	padding-right: 5px;
+	padding-left: 11px;
+	padding-top: 11px;
+	color: #ff0000;
+	background-color: #ffff95;
+}
+
+p.Indent1
+{
+	margin-left: 40px;
+	font-family: Arial;
+}
+
+p.CoverPageFooter
+{
+	font-size: 12pt;
+	border-bottom-color: #000000;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	padding-bottom: 2px;
+}
+
+p.video
+{
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	color: #4a4a56;
+	background-color: #d8d7d7;
+	vertical-align: middle;
+	font-weight: bold;
+	font-style: normal;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-left-color: #BECFDC;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: #BECFDC;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #BECFDC;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #BECFDC;
+}
+
+a:link
+{
+	font-family: Arial;
+	color: #0000ff;
+}
+
+MadCap|xref
+{
+	font-family: Arial;
+}
+
+MadCap|xref:focus
+{
+	font-family: Arial;
+}
+
+div.note
+{
+	font-family: Arial;
+	font-size: 11pt;
+	color: #4a4a56;
+	background-color: #dae691;
+}
+
+ul.BoxFontStyle
+{
+	list-style-type: disc;
+	font-family: Arial;
+	font-size: 11pt;
+	color: #4a4a56;
+	background-color: #dae691;
+}
+
+p.Title1
+{
+	color: #474747;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 36pt;
+}
+
+p.Title3
+{
+	color: #474747;
+	font-size: 22pt;
+	font-weight: normal;
+	font-style: italic;
+}
+
+@media print
+{
+	img
+	{
+		max-height: auto;
+		max-width: 663px;
+	}
+}
+
+p.Title2
+{
+	color: #474747;
+	font-size: 28pt;
+	font-weight: normal;
+	font-style: italic;
+}
+
+td.VideoTable
+{
+	color: #000000;
+	background-color: #d3d3d3;
+	font-size: 12pt;
+	font-weight: bold;
+	font-style: normal;
+	font-family: Arial;
+	text-align: left;
+	line-height: normal;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-left-color: #a9a9a9;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: #a9a9a9;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #a9a9a9;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #a9a9a9;
+	vertical-align: middle;
+}
+
+td.VideoTableWht
+{
+	color: #000000;
+	font-size: 12pt;
+	font-weight: bold;
+	font-style: normal;
+	font-family: Arial;
+	text-align: left;
+	line-height: normal;
+	vertical-align: middle;
+	border-left-style: none;
+	border-left-width: 1px;
+	border-left-color: #a9a9a9;
+	border-right-style: none;
+	border-right-width: 1px;
+	border-right-color: #a9a9a9;
+	border-top-style: none;
+	border-top-width: 1px;
+	border-top-color: #a9a9a9;
+	border-bottom-style: none;
+	border-bottom-width: 1px;
+	border-bottom-color: #a9a9a9;
+	background-color: #ffffff;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>EngAllocation_CF_CAO_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>EngAllocation CF CAO RW</label>
+        <sharedTo>
+            <group>CAO_CF</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Eng_Allocation_CAO_FAS_R_W</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Eng Allocation CAO FVA R/W</label>
+        <sharedTo>
+            <group>CAO_FVA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FVA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Eng_Allocation_CAO_FR_R_W</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Eng Allocation CAO FR R/W</label>
+        <sharedTo>
+            <group>CAO_FR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Eng_Allocation_CAO_SC_R_W</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Eng Allocation CAO SC R/W</label>
+        <sharedTo>
+            <group>CAO_SC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>SC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Activity$Id</field>
+    </columns>
+    <columns>
+        <field>Activity$ActivityDate</field>
+    </columns>
+    <columns>
+        <field>Activity$Subject</field>
+    </columns>
+    <columns>
+        <field>Activity$Description</field>
+    </columns>
+    <columns>
+        <field>Activity$Primary_Attendee__c</field>
+    </columns>
+    <columns>
+        <field>Activity$Contact__c.Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>Activity$Contact__c.Industry_Group__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Zoom Data Clean Up Report</description>
+    <filter>
+        <criteriaItems>
+            <column>Activity$Description</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>inviting you to a scheduled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Activity$Contact__c.Industry_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IG - Industrials</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Activity$Primary_Attendee__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Morabito</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Zoom Data Clean Up</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Activities__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Activity$CreatedDate</dateColumn>
+        <endDate>2021-02-08</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2021-01-01</startDate>
+    </timeFrameFilter>
+</Report>

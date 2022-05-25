@@ -1,0 +1,157 @@
+@media (max-width: 965px) {
+  #sl .visible-mnnav {
+    display: none !important;
+  }
+  table#sl .visible-mnnav {
+    display: table;
+  }
+  tr#sl .visible-mnnav {
+    display: table-row !important;
+  }
+  th#sl .visible-mnnav,
+  td#sl .visible-mnnav {
+    display: table-cell !important;
+  }
+}
+
+.s1RelatedList .tableTextTd span, .s1RelatedList .tableTextTd > a {
+    max-width: inherit;
+    /* float: left; */
+    display: inline-block;
+    /* word-wrap: normal; */
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*font-size: 12px;*/
+}
+.s1RelatedList .tableTextTd > a {
+    cursor: pointer;
+}
+
+.borderless td, th {
+    border: none;
+}
+#sl .inputSubject {font-weight:bold;}
+.table-responsive {
+    overflow-x: auto;
+}
+.responsive-fieldset {
+    display: table-cell;
+    width: 100%
+}
+.search-table-outter {
+    overflow-x: scroll;
+}
+.fright {
+    float: right;
+}
+.sidebar .nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+/*#sl .form-control.ng-invalid {
+    border: 1px solid red;
+}*/
+#sl ul li, #sl ol li {
+    margin: 0;
+}
+#sl ul li.tag-item {
+    margin-right: 2px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+#sl ul, #sl ol {
+    margin-right: 5;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+#sl input {
+    font-size: 12px;
+    border-top: 2px;
+    /*margin-top: 3px;*/
+}
+#sl .emailSubject {
+    margin: 0;
+    padding: 0;
+}
+#sl textarea.email-body {
+    min-height: 150px;
+}
+#sl .ta-scroll-window > .ta-bind {
+    height: 180px;
+    min-height: 200px;
+    padding: 6px 6px;
+}
+#sl .ta-editor {
+    min-height: 100px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+}
+.requiredSymbol {
+    color: #AD0000;
+}
+.sf-field .form-group {
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+.sf-field-editable .form-group {
+    border-bottom: none;
+}
+.s1RelatedList .panel-body {
+    background-color:#f5f5f5;
+}
+.mn-scrollspy {
+    background-color: white;
+    z-index:100;
+    left:0;
+}
+.mn-scrollspy li {
+    cursor:pointer;
+    text-decoration: underline;
+}
+#sl .s1RelatedList .table-bordered > tbody > tr > td, 
+#sl .s1RelatedList .table-bordered > tbody > tr > th {
+    border-left:0;
+    border-right:0;
+}
+.detail-separator {
+    border-top: 2px solid #1797c0;
+}
+#sl .s1RelatedList .panel-heading {
+    border-top: 3px solid #ddd;
+    border-radius: 2px;
+}
+.page-footer {
+    padding-top: 9px;
+    margin: 40px 0 20px;
+    border-top: 1px solid #eee;
+}
+.s1RelatedList .dropdown-menu {
+    max-height: 145px;
+    overflow-y: auto;
+}  
+#sl .form-control[disabled] {
+    cursor: default;
+}
+#sl .datepicker table .btn, #sl .timepicker table .btn {
+    border: none;
+}
+#sl .datepicker .today-btn, #sl .timepicker .today-btn {
+    width:100%;
+    padding-left:10%;
+    padding-right:10%;
+}
+#sl .btn[disabled] {
+    opacity: 0.2;
+}
+.percentInputBox {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+}
+.disabled-glyphicon {
+    cursor: default;
+    opacity: 0.4;
+}

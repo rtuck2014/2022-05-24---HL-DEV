@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>Time_Record_Period_FR_Group</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Time Record Period - FR Group</label>
+        <sharedTo>
+            <group>Time_Tracking_FR</group>
+        </sharedTo>
+        <sharedFrom>
+            <allInternalUsers></allInternalUsers>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Time_Record_Period_Time_Tracking_Groups</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share with Time Tracking Groups</description>
+        <label>Time Record Period - Time Tracking Groups</label>
+        <sharedTo>
+            <group>Time_Tracking_Litigation</group>
+        </sharedTo>
+        <sharedFrom>
+            <allInternalUsers></allInternalUsers>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Time_Tracking_FR_FR_Supervisors</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share with Supervisors</description>
+        <label>Time Tracking FR - FR Supervisors</label>
+        <sharedTo>
+            <group>Time_Tracking_FR_Supervisor</group>
+        </sharedTo>
+        <sharedFrom>
+            <allInternalUsers></allInternalUsers>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Time_Tracking_Litigation_Supervisors</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share with Litigation Supervisors</description>
+        <label>Time Tracking Litigation - Supervisors</label>
+        <sharedTo>
+            <group>Time_Tracking_Litigation_Supervisor</group>
+        </sharedTo>
+        <sharedFrom>
+            <allInternalUsers></allInternalUsers>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

@@ -1,0 +1,495 @@
+# Language: Korean
+Language code: ko
+Type: Bilingual
+
+------------------TRANSLATED-------------------
+
+# KEY	LABEL	TRANSLATION	OUT OF DATE
+
+CustomApp.lmscons__Learning_Cloud	Learning Cloud	학습 클라우드	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Action.HelpText	The resulting action of clicking the CFS Link	CFS 링크를 클릭하면 나타나는 업무입니다.	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Assigned.HelpText	True if the target learning object was assigned as a result of clicking the CFS Link	CFS 링크를 클릭한 결과 대상 학습 목표가 할당되면 참입니다.	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.HelpText	The status of the CFS Link when accessed by the User	사용자가 액세스할 때의 CFS 링크 상태입니다.	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Error.HelpText	If clicking on the CFS Link results in an error, this picklist provides the cause of the error.	"CFS 링크를 클릭했을 때 오류가 발생하는 경우, 이 선택 목록은 오류의 원인을 알립니다."	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.HelpText	The Target Learning Object's status on the User's Transcript when accessed by the User	사용자가 액세스할 때 사용자 학습 현황의 대상 학습 목표 상태입니다.	-
+CustomField.lmscons__CFS_Link__c.lmscons__Channel.HelpText	Target channel (internal app, a community, portal, or site) for this link	"이 링크에 대한 대상 경로(내부 앱, 커뮤니티, 포털 또는 사이트)입니다."	-
+CustomField.lmscons__CFS_Link__c.lmscons__End_Date.HelpText	Deep Link End Date; if this field is null, the Deep Link is always active (if marked Active)	딥 링크 종료 날짜입니다. 이 필드가 널(Null)이면 딥 링크는 항상 활성입니다(활성으로 표시된 경우).	-
+CustomField.lmscons__CFS_Link__c.lmscons__IsActive.HelpText	Checkbox that marks the deep link as active or not. If marked inactive, this will override the default behavior based on start date and end date. 	"딥 링크를 활성 또는 비활성으로 표시하는 확인란입니다. 비활성으로 표시되는 경우, 시작 날짜 및 종료 날짜를 기반으로 기본 동작을 오버라이드합니다. "	-
+CustomField.lmscons__CFS_Link__c.lmscons__Start_Date.HelpText	Deep Link Start Date; if this field is null, the Deep Link is active immediately (if marked Active)	딥 링크 시작 날짜입니다. 이 필드가 널(Null)이면 딥 링크는 즉시 활성화됩니다(활성으로 표시된 경우).	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	이 배정에 반복 교육을 만드는 데 필요한 경우 확인해야 합니다. 반복 교육 기간과 반복 교육 기간 유형(월 또는 년)의 수도 설정해야 합니다.	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	반복 교육 기간의 수. 이 기간을 지나면 배정 내용을 다시 배정합니다.	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	배정 만들기/재배정 시 날짜	-
+CustomField.lmscons__Curriculum__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	기본값으로 사용자는 반드시 모든 구성 요소를 완료해야 합니다. 기준을 사용자 정의하기 위해 하나 또는 두 가지 모두의 옵션값을 설정하십시오.	-
+CustomField.lmscons__Curriculum__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	시간값 'X' 다음에 Xd, Xh, Xm(날짜, 시간, 분)처럼 시간 단위를 지정할 수 있습니다.\n시간 단위를 지정하지 않으면 분으로 간주합니다.	-
+CustomField.lmscons__Curriculum__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	기본값으로 사용자는 반드시 모든 구성 요소를 완료해야 합니다. 기준을 사용자 정의하기 위해 하나 또는 두 가지 모두의 옵션값을 설정하십시오.	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	이 배정에 반복 교육을 만드는 데 필요한 경우 확인해야 합니다. 반복 교육 기간과 반복 교육 기간 유형(월 또는 년)의 수도 설정해야 합니다.	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.HelpText	Type of recurring training period (year or month)	반복 교육 기간의 유형(년 또는 월)	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	반복 교육 기간의 수. 이 기간을 지나면 배정 내용을 다시 배정합니다.	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	배정 만들기/재배정 시 날짜	-
+CustomField.lmscons__Learning_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	기본값으로 사용자는 반드시 모든 구성 요소를 완료해야 합니다. 기준을 사용자 정의하기 위해 하나 또는 두 가지 모두의 옵션값을 설정하십시오.	-
+CustomField.lmscons__Learning_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	시간값 'X' 다음에 Xd, Xh, Xm(날짜, 시간, 분)처럼 시간 단위를 지정할 수 있습니다.\n시간 단위를 지정하지 않으면 분으로 간주합니다.	-
+CustomField.lmscons__Learning_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	기본값으로 사용자는 반드시 모든 구성 요소를 완료해야 합니다. 기준을 사용자 정의하기 위해 하나 또는 두 가지 모두의 옵션값을 설정하십시오.	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__Cornerstone_Callback_URL.HelpText	The URL of the notification page set up for your organization.	조직에 대해 설정되는 알림 페이지의 URL입니다.	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__CyberUSecretSignKey.HelpText	Secret key to sign CyberU callbacks	CyberU 콜백 로그인 보안 키	-
+CustomField.lmscons__Quiz__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	시간값 'X' 다음에 Xd, Xh, Xm(날짜, 시간, 분)처럼 시간 단위를 지정할 수 있습니다.\n시간 단위를 지정하지 않으면 분으로 간주합니다.	-
+CustomField.lmscons__Training_Content_License__c.lmscons__Seats.HelpText	Total number of seats included in this license. Leave blank for unlimited.	이 라이센스에 포함된 총 사용자 수입니다. 무제한의 경우 공백으로 두십시오.	-
+CustomField.lmscons__Training_Content__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as  Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	시간값 'X' 다음에 Xd, Xh, Xm(날짜, 시간, 분)처럼 시간 단위를 지정할 수 있습니다.\n시간 단위를 지정하지 않으면 분으로 간주합니다.	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	이 배정에 반복 교육을 만드는 데 필요한 경우 확인해야 합니다. 반복 교육 기간과 반복 교육 기간 유형(월 또는 년)의 수도 설정해야 합니다.	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	반복 교육 기간의 수. 이 기간을 지나면 배정 내용을 다시 배정합니다.	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	배정 만들기/재배정 시 날짜	-
+CustomField.lmscons__Training_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria,  please set values to one or both options.	기본값으로 사용자는 반드시 모든 구성 요소를 완료해야 합니다. 기준을 사용자 정의하기 위해 하나 또는 두 가지 모두의 옵션값을 설정하십시오.	-
+CustomField.lmscons__Training_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	시간값 'X' 다음에 Xd, Xh, Xm(날짜, 시간, 분)처럼 시간 단위를 지정할 수 있습니다.\n시간 단위를 지정하지 않으면 분으로 간주합니다.	-
+CustomField.lmscons__Training_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	기본값으로 사용자는 반드시 모든 구성 요소를 완료해야 합니다. 기준을 사용자 정의하기 위해 하나 또는 두 가지 모두의 옵션값을 설정하십시오.	-
+CustomField.lmscons__Training_Unit__c.lmscons__Remaining_Training_Units.HelpText	Number of units available for spending	소비에 사용 가능한 단위 수	-
+CustomField.lmscons__Training_User_License__c.lmscons__Purchased.HelpText	Indicates if this user license has been purchased or only assigned.	사용자 라이센스가 구매되었는지, 아니면 할당만 된 것인지를 나타냅니다.	-
+CustomField.lmsilt__Development_Plan__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	시간값 'X' 다음에 Xd, Xh, Xm(일, 시간, 분)처럼 시간 단위를 지정할 수 있습니다.\n시간 단위를 지정하지 않으면 분으로 간주합니다.	-
+CustomField.lmsilt__Event__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	시간값 'X' 다음에 Xd, Xh, Xm(일, 시간, 분)처럼 시간 단위를 지정할 수 있습니다.\n시간 단위를 지정하지 않으면 분으로 간주합니다.	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Profile	Profile	프로필	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Role	Role	역할	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.Error	Error	오류	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.Launch	Launch	실행	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.View Details	View Details	상세내역 보기	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Active	Active	활성	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Expired	Expired	만료됨	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Inactive	Inactive	비활성	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Not Started	Not Started	시작되지 않음	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Inactive Link	Inactive Link	비활성 링크	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Learning Object Not Found	Learning Object Not Found	학습 목표를 찾을 수 없습니다.	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Link Expired	Link Expired	링크가 만료됨	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Link Not Started	Link Not Started	링크가 시작되지 않음	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.No Access	No Access	액세스가 없음	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Assigned	Assigned	할당됨	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Completed	Completed	완료	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Enrolled	Enrolled	등록 완료	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.In Progress	In Progress	진행 중	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Unassigned	Unassigned	할당되지 않음	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Days	Days	일	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Hours	Hours	시간	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Indefinite	Indefinite	부정의	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Month	Month	월	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Weeks	Weeks	주	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Years	Years	년	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Complete	Complete	완전한	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.New	New	새로운	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Processing	Processing	처리	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	월	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	년	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Completed	Completed	완료	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.In Progress	In Progress	진행	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Not Started	Not Started	시작되지	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Delivery_Type.Online	Online	온라인으로	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Administrator	Administrator	관리자	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Developer	Developer	개발자	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.IT Professional	IT Professional	IT 전문가	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Sales Professional	Sales Professional	영업 전문가	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.da	da	덴마크의	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.de	de	독일의	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.en_US	en_US	영어	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.es	es	스페인의	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fi	fi	핀란드의	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fr	fr	프랑스의	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.it	it	이탈리아의	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ja	ja	일본어	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ko	ko	한국의	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.nl_NL	nl_NL	네덜란드	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.pt_BR	pt_BR	포르투갈의	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ru	ru	러시아의	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.sv	sv	스웨덴의	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.th	th	타이어	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_CN	zh_CN	중국어 (간체)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_TW	zh_TW	중국어 (번체)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Force.com 연결	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com 모바일	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	판매 클라우드	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.Force.com Connect	Force.com Connect	Force.com 연결	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com 모바일	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Error	Error	오류	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Info	Info	정보	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Warning	Warning	경고	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	월	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	년	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Completed	Completed	완료	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.In Progress	In Progress	진행	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Not Started	Not Started	시작되지	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Delivery_Type.Online	Online	온라인으로	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Administrator	Administrator	관리자	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Developer	Developer	개발자	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.IT Professional	IT Professional	IT 전문가	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Sales Professional	Sales Professional	영업 전문가	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.da	da	덴마크의	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.de	de	독일의	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.en_US	en_US	영어	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.es	es	스페인의	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fi	fi	핀란드의	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fr	fr	프랑스의	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.it	it	이탈리아의	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ja	ja	일본어	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ko	ko	한국의	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.nl_NL	nl_NL	네덜란드	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.pt_BR	pt_BR	포르투갈의	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ru	ru	러시아의	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.sv	sv	스웨덴의	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.th	th	타이어	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_CN	zh_CN	중국어 (간체)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_TW	zh_TW	중국어 (번체)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Force.com 연결	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com 모바일	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	판매 클라우드	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.Force.com Connect	Force.com Connect	Force.com 연결	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com 모바일	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Completed	Completed	완료	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Pending	Pending	보류 중	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Download	Download	다운로드	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Purchase	Purchase	구매	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Days	Days	일	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Hours	Hours	시간	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Indefinite	Indefinite	부정의	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Months	Months	개월	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Weeks	Weeks	주	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Years	Years	년	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.English	English	영어	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.French	French	프랑스의	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Completed	Completed	완료	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Failed	Failed	실패한	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.In Progress	In Progress	진행	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Passed	Passed	합격	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Retired	Retired	은퇴한	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Exit	Exit	출구	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Message	Message	메시지	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.da	da	덴마크의	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.de	de	독일의	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.en_US	en_US	영어	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.es	es	스페인의	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fi	fi	핀란드의	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fr	fr	프랑스의	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.it	it	이탈리아의	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ja	ja	일본어	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ko	ko	한국의	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.nl_NL	nl_NL	네덜란드	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.pt_BR	pt_BR	포르투갈의	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ru	ru	러시아의	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.sv	sv	스웨덴의	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.th	th	타이어	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_CN	zh_CN	중국어 (간체)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_TW	zh_TW	중국어 (번체)	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Easy	Easy	쉽게	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Hard	Hard	단단한	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Medium	Medium	중	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Long Text	Long Text	긴 텍스트	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Short Text	Short Text	짧은 텍스트	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Free Text	Free Text	무료 문자	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Multi Select	Multi Select	다중 선택	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Single Select	Single Select	단일 선택	-
+PicklistValue.lmscons__Question__c.lmscons__Type.True/False	True/False	참 / 거짓	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.da	da	덴마크의	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.de	de	독일의	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.en_US	en_US	영어	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.es	es	스페인의	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fi	fi	핀란드의	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fr	fr	프랑스의	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.it	it	이탈리아의	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ja	ja	일본어	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ko	ko	한국의	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.nl_NL	nl_NL	네덜란드	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.pt_BR	pt_BR	포르투갈의	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ru	ru	러시아의	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.sv	sv	스웨덴의	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.th	th	타이어	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_CN	zh_CN	중국어 (간체)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_TW	zh_TW	중국어 (번체)	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Course	Course	교육과정	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Curriculum	Curriculum	커리큘럼	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Learning Path	Learning Path	학습 경로	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Module	Module	모듈	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Quiz	Quiz	퀴즈	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.ALL	ALL	모두	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NEW	NEW	새	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NON_COMPLETE	NON_COMPLETE	NON_COMPLETE	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Days	Days	일	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Hours	Hours	시간	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Indefinite	Indefinite	부정의	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Month	Month	월	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Weeks	Weeks	주	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Years	Years	년	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Implementation	Implementation	이행	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Learning	Learning	배우기	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Sale	Sale	판매	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Delivery_Type.Free eLearning	Free eLearning	무료 e 러닝	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Administrator	Administrator	관리자	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Channel Manager	Channel Manager	채널 관리자	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Developer	Developer	개발자	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.IT Professional	IT Professional	IT 전문가	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Implementation Team	Implementation Team	구현 팀	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Marketing	Marketing	마케팅	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Partner	Partner	파트너	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Manager	Sales Manager	영업 관리자	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Professional	Sales Professional	영업 전문가	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Rep	Sales Rep	영업 담당자	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Support Rep	Support Rep	지원 담당자	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.da	da	덴마크의	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.de	de	독일의	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.en_US	en_US	영어	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.es	es	스페인의	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fi	fi	핀란드의	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fr	fr	프랑스의	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.it	it	이탈리아의	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ja	ja	일본어	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ko	ko	한국의	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.nl_NL	nl_NL	네덜란드	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.pt_BR	pt_BR	포르투갈의	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ru	ru	러시아의	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.sv	sv	스웨덴의	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.th	th	타이어	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_CN	zh_CN	중국어 (간체)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_TW	zh_TW	중국어 (번체)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Development Plan Task	Development Plan Task	역량 강화 계획 업무	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Event	Event	교육 과정	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Module	Module	모듈	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Quiz	Quiz	퀴즈	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Block	Block	블록	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Course	Course	과정	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Administrator	Administrator	관리자	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Channel Manager	Channel Manager	채널 관리자	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Developer	Developer	개발자	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Implementation Team	Implementation Team	구현 팀	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Marketing	Marketing	마케팅	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Partner	Partner	파트너	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Manager	Sales Manager	영업 관리자	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Rep	Sales Rep	영업 담당자	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Support Rep	Support Rep	지원 담당자	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Force.com 연결	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com Offline	Force.com Offline	오프라인 Force.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com platform	Force.com platform	Force.com 플랫폼	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM CSS	Salesforce CRM CSS	세일즈 포스 CRM CSS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Content	Salesforce CRM Content	세일즈 포스 CRM 컨텐츠	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Ideas	Salesforce CRM Ideas	세일즈 포스 CRM 아이디어	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Marketing	Salesforce CRM Marketing	세일즈 포스 CRM 마케팅	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Mobile	Salesforce CRM Mobile	세일즈 포스 CRM 모바일	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	세일즈 포스 CRM 파트너 네트워크	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM SFA	Salesforce CRM SFA	세일즈 포스 CRM SFA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Google 애플 리케이션 을위한 세일즈 포스 CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce to Salesforce	Salesforce to Salesforce	세일즈 포스 에 세일즈 포스	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com Connect	Force.com Connect	Force.com 연결	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com Offline	Force.com Offline	오프라인 Force.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com platform	Force.com platform	Force.com 플랫폼	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM CSS	Salesforce CRM CSS	세일즈 포스 CRM CSS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Content	Salesforce CRM Content	세일즈 포스 CRM 컨텐츠	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Ideas	Salesforce CRM Ideas	세일즈 포스 CRM 아이디어	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Marketing	Salesforce CRM Marketing	세일즈 포스 CRM 마케팅	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Mobile	Salesforce CRM Mobile	세일즈 포스 CRM 모바일	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	세일즈 포스 CRM 파트너 네트워크	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM SFA	Salesforce CRM SFA	세일즈 포스 CRM SFA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Google 애플 리케이션 을위한 세일즈 포스 CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce to Salesforce	Salesforce to Salesforce	세일즈 포스 에 세일즈 포스	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.FAILURE	FAILURE	실패	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.SUCCESS	SUCCESS	성공	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Completed	Completed	완료	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Failed	Failed	실패한	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.In Progress	In Progress	진행 중	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Passed	Passed	합격	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Retired	Retired	은퇴	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Months	Months	월	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Years	Years	년	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Completed	Completed	완료	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.In Progress	In Progress	진행	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Not Started	Not Started	시작되지	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Retired	Retired	은퇴한	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Delivery_Type.Online	Online	온라인으로	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.CSS	CSS	CSS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Content	Content	컨텐츠	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Customer Portal	Customer Portal	고객 포털	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.FDC	FDC	FDC	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Ideas	Ideas	Ideas	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Partner Portal	Partner Portal	파트너 포털	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.SFA	SFA	SFA	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Administrator	Administrator	관리자	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Developer	Developer	개발자	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.IT Professional	IT Professional	IT 전문가	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Sales Professional	Sales Professional	영업 전문가	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.da	da	덴마크의	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.de	de	독일의	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.en_US	en_US	영어	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.es	es	스페인의	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fi	fi	핀란드의	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fr	fr	프랑스의	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.it	it	이탈리아의	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ja	ja	일본어	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ko	ko	한국의	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.nl_NL	nl_NL	네덜란드	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.pt_BR	pt_BR	포르투갈의	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ru	ru	러시아의	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.sv	sv	스웨덴의	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.th	th	타이어	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_CN	zh_CN	중국어 (간체)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_TW	zh_TW	중국어 (번체)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Force.com 연결	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com 모바일	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	판매 클라우드	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.Force.com Connect	Force.com Connect	Force.com 연결	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com 모바일	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.Completed	Completed	완료된 과정	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.In Progress	In Progress	진행 중	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Completed	Completed	완료	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Failed	Failed	실패한	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.In Progress	In Progress	진행	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Passed	Passed	합격	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Retired	Retired	은퇴한	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Unenrolled	Unenrolled	등록 취소됨	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Completed	Completed	완료된 과정	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Failed	Failed	실패함	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.LO Error	LO Error	LO 오류	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Pending	Pending	보류 중	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Skipped	Skipped	건너뜀	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.contains	contains	포함	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.does not contain	does not contain	포함 안 됨	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.equals	equals	같음	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.excludes	excludes	제외	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater or equal	greater or equal	크거나 같음	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater than	greater than	초과	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.includes	includes	포함	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less or equal	less or equal	적거나 같음	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less than	less than	미만	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.not equal to	not equal to	같지 않음	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.starts with	starts with	시작	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Account	Account	계정	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Case	Case	케이스	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Contact	Contact	연락처	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Lead	Lead	리드	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Opportunity	Opportunity	기회	-
+PicklistValue.User.lmscons__CFS_Status.Active	Active	진행중인 과정	-
+PicklistValue.User.lmscons__CFS_Status.Deactivated	Deactivated	비활성화됨	-
+PicklistValue.User.lmscons__CFS_Status.Not CFS user	Not CFS user	CFS 사용자 아님	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Completed	Completed	완료된 과정	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.In Progress	In Progress	진행 중	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Not Started	Not Started	시작되지 않음	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Relative Dates	Relative Dates	상대적 날짜	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Static Dates	Static Dates	고정 날짜	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Failed	Failed	실패함	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Success	Success	성공	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Import	Import	가져오기	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Manual	Manual	수동	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Delete	Delete	삭제	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Insert	Insert	삽입	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Update	Update	업데이트	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Completed	Completed	완료된 과정	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.In Progress	In Progress	진행 중	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Not Started	Not Started	시작되지 않음	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Internal	Internal	내부	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Private	Private	비공개	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Public	Public	공개	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Completed	Completed	완료된 과정	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.In Progress	In Progress	진행 중	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Not Started	Not Started	시작되지 않음	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Manager	Manager	매니저	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Self	Self	본인	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.User	User	사용자	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Delivery_Type.Online	Online	온라인	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Administrator	Administrator	관리자	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.IT Professional	IT Professional	IT 전문가	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	영업 전문가	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.da	da	덴마크의	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.de	de	독일의	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.en_US	en_US	영어	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.es	es	스페인의	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fi	fi	핀란드의	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fr	fr	프랑스의	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.it	it	이탈리아의	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ja	ja	일본어	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ko	ko	한국의	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.nl_NL	nl_NL	네덜란드	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.pt_BR	pt_BR	포르투갈의	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ru	ru	러시아의	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.sv	sv	스웨덴의	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.th	th	타이어	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_CN	zh_CN	중국어 (간체)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_TW	zh_TW	중국어 (번체)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Product_Category.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Products.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Active	Active	진행중인 과정	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Retired	Retired	폐기	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Administrator	Administrator	관리자	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.IT Professional	IT Professional	IT 전문가	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	영업 전문가	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.da	da	덴마크의	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.de	de	독일의	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.en_US	en_US	영어	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.es	es	스페인의	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fi	fi	핀란드의	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fr	fr	프랑스의	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.it	it	이탈리아의	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ja	ja	일본어	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ko	ko	한국의	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.nl_NL	nl_NL	네덜란드	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.pt_BR	pt_BR	포르투갈의	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ru	ru	러시아의	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.sv	sv	스웨덴의	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.th	th	타이어	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_CN	zh_CN	중국어 (간체)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_TW	zh_TW	중국어 (번체)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmsilt__Event__c.lmsilt__Product_Category.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmsilt__Event__c.lmsilt__Products.CFS Learning	CFS Learning	CFS 학습	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Attended	Attended	참석함	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Not Attended	Not Attended	참석하지 않음	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Optional	Optional	옵션	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Recommended	Recommended	권장	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Required	Required	필수	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Event	Event	교육 과정	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Module	Module	모듈	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Task	Task	업무	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Pending	Pending	보류 중	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Refunded	Refunded	환불됨	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Used	Used	사용됨	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Admin	Admin	관리자	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Instructor	Instructor	강사	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Manager	Manager	매니저	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Select User	Select User	사용자 선택	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.User	User	사용자	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Optional	Optional	옵션	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Recommended	Recommended	권장	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Required	Required	필수	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.After	After	이후	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Anytime	Anytime	언제든	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Before	Before	이전	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.During	During	도중	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Active	Active	진행중인 과정	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Inactive	Inactive	비활성	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Attended	Attended	참석함	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Not Attended	Not Attended	참석하지 않음	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Partially Attended	Partially Attended	부분 참석	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Failed	Failed	실패함	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Passed	Passed	통과	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Cancelled	Cancelled	취소됨	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Enrolled	Enrolled	등록 완료	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Waitlisted	Waitlisted	대기 목록에 등재됨	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Withdrawn	Withdrawn	철회됨	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.AMER	AMER	AMER	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.APAC	APAC	APAC	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.EMEA	EMEA	EMEA	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.JAPAN	JAPAN	일본	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Corporate Headquarters	Corporate Headquarters	기업 본사	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Hotel	Hotel	호텔	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Office	Office	사무실	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Announce Name	Announce Name	이름 알림	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Beep	Beep	경고음	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.No Tone	No Tone	소리 없음	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.ILT	ILT	강의실	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.vILT	vILT	가상	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PRIVATE	PRIVATE	비공개	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PUBLIC	PUBLIC	공개	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.UNLISTED	UNLISTED	목록에 없음	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.GoToTraining	GoToTraining	GoToTraining	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.WebEx	WebEx	WebEx	-
+PicklistValue.lmsilt__Session__c.lmsilt__Telephony_Support.CALLIN	CALLIN	콜인	-

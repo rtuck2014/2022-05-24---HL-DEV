@@ -1,0 +1,475 @@
+# Language: Thai
+Language code: th
+Type: Bilingual
+
+------------------TRANSLATED-------------------
+
+# KEY	LABEL	TRANSLATION	OUT OF DATE
+
+CustomApp.lmscons__Learning_Cloud	Learning Cloud	คลาวด์การเรียนรู้	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Action.HelpText	The resulting action of clicking the CFS Link	การกระทำที่เป็นผลลัพธ์ของการคลิกลิงก์ CFS	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Assigned.HelpText	True if the target learning object was assigned as a result of clicking the CFS Link	จริง ถ้าอ็อบเจ็กต์การเรียนรู้เป้าหมายถูกกำหนดให้เป็นผลลัพธ์ของการคลิกลิงก์ CFS	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.HelpText	The status of the CFS Link when accessed by the User	สถานะของลิงก์ CFS เมื่อเข้าใช้งานโดยผู้ใช้	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Error.HelpText	If clicking on the CFS Link results in an error, this picklist provides the cause of the error.	ถ้าการคลิกผลลัพธ์ของลิงก์ CFS มีข้อผิดพลาด รายการที่เลือกนี้จะแสดงสาเหตุของข้อผิดพลาด	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.HelpText	The Target Learning Object's status on the User's Transcript when accessed by the User	สถานะของอ็อบเจ็กต์การเรียนรู้เป้าหมายในสำเนาของผู้ใช้เมื่อเข้าใช้งานโดยผู้ใช้	-
+CustomField.lmscons__CFS_Link__c.lmscons__Channel.HelpText	Target channel (internal app, a community, portal, or site) for this link	ช่องทางเป้าหมาย (แอพภายใน ชุมชน พอร์ทัลหรือเว็บไซต์) สำหรับลิงก์นี้	-
+CustomField.lmscons__CFS_Link__c.lmscons__End_Date.HelpText	Deep Link End Date; if this field is null, the Deep Link is always active (if marked Active)	วันที่สิ้นสุดของ Deep Link ถ้าฟิลด์นี้ว่างเปล่า Deep Link จะใช้งานได้เสมอ (ถ้าทำเครื่องหมายเป็นใช้งานได้)	-
+CustomField.lmscons__CFS_Link__c.lmscons__IsActive.HelpText	Checkbox that marks the deep link as active or not. If marked inactive, this will override the default behavior based on start date and end date. 	ช่องทำเครื่องหมายที่ทำเครื่องหมาย Deep Link เป็นใช้อยู่หรือไม่ ถ้าทำเครื่องหมายว่าใช้งานไม่ได้ จะเป็นการเขียนทับพฤติกรรมเริ่มต้นที่ยึดตามวันที่เริ่มต้นและวันที่สิ้นสุด	-
+CustomField.lmscons__CFS_Link__c.lmscons__Start_Date.HelpText	Deep Link Start Date; if this field is null, the Deep Link is active immediately (if marked Active)	วันที่เริ่มต้นของ Deep Link ถ้าฟิลด์นี้ว่างเปล่า Deep Link จะใช้งานได้เสมอ (ถ้าทำเครื่องหมายเป็นใช้งานได้)	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	ควรตรวจสอบในกรณีที่จำเป็นต้องสร้างการฝึกอบรมที่เกิดซ้ำสำหรับการมอบหมายนี้ และอย่าลืมตั้งค่าระยะเวลาการฝึกอบรมที่เกิดซ้ำและชนิดของระยะเวลาการฝึกอบรมที่เกิดซ้ำ (เดือนหรือปี)	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	จำนวนระยะเวลาการฝึกอบรมที่เกิดซ้ำ หลังจากที่ผ่านระยะเวลานี้ การมอบหมายจะถูกมอบหมายอีกครั้ง	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	วันที่เมื่อการมอบหมายถูกสร้าง/มอบหมายอีกครั้ง	-
+CustomField.lmscons__Curriculum__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	ตามค่าเริ่มต้น ผู้ใช้ต้องดำเนินการส่วนประกอบทั้งหมดให้เสร็จสิ้น หากต้องการปรับแต่งเกณฑ์นี้ โปรดตั้งค่าเป็นหนึ่งหรือทั้งสองตัวเลือก	-
+CustomField.lmscons__Curriculum__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	คุณสามารถระบุหน่วยเวลาหลังจากค่าเวลา 'X' เช่น Xd, Xh หรือ Xm เพื่อแสดงวัน (d), ชั่วโมง (h) และนาที (m) ตามลำดับ\nหากคุณไม่ได้ระบุหน่วยเวลา จะเข้าใจว่าเป็นนาที	-
+CustomField.lmscons__Curriculum__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	ตามค่าเริ่มต้น ผู้ใช้ต้องดำเนินการส่วนประกอบทั้งหมดให้เสร็จสิ้น หากต้องการปรับแต่งเกณฑ์นี้ โปรดตั้งค่าเป็นหนึ่งหรือทั้งสองตัวเลือก	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	ควรตรวจสอบในกรณีที่จำเป็นต้องสร้างการฝึกอบรมที่เกิดซ้ำสำหรับการมอบหมายนี้ และอย่าลืมตั้งค่าระยะเวลาการฝึกอบรมที่เกิดซ้ำและชนิดของระยะเวลาการฝึกอบรมที่เกิดซ้ำ (เดือนหรือปี)	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.HelpText	Type of recurring training period (year or month)	ชนิดของระยะเวลาการฝึกอบรมที่เกิดซ้ำ (ปีหรือเดือน)	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	จำนวนระยะเวลาการฝึกอบรมที่เกิดซ้ำ หลังจากที่ผ่านระยะเวลานี้ การมอบหมายจะถูกมอบหมายอีกครั้ง	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	วันที่เมื่อการมอบหมายถูกสร้าง/มอบหมายอีกครั้ง	-
+CustomField.lmscons__Learning_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	ตามค่าเริ่มต้น ผู้ใช้ต้องดำเนินการส่วนประกอบทั้งหมดให้เสร็จสิ้น หากต้องการปรับแต่งเกณฑ์นี้ โปรดตั้งค่าเป็นหนึ่งหรือทั้งสองตัวเลือก	-
+CustomField.lmscons__Learning_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	คุณสามารถระบุหน่วยเวลาหลังจากค่าเวลา 'X' เช่น Xd, Xh หรือ Xm เพื่อแสดงวัน (d), ชั่วโมง (h) และนาที (m) ตามลำดับ\nหากคุณไม่ได้ระบุหน่วยเวลา จะเข้าใจว่าเป็นนาที	-
+CustomField.lmscons__Learning_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	ตามค่าเริ่มต้น ผู้ใช้ต้องดำเนินการส่วนประกอบทั้งหมดให้เสร็จสิ้น หากต้องการปรับแต่งเกณฑ์นี้ โปรดตั้งค่าเป็นหนึ่งหรือทั้งสองตัวเลือก	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__Cornerstone_Callback_URL.HelpText	The URL of the notification page set up for your organization.	URL ของหน้าการแจ้งเตือนที่ตั้งค่าสำหรับองค์กรของคุณ	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__CyberUSecretSignKey.HelpText	Secret key to sign CyberU callbacks	คีย์ลับสำหรับเซ็นชื่อการโทรกลับ CyberU	-
+CustomField.lmscons__Quiz__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	คุณสามารถระบุหน่วยเวลาหลังจากค่าเวลา 'X' เช่น Xd, Xh หรือ Xm เพื่อแสดงวัน (d), ชั่วโมง (h) และนาที (m) ตามลำดับ\nหากคุณไม่ได้ระบุหน่วยเวลา จะเข้าใจว่าเป็นนาที	-
+CustomField.lmscons__Training_Content_License__c.lmscons__Seats.HelpText	Total number of seats included in this license. Leave blank for unlimited.	จำนวนที่นั่งทั้งหมดที่รวมไว้ในใบอนุญาตนี้ เว้นว่างสำหรับจำนวนที่ไม่จำกัด	-
+CustomField.lmscons__Training_Content__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as  Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	คุณสามารถระบุหน่วยเวลาหลังจากค่าเวลา 'X' เช่น Xd, Xh หรือ Xm เพื่อแสดงวัน (d), ชั่วโมง (h) และนาที (m) ตามลำดับ\nหากคุณไม่ได้ระบุหน่วยเวลา จะเข้าใจว่าเป็นนาที	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	ควรตรวจสอบในกรณีที่จำเป็นต้องสร้างการฝึกอบรมที่เกิดซ้ำสำหรับการมอบหมายนี้ และอย่าลืมตั้งค่าระยะเวลาการฝึกอบรมที่เกิดซ้ำและชนิดของระยะเวลาการฝึกอบรมที่เกิดซ้ำ (เดือนหรือปี)	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	จำนวนระยะเวลาการฝึกอบรมที่เกิดซ้ำ หลังจากที่ผ่านระยะเวลานี้ การมอบหมายจะถูกมอบหมายอีกครั้ง	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	วันที่เมื่อการมอบหมายถูกสร้าง/มอบหมายอีกครั้ง	-
+CustomField.lmscons__Training_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria,  please set values to one or both options.	ตามค่าเริ่มต้น ผู้ใช้ต้องดำเนินการส่วนประกอบทั้งหมดให้เสร็จสิ้น หากต้องการปรับแต่งเกณฑ์นี้ โปรดตั้งค่าเป็นหนึ่งหรือทั้งสองตัวเลือก	-
+CustomField.lmscons__Training_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	คุณสามารถระบุหน่วยเวลาหลังจากค่าเวลา 'X' เช่น Xd, Xh หรือ Xm เพื่อแสดงวัน (d), ชั่วโมง (h) และนาที (m) ตามลำดับ\nหากคุณไม่ได้ระบุหน่วยเวลา จะเข้าใจว่าเป็นนาที	-
+CustomField.lmscons__Training_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	ตามค่าเริ่มต้น ผู้ใช้ต้องดำเนินการส่วนประกอบทั้งหมดให้เสร็จสิ้น หากต้องการปรับแต่งเกณฑ์นี้ โปรดตั้งค่าเป็นหนึ่งหรือทั้งสองตัวเลือก	-
+CustomField.lmscons__Training_Unit__c.lmscons__Remaining_Training_Units.HelpText	Number of units available for spending	จำนวนหน่วยที่พร้อมใช้งานสำหรับการใช้จ่าย	-
+CustomField.lmscons__Training_User_License__c.lmscons__Purchased.HelpText	Indicates if this user license has been purchased or only assigned.	ระบุว่าใบอนุญาตผู้ใช้นี้ได้ถูกซื้อหรือเพียงแค่มอบหมาย	-
+CustomField.lmsilt__Development_Plan__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	คุณสามารถระบุหน่วยเวลาหลังจากค่าเวลา 'X' เช่น Xd, Xh หรือ Xm เพื่อแสดงวัน (d), ชั่วโมง (h) และนาที (m) ตามลำดับ\nหากคุณไม่ได้ระบุหน่วยเวลา จะเข้าใจว่าเป็นนาที	-
+CustomField.lmsilt__Event__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	คุณสามารถระบุหน่วยเวลาหลังจากค่าเวลา 'X' เช่น Xd, Xh หรือ Xm เพื่อแสดงวัน (d), ชั่วโมง (h) และนาที (m) ตามลำดับ\nหากคุณไม่ได้ระบุหน่วยเวลา จะเข้าใจว่าเป็นนาที	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Profile	Profile	โปรไฟล์	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Role	Role	บทบาท	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.Error	Error	ข้อผิดพลาด	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.Launch	Launch	เริ่ม	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.View Details	View Details	ดูรายละเอียด	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Active	Active	ใช้อยู่	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Expired	Expired	หมดอายุ	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Inactive	Inactive	ไม่ได้ใช้งาน	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Not Started	Not Started	ไม่ได้เริ่ม	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Inactive Link	Inactive Link	ลิงก์ที่ใช้งานไม่ได้	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Learning Object Not Found	Learning Object Not Found	ไม่พบอ็อบเจ็กต์การเรียนรู้	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Link Expired	Link Expired	ลิงก์หมดอายุ	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Link Not Started	Link Not Started	ลิงก์ไม่ได้เริ่มต้น	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.No Access	No Access	ไม่มีการเข้าถึง	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Assigned	Assigned	ที่กำหนด	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Completed	Completed	เสร็จสิ้น	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Enrolled	Enrolled	ลงทะเบียนแล้ว	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.In Progress	In Progress	กำลังดำเนินการ	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Unassigned	Unassigned	ไม่ได้มอบหมาย	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Days	Days	วัน	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Hours	Hours	ชั่วโมง	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Indefinite	Indefinite	ไม่แน่ชัด	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Month	Month	เดือน	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Weeks	Weeks	สัปดาห์	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Years	Years	ปี	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Complete	Complete	เสร็จสิ้น	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.New	New	ใหม่	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Processing	Processing	การดำเนินการ	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	เดือน	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	ปี	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Completed	Completed	เสร็จสิ้น	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.In Progress	In Progress	กำลังดำเนินการ	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Not Started	Not Started	ไม่ได้เริ่ม	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Delivery_Type.Online	Online	ออนไลน์	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Administrator	Administrator	ผู้ดูแลระบบ	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Developer	Developer	นักพัฒนา	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.IT Professional	IT Professional	พนักงานฝ่าย IT	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Sales Professional	Sales Professional	พนักงานฝ่ายขาย	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.da	da	เดนมาร์ก	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.de	de	เยอรมัน	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.en_US	en_US	อังกฤษ	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.es	es	สเปน	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fi	fi	ฟินแลนด์	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fr	fr	ฝรั่งเศส	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.it	it	อิตาเลียน	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ja	ja	ญี่ปุ่น	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ko	ko	เกาหลี	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.nl_NL	nl_NL	ดัทช์	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.pt_BR	pt_BR	โปรตุเกส	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ru	ru	รัสเซีย	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.sv	sv	สวีเดน	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.th	th	ไทย	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_CN	zh_CN	จีน (ประยุกต์)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_TW	zh_TW	จีน (เก่า)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	คลาวด์การขาย	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Error	Error	ข้อผิดพลาด	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Info	Info	ข้อมูล	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Warning	Warning	คำเตือน	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	เดือน	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	ปี	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Completed	Completed	เสร็จสิ้น	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.In Progress	In Progress	กำลังดำเนินการ	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Not Started	Not Started	ไม่ได้เริ่ม	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Delivery_Type.Online	Online	ออนไลน์	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Administrator	Administrator	ผู้ดูแลระบบ	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Developer	Developer	นักพัฒนา	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.IT Professional	IT Professional	พนักงานฝ่าย IT	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Sales Professional	Sales Professional	พนักงานฝ่ายขาย	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.da	da	เดนมาร์ก	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.de	de	เยอรมัน	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.en_US	en_US	อังกฤษ	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.es	es	สเปน	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fi	fi	ฟินแลนด์	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fr	fr	ฝรั่งเศส	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.it	it	อิตาเลียน	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ja	ja	ญี่ปุ่น	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ko	ko	เกาหลี	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.nl_NL	nl_NL	ดัทช์	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.pt_BR	pt_BR	โปรตุเกส	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ru	ru	รัสเซีย	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.sv	sv	สวีเดน	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.th	th	ไทย	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_CN	zh_CN	จีน (ประยุกต์)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_TW	zh_TW	จีน (เก่า)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	คลาวด์การขาย	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Completed	Completed	เสร็จสิ้น	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Pending	Pending	ที่ค้างอยู่	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Download	Download	ดาวน์โหลด	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Purchase	Purchase	ซื้อ	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Days	Days	วัน	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Hours	Hours	ชั่วโมง	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Indefinite	Indefinite	ไม่แน่ชัด	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Months	Months	เดือน	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Weeks	Weeks	สัปดาห์	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Years	Years	ปี	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.English	English	อังกฤษ	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.French	French	ฝรั่งเศส	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Completed	Completed	เสร็จสิ้น	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Failed	Failed	ไม่สำเร็จ	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.In Progress	In Progress	กำลังดำเนินการ	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Passed	Passed	ผ่าน	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Retired	Retired	เกษียณ	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Exit	Exit	ออก	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Message	Message	ข้อความ	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.da	da	เดนมาร์ก	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.de	de	เยอรมัน	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.en_US	en_US	อังกฤษ	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.es	es	สเปน	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fi	fi	ฟินแลนด์	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fr	fr	ฝรั่งเศส	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.it	it	อิตาเลียน	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ja	ja	ญี่ปุ่น	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ko	ko	เกาหลี	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.nl_NL	nl_NL	ดัทช์ (เนเธอร์แลนด์)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.pt_BR	pt_BR	โปรตุเกส (บราซิล)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ru	ru	รัสเซีย	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.sv	sv	สวีเดน	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.th	th	ไทย	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_CN	zh_CN	จีน (ประยุกต์)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_TW	zh_TW	จีน (เก่า)	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Easy	Easy	ง่าย	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Hard	Hard	ยาก	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Medium	Medium	ปานกลาง	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Long Text	Long Text	ข้อความแบบยาว	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Short Text	Short Text	ข้อความแบบสั้น	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Free Text	Free Text	ข้อความอิสระ	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Multi Select	Multi Select	เลือกหลายรายการ	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Single Select	Single Select	เลือกรายการเดียว	-
+PicklistValue.lmscons__Question__c.lmscons__Type.True/False	True/False	จริง/เท็จ	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.da	da	เดนมาร์ก	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.de	de	เยอรมัน	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.en_US	en_US	อังกฤษ	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.es	es	สเปน	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fi	fi	ฟินแลนด์	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fr	fr	ฝรั่งเศส	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.it	it	อิตาเลียน	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ja	ja	ญี่ปุ่น	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ko	ko	เกาหลี	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.nl_NL	nl_NL	ดัทช์	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.pt_BR	pt_BR	โปรตุเกส (บราซิล)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ru	ru	รัสเซีย	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.sv	sv	สวีเดน	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.th	th	ไทย	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_CN	zh_CN	จีน (ประยุกต์)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_TW	zh_TW	จีน (เก่า)	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Course	Course	หลักสูตร	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Curriculum	Curriculum	หลักสูตร	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Learning Path	Learning Path	เส้นทางการเรียนรู้	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Module	Module	โมดูล	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Quiz	Quiz	แบบทดสอบ	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.ALL	ALL	ทั้งหมด	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NEW	NEW	ใหม่	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NON_COMPLETE	NON_COMPLETE	ไม่เสร็จสมบูรณ์	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Days	Days	วัน	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Hours	Hours	ชั่วโมง	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Indefinite	Indefinite	ไม่แน่ชัด	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Month	Month	เดือน	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Weeks	Weeks	สัปดาห์	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Years	Years	ปี	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Implementation	Implementation	การปรับใช้	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Learning	Learning	การเรียนรู้	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Sale	Sale	การขาย	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Delivery_Type.Free eLearning	Free eLearning	eLearning ฟรี	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Administrator	Administrator	ผู้ดูแลระบบ	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Channel Manager	Channel Manager	ผู้จัดการช่องทาง	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Developer	Developer	นักพัฒนา	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.IT Professional	IT Professional	พนักงานฝ่าย IT	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Implementation Team	Implementation Team	ทีมปรับใช้	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Marketing	Marketing	การตลาด	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Partner	Partner	คู่ค้า	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Manager	Sales Manager	ผู้จัดการฝ่ายขาย	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Professional	Sales Professional	พนักงานฝ่ายขาย	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Rep	Sales Rep	เจ้าหน้าที่ขาย	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Support Rep	Support Rep	เจ้าหน้าที่ฝ่ายสนับสนุน	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.da	da	เดนมาร์ก	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.de	de	เยอรมัน	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.en_US	en_US	อังกฤษ	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.es	es	สเปน	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fi	fi	ฟินแลนด์	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fr	fr	ฝรั่งเศส	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.it	it	อิตาเลียน	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ja	ja	ญี่ปุ่น	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ko	ko	เกาหลี	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.nl_NL	nl_NL	ดัทช์	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.pt_BR	pt_BR	โปรตุเกส	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ru	ru	รัสเซีย	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.sv	sv	สวีเดน	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.th	th	ไทย	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_CN	zh_CN	จีน (ประยุกต์)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_TW	zh_TW	จีน (เก่า)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Development Plan Task	Development Plan Task	งานแผนการพัฒนา	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Event	Event	เหตุการณ์	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Module	Module	โมดูล	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Quiz	Quiz	แบบทดสอบ	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Block	Block	บล็อก	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Course	Course	หลักสูตร	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Administrator	Administrator	ผู้ดูแลระบบ	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Channel Manager	Channel Manager	ผู้จัดการช่องทาง	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Developer	Developer	นักพัฒนา	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Implementation Team	Implementation Team	ทีมปรับใช้	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Marketing	Marketing	การตลาด	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Partner	Partner	คู่ค้า	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Manager	Sales Manager	ผู้จัดการฝ่ายขาย	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Rep	Sales Rep	เจ้าหน้าที่ขาย	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Support Rep	Support Rep	เจ้าหน้าที่ฝ่ายสนับสนุน	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com Offline	Force.com Offline	Force.com ออฟไลน์	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com platform	Force.com platform	แพลตฟอร์ม Force.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM CSS	Salesforce CRM CSS	Salesforce CRM CSS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Content	Salesforce CRM Content	Salesforce CRM เนื้อหา	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Ideas	Salesforce CRM Ideas	Salesforce CRM แนวคิด	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Marketing	Salesforce CRM Marketing	Salesforce CRM การตลาด	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Mobile	Salesforce CRM Mobile	Salesforce CRM โมบายล์	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Salesforce CRM เครือข่ายคู่ค้า	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM SFA	Salesforce CRM SFA	Salesforce CRM SFA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Salesforce CRM สำหรับ Google Apps	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce to Salesforce	Salesforce to Salesforce	ระหว่างพนักงานขาย	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com Offline	Force.com Offline	Force.com ออฟไลน์	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com platform	Force.com platform	แพลตฟอร์ม Force.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM CSS	Salesforce CRM CSS	Salesforce CRM CSS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Content	Salesforce CRM Content	Salesforce CRM เนื้อหา	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Ideas	Salesforce CRM Ideas	Salesforce CRM แนวคิด	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Marketing	Salesforce CRM Marketing	Salesforce CRM การตลาด	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Mobile	Salesforce CRM Mobile	Salesforce CRM โมบายล์	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Salesforce CRM เครือข่ายคู่ค้า	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM SFA	Salesforce CRM SFA	Salesforce CRM SFA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Salesforce CRM สำหรับ Google Apps	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce to Salesforce	Salesforce to Salesforce	ระหว่างพนักงานขาย	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.FAILURE	FAILURE	ล้มเหลว	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.SUCCESS	SUCCESS	สำเร็จ	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Completed	Completed	เสร็จสิ้น	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Failed	Failed	ไม่สำเร็จ	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.In Progress	In Progress	กำลังดำเนินการ	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Passed	Passed	ผ่าน	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Retired	Retired	เกษียณ	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Months	Months	เดือน	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Years	Years	ปี	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Completed	Completed	เสร็จสิ้น	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.In Progress	In Progress	กำลังดำเนินการ	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Not Started	Not Started	ไม่ได้เริ่ม	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Retired	Retired	เกษียณ	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Delivery_Type.Online	Online	ออนไลน์	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.CSS	CSS	CSS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Content	Content	เนื้อหา	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Customer Portal	Customer Portal	พอร์ทัลลูกค้า	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.FDC	FDC	FDC	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Ideas	Ideas	แนวคิด	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Partner Portal	Partner Portal	พอร์ทัลคู่ค้า	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.SFA	SFA	SFA	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Administrator	Administrator	ผู้ดูแลระบบ	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Developer	Developer	นักพัฒนา	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.IT Professional	IT Professional	พนักงานฝ่าย IT	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Sales Professional	Sales Professional	พนักงานฝ่ายขาย	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.da	da	เดนมาร์ก	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.de	de	เยอรมัน	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.en_US	en_US	อังกฤษ	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.es	es	สเปน	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fi	fi	ฟินแลนด์	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fr	fr	ฝรั่งเศส	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.it	it	อิตาเลียน	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ja	ja	ญี่ปุ่น	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ko	ko	เกาหลี	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.nl_NL	nl_NL	ดัทช์	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.pt_BR	pt_BR	โปรตุเกส	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ru	ru	รัสเซีย	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.sv	sv	สวีเดน	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.th	th	ไทย	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_CN	zh_CN	จีน (ประยุกต์)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_TW	zh_TW	จีน (เก่า)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	คลาวด์การขาย	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.Completed	Completed	เสร็จสิ้น	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.In Progress	In Progress	กำลังดำเนินการ	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Completed	Completed	เสร็จสิ้น	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Failed	Failed	ไม่สำเร็จ	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.In Progress	In Progress	กำลังดำเนินการ	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Passed	Passed	ผ่าน	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Retired	Retired	เกษียณ	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Unenrolled	Unenrolled	ยกเลิกการลงทะเบียน	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Completed	Completed	เสร็จสิ้น	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Failed	Failed	ไม่สำเร็จ	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.LO Error	LO Error	ข้อผิดพลาด LO	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Pending	Pending	ที่ค้างอยู่	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Skipped	Skipped	ถูกข้าม	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.contains	contains	มี	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.does not contain	does not contain	ไม่มี	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.equals	equals	เท่ากับ	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.excludes	excludes	ไม่รวม	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater or equal	greater or equal	มากกว่าหรือเท่ากับ	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater than	greater than	มากกว่า	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.includes	includes	ประกอบด้วย	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less or equal	less or equal	น้อยกว่าหรือเท่ากับ	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less than	less than	น้อยกว่า	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.not equal to	not equal to	ไม่เท่ากับ	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.starts with	starts with	เริ่มต้นด้วย	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Account	Account	บัญชี	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Case	Case	กรณี	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Contact	Contact	ติดต่อ	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Lead	Lead	หัวหน้า	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Opportunity	Opportunity	โอกาส	-
+PicklistValue.User.lmscons__CFS_Status.Active	Active	ใช้อยู่	-
+PicklistValue.User.lmscons__CFS_Status.Deactivated	Deactivated	ปิดใช้งาน	-
+PicklistValue.User.lmscons__CFS_Status.Not CFS user	Not CFS user	ไม่ใช่ผู้ใช้ CFS	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Completed	Completed	เสร็จสิ้น	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.In Progress	In Progress	กำลังดำเนินการ	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Not Started	Not Started	ไม่ได้เริ่ม	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Relative Dates	Relative Dates	วันที่แบบสัมพัทธ์	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Static Dates	Static Dates	วันที่คงที่	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Failed	Failed	ไม่สำเร็จ	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Success	Success	สำเร็จ	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Import	Import	นำเข้า	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Manual	Manual	ด้วยตนเอง	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Delete	Delete	ลบ	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Insert	Insert	แทรก	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Update	Update	อัพเดต	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Completed	Completed	เสร็จสิ้น	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.In Progress	In Progress	กำลังดำเนินการ	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Not Started	Not Started	ไม่ได้เริ่ม	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Internal	Internal	ภายใน	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Private	Private	ส่วนตัว	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Public	Public	สาธารณะ	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Completed	Completed	เสร็จสิ้น	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.In Progress	In Progress	กำลังดำเนินการ	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Not Started	Not Started	ไม่ได้เริ่ม	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Manager	Manager	ผู้จัดการ	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Self	Self	ตนเอง	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.User	User	ผู้ใช้	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Delivery_Type.Online	Online	ออนไลน์	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Administrator	Administrator	ผู้ดูแลระบบ	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.IT Professional	IT Professional	พนักงานฝ่าย IT	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	พนักงานฝ่ายขาย	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.da	da	เดนมาร์ก	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.de	de	เยอรมัน	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.en_US	en_US	อังกฤษ	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.es	es	สเปน	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fi	fi	ฟินแลนด์	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fr	fr	ฝรั่งเศส	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.it	it	อิตาเลียน	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ja	ja	ญี่ปุ่น	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ko	ko	เกาหลี	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.nl_NL	nl_NL	ดัทช์	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.pt_BR	pt_BR	โปรตุเกส (บราซิล)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ru	ru	รัสเซีย	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.sv	sv	สวีเดน	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.th	th	ไทย	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_CN	zh_CN	จีน (ประยุกต์)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_TW	zh_TW	จีน (เก่า)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Product_Category.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Products.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Active	Active	ใช้อยู่	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Retired	Retired	เกษียณ	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Administrator	Administrator	ผู้ดูแลระบบ	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.IT Professional	IT Professional	พนักงานฝ่าย IT	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	พนักงานฝ่ายขาย	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.da	da	เดนมาร์ก	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.de	de	เยอรมัน	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.en_US	en_US	อังกฤษ	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.es	es	สเปน	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fi	fi	ฟินแลนด์	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fr	fr	ฝรั่งเศส	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.it	it	อิตาเลียน	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ja	ja	ญี่ปุ่น	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ko	ko	เกาหลี	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.nl_NL	nl_NL	ดัทช์	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.pt_BR	pt_BR	โปรตุเกส	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ru	ru	รัสเซีย	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.sv	sv	สวีเดน	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.th	th	ไทย	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_CN	zh_CN	จีน (ประยุกต์)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_TW	zh_TW	จีน (เก่า)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmsilt__Event__c.lmsilt__Product_Category.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmsilt__Event__c.lmsilt__Products.CFS Learning	CFS Learning	การเรียนรู้ CFS	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Attended	Attended	ที่เข้าร่วม	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Not Attended	Not Attended	ไม่ได้เข้าร่วม	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Optional	Optional	ระบุหรือไม่ระบุก็ได้	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Recommended	Recommended	แนะนำ	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Required	Required	จำเป็น	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Admin	Admin	ดูแลระบบ	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Instructor	Instructor	ผู้สอน	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Manager	Manager	ผู้จัดการ	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Select User	Select User	เลือกผู้ใช้	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.User	User	ผู้ใช้	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Optional	Optional	ระบุหรือไม่ระบุก็ได้	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Recommended	Recommended	แนะนำ	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Required	Required	จำเป็น	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.After	After	หลัง	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Anytime	Anytime	ทุกเมื่อ	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Before	Before	ก่อน	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.During	During	ระหว่าง	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Active	Active	ใช้อยู่	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Inactive	Inactive	ไม่ได้ใช้งาน	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Attended	Attended	ที่เข้าร่วม	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Not Attended	Not Attended	ไม่ได้เข้าร่วม	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Partially Attended	Partially Attended	เข้าร่วมบางส่วน	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Failed	Failed	ไม่สำเร็จ	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Passed	Passed	ผ่าน	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Cancelled	Cancelled	ถูกยกเลิก	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Enrolled	Enrolled	ลงทะเบียนแล้ว	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Waitlisted	Waitlisted	อยู่ในบัญชีรอเรียก	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Withdrawn	Withdrawn	เพิกถอน	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.AMER	AMER	AMER	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.APAC	APAC	APAC	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.EMEA	EMEA	EMEA	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.JAPAN	JAPAN	ญี่ปุ่น	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Corporate Headquarters	Corporate Headquarters	สำนักงานใหญ่องค์กร	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Hotel	Hotel	โรงแรม	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Office	Office	สำนักงาน	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Announce Name	Announce Name	ประกาศชื่อ	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Beep	Beep	เสียงสัญญาณ	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.No Tone	No Tone	ไม่มีเสียงสัญญาณ	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.ILT	ILT	ห้องเรียน	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.vILT	vILT	เสมือน	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PRIVATE	PRIVATE	ส่วนตัว	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PUBLIC	PUBLIC	สาธารณะ	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.UNLISTED	UNLISTED	ไม่อยู่ในรายการ	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.GoToTraining	GoToTraining	GoToTraining	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.WebEx	WebEx	WebEx	-
+PicklistValue.lmsilt__Session__c.lmsilt__Telephony_Support.CALLIN	CALLIN	CALLIN	-

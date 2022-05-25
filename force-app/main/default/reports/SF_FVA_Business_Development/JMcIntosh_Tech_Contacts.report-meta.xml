@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Contact.Relationships1__r$HL_Contact__c</field>
+    </columns>
+    <columns>
+        <field>Contact$Name</field>
+    </columns>
+    <columns>
+        <field>Contact$Account</field>
+    </columns>
+    <columns>
+        <field>Contact$Account.BillingStreet</field>
+    </columns>
+    <columns>
+        <field>Contact$Account.BillingCity</field>
+    </columns>
+    <columns>
+        <field>Contact$Account.BillingState</field>
+    </columns>
+    <columns>
+        <field>Contact$Account.BillingPostalCode</field>
+    </columns>
+    <columns>
+        <field>Contact$Account.BillingCountry</field>
+    </columns>
+    <columns>
+        <field>Contact$Account.Industry_Group__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Contacts in the TECH industry</description>
+    <filter>
+        <criteriaItems>
+            <column>Contact.Relationships1__r$HL_Contact__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>McIntosh</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contact$Account.Industry_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>TECH - Technology</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>JMcIntosh Tech Contacts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Contacts_with_Relationships__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Contact$Birthdate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

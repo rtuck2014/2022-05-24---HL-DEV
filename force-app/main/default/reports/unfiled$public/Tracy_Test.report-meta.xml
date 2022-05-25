@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Revenue_Accrual__c$Name</field>
+    </columns>
+    <columns>
+        <field>Revenue_Accrual__c.Engagements__r$Name</field>
+    </columns>
+    <columns>
+        <field>Revenue_Accrual__c.Engagements__r.Engagement_Teams__r$Name</field>
+    </columns>
+    <columns>
+        <field>Revenue_Accrual__c$Year__c</field>
+    </columns>
+    <columns>
+        <field>Revenue_Accrual__c$Month__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Revenue_Accrual__c.Engagements__r.Engagement_Teams__r$Contact__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Lyle Chastaine</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Revenue_Accrual__c$Month__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>05</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Revenue_Accrual__c$Year__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>2018</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Tracy Test</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Engagement_Revenue_Team__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Revenue_Accrual__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <currency>GBP</currency>
+    <filter>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>blackstone</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Companies Closed With - 1 Year</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Engagement__c@Engagement__c.Companies_Closed_With_LK__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Engagement__c.Close_Date__c</dateColumn>
+        <endDate>2019-05-16</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-05-16</startDate>
+    </timeFrameFilter>
+</Report>

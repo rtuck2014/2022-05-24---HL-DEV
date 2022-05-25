@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>HL_Subscription__c$Name</field>
+    </columns>
+    <columns>
+        <field>HL_Subscription__c$HL_Report_Link__c</field>
+    </columns>
+    <columns>
+        <field>HL_Subscription__c$Subscriber__c.LastName</field>
+    </columns>
+    <columns>
+        <field>HL_Subscription__c$Subscriber__c.FirstName</field>
+    </columns>
+    <columns>
+        <field>HL_Subscription__c$Subscriber__c.Title</field>
+    </columns>
+    <columns>
+        <field>HL_Subscription__c$Staff_Department__c</field>
+    </columns>
+    <columns>
+        <field>HL_Subscription__c$Industry_Group__c</field>
+    </columns>
+    <columns>
+        <field>HL_Subscription__c$Product_Speciality__c</field>
+    </columns>
+    <columns>
+        <field>HL_Subscription__c$Staff_Office__c</field>
+    </columns>
+    <columns>
+        <field>HL_Subscription__c$Office__c</field>
+    </columns>
+    <columns>
+        <field>HL_Subscription__c$Active__c</field>
+    </columns>
+    <columns>
+        <field>HL_Subscription__c$Subscriber__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>HL_Subscription__c$Subscriber__c.Project_Notify_Role__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
+        <criteriaItems>
+            <column>HL_Subscription__c$HL_Report_Link__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>CF Consolidated Core Dashboard</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>HL_Subscription__c$HL_Report_Link__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>CF Consolidated Dashboard</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>HL_Subscription__c$HL_Report_Link__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>ACE - Coverage Metrics</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>HL_Subscription__c$HL_Report_Link__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>CF Banker Dashboard - CF Overall</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>HL_Subscription__c$HL_Report_Link__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>CF Banker Dashboard - Group Head</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>HL_Subscription__c$Subscriber__c.StaffIndustry__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>HL Subscription CF Insights</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Subscriptions__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>HL_Subscription__c$Subscriber__c.LastName</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>HL_Subscription__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

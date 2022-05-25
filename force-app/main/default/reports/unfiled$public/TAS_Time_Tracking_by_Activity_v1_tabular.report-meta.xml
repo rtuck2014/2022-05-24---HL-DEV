@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Time_Record__c$Hours_Worked__c</field>
+    </columns>
+    <columns>
+        <field>Time_Record__c$Staff_Member_Name__c</field>
+    </columns>
+    <columns>
+        <field>Time_Record__c$Activity_Date__c</field>
+    </columns>
+    <columns>
+        <field>Time_Record__c$Project_Name__c</field>
+    </columns>
+    <columns>
+        <field>Time_Record__c$Opportunity_Number__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Time_Record__c$Time_Record_Period_Staff_Member__c.Time_Record_Period__c.Period_Category__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Beta</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>TAS Time Tracking by Activity v1 tabular</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_TimeRecords__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Time_Record__c$Activity_Date__c</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

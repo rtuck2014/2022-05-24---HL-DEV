@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT_ID</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_LINE1</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_LINE2</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_LINE3</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_CITY</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE_CODE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_ZIP</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_COUNTRY_CODE</field>
+    </columns>
+    <columns>
+        <field>Account.Flag_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Account.Flag_Reason_Comment__c</field>
+    </columns>
+    <columns>
+        <field>Account.Flag_Reason_Change_By__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Companies Flag Reason contain Update Company Hierarchy, flagged by Users</description>
+    <filter>
+        <criteriaItems>
+            <column>Account.Flag_Reason__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Update Company Hierarchy</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Companies Flag Reason for Hierarchy</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2021-07-01</startDate>
+    </timeFrameFilter>
+</Report>

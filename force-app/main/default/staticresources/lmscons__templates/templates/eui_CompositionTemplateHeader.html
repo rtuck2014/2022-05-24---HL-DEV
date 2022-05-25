@@ -1,0 +1,36 @@
+<!--<link rel="stylesheet/less" data-global-vars='{ "myPrimaryColor": "{{data.userPrimaryColor}}", "mySecondaryColor": "{{data.userSecondaryColor}}"}' type="text/css" href="{{lessFilePath}}">
+	<script>
+        less = {  env: "development" };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.js" type="text/javascript">
+    </script>-->
+   
+<header>
+	<ul class="userCard">
+		<li ng-if="data.showPhoto" class="userImage"><img src="{{data.userPhotoPath}}" alt="{{data.userName}} - {{data.userTitle}}"/></li>
+		<li ng-if="data.showName" class="userName">{{data.userName}}</li>
+		<li ng-if="data.showTitle" class="userTitle">{{data.userTitle}}</li>
+		<li ng-if="data.showDepartment" class="userDepartment">{{data.userDepartment}}</li>
+	</ul>
+	<ul class="calendar" data-ng-controller="itemWrapper">
+		<input type="hidden" data-ng-model="dataSourceName" data-ng-init="dataSourceName='CalendarData'"/>
+		<div header-calendar="header-calendar" selected="selected"  headerday ="headerday" pathPrefix="templates"></div>
+	</ul>
+	<nav class="section">
+		<ul>
+			<li ng-repeat="tab in data.tabs |filter:{showTab:true}|orderBy:'tabOrder'" ng-class="{active:tab.isActiveTab == true}">
+				<div ng-if="tab.isCustomTab == false">
+					<a href="{{tab.tabUrl}}" ng-click="navigate(tab.tabUrl)">
+						{{tab.tabLabel}}
+					</a>
+				</div>
+				<div ng-if="tab.isCustomTab == true">
+					<a href="{{tab.tabUrl}}" target="_blank" ng-click="navigate(tab.Url)">
+						{{tab.tabLabel}}
+					</a>
+				</div>
+			</li>
+		</ul>
+	</nav>
+</header>
+<div ng-bind-html="data.messageHeader" class="companyContent"></div>

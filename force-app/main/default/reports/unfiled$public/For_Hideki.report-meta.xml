@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Revenue_Accrual__c.Year_Month__c</field>
+    </columns>
+    <columns>
+        <field>Revenue_Accrual__c.Period_Accrued_Fees__c</field>
+    </columns>
+    <columns>
+        <field>Revenue_Accrual__c.Period_Accrued_Fee_Net__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>For Hideki</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Revenue_Accrual__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Revenue_Accrual__c.Year_Month__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Revenue_Accrual__c.Subsequent_Accruals_Completed_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

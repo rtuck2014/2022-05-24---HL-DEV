@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Eng_VP__c.Eng_VP_Positions__r$Report_Fee__c</field>
+    </columns>
+    <columns>
+        <field>Eng_VP__c.Eng_VP_Positions__r$Name</field>
+    </columns>
+    <currency>USD</currency>
+    <description>This is Engagement Report</description>
+    <filter>
+        <criteriaItems>
+            <column>Eng_VP__c$Id</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>a2o0m0000005HPj</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Eng_VP__c.Eng_VP_Positions__r$Engagement_VP__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Valuation Portfolio Report Fees Eng</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Portfolio_Valuation_Templates_Report_Type_Eng__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>Eng_VP__c.Eng_VP_Positions__r$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Eng_VP__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

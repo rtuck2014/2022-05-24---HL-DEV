@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Time_Record__c$Name</field>
+    </columns>
+    <columns>
+        <field>Time_Record__c$Staff_Member_Name__c</field>
+    </columns>
+    <columns>
+        <field>Time_Record__c$Time_Record_Period_Staff_Member__c.Title__c</field>
+    </columns>
+    <columns>
+        <field>Time_Record__c$Hours_Worked__c</field>
+    </columns>
+    <columns>
+        <field>Time_Record__c$Hourly_Rate__c</field>
+    </columns>
+    <columns>
+        <field>Time_Record__c$Activity_Type__c</field>
+    </columns>
+    <columns>
+        <field>Time_Record__c$Project_Name__c</field>
+    </columns>
+    <columns>
+        <field>Time_Record__c$CreatedBy</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>TimeTracking Test</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Time_Record_with_Staff_info__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Time_Record__c$Project_Name__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Time_Record__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_TODAY</interval>
+    </timeFrameFilter>
+</Report>

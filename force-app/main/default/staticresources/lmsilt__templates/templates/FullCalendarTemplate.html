@@ -1,0 +1,32 @@
+<full-calendar>
+	<h2 class="pageTitle">{{labels.lmscons__Calendar_title}}</h2>
+	<ul class="legendCalendar" aria-label="Calendar Legend">
+		<li class="legendValid"><img src="{{img_prefix}}" alt="{{labels.lmscons__Calendar_legend_Available}}" />{{labels.lmscons__Calendar_legend_Available}}</li>
+		<li class="legendEnrolled"><img src="{{img_prefix}}" alt="{{labels.lmscons__Calendar_legend_Enrolled}}" />{{labels.lmscons__Calendar_legend_Enrolled}}</li>
+		<li class="legendDue"><img src="{{img_prefix}}" alt="{{labels.lmscons__Calendar_legend_Due}}" />{{labels.lmscons__Calendar_legend_Due}}</li>
+	</ul>
+	<table class="cal_header">
+		<td class="full_prev" ng-click="previous()"><a href="javascript:void(0)" aria-label="Go To Previous Month"><i class="fa fa-angle-left"></i></a></td>
+		<td class="full_date">{{month.format("LLL")}}</td>
+		<td class="full_next" ng-click="next()"><a href="javascript:void(0)" aria-label="Go To Next Month"><i class="fa fa-angle-right"></i></a></td>
+	</table>
+	<table class="cal_body">
+		<tr>
+			<td class="week_day">{{weekdays[0]}}</td>
+			<td class="week_day">{{weekdays[1]}}</td>
+			<td class="week_day">{{weekdays[2]}}</td>
+			<td class="week_day">{{weekdays[3]}}</td>
+			<td class="week_day">{{weekdays[4]}}</td>
+			<td class="week_day">{{weekdays[5]}}</td>
+			<td class="week_day">{{weekdays[6]}}</td>
+		</tr>
+		<tr ng-repeat="week in weeks">
+			<td class="days" ng-class="{'different-month': !day.isCurrentMonth, 'isEnrolled': day.isEnrolled,'isValid': day.isValid,'isDue': day.isDue}" ng-repeat="day in week.days">
+				<div class="day_num">{{day.number}}</div>
+				<div ng-repeat="item in results = (day.events | orderBy:['type', 'event'])">
+					<a class="day_info" href="{{item.titleLink}}" title="{{item.event}}" ng-click="navigate(item.titleLink)">{{item.event}}</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+</full-calendar>

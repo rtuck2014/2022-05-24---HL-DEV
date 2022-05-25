@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FK_$Engagement__c.Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_$Engagement__c.HL_Entity__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_VAT_Treatment__c.Treatment__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_VAT_Treatment__c.Effective_Date__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Engagement__c.Engagement_Number__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Engagement__c.Job_Type__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>FK_$Engagement__c.HL_Entity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>HL EMEA LLP</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Engagement_VAT_Treatment__c.Treatment__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Standard Rated</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Engagements with VAT</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Engagement_VAT_Treatment__c@Engagement_VAT_Treatment__c.Engagement__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Engagement_VAT_Treatment__c.Effective_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

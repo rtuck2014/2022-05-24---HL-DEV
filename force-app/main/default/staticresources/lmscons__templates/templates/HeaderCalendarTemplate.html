@@ -1,0 +1,44 @@
+<ul class="mini_cal_header">
+	<li class="header_prev" ng-click="previous_day()"><a href="javascript:void(0)" aria-label="Go To Previous Day"><i class="fa fa-angle-left"></i></a></li>
+	<li class="header_date" aria-label="Selected Day"><i class="fa fa-calendar-o"></i> {{headerday.format('LL')}}</li>
+	<li class="header_next" ng-click="next_day()"><a href="javascript:void(0)" aria-label="Go To Next Day"><i class="fa fa-angle-right"></i></a></li>
+</ul>
+<ul class="events">
+	<li class="text_event" ng-repeat="item in results = (events | isSame:headerday| orderBy: 'type'| limitTo:1)"><a class="header_link" href="{{item.titleLink}}" ng-click="navigate(item.titleLink)">{{item.event}}</a></li>
+	<li class="text_event" ng-if="results.length == 0">{{labels.Calendar_No_events_scheduled}}</li>
+	<li class="link_full_calendar"><a id="lightbox_trigger" ng-click="lightbox_open()" href="javascript:void(0)">{{labels.Calendar_View_Future_Event}}</a></li>
+</ul>
+<div id="lightbox">
+	<div class="frame-calendar">
+		<table class="expand_header">
+			<td class="expand_prev" ng-click="previous()"><a href="javascript:void(0)" aria-label="Go To Previous Month"><i class="fa fa-chevron-left"></i></a></td>
+			<td class="expand_date">{{month.format("LLL")}}</td>
+			<td class="expand_next" ng-click="next()"><a href="javascript:void(0)" aria-label="Go To Next Month"><i class="fa fa-chevron-right"></i></a></td>
+		</table>
+		<div class="expand_body">
+			<table>
+				<tr ng-repeat="week in weeks">
+					<td class="expand_day" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selectedday: day.date.isSame(selected) }" ng-click="select(day)" ng-repeat="day in week.days">
+						<a href="javascript:void(0)">{{day.number}}</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<date class="selected">{{selected.format('LL')}}</date>
+	<div ng-repeat="item in selected_LOs">
+		<a class="expand_text_link" href="{{item.titleLink}}" ng-click="navigate(item.titleLink)" title="{{item.event}}">{{item.event}}</a>
+	</div>
+	<div ng-if="selected_LOs.length == 0">
+		<event class="expand_text" title="{{labels.Calendar_No_events_scheduled}}">{{labels.Calendar_No_events_scheduled}}</event>
+	</div>
+	<div ng-repeat="LO_day in future_LOs" >
+		<event class="expand_text_date" title="{{LO_day.LO_Date.format('L')}}">{{LO_day.LO_Date.format('L')}}</event>
+		<div ng-repeat="item in LO_day.LO_List">
+			<a class="expand_text_link" href="{{item.titleLink}}" ng-click="navigate(item.titleLink)" title="{{item.event}}">{{item.event}}</a>
+		</div>
+	</div>
+	<a class="link_full_calendar" href="{{navigation.eui_fullcalendar}}?currentMonth={{month.format('YYYY-MM-DD')}}" ng-click="navigate(navigation.eui_fullcalendar + '?currentMonth=' +
+	 month.format('YYYY-MM-DD'))">{{labels.Calendar_VIEW_FULL_CALENDAR}}</a>
+	<a id="close_box" ng-click="lightbox_close()" aria-label="Close Expanded Calendar" href="javascript:void(0)"><i class="fa fa-times"></i></a>
+</div>

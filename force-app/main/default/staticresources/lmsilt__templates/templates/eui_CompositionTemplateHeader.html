@@ -1,0 +1,29 @@
+<header>
+	<ul class="userCard">
+		<li ng-if="data.showPhoto" class="userImage"><img src="{{data.userPhotoPath}}" alt="{{data.userName}} - {{data.userTitle}}"/></li>
+		<li ng-if="data.showName" class="userName">{{data.userName}}</li>
+		<li ng-if="data.showTitle" class="userTitle">{{data.userTitle}}</li>
+		<li ng-if="data.showDepartment" class="userDepartment">{{data.userDepartment}}</li>
+	</ul>
+	<ul class="calendar" data-ng-controller="itemWrapper">
+		<input type="hidden" data-ng-model="dataSourceName" data-ng-init="dataSourceName='CalendarData'"/>
+		<div header-calendar="header-calendar" selected="selected"  headerday ="headerday" pathPrefix="templates"></div>
+	</ul>
+	<nav class="section">
+		<ul>
+			<li ng-repeat="tab in data.tabs |filter:{showTab:true}|orderBy:'tabOrder'" ng-class="{active:tab.isActiveTab == true}">
+				<div ng-if="tab.isCustomTab == false">
+					<a href="{{tab.tabUrl}}" ng-click="navigate(tab.tabUrl)">
+						{{tab.tabLabel}}
+					</a>
+				</div>
+				<div ng-if="tab.isCustomTab == true">
+					<a href="{{tab.tabUrl}}" ng-click="navigate(tab.tabUrl)" target="_blank">
+						{{tab.tabLabel}}
+					</a>
+				</div>
+			</li>
+		</ul>
+	</nav>
+</header>
+<div ng-bind-html="data.messageHeader" class="companyContent"></div>

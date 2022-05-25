@@ -1,0 +1,580 @@
+# Language: Indonesian
+Language code: in
+Type: Bilingual
+
+------------------TRANSLATED-------------------
+
+# KEY	LABEL	TRANSLATION	OUT OF DATE
+
+CustomApp.lmscons__Learning_Cloud	Learning Cloud	Awan Pembelajaran	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	Harus dicek sebagai jaga-jaga jika pelatihan berulang perlu dibuat untuk penugasan ini. Ingat juga untuk menetapkan jumlah periode pelatihan berulang dan tipe periode pelatihan berulang (bulan atau tahun)	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	"Jumlah periode pelatihan berulang. Setelah periode ini lewat, tugas akan ditugaskan ulang."	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Tanggal kapan tugas dibuat/ditugaskan ulang	-
+CustomField.lmscons__Curriculum__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"""Secara bawaan, pengguna harus menyelesaikan seluruh komponen. Untuk menyesuaikan kriteria ini, harap atur nilai ke satu atau kedua opsi."""	-
+CustomField.lmscons__Curriculum__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"""Anda dapat menetapkan satuan waktu setelah nilai waktu 'X', seperti Xd, Xh, atau Xm, untuk menunjukkan hari (d), jam (h), dan menit (m).\nJika tidak ditetapkan, satuan waktu dianggap menit."""	-
+CustomField.lmscons__Curriculum__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"""Secara bawaan, pengguna harus menyelesaikan seluruh komponen. Untuk menyesuaikan kriteria ini, harap atur nilai ke satu atau kedua opsi."""	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	Harus dicek sebagai jaga-jaga jika pelatihan berulang perlu dibuat untuk penugasan ini. Ingat juga untuk menetapkan jumlah periode pelatihan berulang dan tipe periode pelatihan berulang (bulan atau tahun)	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.HelpText	Type of recurring training period (year or month)	Tipe periode pelatihan berulang (tahun atau bulan)	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	"Jumlah periode pelatihan berulang. Setelah periode ini lewat, tugas akan ditugaskan ulang."	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Tanggal kapan tugas dibuat/ditugaskan ulang	-
+CustomField.lmscons__Learning_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"""Secara bawaan, pengguna harus menyelesaikan seluruh komponen. Untuk menyesuaikan kriteria ini, harap atur nilai ke satu atau kedua opsi."""	-
+CustomField.lmscons__Learning_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"""Anda dapat menetapkan satuan waktu setelah nilai waktu 'X', seperti Xd, Xh, atau Xm, untuk menunjukkan hari (d), jam (h), dan menit (m).\nJika tidak ditetapkan, satuan waktu dianggap menit."""	-
+CustomField.lmscons__Learning_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"""Secara bawaan, pengguna harus menyelesaikan seluruh komponen. Untuk menyesuaikan kriteria ini, harap atur nilai ke satu atau kedua opsi."""	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__Cornerstone_Callback_URL.HelpText	The URL of the notification page set up for your organization.	URL halaman pemberitahuan yang diatur untuk organisasi Anda.	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__CyberUSecretSignKey.HelpText	Secret key to sign CyberU callbacks	Kunci rahasia untuk menandai panggilan-balik CyberU	-
+CustomField.lmscons__Quiz__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"""Anda dapat menetapkan satuan waktu setelah nilai waktu 'X', seperti Xd, Xh, atau Xm, untuk menunjukkan hari (d), jam (h), dan menit (m).\nJika tidak ditetapkan, satuan waktu dianggap menit."""	-
+CustomField.lmscons__Training_Content_License__c.lmscons__Seats.HelpText	Total number of seats included in this license. Leave blank for unlimited.	Jumlah total kursi yang dicakup dalam lisensi ini. Biarkan kosong untuk tanpa batas.	-
+CustomField.lmscons__Training_Content__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as  Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"""Anda dapat menetapkan satuan waktu setelah nilai waktu 'X', seperti Xd, Xh, atau Xm, untuk menunjukkan hari (d), jam (h), dan menit (m).\nJika tidak ditetapkan, satuan waktu dianggap menit."""	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	Harus dicek sebagai jaga-jaga jika pelatihan berulang perlu dibuat untuk penugasan ini. Ingat juga untuk menetapkan jumlah periode pelatihan berulang dan tipe periode pelatihan berulang (bulan atau tahun)	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	"Jumlah periode pelatihan berulang. Setelah periode ini lewat, tugas akan ditugaskan ulang."	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Tanggal kapan tugas dibuat/ditugaskan ulang	-
+CustomField.lmscons__Training_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria,  please set values to one or both options.	"""Secara bawaan, pengguna harus menyelesaikan seluruh komponen. Untuk menyesuaikan kriteria ini, harap atur nilai ke satu atau kedua opsi."""	-
+CustomField.lmscons__Training_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"""Anda dapat menetapkan satuan waktu setelah nilai waktu 'X', seperti Xd, Xh, atau Xm, untuk menunjukkan hari (d), jam (h), dan menit (m).\nJika tidak ditetapkan, satuan waktu dianggap menit."""	-
+CustomField.lmscons__Training_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"""Secara bawaan, pengguna harus menyelesaikan seluruh komponen. Untuk menyesuaikan kriteria ini, harap atur nilai ke satu atau kedua opsi."""	-
+CustomField.lmscons__Training_Unit__c.lmscons__Remaining_Training_Units.HelpText	Number of units available for spending	Jumlah unit yang tersedia untuk dibelanjakan	-
+CustomField.lmscons__Training_User_License__c.lmscons__Purchased.HelpText	Indicates if this user license has been purchased or only assigned.	Menunjukkan apakah lisensi pengguna ini telah dibeli atau hanya ditugaskan.	-
+CustomField.lmsilt__Development_Plan__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"Anda dapat menetapkan satuan waktu setelah nilai waktu 'X', seperti Xd, Xh, atau Xm, untuk menunjukkan hari (d), jam (h), dan menit (m).\nJika tidak ditetapkan, satuan waktu dianggap menit."	-
+CustomField.lmsilt__Event__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"Anda dapat menetapkan satuan waktu setelah nilai waktu 'X', seperti Xd, Xh, atau Xm, untuk menunjukkan hari (d), jam (h), dan menit (m).\nJika tidak ditetapkan, satuan waktu dianggap menit."	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Profile	Profile	Profil	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Role	Role	Peran	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Days	Days	Hari	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Hours	Hours	Jam	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Indefinite	Indefinite	Tidak pasti	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Month	Month	Bulan	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Weeks	Weeks	Minggu	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Years	Years	Tahun	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Complete	Complete	Selesai	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.New	New	Baru	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Processing	Processing	Memproses	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	Bulan	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	Tahun	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Completed	Completed	Telah Diselesaikan	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.In Progress	In Progress	Sedang Berlangsung	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Not Started	Not Started	Belum Dimulai	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Developer	Developer	Pengembang	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.IT Professional	IT Professional	Profesional TI	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Profesional Penjualan	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.da	da	Bahasa Denmark	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.de	de	Bahasa Jerman	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.en_US	en_US	Bahasa Inggris	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.es	es	Bahasa Spanyol	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fi	fi	Bahasa Finlandia	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fr	fr	Bahasa Prancis	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.it	it	Bahasa Italia	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ja	ja	Bahasa Jepang	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ko	ko	Bahasa Korea	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.nl_NL	nl_NL	Bahasa Belanda	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.pt_BR	pt_BR	Bahasa Portugis	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ru	ru	Bahasa Rusia	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.sv	sv	Bahasa Swedia	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.th	th	Bahasa Thailand	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_CN	zh_CN	Bahasa Mandarin (Sederhana)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_TW	zh_TW	Bahasa Mandarin (Tradisional)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Sales Cloud	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Error	Error	Kesalahan	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Info	Info	Info	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Warning	Warning	Peringatan	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	Bulan	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	Tahun	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Completed	Completed	Telah Diselesaikan	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.In Progress	In Progress	Sedang Berlangsung	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Not Started	Not Started	Belum Dimulai	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Developer	Developer	Pengembang	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.IT Professional	IT Professional	Profesional TI	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Profesional Penjualan	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.da	da	Bahasa Denmark	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.de	de	Bahasa Jerman	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.en_US	en_US	Bahasa Inggris	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.es	es	Bahasa Spanyol	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fi	fi	Bahasa Finlandia	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fr	fr	Bahasa Prancis	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.it	it	Bahasa Italia	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ja	ja	Bahasa Jepang	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ko	ko	Bahasa Korea	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.nl_NL	nl_NL	Bahasa Belanda	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.pt_BR	pt_BR	Bahasa Portugis	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ru	ru	Bahasa Rusia	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.sv	sv	Bahasa Swedia	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.th	th	Bahasa Thailand	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_CN	zh_CN	Bahasa Mandarin (Sederhana)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_TW	zh_TW	Bahasa Mandarin (Tradisional)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Sales Cloud	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Completed	Completed	Telah Diselesaikan	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Pending	Pending	Tertunda	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Download	Download	Unduh	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Purchase	Purchase	Pembelian	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Days	Days	Hari	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Hours	Hours	Jam	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Indefinite	Indefinite	Tidak pasti	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Months	Months	Bulan	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Weeks	Weeks	Minggu	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Years	Years	Tahun	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.English	English	Bahasa Inggris	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.French	French	Bahasa Prancis	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Completed	Completed	Telah Diselesaikan	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Failed	Failed	Gagal	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.In Progress	In Progress	Sedang Berlangsung	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Passed	Passed	Lulus	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Retired	Retired	Pensiun	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Exit	Exit	Keluar	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Message	Message	Pesan	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.da	da	Bahasa Denmark	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.de	de	Bahasa Jerman	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.en_US	en_US	Bahasa Inggris	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.es	es	Bahasa Spanyol	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fi	fi	Bahasa Finlandia	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fr	fr	Bahasa Prancis	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.it	it	Bahasa Italia	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ja	ja	Bahasa Jepang	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ko	ko	Bahasa Korea	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.nl_NL	nl_NL	Bahasa Belanda	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.pt_BR	pt_BR	Bahasa Portugis (Brasil)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ru	ru	Bahasa Rusia	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.sv	sv	Bahasa Swedia	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.th	th	Bahasa Thailand	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_CN	zh_CN	Bahasa Mandarin (Sederhana)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_TW	zh_TW	Bahasa Mandarin (Tradisional)	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Easy	Easy	Mudah	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Hard	Hard	Sulit	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Medium	Medium	Sedang	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Long Text	Long Text	Teks Panjang	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Short Text	Short Text	Teks Singkat	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Free Text	Free Text	Teks Bebas	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Multi Select	Multi Select	Pilihan Jamak	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Single Select	Single Select	Pilihan Tunggal	-
+PicklistValue.lmscons__Question__c.lmscons__Type.True/False	True/False	Benar/Salah	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.da	da	Bahasa Denmark	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.de	de	Bahasa Jerman	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.en_US	en_US	Bahasa Inggris	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.es	es	Bahasa Spanyol	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fi	fi	Bahasa Finlandia	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fr	fr	Bahasa Prancis	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.it	it	Bahasa Italia	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ja	ja	Bahasa Jepang	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ko	ko	Bahasa Korea	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.nl_NL	nl_NL	Bahasa Belanda	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.pt_BR	pt_BR	Bahasa Portugis (Brasil)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ru	ru	Bahasa Rusia	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.sv	sv	Bahasa Swedia	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.th	th	Bahasa Thailand	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_CN	zh_CN	Bahasa Mandarin (Sederhana)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_TW	zh_TW	Bahasa Mandarin (Tradisional)	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Course	Course	Kursus	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Curriculum	Curriculum	Kurikulum	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Learning Path	Learning Path	Jalur Pembelajaran	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Module	Module	Modul	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Quiz	Quiz	Kuis	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.ALL	ALL	SEMUA	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NEW	NEW	BARU	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NON_COMPLETE	NON_COMPLETE	BELUM_SELESAI	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Days	Days	Hari	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Hours	Hours	Jam	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Indefinite	Indefinite	Tidak pasti	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Month	Month	Bulan	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Weeks	Weeks	Minggu	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Years	Years	Tahun	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Implementation	Implementation	Implementasi	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Learning	Learning	Pembelajaran	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Sale	Sale	Penjualan	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Delivery_Type.Free eLearning	Free eLearning	eLearning Gratis	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Channel Manager	Channel Manager	Manajer Saluran	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Developer	Developer	Pengembang	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.IT Professional	IT Professional	Profesional TI	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Implementation Team	Implementation Team	Tim Implementasi	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Marketing	Marketing	Pemasaran	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Partner	Partner	Mitra	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Manager	Sales Manager	Manajer Penjualan	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Profesional Penjualan	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Rep	Sales Rep	Perwakilan Penjualan	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Support Rep	Support Rep	Perwakilan Dukungan	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.da	da	Bahasa Denmark	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.de	de	Bahasa Jerman	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.en_US	en_US	Bahasa Inggris	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.es	es	Bahasa Spanyol	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fi	fi	Bahasa Finlandia	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fr	fr	Bahasa Prancis	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.it	it	Bahasa Italia	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ja	ja	Bahasa Jepang	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ko	ko	Bahasa Korea	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.nl_NL	nl_NL	Bahasa Belanda	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.pt_BR	pt_BR	Bahasa Portugis	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ru	ru	Bahasa Rusia	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.sv	sv	Bahasa Swedia	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.th	th	Bahasa Thailand	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_CN	zh_CN	Bahasa Mandarin (Sederhana)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_TW	zh_TW	Bahasa Mandarin (Tradisional)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Development Plan Task	Development Plan Task	Tugas Rencana Pengembangan	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Event	Event	Acara	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Module	Module	Modul	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Quiz	Quiz	Kuis	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Block	Block	Blokir	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Course	Course	Kursus	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Channel Manager	Channel Manager	Manajer Saluran	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Developer	Developer	Pengembang	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Implementation Team	Implementation Team	Tim Implementasi	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Marketing	Marketing	Pemasaran	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Partner	Partner	Mitra	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Manager	Sales Manager	Manajer Penjualan	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Rep	Sales Rep	Perwakilan Penjualan	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Support Rep	Support Rep	Perwakilan Dukungan	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM CSS	Salesforce CRM CSS	CSS Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Content	Salesforce CRM Content	Konten Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Ideas	Salesforce CRM Ideas	Ide Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Marketing	Salesforce CRM Marketing	Pemasaran Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Mobile	Salesforce CRM Mobile	Salesforce CRM untuk Perangkat Bergerak	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Jaringan Mitra Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM SFA	Salesforce CRM SFA	SFA Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Salesforce CRM untuk Aplikasi Google	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce to Salesforce	Salesforce to Salesforce	Salesforce to Salesforce	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM CSS	Salesforce CRM CSS	CSS Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Content	Salesforce CRM Content	Konten Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Ideas	Salesforce CRM Ideas	Ide Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Marketing	Salesforce CRM Marketing	Pemasaran Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Mobile	Salesforce CRM Mobile	Salesforce CRM untuk Perangkat Bergerak	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Jaringan Mitra Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM SFA	Salesforce CRM SFA	SFA Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Salesforce CRM untuk Aplikasi Google	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce to Salesforce	Salesforce to Salesforce	Salesforce to Salesforce	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.FAILURE	FAILURE	KEGAGALAN	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.SUCCESS	SUCCESS	BERHASIL	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Completed	Completed	Telah Diselesaikan	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Failed	Failed	Gagal	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.In Progress	In Progress	Sedang Berlangsung	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Passed	Passed	Lulus	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Retired	Retired	Pensiun	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Months	Months	Bulan	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Years	Years	Tahun	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Completed	Completed	Telah Diselesaikan	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.In Progress	In Progress	Sedang Berlangsung	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Not Started	Not Started	Belum Dimulai	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Retired	Retired	Pensiun	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.CSS	CSS	CSS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Content	Content	Konten	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Customer Portal	Customer Portal	Portal Pelanggan	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.FDC	FDC	FDC	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Ideas	Ideas	Ide	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Partner Portal	Partner Portal	Portal Mitra	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.SFA	SFA	SFA	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Developer	Developer	Pengembang	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.IT Professional	IT Professional	Profesional TI	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Sales Professional	Sales Professional	Profesional Penjualan	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.da	da	Bahasa Denmark	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.de	de	Bahasa Jerman	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.en_US	en_US	Bahasa Inggris	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.es	es	Bahasa Spanyol	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fi	fi	Bahasa Finlandia	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fr	fr	Bahasa Prancis	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.it	it	Bahasa Italia	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ja	ja	Bahasa Jepang	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ko	ko	Bahasa Korea	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.nl_NL	nl_NL	Bahasa Belanda	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.pt_BR	pt_BR	Bahasa Portugis	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ru	ru	Bahasa Rusia	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.sv	sv	Bahasa Swedia	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.th	th	Bahasa Thailand	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_CN	zh_CN	Bahasa Mandarin (Sederhana)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_TW	zh_TW	Bahasa Mandarin (Tradisional)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Sales Cloud	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.Completed	Completed	Telah Diselesaikan	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.In Progress	In Progress	Sedang Berlangsung	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Completed	Completed	Telah Diselesaikan	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Failed	Failed	Gagal	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.In Progress	In Progress	Sedang Berlangsung	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Passed	Passed	Lulus	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Retired	Retired	Pensiun	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Unenrolled	Unenrolled	Pendaftaran dicabut	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Completed	Completed	Telah Diselesaikan	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Failed	Failed	Gagal	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.LO Error	LO Error	Kesalahan LO	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Pending	Pending	Tertunda	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Skipped	Skipped	Dilewati	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.contains	contains	mengandung	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.does not contain	does not contain	tidak mengandung	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.equals	equals	sama dengan	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.excludes	excludes	tidak mencakup	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater or equal	greater or equal	lebih besar atau sama dengan	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater than	greater than	lebih besar daripada	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.includes	includes	mencakup	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less or equal	less or equal	lebih kecil atau sama dengan	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less than	less than	lebih kecil daripada	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.not equal to	not equal to	tidak sama dengan	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.starts with	starts with	dimulai dengan	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Account	Account	Akun	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Case	Case	Kasus	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Contact	Contact	Kontak	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Lead	Lead	Kepala	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Opportunity	Opportunity	Peluang	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Completed	Completed	Telah Diselesaikan	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.In Progress	In Progress	Sedang Berlangsung	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Not Started	Not Started	Belum Dimulai	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Relative Dates	Relative Dates	Tanggal Relatif	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Static Dates	Static Dates	Tanggal Statis	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Failed	Failed	Gagal	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Success	Success	Berhasil	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Import	Import	Impor	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Manual	Manual	Manual	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Delete	Delete	Hapus	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Insert	Insert	Sisipkan	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Update	Update	Perbarui	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Completed	Completed	Telah Diselesaikan	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.In Progress	In Progress	Sedang Berlangsung	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Not Started	Not Started	Belum Dimulai	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Internal	Internal	Internal	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Private	Private	Pribadi	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Public	Public	Publik	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Completed	Completed	Telah Diselesaikan	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.In Progress	In Progress	Sedang Berlangsung	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Not Started	Not Started	Belum Dimulai	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Manager	Manager	Pengelola	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Self	Self	Sendiri	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.User	User	Pengguna	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.IT Professional	IT Professional	Profesional TI	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	Profesional Penjualan	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.da	da	Bahasa Denmark	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.de	de	Bahasa Jerman	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.en_US	en_US	Bahasa Inggris	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.es	es	Bahasa Spanyol	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fi	fi	Bahasa Finlandia	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fr	fr	Bahasa Prancis	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.it	it	Bahasa Italia	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ja	ja	Bahasa Jepang	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ko	ko	Bahasa Korea	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.nl_NL	nl_NL	Bahasa Belanda	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.pt_BR	pt_BR	Bahasa Portugis (Brasil)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ru	ru	Bahasa Rusia	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.sv	sv	Bahasa Swedia	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.th	th	Bahasa Thailand	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_CN	zh_CN	Bahasa Mandarin (Sederhana)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_TW	zh_TW	Bahasa Mandarin (Tradisional)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Product_Category.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Products.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Active	Active	Aktif	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Retired	Retired	Pensiun	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.IT Professional	IT Professional	Profesional TI	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	Profesional Penjualan	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.da	da	Bahasa Denmark	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.de	de	Bahasa Jerman	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.en_US	en_US	Bahasa Inggris	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.es	es	Bahasa Spanyol	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fi	fi	Bahasa Finlandia	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fr	fr	Bahasa Prancis	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.it	it	Bahasa Italia	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ja	ja	Bahasa Jepang	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ko	ko	Bahasa Korea	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.nl_NL	nl_NL	Bahasa Belanda	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.pt_BR	pt_BR	Bahasa Portugis	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ru	ru	Bahasa Rusia	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.sv	sv	Bahasa Swedia	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.th	th	Bahasa Thailand	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_CN	zh_CN	Bahasa Mandarin (Sederhana)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_TW	zh_TW	Bahasa Mandarin (Tradisional)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmsilt__Event__c.lmsilt__Product_Category.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmsilt__Event__c.lmsilt__Products.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Attended	Attended	Dihadiri	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Not Attended	Not Attended	Belum Dihadiri	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Optional	Optional	Opsional	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Recommended	Recommended	Direkomendasikan	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Required	Required	Wajib	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Admin	Admin	Admin	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Instructor	Instructor	Instruktur	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Manager	Manager	Pengelola	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Select User	Select User	Pilih Pengguna	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.User	User	Pengguna	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Optional	Optional	Opsional	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Recommended	Recommended	Direkomendasikan	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Required	Required	Wajib	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.After	After	Setelah	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Anytime	Anytime	Kapan Saja	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Before	Before	Sebelum	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.During	During	Selama	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Active	Active	Aktif	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Inactive	Inactive	Tak Aktif	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Attended	Attended	Dihadiri	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Not Attended	Not Attended	Belum Dihadiri	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Partially Attended	Partially Attended	Dihadiri Sebagian	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Failed	Failed	Gagal	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Passed	Passed	Lulus	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Cancelled	Cancelled	Dibatalkan	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Enrolled	Enrolled	Didaftarkan	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Waitlisted	Waitlisted	Dimasukkan Daftar Tunggu	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Withdrawn	Withdrawn	Ditarik	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.AMER	AMER	AMER	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.APAC	APAC	APAC	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.EMEA	EMEA	EMEA	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.JAPAN	JAPAN	JEPANG	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Alabama	Alabama	Alabama	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Alaska	Alaska	Alaska	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Arizona	Arizona	Arizona	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Arkansas	Arkansas	Arkansas	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.California	California	California	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Colorado	Colorado	Colorado	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Connecticut	Connecticut	Connecticut	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Delaware	Delaware	Delaware	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Florida	Florida	Florida	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Georgia	Georgia	Georgia	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Hawaii	Hawaii	Hawaii	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Idaho	Idaho	Idaho	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Illinois	Illinois	Illinois	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Indiana	Indiana	Indiana	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Iowa	Iowa	Iowa	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Kansas	Kansas	Kansas	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Kentucky	Kentucky	Kentucky	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Louisiana	Louisiana	Louisiana	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Maine	Maine	Maine	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Maryland	Maryland	Maryland	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Massachusetts	Massachusetts	Massachusetts	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Michigan	Michigan	Michigan	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Minnesota	Minnesota	Minnesota	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Mississippi	Mississippi	Mississippi	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Missouri	Missouri	Missouri	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Montana	Montana	Montana	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Nebraska	Nebraska	Nebraska	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Nevada	Nevada	Nevada	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Hampshire	New Hampshire	New Hampshire	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Jersey	New Jersey	New Jersey	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Mexico	New Mexico	New Mexico	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New York	New York	New York	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.North Carolina	North Carolina	Carolina Utara	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.North Dakota	North Dakota	Dakota Utara	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Ohio	Ohio	Ohio	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Oklahoma	Oklahoma	Oklahoma	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Oregon	Oregon	Oregon	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Pennsylvania	Pennsylvania	Pennsylvania	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Rhode Island	Rhode Island	Rhode Island	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.South Carolina	South Carolina	Carolina Selatan	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.South Dakota	South Dakota	Dakota Selatan	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Tennessee	Tennessee	Tennessee	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Texas	Texas	Texas	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Utah	Utah	Utah	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Vermont	Vermont	Vermont	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Virginia	Virginia	Virginia	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Washington	Washington	Washington	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.West Virginia	West Virginia	Virginia Barat	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Wisconsin	Wisconsin	Wisconsin	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Wyoming	Wyoming	Wyoming	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Corporate Headquarters	Corporate Headquarters	Kantor Pusat Korporat	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Hotel	Hotel	Hotel	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Office	Office	Kantor	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Announce Name	Announce Name	Umumkan Nama	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Beep	Beep	Biip	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.No Tone	No Tone	Tanpa Nada	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.ILT	ILT	ILT	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.vILT	vILT	vILT	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PRIVATE	PRIVATE	PRIBADI	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PUBLIC	PUBLIC	PUBLIK	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.UNLISTED	UNLISTED	TAK TERCANTUM	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.GoToTraining	GoToTraining	GoToTraining	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.WebEx	WebEx	WebEx	-
+PicklistValue.lmsilt__Session__c.lmsilt__Telephony_Support.CALLIN	CALLIN	CALLIN	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+00:00) Greenwich Mean Time (GMT)	(GMT+00:00) Greenwich Mean Time (GMT)	(GMT+00:00) Waktu Greenwich (GMT)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) British Summer Time (Europe/London)	(GMT+01:00) British Summer Time (Europe/London)	(GMT+01:00) Waktu Musim Panas Inggris (Eropa/London)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Central European Time (Africa/Algiers)	(GMT+01:00) Central European Time (Africa/Algiers)	(GMT+01:00) Waktu Eropa Tengah (Afrika/Aljir)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Irish Summer Time (Europe/Dublin)	(GMT+01:00) Irish Summer Time (Europe/Dublin)	(GMT+01:00) Waktu Musim Panas Irlandia (Eropa/Dublin)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Western European Summer Time (Europe/Lisbon)	(GMT+01:00) Western European Summer Time (Europe/Lisbon)	(GMT+01:00) Waktu Musim Panas Eropa Barat (Eropa/Lisbon)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Amsterdam)	(GMT+02:00) Central European Summer Time (Europe/Amsterdam)	(GMT+02:00) Waktu Musim Panas Eropa Tengah (Eropa/Amsterdam)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Berlin)	(GMT+02:00) Central European Summer Time (Europe/Berlin)	(GMT+02:00) Waktu Musim Panas Eropa Tengah (Eropa/Berlin)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Brussels)	(GMT+02:00) Central European Summer Time (Europe/Brussels)	(GMT+02:00) Waktu Musim Panas Eropa Tengah (Eropa/Brussels)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Paris)	(GMT+02:00) Central European Summer Time (Europe/Paris)	(GMT+02:00) Waktu Musim Panas Eropa Tengah (Eropa/Paris)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Prague)	(GMT+02:00) Central European Summer Time (Europe/Prague)	(GMT+02:00) Waktu Musim Panas Eropa Tengah (Eropa/Praha)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Rome)	(GMT+02:00) Central European Summer Time (Europe/Rome)	(GMT+02:00) Waktu Musim Panas Eropa Tengah (Eropa/Roma)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Eastern European Time (Africa/Cairo)	(GMT+02:00) Eastern European Time (Africa/Cairo)	(GMT+02:00) Waktu Eropa Timur (Afrika/Kairo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) South Africa Standard Time (Africa/Johannesburg)	(GMT+02:00) South Africa Standard Time (Africa/Johannesburg)	(GMT+02:00) Waktu Standar Afrika Selatan (Afrika/Johannesburg)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Baghdad)	(GMT+03:00) Arabian Standard Time (Asia/Baghdad)	(GMT+03:00) Waktu Standar Arab (Asia/Baghdad)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Kuwait)	(GMT+03:00) Arabian Standard Time (Asia/Kuwait)	(GMT+03:00) Waktu Standar Arab (Asia/Kuwait)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Riyadh)	(GMT+03:00) Arabian Standard Time (Asia/Riyadh)	(GMT+03:00) Waktu Standar Arab (Asia/Riyadh)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) East Africa Time (Africa/Nairobi)	(GMT+03:00) East Africa Time (Africa/Nairobi)	(GMT+03:00) Waktu Afrika Timur (Afrika/Nairobi)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Athens)	(GMT+03:00) Eastern European Summer Time (Europe/Athens)	(GMT+03:00) Waktu Musim Panas Eropa Timur (Eropa/Athena)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Bucharest)	(GMT+03:00) Eastern European Summer Time (Europe/Bucharest)	(GMT+03:00) Waktu Musim Panas Eropa Timur (Eropa/Bukares)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Helsinki)	(GMT+03:00) Eastern European Summer Time (Europe/Helsinki)	(GMT+03:00) Waktu Musim Panas Eropa Timur (Eropa/Helsinki)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Istanbul)	(GMT+03:00) Eastern European Summer Time (Europe/Istanbul)	(GMT+03:00) Waktu Musim Panas Eropa Timur (Eropa/Istanbul)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Time (Europe/Minsk)	(GMT+03:00) Eastern European Time (Europe/Minsk)	(GMT+03:00) Waktu Eropa Timur (Eropa/Minsk)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Israel Daylight Time (Asia/Jerusalem)	(GMT+03:00) Israel Daylight Time (Asia/Jerusalem)	(GMT+03:00) Waktu Siang Hari Israel (Asia/Jerusalem)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Georgia Time (Asia/Tbilisi)	(GMT+04:00) Georgia Time (Asia/Tbilisi)	(GMT+04:00) Waktu Georgia (Asia/Tbilisi)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Gulf Standard Time (Asia/Dubai)	(GMT+04:00) Gulf Standard Time (Asia/Dubai)	(GMT+04:00) Waktu Standar Teluk (Asia/Dubai)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Moscow Standard Time (Europe/Moscow)	(GMT+04:00) Moscow Standard Time (Europe/Moscow)	(GMT+04:00) Waktu Standar Moskow (Eropa/Moskow)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:30) Afghanistan Time (Asia/Kabul)	(GMT+04:30) Afghanistan Time (Asia/Kabul)	(GMT+04:30) Waktu Afghanistan (Asia/Kabul)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:30) Iran Daylight Time (Asia/Tehran)	(GMT+04:30) Iran Daylight Time (Asia/Tehran)	(GMT+04:30) Waktu Siang Hari Iran (Asia/Teheran)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:00) Pakistan Time (Asia/Karachi)	(GMT+05:00) Pakistan Time (Asia/Karachi)	(GMT+05:00) Waktu Pakistan (Asia/Karachi)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:00) Uzbekistan Time (Asia/Tashkent)	(GMT+05:00) Uzbekistan Time (Asia/Tashkent)	(GMT+05:00) Waktu Uzbekistan (Asia/Tashkent)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:30) India Standard Time (Asia/Calcutta)	(GMT+05:30) India Standard Time (Asia/Calcutta)	(GMT+05:30) Waktu Standar India (Asia/Kalkuta)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:30) India Standard Time (Asia/Colombo)	(GMT+05:30) India Standard Time (Asia/Colombo)	(GMT+05:30) Waktu Standar India (Asia/Kolombo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:45) Nepal Time (Asia/Katmandu)	(GMT+05:45) Nepal Time (Asia/Katmandu)	(GMT+05:45) Waktu Nepal (Asia/Katmandu)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:00) Bangladesh Time (Asia/Dacca)	(GMT+06:00) Bangladesh Time (Asia/Dacca)	(GMT+06:00) Waktu Bangladesh Time (Asia/Dhaka)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:00) Yekaterinburg Time (Asia/Yekaterinburg)	(GMT+06:00) Yekaterinburg Time (Asia/Yekaterinburg)	(GMT+06:00) Waktu Yekaterinburg (Asia/Yekaterinburg)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:30) Myanmar Time (Asia/Rangoon)	(GMT+06:30) Myanmar Time (Asia/Rangoon)	(GMT+06:30) Waktu Myanmar (Asia/Rangoon)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Indochina Time (Asia/Bangkok)	(GMT+07:00) Indochina Time (Asia/Bangkok)	(GMT+07:00) Waktu Indochina (Asia/Bangkok)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Indochina Time (Asia/Saigon)	(GMT+07:00) Indochina Time (Asia/Saigon)	(GMT+07:00) Waktu Indochina (Asia/Saigon)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Western Indonesia Time (Asia/Jakarta)	(GMT+07:00) Western Indonesia Time (Asia/Jakarta)	(GMT+07:00) Waktu Indonesia Barat (Asia/Jakarta)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Australian Western Standard Time (Australia/Perth)	(GMT+08:00) Australian Western Standard Time (Australia/Perth)	(GMT+08:00) Waktu Standar Australia Barat (Australia/Perth)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) China Standard Time (Asia/Shanghai)	(GMT+08:00) China Standard Time (Asia/Shanghai)	(GMT+08:00) Waktu Standar China (Asia/Shanghai)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Hong Kong Time (Asia/Hong_Kong)	(GMT+08:00) Hong Kong Time (Asia/Hong_Kong)	(GMT+08:00) Waktu Hong Kong (Asia/Hong_Kong)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Malaysia Time (Asia/Kuala_Lumpur)	(GMT+08:00) Malaysia Time (Asia/Kuala_Lumpur)	(GMT+08:00) Waktu Malaysia (Asia/Kuala_Lumpur)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Philippine Time (Asia/Manila)	(GMT+08:00) Philippine Time (Asia/Manila)	(GMT+08:00) Waktu Filipina (Asia/Manila)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Singapore Standard Time (Asia/Singapore)	(GMT+08:00) Singapore Standard Time (Asia/Singapore)	(GMT+08:00) Waktu Standar Singapura (Asia/Singapura)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Taipei Standard Time (Asia/Taipei)	(GMT+08:00) Taipei Standard Time (Asia/Taipei)	(GMT+08:00) Waktu Standar Taipei (Asia/Taipei)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:00) Japan Standard Time (Asia/Tokyo)	(GMT+09:00) Japan Standard Time (Asia/Tokyo)	(GMT+09:00) Waktu Standar Jepang (Asia/Tokyo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:00) Korean Standard Time (Asia/Seoul)	(GMT+09:00) Korean Standard Time (Asia/Seoul)	(GMT+09:00) Waktu Standar Korea (Asia/Seoul)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:30) Australian Central Standard Time (Australia/Adelaide)	(GMT+09:30) Australian Central Standard Time (Australia/Adelaide)	(GMT+09:30) Waktu Standar Australia Tengah (Australia/Adelaide)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:30) Australian Central Standard Time (Australia/Darwin)	(GMT+09:30) Australian Central Standard Time (Australia/Darwin)	(GMT+09:30) Waktu Standar Australia Tengah (Australia/Darwin)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:00) Australian Eastern Standard Time (Australia/Brisbane)	(GMT+10:00) Australian Eastern Standard Time (Australia/Brisbane)	(GMT+10:00) Waktu Standar Australia Timur (Australia/Brisbane)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:00) Australian Eastern Standard Time (Australia/Sydney)	(GMT+10:00) Australian Eastern Standard Time (Australia/Sydney)	(GMT+10:00) Waktu Standar Australia Timur (Australia/Sydney)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:30) Lord Howe Standard Time (Australia/Lord_Howe)	(GMT+10:30) Lord Howe Standard Time (Australia/Lord_Howe)	(GMT+10:30) Waktu Standar Lord Howe (Australia/Lord_Howe)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+11:00) Solomon Islands Time (Pacific/Guadalcanal)	(GMT+11:00) Solomon Islands Time (Pacific/Guadalcanal)	(GMT+11:00) Waktu Kepulauan Solomon (Pasifik/Guadalcanal)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+11:30) Norfolk Islands Time (Pacific/Norfolk)	(GMT+11:30) Norfolk Islands Time (Pacific/Norfolk)	(GMT+11:30) Waktu Kepulauan Norfolk (Pasifik/Norfolk)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) Fiji Time (Pacific/Fiji)	(GMT+12:00) Fiji Time (Pacific/Fiji)	(GMT+12:00) Waktu Fiji (Pasifik/Fiji)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) Magadan Time (Asia/Kamchatka)	(GMT+12:00) Magadan Time (Asia/Kamchatka)	(GMT+12:00) Waktu Magadan (Asia/Kamchatka)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) New Zealand Standard Time (Pacific/Auckland)	(GMT+12:00) New Zealand Standard Time (Pacific/Auckland)	(GMT+12:00) Waktu Standar Selandia Baru (Pasifik/Auckland)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:45) Chatham Standard Time (Pacific/Chatham)	(GMT+12:45) Chatham Standard Time (Pacific/Chatham)	(GMT+12:45) Waktu Standar Chatham (Pasifik/Chatham)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+13:00) Phoenix Islands Time (Pacific/Enderbury)	(GMT+13:00) Phoenix Islands Time (Pacific/Enderbury)	(GMT+13:00) Waktu Kepulauan Phoenix (Pasifik/Enderbury)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+13:00) Tonga Time (Pacific/Tongatapu)	(GMT+13:00) Tonga Time (Pacific/Tongatapu)	(GMT+13:00) Waktu Tonga (Pasifik/Tongatapu)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+14:00) Line Islands Time (Pacific/Kiritimati)	(GMT+14:00) Line Islands Time (Pacific/Kiritimati)	(GMT+14:00) Waktu Kepulauan Line (Pasifik/Kiritimati)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-01:00) Cape Verde Time (Atlantic/Cape_Verde)	(GMT-01:00) Cape Verde Time (Atlantic/Cape_Verde)	(GMT-01:00) Waktu Tanjung Verde (Atlantik/Tanjung_Verde)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-02:00) South Georgia Time (Atlantic/South_Georgia)	(GMT-02:00) South Georgia Time (Atlantic/South_Georgia)	(GMT-02:00) Waktu Georgia Selatan (Atlantik/Georgia_Selatan)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-02:30) Newfoundland Daylight Time (America/St_Johns)	(GMT-02:30) Newfoundland Daylight Time (America/St_Johns)	(GMT-02:30) Waktu Siang Hari Newfoundland (Amerika/St_Johns)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Argentina Time (America/Buenos_Aires)	(GMT-03:00) Argentina Time (America/Buenos_Aires)	(GMT-03:00) Waktu Argentina (Amerika/Buenos_Aires)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Atlantic Daylight Time (America/Halifax)	(GMT-03:00) Atlantic Daylight Time (America/Halifax)	(GMT-03:00) Waktu Siang Hari Atlantik (Amerika/Halifax)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Atlantic Daylight Time (Atlantic/Bermuda)	(GMT-03:00) Atlantic Daylight Time (Atlantic/Bermuda)	(GMT-03:00) Waktu Siang Hari Atlantik (Atlantik/Bermuda)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Brasilia Time (America/Sao_Paulo)	(GMT-03:00) Brasilia Time (America/Sao_Paulo)	(GMT-03:00) Waktu Brasilia (Amerika/Sao_Paulo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Atlantic Standard Time (America/Puerto_Rico)	(GMT-04:00) Atlantic Standard Time (America/Puerto_Rico)	(GMT-04:00) Waktu Standar Atlantik (Amerika/Puerto_Rico)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Chile Time (America/Santiago)	(GMT-04:00) Chile Time (America/Santiago)	(GMT-04:00) Waktu Chile (Amerika/Santiago)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Eastern Daylight Time (America/Indianapolis)	(GMT-04:00) Eastern Daylight Time (America/Indianapolis)	(GMT-04:00) Waktu Siang Hari Timur (Amerika/Indianapolis)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Eastern Daylight Time (America/New_York)	(GMT-04:00) Eastern Daylight Time (America/New_York)	(GMT-04:00) Waktu Siang Hari Timur (Amerika/New_York)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:30) Venezuela Time (America/Caracas)	(GMT-04:30) Venezuela Time (America/Caracas)	(GMT-04:30) Waktu Venezuela (Amerika/Caracas)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Central Daylight Time (America/Chicago)	(GMT-05:00) Central Daylight Time (America/Chicago)	(GMT-05:00) Waktu Siang Hari Tengah (Amerika/Chicago)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Central Daylight Time (America/Mexico_City)	(GMT-05:00) Central Daylight Time (America/Mexico_City)	(GMT-05:00) Waktu Siang Hari Tengah (Amerika/Mexico_City)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Colombia Time (America/Bogota)	(GMT-05:00) Colombia Time (America/Bogota)	(GMT-05:00) Waktu Kolombia (Amerika/Bogota)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Eastern Standard Time (America/Panama)	(GMT-05:00) Eastern Standard Time (America/Panama)	(GMT-05:00) Waktu Standar Timur (Amerika/Panama)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Peru Time (America/Lima)	(GMT-05:00) Peru Time (America/Lima)	(GMT-05:00) Waktu Peru (Amerika/Lima)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-06:00) Central Standard Time (America/El_Salvador)	(GMT-06:00) Central Standard Time (America/El_Salvador)	(GMT-06:00) Waktu Standar Tengah (Amerika/El_Salvador)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-06:00) Mountain Daylight Time (America/Denver)	(GMT-06:00) Mountain Daylight Time (America/Denver)	(GMT-06:00) Waktu Siang Hari Pegunungan (Amerika/Denver)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Mountain Standard Time (America/Phoenix)	(GMT-07:00) Mountain Standard Time (America/Phoenix)	(GMT-07:00) Waktu Standar Pegunungan (Amerika/Phoenix)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Pacific Daylight Time (America/Los_Angeles)	(GMT-07:00) Pacific Daylight Time (America/Los_Angeles)	(GMT-07:00) Waktu Siang Hari Pasifik (Amerika/Los_Angeles)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Pacific Daylight Time (America/Tijuana)	(GMT-07:00) Pacific Daylight Time (America/Tijuana)	(GMT-07:00) Waktu Siang Hari Pasifik (Amerika/Tijuana)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-08:00) Alaska Daylight Time (America/Anchorage)	(GMT-08:00) Alaska Daylight Time (America/Anchorage)	(GMT-08:00) Waktu Siang Hari Alaska (Amerika/Anchorage)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-10:00) Hawaii-Aleutian Standard Time (Pacific/Honolulu)	(GMT-10:00) Hawaii-Aleutian Standard Time (Pacific/Honolulu)	(GMT-10:00) Waktu Standar Hawaii-Aleutian (Pasifik/Honolulu)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-11:00) Niue Time (Pacific/Niue)	(GMT-11:00) Niue Time (Pacific/Niue)	(GMT-11:00) Waktu Niue (Pasifik/Niue)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-11:00) Samoa Standard Time (Pacific/Pago_Pago)	(GMT-11:00) Samoa Standard Time (Pacific/Pago_Pago)	(GMT-11:00) Waktu Standar Samoa (Pasifik/Pago_Pago)	-

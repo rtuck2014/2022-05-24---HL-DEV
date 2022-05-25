@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>ALL_Rev_Accrual_RO</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>ALL Rev Accrual RO</label>
+        <sharedTo>
+            <group>Rev_Accrual_RO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF,FVA,FR,SC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Accounting_FAS_London</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Accounting FVA London</label>
+        <sharedTo>
+            <group>Accounting_FAS_London</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FVA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CF_EU_REV_Read</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CF EU REV Read</label>
+        <sharedTo>
+            <group>REV_CF_EU</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CF_REV_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CF REV Write</label>
+        <sharedTo>
+            <group>REV_CF</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FAS_REV_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FVA REV Write</label>
+        <sharedTo>
+            <group>REV_FAS</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FVA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FR_REV_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FR REV Write</label>
+        <sharedTo>
+            <group>REV_FR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>SC_REV_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>SC REV Write</label>
+        <sharedTo>
+            <group>REV_SC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>SC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Accounting_Edit_All</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Accounting Edit All</label>
+        <sharedTo>
+            <group>Accounting_General</group>
+        </sharedTo>
+        <sharedFrom>
+            <allInternalUsers></allInternalUsers>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

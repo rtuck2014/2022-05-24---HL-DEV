@@ -1,0 +1,90 @@
+html{
+				margin:0px;
+				padding:0px; 
+			}
+			
+			body {
+				font-family:serif,Lucida Grande;
+				font-weight: normal;
+				padding:0px;
+				margin:0px;  
+			}
+			
+			@page { 
+				size: A4 landscape; /* ISO/JIS A4 (210mm�297mm) */
+				margin: 5mm;
+				margin-bottom : 15mm;
+				@bottom-right {
+		    		content: element(footer);
+				}
+			}
+		    
+		    div.footer {                
+		        display: block;             
+		        position: running(footer);
+		        text-align: right;
+		        font-size: 10pt;
+		    } 
+		    
+		    .pagenumber:before {                
+		        content: counter(page);             
+		    }                       
+		 
+		    .pagecount:before {             
+		        content: counter(pages);            
+		    }	
+		
+			table {
+				page-break-inside: avoid;
+			}
+			
+			.mainFont {
+				font-family:serif,Lucida Grande; 
+			}
+			
+			.reportTitle {
+				font-family:serif,Lucida Grande; 
+				font-size: 14pt;
+			}
+		
+			.reportSubtitle {
+				font-family:serif,Lucida Grande; 
+				font-size: 8pt;
+				text-align: center;
+				font-weight: normal;
+			}
+			
+			.tableStyle {
+				width: 100%;
+				border-collapse: collapse;
+				-fs-table-paginate: paginate;
+			}
+		
+			.tableStyle td {
+				font-family:Times New Roman; 
+				border-top: none;
+				border-bottom: 0.5pt solid #333333;
+				font-size: 8pt;
+				font-weight: lighter;
+				vertical-align: top;
+				text-align: center;
+				letter-spacing:1px;
+			}
+			
+			.tableStyle td.firstColumn {
+				text-align: left;
+			}
+			
+			.tableStyle td.total {
+				font-weight: bold;
+			}
+		
+			.tableStyle.last td {
+				border-bottom: none;
+			}
+			
+			.tableStyle th {
+				border-top: 1.5pt solid #333333;
+				border-bottom: 1.5pt solid #333333;
+				font-size: 8pt;
+			}

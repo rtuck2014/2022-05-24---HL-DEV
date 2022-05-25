@@ -1,0 +1,123 @@
+<script>
+	function closeLoadingLightBox() {
+		$('.b-lightbox-loading').fadeOut('fast');
+		$('.b-overlay').fadeOut('fast');
+	}
+	function closeLoadingLightBox2() {
+		$('.b-lightbox-context').fadeOut('fast');
+		$('.b-overlay-context').fadeOut('fast');
+	}
+</script>
+<div ng-if="object.objectId != null" ng-init="init()">
+	<div class="b-lightbox-loading">
+		<div id="lightboxmsg"style="height: 150px;"></div>
+		<button class="btn" type="button" onClick="closeLoadingLightBox();">{{labels.MyTraining_Close}}</button>
+		<a class="close-modal" aria-label="Close" href="javascript:void(0)" onClick="closeLoadingLightBox();"><i class="fa fa-times"></i></a>
+	</div>
+	<div class="b-overlay"></div>
+	<nav class="breadCrumb">
+		<ul>
+			<li>
+				<a ng-if="object.tabName == 'mytraining'" href="{{object.tabLink}}" ng-click="navigate(object.tabLink)">{{labels.myTraining}}</a>
+				<a ng-if="object.tabName == 'completed'" href="{{object.tabLink}}" ng-click="navigate(object.tabLink)">{{labels.completedTab}}</a>
+				<a ng-if="object.tabName == 'catalog'" href="{{object.tabLink}}?filter=true" ng-click="navigate(object.tabLink +'?filter=true')">{{labels.Back_To_Search_Results}}</a>
+				<a ng-if="object.tabName == 'calendar'"></a>
+			</li>
+			<li class="dot" ng-if="object.parentObjectId != object.objectId">
+				<span class="divider"></span>&nbsp;
+				<a href="{{object.parentLink}}" ng-click="navigate(object.parentLink)">{{object.parentTitle}}</a>
+			</li>
+		</ul>
+	</nav>
+	<ul class="trainingPlanDetail" ng-class="{pastDue : object.isPastDue == true}">
+		<li class="pageTitle">
+			<h2>{{object.title}}</h2>
+		</li>
+		<property ng-if="object.propertyList && object.propertyList.length > 0" ng-repeat="property in object.propertyList">
+			<li class="{{property.class}}"><span class="lbl">{{property.label}}</span> <span>{{property.value}}</span></li>
+			<li class="dot" ng-if="!$last" />
+		</property>
+		<li class="certificate" ng-if="object.showCertificate" title="{{labels.CERTIFICATE_OF_COMPLETION}}"><a href="{{object.certificateLink}}" ng-click="navigate(object.certificateLink)" target="_blank"><i class="fa fa-star"></i></a></li>
+		<li class="description">{{object.description}}</li>
+		<li class="progression" ng-if="object.progress >= 0">
+			<div ng-if="object.ajaxComplete == true">
+				<module-progress id="detail{{object.objectId}}" item="object" adjustcss="true"></module-progress>
+			</div>
+		</li>
+		<li class="buttons" ng-switch="object.contextualAction">
+			<button ng-switch-when="LAUNCH" class="btn" type="button" ng-click="launch(object);">{{labels.MyTraining_LaunchCourse}}</button>
+			<button ng-switch-when="VIEW_PREREQ" class="btn" type="button" ng-click="autoScrollToElement('spnPrereqs');">{{labels.EUI_View_Prerequisites}}</button>
+			<button ng-switch-when="ENROLL" ng-if="object.enrollErrorMessage == null && object.enrollSuccessMessage == null" ng-disabled="unenrollDisabled" type="button" class="btn btn-info" ng-click="enroll(object.objectId)">{{labels.SearchCatalog_Enroll}}</button>
+			<button ng-switch-when="PAST_MAX_ATTEMPTS" type="button" ng-click="openLoadingLightBox(labels.Quiz_max_attempts_reached);">{{labels.MyTraining_LaunchCourse}}</button>
+			<div class="alert alert-danger" role="alert" ng-if="object.enrollErrorMessage == true">
+				<strong>{{labels.ConsumerUser_Error}}</strong> {{object.enrollMessage}}
+			</div>
+			<div class="alert alert-success" role="alert" ng-if="object.enrollSuccessMessage == true">
+				<strong>{{labels.EUI_Success}}</strong> {{object.enrollMessage}}
+			</div>
+		</li>
+	</ul>
+</div>
+<div ng-if="object.urls.length > 0" style="border: 2px solid #dedede; width: 66%;">
+	<div class="b-lightbox-context">
+		<h3 class="pageSubtitle" style="color:#2890a0 !important;">{{object.confirmTitle}}</h3>
+		<p>{{object.confirmMessage}}</p>
+		<div id="lightboxmsg">
+			<div id="listOfParents" style="height: 100%; overflow: scroll; text-align: left; width: 100%">
+				<ul>
+					<li ng-repeat="item in object.urls">
+						<a href="{{item.url}}" ng-click="navigate(item.url)">{{item.urlText}}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<a class="close-modal" aria-label="Close" href="javascript:void(0)" onClick="closeLoadingLightBox2();"><i class="fa fa-times"></i></a>
+	</div>
+	<div class="b-overlay-context"></div>
+</div>
+<style>
+#cfsWrapper .b-lightbox-context {
+	background:#fff;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	color:#5d6e7d;
+	left:50%;
+	margin-left:-333px;
+	margin-top:-200px;
+	position:fixed;
+	text-align:left;
+	top:50%;
+	height: 400px;
+	width:666px;
+	z-index:10001;
+	padding: 15px;
+}
+#cfsWrapper .b-lightbox-context #lightboxmsg {
+	font-size:15px;
+	font-weight:normal;
+	margin-top:25px;
+	margin-bottom:25px;
+	height: 295px !important;
+}
+
+#cfsWrapper .b-overlay-context {
+	height: 100%;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	opacity: 0.35;
+	background: #000000;
+	z-index: 10000;
+	filter: alpha(opacity=35);
+}
+#cfsWrapper .b-lightbox-context .close-modal {
+	color:#5d6e7d;
+	font-size:30px;
+	position:absolute;
+	right:8px;
+	top:4px;
+}
+</style>

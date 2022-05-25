@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Engagement_Counterparty__c$Engagement__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Engagement__c.Client__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Name</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Bid_First_Min__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Bid_First_Max__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Financial_First_EBITDA_FYE__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Financial_First_EBITDA_LTM__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Bid_Final_Min__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Bid_Final_Max__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Bid_Final_EBITDA_FYE__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Bid_Final_EBITDA_LTM__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Bid_Closing_Min__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Bid_Closing_Max__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Bid_Closing_EBITDA_FYE__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Bid_Closing_EBITDA_LTM__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>(1 AND 2) AND (3 OR 4 OR 5)</booleanFilter>
+        <criteriaItems>
+            <column>Engagement_Counterparty__c$Engagement__c.Client__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>[CLIENT NAME]</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Engagement_Counterparty__c$Engagement__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>[PROJECT NAME]</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Engagement_Counterparty__c$Bid_First_MP__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>USD 0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Engagement_Counterparty__c$Bid_Final_MP__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>USD 0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Engagement_Counterparty__c$Bid_Closing_MP__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>USD 0</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <name>Gov&apos;t Services - Bids by Engagement</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Engagement_Counterparties_with_Bids__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Engagement_Counterparty__c$Book_Returned__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,587 @@
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/open_sans');
+}
+
+body {
+  font-family: 'OpenSans' !important;
+}
+
+.icon--groove {
+  background-image: url('../icons/groove-symbol-black.svg');
+  background-repeat: no-repeat;
+  width: 40px;
+  background-size: 38px;
+  background-position: center;
+}
+.icon--account {
+  background-color: #7f8de1;
+  background-image: url('../icons/account.svg');
+}
+
+.icon--case {
+  background-color: #f2cf5b;
+  background-image: url('../icons/case.svg');
+}
+
+.icon--contact {
+  background-color: #a094ed;
+  background-image: url('../icons/contact.svg');
+}
+
+.icon--lead {
+  background-color: #ed7e58;
+  background-image: url('../icons/lead.svg');
+}
+
+.icon--opportunity {
+  background-color: #fcb95b;
+  background-image: url('../icons/opportunity.svg');
+}
+
+.icon--record {
+  background-color: #7dc37d;
+  background-image: url('../icons/record.svg');
+}
+
+.icon--nobody {
+  background-color: ##bac3cc;
+  background-image: url('../icons/nobodySingle.svg');
+}
+
+.icon--nobody-multiple {
+  background-color: ##bac3cc;
+  background-image: url('../icons/nobodyMultiple.svg');
+}
+
+.thread-list-item .type-icon, .contextual-data-list .type-icon, .contact-search-results .type-icon {
+  background-size: 40px 40px;
+  border-radius: 5px;
+  background-color: #aaa;
+  color: #fff;
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  padding-top: 9px;
+  padding-left: 1px;
+}
+
+.contextual-data-list .details {
+  margin-left: 55px;
+}
+
+.contextual-data-list .details p{
+  margin: 3px 0px;
+}
+
+.thread-list-item.unread .senderEmailName, 
+.thread-list-item.unread .subjectLine, 
+.thread-list-item.unread .previewSnippet {
+  font-weight: bold;
+}
+
+.thread-list-item.unread .timeStamp {
+  font-weight: bold;
+  color: #4285f4;
+}
+
+.item-complex .item-content, .item-radio .item-content {
+  padding-right: 20px;
+}
+
+.filled.round {
+  border-radius: 20px;
+  background-color: #aaa;
+  color: #fff;
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  padding-top: 11px;
+  font-size: large;
+}
+
+.list.card{
+  background-color: #E9E9EA;
+}
+
+/*.thread-list blockquote,*/
+.reply-email {
+  margin: 0px 15px;
+}
+
+.thread-list blockquote, .reply-email blockquote {
+  margin: 5px 10px;
+  padding: 10px 10px;
+  border-left: 1px solid darkgray;
+}
+
+.thread-list .yahoo_quoted,
+.thread-list .gmail_extra,
+.thread-list .mailbox_signature {
+  display: none;
+  color: #500050 !important;
+}
+
+.padding {
+  background-color: #E9E9EA;
+}
+
+i.icon.ion-android-inbox,
+i.icon.ion-flash,
+i.icon.ion-android-clock {
+  font-size: 1.7em;
+  margin-top: 8px;
+}
+
+.context-contact {      
+  float: left;
+}
+ion-item a,
+ion-item a:link,
+ion-item a:visited,
+ion-item a:hover,
+ion-item a:active {
+    color: #444;
+    text-decoration: none;
+}
+/* override default input label for the compose view */
+body {
+}
+
+h1, h2, h3, h4, h5 {
+}
+
+.tab-title {
+  font-weight: bold;
+  font-size: .8em;
+  /*color: #546979;*/
+}
+
+.tab-item-active {
+  color: #00C7D0;
+}
+
+a.nav-tab:not(.tab-item-active) {
+  color: #546979;
+}
+
+
+.tab-item .icon {
+  height: 19px;
+}
+
+.ion-reply {
+  font-size: .9em;
+}
+
+/*.canned-response-button,
+.canned-response-button:before {
+  font-size: 20px !important;
+  right: 15px;
+  top: -50px;
+  color: #A9B4BC !important;
+  float:right;
+  text-align: end;
+  z-index: 4;
+}*/
+
+.canned-response-button {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  background-color: #00c7d0;
+  z-index: 4;
+  font-size: 1.9em;
+  padding: 20px;
+  margin: 20px;
+  
+}
+
+/*.left-nav-button,
+.left-nav-button:before {
+  font-size: 18px !important;
+}
+
+.trash-button,
+.trash-button:before {
+  font-size: 18px !important;
+}
+
+.archive-button,
+.archive-button:before {
+  font-size: 18px !important;
+}*/
+
+.left-nav-label {
+  margin-top: 7px;
+  margin-right: 2px;
+}
+
+.previewEmail {
+  padding: 10px 15px;
+  background-color: #F4F4F4;
+}
+
+.item .input-label {
+  width: 3%;
+  font-size: .9em;
+
+}
+.senderEmailName {
+  font-size: .95em;
+  color: #38454F;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.threadCount {
+  color: #38454F;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.timeStamp {
+  float: right;
+  font-size: .6em;
+  color: #9FA1A5;
+}
+
+.subjectLine {
+  color: #38454F;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.previewSnippet {
+  /*font-size: .9em; */
+}
+
+.starIcon {
+  position: absolute;
+  top: 50px;
+  left: 16px;
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  padding-top: 11px;
+  font-size: .9em
+}
+
+.subjectAndSnippet {
+  width: 100%;
+  font-size: .75em;
+  color: #546979;
+  margin-top: 2px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.header {
+  margin-bottom: 10px;
+}
+
+.picture {
+}
+
+.picture img {
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+}
+
+.emailDetails {
+  width: 100%;
+  
+  vertical-align: top;
+  padding-left: 53px;
+}
+
+.emailOptions {
+  margin-top: -10px;
+  font-size: .6em;
+  float: right;
+  width: 75px;
+
+}
+
+.emailOptions i {
+}
+
+.sender {
+  width: 70%;
+  font-weight: bold;
+  font-size: .75em;
+  color: #3A454E;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
+.senderEmailAddress {
+  width: 70%;
+  font-size: .6em;
+  color: #9FA1A5;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
+.timeAgo {
+  font-size: .6em;
+  color: #9FA1A5;
+}
+
+.body {
+  white-space: normal;
+  color: #3A454E;
+  font-size: .75em;
+
+}
+
+.showExpanded {
+  font-size: .7em;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.fullEmail {
+  margin: 10px 0px;            
+}
+
+.fullEmail .sender {
+  height: 17px;
+}
+
+.fullEmail .senderEmailAddress, .fullEmail .timeAgo {
+  height: 15px;
+}
+
+.fullEmail p {
+  white-space: normal !important;  
+}
+
+.grouped-messages {
+  background-color: #F4F4F4;
+  height: 60px;
+  font-weight: bold;
+  font-size: .75em;
+  color: #586978;
+  text-align: center;
+  margin: 10px 0px;
+  padding: 20px;
+}
+
+.grouped-messages-label {
+}
+
+.crmObjectType {
+  color: #fff;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 1px 10px;
+  text-transform: uppercase;
+  font-size: .7em;
+}
+.contactCrmObject {
+  background-color: #9a9ceb;
+}
+.opportunityCrmObject {
+  background-color: #F3B966;
+}
+.leadCrmObject {
+  background-color: #e98f6c;
+}
+
+.template-modal {
+
+}
+
+.preview-banner {
+  background: rgba(1,1,1,.1);
+  text-align: center;
+  padding: 15px;
+  font-size: 1.2em;
+  border-top: 1px solid darkgray;
+  border-bottom: 1px solid darkgray;
+}
+
+.template-modal .preview-section {
+  padding: 20px;
+}
+
+.preview-section label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.exit-button, .go-back-button  {
+  color: #00c7d0 !important;
+  font-weight: bold;
+}
+
+.template-modal i.ion-chevron-right {
+  font-size: 1.4em;
+  color: gray;
+}
+
+.template-modal i.ion-folder {
+  font-size: 1.8em;
+}
+
+.email-summary-section {
+  margin: 10px 0px;
+}
+
+.email-summary-section .subject {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}
+
+.contextual-footer {
+  position: absolute;
+  bottom: 0px;
+  padding: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+.contextual-footer button{
+  margin: 0px 5px;
+  width: 43%;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: .6em;
+  font-weight: bold;
+}
+
+.loading-threads {
+  text-align: center;
+  font-size: 2em;
+}
+
+.loading-message {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.loading-threads i {
+  margin-top: 50%;
+}
+
+.contact-search-results {
+  position: absolute;
+  z-index: 30;
+  top: 70px;
+  width: 98%;
+}
+
+.contact-search-results.ccEmails {
+  top: 115px;
+}
+
+.contact-search-results .email {
+  font-size: .7em;
+  color: gray;
+}
+
+.contact-search-results .email, .contact-search-results .name {
+  margin-left: 18px;
+}
+
+.composeOptions {
+  text-align: center;
+  margin: 0px 15px;
+
+}
+
+.composeOptions .button {
+  color: #444 !important;
+}
+
+.log-email-button {
+  width: 60% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bar .button.button-icon .icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before, .bar .button.button-icon:before {
+vertical-align: top;
+font-size: 24px;
+line-height: 32px;
+}
+
+.list-view-archive-button {
+  line-height: 93px !important;
+}
+
+.template-modal>.bar-header h1.title{
+  padding: 0px 35px;
+}
+
+.scroll, .slider {
+  height: 100%;
+}
+
+.tutorial-content {
+  text-align: center;
+  margin: 30px 30px;
+}
+
+.groove-highlight {
+  color: #00C7D0;
+}
+
+#finish-tutorial-button {
+  margin-top: 15px;
+}
+/*EXPERIMENTAL CARD STUFF*/
+/*.experimentalBox {
+  width: 250px;
+  height: 400px;
+  background: #C7433E;
+  border: 10px solid #ED5D52;
+  margin: 15px auto 0;
+  position: relative;
+}
+
+.experimentalBox ul {
+  width: 200px;
+  height: 300px;
+  background: #ED5D52;
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  margin-left: -100px;
+  border-radius: 10px;
+}
+
+.experimentalBox li {
+  width: 200px;
+  height: 300px;
+  list-style: none;
+  background: #fff;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 1px 1px 1px rgba(0, 0, 0, 0.2);
+  line-height: 300px;
+  text-align: center;
+  font-size: 25px;
+  border: 10px solid #ECECEC;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+
+*/

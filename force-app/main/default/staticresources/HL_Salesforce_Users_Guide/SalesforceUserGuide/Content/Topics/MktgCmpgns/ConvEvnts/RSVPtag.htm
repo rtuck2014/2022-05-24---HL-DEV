@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Marketing Campaigns|Conferences &amp; Events">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Process RSVP Tagging (Record Responses)</title>
+        <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Resources/Stylesheets/Sforce.css" rel="stylesheet" />
+        <script src="../../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.min.js" defer="defer">
+        </script>
+        <script src="../../../../Resources/Scripts/require.config.js" defer="defer">
+        </script>
+        <script src="../../../../Resources/Scripts/foundation.min.js" defer="defer">
+        </script>
+        <script src="../../../../Resources/Scripts/plugins.min.js" defer="defer">
+        </script>
+        <script src="../../../../Resources/Scripts/MadCapAll.js" defer="defer">
+        </script>
+    </head>
+    <body>
+        <h1>Process RSVP Tagging (Record Responses)</h1>
+        <h2>Filtering CSV File</h2>
+        <p>To help keep track of the records you have already completed it is recommended to use the filtering function in Excel.</p>
+        <p class="note"><b>Access Filters in Excel:</b> Sort &amp;&#160;Filter &gt;&#160;Filter &gt; Click arrow in column header <img src="../../../Resources/Images/SF138.png" /></p>
+        <ol>
+            <li value="1"><b>First&#160;Report</b> - No need to filter</li>
+            <li value="2">
+                <p><b>All Subsequent Reports</b> - Filter the first column "created at" after the date you left off updating (filter picklist, use date filters &gt; after...)</p>
+                <p>
+                    <img src="../../../Resources/Images/SF139.png" />
+                </p>
+            </li>
+        </ol>
+        <p>&#160;</p>
+        <h2>Auto-Tagged</h2>
+        <ul>
+            <li value="1">If  "<b>sf update status</b>" column <b>contains a date</b>, the entry was auto-tagged (response was automatically recorded) and you can disregard these entries. However, you will still need to check for potential contact record updates.</li>
+            <li value="2">If "<b>sf update status</b>" column is "<b>NOT updated!</b>", the entry was not auto-tagged and you will need to update manually depending on the scenario (see below)</li>
+        </ul>
+        <p>&#160;</p>
+        <h2>RSVP&#160;= YES (contact in Salesforce)</h2>
+        <ol>
+            <li value="1"><a href="../../Basics/3Searching.htm">Lookup</a> the contact in Salesforce</li>
+            <li value="2">Are they a competitor (see <a href="../Competitor.htm">Competitor</a>)?<ol style="list-style-type: lower-alpha;"><li value="1"><b>Is competitor</b> - <a href="../AddCampgnRspnc.htm">tag response</a> as "Rejected" (for appropriate child campaign)</li><li value="2"><b>Not competitor</b> - <a href="../AddCampgnRspnc.htm">tag response</a> as "RSVP - Yes" (for appropriate child campaign) and any additional fields like Speaker/Panelist, Comments, etc.</li></ol></li>
+        </ol>
+        <p>&#160;</p>
+        <h2>RSVP&#160;= YES (contact <u>not</u> in Salesforce)</h2>
+        <ol>
+            <li value="1">Determine if new contact is a competitor (confirm with the officer)<ol style="list-style-type: lower-alpha;"><li value="1"><b>Is competitor</b><ol style="list-style-type: lower-roman;"><li value="1"><a href="../../ContactMngmt/NewContact.htm">Create contact record</a> in Salesforce</li><li value="2"><a href="../AddCampgnRspnc.htm">Add contact to campaign</a> (for appropriate child campaign)</li><li value="3"><a href="../AddCampgnRspnc.htm">Tag response</a> as "Rejected"</li></ol></li><li value="2"><b>Not competitor</b><ol style="list-style-type: lower-alpha;"><li value="1"><a href="../../ContactMngmt/NewContact.htm">Create contact record</a> in Salesforce</li><li value="2"><a href="../AddCampgnRspnc.htm">Add contact to campaign</a> (for appropriate child campaign)</li><li value="3"><a href="../AddCampgnRspnc.htm">Tag response</a> as "RSVP - Yes" and any additional fields like Speaker/Panelist, Comments, etc.</li></ol></li></ol></li>
+        </ol>
+        <p>&#160;</p>
+        <h2>RSVP&#160;= NO (contact in Salesforce)</h2>
+        <ol>
+            <li value="1"><a href="../../Basics/3Searching.htm">Lookup</a> the contact in Salesforce</li>
+            <li value="2"><a href="../AddCampgnRspnc.htm">Tag response</a> as "RSVP - No" (for appropriate child campaign)</li>
+        </ol>
+        <p class="CoverPageFooter" style="font-size: 10pt;">&#160;</p>
+        <p style="text-align: left;font-size: 11pt;"><span style="font-size: 10pt;">Support/Questions -  <a href="mailto:SalesforceSupport@HL.com">SalesforceSupport@HL.com</a> </span> | <span style="font-size: 10pt;">Have an idea or suggestion to make the help guide better? Let us know! - <a href="mailto:HCM-Learning@HL.com">HCM-Learning@HL.com</a></span></p>
+        <p style="text-align: left;font-size: 8pt;"><span style="font-size: 10pt;" class="SystemShortDate">12/3/2019</span>
+        </p>
+    </body>
+</html>

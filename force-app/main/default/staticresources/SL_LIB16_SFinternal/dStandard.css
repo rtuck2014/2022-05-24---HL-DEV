@@ -1,0 +1,4295 @@
+/* Motif for Aloha Skin */
+.accountTab  .primaryPalette,
+.individualPalette .accountBlock .primaryPalette {
+    background-color: #236FBD;
+    border-color: #236FBD;
+}
+.accountTab  .secondaryPalette,
+.individualPalette .accountBlock .secondaryPalette {
+    background-color: #236FBD;
+    border-color: #236FBD;
+}
+.accountTab  .tertiaryPalette,
+.individualPalette .accountBlock .tertiaryPalette,
+.layoutEdit .individualPalette .accountBlock .tertiaryPalette {
+    background-color: #8A9EBE;
+    border-color: #8A9EBE;
+}
+.accountTab .bgdPalette {
+    background-color: #236FBD;
+}
+.accountTab .brdPalette {
+    border-top-color: #236FBD;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.accountTab .listViewport .subNav .linkBar,
+.accountTab .mComponent .cHeader,
+.accountTab .genericTable,
+.accountTab .bSubBlock,
+.accountTab .bPageBlock{
+    border-top: 3px solid #236FBD;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .accountBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .accountBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .accountBlock .secondaryPalette .pbHeader{
+    border-color: #236FBD;
+}
+
+
+
+.accountTab .pageTitleIcon, .individualPalette .accountBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -950px;width:32px;
+	height:32px; }
+
+
+
+.accountMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -2px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .accountBlock .relatedListIcon, .allTabTab .accountBlock .relatedListIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -362px;width:24px;
+	height:24px; }
+
+.bRelatedList .accountBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .accountBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.allTabTab  .primaryPalette,
+.individualPalette .allTabBlock .primaryPalette {
+    background-color: #747E96;
+    border-color: #747E96;
+}
+.allTabTab  .secondaryPalette,
+.individualPalette .allTabBlock .secondaryPalette {
+    background-color: #747E96;
+    border-color: #747E96;
+}
+.allTabTab  .tertiaryPalette,
+.individualPalette .allTabBlock .tertiaryPalette,
+.layoutEdit .individualPalette .allTabBlock .tertiaryPalette {
+    background-color: #8E9DBE;
+    border-color: #8E9DBE;
+}
+.allTabTab .bgdPalette {
+    background-color: #747E96;
+}
+.allTabTab .brdPalette {
+    border-top-color: #747E96;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.allTabTab .listViewport .subNav .linkBar,
+.allTabTab .mComponent .cHeader,
+.allTabTab .genericTable,
+.allTabTab .bSubBlock,
+.allTabTab .bPageBlock{
+    border-top: 3px solid #747E96;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .allTabBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .allTabBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .allTabBlock .secondaryPalette .pbHeader{
+    border-color: #747E96;
+}
+
+
+
+/* Motif for Aloha Skin */
+.assetTab  .primaryPalette,
+.individualPalette .assetBlock .primaryPalette {
+    background-color: #317992;
+    border-color: #317992;
+}
+.assetTab  .secondaryPalette,
+.individualPalette .assetBlock .secondaryPalette {
+    background-color: #317992;
+    border-color: #317992;
+}
+.assetTab  .tertiaryPalette,
+.individualPalette .assetBlock .tertiaryPalette,
+.layoutEdit .individualPalette .assetBlock .tertiaryPalette {
+    background-color: #4D91B3;
+    border-color: #4D91B3;
+}
+.assetTab .bgdPalette {
+    background-color: #317992;
+}
+.assetTab .brdPalette {
+    border-top-color: #317992;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.assetTab .listViewport .subNav .linkBar,
+.assetTab .mComponent .cHeader,
+.assetTab .genericTable,
+.assetTab .bSubBlock,
+.assetTab .bPageBlock{
+    border-top: 3px solid #317992;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .assetBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .assetBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .assetBlock .secondaryPalette .pbHeader{
+    border-color: #317992;
+}
+
+
+
+.assetTab .pageTitleIcon, .individualPalette .assetBlock .pageTitleIcon { background-image: url(/img/icon/products32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.assetMru .mruIcon { background-image: url(/img/icon/products16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+/* Motif for Aloha Skin */
+.campaignTab  .primaryPalette,
+.individualPalette .campaignBlock .primaryPalette {
+    background-color: #CC9933;
+    border-color: #CC9933;
+}
+.campaignTab  .secondaryPalette,
+.individualPalette .campaignBlock .secondaryPalette {
+    background-color: #CC9933;
+    border-color: #CC9933;
+}
+.campaignTab  .tertiaryPalette,
+.individualPalette .campaignBlock .tertiaryPalette,
+.layoutEdit .individualPalette .campaignBlock .tertiaryPalette {
+    background-color: #E3B14F;
+    border-color: #E3B14F;
+}
+.campaignTab .bgdPalette {
+    background-color: #CC9933;
+}
+.campaignTab .brdPalette {
+    border-top-color: #CC9933;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.campaignTab .listViewport .subNav .linkBar,
+.campaignTab .mComponent .cHeader,
+.campaignTab .genericTable,
+.campaignTab .bSubBlock,
+.campaignTab .bPageBlock{
+    border-top: 3px solid #CC9933;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .campaignBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .campaignBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .campaignBlock .secondaryPalette .pbHeader{
+    border-color: #CC9933;
+}
+
+
+
+.campaignTab .pageTitleIcon, .individualPalette .campaignBlock .pageTitleIcon { background-image: url(/img/icon/campaigns32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.campaignMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -42px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .campaignBlock .relatedListIcon, .allTabTab .campaignBlock .relatedListIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -418px;width:24px;
+	height:24px; }
+
+.bRelatedList .campaignBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .campaignBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.campaignmemberTab  .primaryPalette,
+.individualPalette .campaignmemberBlock .primaryPalette {
+    background-color: #CC9933;
+    border-color: #CC9933;
+}
+.campaignmemberTab  .secondaryPalette,
+.individualPalette .campaignmemberBlock .secondaryPalette {
+    background-color: #CC9933;
+    border-color: #CC9933;
+}
+.campaignmemberTab  .tertiaryPalette,
+.individualPalette .campaignmemberBlock .tertiaryPalette,
+.layoutEdit .individualPalette .campaignmemberBlock .tertiaryPalette {
+    background-color: #E3B14F;
+    border-color: #E3B14F;
+}
+.campaignmemberTab .bgdPalette {
+    background-color: #CC9933;
+}
+.campaignmemberTab .brdPalette {
+    border-top-color: #CC9933;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.campaignmemberTab .listViewport .subNav .linkBar,
+.campaignmemberTab .mComponent .cHeader,
+.campaignmemberTab .genericTable,
+.campaignmemberTab .bSubBlock,
+.campaignmemberTab .bPageBlock{
+    border-top: 3px solid #CC9933;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .campaignmemberBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .campaignmemberBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .campaignmemberBlock .secondaryPalette .pbHeader{
+    border-color: #CC9933;
+}
+
+
+
+.campaignmemberTab .pageTitleIcon, .individualPalette .campaignmemberBlock .pageTitleIcon { background-image: url(/img/icon/campaignmember32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.campaignmemberMru .mruIcon { background-image: url(/img/icon/campaignmember16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .campaignmemberBlock .relatedListIcon, .allTabTab .campaignmemberBlock .relatedListIcon { background-image: url(/img/icon/campaignmember24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .campaignmemberBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .campaignmemberBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.caseTab  .primaryPalette,
+.individualPalette .caseBlock .primaryPalette {
+    background-color: #B7A752;
+    border-color: #B7A752;
+}
+.caseTab  .secondaryPalette,
+.individualPalette .caseBlock .secondaryPalette {
+    background-color: #B7A752;
+    border-color: #B7A752;
+}
+.caseTab  .tertiaryPalette,
+.individualPalette .caseBlock .tertiaryPalette,
+.layoutEdit .individualPalette .caseBlock .tertiaryPalette {
+    background-color: #C0BE72;
+    border-color: #C0BE72;
+}
+.caseTab .bgdPalette {
+    background-color: #B7A752;
+}
+.caseTab .brdPalette {
+    border-top-color: #B7A752;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.caseTab .listViewport .subNav .linkBar,
+.caseTab .mComponent .cHeader,
+.caseTab .genericTable,
+.caseTab .bSubBlock,
+.caseTab .bPageBlock{
+    border-top: 3px solid #B7A752;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .caseBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .caseBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .caseBlock .secondaryPalette .pbHeader{
+    border-color: #B7A752;
+}
+
+
+
+.caseTab .pageTitleIcon, .individualPalette .caseBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -986px;width:32px;
+	height:32px; }
+
+
+
+.caseMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -62px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .caseBlock .relatedListIcon, .allTabTab .caseBlock .relatedListIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -446px;width:24px;
+	height:24px; }
+
+.bRelatedList .caseBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .caseBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.consoleTab  .primaryPalette,
+.individualPalette .consoleBlock .primaryPalette {
+    background-color: #555555;
+    border-color: #555555;
+}
+.consoleTab  .secondaryPalette,
+.individualPalette .consoleBlock .secondaryPalette {
+    background-color: #555555;
+    border-color: #555555;
+}
+.consoleTab  .tertiaryPalette,
+.individualPalette .consoleBlock .tertiaryPalette,
+.layoutEdit .individualPalette .consoleBlock .tertiaryPalette {
+    background-color: #ADB380;
+    border-color: #ADB380;
+}
+.consoleTab .bgdPalette {
+    background-color: #555555;
+}
+.consoleTab .brdPalette {
+    border-top-color: #555555;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.consoleTab .listViewport .subNav .linkBar,
+.consoleTab .mComponent .cHeader,
+.consoleTab .genericTable,
+.consoleTab .bSubBlock,
+.consoleTab .bPageBlock{
+    border-top: 3px solid #555555;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .consoleBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .consoleBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .consoleBlock .secondaryPalette .pbHeader{
+    border-color: #555555;
+}
+
+
+
+.consoleTab .pageTitleIcon, .individualPalette .consoleBlock .pageTitleIcon { background-image: url(/img/icon/console32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.consoleMru .mruIcon { background-image: url(/img/icon/console16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .consoleBlock .relatedListIcon, .allTabTab .consoleBlock .relatedListIcon { background-image: url(/img/icon/console24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .consoleBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .consoleBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.contactTab  .primaryPalette,
+.individualPalette .contactBlock .primaryPalette {
+    background-color: #56458C;
+    border-color: #56458C;
+}
+.contactTab  .secondaryPalette,
+.individualPalette .contactBlock .secondaryPalette {
+    background-color: #56458C;
+    border-color: #56458C;
+}
+.contactTab  .tertiaryPalette,
+.individualPalette .contactBlock .tertiaryPalette,
+.layoutEdit .individualPalette .contactBlock .tertiaryPalette {
+    background-color: #8370C2;
+    border-color: #8370C2;
+}
+.contactTab .bgdPalette {
+    background-color: #56458C;
+}
+.contactTab .brdPalette {
+    border-top-color: #56458C;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.contactTab .listViewport .subNav .linkBar,
+.contactTab .mComponent .cHeader,
+.contactTab .genericTable,
+.contactTab .bSubBlock,
+.contactTab .bPageBlock{
+    border-top: 3px solid #56458C;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .contactBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .contactBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .contactBlock .secondaryPalette .pbHeader{
+    border-color: #56458C;
+}
+
+
+
+.contactTab .pageTitleIcon, .individualPalette .contactBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -1022px;width:32px;
+	height:32px; }
+
+
+
+.contactMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -82px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .contactBlock .relatedListIcon, .allTabTab .contactBlock .relatedListIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -502px;width:24px;
+	height:24px; }
+
+.bRelatedList .contactBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .contactBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.contractTab  .primaryPalette,
+.individualPalette .contractBlock .primaryPalette {
+    background-color: #66895F;
+    border-color: #66895F;
+}
+.contractTab  .secondaryPalette,
+.individualPalette .contractBlock .secondaryPalette {
+    background-color: #66895F;
+    border-color: #66895F;
+}
+.contractTab  .tertiaryPalette,
+.individualPalette .contractBlock .tertiaryPalette,
+.layoutEdit .individualPalette .contractBlock .tertiaryPalette {
+    background-color: #8CAB87;
+    border-color: #8CAB87;
+}
+.contractTab .bgdPalette {
+    background-color: #66895F;
+}
+.contractTab .brdPalette {
+    border-top-color: #66895F;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.contractTab .listViewport .subNav .linkBar,
+.contractTab .mComponent .cHeader,
+.contractTab .genericTable,
+.contractTab .bSubBlock,
+.contractTab .bPageBlock{
+    border-top: 3px solid #66895F;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .contractBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .contractBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .contractBlock .secondaryPalette .pbHeader{
+    border-color: #66895F;
+}
+
+
+
+.contractTab .pageTitleIcon, .individualPalette .contractBlock .pageTitleIcon { background-image: url(/img/icon/contracts32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.contractMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -102px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .contractBlock .relatedListIcon, .allTabTab .contractBlock .relatedListIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -530px;width:24px;
+	height:24px; }
+
+.bRelatedList .contractBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .contractBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.customnotabTab  .primaryPalette,
+.individualPalette .customnotabBlock .primaryPalette {
+    background-color: #747E96;
+    border-color: #747E96;
+}
+.customnotabTab  .secondaryPalette,
+.individualPalette .customnotabBlock .secondaryPalette {
+    background-color: #747E96;
+    border-color: #747E96;
+}
+.customnotabTab  .tertiaryPalette,
+.individualPalette .customnotabBlock .tertiaryPalette,
+.layoutEdit .individualPalette .customnotabBlock .tertiaryPalette {
+    background-color: #8E9DBE;
+    border-color: #8E9DBE;
+}
+.customnotabTab .bgdPalette {
+    background-color: #747E96;
+}
+.customnotabTab .brdPalette {
+    border-top-color: #747E96;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.customnotabTab .listViewport .subNav .linkBar,
+.customnotabTab .mComponent .cHeader,
+.customnotabTab .genericTable,
+.customnotabTab .bSubBlock,
+.customnotabTab .bPageBlock{
+    border-top: 3px solid #747E96;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .customnotabBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .customnotabBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .customnotabBlock .secondaryPalette .pbHeader{
+    border-color: #747E96;
+}
+
+
+
+.customnotabTab .pageTitleIcon, .individualPalette .customnotabBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -1058px;width:32px;
+	height:32px; }
+
+
+
+.customnotabMru .mruIcon { background-image: url(/img/icon/custom16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+/* Motif for Aloha Skin */
+.dashboardTab  .primaryPalette,
+.individualPalette .dashboardBlock .primaryPalette {
+    background-color: #861614;
+    border-color: #861614;
+}
+.dashboardTab  .secondaryPalette,
+.individualPalette .dashboardBlock .secondaryPalette {
+    background-color: #861614;
+    border-color: #861614;
+}
+.dashboardTab  .tertiaryPalette,
+.individualPalette .dashboardBlock .tertiaryPalette,
+.layoutEdit .individualPalette .dashboardBlock .tertiaryPalette {
+    background-color: #A55647;
+    border-color: #A55647;
+}
+.dashboardTab .bgdPalette {
+    background-color: #861614;
+}
+.dashboardTab .brdPalette {
+    border-top-color: #861614;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.dashboardTab .listViewport .subNav .linkBar,
+.dashboardTab .mComponent .cHeader,
+.dashboardTab .genericTable,
+.dashboardTab .bSubBlock,
+.dashboardTab .bPageBlock{
+    border-top: 3px solid #861614;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .dashboardBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .dashboardBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .dashboardBlock .secondaryPalette .pbHeader{
+    border-color: #861614;
+}
+
+
+
+.dashboardTab .pageTitleIcon, .individualPalette .dashboardBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -1094px;width:32px;
+	height:32px; }
+
+
+
+.dashboardMru .mruIcon { background-image: url(/img/icon/dashboards16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .dashboardBlock .relatedListIcon, .allTabTab .dashboardBlock .relatedListIcon { background-image: url(/img/icon/dashboards24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .dashboardBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .dashboardBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.documentTab  .primaryPalette,
+.individualPalette .documentBlock .primaryPalette {
+    background-color: #419BA6;
+    border-color: #419BA6;
+}
+.documentTab  .secondaryPalette,
+.individualPalette .documentBlock .secondaryPalette {
+    background-color: #419BA6;
+    border-color: #419BA6;
+}
+.documentTab  .tertiaryPalette,
+.individualPalette .documentBlock .tertiaryPalette,
+.layoutEdit .individualPalette .documentBlock .tertiaryPalette {
+    background-color: #86B2B6;
+    border-color: #86B2B6;
+}
+.documentTab .bgdPalette {
+    background-color: #419BA6;
+}
+.documentTab .brdPalette {
+    border-top-color: #419BA6;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.documentTab .listViewport .subNav .linkBar,
+.documentTab .mComponent .cHeader,
+.documentTab .genericTable,
+.documentTab .bSubBlock,
+.documentTab .bPageBlock{
+    border-top: 3px solid #419BA6;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .documentBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .documentBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .documentBlock .secondaryPalette .pbHeader{
+    border-color: #419BA6;
+}
+
+
+
+.documentTab .pageTitleIcon, .individualPalette .documentBlock .pageTitleIcon { background-image: url(/img/icon/documents32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.documentMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -122px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .documentBlock .relatedListIcon, .allTabTab .documentBlock .relatedListIcon { background-image: url(/img/icon/documents24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .documentBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .documentBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.eventTab  .primaryPalette,
+.individualPalette .eventBlock .primaryPalette {
+    background-color: #1797C0;
+    border-color: #1797C0;
+}
+.eventTab  .secondaryPalette,
+.individualPalette .eventBlock .secondaryPalette {
+    background-color: #CFEEF8;
+    border-color: #CFEEF8;
+}
+.eventTab  .tertiaryPalette,
+.individualPalette .eventBlock .tertiaryPalette,
+.layoutEdit .individualPalette .eventBlock .tertiaryPalette {
+    background-color: #CFEEF8;
+    border-color: #CFEEF8;
+}
+.eventTab .bgdPalette {
+    background-color: #1797C0;
+}
+.eventTab .brdPalette {
+    border-top-color: #1797C0;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.eventTab .listViewport .subNav .linkBar,
+.eventTab .mComponent .cHeader,
+.eventTab .genericTable,
+.eventTab .bSubBlock,
+.eventTab .bPageBlock{
+    border-top: 3px solid #1797C0;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .eventBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .eventBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .eventBlock .secondaryPalette .pbHeader{
+    border-color: #CFEEF8;
+}
+
+
+
+.eventTab .pageTitleIcon, .individualPalette .eventBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -1130px;width:32px;
+	height:32px; }
+
+
+
+.eventMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -22px;width:16px;
+	height:16px; }
+
+
+
+/* Motif for Aloha Skin */
+.forecastTab  .primaryPalette,
+.individualPalette .forecastBlock .primaryPalette {
+    background-color: #5889D6;
+    border-color: #5889D6;
+}
+.forecastTab  .secondaryPalette,
+.individualPalette .forecastBlock .secondaryPalette {
+    background-color: #5889D6;
+    border-color: #5889D6;
+}
+.forecastTab  .tertiaryPalette,
+.individualPalette .forecastBlock .tertiaryPalette,
+.layoutEdit .individualPalette .forecastBlock .tertiaryPalette {
+    background-color: #829DC9;
+    border-color: #829DC9;
+}
+.forecastTab .bgdPalette {
+    background-color: #5889D6;
+}
+.forecastTab .brdPalette {
+    border-top-color: #5889D6;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.forecastTab .listViewport .subNav .linkBar,
+.forecastTab .mComponent .cHeader,
+.forecastTab .genericTable,
+.forecastTab .bSubBlock,
+.forecastTab .bPageBlock{
+    border-top: 3px solid #5889D6;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .forecastBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .forecastBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .forecastBlock .secondaryPalette .pbHeader{
+    border-color: #5889D6;
+}
+
+
+
+.forecastTab .pageTitleIcon, .individualPalette .forecastBlock .pageTitleIcon { background-image: url(/img/icon/forecasts32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.forecastMru .mruIcon { background-image: url(/img/icon/forecasts16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .forecastBlock .relatedListIcon, .allTabTab .forecastBlock .relatedListIcon { background-image: url(/img/icon/forecasts24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .forecastBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .forecastBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.homeTab  .primaryPalette,
+.individualPalette .homeBlock .primaryPalette {
+    background-color: #1797C0;
+    border-color: #1797C0;
+}
+.homeTab  .secondaryPalette,
+.individualPalette .homeBlock .secondaryPalette {
+    background-color: #CFEEF8;
+    border-color: #CFEEF8;
+}
+.homeTab  .tertiaryPalette,
+.individualPalette .homeBlock .tertiaryPalette,
+.layoutEdit .individualPalette .homeBlock .tertiaryPalette {
+    background-color: #CFEEF8;
+    border-color: #CFEEF8;
+}
+.homeTab .bgdPalette {
+    background-color: #1797C0;
+}
+.homeTab .brdPalette {
+    border-top-color: #1797C0;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.homeTab .listViewport .subNav .linkBar,
+.homeTab .mComponent .cHeader,
+.homeTab .genericTable,
+.homeTab .bSubBlock,
+.homeTab .bPageBlock{
+    border-top: 3px solid #1797C0;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .homeBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .homeBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .homeBlock .secondaryPalette .pbHeader{
+    border-color: #CFEEF8;
+}
+
+
+
+.homeTab .pageTitleIcon, .individualPalette .homeBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -1130px;width:32px;
+	height:32px; }
+
+
+
+.homeMru .mruIcon { background-image: url(/img/icon/home16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .homeBlock .relatedListIcon, .allTabTab .homeBlock .relatedListIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -642px;width:24px;
+	height:24px; }
+
+.bRelatedList .homeBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .homeBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.invoiceTab  .primaryPalette,
+.individualPalette .invoiceBlock .primaryPalette {
+    background-color: #66AA99;
+    border-color: #66AA99;
+}
+.invoiceTab  .secondaryPalette,
+.individualPalette .invoiceBlock .secondaryPalette {
+    background-color: #66AA99;
+    border-color: #66AA99;
+}
+.invoiceTab  .tertiaryPalette,
+.individualPalette .invoiceBlock .tertiaryPalette,
+.layoutEdit .individualPalette .invoiceBlock .tertiaryPalette {
+    background-color: #39B698;
+    border-color: #39B698;
+}
+.invoiceTab .bgdPalette {
+    background-color: #66AA99;
+}
+.invoiceTab .brdPalette {
+    border-top-color: #66AA99;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.invoiceTab .listViewport .subNav .linkBar,
+.invoiceTab .mComponent .cHeader,
+.invoiceTab .genericTable,
+.invoiceTab .bSubBlock,
+.invoiceTab .bPageBlock{
+    border-top: 3px solid #66AA99;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .invoiceBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .invoiceBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .invoiceBlock .secondaryPalette .pbHeader{
+    border-color: #66AA99;
+}
+
+
+
+.invoiceTab .pageTitleIcon, .individualPalette .invoiceBlock .pageTitleIcon { background-image: url(/img/icon/invoices32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.invoiceMru .mruIcon { background-image: url(/img/icon/invoices16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .invoiceBlock .relatedListIcon, .allTabTab .invoiceBlock .relatedListIcon { background-image: url(/img/icon/invoices24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .invoiceBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .invoiceBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.leadTab  .primaryPalette,
+.individualPalette .leadBlock .primaryPalette {
+    background-color: #E39321;
+    border-color: #E39321;
+}
+.leadTab  .secondaryPalette,
+.individualPalette .leadBlock .secondaryPalette {
+    background-color: #E39321;
+    border-color: #E39321;
+}
+.leadTab  .tertiaryPalette,
+.individualPalette .leadBlock .tertiaryPalette,
+.layoutEdit .individualPalette .leadBlock .tertiaryPalette {
+    background-color: #EBAF59;
+    border-color: #EBAF59;
+}
+.leadTab .bgdPalette {
+    background-color: #E39321;
+}
+.leadTab .brdPalette {
+    border-top-color: #E39321;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.leadTab .listViewport .subNav .linkBar,
+.leadTab .mComponent .cHeader,
+.leadTab .genericTable,
+.leadTab .bSubBlock,
+.leadTab .bPageBlock{
+    border-top: 3px solid #E39321;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .leadBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .leadBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .leadBlock .secondaryPalette .pbHeader{
+    border-color: #E39321;
+}
+
+
+
+.leadTab .pageTitleIcon, .individualPalette .leadBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -1166px;width:32px;
+	height:32px; }
+
+
+
+.leadMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -202px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .leadBlock .relatedListIcon, .allTabTab .leadBlock .relatedListIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -698px;width:24px;
+	height:24px; }
+
+.bRelatedList .leadBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .leadBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.lookupTab  .primaryPalette,
+.individualPalette .lookupBlock .primaryPalette {
+    background-color: #737E96;
+    border-color: #737E96;
+}
+.lookupTab  .secondaryPalette,
+.individualPalette .lookupBlock .secondaryPalette {
+    background-color: #737E96;
+    border-color: #737E96;
+}
+.lookupTab  .tertiaryPalette,
+.individualPalette .lookupBlock .tertiaryPalette,
+.layoutEdit .individualPalette .lookupBlock .tertiaryPalette {
+    background-color: #8E9DBE;
+    border-color: #8E9DBE;
+}
+.lookupTab .bgdPalette {
+    background-color: #737E96;
+}
+.lookupTab .brdPalette {
+    border-top-color: #737E96;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.lookupTab .listViewport .subNav .linkBar,
+.lookupTab .mComponent .cHeader,
+.lookupTab .genericTable,
+.lookupTab .bSubBlock,
+.lookupTab .bPageBlock{
+    border-top: 3px solid #737E96;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .lookupBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .lookupBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .lookupBlock .secondaryPalette .pbHeader{
+    border-color: #737E96;
+}
+
+
+
+.lookupTab .pageTitleIcon, .individualPalette .lookupBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -1202px;width:32px;
+	height:32px; }
+
+
+
+.lookupMru .mruIcon { background-image: url(/img/icon/custom16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .lookupBlock .relatedListIcon, .allTabTab .lookupBlock .relatedListIcon { background-image: url(/img/icon/custom24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .lookupBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .lookupBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.opportunityTab  .primaryPalette,
+.individualPalette .opportunityBlock .primaryPalette {
+    background-color: #E5C130;
+    border-color: #E5C130;
+}
+.opportunityTab  .secondaryPalette,
+.individualPalette .opportunityBlock .secondaryPalette {
+    background-color: #E5C130;
+    border-color: #E5C130;
+}
+.opportunityTab  .tertiaryPalette,
+.individualPalette .opportunityBlock .tertiaryPalette,
+.layoutEdit .individualPalette .opportunityBlock .tertiaryPalette {
+    background-color: #DDB929;
+    border-color: #DDB929;
+}
+.opportunityTab .bgdPalette {
+    background-color: #E5C130;
+}
+.opportunityTab .brdPalette {
+    border-top-color: #E5C130;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.opportunityTab .listViewport .subNav .linkBar,
+.opportunityTab .mComponent .cHeader,
+.opportunityTab .genericTable,
+.opportunityTab .bSubBlock,
+.opportunityTab .bPageBlock{
+    border-top: 3px solid #E5C130;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .opportunityBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .opportunityBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .opportunityBlock .secondaryPalette .pbHeader{
+    border-color: #E5C130;
+}
+
+
+
+.opportunityTab .pageTitleIcon, .individualPalette .opportunityBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -1238px;width:32px;
+	height:32px; }
+
+
+
+.opportunityMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -242px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .opportunityBlock .relatedListIcon, .allTabTab .opportunityBlock .relatedListIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -782px;width:24px;
+	height:24px; }
+
+.bRelatedList .opportunityBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .opportunityBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.quoteTab  .primaryPalette,
+.individualPalette .quoteBlock .primaryPalette {
+    background-color: #E5C130;
+    border-color: #E5C130;
+}
+.quoteTab  .secondaryPalette,
+.individualPalette .quoteBlock .secondaryPalette {
+    background-color: #E5C130;
+    border-color: #E5C130;
+}
+.quoteTab  .tertiaryPalette,
+.individualPalette .quoteBlock .tertiaryPalette,
+.layoutEdit .individualPalette .quoteBlock .tertiaryPalette {
+    background-color: #DDB929;
+    border-color: #DDB929;
+}
+.quoteTab .bgdPalette {
+    background-color: #E5C130;
+}
+.quoteTab .brdPalette {
+    border-top-color: #E5C130;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.quoteTab .listViewport .subNav .linkBar,
+.quoteTab .mComponent .cHeader,
+.quoteTab .genericTable,
+.quoteTab .bSubBlock,
+.quoteTab .bPageBlock{
+    border-top: 3px solid #E5C130;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .quoteBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .quoteBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .quoteBlock .secondaryPalette .pbHeader{
+    border-color: #E5C130;
+}
+
+
+
+.quoteTab .pageTitleIcon, .individualPalette .quoteBlock .pageTitleIcon { background-image: url(/img/icon/quotes32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.quoteMru .mruIcon { background-image: url(/img/icon/quotes16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .quoteBlock .relatedListIcon, .allTabTab .quoteBlock .relatedListIcon { background-image: url(/img/icon/quotes24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .quoteBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .quoteBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.quoteLineItemTab  .primaryPalette,
+.individualPalette .quoteLineItemBlock .primaryPalette {
+    background-color: #E5C130;
+    border-color: #E5C130;
+}
+.quoteLineItemTab  .secondaryPalette,
+.individualPalette .quoteLineItemBlock .secondaryPalette {
+    background-color: #E5C130;
+    border-color: #E5C130;
+}
+.quoteLineItemTab  .tertiaryPalette,
+.individualPalette .quoteLineItemBlock .tertiaryPalette,
+.layoutEdit .individualPalette .quoteLineItemBlock .tertiaryPalette {
+    background-color: #DDB929;
+    border-color: #DDB929;
+}
+.quoteLineItemTab .bgdPalette {
+    background-color: #E5C130;
+}
+.quoteLineItemTab .brdPalette {
+    border-top-color: #E5C130;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.quoteLineItemTab .listViewport .subNav .linkBar,
+.quoteLineItemTab .mComponent .cHeader,
+.quoteLineItemTab .genericTable,
+.quoteLineItemTab .bSubBlock,
+.quoteLineItemTab .bPageBlock{
+    border-top: 3px solid #E5C130;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .quoteLineItemBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .quoteLineItemBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .quoteLineItemBlock .secondaryPalette .pbHeader{
+    border-color: #E5C130;
+}
+
+
+
+.quoteLineItemTab .pageTitleIcon, .individualPalette .quoteLineItemBlock .pageTitleIcon { background-image: url(/img/icon/quotes32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.quoteLineItemMru .mruIcon { background-image: url(/img/icon/quotes16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+/* Motif for Aloha Skin */
+.quoteDocumentTab  .primaryPalette,
+.individualPalette .quoteDocumentBlock .primaryPalette {
+    background-color: #E5C130;
+    border-color: #E5C130;
+}
+.quoteDocumentTab  .secondaryPalette,
+.individualPalette .quoteDocumentBlock .secondaryPalette {
+    background-color: #E5C130;
+    border-color: #E5C130;
+}
+.quoteDocumentTab  .tertiaryPalette,
+.individualPalette .quoteDocumentBlock .tertiaryPalette,
+.layoutEdit .individualPalette .quoteDocumentBlock .tertiaryPalette {
+    background-color: #DDB929;
+    border-color: #DDB929;
+}
+.quoteDocumentTab .bgdPalette {
+    background-color: #E5C130;
+}
+.quoteDocumentTab .brdPalette {
+    border-top-color: #E5C130;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.quoteDocumentTab .listViewport .subNav .linkBar,
+.quoteDocumentTab .mComponent .cHeader,
+.quoteDocumentTab .genericTable,
+.quoteDocumentTab .bSubBlock,
+.quoteDocumentTab .bPageBlock{
+    border-top: 3px solid #E5C130;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .quoteDocumentBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .quoteDocumentBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .quoteDocumentBlock .secondaryPalette .pbHeader{
+    border-color: #E5C130;
+}
+
+
+
+.quoteDocumentTab .pageTitleIcon, .individualPalette .quoteDocumentBlock .pageTitleIcon { background-image: url(/img/icon/quotes32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.quoteDocumentMru .mruIcon { background-image: url(/img/icon/quotes16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+/* Motif for Aloha Skin */
+.orderTab  .primaryPalette,
+.individualPalette .orderBlock .primaryPalette {
+    background-color: #00655A;
+    border-color: #00655A;
+}
+.orderTab  .secondaryPalette,
+.individualPalette .orderBlock .secondaryPalette {
+    background-color: #00655A;
+    border-color: #00655A;
+}
+.orderTab  .tertiaryPalette,
+.individualPalette .orderBlock .tertiaryPalette,
+.layoutEdit .individualPalette .orderBlock .tertiaryPalette {
+    background-color: #6AAFA2;
+    border-color: #6AAFA2;
+}
+.orderTab .bgdPalette {
+    background-color: #00655A;
+}
+.orderTab .brdPalette {
+    border-top-color: #00655A;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.orderTab .listViewport .subNav .linkBar,
+.orderTab .mComponent .cHeader,
+.orderTab .genericTable,
+.orderTab .bSubBlock,
+.orderTab .bPageBlock{
+    border-top: 3px solid #00655A;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .orderBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .orderBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .orderBlock .secondaryPalette .pbHeader{
+    border-color: #00655A;
+}
+
+
+
+.orderTab .pageTitleIcon, .individualPalette .orderBlock .pageTitleIcon { background-image: url(/img/icon/orderBell32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.orderMru .mruIcon { background-image: url(/img/icon/orderBell16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .orderBlock .relatedListIcon, .allTabTab .orderBlock .relatedListIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -810px;width:24px;
+	height:24px; }
+
+.bRelatedList .orderBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .orderBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.personaccountTab  .primaryPalette,
+.individualPalette .personaccountBlock .primaryPalette {
+    background-color: #236FBD;
+    border-color: #236FBD;
+}
+.personaccountTab  .secondaryPalette,
+.individualPalette .personaccountBlock .secondaryPalette {
+    background-color: #236FBD;
+    border-color: #236FBD;
+}
+.personaccountTab  .tertiaryPalette,
+.individualPalette .personaccountBlock .tertiaryPalette,
+.layoutEdit .individualPalette .personaccountBlock .tertiaryPalette {
+    background-color: #8A9EBE;
+    border-color: #8A9EBE;
+}
+.personaccountTab .bgdPalette {
+    background-color: #236FBD;
+}
+.personaccountTab .brdPalette {
+    border-top-color: #236FBD;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.personaccountTab .listViewport .subNav .linkBar,
+.personaccountTab .mComponent .cHeader,
+.personaccountTab .genericTable,
+.personaccountTab .bSubBlock,
+.personaccountTab .bPageBlock{
+    border-top: 3px solid #236FBD;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .personaccountBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .personaccountBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .personaccountBlock .secondaryPalette .pbHeader{
+    border-color: #236FBD;
+}
+
+
+
+.personaccountTab .pageTitleIcon, .individualPalette .personaccountBlock .pageTitleIcon { background-image: url(/img/icon/perAccounts32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.personaccountMru .mruIcon { background-image: url(/img/icon/perAccounts16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .personaccountBlock .relatedListIcon, .allTabTab .personaccountBlock .relatedListIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -362px;width:24px;
+	height:24px; }
+
+.bRelatedList .personaccountBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .personaccountBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.portalTab  .primaryPalette,
+.individualPalette .portalBlock .primaryPalette {
+    background-color: #999933;
+    border-color: #999933;
+}
+.portalTab  .secondaryPalette,
+.individualPalette .portalBlock .secondaryPalette {
+    background-color: #999933;
+    border-color: #999933;
+}
+.portalTab  .tertiaryPalette,
+.individualPalette .portalBlock .tertiaryPalette,
+.layoutEdit .individualPalette .portalBlock .tertiaryPalette {
+    background-color: #ADB380;
+    border-color: #ADB380;
+}
+.portalTab .bgdPalette {
+    background-color: #999933;
+}
+.portalTab .brdPalette {
+    border-top-color: #999933;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.portalTab .listViewport .subNav .linkBar,
+.portalTab .mComponent .cHeader,
+.portalTab .genericTable,
+.portalTab .bSubBlock,
+.portalTab .bPageBlock{
+    border-top: 3px solid #999933;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .portalBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .portalBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .portalBlock .secondaryPalette .pbHeader{
+    border-color: #999933;
+}
+
+
+
+.portalTab .pageTitleIcon, .individualPalette .portalBlock .pageTitleIcon { background-image: url(/img/icon/portals32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.portalMru .mruIcon { background-image: url(/img/icon/portals16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .portalBlock .relatedListIcon, .allTabTab .portalBlock .relatedListIcon { background-image: url(/img/icon/portals24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .portalBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .portalBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.pricebookTab  .primaryPalette,
+.individualPalette .pricebookBlock .primaryPalette {
+    background-color: #317992;
+    border-color: #317992;
+}
+.pricebookTab  .secondaryPalette,
+.individualPalette .pricebookBlock .secondaryPalette {
+    background-color: #317992;
+    border-color: #317992;
+}
+.pricebookTab  .tertiaryPalette,
+.individualPalette .pricebookBlock .tertiaryPalette,
+.layoutEdit .individualPalette .pricebookBlock .tertiaryPalette {
+    background-color: #4D91B3;
+    border-color: #4D91B3;
+}
+.pricebookTab .bgdPalette {
+    background-color: #317992;
+}
+.pricebookTab .brdPalette {
+    border-top-color: #317992;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.pricebookTab .listViewport .subNav .linkBar,
+.pricebookTab .mComponent .cHeader,
+.pricebookTab .genericTable,
+.pricebookTab .bSubBlock,
+.pricebookTab .bPageBlock{
+    border-top: 3px solid #317992;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .pricebookBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .pricebookBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .pricebookBlock .secondaryPalette .pbHeader{
+    border-color: #317992;
+}
+
+
+
+.pricebookTab .pageTitleIcon, .individualPalette .pricebookBlock .pageTitleIcon { background-image: url(/img/icon/products32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.pricebookMru .mruIcon { background-image: url(/img/icon/products16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+/* Motif for Aloha Skin */
+.pricebookentryTab  .primaryPalette,
+.individualPalette .pricebookentryBlock .primaryPalette {
+    background-color: #317992;
+    border-color: #317992;
+}
+.pricebookentryTab  .secondaryPalette,
+.individualPalette .pricebookentryBlock .secondaryPalette {
+    background-color: #317992;
+    border-color: #317992;
+}
+.pricebookentryTab  .tertiaryPalette,
+.individualPalette .pricebookentryBlock .tertiaryPalette,
+.layoutEdit .individualPalette .pricebookentryBlock .tertiaryPalette {
+    background-color: #4D91B3;
+    border-color: #4D91B3;
+}
+.pricebookentryTab .bgdPalette {
+    background-color: #317992;
+}
+.pricebookentryTab .brdPalette {
+    border-top-color: #317992;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.pricebookentryTab .listViewport .subNav .linkBar,
+.pricebookentryTab .mComponent .cHeader,
+.pricebookentryTab .genericTable,
+.pricebookentryTab .bSubBlock,
+.pricebookentryTab .bPageBlock{
+    border-top: 3px solid #317992;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .pricebookentryBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .pricebookentryBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .pricebookentryBlock .secondaryPalette .pbHeader{
+    border-color: #317992;
+}
+
+
+
+.pricebookentryTab .pageTitleIcon, .individualPalette .pricebookentryBlock .pageTitleIcon { background-image: url(/img/icon/products32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.pricebookentryMru .mruIcon { background-image: url(/img/icon/products16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+/* Motif for Aloha Skin */
+.productTab  .primaryPalette,
+.individualPalette .productBlock .primaryPalette {
+    background-color: #317992;
+    border-color: #317992;
+}
+.productTab  .secondaryPalette,
+.individualPalette .productBlock .secondaryPalette {
+    background-color: #317992;
+    border-color: #317992;
+}
+.productTab  .tertiaryPalette,
+.individualPalette .productBlock .tertiaryPalette,
+.layoutEdit .individualPalette .productBlock .tertiaryPalette {
+    background-color: #4D91B3;
+    border-color: #4D91B3;
+}
+.productTab .bgdPalette {
+    background-color: #317992;
+}
+.productTab .brdPalette {
+    border-top-color: #317992;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.productTab .listViewport .subNav .linkBar,
+.productTab .mComponent .cHeader,
+.productTab .genericTable,
+.productTab .bSubBlock,
+.productTab .bPageBlock{
+    border-top: 3px solid #317992;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .productBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .productBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .productBlock .secondaryPalette .pbHeader{
+    border-color: #317992;
+}
+
+
+
+.productTab .pageTitleIcon, .individualPalette .productBlock .pageTitleIcon { background-image: url(/img/icon/products32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.productMru .mruIcon { background-image: url(/img/icon/products16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .productBlock .relatedListIcon, .allTabTab .productBlock .relatedListIcon { background-image: url(/img/icon/products24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .productBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .productBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.reportTab  .primaryPalette,
+.individualPalette .reportBlock .primaryPalette {
+    background-color: #A55647;
+    border-color: #A55647;
+}
+.reportTab  .secondaryPalette,
+.individualPalette .reportBlock .secondaryPalette {
+    background-color: #A55647;
+    border-color: #A55647;
+}
+.reportTab  .tertiaryPalette,
+.individualPalette .reportBlock .tertiaryPalette,
+.layoutEdit .individualPalette .reportBlock .tertiaryPalette {
+    background-color: #AF756A;
+    border-color: #AF756A;
+}
+.reportTab .bgdPalette {
+    background-color: #A55647;
+}
+.reportTab .brdPalette {
+    border-top-color: #A55647;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.reportTab .listViewport .subNav .linkBar,
+.reportTab .mComponent .cHeader,
+.reportTab .genericTable,
+.reportTab .bSubBlock,
+.reportTab .bPageBlock{
+    border-top: 3px solid #A55647;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .reportBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .reportBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .reportBlock .secondaryPalette .pbHeader{
+    border-color: #A55647;
+}
+
+
+
+.reportTab .pageTitleIcon, .individualPalette .reportBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -1274px;width:32px;
+	height:32px; }
+
+
+
+.reportMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -282px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .reportBlock .relatedListIcon, .allTabTab .reportBlock .relatedListIcon { background-image: url(/img/icon/reports24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .reportBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .reportBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.setupTab  .primaryPalette,
+.individualPalette .setupBlock .primaryPalette {
+    background-color: #747E96;
+    border-color: #747E96;
+}
+.setupTab  .secondaryPalette,
+.individualPalette .setupBlock .secondaryPalette {
+    background-color: #747E96;
+    border-color: #747E96;
+}
+.setupTab  .tertiaryPalette,
+.individualPalette .setupBlock .tertiaryPalette,
+.layoutEdit .individualPalette .setupBlock .tertiaryPalette {
+    background-color: #8E9DBE;
+    border-color: #8E9DBE;
+}
+.setupTab .bgdPalette {
+    background-color: #747E96;
+}
+.setupTab .brdPalette {
+    border-top-color: #747E96;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.setupTab .listViewport .subNav .linkBar,
+.setupTab .mComponent .cHeader,
+.setupTab .genericTable,
+.setupTab .bSubBlock,
+.setupTab .bPageBlock{
+    border-top: 3px solid #747E96;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .setupBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .setupBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .setupBlock .secondaryPalette .pbHeader{
+    border-color: #747E96;
+}
+
+
+
+.setupTab .pageTitleIcon, .individualPalette .setupBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -1058px;width:32px;
+	height:32px; }
+
+
+
+.setupMru .mruIcon { background-image: url(/img/icon/custom16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+/* Motif for Aloha Skin */
+.solutionTab  .primaryPalette,
+.individualPalette .solutionBlock .primaryPalette {
+    background-color: #608B06;
+    border-color: #608B06;
+}
+.solutionTab  .secondaryPalette,
+.individualPalette .solutionBlock .secondaryPalette {
+    background-color: #567A00;
+    border-color: #567A00;
+}
+.solutionTab  .tertiaryPalette,
+.individualPalette .solutionBlock .tertiaryPalette,
+.layoutEdit .individualPalette .solutionBlock .tertiaryPalette {
+    background-color: #8A9744;
+    border-color: #8A9744;
+}
+.solutionTab .bgdPalette {
+    background-color: #608B06;
+}
+.solutionTab .brdPalette {
+    border-top-color: #608B06;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.solutionTab .listViewport .subNav .linkBar,
+.solutionTab .mComponent .cHeader,
+.solutionTab .genericTable,
+.solutionTab .bSubBlock,
+.solutionTab .bPageBlock{
+    border-top: 3px solid #608B06;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .solutionBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .solutionBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .solutionBlock .secondaryPalette .pbHeader{
+    border-color: #567A00;
+}
+
+
+
+.solutionTab .pageTitleIcon, .individualPalette .solutionBlock .pageTitleIcon { background-image: url(/img/icon/solutions32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.solutionMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -302px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .solutionBlock .relatedListIcon, .allTabTab .solutionBlock .relatedListIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -894px;width:24px;
+	height:24px; }
+
+.bRelatedList .solutionBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .solutionBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.sysAdminTab  .primaryPalette,
+.individualPalette .sysAdminBlock .primaryPalette {
+    background-color: #000000;
+    border-color: #000000;
+}
+.sysAdminTab  .secondaryPalette,
+.individualPalette .sysAdminBlock .secondaryPalette {
+    background-color: #000000;
+    border-color: #000000;
+}
+.sysAdminTab  .tertiaryPalette,
+.individualPalette .sysAdminBlock .tertiaryPalette,
+.layoutEdit .individualPalette .sysAdminBlock .tertiaryPalette {
+    background-color: #000000;
+    border-color: #000000;
+}
+.sysAdminTab .bgdPalette {
+    background-color: #000000;
+}
+.sysAdminTab .brdPalette {
+    border-top-color: #000000;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.sysAdminTab .listViewport .subNav .linkBar,
+.sysAdminTab .mComponent .cHeader,
+.sysAdminTab .genericTable,
+.sysAdminTab .bSubBlock,
+.sysAdminTab .bPageBlock{
+    border-top: 3px solid #000000;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .sysAdminBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .sysAdminBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .sysAdminBlock .secondaryPalette .pbHeader{
+    border-color: #000000;
+}
+
+
+
+/* Motif for Aloha Skin */
+.taskTab  .primaryPalette,
+.individualPalette .taskBlock .primaryPalette {
+    background-color: #1797C0;
+    border-color: #1797C0;
+}
+.taskTab  .secondaryPalette,
+.individualPalette .taskBlock .secondaryPalette {
+    background-color: #CFEEF8;
+    border-color: #CFEEF8;
+}
+.taskTab  .tertiaryPalette,
+.individualPalette .taskBlock .tertiaryPalette,
+.layoutEdit .individualPalette .taskBlock .tertiaryPalette {
+    background-color: #CFEEF8;
+    border-color: #CFEEF8;
+}
+.taskTab .bgdPalette {
+    background-color: #1797C0;
+}
+.taskTab .brdPalette {
+    border-top-color: #1797C0;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.taskTab .listViewport .subNav .linkBar,
+.taskTab .mComponent .cHeader,
+.taskTab .genericTable,
+.taskTab .bSubBlock,
+.taskTab .bPageBlock{
+    border-top: 3px solid #1797C0;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .taskBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .taskBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .taskBlock .secondaryPalette .pbHeader{
+    border-color: #CFEEF8;
+}
+
+
+
+.taskTab .pageTitleIcon, .individualPalette .taskBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -1130px;width:32px;
+	height:32px; }
+
+
+
+.taskMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -342px;width:16px;
+	height:16px; }
+
+
+
+/* Motif for Aloha Skin */
+.opportunityCompetitorTab  .primaryPalette,
+.individualPalette .opportunityCompetitorBlock .primaryPalette {
+    background-color: #E5C130;
+    border-color: #E5C130;
+}
+.opportunityCompetitorTab  .secondaryPalette,
+.individualPalette .opportunityCompetitorBlock .secondaryPalette {
+    background-color: #E5C130;
+    border-color: #E5C130;
+}
+.opportunityCompetitorTab  .tertiaryPalette,
+.individualPalette .opportunityCompetitorBlock .tertiaryPalette,
+.layoutEdit .individualPalette .opportunityCompetitorBlock .tertiaryPalette {
+    background-color: #DDB929;
+    border-color: #DDB929;
+}
+.opportunityCompetitorTab .bgdPalette {
+    background-color: #E5C130;
+}
+.opportunityCompetitorTab .brdPalette {
+    border-top-color: #E5C130;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.opportunityCompetitorTab .listViewport .subNav .linkBar,
+.opportunityCompetitorTab .mComponent .cHeader,
+.opportunityCompetitorTab .genericTable,
+.opportunityCompetitorTab .bSubBlock,
+.opportunityCompetitorTab .bPageBlock{
+    border-top: 3px solid #E5C130;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .opportunityCompetitorBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .opportunityCompetitorBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .opportunityCompetitorBlock .secondaryPalette .pbHeader{
+    border-color: #E5C130;
+}
+
+
+
+.opportunityCompetitorTab .pageTitleIcon, .individualPalette .opportunityCompetitorBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -1238px;width:32px;
+	height:32px; }
+
+
+
+.opportunityCompetitorMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -242px;width:16px;
+	height:16px; }
+
+
+
+/* Motif for Aloha Skin */
+.opportunityLineItemTab  .primaryPalette,
+.individualPalette .opportunityLineItemBlock .primaryPalette {
+    background-color: #E5C130;
+    border-color: #E5C130;
+}
+.opportunityLineItemTab  .secondaryPalette,
+.individualPalette .opportunityLineItemBlock .secondaryPalette {
+    background-color: #E5C130;
+    border-color: #E5C130;
+}
+.opportunityLineItemTab  .tertiaryPalette,
+.individualPalette .opportunityLineItemBlock .tertiaryPalette,
+.layoutEdit .individualPalette .opportunityLineItemBlock .tertiaryPalette {
+    background-color: #DDB929;
+    border-color: #DDB929;
+}
+.opportunityLineItemTab .bgdPalette {
+    background-color: #E5C130;
+}
+.opportunityLineItemTab .brdPalette {
+    border-top-color: #E5C130;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.opportunityLineItemTab .listViewport .subNav .linkBar,
+.opportunityLineItemTab .mComponent .cHeader,
+.opportunityLineItemTab .genericTable,
+.opportunityLineItemTab .bSubBlock,
+.opportunityLineItemTab .bPageBlock{
+    border-top: 3px solid #E5C130;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .opportunityLineItemBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .opportunityLineItemBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .opportunityLineItemBlock .secondaryPalette .pbHeader{
+    border-color: #E5C130;
+}
+
+
+
+.opportunityLineItemTab .pageTitleIcon, .individualPalette .opportunityLineItemBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -1238px;width:32px;
+	height:32px; }
+
+
+
+.opportunityLineItemMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -242px;width:16px;
+	height:16px; }
+
+
+
+/* Motif for Aloha Skin */
+.partnerNetworkConnectionTab  .primaryPalette,
+.individualPalette .partnerNetworkConnectionBlock .primaryPalette {
+    background-color: #64B49D;
+    border-color: #64B49D;
+}
+.partnerNetworkConnectionTab  .secondaryPalette,
+.individualPalette .partnerNetworkConnectionBlock .secondaryPalette {
+    background-color: #64B49D;
+    border-color: #64B49D;
+}
+.partnerNetworkConnectionTab  .tertiaryPalette,
+.individualPalette .partnerNetworkConnectionBlock .tertiaryPalette,
+.layoutEdit .individualPalette .partnerNetworkConnectionBlock .tertiaryPalette {
+    background-color: #64B49D;
+    border-color: #64B49D;
+}
+.partnerNetworkConnectionTab .bgdPalette {
+    background-color: #64B49D;
+}
+.partnerNetworkConnectionTab .brdPalette {
+    border-top-color: #64B49D;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.partnerNetworkConnectionTab .listViewport .subNav .linkBar,
+.partnerNetworkConnectionTab .mComponent .cHeader,
+.partnerNetworkConnectionTab .genericTable,
+.partnerNetworkConnectionTab .bSubBlock,
+.partnerNetworkConnectionTab .bPageBlock{
+    border-top: 3px solid #64B49D;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .partnerNetworkConnectionBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .partnerNetworkConnectionBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .partnerNetworkConnectionBlock .secondaryPalette .pbHeader{
+    border-color: #64B49D;
+}
+
+
+
+.partnerNetworkConnectionTab .pageTitleIcon, .individualPalette .partnerNetworkConnectionBlock .pageTitleIcon { background-image: url(/img/icon/pnet_connection32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.partnerNetworkConnectionMru .mruIcon { background-image: url(/img/icon/pnet_connection16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .partnerNetworkConnectionBlock .relatedListIcon, .allTabTab .partnerNetworkConnectionBlock .relatedListIcon { background-image: url(/img/icon/pnet_connection24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .partnerNetworkConnectionBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .partnerNetworkConnectionBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.tagTab  .primaryPalette,
+.individualPalette .tagBlock .primaryPalette {
+    background-color: #6cd146;
+    border-color: #6cd146;
+}
+.tagTab  .secondaryPalette,
+.individualPalette .tagBlock .secondaryPalette {
+    background-color: #6cd146;
+    border-color: #6cd146;
+}
+.tagTab  .tertiaryPalette,
+.individualPalette .tagBlock .tertiaryPalette,
+.layoutEdit .individualPalette .tagBlock .tertiaryPalette {
+    background-color: #c8ebbb;
+    border-color: #c8ebbb;
+}
+.tagTab .bgdPalette {
+    background-color: #6cd146;
+}
+.tagTab .brdPalette {
+    border-top-color: #6cd146;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.tagTab .listViewport .subNav .linkBar,
+.tagTab .mComponent .cHeader,
+.tagTab .genericTable,
+.tagTab .bSubBlock,
+.tagTab .bPageBlock{
+    border-top: 3px solid #6cd146;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .tagBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .tagBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .tagBlock .secondaryPalette .pbHeader{
+    border-color: #6cd146;
+}
+
+
+
+.tagTab .pageTitleIcon, .individualPalette .tagBlock .pageTitleIcon { background-image: url(/img/icon/tags32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.tagMru .mruIcon { background-image: url(/img/icon/tag16.gif);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .tagBlock .relatedListIcon, .allTabTab .tagBlock .relatedListIcon { background-image: url(/img/icon/tag16.gif);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+.bRelatedList .tagBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .tagBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.workspaceTab  .primaryPalette,
+.individualPalette .workspaceBlock .primaryPalette {
+    background-color: #72afba;
+    border-color: #72afba;
+}
+.workspaceTab  .secondaryPalette,
+.individualPalette .workspaceBlock .secondaryPalette {
+    background-color: #72afba;
+    border-color: #72afba;
+}
+.workspaceTab  .tertiaryPalette,
+.individualPalette .workspaceBlock .tertiaryPalette,
+.layoutEdit .individualPalette .workspaceBlock .tertiaryPalette {
+    background-color: #85c4cf;
+    border-color: #85c4cf;
+}
+.workspaceTab .bgdPalette {
+    background-color: #72afba;
+}
+.workspaceTab .brdPalette {
+    border-top-color: #72afba;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.workspaceTab .listViewport .subNav .linkBar,
+.workspaceTab .mComponent .cHeader,
+.workspaceTab .genericTable,
+.workspaceTab .bSubBlock,
+.workspaceTab .bPageBlock{
+    border-top: 3px solid #72afba;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .workspaceBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .workspaceBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .workspaceBlock .secondaryPalette .pbHeader{
+    border-color: #72afba;
+}
+
+
+
+.workspaceTab .pageTitleIcon, .individualPalette .workspaceBlock .pageTitleIcon { background-image: url(/img/content/workspace32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.workspaceMru .mruIcon { background-image: url(/img/content/workspace16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .workspaceBlock .relatedListIcon, .allTabTab .workspaceBlock .relatedListIcon { background-image: url(/img/content/workspace24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .workspaceBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .workspaceBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.contentSearchTab  .primaryPalette,
+.individualPalette .contentSearchBlock .primaryPalette {
+    background-color: #993333;
+    border-color: #993333;
+}
+.contentSearchTab  .secondaryPalette,
+.individualPalette .contentSearchBlock .secondaryPalette {
+    background-color: #993333;
+    border-color: #993333;
+}
+.contentSearchTab  .tertiaryPalette,
+.individualPalette .contentSearchBlock .tertiaryPalette,
+.layoutEdit .individualPalette .contentSearchBlock .tertiaryPalette {
+    background-color: #BE5E5E;
+    border-color: #BE5E5E;
+}
+.contentSearchTab .bgdPalette {
+    background-color: #993333;
+}
+.contentSearchTab .brdPalette {
+    border-top-color: #993333;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.contentSearchTab .listViewport .subNav .linkBar,
+.contentSearchTab .mComponent .cHeader,
+.contentSearchTab .genericTable,
+.contentSearchTab .bSubBlock,
+.contentSearchTab .bPageBlock{
+    border-top: 3px solid #993333;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .contentSearchBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .contentSearchBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .contentSearchBlock .secondaryPalette .pbHeader{
+    border-color: #993333;
+}
+
+
+
+.contentSearchTab .pageTitleIcon, .individualPalette .contentSearchBlock .pageTitleIcon { background-image: url(/img/content/content32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.contentSearchMru .mruIcon { background-image: url(/img/icon/files16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .contentSearchBlock .relatedListIcon, .allTabTab .contentSearchBlock .relatedListIcon { background-image: url(/img/content/content24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .contentSearchBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .contentSearchBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.chatterFileListTab  .primaryPalette,
+.individualPalette .chatterFileListBlock .primaryPalette {
+    background-color: #1797C0;
+    border-color: #1797C0;
+}
+.chatterFileListTab  .secondaryPalette,
+.individualPalette .chatterFileListBlock .secondaryPalette {
+    background-color: #3A6690;
+    border-color: #3A6690;
+}
+.chatterFileListTab  .tertiaryPalette,
+.individualPalette .chatterFileListBlock .tertiaryPalette,
+.layoutEdit .individualPalette .chatterFileListBlock .tertiaryPalette {
+    background-color: #3A6690;
+    border-color: #3A6690;
+}
+.chatterFileListTab .bgdPalette {
+    background-color: #1797C0;
+}
+.chatterFileListTab .brdPalette {
+    border-top-color: #1797C0;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.chatterFileListTab .listViewport .subNav .linkBar,
+.chatterFileListTab .mComponent .cHeader,
+.chatterFileListTab .genericTable,
+.chatterFileListTab .bSubBlock,
+.chatterFileListTab .bPageBlock{
+    border-top: 3px solid #1797C0;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .chatterFileListBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .chatterFileListBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .chatterFileListBlock .secondaryPalette .pbHeader{
+    border-color: #3A6690;
+}
+
+
+
+.chatterFileListTab .pageTitleIcon, .individualPalette .chatterFileListBlock .pageTitleIcon { background-image: url(/img/icon/files32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.chatterFileListMru .mruIcon { background-image: url(/img/icon/files16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .chatterFileListBlock .relatedListIcon, .allTabTab .chatterFileListBlock .relatedListIcon { background-image: url(/img/icon/files24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .chatterFileListBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .chatterFileListBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.contentSubscriptionsTab  .primaryPalette,
+.individualPalette .contentSubscriptionsBlock .primaryPalette {
+    background-color: #26547C;
+    border-color: #26547C;
+}
+.contentSubscriptionsTab  .secondaryPalette,
+.individualPalette .contentSubscriptionsBlock .secondaryPalette {
+    background-color: #26547C;
+    border-color: #26547C;
+}
+.contentSubscriptionsTab  .tertiaryPalette,
+.individualPalette .contentSubscriptionsBlock .tertiaryPalette,
+.layoutEdit .individualPalette .contentSubscriptionsBlock .tertiaryPalette {
+    background-color: #5E82A3;
+    border-color: #5E82A3;
+}
+.contentSubscriptionsTab .bgdPalette {
+    background-color: #26547C;
+}
+.contentSubscriptionsTab .brdPalette {
+    border-top-color: #26547C;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.contentSubscriptionsTab .listViewport .subNav .linkBar,
+.contentSubscriptionsTab .mComponent .cHeader,
+.contentSubscriptionsTab .genericTable,
+.contentSubscriptionsTab .bSubBlock,
+.contentSubscriptionsTab .bPageBlock{
+    border-top: 3px solid #26547C;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .contentSubscriptionsBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .contentSubscriptionsBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .contentSubscriptionsBlock .secondaryPalette .pbHeader{
+    border-color: #26547C;
+}
+
+
+
+.contentSubscriptionsTab .pageTitleIcon, .individualPalette .contentSubscriptionsBlock .pageTitleIcon { background-image: url(/img/content/subscriptions32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.contentSubscriptionsMru .mruIcon { background-image: url(/img/content/subscriptions16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .contentSubscriptionsBlock .relatedListIcon, .allTabTab .contentSubscriptionsBlock .relatedListIcon { background-image: url(/img/content/subscriptions24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .contentSubscriptionsBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .contentSubscriptionsBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.contentContributeTab  .primaryPalette,
+.individualPalette .contentContributeBlock .primaryPalette {
+    background-color: #cc6600;
+    border-color: #cc6600;
+}
+.contentContributeTab  .secondaryPalette,
+.individualPalette .contentContributeBlock .secondaryPalette {
+    background-color: #cc6600;
+    border-color: #cc6600;
+}
+.contentContributeTab  .tertiaryPalette,
+.individualPalette .contentContributeBlock .tertiaryPalette,
+.layoutEdit .individualPalette .contentContributeBlock .tertiaryPalette {
+    background-color: #d98e42;
+    border-color: #d98e42;
+}
+.contentContributeTab .bgdPalette {
+    background-color: #cc6600;
+}
+.contentContributeTab .brdPalette {
+    border-top-color: #cc6600;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.contentContributeTab .listViewport .subNav .linkBar,
+.contentContributeTab .mComponent .cHeader,
+.contentContributeTab .genericTable,
+.contentContributeTab .bSubBlock,
+.contentContributeTab .bPageBlock{
+    border-top: 3px solid #cc6600;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .contentContributeBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .contentContributeBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .contentContributeBlock .secondaryPalette .pbHeader{
+    border-color: #cc6600;
+}
+
+
+
+.contentContributeTab .pageTitleIcon, .individualPalette .contentContributeBlock .pageTitleIcon { background-image: url(/img/content/contribute32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.contentContributeMru .mruIcon { background-image: url(/img/content/contribute16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .contentContributeBlock .relatedListIcon, .allTabTab .contentContributeBlock .relatedListIcon { background-image: url(/img/content/contribute24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .contentContributeBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .contentContributeBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.contentFavoritesTab  .primaryPalette,
+.individualPalette .contentFavoritesBlock .primaryPalette {
+    background-color: #CC9933;
+    border-color: #CC9933;
+}
+.contentFavoritesTab  .secondaryPalette,
+.individualPalette .contentFavoritesBlock .secondaryPalette {
+    background-color: #CC9933;
+    border-color: #CC9933;
+}
+.contentFavoritesTab  .tertiaryPalette,
+.individualPalette .contentFavoritesBlock .tertiaryPalette,
+.layoutEdit .individualPalette .contentFavoritesBlock .tertiaryPalette {
+    background-color: #C9AF82;
+    border-color: #C9AF82;
+}
+.contentFavoritesTab .bgdPalette {
+    background-color: #CC9933;
+}
+.contentFavoritesTab .brdPalette {
+    border-top-color: #CC9933;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.contentFavoritesTab .listViewport .subNav .linkBar,
+.contentFavoritesTab .mComponent .cHeader,
+.contentFavoritesTab .genericTable,
+.contentFavoritesTab .bSubBlock,
+.contentFavoritesTab .bPageBlock{
+    border-top: 3px solid #CC9933;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .contentFavoritesBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .contentFavoritesBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .contentFavoritesBlock .secondaryPalette .pbHeader{
+    border-color: #CC9933;
+}
+
+
+
+.contentFavoritesTab .pageTitleIcon, .individualPalette .contentFavoritesBlock .pageTitleIcon { background-image: url(/img/icon/documents32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.contentFavoritesMru .mruIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -122px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .contentFavoritesBlock .relatedListIcon, .allTabTab .contentFavoritesBlock .relatedListIcon { background-image: url(/img/icon/documents24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .contentFavoritesBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .contentFavoritesBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.contentDistributionTab  .primaryPalette,
+.individualPalette .contentDistributionBlock .primaryPalette {
+    background-color: #993333;
+    border-color: #993333;
+}
+.contentDistributionTab  .secondaryPalette,
+.individualPalette .contentDistributionBlock .secondaryPalette {
+    background-color: #993333;
+    border-color: #993333;
+}
+.contentDistributionTab  .tertiaryPalette,
+.individualPalette .contentDistributionBlock .tertiaryPalette,
+.layoutEdit .individualPalette .contentDistributionBlock .tertiaryPalette {
+    background-color: #BE5E5E;
+    border-color: #BE5E5E;
+}
+.contentDistributionTab .bgdPalette {
+    background-color: #993333;
+}
+.contentDistributionTab .brdPalette {
+    border-top-color: #993333;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.contentDistributionTab .listViewport .subNav .linkBar,
+.contentDistributionTab .mComponent .cHeader,
+.contentDistributionTab .genericTable,
+.contentDistributionTab .bSubBlock,
+.contentDistributionTab .bPageBlock{
+    border-top: 3px solid #993333;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .contentDistributionBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .contentDistributionBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .contentDistributionBlock .secondaryPalette .pbHeader{
+    border-color: #993333;
+}
+
+
+
+.contentDistributionTab .pageTitleIcon, .individualPalette .contentDistributionBlock .pageTitleIcon { background-image: url(/img/content/deliver32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.contentDistributionMru .mruIcon { background-image: url(/img/content/deliver16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .contentDistributionBlock .relatedListIcon, .allTabTab .contentDistributionBlock .relatedListIcon { background-image: url(/img/content/deliver24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .contentDistributionBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .contentDistributionBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.ideaTab  .primaryPalette,
+.individualPalette .ideaBlock .primaryPalette {
+    background-color: #178AFF;
+    border-color: #178AFF;
+}
+.ideaTab  .secondaryPalette,
+.individualPalette .ideaBlock .secondaryPalette {
+    background-color: #178AFF;
+    border-color: #178AFF;
+}
+.ideaTab  .tertiaryPalette,
+.individualPalette .ideaBlock .tertiaryPalette,
+.layoutEdit .individualPalette .ideaBlock .tertiaryPalette {
+    background-color: #41C1FC;
+    border-color: #41C1FC;
+}
+.ideaTab .bgdPalette {
+    background-color: #178AFF;
+}
+.ideaTab .brdPalette {
+    border-top-color: #178AFF;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.ideaTab .listViewport .subNav .linkBar,
+.ideaTab .mComponent .cHeader,
+.ideaTab .genericTable,
+.ideaTab .bSubBlock,
+.ideaTab .bPageBlock{
+    border-top: 3px solid #178AFF;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .ideaBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .ideaBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .ideaBlock .secondaryPalette .pbHeader{
+    border-color: #178AFF;
+}
+
+
+
+.ideaTab .pageTitleIcon, .individualPalette .ideaBlock .pageTitleIcon { background-image: url(/img/icon/ideabubble32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.ideaMru .mruIcon { background-image: url(/img/icon/ideabubble16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .ideaBlock .relatedListIcon, .allTabTab .ideaBlock .relatedListIcon { background-image: url(/img/icon/ideabubble24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .ideaBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .ideaBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.questionsTab  .primaryPalette,
+.individualPalette .questionsBlock .primaryPalette {
+    background-color: #36A0FE;
+    border-color: #36A0FE;
+}
+.questionsTab  .secondaryPalette,
+.individualPalette .questionsBlock .secondaryPalette {
+    background-color: #36A0FE;
+    border-color: #36A0FE;
+}
+.questionsTab  .tertiaryPalette,
+.individualPalette .questionsBlock .tertiaryPalette,
+.layoutEdit .individualPalette .questionsBlock .tertiaryPalette {
+    background-color: #F9C57E;
+    border-color: #F9C57E;
+}
+.questionsTab .bgdPalette {
+    background-color: #36A0FE;
+}
+.questionsTab .brdPalette {
+    border-top-color: #36A0FE;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.questionsTab .listViewport .subNav .linkBar,
+.questionsTab .mComponent .cHeader,
+.questionsTab .genericTable,
+.questionsTab .bSubBlock,
+.questionsTab .bPageBlock{
+    border-top: 3px solid #36A0FE;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .questionsBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .questionsBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .questionsBlock .secondaryPalette .pbHeader{
+    border-color: #36A0FE;
+}
+
+
+
+.questionsTab .pageTitleIcon, .individualPalette .questionsBlock .pageTitleIcon { background-image: url(/img/icon/csquestions32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.questionsMru .mruIcon { background-image: url(/img/icon/csquestions16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .questionsBlock .relatedListIcon, .allTabTab .questionsBlock .relatedListIcon { background-image: url(/img/icon/csquestions24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .questionsBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .questionsBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.answersTab  .primaryPalette,
+.individualPalette .answersBlock .primaryPalette {
+    background-color: #36A0FE;
+    border-color: #36A0FE;
+}
+.answersTab  .secondaryPalette,
+.individualPalette .answersBlock .secondaryPalette {
+    background-color: #36A0FE;
+    border-color: #36A0FE;
+}
+.answersTab  .tertiaryPalette,
+.individualPalette .answersBlock .tertiaryPalette,
+.layoutEdit .individualPalette .answersBlock .tertiaryPalette {
+    background-color: #F9C57E;
+    border-color: #F9C57E;
+}
+.answersTab .bgdPalette {
+    background-color: #36A0FE;
+}
+.answersTab .brdPalette {
+    border-top-color: #36A0FE;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.answersTab .listViewport .subNav .linkBar,
+.answersTab .mComponent .cHeader,
+.answersTab .genericTable,
+.answersTab .bSubBlock,
+.answersTab .bPageBlock{
+    border-top: 3px solid #36A0FE;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .answersBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .answersBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .answersBlock .secondaryPalette .pbHeader{
+    border-color: #36A0FE;
+}
+
+
+
+.answersTab .pageTitleIcon, .individualPalette .answersBlock .pageTitleIcon { background-image: url(/img/icon/questions32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.answersMru .mruIcon { background-image: url(/img/icon/questions16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .answersBlock .relatedListIcon, .allTabTab .answersBlock .relatedListIcon { background-image: url(/img/icon/questions24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .answersBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .answersBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.googleDocsTab  .primaryPalette,
+.individualPalette .googleDocsBlock .primaryPalette {
+    background-color: #67A7E3;
+    border-color: #67A7E3;
+}
+.googleDocsTab  .secondaryPalette,
+.individualPalette .googleDocsBlock .secondaryPalette {
+    background-color: #67A7E3;
+    border-color: #67A7E3;
+}
+.googleDocsTab  .tertiaryPalette,
+.individualPalette .googleDocsBlock .tertiaryPalette,
+.layoutEdit .individualPalette .googleDocsBlock .tertiaryPalette {
+    background-color: #67A7E3;
+    border-color: #67A7E3;
+}
+.googleDocsTab .bgdPalette {
+    background-color: #67A7E3;
+}
+.googleDocsTab .brdPalette {
+    border-top-color: #67A7E3;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.googleDocsTab .listViewport .subNav .linkBar,
+.googleDocsTab .mComponent .cHeader,
+.googleDocsTab .genericTable,
+.googleDocsTab .bSubBlock,
+.googleDocsTab .bPageBlock{
+    border-top: 3px solid #67A7E3;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .googleDocsBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .googleDocsBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .googleDocsBlock .secondaryPalette .pbHeader{
+    border-color: #67A7E3;
+}
+
+
+
+.googleDocsTab .pageTitleIcon, .individualPalette .googleDocsBlock .pageTitleIcon { background-image: url(/img/google/google_docs_icon_24x24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+
+
+.googleDocsMru .mruIcon { background-image: url(/s.gif);
+	background-position: 0px 0px;width:0px;
+	height:0px; }
+
+
+
+.bRelatedList .googleDocsBlock .relatedListIcon, .allTabTab .googleDocsBlock .relatedListIcon { background-image: url(/img/google/google_docs_icon_24x24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .googleDocsBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .googleDocsBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.userTab  .primaryPalette,
+.individualPalette .userBlock .primaryPalette {
+    background-color: #1797C0;
+    border-color: #1797C0;
+}
+.userTab  .secondaryPalette,
+.individualPalette .userBlock .secondaryPalette {
+    background-color: #3A6690;
+    border-color: #3A6690;
+}
+.userTab  .tertiaryPalette,
+.individualPalette .userBlock .tertiaryPalette,
+.layoutEdit .individualPalette .userBlock .tertiaryPalette {
+    background-color: #3A6690;
+    border-color: #3A6690;
+}
+.userTab .bgdPalette {
+    background-color: #1797C0;
+}
+.userTab .brdPalette {
+    border-top-color: #1797C0;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.userTab .listViewport .subNav .linkBar,
+.userTab .mComponent .cHeader,
+.userTab .genericTable,
+.userTab .bSubBlock,
+.userTab .bPageBlock{
+    border-top: 3px solid #1797C0;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .userBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .userBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .userBlock .secondaryPalette .pbHeader{
+    border-color: #3A6690;
+}
+
+
+
+.userTab .pageTitleIcon, .individualPalette .userBlock .pageTitleIcon { background-image: url(/img/icon/profile32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.userMru .mruIcon { background-image: url(/img/icon/profile16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .userBlock .relatedListIcon, .allTabTab .userBlock .relatedListIcon { background-image: url(/img/icon/profile24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .userBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .userBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.knowledgeTab  .primaryPalette,
+.individualPalette .knowledgeBlock .primaryPalette {
+    background-color: #3F44A4;
+    border-color: #3F44A4;
+}
+.knowledgeTab  .secondaryPalette,
+.individualPalette .knowledgeBlock .secondaryPalette {
+    background-color: #3F44A4;
+    border-color: #3F44A4;
+}
+.knowledgeTab  .tertiaryPalette,
+.individualPalette .knowledgeBlock .tertiaryPalette,
+.layoutEdit .individualPalette .knowledgeBlock .tertiaryPalette {
+    background-color: #3F44A4;
+    border-color: #3F44A4;
+}
+.knowledgeTab .bgdPalette {
+    background-color: #3F44A4;
+}
+.knowledgeTab .brdPalette {
+    border-top-color: #3F44A4;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.knowledgeTab .listViewport .subNav .linkBar,
+.knowledgeTab .mComponent .cHeader,
+.knowledgeTab .genericTable,
+.knowledgeTab .bSubBlock,
+.knowledgeTab .bPageBlock{
+    border-top: 3px solid #3F44A4;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .knowledgeBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .knowledgeBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .knowledgeBlock .secondaryPalette .pbHeader{
+    border-color: #3F44A4;
+}
+
+
+
+.knowledgeTab .pageTitleIcon, .individualPalette .knowledgeBlock .pageTitleIcon { background-image: url(/img/knowledge/knowledge32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.knowledgeMru .mruIcon { background-image: url(/img/knowledge/knowledge16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .knowledgeBlock .relatedListIcon, .allTabTab .knowledgeBlock .relatedListIcon { background-image: url(/img/knowledge/knowledge24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .knowledgeBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .knowledgeBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.knowledgePublishingTab  .primaryPalette,
+.individualPalette .knowledgePublishingBlock .primaryPalette {
+    background-color: #3F44A4;
+    border-color: #3F44A4;
+}
+.knowledgePublishingTab  .secondaryPalette,
+.individualPalette .knowledgePublishingBlock .secondaryPalette {
+    background-color: #3F44A4;
+    border-color: #3F44A4;
+}
+.knowledgePublishingTab  .tertiaryPalette,
+.individualPalette .knowledgePublishingBlock .tertiaryPalette,
+.layoutEdit .individualPalette .knowledgePublishingBlock .tertiaryPalette {
+    background-color: #6B70C6;
+    border-color: #6B70C6;
+}
+.knowledgePublishingTab .bgdPalette {
+    background-color: #3F44A4;
+}
+.knowledgePublishingTab .brdPalette {
+    border-top-color: #3F44A4;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.knowledgePublishingTab .listViewport .subNav .linkBar,
+.knowledgePublishingTab .mComponent .cHeader,
+.knowledgePublishingTab .genericTable,
+.knowledgePublishingTab .bSubBlock,
+.knowledgePublishingTab .bPageBlock{
+    border-top: 3px solid #3F44A4;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .knowledgePublishingBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .knowledgePublishingBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .knowledgePublishingBlock .secondaryPalette .pbHeader{
+    border-color: #3F44A4;
+}
+
+
+
+.knowledgePublishingTab .pageTitleIcon, .individualPalette .knowledgePublishingBlock .pageTitleIcon { background-image: url(/img/knowledge/publishing/knowledgemanagement32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.knowledgePublishingMru .mruIcon { background-image: url(/img/knowledge/publishing/knowledgemanagement16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .knowledgePublishingBlock .relatedListIcon, .allTabTab .knowledgePublishingBlock .relatedListIcon { background-image: url(/img/knowledge/publishing/knowledgemanagement24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .knowledgePublishingBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .knowledgePublishingBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.entitlementTab  .primaryPalette,
+.individualPalette .entitlementBlock .primaryPalette {
+    background-color: #549647;
+    border-color: #549647;
+}
+.entitlementTab  .secondaryPalette,
+.individualPalette .entitlementBlock .secondaryPalette {
+    background-color: #549647;
+    border-color: #549647;
+}
+.entitlementTab  .tertiaryPalette,
+.individualPalette .entitlementBlock .tertiaryPalette,
+.layoutEdit .individualPalette .entitlementBlock .tertiaryPalette {
+    background-color: #6DBA5C;
+    border-color: #6DBA5C;
+}
+.entitlementTab .bgdPalette {
+    background-color: #549647;
+}
+.entitlementTab .brdPalette {
+    border-top-color: #549647;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.entitlementTab .listViewport .subNav .linkBar,
+.entitlementTab .mComponent .cHeader,
+.entitlementTab .genericTable,
+.entitlementTab .bSubBlock,
+.entitlementTab .bPageBlock{
+    border-top: 3px solid #549647;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .entitlementBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .entitlementBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .entitlementBlock .secondaryPalette .pbHeader{
+    border-color: #549647;
+}
+
+
+
+.entitlementTab .pageTitleIcon, .individualPalette .entitlementBlock .pageTitleIcon { background-image: url(/img/icon/entitlements32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.entitlementMru .mruIcon { background-image: url(/img/icon/entitlements16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .entitlementBlock .relatedListIcon, .allTabTab .entitlementBlock .relatedListIcon { background-image: url(/img/icon/entitlements24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .entitlementBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .entitlementBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.serviceContractTab  .primaryPalette,
+.individualPalette .serviceContractBlock .primaryPalette {
+    background-color: #3F7134;
+    border-color: #3F7134;
+}
+.serviceContractTab  .secondaryPalette,
+.individualPalette .serviceContractBlock .secondaryPalette {
+    background-color: #3F7134;
+    border-color: #3F7134;
+}
+.serviceContractTab  .tertiaryPalette,
+.individualPalette .serviceContractBlock .tertiaryPalette,
+.layoutEdit .individualPalette .serviceContractBlock .tertiaryPalette {
+    background-color: #609854;
+    border-color: #609854;
+}
+.serviceContractTab .bgdPalette {
+    background-color: #3F7134;
+}
+.serviceContractTab .brdPalette {
+    border-top-color: #3F7134;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.serviceContractTab .listViewport .subNav .linkBar,
+.serviceContractTab .mComponent .cHeader,
+.serviceContractTab .genericTable,
+.serviceContractTab .bSubBlock,
+.serviceContractTab .bPageBlock{
+    border-top: 3px solid #3F7134;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .serviceContractBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .serviceContractBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .serviceContractBlock .secondaryPalette .pbHeader{
+    border-color: #3F7134;
+}
+
+
+
+.serviceContractTab .pageTitleIcon, .individualPalette .serviceContractBlock .pageTitleIcon { background-image: url(/img/icon/service_contracts32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.serviceContractMru .mruIcon { background-image: url(/img/icon/service_contracts16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .serviceContractBlock .relatedListIcon, .allTabTab .serviceContractBlock .relatedListIcon { background-image: url(/img/icon/service_contracts24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .serviceContractBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .serviceContractBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.liveAgentTab  .primaryPalette,
+.individualPalette .liveAgentBlock .primaryPalette {
+    background-color: #004F6D;
+    border-color: #004F6D;
+}
+.liveAgentTab  .secondaryPalette,
+.individualPalette .liveAgentBlock .secondaryPalette {
+    background-color: #004F6D;
+    border-color: #004F6D;
+}
+.liveAgentTab  .tertiaryPalette,
+.individualPalette .liveAgentBlock .tertiaryPalette,
+.layoutEdit .individualPalette .liveAgentBlock .tertiaryPalette {
+    background-color: #00709E;
+    border-color: #00709E;
+}
+.liveAgentTab .bgdPalette {
+    background-color: #004F6D;
+}
+.liveAgentTab .brdPalette {
+    border-top-color: #004F6D;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.liveAgentTab .listViewport .subNav .linkBar,
+.liveAgentTab .mComponent .cHeader,
+.liveAgentTab .genericTable,
+.liveAgentTab .bSubBlock,
+.liveAgentTab .bPageBlock{
+    border-top: 3px solid #004F6D;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .liveAgentBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .liveAgentBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .liveAgentBlock .secondaryPalette .pbHeader{
+    border-color: #004F6D;
+}
+
+
+
+.liveAgentTab .pageTitleIcon, .individualPalette .liveAgentBlock .pageTitleIcon { background-image: url(/img/icon/livechat32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.liveAgentMru .mruIcon { /* ERROR parsing css file: mruIcon. image or parameter not found in motif */ }
+
+
+
+.bRelatedList .liveAgentBlock .relatedListIcon, .allTabTab .liveAgentBlock .relatedListIcon { background-image: url(/img/icon/livechat24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .liveAgentBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .liveAgentBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.liveChatTranscriptTab  .primaryPalette,
+.individualPalette .liveChatTranscriptBlock .primaryPalette {
+    background-color: #004F6D;
+    border-color: #004F6D;
+}
+.liveChatTranscriptTab  .secondaryPalette,
+.individualPalette .liveChatTranscriptBlock .secondaryPalette {
+    background-color: #004F6D;
+    border-color: #004F6D;
+}
+.liveChatTranscriptTab  .tertiaryPalette,
+.individualPalette .liveChatTranscriptBlock .tertiaryPalette,
+.layoutEdit .individualPalette .liveChatTranscriptBlock .tertiaryPalette {
+    background-color: #00709E;
+    border-color: #00709E;
+}
+.liveChatTranscriptTab .bgdPalette {
+    background-color: #004F6D;
+}
+.liveChatTranscriptTab .brdPalette {
+    border-top-color: #004F6D;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.liveChatTranscriptTab .listViewport .subNav .linkBar,
+.liveChatTranscriptTab .mComponent .cHeader,
+.liveChatTranscriptTab .genericTable,
+.liveChatTranscriptTab .bSubBlock,
+.liveChatTranscriptTab .bPageBlock{
+    border-top: 3px solid #004F6D;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .liveChatTranscriptBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .liveChatTranscriptBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .liveChatTranscriptBlock .secondaryPalette .pbHeader{
+    border-color: #004F6D;
+}
+
+
+
+.liveChatTranscriptTab .pageTitleIcon, .individualPalette .liveChatTranscriptBlock .pageTitleIcon { background-image: url(/img/icon/livechattranscript32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.liveChatTranscriptMru .mruIcon { background-image: url(/img/icon/livechattranscript16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .liveChatTranscriptBlock .relatedListIcon, .allTabTab .liveChatTranscriptBlock .relatedListIcon { background-image: url(/img/icon/livechattranscript24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .liveChatTranscriptBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .liveChatTranscriptBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.liveChatVisitorTab  .primaryPalette,
+.individualPalette .liveChatVisitorBlock .primaryPalette {
+    background-color: #493533;
+    border-color: #493533;
+}
+.liveChatVisitorTab  .secondaryPalette,
+.individualPalette .liveChatVisitorBlock .secondaryPalette {
+    background-color: #493533;
+    border-color: #493533;
+}
+.liveChatVisitorTab  .tertiaryPalette,
+.individualPalette .liveChatVisitorBlock .tertiaryPalette,
+.layoutEdit .individualPalette .liveChatVisitorBlock .tertiaryPalette {
+    background-color: #8C706B;
+    border-color: #8C706B;
+}
+.liveChatVisitorTab .bgdPalette {
+    background-color: #493533;
+}
+.liveChatVisitorTab .brdPalette {
+    border-top-color: #493533;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.liveChatVisitorTab .listViewport .subNav .linkBar,
+.liveChatVisitorTab .mComponent .cHeader,
+.liveChatVisitorTab .genericTable,
+.liveChatVisitorTab .bSubBlock,
+.liveChatVisitorTab .bPageBlock{
+    border-top: 3px solid #493533;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .liveChatVisitorBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .liveChatVisitorBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .liveChatVisitorBlock .secondaryPalette .pbHeader{
+    border-color: #493533;
+}
+
+
+
+.liveChatVisitorTab .pageTitleIcon, .individualPalette .liveChatVisitorBlock .pageTitleIcon { background-image: url(/img/icon/livechatvisitor32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.liveChatVisitorMru .mruIcon { background-image: url(/img/icon/livechatvisitor16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .liveChatVisitorBlock .relatedListIcon, .allTabTab .liveChatVisitorBlock .relatedListIcon { background-image: url(/img/icon/livechatvisitor24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .liveChatVisitorBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .liveChatVisitorBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.quickTextTab  .primaryPalette,
+.individualPalette .quickTextBlock .primaryPalette {
+    background-color: #74b6ca;
+    border-color: #74b6ca;
+}
+.quickTextTab  .secondaryPalette,
+.individualPalette .quickTextBlock .secondaryPalette {
+    background-color: #74b6ca;
+    border-color: #74b6ca;
+}
+.quickTextTab  .tertiaryPalette,
+.individualPalette .quickTextBlock .tertiaryPalette,
+.layoutEdit .individualPalette .quickTextBlock .tertiaryPalette {
+    background-color: #9dd3e3;
+    border-color: #9dd3e3;
+}
+.quickTextTab .bgdPalette {
+    background-color: #74b6ca;
+}
+.quickTextTab .brdPalette {
+    border-top-color: #74b6ca;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.quickTextTab .listViewport .subNav .linkBar,
+.quickTextTab .mComponent .cHeader,
+.quickTextTab .genericTable,
+.quickTextTab .bSubBlock,
+.quickTextTab .bPageBlock{
+    border-top: 3px solid #74b6ca;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .quickTextBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .quickTextBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .quickTextBlock .secondaryPalette .pbHeader{
+    border-color: #74b6ca;
+}
+
+
+
+.quickTextTab .pageTitleIcon, .individualPalette .quickTextBlock .pageTitleIcon { background-image: url(/img/icon/quicktext32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.quickTextMru .mruIcon { background-image: url(/img/icon/quicktext16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .quickTextBlock .relatedListIcon, .allTabTab .quickTextBlock .relatedListIcon { background-image: url(/img/icon/quicktext24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .quickTextBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .quickTextBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.collaborationGroupTab  .primaryPalette,
+.individualPalette .collaborationGroupBlock .primaryPalette {
+    background-color: #1797C0;
+    border-color: #1797C0;
+}
+.collaborationGroupTab  .secondaryPalette,
+.individualPalette .collaborationGroupBlock .secondaryPalette {
+    background-color: #3A6690;
+    border-color: #3A6690;
+}
+.collaborationGroupTab  .tertiaryPalette,
+.individualPalette .collaborationGroupBlock .tertiaryPalette,
+.layoutEdit .individualPalette .collaborationGroupBlock .tertiaryPalette {
+    background-color: #92aac9;
+    border-color: #92aac9;
+}
+.collaborationGroupTab .bgdPalette {
+    background-color: #1797C0;
+}
+.collaborationGroupTab .brdPalette {
+    border-top-color: #1797C0;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.collaborationGroupTab .listViewport .subNav .linkBar,
+.collaborationGroupTab .mComponent .cHeader,
+.collaborationGroupTab .genericTable,
+.collaborationGroupTab .bSubBlock,
+.collaborationGroupTab .bPageBlock{
+    border-top: 3px solid #1797C0;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .collaborationGroupBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .collaborationGroupBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .collaborationGroupBlock .secondaryPalette .pbHeader{
+    border-color: #3A6690;
+}
+
+
+
+.collaborationGroupTab .pageTitleIcon, .individualPalette .collaborationGroupBlock .pageTitleIcon { background-image: url(/img/icon/groups32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.collaborationGroupMru .mruIcon { background-image: url(/img/icon/groups16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .collaborationGroupBlock .relatedListIcon, .allTabTab .collaborationGroupBlock .relatedListIcon { background-image: url(/img/icon/groups24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .collaborationGroupBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .collaborationGroupBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.messageTab  .primaryPalette,
+.individualPalette .messageBlock .primaryPalette {
+    background-color: #4F9241;
+    border-color: #4F9241;
+}
+.messageTab  .secondaryPalette,
+.individualPalette .messageBlock .secondaryPalette {
+    background-color: #4F9241;
+    border-color: #4F9241;
+}
+.messageTab  .tertiaryPalette,
+.individualPalette .messageBlock .tertiaryPalette,
+.layoutEdit .individualPalette .messageBlock .tertiaryPalette {
+    background-color: #8DAE84;
+    border-color: #8DAE84;
+}
+.messageTab .bgdPalette {
+    background-color: #4F9241;
+}
+.messageTab .brdPalette {
+    border-top-color: #4F9241;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.messageTab .listViewport .subNav .linkBar,
+.messageTab .mComponent .cHeader,
+.messageTab .genericTable,
+.messageTab .bSubBlock,
+.messageTab .bPageBlock{
+    border-top: 3px solid #4F9241;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .messageBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .messageBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .messageBlock .secondaryPalette .pbHeader{
+    border-color: #4F9241;
+}
+
+
+
+.messageTab .pageTitleIcon, .individualPalette .messageBlock .pageTitleIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -1130px;width:32px;
+	height:32px; }
+
+
+
+.messageMru .mruIcon { background-image: url(/img/icon/home16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .messageBlock .relatedListIcon, .allTabTab .messageBlock .relatedListIcon { background-image: url(/img/sprites/master.png);
+	background-position: 0px -642px;width:24px;
+	height:24px; }
+
+.bRelatedList .messageBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .messageBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.fileTab  .primaryPalette,
+.individualPalette .fileBlock .primaryPalette {
+    background-color: #1797C0;
+    border-color: #1797C0;
+}
+.fileTab  .secondaryPalette,
+.individualPalette .fileBlock .secondaryPalette {
+    background-color: #3A6690;
+    border-color: #3A6690;
+}
+.fileTab  .tertiaryPalette,
+.individualPalette .fileBlock .tertiaryPalette,
+.layoutEdit .individualPalette .fileBlock .tertiaryPalette {
+    background-color: #3A6690;
+    border-color: #3A6690;
+}
+.fileTab .bgdPalette {
+    background-color: #1797C0;
+}
+.fileTab .brdPalette {
+    border-top-color: #1797C0;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.fileTab .listViewport .subNav .linkBar,
+.fileTab .mComponent .cHeader,
+.fileTab .genericTable,
+.fileTab .bSubBlock,
+.fileTab .bPageBlock{
+    border-top: 3px solid #1797C0;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .fileBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .fileBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .fileBlock .secondaryPalette .pbHeader{
+    border-color: #3A6690;
+}
+
+
+
+.fileTab .pageTitleIcon, .individualPalette .fileBlock .pageTitleIcon { background-image: url(/img/icon/files32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.fileMru .mruIcon { background-image: url(/img/icon/files16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .fileBlock .relatedListIcon, .allTabTab .fileBlock .relatedListIcon { background-image: url(/img/icon/files24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .fileBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .fileBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.chatterTab  .primaryPalette,
+.individualPalette .chatterBlock .primaryPalette {
+    background-color: #1797C0;
+    border-color: #1797C0;
+}
+.chatterTab  .secondaryPalette,
+.individualPalette .chatterBlock .secondaryPalette {
+    background-color: #3A6690;
+    border-color: #3A6690;
+}
+.chatterTab  .tertiaryPalette,
+.individualPalette .chatterBlock .tertiaryPalette,
+.layoutEdit .individualPalette .chatterBlock .tertiaryPalette {
+    background-color: #3A6690;
+    border-color: #3A6690;
+}
+.chatterTab .bgdPalette {
+    background-color: #1797C0;
+}
+.chatterTab .brdPalette {
+    border-top-color: #1797C0;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.chatterTab .listViewport .subNav .linkBar,
+.chatterTab .mComponent .cHeader,
+.chatterTab .genericTable,
+.chatterTab .bSubBlock,
+.chatterTab .bPageBlock{
+    border-top: 3px solid #1797C0;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .chatterBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .chatterBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .chatterBlock .secondaryPalette .pbHeader{
+    border-color: #3A6690;
+}
+
+
+
+.chatterTab .pageTitleIcon, .individualPalette .chatterBlock .pageTitleIcon { background-image: url(/img/icon/chatterC32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.chatterMru .mruIcon { background-image: url(/img/icon/chatterC16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .chatterBlock .relatedListIcon, .allTabTab .chatterBlock .relatedListIcon { background-image: url(/img/icon/chatterC24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .chatterBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .chatterBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.jigsawSearchTab  .primaryPalette,
+.individualPalette .jigsawSearchBlock .primaryPalette {
+    background-color: #ef8d38;
+    border-color: #ef8d38;
+}
+.jigsawSearchTab  .secondaryPalette,
+.individualPalette .jigsawSearchBlock .secondaryPalette {
+    background-color: #ef8d38;
+    border-color: #ef8d38;
+}
+.jigsawSearchTab  .tertiaryPalette,
+.individualPalette .jigsawSearchBlock .tertiaryPalette,
+.layoutEdit .individualPalette .jigsawSearchBlock .tertiaryPalette {
+    background-color: #f9d2a3;
+    border-color: #f9d2a3;
+}
+.jigsawSearchTab .bgdPalette {
+    background-color: #ef8d38;
+}
+.jigsawSearchTab .brdPalette {
+    border-top-color: #ef8d38;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.jigsawSearchTab .listViewport .subNav .linkBar,
+.jigsawSearchTab .mComponent .cHeader,
+.jigsawSearchTab .genericTable,
+.jigsawSearchTab .bSubBlock,
+.jigsawSearchTab .bPageBlock{
+    border-top: 3px solid #ef8d38;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .jigsawSearchBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .jigsawSearchBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .jigsawSearchBlock .secondaryPalette .pbHeader{
+    border-color: #ef8d38;
+}
+
+
+
+.jigsawSearchTab .pageTitleIcon, .individualPalette .jigsawSearchBlock .pageTitleIcon { background-image: url(/img/icon/datadotcom32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.jigsawSearchMru .mruIcon { background-image: url(/img/icon/datadotcom16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .jigsawSearchBlock .relatedListIcon, .allTabTab .jigsawSearchBlock .relatedListIcon { background-image: url(/img/icon/datadotcom24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .jigsawSearchBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .jigsawSearchBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.sitesTab  .primaryPalette,
+.individualPalette .sitesBlock .primaryPalette {
+    background-color: #1797C0;
+    border-color: #1797C0;
+}
+.sitesTab  .secondaryPalette,
+.individualPalette .sitesBlock .secondaryPalette {
+    background-color: #3A6690;
+    border-color: #3A6690;
+}
+.sitesTab  .tertiaryPalette,
+.individualPalette .sitesBlock .tertiaryPalette,
+.layoutEdit .individualPalette .sitesBlock .tertiaryPalette {
+    background-color: #3A6690;
+    border-color: #3A6690;
+}
+.sitesTab .bgdPalette {
+    background-color: #1797C0;
+}
+.sitesTab .brdPalette {
+    border-top-color: #1797C0;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.sitesTab .listViewport .subNav .linkBar,
+.sitesTab .mComponent .cHeader,
+.sitesTab .genericTable,
+.sitesTab .bSubBlock,
+.sitesTab .bPageBlock{
+    border-top: 3px solid #1797C0;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .sitesBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .sitesBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .sitesBlock .secondaryPalette .pbHeader{
+    border-color: #3A6690;
+}
+
+
+
+.sitesTab .pageTitleIcon, .individualPalette .sitesBlock .pageTitleIcon { background-image: url(/img/icon/sites32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.sitesMru .mruIcon { /* ERROR parsing css file: mruIcon. image or parameter not found in motif */ }
+
+
+
+.bRelatedList .sitesBlock .relatedListIcon, .allTabTab .sitesBlock .relatedListIcon { background-image: url(/img/icon/sites24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .sitesBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .sitesBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+
+/* Motif for Aloha Skin */
+.myCustomObjectTab  .primaryPalette,
+.individualPalette .myCustomObjectBlock .primaryPalette {
+    background-color: #1797C0;
+    border-color: #1797C0;
+}
+.myCustomObjectTab  .secondaryPalette,
+.individualPalette .myCustomObjectBlock .secondaryPalette {
+    background-color: #3A6690;
+    border-color: #3A6690;
+}
+.myCustomObjectTab  .tertiaryPalette,
+.individualPalette .myCustomObjectBlock .tertiaryPalette,
+.layoutEdit .individualPalette .myCustomObjectBlock .tertiaryPalette {
+    background-color: #3A6690;
+    border-color: #3A6690;
+}
+.myCustomObjectTab .bgdPalette {
+    background-color: #1797C0;
+}
+.myCustomObjectTab .brdPalette {
+    border-top-color: #1797C0;
+}
+
+/** Page Blocks, Related Lists, Enhanced List and Dashboard **/
+.myCustomObjectTab .listViewport .subNav .linkBar,
+.myCustomObjectTab .mComponent .cHeader,
+.myCustomObjectTab .genericTable,
+.myCustomObjectTab .bSubBlock,
+.myCustomObjectTab .bPageBlock{
+    border-top: 3px solid #1797C0;
+}
+
+/** Hovers **/
+.bodyDiv .mruList.individualPalette .myCustomObjectBlock .secondaryPalette .pbHeader,
+.bodyDiv .hoverDetail .myCustomObjectBlock .secondaryPalette .pbHeader,
+.lookupHoverDetail .myCustomObjectBlock .secondaryPalette .pbHeader{
+    border-color: #3A6690;
+}
+
+
+
+.myCustomObjectTab .pageTitleIcon, .individualPalette .myCustomObjectBlock .pageTitleIcon { background-image: url(/img/icon/tables32.png);
+	background-position: 0px 0px;width:32px;
+	height:32px; }
+
+
+
+.myCustomObjectMru .mruIcon { background-image: url(/img/icon/tables16.png);
+	background-position: 0px 0px;width:16px;
+	height:16px; }
+
+
+
+.bRelatedList .myCustomObjectBlock .relatedListIcon, .allTabTab .myCustomObjectBlock .relatedListIcon { background-image: url(/img/icon/tables24.png);
+	background-position: 0px 0px;width:24px;
+	height:24px; }
+
+.bRelatedList .myCustomObjectBlock .relatedListIcon {
+    position: relative;
+    margin-top:-4px;
+    margin-left:5px;
+    display: inline;
+}
+
+.bRelatedList .myCustomObjectBlock .pbTitle h3 {
+    margin: 3px 0 0 27px;
+}
+
+
+

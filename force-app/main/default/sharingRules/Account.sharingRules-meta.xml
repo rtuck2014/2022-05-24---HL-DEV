@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Archived_Accounts2</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Companies and Contacts that are archived will be visible to Data Hygiene, DH Outsource &amp; Software teams only</description>
+        <label>Archived Accounts</label>
+        <sharedTo>
+            <group>Archived_Company_Access</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Company_Source__c</field>
+            <operation>equals</operation>
+            <value>Archived</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Archpoint_Companies</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Archpoint Companies and Contacts are shared with the Archpoint group</description>
+        <label>Archpoint Companies</label>
+        <sharedTo>
+            <group>Archpoint</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Company_Source__c</field>
+            <operation>equals</operation>
+            <value>Archpoint</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>HL_Accounts</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>HL Accounts and contacts shares with all users</description>
+        <label>HL Accounts</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+        <criteriaItems>
+            <field>Company_Source__c</field>
+            <operation>equals</operation>
+            <value>HL</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Imported_Accounts2</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Imported Companies and Contacts that are restricted to Data Hygiene and select users until the review is complete</description>
+        <label>Imported Accounts</label>
+        <sharedTo>
+            <group>Imported_Company_Access</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Company_Source__c</field>
+            <operation>equals</operation>
+            <value>Imported</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Leonardo_Companies</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Leonardo Companies and Contacts are shared with the Leonardo gorup</description>
+        <label>Leonardo Companies</label>
+        <sharedTo>
+            <group>Leonardo</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Company_Source__c</field>
+            <operation>equals</operation>
+            <value>Leonardo</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>McQueen_Companies</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>McQueen Companies and Contacts are shared with the McQueen group</description>
+        <label>McQueen Companies</label>
+        <sharedTo>
+            <group>McQueen</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Company_Source__c</field>
+            <operation>equals</operation>
+            <value>McQueen</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Mesa_Companies</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>Mesa Companies and Contacts are shared with the Mesa group</description>
+        <label>Mesa Companies</label>
+        <sharedTo>
+            <group>Mesa</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Company_Source__c</field>
+            <operation>equals</operation>
+            <value>Mesa</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

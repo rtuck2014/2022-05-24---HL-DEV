@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Engagement_Counterparty__c$Engagement__c.Engagement_Number__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Engagement__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Name</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Company__c.Id</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Company__c.Location__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Status__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Engagement_Counterparty__c$Engagement__c.Engagement_Number__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>84632</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>counterparty helix</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Engagement_Counterparty_c__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Engagement_Counterparty__c$Book_Returned__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

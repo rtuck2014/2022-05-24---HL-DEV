@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Engagement__c$Engagement_Number__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Name</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Job_Type__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Client__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Industry_Group__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Sector__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$CreatedDate</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Engagement__c$Industry_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>TECH - Technology</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>All TECH Engs</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Engagements__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Engagement__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2012-01-01</startDate>
+    </timeFrameFilter>
+</Report>

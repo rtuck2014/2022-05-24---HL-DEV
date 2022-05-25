@@ -1,0 +1,4 @@
+function forFuture {
+
+   return false;
+}

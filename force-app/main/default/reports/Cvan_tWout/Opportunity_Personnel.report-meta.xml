@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity_Internal_Team__c.Opportunity_Number__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity_Internal_Team__c.Contact_Name__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity_Internal_Team__c.Role__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Contact.HR_EMPLOYEEID__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Opportunity Deal Team Members</description>
+    <format>Summary</format>
+    <name>Opportunity Personnel</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Opportunity_Internal_Team__c@Opportunity_Internal_Team__c.Contact__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity_Internal_Team__c.End_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>CF_CAO_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CF CAO Write</label>
+        <sharedTo>
+            <group>CAO_CF</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CF_Closed_Deal_Checklist</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CF Closed Deal Checklist</label>
+        <sharedTo>
+            <group>CF_Closed_Deal_Checklist</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CF_Industry_TRANS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CF_Industry_TRANS</label>
+        <sharedTo>
+            <group>CF_TRANS</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Industry_Group__c</field>
+            <operation>equals</operation>
+            <value>TRANS - Transportation &amp; Logistics</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CF_Office_FF</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CF Office - FF</label>
+        <sharedTo>
+            <group>DND_Insiders_CF_FF</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Primary_Office__c</field>
+            <operation>equals</operation>
+            <value>FF</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CF_Office_RO_ML</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CF Office - RO/ML</label>
+        <sharedTo>
+            <group>DND_Insiders_CF_RO_ML</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Primary_Office__c</field>
+            <operation>equals</operation>
+            <value>ML,RO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_EU</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>DND EU</label>
+        <sharedTo>
+            <group>DND_EU</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Primary_Office__c</field>
+            <operation>equals</operation>
+            <value>MD,ML,FF,RO,LO,AM,PA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_FAS_TO</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Read access to DND Transaction Opinions</description>
+        <label>DND - FAS TO</label>
+        <sharedTo>
+            <group>DND_FAS_TO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Job_Type__c</field>
+            <operation>equals</operation>
+            <value>Fairness,FMV Transaction Based Opinion,Board Advisory Services (BAS),Solvency,ESOP Fairness</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FVA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_Insiders</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>DND Insiders</label>
+        <sharedTo>
+            <group>DND_Insiders</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_Insiders_CF</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>DND Insiders - CF</label>
+        <sharedTo>
+            <group>DND_Insiders_CF</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_Insiders_CF_RO</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Read Only Access to DND Deals For CF</description>
+        <label>DND Insiders - CF RO</label>
+        <sharedTo>
+            <group>DND_Insiders_CF_RO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_Insiders_FAS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>DND Insiders - FAS</label>
+        <sharedTo>
+            <group>DND_Insiders_FAS</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FVA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_Insiders_FR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>DND Insiders - FR</label>
+        <sharedTo>
+            <group>DND_Insiders_FR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_Insiders_Industry</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>DND Insiders - Industry - FIG</label>
+        <sharedTo>
+            <group>DND_Insiders_Industry_FIG</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Industry_Group__c</field>
+            <operation>equals</operation>
+            <value>FIG - Financial Institutions</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_Insiders_Industry_ADG</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>DND Insiders - Industry - ADG</label>
+        <sharedTo>
+            <group>DND_Insiders_Industry_ADG</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Industry_Group__c</field>
+            <operation>equals</operation>
+            <value>ADG - Aerospace Defense and Government</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_Insiders_Industry_CFR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>DND Insiders - Industry - CFR</label>
+        <sharedTo>
+            <group>DND_Insiders_Industry_CFR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Industry_Group__c</field>
+            <operation>equals</operation>
+            <value>CFR - Consumer Food &amp; Retail</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_Insiders_Industry_IG</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>DND Insiders - Industry - IG</label>
+        <sharedTo>
+            <group>DND_Insiders_Industry_IG</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Industry_Group__c</field>
+            <operation>equals</operation>
+            <value>IG - Industrials</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_Insiders_Industry_RE</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>DND Insiders - Industry - RE</label>
+        <sharedTo>
+            <group>DND_Insiders_Industry_RE</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Industry_Group__c</field>
+            <operation>equals</operation>
+            <value>RE - Real Estate Lodging and Leisure</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_Insiders_Industry_TMT</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>DND Insiders - Industry - TECH</label>
+        <sharedTo>
+            <group>DND_Insiders_Industry_TMT</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Industry_Group__c</field>
+            <operation>equals</operation>
+            <value>TECH - Technology</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_Insiders_Industry_TRANS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>DND Insiders - Industry - TRANS</label>
+        <sharedTo>
+            <group>DND_Insiders_Industry_TRANS</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Industry_Group__c</field>
+            <operation>equals</operation>
+            <value>TRANS - Transportation &amp; Logistics</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>DND_Reporting_CF</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>DND Reporting - CF</label>
+        <sharedTo>
+            <group>DND_Reporting_CF</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>equals</operation>
+            <value>Add Requested,APPROVED,Removal Requested</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Eng_Edit_Germany</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Eng Edit - Germany</label>
+        <sharedTo>
+            <group>Eng_Edit_Germany</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Removal Requested,APPROVED,Add Requested</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Primary_Office__c</field>
+            <operation>equals</operation>
+            <value>FF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Eng_Edit_Italy</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Eng Edit - Italy</label>
+        <sharedTo>
+            <group>Eng_Edit_Italy</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Removal Requested,APPROVED,Add Requested</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Primary_Office__c</field>
+            <operation>equals</operation>
+            <value>ML,RO</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Eng_Edit_Spain</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Eng Edit - Spain</label>
+        <sharedTo>
+            <group>Eng_Edit_Spain</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Removal Requested,APPROVED,Add Requested</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Primary_Office__c</field>
+            <operation>equals</operation>
+            <value>MD</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Eng_View_All</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Eng View All</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Removal Requested,APPROVED,Add Requested</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FAS_CAO_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FVA CAO Write</label>
+        <sharedTo>
+            <group>CAO_FVA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FVA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FR_CAO_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FR CAO Write</label>
+        <sharedTo>
+            <group>CAO_FR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Industry_BUS</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Industry - BUS</label>
+        <sharedTo>
+            <group>Industry_BUS</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Industry_Group__c</field>
+            <operation>equals</operation>
+            <value>BUS - Business Services</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Industry_CFR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Industry - CFR</label>
+        <sharedTo>
+            <group>Industry_CFR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Industry_Group__c</field>
+            <operation>equals</operation>
+            <value>CFR - Consumer Food &amp; Retail</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Industry_FIG</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Industry - FIG</label>
+        <sharedTo>
+            <group>Industry_FIG</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Industry_Group__c</field>
+            <operation>equals</operation>
+            <value>FIG - Financial Institutions</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Industry_IG</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Industry - IG</label>
+        <sharedTo>
+            <group>Industry_IG</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Industry_Group__c</field>
+            <operation>equals</operation>
+            <value>IG - Industrials</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Industry_TMT</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Industry - TECH</label>
+        <sharedTo>
+            <group>Industry_TMT</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Industry_Group__c</field>
+            <operation>equals</operation>
+            <value>TECH - Technology</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Job_Type_IFA</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Job Type - IFA</label>
+        <sharedTo>
+            <group>Job_Type_IFA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Job_Type__c</field>
+            <operation>equals</operation>
+            <value>Illiquid Financial Assets</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>SC_CAO_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>SC CAO Write</label>
+        <sharedTo>
+            <group>CAO_SC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>SC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>DND_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Removal Requested,Add Requested,APPROVED</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Accounting_Edit_All</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Accounting Edit All</label>
+        <sharedTo>
+            <group>Accounting_General</group>
+        </sharedTo>
+        <sharedFrom>
+            <allInternalUsers></allInternalUsers>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Compliance_Edit_All</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Compliance Edit All</label>
+        <sharedTo>
+            <group>Compliance_General</group>
+        </sharedTo>
+        <sharedFrom>
+            <allInternalUsers></allInternalUsers>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Legal_Edit_All</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Legal Edit All</label>
+        <sharedTo>
+            <group>Legal_General</group>
+        </sharedTo>
+        <sharedFrom>
+            <allInternalUsers></allInternalUsers>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

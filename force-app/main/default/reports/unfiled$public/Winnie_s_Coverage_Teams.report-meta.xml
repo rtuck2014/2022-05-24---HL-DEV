@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Accounts_Coverage__r$Tier__c</field>
+    </columns>
+    <columns>
+        <field>Account$Website</field>
+    </columns>
+    <columns>
+        <field>Account$Location__c</field>
+    </columns>
+    <columns>
+        <field>Account$Company_Address__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Account.Accounts_Coverage__r$Officer__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Brandon Gale,Tom Seward,Bryan Goudzwaard,Danmin Yan,Sophia Xia</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Accounts_Coverage__r$Officer__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Winnie&apos;s Coverage Teams</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Company_with_CoverageTeam__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$Financials_As_of_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

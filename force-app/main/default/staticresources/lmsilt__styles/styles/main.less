@@ -1,0 +1,912 @@
+@charset "utf-8";
+/***** BEGIN Styles from Salesforce Platform
+body.sfdcBody {
+    background:url("/img/alohaSkin/gradient_body.png") repeat-x scroll 0 0 #1797c0;
+}
+.hasMotif {
+    margin:0 10px;
+}
+#contentWrapper {
+    min-width:800px;
+}
+body #AppBodyHeader {
+    background-image:none;
+}
+.Custom8Tab .brdPalette {
+    border-top-color:#76b8ad;
+}
+.bodyDiv {
+    background-color:#fff;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    border-top:3px solid;
+    box-shadow:0 8px 10px hsla(0, 0%, 0%, 0.25);
+    float:left;
+    min-width:100%;
+}
+.bodyDiv {
+    height:100%;
+    position:relative;
+}
+body .bPageFooter a, body .bPageFooter {
+    border:medium none;
+    color:#fff;
+}
+.noTableFooter {
+    clear:both;
+    margin-left:205px;
+}
+.bPageFooter {
+    border-top:1px solid #e8e8e8;
+    line-height:1.8em;
+    padding:10px 0 20px;
+    text-align:center;
+}
+ END Styles from Salesforce Platform *****/
+/***** BEGIN Counter styles for Salesforce Platform *****/
+.bodyDiv {
+  background-color:#f2f5f7;
+  background-image:none;
+  background-repeat:no-repeat;
+  border-bottom-left-radius:0;
+  border-bottom-right-radius:0;
+  border-top:none;
+  box-shadow:none;
+  float:inherit;
+}
+.noSidebarCell {
+  background-color:#f2f5f7;
+  background-image:url(images/bg-header.png);
+  background-repeat:repeat-x;
+  padding:0;
+}
+.noTableFooter {
+  margin-left:0;
+}
+#cfsWrapper h1,
+#cfsWrapper h2,
+#cfsWrapper h3,
+#cfsWrapper h4,
+#cfsWrapper h5,
+#cfsWrapper h6 {
+  display:inherit;
+  font-family:inherit;
+}
+#cfsWrapper h2,
+#cfsWrapper h3 {
+  margin:14px 0;
+}
+#cfsWrapper ul li,
+#cfsWrapper ol li {
+  margin-left:0;
+  padding-left:0;
+}
+body,
+td {
+  font-family:'Roboto', sans-serif !important;
+}
+/***** END Counter styles for Salesforce Platform *****/
+#cfsWrapper {
+  background-color:transparent;
+  background-image:none;
+  background-repeat:no-repeat;
+  color:#5d6e7d;
+  font-family:'Roboto', sans-serif;
+  margin:0 auto;
+  width:960px;
+}
+#cfsWrapper a {
+  text-decoration:none;
+}
+#cfsWrapper a:hover {
+  text-decoration:underline;
+}
+#cfsWrapper header {
+  background-color:#2fabbd;
+  background-image:url(images/bg-header.png);
+  background-repeat:repeat-x;
+  height:164px;
+  margin-bottom:46px;
+  position:relative;
+}
+#cfsWrapper header nav {
+  background-color:#fff;
+  background-image:none;
+  background-repeat:no-repeat;
+  bottom:0;
+  height:44px;
+  position:absolute;
+  width:100%;
+}
+#cfsWrapper header ul,
+#cfsWrapper nav ul,
+#cfsWrapper aside ul,
+#cfsWrapper .trainingPlan,
+#cfsWrapper .trainingPlanDetail,
+#cfsWrapper .trainingItem {
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+#cfsWrapper .userCard {
+  padding:14px 0 0 8px;
+  position:relative;
+  width:770px;
+  z-index:1;
+}
+#cfsWrapper .userImage {
+  float:left;
+  margin-right:20px;
+}
+#cfsWrapper .userImage img {
+  border:4px solid #fff;
+  -webkit-box-shadow:0 0 8px -2px rgba(0, 0, 0, 1);
+  -moz-box-shadow:0 0 8px -2px rgba(0, 0, 0, 1);
+  box-shadow:0 0 8px -2px rgba(0, 0, 0, 1);
+  height:115px;
+  width:115px;
+}
+#cfsWrapper .userName {
+  color:#fff;
+  font-size:27px;
+  margin-top:14px;
+}
+#cfsWrapper .userTitle {
+  color:#daf0fe;
+  font-size:16px;
+  margin-top:4px;
+}
+#cfsWrapper .calendar {
+  color:#fff;
+  font-family:'Roboto', sans-serif;
+  position:absolute;
+  right:10px;
+  top:10px;
+  width:246px;
+  z-index:1;
+}
+#cfsWrapper .calendar .mini_cal_header,
+#cfsWrapper .calendar .events {
+  text-align:center;
+}
+#cfsWrapper .calendar .events {
+  margin-top:5px;
+}
+#cfsWrapper .calendar .mini_cal_header a,
+#cfsWrapper .calendar .events a,
+#cfsWrapper .calendar .expand_header a {
+  color:#fff;
+}
+#cfsWrapper .calendar .mini_cal_header li {
+  display:inline-block;
+}
+#cfsWrapper .calendar .text_event {
+  display:inline-block;
+  font-size:15px;
+  font-weight:300;
+  max-width:246px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+#cfsWrapper .calendar .link_full_calendar {
+  font-size:12px;
+  margin-top:10px;
+  text-transform:uppercase;
+}
+#cfsWrapper .calendar .header_prev a,
+#cfsWrapper .calendar .header_next a {
+  font-size:25px;
+  padding:0 10px;
+  text-decoration:none;
+}
+#cfsWrapper .calendar .header_date {
+  font-size:20px;
+  width:180px;
+}
+#cfsWrapper .calendar #lightbox {
+  background-color:#e3f4f6;
+  background-image:none;
+  background-repeat:no-repeat;
+  border-bottom-left-radius:6px;
+  border-bottom-right-radius:6px;
+  box-shadow:0 8px 10px #111;
+  -webkit-box-shadow:0 8px 10px #111;
+  -moz-box-shadow:0 8px 10px #111;
+  box-sizing:content-box;
+  display:none;
+  padding:10px;
+  position:absolute;
+  right:-10px;
+  top:-10px;
+  width:625px;
+  z-index:100;
+}
+#cfsWrapper .calendar .frame-calendar {
+  background-color:#fff;
+  background-image:none;
+  background-repeat:no-repeat;
+  float:left;
+  height:290px;
+  margin-right:20px;
+  width:300px;
+}
+#cfsWrapper .calendar .expand_header {
+  background-color:#268b9a;
+  background-image:none;
+  background-repeat:no-repeat;
+  color:#fff;
+  height:47px;
+  text-align:center;
+  width:100%;
+}
+#cfsWrapper .calendar .expand_prev {
+  text-align:left;
+}
+#cfsWrapper .calendar .expand_next {
+  text-align:right;
+}
+#cfsWrapper .calendar .expand_prev a,
+#cfsWrapper .calendar .expand_next a {
+  font-size:12px;
+  line-height:20px;
+  padding:13px 15px;
+  text-decoration:none;
+}
+#cfsWrapper .calendar .expand_date {
+  color:#fff;
+  font-size:20px;
+  font-weight:300;
+}
+#cfsWrapper .calendar .expand_body {
+  padding:15px;
+}
+#cfsWrapper .calendar .expand_body table {
+  width:100%;
+}
+#cfsWrapper .calendar .expand_day {
+  color:#383737;
+  font-size:14px;
+  font-weight:bold;
+  height:36px;
+  text-align:center;
+}
+#cfsWrapper .calendar .expand_day a {
+  color:#383737;
+  display:inline-block;
+  height:26px;
+  line-height:26px;
+  width:35px;
+}
+#cfsWrapper .calendar .different-month a {
+  color:#b4bbc2;
+}
+#cfsWrapper .calendar .selectedday a {
+  background-color:#4bc1d2;
+  background-image:none;
+  background-repeat:no-repeat;
+  border-radius:6px;
+  color:#fff;
+}
+#cfsWrapper .calendar .today a {
+  border:2px solid #c6ccd2;
+  border-radius:6px;
+}
+#cfsWrapper .calendar date.selected {
+  color:#268b9a;
+  font-size:20px;
+}
+#cfsWrapper .calendar event.expand_text,
+#cfsWrapper .calendar event.expand_text_date {
+  color:#268b9a;
+  font-size:15px;
+  font-weight:300;
+}
+#cfsWrapper .calendar event.expand_text_date {
+  display:inline-block;
+  font-weight:400;
+  margin-top:10px;
+}
+#cfsWrapper .calendar a.expand_text_link {
+  color:#268b9a;
+  font-size:15px;
+  font-weight:300;
+}
+#cfsWrapper .calendar event.expand_text,
+#cfsWrapper .calendar event.expand_text_date,
+#cfsWrapper .calendar a.expand_text_link {
+  display:inline-block;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  width:300px;
+}
+#cfsWrapper .calendar #lightbox a.link_full_calendar {
+  color:#268b9a;
+  display:inline-block;
+  margin-top:10px;
+}
+#cfsWrapper .calendar #close_box {
+  color:#268b9a;
+  font-size:30px;
+  padding:2px 10px;
+  position:absolute;
+  right:0;
+  top:0;
+}
+#cfsWrapper full-calendar {
+  width:100%;
+}
+#cfsWrapper full-calendar .legendCalendar {
+  background-color:#e1e4e6;
+  background-image:none;
+  background-repeat:no-repeat;
+  margin-bottom:10px;
+  padding:10px;
+  text-align:right;
+  width:98%;
+}
+#cfsWrapper full-calendar .legendCalendar li {
+  display:inline-block;
+  font-size:13px;
+  line-height:28px;
+  margin-left:10px;
+}
+#cfsWrapper full-calendar .legendCalendar img {
+  height:30px;
+  margin-right:8px;
+  vertical-align:middle;
+  width:30px;
+}
+#cfsWrapper full-calendar .legendCalendar .legendDue img {
+  background-color:#df8181;
+  background-image:none;
+  background-repeat:no-repeat;
+}
+#cfsWrapper full-calendar .legendCalendar .legendEnrolled img {
+  background-color:#81df88;
+  background-image:none;
+  background-repeat:no-repeat;
+}
+#cfsWrapper full-calendar .legendCalendar .legendValid img {
+  background-color:#ffe84c;
+  background-image:none;
+  background-repeat:no-repeat;
+}
+#cfsWrapper full-calendar .cal_header {
+  background-color:#278e9d;
+  background-image:none;
+  background-repeat:no-repeat;
+  color:#fff;
+  text-align:center;
+  width:100%;
+}
+#cfsWrapper full-calendar .cal_header a {
+  color:#fff;
+}
+#cfsWrapper full-calendar .full_prev {
+  text-align:left;
+}
+#cfsWrapper full-calendar .full_next {
+  text-align:right;
+}
+#cfsWrapper full-calendar .full_prev a,
+#cfsWrapper full-calendar .full_next a {
+  font-size:49px;
+  padding:0 15px;
+  text-decoration:none;
+}
+#cfsWrapper full-calendar .full_date {
+  color:#fff;
+  font-size:30px;
+  font-weight:300;
+}
+#cfsWrapper full-calendar table.cal_body {
+  border-collapse:separate;
+  border-spacing:4px;
+  table-layout:fixed;
+  width:100%;
+}
+#cfsWrapper full-calendar .week_day {
+  color:#278e9d;
+  font-size:24px;
+  font-weight:500;
+  padding:10px 0;
+  text-align:center;
+}
+#cfsWrapper full-calendar .days {
+  background-color:#fff;
+  background-image:none;
+  background-repeat:no-repeat;
+  color:#383737;
+  height:113px;
+  padding:10px;
+  text-align:center;
+  vertical-align:top;
+}
+#cfsWrapper full-calendar .days.different-month {
+  color:#b4bbc2;
+}
+#cfsWrapper full-calendar .isDue {
+  background-color:#df8181;
+  background-image:none;
+  background-repeat:no-repeat;
+}
+#cfsWrapper full-calendar .isEnrolled {
+  background-color:#81df88;
+  background-image:none;
+  background-repeat:no-repeat;
+}
+#cfsWrapper full-calendar .isValid {
+  background-color:#ffe84c;
+  background-image:none;
+  background-repeat:no-repeat;
+}
+#cfsWrapper full-calendar .day_num {
+  font-size:2em;
+  margin-bottom:5px;
+}
+#cfsWrapper full-calendar .day_info {
+  color:#383737;
+  display:inline-block;
+  font-size:0.9em;
+  max-width:113px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+#cfsWrapper full-calendar .days.different-month .day_info {
+  color:#b4bbc2;
+}
+#cfsWrapper header nav ul {
+  text-align:center;
+}
+#cfsWrapper header nav ul li {
+  cursor:pointer;
+  display:inline-block;
+  font-size:14px;
+  line-height:18px;
+}
+#cfsWrapper header nav ul li a {
+  color:#7f9093;
+  display:inline-block;
+  padding:16px 14px 7px;
+  text-decoration:none;
+}
+#cfsWrapper header nav ul li.active,
+#cfsWrapper header nav ul li:hover {
+  border-bottom:3px solid #4bc1d2;
+}
+#cfsWrapper header nav ul li.active,
+#cfsWrapper header nav ul li.active a,
+#cfsWrapper header nav ul li:hover,
+#cfsWrapper header nav ul li a:hover {
+  color:#4bc1d2;
+  text-decoration:none;
+}
+#cfsWrapper .breadCrumb li {
+  display:inline-block;
+}
+#cfsWrapper .breadCrumb li.dot:before {
+  content:"\203A\20";
+  font-size:18px;
+}
+#cfsWrapper .companyContent {
+
+}
+#cfsWrapper .pageTitle,
+#cfsWrapper .pageTitle h2,
+#cfsWrapper .pageSubtitle {
+  color:#697885;
+  font-size:25px;
+  font-weight:normal;
+  width:100%;
+}
+#cfsWrapper .pageSubtitle {
+  font-size:20px;
+}
+#cfsWrapper article {
+  margin-bottom:20px;
+}
+#cfsWrapper .trainingPlan,
+#cfsWrapper .trainingItem {
+  background-color:#fff;
+  background-image:none;
+  background-repeat:no-repeat;
+  -webkit-box-shadow:0 0 8px -5px rgba(0, 0, 0, 1);
+  -moz-box-shadow:0 0 8px -5px rgba(0, 0, 0, 1);
+  box-shadow:0 0 8px -5px rgba(0, 0, 0, 1);
+  min-height:100px;
+  padding:20px 140px 20px 30px;
+  position:relative;
+}
+#cfsWrapper .catalogFilter .trainingPlan {
+  min-height:140px;
+}
+#cfsWrapper .catalogFilter .alert {
+  margin-top:5px;
+}
+#cfsWrapper .trainingPlanDetail {
+  padding:0 144px 26px 0;
+  position:relative;
+}
+#cfsWrapper .trainingPlan li,
+#cfsWrapper .trainingPlanDetail li,
+#cfsWrapper .trainingItem li {
+  display:inline-block;
+  font-size:13px;
+  font-weight:300;
+}
+#cfsWrapper .trainingPlan li.dot:before,
+#cfsWrapper .trainingPlanDetail li.dot:before,
+#cfsWrapper .trainingItem li.dot:before {
+  content:"\007C\20";
+}
+#cfsWrapper .trainingPlan .tpDueStatus,
+#cfsWrapper .trainingItem .dueStatus {
+  background-color:#d23f3f;
+  background-image:none;
+  background-repeat:no-repeat;
+  bottom:0;
+  display:none;
+  left:0;
+  position:absolute;
+  top:0;
+  width:7px;
+}
+#cfsWrapper .trainingPlan.pastDue .tpDueStatus,
+#cfsWrapper .trainingItem.pastDue .dueStatus {
+  display:block;
+}
+#cfsWrapper .trainingPlan.pastDue .tpDueDate,
+#cfsWrapper .trainingPlanDetail.pastDue .dueDate,
+#cfsWrapper .trainingItem.pastDue .dueDate {
+  color:#d23f3f;
+  font-weight:500;
+}
+#cfsWrapper .trainingPlan .tpTitle,
+#cfsWrapper .trainingPlan .tpTitle a,
+#cfsWrapper .trainingPlanDetail .title,
+#cfsWrapper .trainingItem .title,
+#cfsWrapper .trainingItem .title a {
+  color:#2890a0;
+  width:100%;
+  margin-bottom:1px;
+}
+#cfsWrapper .trainingPlan .tpTitle h3,
+#cfsWrapper .trainingPlanDetail .title h3,
+#cfsWrapper .trainingItem .title h4 {
+  font-size:20px;
+  font-weight:normal;
+  margin:0;
+}
+#cfsWrapper .trainingPlan .tpCustomField {
+  width:100%;
+  margin-bottom:1px;
+  font-weight: bold;
+}
+#cfsWrapper .trainingPlan .tpDescription,
+#cfsWrapper .trainingPlanDetail .description,
+#cfsWrapper .trainingItem .description {
+  border-top:1px solid #e5e5e5;
+  margin-top:8px;
+  padding-top:8px;
+  width:100%;
+}
+#cfsWrapper .trainingPlan .tpEvents,
+#cfsWrapper .trainingPlanDetail .events,
+#cfsWrapper .trainingItem .events {
+  margin-top:15px;
+  width:100%;
+}
+#cfsWrapper .trainingPlan .tpEvents table,
+#cfsWrapper .trainingPlanDetail .events table,
+#cfsWrapper .trainingItem .events table {
+  border:1px solid #697885;
+}
+#cfsWrapper .trainingPlan .tpEvents th,
+#cfsWrapper .trainingPlanDetail .events th,
+#cfsWrapper .trainingItem .events th {
+  background-color:#697885;
+  background-image:none;
+  background-repeat:no-repeat;
+  color:#fff;
+  font-weight:bold;
+  padding:5px;
+  text-align:left;
+}
+#cfsWrapper .trainingPlan .tpEvents td,
+#cfsWrapper .trainingPlanDetail .events td,
+#cfsWrapper .trainingItem .events td {
+  padding:5px;
+}
+#cfsWrapper .trainingPlan .tpProgression,
+#cfsWrapper .trainingPlanDetail .progression,
+#cfsWrapper .trainingPlanDetail .progression .tpProgression,
+#cfsWrapper .trainingItem .progression .tpProgression,
+#cfsWrapper .trainingItem .progression {
+  display:table;
+  height:104px;
+  position:absolute;
+  right:0;
+  top:0;
+  width:140px;
+}
+#cfsWrapper .trainingPlan .tpProgression {
+  height:140px;
+}
+#cfsWrapper .trainingPlan .buttons,
+#cfsWrapper .trainingPlanDetail .buttons,
+#cfsWrapper .trainingItem .buttons {
+  position:absolute;
+  right:0;
+  text-align:center;
+  top:102px;
+  width:140px;
+}
+#cfsWrapper .catalogFilter .trainingItem .buttons {
+  top: 48px;
+}
+
+#cfsWrapper .trainingPlanDetail .dateRange,
+#cfsWrapper .trainingItem .dateRange {
+  width:100%;
+}
+#cfsWrapper .hdntxt {
+  clip:rect(1px, 1px, 1px, 1px);
+  height:1px;
+  overflow:hidden;
+  position:absolute;
+  width:1px;
+}
+#cfsWrapper .lbl {
+  text-transform:uppercase;
+}
+#cfsWrapper .circle,
+#cfsWrapper .circleDetail,
+#cfsWrapper .circleChild,
+#cfsWrapper .circlePreReq {
+  display:table-cell;
+  line-height:1.2;
+  position:relative;
+  margin:6px 6px 20px;
+  text-align:center;
+  vertical-align:middle;
+  width:74px;
+}
+#cfsWrapper .circle canvas,
+#cfsWrapper .circleDetail canvas,
+#cfsWrapper .circleChild canvas,
+#cfsWrapper .circlePreReq canvas {
+  height:74px;
+  vertical-align:top;
+  width:74px;
+}
+#cfsWrapper .circle strong,
+#cfsWrapper .circleDetail strong,
+#cfsWrapper .circleChild strong,
+#cfsWrapper .circlePreReq strong {
+  color:#2893a2;
+  font-size:24px;
+  font-weight:500;
+  left:0;
+  line-height:34px;
+  position:absolute;
+  text-align:center;
+  top:36px;
+  width:100%;
+}
+#cfsWrapper .tpProgression .circle strong,
+#cfsWrapper .tpProgression .circleDetail strong,
+#cfsWrapper .tpProgression .circleChild strong,
+#cfsWrapper .tpProgression .circlePreReq strong {
+  top:53px;
+}
+#cfsWrapper .circle strong i,
+#cfsWrapper .circleDetail strong i,
+#cfsWrapper .circleChild strong i,
+#cfsWrapper .circlePreReq strong i {
+  font-size:18px;
+  font-style:normal;
+  font-weight:500;
+  line-height:30px;
+  vertical-align:top;
+}
+#cfsWrapper .certificate,
+#cfsWrapper .mobile {
+  cursor:default;
+}
+#cfsWrapper .mobile i {
+  font-size:20px;
+  vertical-align:text-bottom;
+}
+#cfsWrapper button {
+  background-color:#4bc1d2;
+  background-image:none;
+  background-repeat:no-repeat;
+  border:none;
+  border-radius:2px;
+  color:#fff;
+  font-family:'Roboto', sans-serif;
+  font-size:13px;
+  font-weight:bold;
+  max-width:134px;
+  padding:5px 15px;
+  text-transform:uppercase;
+}
+#cfsWrapper .catalogFilter {
+
+}
+#cfsWrapper .catalogFilter aside,
+#cfsWrapper .catalogFilter section {
+  float:left;
+}
+#cfsWrapper .catalogFilter aside {
+  background-color:#e1e4e6;
+  background-image:none;
+  background-repeat:no-repeat;
+  margin-right:15px;
+  padding:15px;
+  width:230px;
+}
+#cfsWrapper .catalogFilter section {
+  width:670px;
+}
+#cfsWrapper .filterGroupCatalog .filterItem {
+  margin-bottom:20px;
+}
+#cfsWrapper .filterGroupCatalog .filterItem.last {
+  margin-bottom:0;
+}
+#cfsWrapper .filterGroupCatalog .input-group-addon {
+  font-size:12px;
+}
+#cfsWrapper .filterGroupCatalog button {
+  max-width:230px;
+}
+#cfsWrapper .filterGroupCatalog button .selectedText {
+  display:inline-block;
+  max-width:190px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+#cfsWrapper .filterItem label {
+  color:#77797a;
+  display:block;
+  font-weight:500;
+}
+#cfsWrapper .filterItem label.checkbox {
+  color:#000;
+  font-weight:400;
+}
+#cfsWrapper .filterItem label.checkboxBefore {
+  display:inline;
+}
+#cfsWrapper .cfsTextSearch .form-control {
+  border-right:none;
+}
+#cfsWrapper .cfsTextSearch .input-group-addon {
+  background-color:#fff;
+  background-image:none;
+  background-repeat:no-repeat;
+}
+#cfsWrapper button.bln {
+  background-color:#eee;
+  background-image:none;
+  background-repeat:no-repeat;
+  color:#555;
+}
+#cfsWrapper button.bln.active {
+  background-color:#4bc1d2;
+  background-image:none;
+  background-repeat:no-repeat;
+  color:#fff;
+}
+#cfsWrapper .b-lightbox-loading {
+  background-color:#fff;
+  background-image:none;
+  background-repeat:no-repeat;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+  color:#5d6e7d;
+  display:none;
+  height:250px;
+  left:50%;
+  margin-left:-300px;
+  margin-top:-125px;
+  position:fixed;
+  text-align:center;
+  top:50%;
+  width:600px;
+  z-index:10001;
+}
+#cfsWrapper .b-lightbox-loading #lightboxmsg {
+  font-size:15px;
+  font-weight:normal;
+  margin-top:50px;
+}
+#cfsWrapper .b-lightbox-loading .close-modal {
+  color:#5d6e7d;
+  font-size:30px;
+  position:absolute;
+  right:8px;
+  top:4px;
+}
+#cfsWrapper .filterGroupCatalog .ui-progressbar {
+  position: relative;
+  width:200px;
+  height:25px;
+}
+#cfsWrapper .filterGroupCatalog .ui-progressbar .ui-progressbar-overlay {
+  background: url('images/progressbar.gif') repeat-x;
+}
+
+#cfsWrapper .filterGroupCatalog .ui-widget-header {
+  background: #4bc1d2;
+  border: 1px solid #DDDDDD;
+  color: #333333;
+  font-weight: bold;
+}
+#cfsWrapper .filterGroupCatalog .ui-widget-content {
+  border: 1px solid #dddddd;
+  color: #333333;
+}
+#cfsWrapper .filterGroupCatalog .progress-label {
+  position: absolute;
+  left: 15%;
+  top: 10%;
+  font-size:14px;
+}
+.bootstrap-styles .dropdown-menu > .active > a,
+.bootstrap-styles .dropdown-menu > .active > a:hover{
+  background-color: #337ab7;
+}
+#cfsWrapper .b-lightbox-confirm {
+  background:#fff;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+  color:#5d6e7d;
+  display:none;
+  min-height:250px;
+  left:50%;
+  margin-left:-300px;
+  margin-top:-125px;
+  position:fixed;
+  text-align:center;
+  top:33%;
+  width:666px;
+  z-index:10001;
+}
+#cfsWrapper .b-lightbox-confirm #lightboxmsg {
+  font-size:15px;
+  font-weight:normal;
+  margin-top:50px;
+}
+#cfsWrapper .b-lightbox-confirm .close-modal {
+  color:#5d6e7d;
+  font-size:30px;
+  position:absolute;
+  right:8px;
+  top:4px;
+}
+#cfsWrapper .buttons .ui-progressbar {
+  height: 20px;
+  margin-top: 1em;
+}
+
+#cfsWrapper .buttons .ui-progressbar .ui-progressbar-overlay {
+  background: url('images/progressbar.gif') repeat-x;
+}
+
+#cfsWrapper .buttons .ui-widget-header {
+  background: red;
+  border: 1px solid #DDDDDD;
+}
+
+@import "variables.less";
+@import "fonts.less";
+@import "colors.less";

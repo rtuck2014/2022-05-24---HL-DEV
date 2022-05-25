@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FK_$Engagement__c.Engagement_Number__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>Engagement_Internal_Team__c.Contact__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Internal_Team__c.Staff_Role__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Engagement__c.Client__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Engagement__c.Total_Fee__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Engagement__c.Industry_Group__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Engagement__c.Stage__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Andrew Deren is the principle of the engagement</description>
+    <filter>
+        <criteriaItems>
+            <column>Engagement_Internal_Team__c.Contact__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Andrew Deren</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Engagement_Internal_Team__c.Staff_Role__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Principal</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Andrew Deren Engagements</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Engagement_Internal_Team__c@Engagement_Internal_Team__c.Engagement__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Engagement_Internal_Team__c.End_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

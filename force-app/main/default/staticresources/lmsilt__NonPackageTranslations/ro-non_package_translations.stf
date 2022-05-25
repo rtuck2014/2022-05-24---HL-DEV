@@ -1,0 +1,601 @@
+# Language: Romanian
+Language code: ro
+Type: Bilingual
+
+------------------TRANSLATED-------------------
+
+# KEY	LABEL	TRANSLATION	OUT OF DATE
+
+CustomApp.lmscons__Learning_Cloud	Learning Cloud	Cloud învăţare	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	"Trebuie bifată dacă este necesară crearea de formări recurente pentru această atribuire. De asemenea, nu uitaţi să setaţi numărul de formări recurente şi tipul perioadei de formare recurentă (luni sau ani)"	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	"Numărul de perioade de formare recurentă. După finalizarea acestor perioade, atribuirea va fi redistribuită."	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Data la care atribuirea a fost creată/redistribuită	-
+CustomField.lmscons__Curriculum__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"„În mod implicit, utilizatorul trebuie să completeze toate componentele. Pentru a personaliza acest criteriu, setaţi valorile pentru una sau ambele opţiuni.”"	-
+CustomField.lmscons__Curriculum__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"„Puteţi specifica o unitate de timp după o durată 'X', cum ar fi Xz, Xo sau Xm pentru a reprezenta zilele (z), orele (o), respectiv minutele (m).\nÎn cazul în care nu specificaţi o unitate de timp, minutul va fi considerat unitatea de timp prestabilită.”"	-
+CustomField.lmscons__Curriculum__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"„În mod implicit, utilizatorul trebuie să completeze toate componentele. Pentru a personaliza acest criteriu, setaţi valorile pentru una sau ambele opţiuni.”"	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	"Trebuie bifată dacă este necesară crearea de formări recurente pentru această atribuire. De asemenea, nu uitaţi să setaţi numărul de formări recurente şi tipul perioadei de formare recurentă (luni sau ani)"	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.HelpText	Type of recurring training period (year or month)	Tipul perioadei de formare recurentă (an sau lună)	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	"Numărul de perioade de formare recurentă. După finalizarea acestor perioade, atribuirea va fi redistribuită."	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Data la care atribuirea a fost creată/redistribuită	-
+CustomField.lmscons__Learning_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"„În mod implicit, utilizatorul trebuie să completeze toate componentele. Pentru a personaliza acest criteriu, setaţi valorile pentru una sau ambele opţiuni.”"	-
+CustomField.lmscons__Learning_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"„Puteţi specifica o unitate de timp după o durată 'X', cum ar fi Xz, Xo sau Xm pentru a reprezenta zilele (z), orele (o), respectiv minutele (m).\nÎn cazul în care nu specificaţi o unitate de timp, minutul va fi considerat unitatea de timp prestabilită.”"	-
+CustomField.lmscons__Learning_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"„În mod implicit, utilizatorul trebuie să completeze toate componentele. Pentru a personaliza acest criteriu, setaţi valorile pentru una sau ambele opţiuni.”"	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__Cornerstone_Callback_URL.HelpText	The URL of the notification page set up for your organization.	Adresa URL a paginii de notificare amenajate pentru organizaţia dumneavoastră.	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__CyberUSecretSignKey.HelpText	Secret key to sign CyberU callbacks	Cheie privată CyberU pentru semnarea apelurilor inverse	-
+CustomField.lmscons__Quiz__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"„Puteţi specifica o unitate de timp după o durată 'X', cum ar fi Xz, Xo sau Xm pentru a reprezenta zilele (z), orele (o), respectiv minutele (m).\nÎn cazul în care nu specificaţi o unitate de timp, minutul va fi considerat unitatea de timp prestabilită.”"	-
+CustomField.lmscons__Training_Content_License__c.lmscons__Seats.HelpText	Total number of seats included in this license. Leave blank for unlimited.	Numărul total de locuri incluse în această licenţă. Lăsaţi spaţiu liber pentru un număr nelimitat.	-
+CustomField.lmscons__Training_Content__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as  Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"„Puteţi specifica o unitate de timp după o durată 'X', cum ar fi Xz, Xo sau Xm pentru a reprezenta zilele (z), orele (o), respectiv minutele (m).\nÎn cazul în care nu specificaţi o unitate de timp, minutul va fi considerat unitatea de timp prestabilită.”"	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	"Trebuie bifată dacă este necesară crearea de formări recurente pentru această atribuire. De asemenea, nu uitaţi să setaţi numărul de formări recurente şi tipul perioadei de formare recurentă (luni sau ani)"	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	"Numărul de perioade de formare recurentă. După finalizarea acestor perioade, atribuirea va fi redistribuită."	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Data la care atribuirea a fost creată/redistribuită	-
+CustomField.lmscons__Training_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria,  please set values to one or both options.	"„În mod implicit, utilizatorul trebuie să completeze toate componentele. Pentru a personaliza acest criteriu, setaţi valorile pentru una sau ambele opţiuni.”"	-
+CustomField.lmscons__Training_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"„Puteţi specifica o unitate de timp după o durată 'X', cum ar fi Xz, Xo sau Xm pentru a reprezenta zilele (z), orele (o), respectiv minutele (m).\nÎn cazul în care nu specificaţi o unitate de timp, minutul va fi considerat unitatea de timp prestabilită.”"	-
+CustomField.lmscons__Training_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"„În mod implicit, utilizatorul trebuie să completeze toate componentele. Pentru a personaliza acest criteriu, setaţi valorile pentru una sau ambele opţiuni.”"	-
+CustomField.lmscons__Training_Unit__c.lmscons__Remaining_Training_Units.HelpText	Number of units available for spending	Număr de unităţi disponibile pentru folosire	-
+CustomField.lmscons__Training_User_License__c.lmscons__Purchased.HelpText	Indicates if this user license has been purchased or only assigned.	Arată dacă licenţa de utilizator a fost achiziţionată sau doar atribuită.	-
+CustomField.lmsilt__Development_Plan__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"Puteţi specifica o unitate de timp după o durată 'X', cum ar fi Xz, Xo sau Xm pentru a reprezenta zilele (z), orele (o), respectiv minutele (m).\nÎn cazul în care nu specificaţi o unitate de timp, minutul va fi considerat unitatea de timp prestabilită."	-
+CustomField.lmsilt__Event__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"Puteţi specifica o unitate de timp după o durată 'X', cum ar fi Xz, Xo sau Xm pentru a reprezenta zilele (z), orele (o), respectiv minutele (m).\nÎn cazul în care nu specificaţi o unitate de timp, minutul va fi considerat unitatea de timp prestabilită."	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Profile	Profile	Profil	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Role	Role	Rol	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Days	Days	Zile	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Hours	Hours	Ore	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Indefinite	Indefinite	Nedefinit	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Month	Month	Lună	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Weeks	Weeks	Săptămâni	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Years	Years	Ani	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Complete	Complete	Finalizat	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.New	New	Nou	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Processing	Processing	În curs de procesare	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	Luni	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	Ani	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Completed	Completed	Finalizată	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.In Progress	In Progress	În desfăşurare	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Not Started	Not Started	Nu este iniţiat	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Developer	Developer	Dezvoltator	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.IT Professional	IT Professional	Profesionist în domeniul IT	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Profesionist în vânzări	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.da	da	Daneză	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.de	de	Germană	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.en_US	en_US	Engleză	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.es	es	Spaniolă	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fi	fi	Finlandeză	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fr	fr	Franceză	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.it	it	Italiană	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ja	ja	Japoneză	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ko	ko	Coreeană	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.nl_NL	nl_NL	Olandeză	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.pt_BR	pt_BR	Portugheză	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ru	ru	Rusă	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.sv	sv	Suedeză	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.th	th	Thailandeză	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_CN	zh_CN	Chineză (simplificată)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_TW	zh_TW	Chineză (tradiţională)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Conectare Force.com	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com mobil	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Cloud vânzări	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.Force.com Connect	Force.com Connect	Conectare Force.com	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com mobil	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Error	Error	Eroare	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Info	Info	Informații	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Warning	Warning	Avertisment	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	Luni	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	Ani	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Completed	Completed	Finalizată	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.In Progress	In Progress	În desfăşurare	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Not Started	Not Started	Nu este iniţiat	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Developer	Developer	Dezvoltator	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.IT Professional	IT Professional	Profesionist în domeniul IT	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Profesionist în vânzări	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.da	da	Daneză	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.de	de	Germană	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.en_US	en_US	Engleză	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.es	es	Spaniolă	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fi	fi	Finlandeză	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fr	fr	Franceză	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.it	it	Italiană	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ja	ja	Japoneză	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ko	ko	Coreeană	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.nl_NL	nl_NL	Olandeză	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.pt_BR	pt_BR	Portugheză	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ru	ru	Rusă	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.sv	sv	Suedeză	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.th	th	Thailandeză	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_CN	zh_CN	Chineză (simplificată)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_TW	zh_TW	Chineză (tradiţională)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Conectare Force.com	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com mobil	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Cloud vânzări	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.Force.com Connect	Force.com Connect	Conectare Force.com	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com mobil	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Completed	Completed	Finalizată	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Pending	Pending	În aşteptare	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Download	Download	Descărcare	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Purchase	Purchase	Achiziţie	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Days	Days	Zile	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Hours	Hours	Ore	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Indefinite	Indefinite	Nedefinit	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Months	Months	Luni	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Weeks	Weeks	Săptămâni	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Years	Years	Ani	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.English	English	Engleză	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.French	French	Franceză	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Completed	Completed	Finalizată	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Failed	Failed	Eşuat	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.In Progress	In Progress	În desfăşurare	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Passed	Passed	Reuşit	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Retired	Retired	Pensionat	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Exit	Exit	Ieşire	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Message	Message	Mesaj	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.da	da	Daneză	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.de	de	Germană	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.en_US	en_US	Engleză	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.es	es	Spaniolă	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fi	fi	Finlandeză	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fr	fr	Franceză	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.it	it	Italiană	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ja	ja	Japoneză	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ko	ko	Coreeană	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.nl_NL	nl_NL	Olandeză (Olanda)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.pt_BR	pt_BR	Portugheză (Brazilia)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ru	ru	Rusă	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.sv	sv	Suedeză	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.th	th	Thailandeză	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_CN	zh_CN	Chineză (simplificată)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_TW	zh_TW	Chineză (tradiţională)	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Easy	Easy	Uşor	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Hard	Hard	Dificil	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Medium	Medium	Mediu	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Long Text	Long Text	Text lung	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Short Text	Short Text	Text scurt	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Free Text	Free Text	Text liber	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Multi Select	Multi Select	Selectare multiplă	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Single Select	Single Select	Selectare individuală	-
+PicklistValue.lmscons__Question__c.lmscons__Type.True/False	True/False	Adevărat/Fals	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.da	da	Daneză	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.de	de	Germană	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.en_US	en_US	Engleză	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.es	es	Spaniolă	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fi	fi	Finlandeză	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fr	fr	Franceză	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.it	it	Italiană	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ja	ja	Japoneză	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ko	ko	Coreeană	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.nl_NL	nl_NL	Olandeză	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.pt_BR	pt_BR	Portugheză (Brazilia)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ru	ru	Rusă	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.sv	sv	Suedeză	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.th	th	Thailandeză	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_CN	zh_CN	Chineză (simplificată)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_TW	zh_TW	Chineză (tradiţională)	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Course	Course	Curs	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Curriculum	Curriculum	Curriculum	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Learning Path	Learning Path	Cale de învăţare	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Module	Module	Modul	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Quiz	Quiz	Examen	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.ALL	ALL	TOŢI/TOATE	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NEW	NEW	NOU	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NON_COMPLETE	NON_COMPLETE	NON_COMPLETE	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Days	Days	Zile	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Hours	Hours	Ore	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Indefinite	Indefinite	Nedefinit	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Month	Month	Lună	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Weeks	Weeks	Săptămâni	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Years	Years	Ani	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Implementation	Implementation	Implementare	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Learning	Learning	Învăţare	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Sale	Sale	Vânzare	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Delivery_Type.Free eLearning	Free eLearning	eLearning gratuit	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Channel Manager	Channel Manager	Manager canal	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Developer	Developer	Dezvoltator	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.IT Professional	IT Professional	Profesionist în domeniul IT	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Implementation Team	Implementation Team	Echipa de implementare	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Marketing	Marketing	Marketing	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Partner	Partner	Partener	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Manager	Sales Manager	Manager vânzări	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Profesionist în vânzări	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Rep	Sales Rep	Reprezentat vânzări	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Support Rep	Support Rep	Reprezentant suport	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.da	da	Daneză	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.de	de	Germană	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.en_US	en_US	Engleză	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.es	es	Spaniolă	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fi	fi	Finlandeză	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fr	fr	Franceză	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.it	it	Italiană	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ja	ja	Japoneză	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ko	ko	Coreeană	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.nl_NL	nl_NL	Olandeză	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.pt_BR	pt_BR	Portugheză	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ru	ru	Rusă	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.sv	sv	Suedeză	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.th	th	Thailandeză	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_CN	zh_CN	Chineză (simplificată)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_TW	zh_TW	Chineză (tradiţională)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Development Plan Task	Development Plan Task	Sarcină plan de dezvoltare	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Event	Event	Eveniment	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Module	Module	Modul	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Quiz	Quiz	Examen	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Block	Block	Bloc	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Course	Course	Curs	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Channel Manager	Channel Manager	Manager canal	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Developer	Developer	Dezvoltator	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Implementation Team	Implementation Team	Echipa de implementare	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Marketing	Marketing	Marketing	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Partner	Partner	Partener	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Manager	Sales Manager	Manager vânzări	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Rep	Sales Rep	Reprezentat vânzări	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Support Rep	Support Rep	Reprezentant suport	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Conectare Force.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com Offline	Force.com Offline	Force.com offline	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com platform	Force.com platform	Platformă Force.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM CSS	Salesforce CRM CSS	Salesforce CRM CSS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Content	Salesforce CRM Content	Conţinut Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Ideas	Salesforce CRM Ideas	Idei Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Marketing	Salesforce CRM Marketing	Marketing Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Mobile	Salesforce CRM Mobile	Salesforce CRM mobil	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Salesforce reţele partener CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM SFA	Salesforce CRM SFA	Salesforce CRM SFA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Salesforce CRM pentru aplicaţii Google	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce to Salesforce	Salesforce to Salesforce	Salesforce către Salesforce	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com Connect	Force.com Connect	Conectare Force.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com Offline	Force.com Offline	Force.com offline	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com platform	Force.com platform	Platformă Force.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM CSS	Salesforce CRM CSS	Salesforce CRM CSS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Content	Salesforce CRM Content	Conţinut Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Ideas	Salesforce CRM Ideas	Idei Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Marketing	Salesforce CRM Marketing	Marketing Salesforce CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Mobile	Salesforce CRM Mobile	Salesforce CRM mobil	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Salesforce reţele partener CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM SFA	Salesforce CRM SFA	Salesforce CRM SFA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Salesforce CRM pentru aplicaţii Google	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce to Salesforce	Salesforce to Salesforce	Salesforce către Salesforce	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.FAILURE	FAILURE	EROARE	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.SUCCESS	SUCCESS	SUCCES	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Completed	Completed	Finalizată	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Failed	Failed	Eşuat	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.In Progress	In Progress	În desfăşurare	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Passed	Passed	Reuşit	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Retired	Retired	Pensionat	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Months	Months	Luni	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Years	Years	Ani	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Completed	Completed	Finalizată	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.In Progress	In Progress	În desfăşurare	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Not Started	Not Started	Nu este iniţiat	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Retired	Retired	Pensionat	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.CSS	CSS	CSS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Content	Content	Conţinut	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Customer Portal	Customer Portal	Portal client	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.FDC	FDC	FDC	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Ideas	Ideas	Idei	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Partner Portal	Partner Portal	Portal partener	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.SFA	SFA	SFA	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Developer	Developer	Dezvoltator	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.IT Professional	IT Professional	Profesionist în domeniul IT	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Sales Professional	Sales Professional	Profesionist în vânzări	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.da	da	Daneză	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.de	de	Germană	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.en_US	en_US	Engleză	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.es	es	Spaniolă	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fi	fi	Finlandeză	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fr	fr	Franceză	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.it	it	Italiană	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ja	ja	Japoneză	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ko	ko	Coreeană	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.nl_NL	nl_NL	Olandeză	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.pt_BR	pt_BR	Portugheză	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ru	ru	Rusă	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.sv	sv	Suedeză	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.th	th	Thailandeză	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_CN	zh_CN	Chineză (simplificată)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_TW	zh_TW	Chineză (tradiţională)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Conectare Force.com	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com mobil	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Cloud vânzări	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.Force.com Connect	Force.com Connect	Conectare Force.com	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com mobil	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.Completed	Completed	Finalizată	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.In Progress	In Progress	În desfăşurare	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Completed	Completed	Finalizată	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Failed	Failed	Eşuat	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.In Progress	In Progress	În desfăşurare	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Passed	Passed	Reuşit	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Retired	Retired	Pensionat	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Unenrolled	Unenrolled	Dezabonat	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Completed	Completed	Finalizată	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Failed	Failed	Eşuat	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.LO Error	LO Error	Eroare obiect de învăţare (LO)	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Pending	Pending	În aşteptare	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Skipped	Skipped	Ignorat	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.contains	contains	conţine	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.does not contain	does not contain	nu conţine	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.equals	equals	este egală cu	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.excludes	excludes	exclude	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater or equal	greater or equal	mai mare sau egal	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater than	greater than	mai mare decât	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.includes	includes	include	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less or equal	less or equal	mai mic sau egal	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less than	less than	mai puţin de	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.not equal to	not equal to	nu este egal cu	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.starts with	starts with	începe cu	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Account	Account	Cont	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Case	Case	Caz	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Contact	Contact	Contact	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Lead	Lead	Şef	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Opportunity	Opportunity	Oportunitate	-
+PicklistValue.User.lmscons__CFS_Status.Active	Active	Activ	-
+PicklistValue.User.lmscons__CFS_Status.Deactivated	Deactivated	Dezactivat	-
+PicklistValue.User.lmscons__CFS_Status.Not CFS user	Not CFS user	Nu este un utilizator CFS	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Completed	Completed	Finalizată	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.In Progress	In Progress	În desfăşurare	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Not Started	Not Started	Nu este iniţiat	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Relative Dates	Relative Dates	Date corespunzătoare	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Static Dates	Static Dates	Date statice	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Failed	Failed	Eşuat	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Success	Success	Succes	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Import	Import	Importare	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Manual	Manual	Manual	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Delete	Delete	Ştergere	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Insert	Insert	Inserare	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Update	Update	Actualizare	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Completed	Completed	Finalizată	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.In Progress	In Progress	În desfăşurare	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Not Started	Not Started	Nu este iniţiat	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Internal	Internal	Intern	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Private	Private	Privat	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Public	Public	Public	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Completed	Completed	Finalizată	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.In Progress	In Progress	În desfăşurare	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Not Started	Not Started	Nu este iniţiat	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Manager	Manager	Manager	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Self	Self	Propriu	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.User	User	Utilizator	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.IT Professional	IT Professional	Profesionist în domeniul IT	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	Profesionist în vânzări	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.da	da	Daneză	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.de	de	Germană	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.en_US	en_US	Engleză	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.es	es	Spaniolă	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fi	fi	Finlandeză	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fr	fr	Franceză	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.it	it	Italiană	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ja	ja	Japoneză	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ko	ko	Coreeană	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.nl_NL	nl_NL	Olandeză	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.pt_BR	pt_BR	Portugheză (Brazilia)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ru	ru	Rusă	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.sv	sv	Suedeză	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.th	th	Thailandeză	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_CN	zh_CN	Chineză (simplificată)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_TW	zh_TW	Chineză (tradiţională)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Product_Category.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Products.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Active	Active	Activ	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Retired	Retired	Pensionat	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.IT Professional	IT Professional	Profesionist în domeniul IT	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	Profesionist în vânzări	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.da	da	Daneză	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.de	de	Germană	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.en_US	en_US	Engleză	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.es	es	Spaniolă	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fi	fi	Finlandeză	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fr	fr	Franceză	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.it	it	Italiană	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ja	ja	Japoneză	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ko	ko	Coreeană	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.nl_NL	nl_NL	Olandeză	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.pt_BR	pt_BR	Portugheză	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ru	ru	Rusă	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.sv	sv	Suedeză	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.th	th	Thailandeză	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_CN	zh_CN	Chineză (simplificată)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_TW	zh_TW	Chineză (tradiţională)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmsilt__Event__c.lmsilt__Product_Category.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmsilt__Event__c.lmsilt__Products.CFS Learning	CFS Learning	Învăţare CFS	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Attended	Attended	Frecventat	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Not Attended	Not Attended	Nu s-a participat	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Optional	Optional	Opţional	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Recommended	Recommended	Recomandat	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Required	Required	Obligatoriu	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Admin	Admin	Admin.	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Instructor	Instructor	Instructor	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Manager	Manager	Manager	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Select User	Select User	Selectaţi utilizator	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.User	User	Utilizator	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Optional	Optional	Opţional	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Recommended	Recommended	Recomandat	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Required	Required	Obligatoriu	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.After	After	După	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Anytime	Anytime	Oricând	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Before	Before	Mai înainte	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.During	During	În timpul	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Active	Active	Activ	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Inactive	Inactive	Inactiv	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Attended	Attended	Frecventat	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Not Attended	Not Attended	Nu s-a participat	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Partially Attended	Partially Attended	S-a participat parţial	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Failed	Failed	Eşuat	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Passed	Passed	Reuşit	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Cancelled	Cancelled	Anulat	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Enrolled	Enrolled	Înscrişi	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Waitlisted	Waitlisted	Pe lista de aşteptare	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Withdrawn	Withdrawn	Retras	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.AMER	AMER	AMER	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.APAC	APAC	APAC	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.EMEA	EMEA	EMEA	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.JAPAN	JAPAN	JAPONIA	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Alabama	Alabama	Alabama	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Alaska	Alaska	Alaska	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Arizona	Arizona	Arizona	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Arkansas	Arkansas	Arkansas	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.California	California	California	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Colorado	Colorado	Colorado	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Connecticut	Connecticut	Connecticut	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Delaware	Delaware	Delaware	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Florida	Florida	Florida	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Georgia	Georgia	Georgia	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Hawaii	Hawaii	Hawaii	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Idaho	Idaho	Idaho	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Illinois	Illinois	Illinois	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Indiana	Indiana	Indiana	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Iowa	Iowa	Iowa	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Kansas	Kansas	Kansas	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Kentucky	Kentucky	Kentucky	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Louisiana	Louisiana	Louisiana	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Maine	Maine	Maine	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Maryland	Maryland	Maryland	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Massachusetts	Massachusetts	Massachusetts	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Michigan	Michigan	Michigan	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Minnesota	Minnesota	Minnesota	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Mississippi	Mississippi	Mississippi	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Missouri	Missouri	Missouri	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Montana	Montana	Montana	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Nebraska	Nebraska	Nebraska	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Nevada	Nevada	Nevada	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Hampshire	New Hampshire	New Hampshire	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Jersey	New Jersey	New Jersey	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Mexico	New Mexico	New Mexico	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New York	New York	New York	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.North Carolina	North Carolina	Carolina de Nord	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.North Dakota	North Dakota	Dakota de Nord	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Ohio	Ohio	Ohio	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Oklahoma	Oklahoma	Oklahoma	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Oregon	Oregon	Oregon	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Pennsylvania	Pennsylvania	Pennsylvania	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Rhode Island	Rhode Island	Rhode Island	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.South Carolina	South Carolina	Carolina de Sud	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.South Dakota	South Dakota	Dakota de Sud	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Tennessee	Tennessee	Tennessee	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Texas	Texas	Texas	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Utah	Utah	Utah	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Vermont	Vermont	Vermont	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Virginia	Virginia	Virginia	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Washington	Washington	Washington	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.West Virginia	West Virginia	Virginia de Vest	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Wisconsin	Wisconsin	Wisconsin	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Wyoming	Wyoming	Wyoming	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Corporate Headquarters	Corporate Headquarters	Sediul întreprinderii	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Hotel	Hotel	Hotel	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Office	Office	Birou	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Announce Name	Announce Name	Nume anunţ	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Beep	Beep	Bip	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.No Tone	No Tone	Fără ton	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.ILT	ILT	Formare cu instructor (ILT)	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.vILT	vILT	vILT	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PRIVATE	PRIVATE	PRIVAT	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PUBLIC	PUBLIC	PUBLIC	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.UNLISTED	UNLISTED	NELISTAT	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.GoToTraining	GoToTraining	GoToTraining	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.WebEx	WebEx	WebEx	-
+PicklistValue.lmsilt__Session__c.lmsilt__Telephony_Support.CALLIN	CALLIN	CALLIN	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+00:00) Greenwich Mean Time (GMT)	(GMT+00:00) Greenwich Mean Time (GMT)	(GMT+00:00) Ora meridianului Greenwich (GMT)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) British Summer Time (Europe/London)	(GMT+01:00) British Summer Time (Europe/London)	(GMT+01:00) Ora de vară britanică (Europa/Londra)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Central European Time (Africa/Algiers)	(GMT+01:00) Central European Time (Africa/Algiers)	(GMT+01:00) Ora Europei Centrale (Africa/Algeria)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Irish Summer Time (Europe/Dublin)	(GMT+01:00) Irish Summer Time (Europe/Dublin)	(GMT+01:00) Ora de vară irlandeză (Europa/Dublin)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Western European Summer Time (Europe/Lisbon)	(GMT+01:00) Western European Summer Time (Europe/Lisbon)	(GMT+01:00) Ora de vară în Europa de Vest (Europa/Lisabona)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Amsterdam)	(GMT+02:00) Central European Summer Time (Europe/Amsterdam)	(GMT+02:00) Ora de vară în Europa Centrală (Europa/Amsterdam)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Berlin)	(GMT+02:00) Central European Summer Time (Europe/Berlin)	(GMT+02:00) Ora de vară în Europa Centrală (Europa/Berlin)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Brussels)	(GMT+02:00) Central European Summer Time (Europe/Brussels)	(GMT+02:00) Ora de vară în Europa Centrală (Europa/Bruxelles)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Paris)	(GMT+02:00) Central European Summer Time (Europe/Paris)	(GMT+02:00) Ora de vară în Europa Centrală (Europa/Paris)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Prague)	(GMT+02:00) Central European Summer Time (Europe/Prague)	(GMT+02:00) Ora de vară în Europa Centrală (Europa/Praga)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Rome)	(GMT+02:00) Central European Summer Time (Europe/Rome)	(GMT+02:00) Ora de vară în Europa Centrală (Europa/Roma)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Eastern European Time (Africa/Cairo)	(GMT+02:00) Eastern European Time (Africa/Cairo)	(GMT+02:00) Ora Europei de Est (Africa/Cairo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) South Africa Standard Time (Africa/Johannesburg)	(GMT+02:00) South Africa Standard Time (Africa/Johannesburg)	(GMT+02:00) Ora standard a Africii de Sud (Africa/Johannesburg)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Baghdad)	(GMT+03:00) Arabian Standard Time (Asia/Baghdad)	(GMT+03:00) Ora standard a Arabiei (Asia/Bagdad)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Kuwait)	(GMT+03:00) Arabian Standard Time (Asia/Kuwait)	(GMT+03:00) Ora standard a Arabiei (Asia/Kuwait)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Riyadh)	(GMT+03:00) Arabian Standard Time (Asia/Riyadh)	(GMT+03:00) Ora standard a Arabiei (Asia/Riyadh)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) East Africa Time (Africa/Nairobi)	(GMT+03:00) East Africa Time (Africa/Nairobi)	(GMT+03:00) Ora Africii de Est (Africa/Nairobi)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Athens)	(GMT+03:00) Eastern European Summer Time (Europe/Athens)	(GMT+03:00) Ora de vară în Europa de Est (Europa/Atena)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Bucharest)	(GMT+03:00) Eastern European Summer Time (Europe/Bucharest)	(GMT+03:00) Ora de vară în Europa de Est (Europa/Bucureşti)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Helsinki)	(GMT+03:00) Eastern European Summer Time (Europe/Helsinki)	(GMT+03:00) Ora de vară în Europa de Est (Europa/Helsinki)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Istanbul)	(GMT+03:00) Eastern European Summer Time (Europe/Istanbul)	(GMT+03:00) Ora de vară în Europa de Est (Europa/Istanbul)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Time (Europe/Minsk)	(GMT+03:00) Eastern European Time (Europe/Minsk)	(GMT+03:00) Ora Europei de Est (Europa/Minsk)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Israel Daylight Time (Asia/Jerusalem)	(GMT+03:00) Israel Daylight Time (Asia/Jerusalem)	(GMT+03:00) Ora de vară în Israel (Asia/Riyadh)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Georgia Time (Asia/Tbilisi)	(GMT+04:00) Georgia Time (Asia/Tbilisi)	(GMT+04:00) Ora în Georgia (Asia/Tbilisi)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Gulf Standard Time (Asia/Dubai)	(GMT+04:00) Gulf Standard Time (Asia/Dubai)	(GMT+04:00) Ora standard în Golf (Asia/Dubai)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Moscow Standard Time (Europe/Moscow)	(GMT+04:00) Moscow Standard Time (Europe/Moscow)	(GMT+04:00) Ora standard în Moscova (Europa/Moscova)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:30) Afghanistan Time (Asia/Kabul)	(GMT+04:30) Afghanistan Time (Asia/Kabul)	(GMT+04:30) Ora în Afganistan (Asia/Tbilisi)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:30) Iran Daylight Time (Asia/Tehran)	(GMT+04:30) Iran Daylight Time (Asia/Tehran)	(GMT+04:30) Ora de vară în Iran (Asia/Teheran)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:00) Pakistan Time (Asia/Karachi)	(GMT+05:00) Pakistan Time (Asia/Karachi)	(GMT+05:00) Ora în Pakistan (Asia/Karachi)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:00) Uzbekistan Time (Asia/Tashkent)	(GMT+05:00) Uzbekistan Time (Asia/Tashkent)	(GMT+05:00) Ora în Uzbekistan (Asia/Tashkent)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:30) India Standard Time (Asia/Calcutta)	(GMT+05:30) India Standard Time (Asia/Calcutta)	(GMT+05:30) Ora standard în India (Asia/Calcutta)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:30) India Standard Time (Asia/Colombo)	(GMT+05:30) India Standard Time (Asia/Colombo)	(GMT+05:30) Ora standard în India (Asia/Colombo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:45) Nepal Time (Asia/Katmandu)	(GMT+05:45) Nepal Time (Asia/Katmandu)	(GMT+05:45) Ora în Nepal (Asia/Katmandu)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:00) Bangladesh Time (Asia/Dacca)	(GMT+06:00) Bangladesh Time (Asia/Dacca)	(GMT+06:00) Ora în Bangladesh (Asia/Dacca)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:00) Yekaterinburg Time (Asia/Yekaterinburg)	(GMT+06:00) Yekaterinburg Time (Asia/Yekaterinburg)	(GMT+06:00) Ora în Yekaterinburg (Asia/Yekaterinburg)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:30) Myanmar Time (Asia/Rangoon)	(GMT+06:30) Myanmar Time (Asia/Rangoon)	(GMT+06:30) Ora în Myanmar (Asia/Rangoon)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Indochina Time (Asia/Bangkok)	(GMT+07:00) Indochina Time (Asia/Bangkok)	(GMT+07:00) Ora în Indochina (Asia/Bangkok)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Indochina Time (Asia/Saigon)	(GMT+07:00) Indochina Time (Asia/Saigon)	(GMT+07:00) Ora în Indochina (Asia/Saigon)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Western Indonesia Time (Asia/Jakarta)	(GMT+07:00) Western Indonesia Time (Asia/Jakarta)	(GMT+07:00) Ora în Indonezia de Vest (Asia/Jakarta)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Australian Western Standard Time (Australia/Perth)	(GMT+08:00) Australian Western Standard Time (Australia/Perth)	(GMT+08:00) Ora standard a Australiei de Vest (Australia/Perth)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) China Standard Time (Asia/Shanghai)	(GMT+08:00) China Standard Time (Asia/Shanghai)	(GMT+08:00) Ora standard în China (Asia/Shanghai)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Hong Kong Time (Asia/Hong_Kong)	(GMT+08:00) Hong Kong Time (Asia/Hong_Kong)	(GMT+08:00) Ora în Hong Kong (Asia/Hong_Kong)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Malaysia Time (Asia/Kuala_Lumpur)	(GMT+08:00) Malaysia Time (Asia/Kuala_Lumpur)	(GMT+08:00) Ora în Malaezia (Asia/Kuala_Lumpur)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Philippine Time (Asia/Manila)	(GMT+08:00) Philippine Time (Asia/Manila)	(GMT+08:00) Ora în Filipine (Asia/Manila)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Singapore Standard Time (Asia/Singapore)	(GMT+08:00) Singapore Standard Time (Asia/Singapore)	(GMT+08:00) Ora standard în Singapore (Asia/Singapore)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Taipei Standard Time (Asia/Taipei)	(GMT+08:00) Taipei Standard Time (Asia/Taipei)	(GMT+08:00) Ora standard în Taipei (Asia/Taipei)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:00) Japan Standard Time (Asia/Tokyo)	(GMT+09:00) Japan Standard Time (Asia/Tokyo)	(GMT+09:00) Ora standard în Japonia (Asia/Tokio)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:00) Korean Standard Time (Asia/Seoul)	(GMT+09:00) Korean Standard Time (Asia/Seoul)	(GMT+09:00) Ora standard în Coreea (Asia/Seul)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:30) Australian Central Standard Time (Australia/Adelaide)	(GMT+09:30) Australian Central Standard Time (Australia/Adelaide)	(GMT+09:30) Ora standard a Australiei Centrale (Australia/Adelaide)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:30) Australian Central Standard Time (Australia/Darwin)	(GMT+09:30) Australian Central Standard Time (Australia/Darwin)	(GMT+09:30) Ora standard a Australiei Centrale (Australia/Darwin)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:00) Australian Eastern Standard Time (Australia/Brisbane)	(GMT+10:00) Australian Eastern Standard Time (Australia/Brisbane)	(GMT+10:00) Ora standard a Australiei de Est (Australia/Brisbane)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:00) Australian Eastern Standard Time (Australia/Sydney)	(GMT+10:00) Australian Eastern Standard Time (Australia/Sydney)	(GMT+10:00) Ora standard a Australiei de Est (Australia/Sydney)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:30) Lord Howe Standard Time (Australia/Lord_Howe)	(GMT+10:30) Lord Howe Standard Time (Australia/Lord_Howe)	(GMT+10:30) Ora standard în Lord Howe (Australia/Lord_Howe)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+11:00) Solomon Islands Time (Pacific/Guadalcanal)	(GMT+11:00) Solomon Islands Time (Pacific/Guadalcanal)	(GMT+11:00) Ora în Insulele Solomon (Pacific/Guadalcanal)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+11:30) Norfolk Islands Time (Pacific/Norfolk)	(GMT+11:30) Norfolk Islands Time (Pacific/Norfolk)	(GMT+11:30) Ora în Insulele Norfolk (Pacific/Norfolk)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) Fiji Time (Pacific/Fiji)	(GMT+12:00) Fiji Time (Pacific/Fiji)	(GMT+12:00) Ora în Fiji (Pacific/Fiji)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) Magadan Time (Asia/Kamchatka)	(GMT+12:00) Magadan Time (Asia/Kamchatka)	(GMT+12:00) Ora în Magadan (Asia/Kamchatka)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) New Zealand Standard Time (Pacific/Auckland)	(GMT+12:00) New Zealand Standard Time (Pacific/Auckland)	(GMT+12:00) Ora standard în Noua Zeelandă (Pacific/Auckland)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:45) Chatham Standard Time (Pacific/Chatham)	(GMT+12:45) Chatham Standard Time (Pacific/Chatham)	(GMT+12:45) Ora standard în Chatham (Pacific/Chatham)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+13:00) Phoenix Islands Time (Pacific/Enderbury)	(GMT+13:00) Phoenix Islands Time (Pacific/Enderbury)	(GMT+13:00) Ora în Insulele Phoenix (Pacific/Enderbury)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+13:00) Tonga Time (Pacific/Tongatapu)	(GMT+13:00) Tonga Time (Pacific/Tongatapu)	(GMT+13:00) Ora în Tonga (Pacific/Tongatapu)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+14:00) Line Islands Time (Pacific/Kiritimati)	(GMT+14:00) Line Islands Time (Pacific/Kiritimati)	(GMT+14:00) Ora în Insulele Line (Pacific/Kiritimati)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-01:00) Cape Verde Time (Atlantic/Cape_Verde)	(GMT-01:00) Cape Verde Time (Atlantic/Cape_Verde)	(GMT-01:00) Ora în Capul Verde (Atlantic/Cape_Verde)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-02:00) South Georgia Time (Atlantic/South_Georgia)	(GMT-02:00) South Georgia Time (Atlantic/South_Georgia)	(GMT-02:00) Ora în Georgia de Sud (Atlantic/South_Georgia)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-02:30) Newfoundland Daylight Time (America/St_Johns)	(GMT-02:30) Newfoundland Daylight Time (America/St_Johns)	(GMT-02:30) Ora de vară în Newfoundland (America/St_Johns)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Argentina Time (America/Buenos_Aires)	(GMT-03:00) Argentina Time (America/Buenos_Aires)	(GMT-03:00) Ora în Argentina (America/Buenos_Aires)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Atlantic Daylight Time (America/Halifax)	(GMT-03:00) Atlantic Daylight Time (America/Halifax)	(GMT-03:00)Ora de vară a Atlanticului (America/Halifax)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Atlantic Daylight Time (Atlantic/Bermuda)	(GMT-03:00) Atlantic Daylight Time (Atlantic/Bermuda)	(GMT-03:00) Ora de vară a Atlanticului (Atlantic/Bermuda)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Brasilia Time (America/Sao_Paulo)	(GMT-03:00) Brasilia Time (America/Sao_Paulo)	(GMT-03:00) Ora în Brazilia (America/Sao_Paulo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Atlantic Standard Time (America/Puerto_Rico)	(GMT-04:00) Atlantic Standard Time (America/Puerto_Rico)	(GMT-04:00) Ora standard a Atlanticului (America/Puerto_Rico)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Chile Time (America/Santiago)	(GMT-04:00) Chile Time (America/Santiago)	(GMT-04:00) Ora în Chile (America/Santiago)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Eastern Daylight Time (America/Indianapolis)	(GMT-04:00) Eastern Daylight Time (America/Indianapolis)	(GMT-04:00) Ora de vară de Est (America/Indianapolis)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Eastern Daylight Time (America/New_York)	(GMT-04:00) Eastern Daylight Time (America/New_York)	(GMT-04:00) Ora de vară de Est (America/New_York)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:30) Venezuela Time (America/Caracas)	(GMT-04:30) Venezuela Time (America/Caracas)	(GMT-04:30) Ora în Venezuela (America/Caracas)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Central Daylight Time (America/Chicago)	(GMT-05:00) Central Daylight Time (America/Chicago)	(GMT-05:00) Ora de vară centrală (America/Chicago)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Central Daylight Time (America/Mexico_City)	(GMT-05:00) Central Daylight Time (America/Mexico_City)	(GMT-05:00) Ora de vară centrală (America/Mexic)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Colombia Time (America/Bogota)	(GMT-05:00) Colombia Time (America/Bogota)	(GMT-05:00) Ora în Columbia (America/Bogota)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Eastern Standard Time (America/Panama)	(GMT-05:00) Eastern Standard Time (America/Panama)	(GMT-05:00) Ora standard de Est (America/Panama)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Peru Time (America/Lima)	(GMT-05:00) Peru Time (America/Lima)	(GMT-05:00) Ora în Peru (America/Lima)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-06:00) Central Standard Time (America/El_Salvador)	(GMT-06:00) Central Standard Time (America/El_Salvador)	(GMT-06:00) Ora centrală standard (America/El_Salvador)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-06:00) Mountain Daylight Time (America/Denver)	(GMT-06:00) Mountain Daylight Time (America/Denver)	(GMT-06:00) Ora de vară în zona montană (America/Denver)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Mountain Standard Time (America/Phoenix)	(GMT-07:00) Mountain Standard Time (America/Phoenix)	(GMT-07:00) Ora standard în zona montană (America/Phoenix)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Pacific Daylight Time (America/Los_Angeles)	(GMT-07:00) Pacific Daylight Time (America/Los_Angeles)	(GMT-07:00) Ora de vară a Pacificului (America/Los_Angeles)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Pacific Daylight Time (America/Tijuana)	(GMT-07:00) Pacific Daylight Time (America/Tijuana)	(GMT-07:00) Ora de vară a Pacificului (America/Tijuana)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-08:00) Alaska Daylight Time (America/Anchorage)	(GMT-08:00) Alaska Daylight Time (America/Anchorage)	(GMT-08:00 ) Ora vară în Alaska (America/Anchorage)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-10:00) Hawaii-Aleutian Standard Time (Pacific/Honolulu)	(GMT-10:00) Hawaii-Aleutian Standard Time (Pacific/Honolulu)	(GMT-10:00) Ora standard în Hawaii-Aleutian (Pacific/Honolulu)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-11:00) Niue Time (Pacific/Niue)	(GMT-11:00) Niue Time (Pacific/Niue)	(GMT-11:00) Ora în Niue (Pacific/Niue)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-11:00) Samoa Standard Time (Pacific/Pago_Pago)	(GMT-11:00) Samoa Standard Time (Pacific/Pago_Pago)	(GMT-11:00) Ora standard în Samoa (Pacific/Pago_Pago)	-

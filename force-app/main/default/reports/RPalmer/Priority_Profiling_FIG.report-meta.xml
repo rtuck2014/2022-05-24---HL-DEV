@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c.Officer_Name__c</field>
+    </columns>
+    <columns>
+        <field>Account.Industry_Group__c</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c.Company_Coverage_Status__c</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c.Priority__c</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c.MasterList_Date__c</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c.Lead_Generation_Status__c</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c.DA_Company_Type__c</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c.Data_Analytics_Company_Overview__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Coverage_Team__c.Lead_Generation_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Profiling - Priority</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Industry_Group__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>FIG - Financial Institutions</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Priority Profiling - FIG</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountCustomEntity$Coverage_Team__c@Coverage_Team__c.Officer__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Coverage_Team__c.MasterList_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

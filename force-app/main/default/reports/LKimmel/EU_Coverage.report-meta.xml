@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Accounts_Coverage__r.Coverage_Contacts__r$Coverage_Contact__c</field>
+    </columns>
+    <columns>
+        <field>Account.Accounts_Coverage__r.Coverage_Contacts__r$Coverage_Contact__c.Title</field>
+    </columns>
+    <columns>
+        <field>Account.Accounts_Coverage__r.Coverage_Contacts__r$EU_Initiative__c</field>
+    </columns>
+    <columns>
+        <field>Account.Accounts_Coverage__r$Officer__c.Contact_Full_Name__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Account.Accounts_Coverage__r$Coverage_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EU FR</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Accounts_Coverage__r.Coverage_Contacts__r$Focus__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Accounts_Coverage__r.Coverage_Contacts__r$Contact_Tier__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EU Coverage</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Coverage_Team_and_Contacts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Engagement_Counterparty__c.Company__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c.Initial_Contact__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c.Markup__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c.Markup_Sent__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c.Book_Returned__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c.Sent_Book__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c.Proposal_Indication__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c.Received_Exec_Confidentiality_Agreement__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Engagement_Counterparty__c.Company__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>INPUT COMPANY NAME</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Search Company on Counterparty List</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Engagement_Counterparty__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Engagement_Counterparty__c.Initial_Contact__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

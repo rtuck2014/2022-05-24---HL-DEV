@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity__c$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c.Opportunity_Internal_Teams__r$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c$Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c$Industry_Group__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c$Status__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c$Id</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c$Name</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity__c$CreatedBy</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Amanda Fuselli,Ann Baltazar,Aradhna Jadoenandansing,Bianca Graham,Carolyn Garz,Christiana Minardi,Codie Sholl,Courtney Wunderlich,Dana Hoyt,Dana Scheid,Deanna Papesh,Elaine Murphy,Ella Mudaliar,Eva Dahan,Georgia Sanchez,Giorgia Cardia,Grace Harmon,Harriet Stickland,Jaye Mak,Jennette Myers,Jennifer Carrillo,Jennifer Rocco,Kathleen McCarthy,Kimberly McClasky,Kristen Moorman,Kristine Tureaud,Laura Cantu,Olivia Ricketts,Mariel Herrera,Mary Cruz,Megan Jhu,Megumi Fukumasu,Melanie Ramsey,Merrill Greulich,Michelle Demyon,Nicole Bicho,Popina Bale,Roxana Madrid,Royana Black,Sharon Rimmer,Silva Markarian,Silvia Di Pierro,Slone Portner,Stacy Barham,Tracey Frendo,Victoria Flanagan,Whitney Gahlon</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <name>KPI - Newly added opportunities</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Opportunities_with_Internal_Team__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity__c$Date_Engaged__c</dateColumn>
+        <interval>INTERVAL_PREVCURY</interval>
+    </timeFrameFilter>
+</Report>

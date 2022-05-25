@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>ALL_Rev_Accrual_RO</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Access to view all Revenue Accruals</description>
+        <label>ALL Rev Accrual RO</label>
+        <sharedTo>
+            <group>Rev_Accrual_RO</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF,FVA,FR,SC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Accounting_Edit_FR</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Accounting Edit FR</label>
+        <sharedTo>
+            <group>Accounting_FR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Accounting_FAS_London</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Accounting FVA London</label>
+        <sharedTo>
+            <group>Accounting_FAS_London</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Office__c</field>
+            <operation>equals</operation>
+            <value>BE,HK,LO,FF,PA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FVA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CF_EU_REV_Read</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CF EU REV Read</label>
+        <sharedTo>
+            <group>REV_CF_EU</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Office__c</field>
+            <operation>equals</operation>
+            <value>LO,FF,MD,PA,ML,RO,AM</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CF_REV_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CF REV Write</label>
+        <sharedTo>
+            <group>REV_CF</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FAS_REV_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FVA REV Write</label>
+        <sharedTo>
+            <group>REV_FAS</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FVA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FR_REV_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>FR REV Write</label>
+        <sharedTo>
+            <group>REV_FR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>FVA_TFR_Read_Only</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>FVA CVAS Read Only</label>
+        <sharedTo>
+            <group>REV_FVA_TFR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FVA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Job_Type__c</field>
+            <operation>startsWith</operation>
+            <value>CVAS</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Job_Type_DDS</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Job Type - DDS</label>
+        <sharedTo>
+            <group>Job_Type_DDS</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Job_Type__c</field>
+            <operation>equals</operation>
+            <value>TAS - Due Diligence Services</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Job_Type_PV</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share Revenue Accruals For All PV Job Types</description>
+        <label>Job Type - PV</label>
+        <sharedTo>
+            <group>Job_Type_PV</group>
+        </sharedTo>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>Job_Type__c</field>
+            <operation>equals</operation>
+            <value>FA - Portfolio-Advis/Consulting,FA - Portfolio-Auto Loans,FA - Portfolio-Auto Struct Prd,FA - Portfolio-Deriv/Risk Mgmt,FA - Portfolio-Diligence/Assets,FA - Portfolio-Funds Transfer,FA - Portfolio-GP interest,FA - Portfolio-Real Estate</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Job_Type__c</field>
+            <operation>equals</operation>
+            <value>FA - Portfolio-Valuation</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>SC_REV_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>SC REV Write</label>
+        <sharedTo>
+            <group>REV_SC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>SC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Accounting_Edit_All</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>for Rev Acc</description>
+        <label>Accounting Edit All</label>
+        <sharedTo>
+            <group>Accounting_General</group>
+        </sharedTo>
+        <sharedFrom>
+            <allInternalUsers></allInternalUsers>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

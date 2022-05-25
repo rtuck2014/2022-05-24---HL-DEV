@@ -1,0 +1,622 @@
+# Language: German
+Language code: de
+Type: Bilingual
+
+------------------TRANSLATED-------------------
+
+# KEY	LABEL	TRANSLATION	OUT OF DATE
+
+CustomApp.lmscons__Learning_Cloud	Learning Cloud	Lerncloud	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Action.HelpText	The resulting action of clicking the CFS Link	"Die Aktion, die auf das Klicken des CFS-Links erfolgt"	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Assigned.HelpText	True if the target learning object was assigned as a result of clicking the CFS Link	"Ist wahr, wenn das Ziel-Lernobjekt durch Klicken des CFS-Links zugewiesen wurde"	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.HelpText	The status of the CFS Link when accessed by the User	Der Status des CFS-Links beim Zugriff durch den Benutzer	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Error.HelpText	If clicking on the CFS Link results in an error, this picklist provides the cause of the error.	Beim Klicken auf den Link-CFS in einem Fehler wird in diese Auswahlliste die Ursache des Fehlers angegeben.	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.HelpText	The Target Learning Object's status on the User's Transcript when accessed by the User	"Der Status des Ziel-Lernobjekts in der Schulungsübersicht des Benutzers, wenn dieser darauf zugreift"	-
+CustomField.lmscons__CFS_Link__c.lmscons__Channel.HelpText	Target channel (internal app, a community, portal, or site) for this link	"Zielkanal (interne Anwendung, Community, Portal oder Website) für diesen Link"	-
+CustomField.lmscons__CFS_Link__c.lmscons__End_Date.HelpText	Deep Link End Date; if this field is null, the Deep Link is always active (if marked Active)	"Deep-Link-Enddatum. Wenn dieses Feld null ist, ist der Deep-Link immer aktiv (wenn entsprechend markiert)"	-
+CustomField.lmscons__CFS_Link__c.lmscons__IsActive.HelpText	Checkbox that marks the deep link as active or not. If marked inactive, this will override the default behavior based on start date and end date. 	"Kontrollkästchen, die den Deep-Link als aktiv oder nicht aktiv markiert. Wenn es als inaktiv markiert ist, wird das Standardverhalten auf Basis von Start- und Enddatum überschrieben. "	-
+CustomField.lmscons__CFS_Link__c.lmscons__Start_Date.HelpText	Deep Link Start Date; if this field is null, the Deep Link is active immediately (if marked Active)	"Deep-Link-Startdatum. Wenn dieses Feld null ist, ist der Deep-Link sofort aktiv (wenn entsprechend markiert)"	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	"Sollte geprüft werden für den Fall, dass es erforderlich ist, eine wiederkehrende Schulung für diese Zuweisung zu erstellen. Geben Sie bitte auch den Zeitraum und den Typ des Zeitraums für die wiederkehrende Schulung an (Jahre oder Monate)"	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	Anzahl der wiederkehrenden Schulungszeiträume. Nach Ablauf dieser Zeitraumzuweisung wird erneut zugewiesen.	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	"Das Datum, an dem die Zuweisung der wiederkehrenden Schulung erstellt bzw. erneuert wurde"	-
+CustomField.lmscons__Curriculum__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"Gemäß Standardeinstellung muss der Benutzer alle Komponenten abschließen. Um die Kriterien anzupassen, setzen Sie für eine oder beide Optionen einen Wert ein."""	-
+CustomField.lmscons__Curriculum__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"Sie können eine Zeiteinheit nach einem Zeitwert 'X' hinzufügen, wie z. B. Xd, Xh oder Xm, um jeweils Tage (d), Stunden (h) und Minuten (m) anzugeben.\nWenn Sie keine Zeiteinheit angeben, werden Minuten eingesetzt."	-
+CustomField.lmscons__Curriculum__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"Gemäß Standardeinstellung muss der Benutzer alle Komponenten abschließen. Um die Kriterien anzupassen, setzen Sie für eine oder beide Optionen einen Wert ein."""	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	"Sollte geprüft werden für den Fall, dass es erforderlich ist, eine wiederkehrende Schulung für diese Zuweisung zu erstellen. Geben Sie bitte auch den Zeitraum und den Typ des Zeitraums für die wiederkehrende Schulung an (Jahre oder Monate)"	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.HelpText	Type of recurring training period (year or month)	Typ des wiederkehrenden Schulungszeitraums (Jahr oder Monat)	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	Anzahl der wiederkehrenden Schulungszeiträume. Nach Ablauf dieser Zeitraumzuweisung wird erneut zugewiesen.	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	"Das Datum, an dem die Zuweisung der wiederkehrenden Schulung erstellt bzw. erneuert wurde"	-
+CustomField.lmscons__Learning_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"Gemäß Standardeinstellung muss der Benutzer alle Komponenten abschließen. Um die Kriterien anzupassen, setzen Sie für eine oder beide Optionen einen Wert ein."""	-
+CustomField.lmscons__Learning_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"Sie können eine Zeiteinheit nach einem Zeitwert 'X' hinzufügen, wie z. B. Xd, Xh oder Xm, um jeweils Tage (d), Stunden (h) und Minuten (m) anzugeben.\nWenn Sie keine Zeiteinheit angeben, werden Minuten eingesetzt."	-
+CustomField.lmscons__Learning_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"Gemäß Standardeinstellung muss der Benutzer alle Komponenten abschließen. Um die Kriterien anzupassen, setzen Sie für eine oder beide Optionen einen Wert ein."""	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__Cornerstone_Callback_URL.HelpText	The URL of the notification page set up for your organization.	Die URL der für Ihre Organisation festgelegten Benachrichtigungsseite.	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__CyberUSecretSignKey.HelpText	Secret key to sign CyberU callbacks	Geheimschlüssel zum Signieren von CyberU-Rückrufen	-
+CustomField.lmscons__Quiz__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"Sie können eine Zeiteinheit nach einem Zeitwert 'X' hinzufügen, wie z. B. Xd, Xh oder Xm, um jeweils Tage (d), Stunden (h) und Minuten (m) anzugeben.\nWenn Sie keine Zeiteinheit angeben, werden Minuten eingesetzt."	-
+CustomField.lmscons__Training_Content_License__c.lmscons__Seats.HelpText	Total number of seats included in this license. Leave blank for unlimited.	"Gesamtzahl der mit dieser Lizenz verfügbaren Plätze. Frei lassen, falls unbegrenzt."	-
+CustomField.lmscons__Training_Content__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as  Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"Sie können eine Zeiteinheit nach einem Zeitwert 'X' hinzufügen, wie z. B. Xd, Xh oder Xm, um jeweils Tage (d), Stunden (h) und Minuten (m) anzugeben.\nWenn Sie keine Zeiteinheit angeben, werden Minuten eingesetzt."	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	"Sollte geprüft werden für den Fall, dass es erforderlich ist, eine wiederkehrende Schulung für diese Zuweisung zu erstellen. Geben Sie bitte auch den Zeitraum und den Typ des Zeitraums für die wiederkehrende Schulung an (Jahre oder Monate)"	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	Anzahl der wiederkehrenden Schulungszeiträume. Nach Ablauf dieser Zeitraumzuweisung wird erneut zugewiesen.	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	"Das Datum, an dem die Zuweisung der wiederkehrenden Schulung erstellt bzw. erneuert wurde"	-
+CustomField.lmscons__Training_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria,  please set values to one or both options.	"Gemäß Standardeinstellung muss der Benutzer alle Komponenten abschließen. Um die Kriterien anzupassen, setzen Sie für eine oder beide Optionen einen Wert ein."""	-
+CustomField.lmscons__Training_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"Sie können eine Zeiteinheit nach einem Zeitwert 'X' hinzufügen, wie z. B. Xd, Xh oder Xm, um jeweils Tage (d), Stunden (h) und Minuten (m) anzugeben.\nWenn Sie keine Zeiteinheit angeben, werden Minuten eingesetzt."	-
+CustomField.lmscons__Training_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"Gemäß Standardeinstellung muss der Benutzer alle Komponenten abschließen. Um die Kriterien anzupassen, setzen Sie für eine oder beide Optionen einen Wert ein."""	-
+CustomField.lmscons__Training_Unit__c.lmscons__Remaining_Training_Units.HelpText	Number of units available for spending	Anzahl der verbrauchbaren Einheiten	-
+CustomField.lmscons__Training_User_License__c.lmscons__Purchased.HelpText	Indicates if this user license has been purchased or only assigned.	"Gibt an, ob die Benutzerlizenz erworben oder nur zugewiesen wurde."	-
+CustomField.lmsilt__Development_Plan__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"Sie können eine Zeiteinheit nach einem Zeitwert 'X' hinzufügen, wie z. B. Xd, Xh oder Xm, um jeweils Tage (d), Stunden (h) und Minuten (m) anzugeben.\nWenn Sie keine Zeiteinheit angeben, werden Minuten eingesetzt."	-
+CustomField.lmsilt__Event__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"Sie können eine Zeiteinheit nach einem Zeitwert 'X' hinzufügen, wie z. B. Xd, Xh oder Xm, um jeweils Tage (d), Stunden (h) und Minuten (m) anzugeben.\nWenn Sie keine Zeiteinheit angeben, werden Minuten eingesetzt."	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Profile	Profile	Profil	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Role	Role	Rolle	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.Error	Error	Fehler	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.Launch	Launch	Starten	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.View Details	View Details	Details anzeigen	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Active	Active	Aktiv	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Expired	Expired	Abgelaufen	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Inactive	Inactive	Inaktiv	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Not Started	Not Started	Nicht gestartet	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Inactive Link	Inactive Link	Inaktiver Link	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Learning Object Not Found	Learning Object Not Found	Lernobjekt nicht gefunden	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Link Expired	Link Expired	Link abgelaufen	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Link Not Started	Link Not Started	Link nicht gestartet	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.No Access	No Access	Kein Zugriff	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Assigned	Assigned	Zugewiesen	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Completed	Completed	Abgeschlossen	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Enrolled	Enrolled	Eingeschrieben	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.In Progress	In Progress	Im Gang	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Unassigned	Unassigned	Nicht zugewiesen	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Days	Days	Tage	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Hours	Hours	Stunden	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Indefinite	Indefinite	Unbestimmt	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Month	Month	Monat	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Weeks	Weeks	Wochen	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Years	Years	Jahre	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Complete	Complete	Abgeschlossen	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.New	New	Neu	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Processing	Processing	Wird verarbeitet ...	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	Monate	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	Jahre	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Completed	Completed	Abgeschlossen	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.In Progress	In Progress	Im Gang	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Not Started	Not Started	Nicht gestartet	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Developer	Developer	Entwickler	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.IT Professional	IT Professional	IT-Spezialist	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Verkäufer	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.da	da	Dänisch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.de	de	Deutsch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.en_US	en_US	Englisch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.es	es	Spanisch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fi	fi	Finnisch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fr	fr	Französisch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.it	it	Italienisch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ja	ja	Japanisch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ko	ko	Koreanisch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.nl_NL	nl_NL	Niederländisch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.pt_BR	pt_BR	Portugiesisch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ru	ru	Russisch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.sv	sv	Schwedisch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.th	th	Thailändisch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_CN	zh_CN	Chinesisch (vereinfacht)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_TW	zh_TW	Chinesisch (traditionell)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Sales Cloud	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Error	Error	Fehler	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Info	Info	Info	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Warning	Warning	Achtung	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	Monate	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	Jahre	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Completed	Completed	Abgeschlossen	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.In Progress	In Progress	Im Gang	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Not Started	Not Started	Nicht gestartet	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Developer	Developer	Entwickler	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.IT Professional	IT Professional	IT-Spezialist	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Verkäufer	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.da	da	Dänisch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.de	de	Deutsch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.en_US	en_US	Englisch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.es	es	Spanisch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fi	fi	Finnisch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fr	fr	Französisch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.it	it	Italienisch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ja	ja	Japanisch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ko	ko	Koreanisch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.nl_NL	nl_NL	Niederländisch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.pt_BR	pt_BR	Portugiesisch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ru	ru	Russisch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.sv	sv	Schwedisch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.th	th	Thailändisch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_CN	zh_CN	Chinesisch (vereinfacht)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_TW	zh_TW	Chinesisch (traditionell)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Sales Cloud	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Completed	Completed	Abgeschlossen	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Pending	Pending	Ausstehend	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Download	Download	Download	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Purchase	Purchase	Erwerben	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Days	Days	Tage	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Hours	Hours	Stunden	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Indefinite	Indefinite	Unbestimmt	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Months	Months	Monate	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Weeks	Weeks	Wochen	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Years	Years	Jahre	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.English	English	Englisch	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.French	French	Französisch	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Completed	Completed	Abgeschlossen	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Failed	Failed	Fehlgeschlagen	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.In Progress	In Progress	Im Gang	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Passed	Passed	Bestanden	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Retired	Retired	Zurückgezogen	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Exit	Exit	Beenden	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Message	Message	Nachricht	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.da	da	Dänisch	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.de	de	Deutsch	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.en_US	en_US	Englisch	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.es	es	Spanisch	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fi	fi	Finnisch	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fr	fr	Französisch	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.it	it	Italienisch	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ja	ja	Japanisch	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ko	ko	Koreanisch	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.nl_NL	nl_NL	Niederländisch (Niederlande)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.pt_BR	pt_BR	Portugiesisch (Brasilien)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ru	ru	Russisch	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.sv	sv	Schwedisch	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.th	th	Thailändisch	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_CN	zh_CN	Chinesisch (vereinfacht)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_TW	zh_TW	Chinesisch (traditionell)	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Easy	Easy	Einfach	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Hard	Hard	Mittelschwer	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Medium	Medium	Mittel	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Long Text	Long Text	Langer Text	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Short Text	Short Text	Kurzer Text	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Free Text	Free Text	Freier Text	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Multi Select	Multi Select	Mehrfachauswahl	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Single Select	Single Select	Einfachauswahl	-
+PicklistValue.lmscons__Question__c.lmscons__Type.True/False	True/False	Wahr/Falsch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.da	da	Dänisch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.de	de	Deutsch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.en_US	en_US	Englisch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.es	es	Spanisch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fi	fi	Finnisch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fr	fr	Französisch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.it	it	Italienisch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ja	ja	Japanisch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ko	ko	Koreanisch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.nl_NL	nl_NL	Niederländisch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.pt_BR	pt_BR	Portugiesisch (Brasilien)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ru	ru	Russisch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.sv	sv	Schwedisch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.th	th	Thailändisch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_CN	zh_CN	Chinesisch (vereinfacht)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_TW	zh_TW	Chinesisch (traditionell)	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Course	Course	Kurs	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Curriculum	Curriculum	Curriculum	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Learning Path	Learning Path	Lernpfad	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Module	Module	Modul	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Quiz	Quiz	Quiz	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.ALL	ALL	ALLE	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NEW	NEW	NEU	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NON_COMPLETE	NON_COMPLETE	NICHT_VOLLSTÄNDIG	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Days	Days	Tage	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Hours	Hours	Stunden	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Indefinite	Indefinite	Unbestimmt	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Month	Month	Monat	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Weeks	Weeks	Wochen	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Years	Years	Jahre	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Implementation	Implementation	Implementierung	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Learning	Learning	Lerninhalt	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Sale	Sale	Verkauf	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Delivery_Type.Free eLearning	Free eLearning	Kostenloses E-Learning	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Channel Manager	Channel Manager	Channel Manager	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Developer	Developer	Entwickler	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.IT Professional	IT Professional	IT-Spezialist	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Implementation Team	Implementation Team	Implementierungsteam	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Marketing	Marketing	Marketing	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Partner	Partner	Partner	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Manager	Sales Manager	Vertriebsleiter	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Verkäufer	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Rep	Sales Rep	Vertriebsmitarbeiter	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Support Rep	Support Rep	Supportmitarbeiter	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.da	da	Dänisch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.de	de	Deutsch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.en_US	en_US	Englisch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.es	es	Spanisch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fi	fi	Finnisch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fr	fr	Französisch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.it	it	Italienisch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ja	ja	Japanisch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ko	ko	Koreanisch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.nl_NL	nl_NL	Niederländisch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.pt_BR	pt_BR	Portugiesisch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ru	ru	Russisch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.sv	sv	Schwedisch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.th	th	Thailändisch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_CN	zh_CN	Chinesisch (vereinfacht)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_TW	zh_TW	Chinesisch (traditionell)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Development Plan Task	Development Plan Task	Entwicklungsplan-Aufgabe	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Event	Event	Veranstaltung	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Module	Module	Modul	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Quiz	Quiz	Quiz	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Block	Block	Block	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Course	Course	Kurs	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Channel Manager	Channel Manager	Channel Manager	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Developer	Developer	Entwickler	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Implementation Team	Implementation Team	Implementierungsteam	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Marketing	Marketing	Marketing	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Partner	Partner	Partner	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Manager	Sales Manager	Vertriebsleiter	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Rep	Sales Rep	Vertriebsmitarbeiter	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Support Rep	Support Rep	Supportmitarbeiter	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com Offline	Force.com Offline	Force.com offline-	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com platform	Force.com platform	Force.com-Plattform	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM CSS	Salesforce CRM CSS	Salesforce CRM CSS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Content	Salesforce CRM Content	Salesforce CRM Content	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Ideas	Salesforce CRM Ideas	Salesforce CRM Ideas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Marketing	Salesforce CRM Marketing	Salesforce CRM Marketing	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Mobile	Salesforce CRM Mobile	Salesforce CRM Mobile	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM SFA	Salesforce CRM SFA	Salesforce CRM SFA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce to Salesforce	Salesforce to Salesforce	Salesforce to Salesforce	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com Offline	Force.com Offline	Force.com offline-	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com platform	Force.com platform	Force.com-Plattform	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM CSS	Salesforce CRM CSS	Salesforce CRM CSS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Content	Salesforce CRM Content	Salesforce CRM Content	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Ideas	Salesforce CRM Ideas	Salesforce CRM Ideas	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Marketing	Salesforce CRM Marketing	Salesforce CRM Marketing	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Mobile	Salesforce CRM Mobile	Salesforce CRM Mobile	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM SFA	Salesforce CRM SFA	Salesforce CRM SFA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce to Salesforce	Salesforce to Salesforce	Salesforce to Salesforce	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.FAILURE	FAILURE	FEHLERHAFT	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.SUCCESS	SUCCESS	ERFOLGREICH	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Completed	Completed	Abgeschlossen	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Failed	Failed	Fehlgeschlagen	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.In Progress	In Progress	Im Gang	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Passed	Passed	Bestanden	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Retired	Retired	Zurückgezogen	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Months	Months	Monate	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Years	Years	Jahre	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Completed	Completed	Abgeschlossen	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.In Progress	In Progress	Im Gang	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Not Started	Not Started	Nicht gestartet	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Retired	Retired	Zurückgezogen	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.CSS	CSS	CSS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Content	Content	Inhalt	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Customer Portal	Customer Portal	Kundenportal	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.FDC	FDC	FDC	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Ideas	Ideas	Ideen	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Partner Portal	Partner Portal	Partnerportal	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.SFA	SFA	SFA	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Developer	Developer	Entwickler	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.IT Professional	IT Professional	IT-Spezialist	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Sales Professional	Sales Professional	Verkäufer	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.da	da	Dänisch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.de	de	Deutsch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.en_US	en_US	Englisch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.es	es	Spanisch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fi	fi	Finnisch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fr	fr	Französisch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.it	it	Italienisch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ja	ja	Japanisch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ko	ko	Koreanisch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.nl_NL	nl_NL	Niederländisch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.pt_BR	pt_BR	Portugiesisch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ru	ru	Russisch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.sv	sv	Schwedisch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.th	th	Thailändisch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_CN	zh_CN	Chinesisch (vereinfacht)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_TW	zh_TW	Chinesisch (traditionell)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Sales Cloud	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.Completed	Completed	Abgeschlossen	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.In Progress	In Progress	Im Gang	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Completed	Completed	Abgeschlossen	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Failed	Failed	Fehlgeschlagen	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.In Progress	In Progress	Im Gang	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Passed	Passed	Bestanden	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Retired	Retired	Zurückgezogen	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Unenrolled	Unenrolled	Abgemeldet	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Completed	Completed	Abgeschlossen	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Failed	Failed	Fehlgeschlagen	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.LO Error	LO Error	Lernobjekt-Fehler	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Pending	Pending	Ausstehend	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Skipped	Skipped	Übersprungen	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.contains	contains	enthält	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.does not contain	does not contain	beinhaltet nicht	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.equals	equals	ist gleich	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.excludes	excludes	schließt aus	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater or equal	greater or equal	größer oder gleich	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater than	greater than	größer als	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.includes	includes	schließt ein	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less or equal	less or equal	größer oder gleich	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less than	less than	weniger als	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.not equal to	not equal to	ungleich	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.starts with	starts with	beginnt mit	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Account	Account	Account	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Case	Case	Kundenvorgang	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Contact	Contact	Kontakt	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Lead	Lead	Lead	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Opportunity	Opportunity	Opportunity	-
+PicklistValue.User.lmscons__CFS_Status.Active	Active	Aktiv	-
+PicklistValue.User.lmscons__CFS_Status.Deactivated	Deactivated	Deaktiviert	-
+PicklistValue.User.lmscons__CFS_Status.Not CFS user	Not CFS user	Nicht CFS-Benutzer	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Completed	Completed	Abgeschlossen	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.In Progress	In Progress	Im Gang	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Not Started	Not Started	Nicht gestartet	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Relative Dates	Relative Dates	Relative Datumsangaben	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Static Dates	Static Dates	Feste Datumsangaben	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Failed	Failed	Fehlgeschlagen	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Success	Success	Erfolgreich	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Import	Import	Importieren	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Manual	Manual	Manuell	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Delete	Delete	Löschen	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Insert	Insert	Einfügen	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Update	Update	Aktualisieren	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Completed	Completed	Abgeschlossen	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.In Progress	In Progress	Im Gang	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Not Started	Not Started	Nicht gestartet	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Internal	Internal	Intern	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Private	Private	Privat	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Public	Public	Öffentlich	-
+PicklistValue.Contact.lmsilt__Level.Primary	Primary	primar	-
+PicklistValue.Contact.lmsilt__Level.Secondary	Secondary	sekundar-	-
+PicklistValue.Contact.lmsilt__Level.Tertiary	Tertiary	Tertiar-	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Completed	Completed	Abgeschlossen	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.In Progress	In Progress	Im Gang	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Not Started	Not Started	Nicht gestartet	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Manager	Manager	Manager	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Self	Self	Selbst	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.User	User	Benutzer	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.IT Professional	IT Professional	IT-Spezialist	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	Verkäufer	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.da	da	Dänisch	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.de	de	Deutsch	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.en_US	en_US	Englisch	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.es	es	Spanisch	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fi	fi	Finnisch	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fr	fr	Französisch	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.it	it	Italienisch	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ja	ja	Japanisch	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ko	ko	Koreanisch	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.nl_NL	nl_NL	Niederländisch	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.pt_BR	pt_BR	Portugiesisch (Brasilien)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ru	ru	Russisch	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.sv	sv	Schwedisch	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.th	th	Thailändisch	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_CN	zh_CN	Chinesisch (vereinfacht)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_TW	zh_TW	Chinesisch (traditionell)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Product_Category.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Products.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Active	Active	Aktiv	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Retired	Retired	Zurückgezogen	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.IT Professional	IT Professional	IT-Spezialist	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	Verkäufer	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.da	da	Dänisch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.de	de	Deutsch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.en_US	en_US	Englisch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.es	es	Spanisch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fi	fi	Finnisch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fr	fr	Französisch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.it	it	Italienisch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ja	ja	Japanisch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ko	ko	Koreanisch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.nl_NL	nl_NL	Niederländisch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.pt_BR	pt_BR	Portugiesisch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ru	ru	Russisch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.sv	sv	Schwedisch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.th	th	Thailändisch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_CN	zh_CN	Chinesisch (vereinfacht)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_TW	zh_TW	Chinesisch (traditionell)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmsilt__Event__c.lmsilt__Product_Category.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmsilt__Event__c.lmsilt__Products.CFS Learning	CFS Learning	CFS Learning	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Attended	Attended	Teilgenommen	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Not Attended	Not Attended	Nicht teilgenommen	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Optional	Optional	Optional	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Recommended	Recommended	Empfohlen	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Required	Required	Erforderlich	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Event	Event	Veranstaltung	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Module	Module	Modul	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Task	Task	Aufgabe	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Pending	Pending	anstehend	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Refunded	Refunded	Erstattet	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Used	Used	benutzt	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Admin	Admin	Administrator	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Instructor	Instructor	Kursleiter	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Manager	Manager	Manager	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Select User	Select User	Benutzer auswählen	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.User	User	Benutzer	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Optional	Optional	Optional	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Recommended	Recommended	Empfohlen	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Required	Required	Erforderlich	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.After	After	Nach	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Anytime	Anytime	Jederzeit	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Before	Before	Vor	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.During	During	Während	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Active	Active	Aktiv	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Inactive	Inactive	Inaktiv	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Attended	Attended	Teilgenommen	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Not Attended	Not Attended	Nicht teilgenommen	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Partially Attended	Partially Attended	Teilweise teilgenommen	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Failed	Failed	Nicht bestanden	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Passed	Passed	Bestanden	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Cancelled	Cancelled	Abgebrochen	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Enrolled	Enrolled	Angemeldet	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Waitlisted	Waitlisted	Auf Warteliste	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Withdrawn	Withdrawn	Storniert	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.AMER	AMER	AMER	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.APAC	APAC	APAC	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.EMEA	EMEA	EMEA	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.JAPAN	JAPAN	JAPAN	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Alabama	Alabama	Alabama	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Alaska	Alaska	Alaska	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Arizona	Arizona	Arizona	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Arkansas	Arkansas	Arkansas	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.California	California	Kalifornien	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Colorado	Colorado	Colorado	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Connecticut	Connecticut	Connecticut	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Delaware	Delaware	Delaware	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Florida	Florida	Florida	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Georgia	Georgia	Georgia	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Hawaii	Hawaii	Hawaii	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Idaho	Idaho	Idaho	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Illinois	Illinois	Illinois	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Indiana	Indiana	Indiana	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Iowa	Iowa	Iowa	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Kansas	Kansas	Kansas	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Kentucky	Kentucky	Kentucky	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Louisiana	Louisiana	Louisiana	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Maine	Maine	Maine	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Maryland	Maryland	Maryland	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Massachusetts	Massachusetts	Massachusetts	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Michigan	Michigan	Michigan	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Minnesota	Minnesota	Minnesota	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Mississippi	Mississippi	Mississippi	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Missouri	Missouri	Missouri	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Montana	Montana	Montana	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Nebraska	Nebraska	Nebraska	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Nevada	Nevada	Nevada	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Hampshire	New Hampshire	New Hampshire	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Jersey	New Jersey	New Jersey	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Mexico	New Mexico	New Mexico	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New York	New York	New York	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.North Carolina	North Carolina	North Carolina	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.North Dakota	North Dakota	North Dakota	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Ohio	Ohio	Ohio	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Oklahoma	Oklahoma	Oklahoma	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Oregon	Oregon	Oregon	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Pennsylvania	Pennsylvania	Pennsylvania	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Rhode Island	Rhode Island	Rhode Island	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.South Carolina	South Carolina	South Carolina	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.South Dakota	South Dakota	South Dakota	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Tennessee	Tennessee	Tennessee	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Texas	Texas	Texas	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Utah	Utah	Utah	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Vermont	Vermont	Vermont	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Virginia	Virginia	Virginia	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Washington	Washington	Washington	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.West Virginia	West Virginia	West Virginia	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Wisconsin	Wisconsin	Wisconsin	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Wyoming	Wyoming	Wyoming	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Corporate Headquarters	Corporate Headquarters	Unternehmenszentrale	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Hotel	Hotel	Hotel	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Office	Office	Büro	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Announce Name	Announce Name	Ansage des Namens	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Beep	Beep	Piepton	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.No Tone	No Tone	Kein Ton	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.ILT	ILT	Schulung mit Kursleiter	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.vILT	vILT	Virtuelle Schulung mit Kursleiter	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PRIVATE	PRIVATE	PRIVAT	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PUBLIC	PUBLIC	ÖFFENTLICH	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.UNLISTED	UNLISTED	NICHT GELISTET	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.GoToTraining	GoToTraining	GoToTraining	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.WebEx	WebEx	WebEx	-
+PicklistValue.lmsilt__Session__c.lmsilt__Telephony_Support.CALLIN	CALLIN	EINWAHL	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+00:00) Greenwich Mean Time (GMT)	(GMT+00:00) Greenwich Mean Time (GMT)	(GMT+00:00) Greenwich Mean Time (GMT)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) British Summer Time (Europe/London)	(GMT+01:00) British Summer Time (Europe/London)	(GMT+01:00) Britische Sommerzeit (Europa/London)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Central European Time (Africa/Algiers)	(GMT+01:00) Central European Time (Africa/Algiers)	(GMT+01:00) Mitteleuropäische Zeit (Afrika/Algier)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Irish Summer Time (Europe/Dublin)	(GMT+01:00) Irish Summer Time (Europe/Dublin)	(GMT+01:00) Irische Sommerzeit (Europa/Dublin)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Western European Summer Time (Europe/Lisbon)	(GMT+01:00) Western European Summer Time (Europe/Lisbon)	(GMT+01:00) Westeuropäische Sommerzeit (Europa/Lissabon)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Amsterdam)	(GMT+02:00) Central European Summer Time (Europe/Amsterdam)	(GMT+02:00) Mitteleuropäische Sommerzeit (Europa/Amsterdam)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Berlin)	(GMT+02:00) Central European Summer Time (Europe/Berlin)	(GMT+02:00) Mitteleuropäische Sommerzeit (Europa/Berlin)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Brussels)	(GMT+02:00) Central European Summer Time (Europe/Brussels)	(GMT+02:00) Mitteleuropäische Sommerzeit (Europa/Brüssel)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Paris)	(GMT+02:00) Central European Summer Time (Europe/Paris)	(GMT+02:00) Mitteleuropäische Sommerzeit (Europa/Paris)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Prague)	(GMT+02:00) Central European Summer Time (Europe/Prague)	(GMT+02:00) Mitteleuropäische Sommerzeit (Europa/Prag)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Rome)	(GMT+02:00) Central European Summer Time (Europe/Rome)	(GMT+02:00) Mitteleuropäische Sommerzeit (Europa/Rom)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Eastern European Time (Africa/Cairo)	(GMT+02:00) Eastern European Time (Africa/Cairo)	(GMT+02:00) Osteuropäische Zeit (Afrika/Kairo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) South Africa Standard Time (Africa/Johannesburg)	(GMT+02:00) South Africa Standard Time (Africa/Johannesburg)	(GMT+02:00) Südafrika Standardzeit (Afrika/Johannesburg)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Baghdad)	(GMT+03:00) Arabian Standard Time (Asia/Baghdad)	(GMT+03:00) Arabische Standardzeit (Asien/Baghdad)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Kuwait)	(GMT+03:00) Arabian Standard Time (Asia/Kuwait)	(GMT+03:00) Arabische Standardzeit (Asien/Kuwait)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Riyadh)	(GMT+03:00) Arabian Standard Time (Asia/Riyadh)	(GMT+03:00) Arabische Standardzeit (Asien/Riyadh)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) East Africa Time (Africa/Nairobi)	(GMT+03:00) East Africa Time (Africa/Nairobi)	(GMT+03:00) Ostafrikanische Zeit (Afrika/Nairobi)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Athens)	(GMT+03:00) Eastern European Summer Time (Europe/Athens)	(GMT+03:00) Osteuropäische Sommerzeit (Europa/Athen)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Bucharest)	(GMT+03:00) Eastern European Summer Time (Europe/Bucharest)	(GMT+03:00) Osteuropäische Sommerzeit (Europa/Bukarest)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Helsinki)	(GMT+03:00) Eastern European Summer Time (Europe/Helsinki)	(GMT+03:00) Osteuropäische Sommerzeit (Europa/Helsinki)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Istanbul)	(GMT+03:00) Eastern European Summer Time (Europe/Istanbul)	(GMT+03:00) Osteuropäische Sommerzeit (Europa/Istanbul)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Time (Europe/Minsk)	(GMT+03:00) Eastern European Time (Europe/Minsk)	(GMT+03:00) Osteuropäische Zeit (Europa/Minsk)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Israel Daylight Time (Asia/Jerusalem)	(GMT+03:00) Israel Daylight Time (Asia/Jerusalem)	(GMT+03:00) Israel Sommerzeit (Asien/Jerusalem)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Georgia Time (Asia/Tbilisi)	(GMT+04:00) Georgia Time (Asia/Tbilisi)	(GMT+04:00) Georgien-Zeit (Asien/Tbilisi)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Gulf Standard Time (Asia/Dubai)	(GMT+04:00) Gulf Standard Time (Asia/Dubai)	(GMT+04:00) Gulf Standardzeit (Asien/Dubai)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Moscow Standard Time (Europe/Moscow)	(GMT+04:00) Moscow Standard Time (Europe/Moscow)	(GMT+04:00) Moskau Standardzeit (Europa/Moskau)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:30) Afghanistan Time (Asia/Kabul)	(GMT+04:30) Afghanistan Time (Asia/Kabul)	(GMT+04:30) Afghanistan-Zeit (Asien/Kabul)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:30) Iran Daylight Time (Asia/Tehran)	(GMT+04:30) Iran Daylight Time (Asia/Tehran)	(GMT+04:30) Iran Sommerzeit (Asien/Teheran)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:00) Pakistan Time (Asia/Karachi)	(GMT+05:00) Pakistan Time (Asia/Karachi)	(GMT+05:00) Pakistan-Time (Asien/Karachi)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:00) Uzbekistan Time (Asia/Tashkent)	(GMT+05:00) Uzbekistan Time (Asia/Tashkent)	(GMT+05:00) Uzbekistan-Zeit (Asien/Tashkent)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:30) India Standard Time (Asia/Calcutta)	(GMT+05:30) India Standard Time (Asia/Calcutta)	(GMT+05:30) Indien Standardzeit (Asien/Kalcutta)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:30) India Standard Time (Asia/Colombo)	(GMT+05:30) India Standard Time (Asia/Colombo)	(GMT+05:30) Indien Standardzeit (Asien/Colombo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:45) Nepal Time (Asia/Katmandu)	(GMT+05:45) Nepal Time (Asia/Katmandu)	(GMT+05:45) Nepal-Zeit (Asien/Katmandu)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:00) Bangladesh Time (Asia/Dacca)	(GMT+06:00) Bangladesh Time (Asia/Dacca)	(GMT+06:00) Bangladesch-Zeit (Asien/Dacca)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:00) Yekaterinburg Time (Asia/Yekaterinburg)	(GMT+06:00) Yekaterinburg Time (Asia/Yekaterinburg)	(GMT+06:00) Jekaterinburg-Zeit (Asien/Jekaterinburg)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:30) Myanmar Time (Asia/Rangoon)	(GMT+06:30) Myanmar Time (Asia/Rangoon)	(GMT+06:30) Myanmar-Zeit (Asien/Rangoon)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Indochina Time (Asia/Bangkok)	(GMT+07:00) Indochina Time (Asia/Bangkok)	(GMT+07:00) Indochina-Zeit (Asien/Bangkok)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Indochina Time (Asia/Saigon)	(GMT+07:00) Indochina Time (Asia/Saigon)	(GMT+07:00) Indochina-Zeit (Asien/Saigon)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Western Indonesia Time (Asia/Jakarta)	(GMT+07:00) Western Indonesia Time (Asia/Jakarta)	(GMT+07:00) Westindonesische Zeit (Asien/Jakarta)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Australian Western Standard Time (Australia/Perth)	(GMT+08:00) Australian Western Standard Time (Australia/Perth)	(GMT+08:00) Westaustralische Standardzeit (Australien/Perth)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) China Standard Time (Asia/Shanghai)	(GMT+08:00) China Standard Time (Asia/Shanghai)	(GMT+08:00) China Standardzeit (Asien/Shanghai)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Hong Kong Time (Asia/Hong_Kong)	(GMT+08:00) Hong Kong Time (Asia/Hong_Kong)	(GMT+08:00) Hongkong-Zeit (Asien/Hongkong)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Malaysia Time (Asia/Kuala_Lumpur)	(GMT+08:00) Malaysia Time (Asia/Kuala_Lumpur)	(GMT+08:00) Malaysia-Zeit (Asien/Kuala_Lumpur)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Philippine Time (Asia/Manila)	(GMT+08:00) Philippine Time (Asia/Manila)	(GMT+08:00) Philippinen-Zeit (Asien/Manila)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Singapore Standard Time (Asia/Singapore)	(GMT+08:00) Singapore Standard Time (Asia/Singapore)	(GMT+08:00) Singapur Standardzeit (Asien/Singapur)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Taipei Standard Time (Asia/Taipei)	(GMT+08:00) Taipei Standard Time (Asia/Taipei)	(GMT+08:00) Taipeh Standardzeit (Asien/Taipeh)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:00) Japan Standard Time (Asia/Tokyo)	(GMT+09:00) Japan Standard Time (Asia/Tokyo)	(GMT+09:00) Japan Standardzeit (Asien/Tokyo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:00) Korean Standard Time (Asia/Seoul)	(GMT+09:00) Korean Standard Time (Asia/Seoul)	(GMT+09:00) Koreanische Standardzeit (Asien/Seoul)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:30) Australian Central Standard Time (Australia/Adelaide)	(GMT+09:30) Australian Central Standard Time (Australia/Adelaide)	(GMT+09:30) Zentralaustralische Standardzeit (Australien/Adelaide)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:30) Australian Central Standard Time (Australia/Darwin)	(GMT+09:30) Australian Central Standard Time (Australia/Darwin)	(GMT+09:30) Zentralaustralische Standardzeit (Australien/Darwin)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:00) Australian Eastern Standard Time (Australia/Brisbane)	(GMT+10:00) Australian Eastern Standard Time (Australia/Brisbane)	(GMT+10:00) Ostaustralische Standardzeit (Australien/Brisbane)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:00) Australian Eastern Standard Time (Australia/Sydney)	(GMT+10:00) Australian Eastern Standard Time (Australia/Sydney)	(GMT+10:00) Ostaustralische Standardzeit (Australien/Sydney)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:30) Lord Howe Standard Time (Australia/Lord_Howe)	(GMT+10:30) Lord Howe Standard Time (Australia/Lord_Howe)	(GMT+10:30) Lord Howe Standardzeit (Australien/Lord_Howe)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+11:00) Solomon Islands Time (Pacific/Guadalcanal)	(GMT+11:00) Solomon Islands Time (Pacific/Guadalcanal)	(GMT+11:00) Salomonen-Zeit (Pazifik/Guadalcanal)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+11:30) Norfolk Islands Time (Pacific/Norfolk)	(GMT+11:30) Norfolk Islands Time (Pacific/Norfolk)	(GMT+11:30) Norfolkinsel-Zeit (Pazifik/Norfolk)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) Fiji Time (Pacific/Fiji)	(GMT+12:00) Fiji Time (Pacific/Fiji)	(GMT+12:00) Fiji-Zeit (Pazifik/Fiji)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) Magadan Time (Asia/Kamchatka)	(GMT+12:00) Magadan Time (Asia/Kamchatka)	(GMT+12:00) Magadan-Zeit (Asien/Kamchatka)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) New Zealand Standard Time (Pacific/Auckland)	(GMT+12:00) New Zealand Standard Time (Pacific/Auckland)	(GMT+12:00) Neuseeland Standardzeit (Pazifik/Auckland)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:45) Chatham Standard Time (Pacific/Chatham)	(GMT+12:45) Chatham Standard Time (Pacific/Chatham)	(GMT+12:45) Chatham Standardzeit (Pazifik/Chatham)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+13:00) Phoenix Islands Time (Pacific/Enderbury)	(GMT+13:00) Phoenix Islands Time (Pacific/Enderbury)	(GMT+13:00) Phoenixinseln-Zeit (Pazifik/Enderbury)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+13:00) Tonga Time (Pacific/Tongatapu)	(GMT+13:00) Tonga Time (Pacific/Tongatapu)	(GMT+13:00) Tonga-Zeit (Pazifik/Tongatapu)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+14:00) Line Islands Time (Pacific/Kiritimati)	(GMT+14:00) Line Islands Time (Pacific/Kiritimati)	(GMT+14:00) Linieninseln-Zeit (Pazifik/Kiritimati)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-01:00) Cape Verde Time (Atlantic/Cape_Verde)	(GMT-01:00) Cape Verde Time (Atlantic/Cape_Verde)	(GMT-01:00) Kap-Verde-Zeit (Atlantik/Kap_Verde)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-02:00) South Georgia Time (Atlantic/South_Georgia)	(GMT-02:00) South Georgia Time (Atlantic/South_Georgia)	(GMT-02:00) Südgeorgien-Zeit (Atlantik/Südgeorgien)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-02:30) Newfoundland Daylight Time (America/St_Johns)	(GMT-02:30) Newfoundland Daylight Time (America/St_Johns)	(GMT-02:30) Neufundland Sommerzeit (Amerika/St_Johns)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Argentina Time (America/Buenos_Aires)	(GMT-03:00) Argentina Time (America/Buenos_Aires)	(GMT-03:00) Argentinien-Zeit (Amerika/Buenos_Aires)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Atlantic Daylight Time (America/Halifax)	(GMT-03:00) Atlantic Daylight Time (America/Halifax)	(GMT-03:00) Atlantik Sommerzeit (Amerika/Halifax)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Atlantic Daylight Time (Atlantic/Bermuda)	(GMT-03:00) Atlantic Daylight Time (Atlantic/Bermuda)	(GMT-03:00) Atlantik Sommerzeit (Atlantik/Bermuda)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Brasilia Time (America/Sao_Paulo)	(GMT-03:00) Brasilia Time (America/Sao_Paulo)	(GMT-03:00) Brasília-Zeit (Amerika/Sao_Paulo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Atlantic Standard Time (America/Puerto_Rico)	(GMT-04:00) Atlantic Standard Time (America/Puerto_Rico)	(GMT-04:00) Atlantik Standardzeit (Amerika/Puerto_Rico)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Chile Time (America/Santiago)	(GMT-04:00) Chile Time (America/Santiago)	(GMT-04:00) Chile-Zeit (Amerika/Santiago)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Eastern Daylight Time (America/Indianapolis)	(GMT-04:00) Eastern Daylight Time (America/Indianapolis)	(GMT-04:00) Eastern Sommerzeit (Amerika/Indianapolis)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Eastern Daylight Time (America/New_York)	(GMT-04:00) Eastern Daylight Time (America/New_York)	(GMT-04:00) Eastern Sommerzeit (Amerika/New_York)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:30) Venezuela Time (America/Caracas)	(GMT-04:30) Venezuela Time (America/Caracas)	(GMT-04:30) Venezuela-Zeit (Amerika/Caracas)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Central Daylight Time (America/Chicago)	(GMT-05:00) Central Daylight Time (America/Chicago)	(GMT-05:00) Central Sommerzeit (Amerika/Chicago)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Central Daylight Time (America/Mexico_City)	(GMT-05:00) Central Daylight Time (America/Mexico_City)	(GMT-05:00) Central Sommerzeit (Amerika/Mexico_City)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Colombia Time (America/Bogota)	(GMT-05:00) Colombia Time (America/Bogota)	(GMT-05:00) Kolumbien-Zeit (Amerika/Bogota)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Eastern Standard Time (America/Panama)	(GMT-05:00) Eastern Standard Time (America/Panama)	(GMT-05:00) Eastern Standardzeit (Amerika/Panama)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Peru Time (America/Lima)	(GMT-05:00) Peru Time (America/Lima)	(GMT-05:00) Peru-Zeit (Amerika/Lima)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-06:00) Central Standard Time (America/El_Salvador)	(GMT-06:00) Central Standard Time (America/El_Salvador)	(GMT-06:00) Central Standardzeit (Amerika/El_Salvador)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-06:00) Mountain Daylight Time (America/Denver)	(GMT-06:00) Mountain Daylight Time (America/Denver)	(GMT-06:00) Mountain Sommerzeit (Amerika/Denver)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Mountain Standard Time (America/Phoenix)	(GMT-07:00) Mountain Standard Time (America/Phoenix)	(GMT-07:00) Mountain Standardzeit (Amerika/Phoenix)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Pacific Daylight Time (America/Los_Angeles)	(GMT-07:00) Pacific Daylight Time (America/Los_Angeles)	(GMT-07:00) Pazifik Sommerzeit (Amerika/Los_Angeles)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Pacific Daylight Time (America/Tijuana)	(GMT-07:00) Pacific Daylight Time (America/Tijuana)	(GMT-07:00) Pazifik Sommerzeit (Amerika/Tijuana)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-08:00) Alaska Daylight Time (America/Anchorage)	(GMT-08:00) Alaska Daylight Time (America/Anchorage)	(GMT-08:00) Alaska Sommerzeit (Amerika/Anchorage)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-10:00) Hawaii-Aleutian Standard Time (Pacific/Honolulu)	(GMT-10:00) Hawaii-Aleutian Standard Time (Pacific/Honolulu)	(GMT-10:00) Hawaii-Aleutian Standardzeit (Pazifik/Honolulu)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-11:00) Niue Time (Pacific/Niue)	(GMT-11:00) Niue Time (Pacific/Niue)	(GMT-11:00) Niue-Zeit (Pazifik/Niue)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-11:00) Samoa Standard Time (Pacific/Pago_Pago)	(GMT-11:00) Samoa Standard Time (Pacific/Pago_Pago)	(GMT-11:00) Samoa Standardzeit (Pazifik/Pago_Pago)	-

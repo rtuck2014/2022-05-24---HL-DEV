@@ -1,0 +1,81 @@
+* { margin:0; padding:0;}
+:focus {outline:none}
+.h-base { min-width:884px;}
+
+.l-header { margin-bottom:5px; position:relative; //margin-bottom:8px;}
+	.l-header .b-title { color: #000; font-size: 2em; font-weight: normal; padding-left:1px; float:left; margin-bottom:20px;}
+		.l-header .b-title img { margin-right:5px; position:relative; top:5px;}
+
+	.l-header .b-calendar-controls { position:absolute; left:50%; margin-left:-140px; top:35px; margin-bottom:5px;}
+		.l-header .b-calendar-controls .b-month { font-size:17px; font-weight:bold; margin-right:10px; float:left}
+		.l-header .b-calendar-controls a.b-current-month { color:#4C81A3; text-decoration:none; padding-left:20px; position:relative; top:2px; background:url('../i/calendar-ico.png') no-repeat 0 0; //top:1px; top:1px\0/;}
+		.l-header .b-calendar-controls a.b-current-month:hover {text-decoration:underline}
+		:root .l-header .b-calendar-controls a.b-current-month { top:2px\0/IE9;}
+
+		.l-header .b-calendar-btns { float:left; margin:0 20px 0 0; //margin-top:-1px; margin-top:-1px\0/;}
+			.l-header .b-calendar-btns a { display:block; height:19px; width:22px; text-indent:-9999px; float:left}
+			.l-header .b-calendar-btns a.b-next { background:url('../i/calendar-btns-spr.png') no-repeat 0 0}
+			.l-header .b-calendar-btns a.b-prev { background:url('../i/calendar-btns-spr.png') no-repeat -22px 0}
+			.l-header .b-calendar-btns a.b-next:hover { background-position:0 -19px}
+			.l-header .b-calendar-btns a.b-prev:hover { background-position:-22px -19px}
+		
+		.l-header .b-btns { margin-top:29px; float:right;}
+			.l-header .b-btns div { float:left; margin-left:10px}
+				.l-header .b-btns a { padding: 4px 7px 4px 32px; position:relative; display:block}
+				.l-header .b-btns .m-training .b-icon { left: 3px; top: -5px; position: absolute; display: block; height: 25px; width: 25px; background: url('../i/search-ico.png') no-repeat 0 0;}
+				.l-header .b-btns .m-list .b-icon { left: 5px; top: -5px; position: absolute; display: block; height: 24px; width: 20px; background: url('../i/training-list-ico.png') no-repeat 0 0;}
+				:root .l-header .b-btns .m-list .b-icon { top:-7px\0/IE9;}
+
+.b-content { margin-bottom:20px}
+
+/* calendar table */	
+.b-calendar-tbl { border-collapse:collapse; border:1px solid #cfcfcf; border-top:2px solid #1697bf}		
+	.b-calendar-tbl a {color:#000; text-decoration:underline;}
+	.b-calendar-tbl a:hover {color:#000; text-decoration:none;}
+
+.b-calendar-tbl th, 
+.b-calendar-tbl td { color:#000; font-size:11px; border:1px solid #cfcfcf}
+
+.b-calendar-tbl th { font-size: 12px; padding:4px; background: #f4f4f4 url('../i/tbl-th-bg.png') repeat-x 0 0}
+.b-calendar-tbl td { padding:4px;}
+	.b-calendar-tbl td .b-event { min-height:75px}
+	.b-calendar-tbl td.m-disabled { background:#f4f4f4}
+	.b-calendar-tbl td.m-highlight { background:#f3debf}
+	.b-calendar-tbl td.m-current { background:#f0f9fe}
+
+.b-calendar-tbl .b-week td { font-size:11px; padding:2px 4px; background: #ebebeb}
+	.b-calendar-tbl .b-week td a.m-date { float:left; font-weight:bold;}
+	.b-calendar-tbl .b-week td a.m-plus { float:right; display:block; height:9px; width:9px; margin:3px 4px 0 0; text-indent:-9999px; background:url('../i/gray-plus-ico.png') no-repeat 0 0}
+	:root .b-calendar-tbl .b-week td a.m-plus { margin-top:2px\0/IE9;}
+
+	.b-calendar-tbl .b-week td.m-highlight { background-color:#e4cfb0; border-bottom-color:#ceb99a}
+		.b-calendar-tbl .b-week td.m-highlight a, 
+		.b-calendar-tbl .b-week td.m-highlight a:hover { color:#75654d;}
+		.b-calendar-tbl .b-week td.m-highlight a.m-plus { background:url('../i/brown-plus-ico.png') no-repeat 0 0}
+
+	.b-calendar-tbl .b-week td.m-current { background-color:#b7e4fb; border-bottom-color:#c9ccd5}
+		.b-calendar-tbl .b-week td.m-current a,
+		.b-calendar-tbl .b-week td.m-current a:hover { color:#000}
+		.b-calendar-tbl .b-week td.m-current a.m-plus { background:url('../i/gray-plus-ico.png') no-repeat 0 0}
+
+
+/* btns */
+.b-btn { color: #4c81a3; font-size: .9em; font-weight:bold; font-family: Arial, Helvetica, sans-serif; text-decoration:none; display:inline; margin: 1px; padding: 2px 4px; border: 1px solid #b5b5b5; border-bottom-color: #7f7f7f; background: #e8e8e9 url('../i/btn-spr.png') repeat-x right top; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;}
+.b-btn:hover { color:#666; text-decoration:none} 
+
+/* modificators */
+.m-to-left { float:left}
+.m-to-right { float:right}
+.m-bold { font-weight:bold}
+.m-blue { color:#4C81A3}
+
+/* clearfix */
+.m-cfix, .l-header, .l-header .b-btns, .b-controls, .b-training-status, .b-content {zoom:1}
+.m-cfix:after, .l-header:after, .l-header .b-btns:after, .b-controls:after, .b-training-status:after, .b-content:after {content:" ";clear:both;display:block;overflow:hidden;width:0;height:0;font-size:0;}
+
+/* safari/chrome fix */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+}
+
+/* sf site fix */
+.outer .h-base td { vertical-align:middle}

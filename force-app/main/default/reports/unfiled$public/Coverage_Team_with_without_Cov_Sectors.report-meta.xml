@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Coverage_Team__c$Name</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c.CoverageSectors__r$Name</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c$Id</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c$Company__c</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c.CoverageSectors__r$Id</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c.CoverageSectors__r$CoverageType__c</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c.CoverageSectors__r$IsMain__c</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c.CoverageSectors__r$PrimarySector__c</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c.CoverageSectors__r$SecondarySector__c</field>
+    </columns>
+    <columns>
+        <field>Coverage_Team__c.CoverageSectors__r$TertiarySector__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Coverage Team with/without Coverage Sectors</description>
+    <filter>
+        <criteriaItems>
+            <column>Coverage_Team__c$Company__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>&quot;Credit Adjustments, Inc.&quot;</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Coverage Team with/without Cov Sectors</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Coverage_Team_with_without_coverage_sector__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Coverage_Team__c$Profile_Date_Completed__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

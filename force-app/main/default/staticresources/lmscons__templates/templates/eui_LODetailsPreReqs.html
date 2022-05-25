@@ -1,0 +1,31 @@
+<div ng-if="prereqs != null">
+	<span id='spnPrereqs'></span>
+	<h3 class="pageSubtitle" ng-if="prereqs.length > 0">
+		<span>{{labels.EUI_Prerequisites}} ({{prereqs.length}})</span>
+	</h3>
+	<article ng-show="prereqs.length > 0" ng-repeat="item in prereqs | orderBy: ['dueDate', 'title']">
+		<ul class="trainingItem" ng-class="{pastDue : item.isPastDue == true}">
+			<li class="dueStatus"><span class="hdntxt">[[Past Due/On Schedule]]</span></li>
+			<li class="title" ng-switch on="item.contextualAction">
+				<a ng-switch-when="'UNAUTHORIZED'" href="#" ng-click="openLoadingLightBox(labels.You_are_not_authorized_to_view_or_take_training);"><h4>{{item.title}}</h4></a>
+				<span ng-switch-when="'REQ_ASSIGN'"><h4>{{item.title}}</h4></span>
+				<a ng-switch-default href="{{item.titleLink}}" ng-click="navigate(item.titleLink)"><h4>{{item.title}}</h4></a>
+			</li>
+			<property ng-if="item.propertyList && item.propertyList.length > 0" ng-repeat="property in item.propertyList">
+				<li class="{{property.class}}"><span class="lbl">{{property.label}}</span> <span>{{property.value}}</span></li>
+				<li class="dot"  ng-if="!$last" />
+			</property>
+			<li class="certificate" ng-if="item.showCertificate" title="{{labels.CERTIFICATE_OF_COMPLETION}}"><a href="{{item.certificateLink}}" target="_blank" ng-click="navigate(item.certificateLink)"><i class="fa fa-star"></i></a></li>
+			<li class="description">{{item.description}}</li>
+			<li class="progression" ng-if="item.progress >= 0">
+				<module-progress id="prereq{{item.objectId}}" item="item" adjustcss="true"></module-progress>
+			</li>
+			<li class="buttons" ng-switch="item.contextualAction">
+				<button ng-switch-when="LAUNCH" type="button" ng-click="launch(item);">{{labels.MyTraining_LaunchCourse}}</button>
+				<button ng-switch-when="REQ_ASSIGN" type="button" ng-click="navigateButton(item.contextualActionLink);">{{labels.EUI_Request_Assignment}}</button>
+				<button ng-switch-when="UNAUTHORIZED" class="btn" type="button" ng-click="openLoadingLightBox(labels.You_are_not_authorized_to_view_or_take_training);">{{labels.You_are_not_authorized_to_view_or_take_training_short}}</button>
+				<button ng-switch-when="VIEW_PREREQ" class="btn" type="button" ng-click="navigateButton(item.titleLink)">{{labels.EUI_View_Prerequisites}}</button>
+			</li>
+		</ul>
+	</article>
+</div>

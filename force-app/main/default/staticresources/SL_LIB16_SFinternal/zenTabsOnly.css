@@ -1,0 +1,460 @@
+/* only used for zen tabs on retro pages -- will go away when page container is all zen */
+.tabMenu ul,.tabMenu li{
+	margin:0;
+	padding:0;
+}
+
+
+
+.assistiveText{
+    position:absolute !important;
+    top:-32000px !important;
+    left:-32000px !important;
+}
+.assistiveLink{
+    padding:0 !important;
+    margin:0 !important;
+    height:1px !important; /* webkit won't focus the link if it isn't at least 1x1 */
+    width:1px !important; /* webkit won't focus the link if it isn't at least 1x1 */
+    line-height:0 !important;
+    background-color:transparent !important;
+    overflow:visible !important;
+}
+
+
+
+/* ================ Lists ================== */
+/* ----- simple list (no bullets) ----- */ 
+.simpleList{
+	margin:10px 0;
+}
+/* ----- inline list ----- */ 
+.inlineList li{
+	display:inline-block;
+	padding-right:.5em;
+	vertical-align:top;
+}
+/* ----- inline list extended ----- */
+.inlineListExt li{
+	display:inline;
+}
+.inlineListExt > li:after{
+	content:"\2022";
+	padding:0;
+	padding-right:4px;
+	padding-left: 6px;
+}
+.inlineListExt li:last-child:after{
+	content:"";
+}
+/* ----- file info list ----- */
+.detailList{
+	overflow:auto; /*float containment*/
+}
+.detailList dt{
+	float:left;
+	clear:left;
+	margin:0;
+	margin-top:.2em;
+	margin-right:.3em;
+}
+.detailList dd{
+	margin-top:.2em;
+}
+/* ----- detailListExt (extends detailList) ----- */
+.detailListExt dt{
+    width: 33%;
+    text-align:right; 
+    padding:3px 10px; 
+}
+.detailListExt dd{
+    padding: 3px 10px;
+}
+/* ----- comments list ----- */
+.commentList ul{
+	clear:both;
+}
+.commentList li{
+	padding:4px;
+	zoom:1;
+}
+.commentList b.arrow_up{
+	float:left;
+	display:block;
+	width:0;
+	height:0;
+	margin-left:10px;
+} 
+/* ----- breadcrumb list ----- */
+.breadcrumb{
+	padding:2px 0 0 0;
+	font-size:.917em;
+	display:inline-block;
+}
+.breadcrumb li{
+	display:inline-block;
+}
+.breadcrumb li:before{
+	content:"\003E";
+	display:inline-block;
+	zoom:1;
+	padding:0;
+	padding-right:7px;
+	padding-left:4px;
+}
+.breadcrumb li:first-child:before{
+	content:"";
+	padding:0;
+}
+/* ----- basic vertical list ----- */
+.basicList{
+	margin:10px 0;
+}
+.box .basicList{
+	margin:4px 0;
+}
+.basicList li{
+	padding:.2em 0;
+}
+.basicListSm li{
+	margin:5px 0;
+}
+.basicListMed li{
+	margin:10px 0;
+}
+.basicListLg li{
+	margin:20px 0;
+}
+/* ----- checklist -----*/
+.checkList li{
+	margin:5px 0;
+	padding-left:2em;
+}
+.subcheckList{
+	padding-left:3em;
+}
+.subcheckList li{
+	list-style:disc outside none;
+	background:none;
+	padding-left:0;
+}
+.subcheckList li.done{
+	text-align:left;
+}
+/* ----- numbered list ----- */
+.enumList{
+	padding-left:20px;
+}
+.enumList li{
+	list-style:decimal outside;
+	margin:3px 0;
+}
+/* ----- bulleted lists ----- */
+.bulletList{
+	padding-left:20px;
+}
+.bulletList li{
+	list-style:disc outside;
+	margin:3px 0;
+}
+/* ----- idea list ----- */
+.ideaList ul{
+	margin:4px;
+}
+.ideaList li{
+	padding:15px;
+	padding-left:3px;
+}
+/* ----- piped divider list ----- */
+.pipedList li{
+	box-sizing:border-box;
+	display:inline-block;
+	padding:0 5px;
+}
+.pipedList:after{ /*clearfix */
+	clear:both;
+	display:block;
+	visibility:hidden;
+	overflow:hidden;
+	height:0 !important;
+	line-height:0;
+	content:".";
+}
+.pipedList{ /* new formatting context */
+	zoom:1;
+	clear:both;
+
+}
+/* specialized piped list with media blocks inside - gross but necessary */
+.pipedList .img,.pipedList .imgExt{
+	float:none;
+}
+/* we need a better way to figure out pipedList elements that contain media blocks.
+   currently, the image of the media block is skewing the text baseline of any 
+   items in the list that don't contain an image. until we figure that out, this
+   is the least-ugly way i can think of to fix this on overview pages.
+*/
+.mainContentHeader .pipedList .lastItem{
+	position:relative;
+	top:-1px;
+}
+.hoverList a,.hoverList a:link{
+    display:block; 
+    padding: 3px 0;
+}
+
+
+
+.tabMenu{
+    white-space:nowrap;
+    padding:1px 0 0;
+    margin:0 5px;
+}
+.tabMenu li{
+    height:32px;
+    line-height:28px;
+}
+.pageInner .moreTabs{ /* temporary until all page containers are zen */
+    height:29px;
+}
+.moreTabs{
+	width:10px;
+	position:relative;
+}
+.moreTabs b{
+	position:absolute;
+	z-index:auto;
+	top:11px;
+	height:0;
+	line-height:0;
+	width:0;
+}
+.moreTabs ul{
+	padding:4px 0;
+	display:none;
+	position:absolute;
+	top:28px;
+	right:0;
+	z-index:2;
+}
+.moreTabsActive ul{
+	display:block;
+}
+.inlineList .moreTabs li{ /* not really sure if this should be in list.css or here ... here for now */
+	margin:0 4px;
+    padding-right:0;
+    height:auto;
+    line-height:normal;
+    display:block;
+}
+.moreTabs a{
+	display:block;
+	padding:4px 16px;
+}
+.notNeeded{
+    display:none !important;
+}
+.bodyZen,body .bodyDiv{
+    margin:-3px 0 0;
+}
+
+
+
+.detailListExt dt{
+    font-weight:bold; 
+}
+.detailListExt dd{
+    border-bottom:1px solid #ececec;
+}
+/* ----- comments list ----- */
+.commentList ul{
+    border-top:1px solid #DEE5EA;
+}
+.commentList li{
+    border-top:1px solid #FFF;
+    border-bottom:1px solid #DEE5EA;
+    background-color:#EFF7FA;
+}
+.commentList li li{
+    border-bottom:none;
+}
+.commentList b.arrow_up{
+    border-style:solid;
+    border-width:0 5px 5px 5px;
+    border-color:transparent transparent #DEE5EA transparent;
+} 
+.breadcrumb a{
+    color:#797979;
+}
+.checkList li{
+    background:url("/img/oocss/dot.png") no-repeat;
+}
+.checkList li.done{
+    background-image:url("/img/chatter/wtdn_checked.png");
+}
+.subcheckList{
+    color:#7D7D84;
+}
+.subcheckList li.done{
+    text-decoration:line-through;
+    background:none; /*only works if the background:none part is in here */
+}
+.subcheckList li.done a{
+    color:#7D7D84;
+}
+.ideaList li{
+    border-bottom:1px solid #E1E1E1;
+}
+.ideaList li:last-child{
+    border-bottom:none;
+}
+/* ----- piped divider list ----- */
+.pipedList li{
+    border-left:1px solid #7D7D84;
+}
+.pipedList li:first-child,.pipedList li.firstItem{
+    border-left:none;
+}
+/* hover list */
+.hoverList li:focus{
+    background-color:#E3F3FF;
+}
+/* @hovers.css
+.hoverList li:hover{
+    background-color:#E3F3FF;
+}
+*/
+.hoverList a,.hoverList a:link{
+    color: #000;
+    text-decoration:none; 
+}
+.hoverList a:hover{
+    color:#015BA7;
+}
+
+
+
+.hdBottom{
+    -moz-border-radius-topleft:5px;  /* FF 3.6 */
+    -moz-border-radius-topright:5px;
+    -webkit-border-top-left-radius:5px;
+    -webkit-border-top-right-radius:5px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    -moz-box-shadow:0 3px 10px #7CA8B5;
+    -webkit-box-shadow:0 3px 10px #7CA8B5;
+    box-shadow:0 3px 10px #7CA8B5;
+    background:-moz-linear-gradient(#E5F2F6,#CDE8F0);
+    background:-webkit-linear-gradient(#E5F2F6,#CDE8F0);
+    background:linear-gradient(#E5F2F6,#CDE8F0);
+}
+.tabMenu .active{
+    -moz-border-radius-topleft:7px;  /* FF 3.6 */
+    -moz-border-radius-topright:7px;
+    -webkit-border-top-left-radius:7px;
+    -webkit-border-top-right-radius:7px;
+    border-top-left-radius:7px;
+    border-top-right-radius:7px;
+    -moz-box-shadow:3px 0 5px -3px #999,-3px 0 5px -3px #999;
+    -webkit-box-shadow:3px 0 5px -3px #999,-3px 0 5px -3px #999;
+    box-shadow:3px 0 5px -3px #999,-3px 0 5px -3px #999;
+    background-image:-moz-linear-gradient(rgba(255,255,255,0.50),rgba(255,255,255,0) 12px);
+    background-image:-webkit-linear-gradient(rgba(255,255,255,0.50),rgba(255,255,255,0) 12px);
+}
+.tabMenu a{
+    font-size:1.083em;
+    color:#353535;
+    font-weight:bold;
+    text-decoration:none;
+}
+.tabMenu a:hover{
+    color:#1468B6;
+}
+.tabMenu li.active > a{
+    color:#FFF;
+}
+.moreTabs{
+	cursor:pointer;
+    -moz-border-radius:7px 7px 0 0;
+    -webkit-border-radius:7px 7px 0 0;
+    border-radius:7px 7px 0 0;
+}
+.moreTabs b{
+    border:5px solid transparent;
+    border-top-color:#353535;
+}
+.active b{
+	border-top-color:#FFF;
+}
+.hdBottom .tabMenu .moreTabsOver,.hdBottom .tabMenu .moreTabsActive{
+	-moz-box-shadow: 0 2px 4px rgba(127, 127, 127, 0.3);
+    -webkit-box-shadow: 0 2px 4px rgba(127, 127, 127, 0.3);
+    box-shadow: 0 2px 4px rgba(127, 127, 127, 0.3);
+	background-color:#FFF;
+}
+.moreTabsOver b,.moreTabsActive b{
+	border-top-color:#353535;
+}
+.moreTabs ul{
+	background-color:#FFF;
+    -moz-box-shadow: 0 2px 4px rgba(127, 127, 127, 0.3);
+    -webkit-box-shadow: 0 2px 4px rgba(127, 127, 127, 0.3);
+    box-shadow: 0 2px 4px rgba(127, 127, 127, 0.3);
+    -moz-border-radius:11px;
+    -webkit-border-radius:11px;
+    border-radius:11px;
+    -moz-border-radius-topright:0;  /* FF 3.6 */
+    -webkit-border-top-right-radius:0;
+    border-top-right-radius:0;        
+    
+}
+.moreTabs ul a{
+	color:#353535;
+    -moz-border-radius:11px;
+    -webkit-border-radius:11px;
+    border-radius:11px;
+}
+.moreTabs a:hover,.moreTabs a:focus{
+	background-color:#E3F3FF;
+}
+.moreTabs .active{
+    border-radius:11px;
+}
+.moreTabs .active a:hover{
+    background-color:transparent;
+}
+.bodyZen,body .bodyDiv{
+    border-top:3px solid;
+    background-color:#FFF;
+    -moz-box-shadow:0 10px 10px #137C9E;
+    -webkit-box-shadow:0 10px 10px #137C9E;
+    box-shadow:0 10px 10px #137C9E;
+}
+
+
+
+/* miscellaneous odds-and-ends rules necessary for zen tabs to display properly on retro pages */
+.phm{
+    padding-left:10px !important;
+    padding-right:10px !important;
+}
+.noSidebarCell,
+.sidebarCell .fixed{
+	padding:10px;
+}
+.sidebarCollapsible{
+	padding-left:10px;
+	padding-top:10px;
+}
+#handlebarContainer{
+	left:214px !important;
+}
+.sidebarCollapsed #handlebarContainer{
+	left:-10px !important;
+}
+#bodyDiv_setup{
+	margin-top:-3px !important;
+}
+
+
+

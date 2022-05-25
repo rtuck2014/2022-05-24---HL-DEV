@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Coverage_Sector_Dependency__c.CoverageType__c</field>
+    </columns>
+    <columns>
+        <field>Coverage_Sector_Dependency__c.PrimarySector__c</field>
+    </columns>
+    <columns>
+        <field>Coverage_Sector_Dependency__c.SecondarySector__c</field>
+    </columns>
+    <columns>
+        <field>Coverage_Sector_Dependency__c.TertiarySector__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>Coverage Sector Dependency Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Coverage_Sector_Dependency__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

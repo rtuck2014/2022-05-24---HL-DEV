@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Investment__c.Sponsor_CapIQ_Company__c</field>
+    </columns>
+    <columns>
+        <field>Investment__c.Portfolio_CapIQ_Company__c</field>
+    </columns>
+    <columns>
+        <field>Investment__c.Enterprise_Value_MM__c</field>
+    </columns>
+    <columns>
+        <field>Investment__c.EBITDA_HL__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Investment__c.Sponsor_CapIQ_Company__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>startsWith</operator>
+            <value>New Mountain Capital</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>HL INTERNS N MOUNT</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Investment__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Investment__c.Current_to_Prior_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

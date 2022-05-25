@@ -1,0 +1,79 @@
+<div class="catalogFilter">
+	<h2 class="pageTitle">{{labels.lmscons__Catalog}} ({{data.length}})</h2>
+	<aside class="filterGroupCatalog bootstrap-styles">
+		<ul>
+<!-- Search Textbox -->
+			<li class="filterItem cfsTextSearch">
+				<div class="input-group">
+					<input type="text" id="tbTextSearch" name="tbTextSearch" class="form-control" aria-label="Search Text" placeholder="{{labels.lmscons__EUI_Search_For}}" ng-model="filter.searchString" ng-if="filter.quickSearchLimit > data.length" ng-change="searchByText(filter.searchString);" />
+					<input type="text" id="tbTextSearch2" name="tbTextSearch2" class="form-control" aria-label="Search Text" placeholder="{{labels.lmscons__EUI_Search_For}}" ng-model="filter.searchString" ng-if="filter.quickSearchLimit <= data.length" />
+					<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+				</div>
+			</li>
+<!-- Multi-select Dropdown List -->
+			<li class="filterItem">
+				<label for="catalog-multiselect">{{labels.lmscons__Catalog}}</label>
+				<select id="catalog-multiselect" multiple="multiple" ng-model="filter.selectedCatalogs">
+				</select>
+			</li>
+<!-- Multi-select Dropdown List -->
+			<li class="filterItem">
+				<label for="training-type-multiselect">{{labels.lmscons__EUI_Training_Type}}</label>
+				<select id="training-type-multiselect" multiple="multiple" ng-model="filter.selectedTrainingTypes" />
+			</li>
+<!-- Checkbox -->
+			<li class="filterItem">
+				<input type="checkbox" id="cb1" name="cb1" ng-model="filter.includeDescriptionInSearch">
+				<label for="cb1" class="checkboxBefore">{{labels.lmscons__SearchCatalog_Search_Description}}</label>
+			</li>
+
+<!-- Action Buttons -->
+			<li class="filterItem last">
+				<button type="button" class="btn btn-info" ng-click="clearSearchFilters(filter);" >{{labels.lmscons__EUI_Clear}}</button>
+				<button type="button" class="btn btn-info" ng-click="searchCatalogs(filter.searchString, filter.selectedCatalogs, filter.selectedTrainingTypes, filter.includeDescriptionInSearch);">{{labels.lmscons__Assignment_List_Filter}}</button>
+			</li>
+			<li>
+				<br/>
+				<div id="progressbar" style="display: none">
+			         <div class="progress-label">
+			         </div>
+			    </div>
+			</li>
+		</ul>
+	</aside>
+<!-- Results List -->
+	<section>
+		<article ng-repeat="item in data | orderBy: ['title']">
+			<ul class="trainingItem" ng-class="{pastDue : item.isPastDue == true}">
+				<li class="dueStatus"><span class="hdntxt">[[Past Due/On Schedule]]</span></li>
+				<li class="title">
+					<a href="{{item.titleLink}}" ng-click="navigate(item.titleLink);setScrollPosition()">
+						<h4>{{item.title}}</h4>
+					</a>
+				</li>
+				<property ng-if="item.propertyList && item.propertyList.length > 0" ng-repeat="property in item.propertyList">
+					<li class="{{property.class}}"><span class="lbl">{{property.label}}</span> <span>{{property.value}}</span></li>
+					<li class="dot"  ng-if="!$last" />
+				</property>
+				<li class="description">{{item.description}}</li>
+				<li class="progression" ng-if="item.progress >= 0">
+					<div class="circle" ng-init="progressbar(item.objectId,item.progress)">
+						<strong></strong>
+					</div>
+				</li>
+				<li class="buttons">
+					<button ng-if="item.contextualAction == 'ENROLL'" type="button" class="btn btn-info" ng-click="enroll(item.objectId)">{{labels.lmscons__SearchCatalog_Enroll}}</button>
+					<div class="alert alert-danger" role="alert" ng-if="item.enrollErrorMessage == true">
+        				<strong>{{labels.lmscons__ConsumerUser_Error}}</strong> {{item.enrollMessage}}
+        			</div>
+        			<div class="alert alert-success" role="alert" ng-if="item.enrollSuccessMessage == true">
+        				<strong>{{labels.lmscons__EUI_Success}}</strong> {{item.enrollMessage}}
+        			</div>
+				</li>
+			</ul>
+		</article>
+		<article ng-if="data.length == 0">
+			{{labels.lmscons__No_results_found_Please_search_again}}
+		</article>
+	</section>
+</div>

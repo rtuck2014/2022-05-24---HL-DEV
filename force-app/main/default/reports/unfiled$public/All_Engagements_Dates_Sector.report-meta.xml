@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Engagement__c.Engagement_Number__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c.Sector__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c.Latest_Stage_Change__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c.Close_Date__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c.Status__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>All Engagements Dates Sector</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Engagement__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Engagement__c.Expense_Available_Until__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Syncing Contacts</title>
+        <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Resources/Stylesheets/Sforce.css" rel="stylesheet" />
+        <link href="../../../Resources/TableStyles/Policy_Table.css" rel="stylesheet" />
+        <script src="../../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.min.js" defer="defer">
+        </script>
+        <script src="../../../../Resources/Scripts/require.config.js" defer="defer">
+        </script>
+        <script src="../../../../Resources/Scripts/foundation.min.js" defer="defer">
+        </script>
+        <script src="../../../../Resources/Scripts/plugins.min.js" defer="defer">
+        </script>
+        <script src="../../../../Resources/Scripts/MadCapAll.js" defer="defer">
+        </script>
+    </head>
+    <body>
+        <h1>Syncing Contacts</h1>
+        <p class="important">First time sync? Contact <a href="mailto:SalesforceSupport@HL.com">SalesforceSupport@HL.com</a> to setup your device and profile.</p>
+        <h2>Where are my synced contacts?</h2>
+        <p> <img src="../../../Resources/Images/SF50.png" /></p>
+        <h2>How do I sync a contact?</h2>
+        <p>There are two requirements to sync a contact:</p>
+        <ol>
+            <li value="1">You must have a relationship with the contact in Salesforce (see <a href="../../ContactMngmt/ManageRelationship.htm">Manage Relationship</a>)</li>
+            <li value="2">The contact record must also be checked to "Sync to Outlook"</li>
+        </ol>
+        <p>
+            <img src="../../../Resources/Images/SF141.jpg" />
+        </p>
+        <ul>
+            <li value="1">
+                <p style="line-height: normal;">&#160;</p>
+            </li>
+        </ul>
+        <h2>What Information Syncs?</h2>
+        <ul>
+            <li value="1">Basic contact information (name, address, email, etc.)</li>
+            <li value="2">Notes</li>
+            <li value="3">Categories</li>
+        </ul>
+        <p>Updates to these fields in Salesforce will sync to Outlook and vise versa. </p>
+        <p>Only you and your delegate will be able to view your Notes and Categories.</p>
+        <p class="example">You can't create a new record or move a record in Outlook, that must be done directly in Salesforce.</p>
+        <table style="width: 100%;mc-table-style: url('../../../Resources/TableStyles/Policy_Table.css');" class="TableStyle_Policy_Table" cellspacing="0">
+            <col style="width: 513px;" />
+            <col />
+            <tbody>
+                <tr>
+                    <td class="TableStyle_Policy_Table_Body_0_0_RowSep_ColSep" style="text-align: center;"><span style="color: #000000; font-weight: bold; font-size: 11pt;">Step</span>
+                    </td>
+                    <td class="TableStyle_Policy_Table_Body_0_1_RowSep_ColEnd" style="text-align: center;"><span style="color: #000000; font-size: 11pt; font-weight: bold;">Action</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="TableStyle_Policy_Table_Body_0_0_RowEnd_ColSep" style="text-align: left;line-height: normal;vertical-align: top;padding-left: 2px;padding-right: 2px;padding-top: 5px;padding-bottom: 5px;">
+                        <p><span style="font-size: 11pt; color: #000000;">A.	The Notes field in Outlook will update the Personal Note on your relationship in Salesforce and is only visible to you and your delegate </span>
+                        </p>
+                        <p><span style="font-size: 11pt; color: #000000;"> 
+B.	Categories assigned to the contact will update the Outlook categories field on the relationship  
+
+</span>
+                        </p>
+                        <p><b>Once the contact is synced to Outlook:</b>
+                        </p>
+                        <p>C.	It will have the category Salesforce</p>
+                        <p>D.	A link to the contact in Salesforce on the Web page address for quick access to the contact in Salesforce</p>
+                        <p>E.	To add the contact back, check the Sync to Outlook check box in Salesforce.  Deleting a Salesforce contact from Outlook or mobile device unchecks the Sync to Outlook box on the relationship</p>
+                    </td>
+                    <td class="TableStyle_Policy_Table_Body_0_1_RowEnd_ColEnd" style="text-align: center;vertical-align: top;padding-left: 2px;padding-right: 2px;padding-top: 5px;padding-bottom: 5px;">
+                        <p>
+                            <img src="../../../Resources/Images/SF51.png" />
+                        </p>
+                        <p>
+                            <img src="../../../Resources/Images/SF52.png" />
+                        </p>
+                        <p>
+                            <img src="../../../Resources/Images/SF53.png" />
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Syncing Activities &amp; Calendar</h2>
+        <p style="line-height: normal;">•	Activities can be synced from Salesforce to Outlook and from Outlook to Salesforce.  Only Outlook calendar items with “Salesforce” category will be synced to Salesforce</p>
+        <p style="line-height: normal;">•	In Salesforce, check the Sync to Outlook check box on the activity and it will sync to the Outlook calendar of the primary HL Attendee only. Both external and HL attendees will be included in the Outlook calendar “To” line but the invitation will not be automatically sent.  The calendar item must be opened and then invitations can be sent, you will be prompted to send when closing the calendar item</p>
+        <p style="line-height: normal;">•	If you can’t find a Salesforce activity on your calendar, check the primary attendee of the activity in Salesforce.  It may be the wrong person or the invitation may not have been sent from Outlook</p>
+        <p style="line-height: normal;">•	To sync an Outlook Calendar item to Salesforce, set the category to Salesforce using the Categorize icon in Outlook shown below. All HL invitees to the meeting will see the activity in their activities in Salesforce.  The HL primary attendee can edit the activity in Salesforce</p>
+        <p>
+            <img src="../../../Resources/Images/SF88_58x65.png" style="width: 58;height: 65;" />
+        </p>
+        <p style="line-height: normal;">•	Changes made to a synced activity in Salesforce will update the calendar of the primary HL attendee only.  Changes made to the Outlook calendar of the primary HL attendee only will sync to Salesforce</p>
+        <p class="note" style="line-height: normal;"><b>Note:</b> Whoever is sending the meeting invitations should be the HL primary attendee – in case a delegate is sending the invitations, their officer should be the HL attendee</p>
+        <p class="CoverPageFooter" style="font-size: 10pt;">&#160;</p>
+        <p style="text-align: left;font-size: 11pt;"><span style="font-size: 10pt;">Support/Questions -  <a href="mailto:SalesforceSupport@HL.com">SalesforceSupport@HL.com</a> </span> | <span style="font-size: 10pt;">Have an idea or suggestion to make the help guide better? Let us know! - <a href="mailto:HCM-Learning@HL.com">HCM-Learning@HL.com</a></span></p>
+        <p style="text-align: left;font-size: 8pt;"><span style="font-size: 10pt;" class="SystemShortDate">12/3/2019</span>
+        </p>
+    </body>
+</html>

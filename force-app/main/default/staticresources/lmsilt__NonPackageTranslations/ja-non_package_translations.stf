@@ -1,0 +1,636 @@
+# Language: Japanese
+Language code: ja
+Type: Bilingual
+
+------------------TRANSLATED-------------------
+
+# KEY	LABEL	TRANSLATION	OUT OF DATE
+
+CustomApp.lmscons__Learning_Cloud	Learning Cloud	ラーニング クラウド	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Action.HelpText	The resulting action of clicking the CFS Link	CFS リンクをクリックした結果のアクション	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Assigned.HelpText	True if the target learning object was assigned as a result of clicking the CFS Link	対象となる学習対象が CFS リンクをクリックした結果として割り当てられている場合は「真」	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.HelpText	The status of the CFS Link when accessed by the User	ユーザによってアクセスされた際の CFS リンクの状況	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Error.HelpText	If clicking on the CFS Link results in an error, this picklist provides the cause of the error.	CFS リンクをクリックした結果がエラーである場合、この選択リストにはエラーの原因が提供されます。	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.HelpText	The Target Learning Object's status on the User's Transcript when accessed by the User	ユーザによってアクセスされた場合の、ユーザのトランスクリプト上の対象となる学習対象の状況	-
+CustomField.lmscons__CFS_Link__c.lmscons__Channel.HelpText	Target channel (internal app, a community, portal, or site) for this link	このリンクの対象となるチャネル (内部アプリケーション、コミュニティ、ポータル、またはサイト)	-
+CustomField.lmscons__CFS_Link__c.lmscons__End_Date.HelpText	Deep Link End Date; if this field is null, the Deep Link is always active (if marked Active)	Deep Link 終了日; このフィールドがゼロである場合、Deep Link は常に有効 (有効とマーク付けされている場合)	-
+CustomField.lmscons__CFS_Link__c.lmscons__IsActive.HelpText	Checkbox that marks the deep link as active or not. If marked inactive, this will override the default behavior based on start date and end date. 	Deep Link を有効かどうかマーク付けするチェック ボックス。無効にマーク付けされている場合、開始日および終了日に基づいてデフォルトのビヘイビアが上書きされます。	-
+CustomField.lmscons__CFS_Link__c.lmscons__Start_Date.HelpText	Deep Link Start Date; if this field is null, the Deep Link is active immediately (if marked Active)	Deep Link 開始日; このフィールドがゼロである場合、Deep Link は直ちに有効 (有効とマーク付けされている場合)	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	この割り当てに対し反復研修を作成する必要がある場合のために、チェックします。さらに、反復研修期間および反復研修期間のタイプ (月または年) の数値を必ず設定してください。	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	反復研修期間の数。この期間が過ぎると割り当てが再割り当てされます。	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	割り当てが作成/再割り当てされた日付	-
+CustomField.lmscons__Curriculum__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	デフォルトで、ユーザーはすべてのコンポーネントを完了する必要があります。この条件をカスタマイズするには、値を 1 つまたは両方のオプションに設定してください。	-
+CustomField.lmscons__Curriculum__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	時間値「X」の後に、Xd、Xh、Xm 等の時間単位を指定でき、それぞれ日数、時間数、分数を表しています。\n時間単位を指定しなかった場合は、分となります。	-
+CustomField.lmscons__Curriculum__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	デフォルトで、ユーザーはすべてのコンポーネントを完了する必要があります。この条件をカスタマイズするには、値を 1 つまたは両方のオプションに設定してください。	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	この割り当てに対し反復研修を作成する必要がある場合のために、チェックします。さらに、反復研修期間および反復研修期間のタイプ (月または年) の数値を必ず設定してください。	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.HelpText	Type of recurring training period (year or month)	反復研修期間のタイプ (年または月)	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	反復研修期間の数。この期間が過ぎると割り当てが再割り当てされます。	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	割り当てが作成/再割り当てされた日付	-
+CustomField.lmscons__Learning_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	デフォルトで、ユーザーはすべてのコンポーネントを完了する必要があります。この条件をカスタマイズするには、値を 1 つまたは両方のオプションに設定してください。	-
+CustomField.lmscons__Learning_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	時間値「X」の後に、Xd、Xh、Xm 等の時間単位を指定でき、それぞれ日数、時間数、分数を表しています。\n時間単位を指定しなかった場合は、分となります。	-
+CustomField.lmscons__Learning_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	デフォルトで、ユーザーはすべてのコンポーネントを完了する必要があります。この条件をカスタマイズするには、値を 1 つまたは両方のオプションに設定してください。	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__Cornerstone_Callback_URL.HelpText	The URL of the notification page set up for your organization.	あなたの組織の通知ページ セットアップ URL。	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__CyberUSecretSignKey.HelpText	Secret key to sign CyberU callbacks	CyberU コールバック署名の秘密鍵	-
+CustomField.lmscons__Quiz__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	時間値「X」の後に、Xd、Xh、Xm 等の時間単位を指定でき、それぞれ日数、時間数、分数を表しています。\n時間単位を指定しなかった場合は、分となります。	-
+CustomField.lmscons__Training_Content_License__c.lmscons__Seats.HelpText	Total number of seats included in this license. Leave blank for unlimited.	このライセンスに含まれるシート合計数。無制限にする場合は空欄のままにしてください。	-
+CustomField.lmscons__Training_Content__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as  Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	時間値「X」の後に、Xd、Xh、Xm 等の時間単位を指定でき、それぞれ日数、時間数、分数を表しています。\nI時間単位を指定しなかった場合は、分となります。	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	この割り当てに対し反復研修を作成する必要がある場合のために、チェックします。さらに、反復研修期間および反復研修期間のタイプ (月または年) の数値を必ず設定してください。	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	反復研修期間の数。この期間が過ぎると割り当てが再割り当てされます。	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	割り当てが作成/再割り当てされた日付	-
+CustomField.lmscons__Training_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria,  please set values to one or both options.	デフォルトで、ユーザーはすべてのコンポーネントを完了する必要があります。この条件をカスタマイズするには、値を 1 つまたは両方のオプションに設定してください。	-
+CustomField.lmscons__Training_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	時間値「X」の後に、Xd、Xh、Xm 等の時間単位を指定でき、それぞれ日数、時間数、分数を表しています。\n時間単位を指定しなかった場合は、分となります。	-
+CustomField.lmscons__Training_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	デフォルトで、ユーザーはすべてのコンポーネントを完了する必要があります。この条件をカスタマイズするには、値を 1 つまたは両方のオプションに設定してください。	-
+CustomField.lmscons__Training_Unit__c.lmscons__Remaining_Training_Units.HelpText	Number of units available for spending	支出のために利用可能な単位数	-
+CustomField.lmscons__Training_User_License__c.lmscons__Purchased.HelpText	Indicates if this user license has been purchased or only assigned.	ユーザー ライセンスが購入されたか、あるいは割り当てられただけかを示します。	-
+CustomField.lmsilt__Development_Plan__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	時間値「X」の後に、Xd、Xh、Xm 等の時間単位を指定でき、それぞれ日数、時間数、分数を表しています。\n時間単位を指定しなかった場合は、分となります。	-
+CustomField.lmsilt__Event__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	時間値「X」の後に、Xd、Xh、Xm 等の時間単位を指定でき、それぞれ日数、時間数、分数を表しています。\n時間単位を指定しなかった場合は、分となります。	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Profile	Profile	プロフィール	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Role	Role	役割	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.Error	Error	エラー	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.Launch	Launch	開始	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.View Details	View Details	詳細を表示	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Active	Active	有効	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Expired	Expired	期限切れ	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Inactive	Inactive	無効	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Not Started	Not Started	未開始	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Inactive Link	Inactive Link	無効なリンク	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Learning Object Not Found	Learning Object Not Found	学習対象が見つかりません	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Link Expired	Link Expired	リンクが期限切れ	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Link Not Started	Link Not Started	リンクが未開始	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.No Access	No Access	アクセスなし	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Assigned	Assigned	割り当て済み	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Completed	Completed	完了	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Enrolled	Enrolled	登録済み	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Unassigned	Unassigned	未割り当て	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Days	Days	日数	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Hours	Hours	時間	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Indefinite	Indefinite	不定	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Month	Month	月	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Weeks	Weeks	週数	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Years	Years	年間	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Complete	Complete	完了	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.New	New	新規	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Processing	Processing	処理中	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	月数	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	年間	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Completed	Completed	完了	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Not Started	Not Started	未開始	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Delivery_Type.Online	Online	オンライン	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Administrator	Administrator	管理者	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Developer	Developer	開発者	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.IT Professional	IT Professional	IT 専門家	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Sales Professional	Sales Professional	セールス プロフェッショナル	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.da	da	デンマーク語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.de	de	ドイツ語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.en_US	en_US	英語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.es	es	スペイン語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fi	fi	フィンランド語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fr	fr	フランス語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.it	it	イタリア語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ja	ja	日本人	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ko	ko	韓国語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.nl_NL	nl_NL	オランダ語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.pt_BR	pt_BR	ポルトガル語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ru	ru	ロシア	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.sv	sv	スウェーデン語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.th	th	タイの	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_CN	zh_CN	中国語（簡体字）	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_TW	zh_TW	（繁体字）中国語	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS 学習管理	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Force.com Connectの	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.comモバイル	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS 学習管理	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	販売クラウド	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.CFS Learning	CFS Learning	CFS 学習管理	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.Force.com Connect	Force.com Connect	Force.com Connectの	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.comモバイル	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Error	Error	エラー	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Info	Info	情報	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Warning	Warning	注意	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	月数	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	年間	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Completed	Completed	完了	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Not Started	Not Started	未開始	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Delivery_Type.Online	Online	オンライン	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Administrator	Administrator	管理者	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Developer	Developer	開発者	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.IT Professional	IT Professional	IT 専門家	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Sales Professional	Sales Professional	セールス プロフェッショナル	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.da	da	デンマーク語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.de	de	ドイツ語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.en_US	en_US	英語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.es	es	スペイン語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fi	fi	フィンランド語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fr	fr	フランス語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.it	it	イタリア語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ja	ja	日本人	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ko	ko	韓国語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.nl_NL	nl_NL	オランダ語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.pt_BR	pt_BR	ポルトガル語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ru	ru	ロシア	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.sv	sv	スウェーデン語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.th	th	タイの	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_CN	zh_CN	中国語（簡体字）	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_TW	zh_TW	（繁体字）中国語	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS 学習管理	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Force.com Connectの	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.comモバイル	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS 学習管理	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	販売クラウド	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.CFS Learning	CFS Learning	CFS 学習管理	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.Force.com Connect	Force.com Connect	Force.com Connectの	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.comモバイル	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Completed	Completed	完了	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Pending	Pending	申込中	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Download	Download	ダウンロード	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Purchase	Purchase	購入	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Days	Days	日数	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Hours	Hours	時間	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Indefinite	Indefinite	不定	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Months	Months	月数	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Weeks	Weeks	週数	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Years	Years	年間	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.English	English	英語	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.French	French	フランス語	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Completed	Completed	完了	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Failed	Failed	不合格	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Passed	Passed	合格しました	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Retired	Retired	退職	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Exit	Exit	編集	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Message	Message	メッセージ	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.da	da	デンマーク語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.de	de	ドイツ語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.en_US	en_US	英語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.es	es	スペイン語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fi	fi	フィンランド語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fr	fr	フランス語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.it	it	イタリア語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ja	ja	日本人	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ko	ko	韓国語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.nl_NL	nl_NL	オランダ語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.pt_BR	pt_BR	ポルトガル語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ru	ru	ロシア	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.sv	sv	スウェーデン語	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.th	th	タイの	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_CN	zh_CN	中国語（簡体字）	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_TW	zh_TW	（繁体字）中国語	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Easy	Easy	簡単	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Hard	Hard	ハード	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Medium	Medium	中	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Long Text	Long Text	長いテキスト	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Short Text	Short Text	短文	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Free Text	Free Text	自由テキスト	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Multi Select	Multi Select	複数選択	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Single Select	Single Select	1 つの選択	-
+PicklistValue.lmscons__Question__c.lmscons__Type.True/False	True/False	真/偽	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.da	da	デンマーク語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.de	de	ドイツ語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.en_US	en_US	英語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.es	es	スペイン語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fi	fi	フィンランド語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fr	fr	フランス語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.it	it	イタリア語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ja	ja	日本人	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ko	ko	韓国語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.nl_NL	nl_NL	オランダ語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.pt_BR	pt_BR	ポルトガル語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ru	ru	ロシア	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.sv	sv	スウェーデン語	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.th	th	タイの	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_CN	zh_CN	中国語（簡体字）	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_TW	zh_TW	（繁体字）中国語	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Course	Course	もちろん	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Curriculum	Curriculum	カリキュラム	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Learning Path	Learning Path	経路学習	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Module	Module	モジュール	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Quiz	Quiz	クイズ	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.ALL	ALL	すべて	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NEW	NEW	新規	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NON_COMPLETE	NON_COMPLETE	NON_COMPLETE	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Days	Days	日数	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Hours	Hours	時間	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Indefinite	Indefinite	不定	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Month	Month	月	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Weeks	Weeks	週数	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Years	Years	年間	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Implementation	Implementation	実装	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Learning	Learning	学習管理	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Sale	Sale	販売	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Delivery_Type.Free eLearning	Free eLearning	無料 eLearning	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Administrator	Administrator	管理者	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Channel Manager	Channel Manager	チャネルマネージャ	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Developer	Developer	開発者	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.IT Professional	IT Professional	IT 専門家	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Implementation Team	Implementation Team	実装チーム	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Marketing	Marketing	マーケティング	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Partner	Partner	パートナー	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Manager	Sales Manager	セールスマネージャー	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Professional	Sales Professional	セールス プロフェッショナル	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Rep	Sales Rep	営業担当者	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Support Rep	Support Rep	サポート担当者	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.da	da	デンマーク語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.de	de	ドイツ語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.en_US	en_US	英語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.es	es	スペイン語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fi	fi	フィンランド語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fr	fr	フランス語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.it	it	イタリア語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ja	ja	日本人	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ko	ko	韓国語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.nl_NL	nl_NL	オランダ語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.pt_BR	pt_BR	ポルトガル語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ru	ru	ロシア	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.sv	sv	スウェーデン語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.th	th	タイの	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_CN	zh_CN	中国語（簡体字）	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_TW	zh_TW	（繁体字）中国語	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Development Plan Task	Development Plan Task	ブラッシュアップ プラン タスク	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Event	Event	イベント	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Module	Module	モジュール	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Quiz	Quiz	クイズ	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Block	Block	ブロック	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Course	Course	コース	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Administrator	Administrator	管理者	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Channel Manager	Channel Manager	チャネルマネージャ	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Developer	Developer	開発者	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Implementation Team	Implementation Team	実装チーム	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Marketing	Marketing	マーケティング	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Partner	Partner	パートナー	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Manager	Sales Manager	セールスマネージャー	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Rep	Sales Rep	営業担当者	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Support Rep	Support Rep	サポート担当者	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFSの学習	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Force.com Connectの	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com Offline	Force.com Offline	オフラインForce.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com platform	Force.com platform	Force.comプラットフォーム	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM CSS	Salesforce CRM CSS	Salesforce CRMのCSS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Content	Salesforce CRM Content	Salesforce CRMのコンテンツ	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Ideas	Salesforce CRM Ideas	Salesforce CRMのアイデア	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Marketing	Salesforce CRM Marketing	Salesforce CRMのマーケティング	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Mobile	Salesforce CRM Mobile	Salesforce CRMのモバイル	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Salesforce CRMのパートナーネットワーク	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM SFA	Salesforce CRM SFA	SalesforceのCRM SFA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Google AppsのSalesforceのCRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce to Salesforce	Salesforce to Salesforce	SalesforceへのSalesforce	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.CFS Learning	CFS Learning	CFS 学習管理	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com Connect	Force.com Connect	Force.com Connectの	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com Offline	Force.com Offline	オフラインForce.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com platform	Force.com platform	Force.comプラットフォーム	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM CSS	Salesforce CRM CSS	Salesforce CRMのCSS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Content	Salesforce CRM Content	Salesforce CRMのコンテンツ	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Ideas	Salesforce CRM Ideas	Salesforce CRMのアイデア	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Marketing	Salesforce CRM Marketing	Salesforce CRMのマーケティング	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Mobile	Salesforce CRM Mobile	Salesforce CRMのモバイル	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Salesforce CRMのパートナーネットワーク	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM SFA	Salesforce CRM SFA	SalesforceのCRM SFA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Google AppsのSalesforceのCRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce to Salesforce	Salesforce to Salesforce	SalesforceへのSalesforce	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.FAILURE	FAILURE	不合格	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.SUCCESS	SUCCESS	成功	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Completed	Completed	完了	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Failed	Failed	不合格	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Passed	Passed	合格しました	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Retired	Retired	退職	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Months	Months	月数	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Years	Years	年間	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Completed	Completed	完了	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Not Started	Not Started	未開始	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Retired	Retired	退職	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Delivery_Type.Online	Online	オンライン	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.CSS	CSS	CSS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Content	Content	コンテンツ	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Customer Portal	Customer Portal	カスタマーポータル	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.FDC	FDC	FDC	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Ideas	Ideas	の概念	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Partner Portal	Partner Portal	パートナーポータル	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.SFA	SFA	SFA	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Administrator	Administrator	管理者	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Developer	Developer	開発者	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.IT Professional	IT Professional	ITプロフェッショナル	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Sales Professional	Sales Professional	販売のプロ	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.da	da	デンマーク語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.de	de	ドイツ語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.en_US	en_US	英語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.es	es	スペイン語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fi	fi	フィンランド語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fr	fr	フランス語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.it	it	イタリア語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ja	ja	日本人	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ko	ko	韓国語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.nl_NL	nl_NL	オランダ語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.pt_BR	pt_BR	ポルトガル語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ru	ru	ロシア	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.sv	sv	スウェーデン語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.th	th	タイの	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_CN	zh_CN	中国語（簡体字）	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_TW	zh_TW	（繁体字）中国語	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFSの学習	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Force.com Connectの	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.comモバイル	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFSの学習	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	販売クラウド	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.CFS Learning	CFS Learning	CFSの学習	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.Force.com Connect	Force.com Connect	Force.com Connectの	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.comモバイル	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.Completed	Completed	完了	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Completed	Completed	完了	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Failed	Failed	不合格	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.In Progress	In Progress	進行中	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Passed	Passed	合格しました	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Retired	Retired	退職	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Unenrolled	Unenrolled	登録解除済み	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Completed	Completed	完成した	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Failed	Failed	失敗した	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.LO Error	LO Error	LOエラー	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Pending	Pending	ペンディング	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Skipped	Skipped	スキップされた	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.contains	contains	含まれています	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.does not contain	does not contain	が含まれていません	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.equals	equals	等しい	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.excludes	excludes	除外	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater or equal	greater or equal	以上	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater than	greater than	越える	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.includes	includes	含まれてい	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less or equal	less or equal	以下	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less than	less than	以下	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.not equal to	not equal to	等しくない	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.starts with	starts with	で始まる	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Account	Account	アカウント	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Case	Case	ケース	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Contact	Contact	連絡	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Lead	Lead	リード	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Opportunity	Opportunity	チャンス	-
+PicklistValue.User.lmscons__CFS_Status.Active	Active	アクティブ	-
+PicklistValue.User.lmscons__CFS_Status.Deactivated	Deactivated	無効になりました。	-
+PicklistValue.User.lmscons__CFS_Status.Not CFS user	Not CFS user	CFS ユーザーでありません	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Completed	Completed	完了	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.In Progress	In Progress	進行中	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Not Started	Not Started	未開始	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Relative Dates	Relative Dates	相対日付	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Static Dates	Static Dates	静的日付	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Failed	Failed	失敗した	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Success	Success	成功	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Import	Import	インポート	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Manual	Manual	マニュアル	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Delete	Delete	削除	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Insert	Insert	挿入	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Update	Update	アップデート	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Completed	Completed	完成した	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.In Progress	In Progress	進行中	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Not Started	Not Started	開始していません	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Internal	Internal	社内	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Private	Private	非公開	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Public	Public	共有	-
+PicklistValue.Contact.lmsilt__Level.Primary	Primary	プライマリー	-
+PicklistValue.Contact.lmsilt__Level.Secondary	Secondary	二次	-
+PicklistValue.Contact.lmsilt__Level.Tertiary	Tertiary	第三紀	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Completed	Completed	完了	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.In Progress	In Progress	進行中	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Not Started	Not Started	未開始	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Manager	Manager	マネージャー	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Self	Self	自己	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.User	User	ユーザー	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Delivery_Type.Online	Online	オンライン	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Administrator	Administrator	管理者	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.IT Professional	IT Professional	ITプロフェッショナル	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	販売のプロ	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.da	da	デンマーク語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.de	de	ドイツ語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.en_US	en_US	英語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.es	es	スペイン語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fi	fi	フィンランド語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fr	fr	フランス語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.it	it	イタリア語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ja	ja	日本人	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ko	ko	韓国語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.nl_NL	nl_NL	オランダ語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.pt_BR	pt_BR	ポルトガル語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ru	ru	ロシア	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.sv	sv	スウェーデン語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.th	th	タイの	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_CN	zh_CN	中国語（簡体字）	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_TW	zh_TW	（繁体字）中国語	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	CFSの学習	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Product_Category.CFS Learning	CFS Learning	CFSの学習	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Products.CFS Learning	CFS Learning	CFSの学習	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Active	Active	アクティブ	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Retired	Retired	退職	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Administrator	Administrator	管理者	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.IT Professional	IT Professional	ITプロフェッショナル	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	販売のプロ	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.da	da	デンマーク語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.de	de	ドイツ語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.en_US	en_US	英語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.es	es	スペイン語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fi	fi	フィンランド語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fr	fr	フランス語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.it	it	イタリア語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ja	ja	日本語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ko	ko	韓国語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.nl_NL	nl_NL	オランダ語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.pt_BR	pt_BR	ポルトガル語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ru	ru	ロシア語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.sv	sv	スウェーデン語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.th	th	タイ語	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_CN	zh_CN	中国語 (簡体字)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_TW	zh_TW	中国語 (繁体字)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	CFSの学習	-
+PicklistValue.lmsilt__Event__c.lmsilt__Product_Category.CFS Learning	CFS Learning	CFSの学習	-
+PicklistValue.lmsilt__Event__c.lmsilt__Products.CFS Learning	CFS Learning	CFSの学習	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Attended	Attended	出席済み	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Not Attended	Not Attended	欠席	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Optional	Optional	オプションの	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Recommended	Recommended	推奨	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Required	Required	必須	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Event	Event	イベント	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Module	Module	モジュール	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Task	Task	タスク	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Pending	Pending	ペンディング	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Refunded	Refunded	払い戻し	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Used	Used	使用	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Admin	Admin	管理者	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Instructor	Instructor	インストラクター	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Manager	Manager	マネージャー	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Select User	Select User	ユーザーの選択	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.User	User	ユーザー	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Optional	Optional	オプションの	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Recommended	Recommended	推奨	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Required	Required	必須	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.After	After	後	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Anytime	Anytime	いつでも	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Before	Before	前	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.During	During	期間	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Active	Active	アクティブ	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Inactive	Inactive	非アクティブ	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Attended	Attended	出席済み	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Not Attended	Not Attended	欠席	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Partially Attended	Partially Attended	一部出席	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Failed	Failed	不合格	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Passed	Passed	合格済	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Cancelled	Cancelled	取り消し済み	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Enrolled	Enrolled	登録済み	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Waitlisted	Waitlisted	キャンセル待ち	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Withdrawn	Withdrawn	取り消し	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.AMER	AMER	AMER	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.APAC	APAC	APAC	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.EMEA	EMEA	ヨーロッパ·中東·アフリカ	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.JAPAN	JAPAN	ジャパン	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Alabama	Alabama	アラバマ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Alaska	Alaska	アラスカ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Arizona	Arizona	アリゾナ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Arkansas	Arkansas	アーカンソー州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.California	California	カリフォルニア州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Colorado	Colorado	コロラド州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Connecticut	Connecticut	コネチカット	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Delaware	Delaware	デラウェア州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Florida	Florida	フロリダ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Georgia	Georgia	グルジア	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Hawaii	Hawaii	ハワイ	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Idaho	Idaho	アイダホ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Illinois	Illinois	イリノイ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Indiana	Indiana	インディアナ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Iowa	Iowa	アイオワ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Kansas	Kansas	カンザス州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Kentucky	Kentucky	ケンタッキー州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Louisiana	Louisiana	ルイジアナ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Maine	Maine	メイン州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Maryland	Maryland	メリーランド州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Massachusetts	Massachusetts	マサチューセッツ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Michigan	Michigan	ミシガン州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Minnesota	Minnesota	ミネソタ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Mississippi	Mississippi	ミシシッピー州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Missouri	Missouri	ミズーリ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Montana	Montana	モンタナ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Nebraska	Nebraska	ネブラスカ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Nevada	Nevada	ネバダ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Hampshire	New Hampshire	ニューハンプシャー州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Jersey	New Jersey	ニュージャージー州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Mexico	New Mexico	ニューメキシコ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New York	New York	ニューヨーク	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.North Carolina	North Carolina	ノースカロライナ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.North Dakota	North Dakota	ノースダコタ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Ohio	Ohio	オハイオ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Oklahoma	Oklahoma	オクラホマ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Oregon	Oregon	オレゴン州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Pennsylvania	Pennsylvania	ペンシルベニア州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Rhode Island	Rhode Island	ロードアイランド州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.South Carolina	South Carolina	サウスカロライナ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.South Dakota	South Dakota	サウスダコタ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Tennessee	Tennessee	テネシー州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Texas	Texas	テキサス州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Utah	Utah	ユタ州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Vermont	Vermont	バーモント州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Virginia	Virginia	バージニア州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Washington	Washington	ワシントン	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.West Virginia	West Virginia	ウェストバージニア州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Wisconsin	Wisconsin	ウィスコンシン州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Wyoming	Wyoming	ワイオミング州	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Corporate Headquarters	Corporate Headquarters	本社	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Hotel	Hotel	ホテル	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Office	Office	オフィス	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Announce Name	Announce Name	名前を発表する	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Beep	Beep	ビープ	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.No Tone	No Tone	トーンなし	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.ILT	ILT	ILT	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.vILT	vILT	vILT	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PRIVATE	PRIVATE	非公開	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PUBLIC	PUBLIC	共有	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.UNLISTED	UNLISTED	いいね！を取り消し済み	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.GoToTraining	GoToTraining	GoToTraining	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.WebEx	WebEx	WebEx	-
+PicklistValue.lmsilt__Session__c.lmsilt__Telephony_Support.CALLIN	CALLIN	CALLIN	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+00:00) Greenwich Mean Time (GMT)	(GMT+00:00) Greenwich Mean Time (GMT)	（ GMT +00:00 ）グリニッジ標準時（GMT ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) British Summer Time (Europe/London)	(GMT+01:00) British Summer Time (Europe/London)	（ GMT +01:00 ）英国夏時間（ヨーロッパ/ロンドン）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Central European Time (Africa/Algiers)	(GMT+01:00) Central European Time (Africa/Algiers)	（ GMT +01:00 ）中央ヨーロッパ時間（アフリカ/アルジェ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Irish Summer Time (Europe/Dublin)	(GMT+01:00) Irish Summer Time (Europe/Dublin)	（ GMT +01:00 ）アイルランド夏時間（ヨーロッパ/ダブリン）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Western European Summer Time (Europe/Lisbon)	(GMT+01:00) Western European Summer Time (Europe/Lisbon)	（ GMT +01:00 ）西ヨーロッパ夏時間（ヨーロッパ/リスボン）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Amsterdam)	(GMT+02:00) Central European Summer Time (Europe/Amsterdam)	（ GMT +02:00 ）中央ヨーロッパ夏時間（ヨーロッパ/アムステルダム）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Berlin)	(GMT+02:00) Central European Summer Time (Europe/Berlin)	（ GMT +02:00 ）中央ヨーロッパ夏時間（ヨーロッパ/ベルリン）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Brussels)	(GMT+02:00) Central European Summer Time (Europe/Brussels)	（ GMT +02:00 ）中央ヨーロッパ夏時間（ヨーロッパ/ブリュッセル）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Paris)	(GMT+02:00) Central European Summer Time (Europe/Paris)	（ GMT +02:00 ）中央ヨーロッパ夏時間（ヨーロッパ/パリ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Prague)	(GMT+02:00) Central European Summer Time (Europe/Prague)	（ GMT +02:00 ）中央ヨーロッパ夏時間（ヨーロッパ/プラハ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Rome)	(GMT+02:00) Central European Summer Time (Europe/Rome)	（ GMT +02:00 ）中央ヨーロッパ夏時間（ヨーロッパ/ローマ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Eastern European Time (Africa/Cairo)	(GMT+02:00) Eastern European Time (Africa/Cairo)	（ GMT +02:00 ）東ヨーロッパ時間（アフリカ/カイロ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) South Africa Standard Time (Africa/Johannesburg)	(GMT+02:00) South Africa Standard Time (Africa/Johannesburg)	（ GMT +02:00 ）南アフリカ標準時（アフリカ/ヨハネスブルク）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Baghdad)	(GMT+03:00) Arabian Standard Time (Asia/Baghdad)	（ GMT +03:00 ）アラビア標準時（アジア/バグダッド）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Kuwait)	(GMT+03:00) Arabian Standard Time (Asia/Kuwait)	（ GMT +03:00 ）アラビア標準時（アジア/クウェート）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Riyadh)	(GMT+03:00) Arabian Standard Time (Asia/Riyadh)	（ GMT +03:00 ）アラビア標準時（アジア/リヤド）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) East Africa Time (Africa/Nairobi)	(GMT+03:00) East Africa Time (Africa/Nairobi)	（ GMT +03:00 ）東アフリカ時間（アフリカ/ナイロビ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Athens)	(GMT+03:00) Eastern European Summer Time (Europe/Athens)	（ GMT +03:00 ）東ヨーロッパ夏時間（ヨーロッパ/アテネ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Bucharest)	(GMT+03:00) Eastern European Summer Time (Europe/Bucharest)	（ GMT +03:00 ）東ヨーロッパ夏時間（ヨーロッパ/ブカレスト）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Helsinki)	(GMT+03:00) Eastern European Summer Time (Europe/Helsinki)	（ GMT +03:00 ）東ヨーロッパ夏時間（ヨーロッパ/ヘルシンキ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Istanbul)	(GMT+03:00) Eastern European Summer Time (Europe/Istanbul)	（ GMT +03:00 ）東ヨーロッパ夏時間（ヨーロッパ/イスタンブール）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Time (Europe/Minsk)	(GMT+03:00) Eastern European Time (Europe/Minsk)	（ GMT +03:00 ）東ヨーロッパ時間（ヨーロッパ/ミンスク）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Israel Daylight Time (Asia/Jerusalem)	(GMT+03:00) Israel Daylight Time (Asia/Jerusalem)	（ GMT +03:00 ）イスラエル夏時間（アジア/エルサレム）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Georgia Time (Asia/Tbilisi)	(GMT+04:00) Georgia Time (Asia/Tbilisi)	（ GMT +04:00 ）グルジアタイム（アジア/トビリシ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Gulf Standard Time (Asia/Dubai)	(GMT+04:00) Gulf Standard Time (Asia/Dubai)	（ GMT +04:00 ）湾標準時（アジア/ドバイ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Moscow Standard Time (Europe/Moscow)	(GMT+04:00) Moscow Standard Time (Europe/Moscow)	（ GMT +04:00 ）モスクワ標準時（ヨーロッパ/モスクワ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:30) Afghanistan Time (Asia/Kabul)	(GMT+04:30) Afghanistan Time (Asia/Kabul)	（ GMT +04:30 ）アフガニスタンタイム（アジア/カブール）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:30) Iran Daylight Time (Asia/Tehran)	(GMT+04:30) Iran Daylight Time (Asia/Tehran)	（ GMT +04:30 ）イラン夏時間（アジア/テヘラン）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:00) Pakistan Time (Asia/Karachi)	(GMT+05:00) Pakistan Time (Asia/Karachi)	（ GMT +05:00 ）パキスタンタイム（アジア/カラチ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:00) Uzbekistan Time (Asia/Tashkent)	(GMT+05:00) Uzbekistan Time (Asia/Tashkent)	（ GMT +05:00 ）ウズベキスタンタイム（アジア/タシケント）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:30) India Standard Time (Asia/Calcutta)	(GMT+05:30) India Standard Time (Asia/Calcutta)	（ GMT +05:30 ）インド標準時（アジア/カルカッタ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:30) India Standard Time (Asia/Colombo)	(GMT+05:30) India Standard Time (Asia/Colombo)	（ GMT +05:30 ）インド標準時（アジア/コロンボ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:45) Nepal Time (Asia/Katmandu)	(GMT+05:45) Nepal Time (Asia/Katmandu)	（ GMT +05:45 ）ネパールタイム（アジア/カトマンズ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:00) Bangladesh Time (Asia/Dacca)	(GMT+06:00) Bangladesh Time (Asia/Dacca)	（ GMT +06:00 ）バングラデシュタイム（アジア/ダッカ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:00) Yekaterinburg Time (Asia/Yekaterinburg)	(GMT+06:00) Yekaterinburg Time (Asia/Yekaterinburg)	（ GMT +06:00 ）エカテリンブルク時間（アジア/エカテリンブルク）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:30) Myanmar Time (Asia/Rangoon)	(GMT+06:30) Myanmar Time (Asia/Rangoon)	（ GMT +06:30 ）ミャンマータイム（アジア/ヤンゴン）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Indochina Time (Asia/Bangkok)	(GMT+07:00) Indochina Time (Asia/Bangkok)	（ GMT +07:00 ）インドシナタイム（アジア/バンコク）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Indochina Time (Asia/Saigon)	(GMT+07:00) Indochina Time (Asia/Saigon)	（ GMT +07:00 ）インドシナタイム（アジア/サイゴン）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Western Indonesia Time (Asia/Jakarta)	(GMT+07:00) Western Indonesia Time (Asia/Jakarta)	（ GMT +07:00 ）西部インドネシア時間（アジア/ジャカルタ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Australian Western Standard Time (Australia/Perth)	(GMT+08:00) Australian Western Standard Time (Australia/Perth)	（ GMT +08:00 ）オーストラリア西部標準時（オーストラリア/パース）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) China Standard Time (Asia/Shanghai)	(GMT+08:00) China Standard Time (Asia/Shanghai)	（ GMT +08:00 ）中国標準時（アジア/上海）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Hong Kong Time (Asia/Hong_Kong)	(GMT+08:00) Hong Kong Time (Asia/Hong_Kong)	（ GMT +08:00 ）香港時間（アジア/ Hong_Kong ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Malaysia Time (Asia/Kuala_Lumpur)	(GMT+08:00) Malaysia Time (Asia/Kuala_Lumpur)	（ GMT +08:00 ）マレーシアタイム（アジア/ Kuala_Lumpur ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Philippine Time (Asia/Manila)	(GMT+08:00) Philippine Time (Asia/Manila)	（ GMT +08:00 ）フィリピンタイム（アジア/マニラ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Singapore Standard Time (Asia/Singapore)	(GMT+08:00) Singapore Standard Time (Asia/Singapore)	（ GMT +08:00 ）シンガポール標準時（アジア/シンガポール）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Taipei Standard Time (Asia/Taipei)	(GMT+08:00) Taipei Standard Time (Asia/Taipei)	（ GMT +08:00 ）台北標準時（アジア/台北）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:00) Japan Standard Time (Asia/Tokyo)	(GMT+09:00) Japan Standard Time (Asia/Tokyo)	（ GMT +09:00 ）日本標準時（アジア/東京）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:00) Korean Standard Time (Asia/Seoul)	(GMT+09:00) Korean Standard Time (Asia/Seoul)	（ GMT +09:00 ）韓国標準時間（アジア/ソウル）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:30) Australian Central Standard Time (Australia/Adelaide)	(GMT+09:30) Australian Central Standard Time (Australia/Adelaide)	（ GMT +09:30 ）オーストラリア中部標準時（オーストラリア/アデレード）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:30) Australian Central Standard Time (Australia/Darwin)	(GMT+09:30) Australian Central Standard Time (Australia/Darwin)	（ GMT +09:30 ）オーストラリア中部標準時（オーストラリア/ダーウィン）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:00) Australian Eastern Standard Time (Australia/Brisbane)	(GMT+10:00) Australian Eastern Standard Time (Australia/Brisbane)	（ GMT +10:00 ）オーストラリア東部標準時（オーストラリア/ブリスベン）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:00) Australian Eastern Standard Time (Australia/Sydney)	(GMT+10:00) Australian Eastern Standard Time (Australia/Sydney)	（ GMT +10:00 ）オーストラリア東部標準時（オーストラリア/シドニー）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:30) Lord Howe Standard Time (Australia/Lord_Howe)	(GMT+10:30) Lord Howe Standard Time (Australia/Lord_Howe)	（ GMT +10:30 ）ロードハウ標準時（オーストラリア/ Lord_Howe ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+11:00) Solomon Islands Time (Pacific/Guadalcanal)	(GMT+11:00) Solomon Islands Time (Pacific/Guadalcanal)	（ GMT +11:00 ）ソロモン諸島時間（太平洋/ガダルカナル）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+11:30) Norfolk Islands Time (Pacific/Norfolk)	(GMT+11:30) Norfolk Islands Time (Pacific/Norfolk)	（ GMT +11:30 ）ノーフォーク諸島時間（太平洋/ノーフォーク）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) Fiji Time (Pacific/Fiji)	(GMT+12:00) Fiji Time (Pacific/Fiji)	（ GMT +12:00 ）フィジー標準時（太平洋/フィジー）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) Magadan Time (Asia/Kamchatka)	(GMT+12:00) Magadan Time (Asia/Kamchatka)	（ GMT +12:00 ）マガダン時間（アジア/カムチャツカ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) New Zealand Standard Time (Pacific/Auckland)	(GMT+12:00) New Zealand Standard Time (Pacific/Auckland)	（ GMT +12:00 ）ニュージーランド標準時（太平洋/オークランド）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:45) Chatham Standard Time (Pacific/Chatham)	(GMT+12:45) Chatham Standard Time (Pacific/Chatham)	（ GMT +12:45 ）チャタム標準時（太平洋/チャタム）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+13:00) Phoenix Islands Time (Pacific/Enderbury)	(GMT+13:00) Phoenix Islands Time (Pacific/Enderbury)	（ GMT +13:00 ）フェニックス諸島時間（太平洋/エンダベリー）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+13:00) Tonga Time (Pacific/Tongatapu)	(GMT+13:00) Tonga Time (Pacific/Tongatapu)	（ GMT +13:00 ）トンガ標準時（太平洋/トンガタプ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+14:00) Line Islands Time (Pacific/Kiritimati)	(GMT+14:00) Line Islands Time (Pacific/Kiritimati)	（ GMT +14:00 ）ライン諸島時間（太平洋/クリスマス島）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-01:00) Cape Verde Time (Atlantic/Cape_Verde)	(GMT-01:00) Cape Verde Time (Atlantic/Cape_Verde)	（ GMT - 01 ： 00 ）カーボベルデタイム（大西洋/ Cape_Verde ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-02:00) South Georgia Time (Atlantic/South_Georgia)	(GMT-02:00) South Georgia Time (Atlantic/South_Georgia)	（ GMT - 02 ： 00 ）サウスジョージア時間（大西洋/ South_Georgia ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-02:30) Newfoundland Daylight Time (America/St_Johns)	(GMT-02:30) Newfoundland Daylight Time (America/St_Johns)	（ GMT- 02 ： 30 ）ニューファンドランド夏時間（アメリカ/ St_Johns ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Argentina Time (America/Buenos_Aires)	(GMT-03:00) Argentina Time (America/Buenos_Aires)	（ GMT - 03 ： 00 ）アルゼンチン標準時（アメリカ/ Buenos_Aires ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Atlantic Daylight Time (America/Halifax)	(GMT-03:00) Atlantic Daylight Time (America/Halifax)	（ GMT - 03 ： 00 ）大西洋夏時間（アメリカ/ハリファックス）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Atlantic Daylight Time (Atlantic/Bermuda)	(GMT-03:00) Atlantic Daylight Time (Atlantic/Bermuda)	（ GMT - 03 ： 00 ）大西洋夏時間（大西洋/バミューダ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Brasilia Time (America/Sao_Paulo)	(GMT-03:00) Brasilia Time (America/Sao_Paulo)	（ GMT - 03 ： 00 ）ブラジリア時間（アメリカ/ Sao_Paulo ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Atlantic Standard Time (America/Puerto_Rico)	(GMT-04:00) Atlantic Standard Time (America/Puerto_Rico)	（ GMT - 04 ： 00 ）大西洋標準時（アメリカ/ Puerto_Rico ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Chile Time (America/Santiago)	(GMT-04:00) Chile Time (America/Santiago)	（ GMT - 04 ： 00 ）チリ時間（アメリカ/サンチアゴ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Eastern Daylight Time (America/Indianapolis)	(GMT-04:00) Eastern Daylight Time (America/Indianapolis)	（ GMT - 04 ： 00 ）東部夏時間（アメリカ/インディアナポリス）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Eastern Daylight Time (America/New_York)	(GMT-04:00) Eastern Daylight Time (America/New_York)	（ GMT - 04 ： 00 ）東部夏時間（アメリカ/ニューヨーク州）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:30) Venezuela Time (America/Caracas)	(GMT-04:30) Venezuela Time (America/Caracas)	（ GMT- 04 ： 30 ）ベネズエラ標準時（アメリカ/カラカス）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Central Daylight Time (America/Chicago)	(GMT-05:00) Central Daylight Time (America/Chicago)	（ GMT - 05 ： 00 ）中部夏時間（アメリカ/シカゴ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Central Daylight Time (America/Mexico_City)	(GMT-05:00) Central Daylight Time (America/Mexico_City)	（ GMT - 05 ： 00 ）中部夏時間（アメリカ/ Mexico_City ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Colombia Time (America/Bogota)	(GMT-05:00) Colombia Time (America/Bogota)	（ GMT - 05 ： 00 ）コロンビア時間（アメリカ/ボゴタ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Eastern Standard Time (America/Panama)	(GMT-05:00) Eastern Standard Time (America/Panama)	（ GMT - 05 ： 00 ）東部標準時（アメリカ/パナマ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Peru Time (America/Lima)	(GMT-05:00) Peru Time (America/Lima)	（ GMT - 05 ： 00 ）ペルー時間（アメリカ/リマ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-06:00) Central Standard Time (America/El_Salvador)	(GMT-06:00) Central Standard Time (America/El_Salvador)	（ GMT - 06 ： 00 ）中部標準時（アメリカ/ El_Salvador ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-06:00) Mountain Daylight Time (America/Denver)	(GMT-06:00) Mountain Daylight Time (America/Denver)	（ GMT - 06 ： 00 ）山地夏時間（アメリカ/デンバー）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Mountain Standard Time (America/Phoenix)	(GMT-07:00) Mountain Standard Time (America/Phoenix)	（ GMT- 07 ： 00 ）山地標準時（アメリカ/フェニックス）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Pacific Daylight Time (America/Los_Angeles)	(GMT-07:00) Pacific Daylight Time (America/Los_Angeles)	（ GMT- 07 ： 00 ）太平洋夏時間（アメリカ/ロサンゼルス）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Pacific Daylight Time (America/Tijuana)	(GMT-07:00) Pacific Daylight Time (America/Tijuana)	（ GMT- 07 ： 00 ）太平洋夏時間（アメリカ/ティファナ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-08:00) Alaska Daylight Time (America/Anchorage)	(GMT-08:00) Alaska Daylight Time (America/Anchorage)	（ GMT - 08 ： 00 ）アラスカ夏時間（アメリカ/アンカレッジ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-10:00) Hawaii-Aleutian Standard Time (Pacific/Honolulu)	(GMT-10:00) Hawaii-Aleutian Standard Time (Pacific/Honolulu)	（ GMT - 10 ： 00 ）ハワイ·アリューシャン標準時（太平洋/ホノルル）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-11:00) Niue Time (Pacific/Niue)	(GMT-11:00) Niue Time (Pacific/Niue)	（ GMT - 11 ： 00 ）ニウエタイム（アジア/太平洋ニウエ）	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-11:00) Samoa Standard Time (Pacific/Pago_Pago)	(GMT-11:00) Samoa Standard Time (Pacific/Pago_Pago)	（ GMT - 11 ： 00 ）サモア標準時（太平洋/ Pago_Pago ）	-

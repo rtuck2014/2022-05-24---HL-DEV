@@ -1,0 +1,72 @@
+body .btn {
+    background: none;
+}
+.allTranslatedCaseDetails {
+    padding-top: 8px;
+}
+.allTranslatedCaseDetails .apexp .bPageBlock {
+    border: 0 !important;
+}
+.allTranslatedCaseDetails .apexp .bPageBlock .pbBody {
+    margin: 10px 0 20px 0;
+}
+
+.allTranslatedCaseDetails .pbBody table.list tr.headerRow th {
+    padding: 8px 5px;
+}
+.allTranslatedCaseDetails .bPageBlock .pbBody table.list tr.dataRow td {
+    border-right: 1px solid #eaeaea;
+    min-height: 20px;
+}
+.allTranslatedCaseDetails .bPageBlock .pbBody table.list tr.dataRow td:last-child {
+    border-right: 0;
+}
+.allTranslatedCaseDetails .bPageBlock .pbBody table.list tr.dataRow td a {
+    width: 300px;
+    height:20px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ }
+.allTranslatedCaseDetails  .apexp .bPageBlock.apexDefaultPageBlock .pbHeader {
+     border-bottom: 0;
+     background-color: #1797c0;
+ }
+.allTranslatedCaseDetails  .apexp .bPageBlock.apexDefaultPageBlock .pbHeader .mainTitle{
+     color: #fff;
+     font-weight: 500;
+}
+.allTranslatedCaseDetails .pbBody table.list tr.headerRow th {
+     padding: 8px 5px;
+     background: #1797c0;
+     border-width: 0 0 1px 1px;
+     border-color: #1797c0;
+     color: #fff;
+     font-size: 14px;
+     font-weight: 400;
+     border-right: 1px solid #eaeaea
+ }
+.allTranslatedCaseDetails .pbBody table.list tr.headerRow th:last-child {
+     border-right: 0;
+}
+.allTranslatedCaseDetails .back-btn {
+     display: inline-block;
+}
+.allTranslatedCaseDetails .back-btn input {
+     border: 0;
+     width: 40px;
+ }
+.custom-select-box {
+     display: inline-block;
+     float: right;
+     margin-right: 5px;
+ }
+.custom-select-box select {
+     width: 200px;
+     height: 30px;
+     border-radius: 3px;
+     border: 1px solid #cacaca;
+     margin-top: 5px;
+     //float: right;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Marketing Guide (Marketing Staff Only)">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Add Members to a Campaign </title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/Sforce.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" defer="defer">
+        </script>
+    </head>
+    <body>
+        <h1>Add Members to a Campaign </h1>
+        <h2>via Report</h2>
+        <p>The following procedure allows you to add members via a report and is best if you if you wish to add a large number of members to a campaign from a previous campaign or from a report of a group of members (like all contacts that work for Boeing in Chicago.)</p>
+        <p class="note">This process is only available to Marketing Department staff members. For non-marketing staff, please refer to the section Add a Contact to a Conference or Event.</p>
+        <ol>
+            <li value="1">Click the "Reports" tab</li>
+            <li value="2">Click on Marketing Reports folder (left hand side)</li>
+            <li value="3">Open a pre-existing report or create a new custom report (see <a href="../MktgCmpgns/PrntCmpgnList.htm">How to Print a Campaign List</a>)</li>
+            <li value="4">&lt;Customize&gt;</li>
+            <li value="5">Search for campaign by clicking <img src="../../Resources/Images/MagGlass.png" />next to Select Campaign</li>
+            <li value="6">Search within "All Campaigns" then type in the campaign key words</li>
+            <li value="7">&lt;Run Report&gt;</li>
+            <li value="8">&lt;Add to Campaign&gt;</li>
+            <li value="9">In the Campaign field, click <img src="../../Resources/Images/MagGlass.png" />and search for the campaign you wish to add the members to</li>
+            <li value="10">Enter the Member Status (typically leave as default "Nominated for Invite" for conferences or events or "Queued" for mailing lists</li>
+            <li value="11">Existing Members<ul><li value="1">Do not override the member status - will not update the status of a member that has already been added to the campaign</li><li value="2">Override the member status - if a member of this report is already part of the campaign, it will override their current member status with the member status you selected in step 10</li></ul></li>
+            <li value="12">&lt;Add to Campaign&gt;</li>
+        </ol>
+        <h2><a name="Direct"></a>Direct via Campaign</h2>
+        <p>This process is best used if you wish to update a small group of members directly from the Campaign area. The advantage to this process is that you can see all the contacts associated to the campaign.</p>
+        <ol>
+            <li value="1">Go to the "Campaigns" tab</li>
+            <li value="2">Scroll down to the Campaign Members section where you can view all members of the campaign</li>
+            <li value="3"> &lt;<b>Manage Members</b>&gt;<ul><li value="1"><b>Add Members - Search</b> - Search across all Salesforce contacts and add based on contact attributes like company name, title, etc. (e.g. Add all contacts that work for Wells Fargo with a title of Director).</li><li value="2"><b>Add Members - Import File</b> - Do Not Use</li><li value="3"><b>Edit Members - Search</b> - Search contacts within the current campaign and edit their current campaign member status. (e.g. Update a select group of members in a conference campaign from "Nominated for Invite" to "RSVP-Yes")</li><li value="4"><b>Update &amp;&#160;Add Members - Import File</b> -This allows you to add members via import from a .csv file. Please contact <a href="mailto:Marketing-DirectResponse@HL.com">Marketing-DirectResponse@HL.com</a></li></ul></li>
+            <li value="4">Depending on your selection in step 4, follow steps outlined in the below sections:</li>
+        </ol>
+        <h3>Add Members via Search</h3>
+        <ol>
+            <li value="1">Select "Add Members - Search" (continued from step 4 of <a href="#Direct">Direct via Campaign</a>)</li>
+            <li value="2">In Step 1 section, check "Contacts" (defaults to "Leads")</li>
+            <li value="3">Enter your search filter criteria (e.g. last name, first name, company, etc.) or skip to step 3 to pull entire member list</li>
+            <li value="4">&lt;<b>Go</b>&gt;</li>
+            <li value="5">Check the contacts to add</li>
+            <li value="6">Click &lt;<b>Add with Status</b>&gt; and select a Response Type</li>
+        </ol>
+        <h3>Add Members via Import</h3>
+        <ol>
+            <li value="1">Select "Update &amp; Add Members - Import File" (continued from step 4 of <a href="#Direct">Direct via Campaign</a>)</li>
+            <li value="2">&lt;<b>Update &amp;&#160;Add Campaign Members</b>&gt;</li>
+            <li value="3">In step 6 on the screen click &lt;<b>Choose File</b>&gt; to select the .csv file</li>
+            <li value="4">In step 8 on the screen, select the appropriate Response Type from the pick list</li>
+            <li value="5">In step 10 on the screen, check the box "Trigger workflow rules for new and updated records</li>
+            <li value="6">&lt;<b>Next</b>&gt;</li>
+            <li value="7">In Step 2 of 3 screen, map the Import Field with the appropriate Salesforce fields</li>
+            <li value="8">&lt;<b>Next</b>&gt;</li>
+            <li value="9">&lt;<b>Import Now!</b>&gt;</li>
+        </ol>
+        <h3>Edit Members via Search</h3>
+        <ol>
+            <li value="1">Select "Edit  Members - Search" (continued from step 4 of <a href="#Direct">Direct via Campaign</a>)</li>
+            <li value="2">Enter your search filter criteria (e.g. last name, first name, company, etc.) or skip to step 3 to pull entire member list</li>
+            <li value="3">&lt;<b>Go</b>&gt;</li>
+            <li value="4">Check the contacts to update or remove then click &lt;Remove&gt; or select a Response Type from the &lt;Update Status&gt; pick list</li>
+        </ol>
+        <p>&#160;</p>
+        <p class="CoverPageFooter" style="font-size: 10pt;">&#160;</p>
+        <p style="text-align: left;font-size: 11pt;"><span style="font-size: 10pt;">Support/Questions -  <a href="mailto:SalesforceSupport@HL.com">SalesforceSupport@HL.com</a> </span> | <span style="font-size: 10pt;">Have an idea or suggestion to make the help guide better? Let us know! - <a href="mailto:HCM-Learning@HL.com">HCM-Learning@HL.com</a></span></p>
+        <p style="text-align: left;font-size: 8pt;"><span style="font-size: 10pt;" class="SystemShortDate">12/3/2019</span>
+        </p>
+    </body>
+</html>

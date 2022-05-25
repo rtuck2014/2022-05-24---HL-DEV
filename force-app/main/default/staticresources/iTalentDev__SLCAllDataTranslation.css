@@ -1,0 +1,193 @@
+ .sbox { 
+    width: 200px; 
+    }
+    a.tooltip span {
+        display:none;
+        padding:2px 3px;
+        margin-left:8px;
+        width:350px;
+    }
+    a.tooltip:hover span{
+        display:inline;
+        position:absolute;
+        background:#FFC;
+        border:1px solid #cccccc;
+        color:#000000;
+    .buttonStyle { width:100%; background-color:green; text-align:center; padding-top:4px; }
+
+    } 
+   .cell-overflow {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .pbTitle {
+        white-space: nowrap
+    }
+    .caseTables .btn {
+        color: #fff;
+        font-weight: 400;
+        background-color: #b7a752;
+        border-color: #b7a752;
+        padding: 4px 8px;
+        font-size: 14px;
+        line-height: 20px;
+        border-radius: 3px;
+        transition: 0.3s ease-in-out;
+    }
+    body .btn {
+        background: none;
+    }
+    .caseTables .btn:hover {
+        background-color: #9b8d45;
+        border-color: #9b8d45;
+    }
+     .caseTables .caseTranslation .pbBody,
+     .caseTables .caseComment .pbBody
+    {
+     margin: 0 0 20px 0 !important;
+    }
+    .caseTranslation .pbBody table.list tr.dataRow td,
+    .caseComment .pbBody table.list tr.dataRow td {
+        border-right: 1px solid #eaeaea;
+     }
+    .caseTranslation .pbBody table.list tr.dataRow td:last-child,
+    .caseComment .pbBody table.list tr.dataRow td:last-child {
+         border-right: 0;
+     }
+    .caseComment {
+        margin-top: 35px;
+     }
+     body .pbBody table.list tr.headerRow th {
+         padding: 8px 5px;
+         background: #1797c0;
+         border-width: 0 0 1px 1px;
+         border-color: #1797c0;
+         color: #fff;
+         font-size: 14px;
+         font-weight: 400;
+         border-right: 1px solid #eaeaea
+     }
+        body .pbBody table.list tr.headerRow th:last-child {
+            border-right: 0;
+     }
+        .caseTables .apexp .bPageBlock.apexDefaultPageBlock .pbHeader {
+            border-bottom: 0;
+     }
+         .caseTranslation .apexp .bPageBlock.apexDefaultPageBlock .pbHeader,
+         .caseComment .apexp .bPageBlock.apexDefaultPageBlock .pbHeader {
+             background-color: #1797c0;
+    }
+     
+     .caseTranslation .apexp .bPageBlock.apexDefaultPageBlock .pbHeader .mainTitle,
+     .caseComment .apexp .bPageBlock.apexDefaultPageBlock .pbHeader .mainTitle {
+         color: #fff;
+         font-weight: 400;
+     }
+         .caseTranslation .apexp .bPageBlock,
+         .caseComment .apexp .bPageBlock {
+            border: 0 !important;
+    }
+    
+    /*custom header section styles starts here*/
+    
+    .custom-header-section {
+        padding: 10px 15px;
+    }
+    .bPageBlock .pbBody .btn {
+       background-color: #1797c0 !important;
+        border: 1px solid #1797c0;
+    }
+    .search-input input {
+       height: 30px;        
+    }
+    .custom-select .slds-scope select {
+       height: 30px;
+    }
+    .goback-btn {
+        margin-bottom: 10px;
+    }
+    .bPageBlock .goback-btn > .btn {
+        background-color: transparent !important;
+        border: 0;
+        padding-left: 0;
+        width: 40px;
+    }
+    .custom-input input {
+        height: 30px;
+        border: 1px solid #cacaca;
+        border-radius: 3px;
+    }
+    .custom-input .custom-select {
+        display: inline-block;
+        margin-left: 50px;
+        float: right;
+    }
+    .custom-input .custom-select select {
+        height: 30px;
+        border: 1px solid #cacaca;
+        border-radius: 3px;
+        width: 160px;
+    }
+    .buttons-section {
+        display: inline-block;
+        float: right;
+    }
+    .buttons-section input {
+        margin-left: 15px;
+    }
+    body .bPageBlock .pbBody .data2Col {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    tr.dataRow.even {
+        background-color: #cfeef8;
+    }
+    .search-icon-section {
+        position: relative;
+        display: inline-block;
+        margin-right: 15px;
+    }
+    .search-icon-section input {
+        height: 30px;
+    }
+    .search-icon-section img {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+    /*custom header section styles ends here*/
+    
+   
+    .detailList .dataRow td:nth-child(5) > .description {
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 280px;
+        vertical-align: middle;
+    }
+     .caseTranslation .pbBody table.list tr.dataRow td:nth-child(3) {
+        width: 250px;
+    }
+    .custom-pagination {
+        width: 320px;
+    }
+    .custom-pagination .btnDisabled {
+        padding: 4px 8px !important;
+        font-size: 14px !important;
+        line-height: 20px !important; 
+    }
+    .custom-pagination select {
+        height: 30px;
+        border-radius: 3px;
+    }
+    .custom-pagination table tr td:nth-child(6) {
+        height: 30px;
+        padding: 5px 8px;
+    }
+    .custom-pagination .caseTables .btn:hover {
+        background-color: #1797c0 !important;
+        border: 1px solid #1797c0;
+    }

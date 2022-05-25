@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Accounts_Coverage__r$Officer__c</field>
+    </columns>
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account$Industry</field>
+    </columns>
+    <columns>
+        <field>Account$Sector__c</field>
+    </columns>
+    <columns>
+        <field>Account$Ownership</field>
+    </columns>
+    <columns>
+        <field>Account.Accounts_Coverage__r$Tier__c</field>
+    </columns>
+    <columns>
+        <field>Account.Accounts_Coverage__r$Coverage_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Accounts_Coverage__r.Coverage_Contacts__r$Contact_Name__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>HL_Company with CoverageTeam and Contact</description>
+    <filter>
+        <criteriaItems>
+            <column>Account.Accounts_Coverage__r$Officer_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Larry DeAngelo,Thomas Bailey,Jonathan Harrison,Ranon Kent,Scott Kolbrenner,Brian McDonald,Scott Sergeant,Jeff Ackerman,Kris Hopkins,Chin Pandya,James Rekas,Mark Martin,RB McCutcheon,Andrew Warren Shell,Disha Mehta</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account$Ownership</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Private Equity Group</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Nick report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Company_with_CoverageTeam_and_Contact__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$Financials_As_of_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

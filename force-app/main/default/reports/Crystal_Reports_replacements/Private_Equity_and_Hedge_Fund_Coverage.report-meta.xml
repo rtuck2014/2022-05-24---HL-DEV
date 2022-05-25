@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Engagement_Counterparty__c$Company__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Company__c.BillingCity</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Company__c.BillingState</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Type__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Coverage_Officer__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>#37 Engagement Counterparty (c)</description>
+    <format>Tabular</format>
+    <name>Coverage Report PE HF Cov</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Engagement_Counterparty_c__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Engagement_Counterparty__c$Book_Returned__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

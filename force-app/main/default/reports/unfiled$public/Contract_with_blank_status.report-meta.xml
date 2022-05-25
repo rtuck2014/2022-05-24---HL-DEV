@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Contract__c$Name</field>
+    </columns>
+    <columns>
+        <field>Contract__c$Status__c</field>
+    </columns>
+    <columns>
+        <field>Contract__c$ERP_Last_Integration_Status__c</field>
+    </columns>
+    <columns>
+        <field>Contract__c$ERP_Last_Integration_Response_Date__c</field>
+    </columns>
+    <columns>
+        <field>Contract__c$ERP_Submitted_to_Sync__c</field>
+    </columns>
+    <columns>
+        <field>Contract__c$Full_Contract_ID__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Contract__c$ERP_Last_Integration_Response_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessThan</operator>
+            <value>3/11/2021 12:00 AM</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Contract with blank status</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Contract__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Contract__c$Bill_To_Created_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Accounting_to_Sync_Contract</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Accounting to Sync Contract</label>
+        <sharedTo>
+            <group>Edit_Contract_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF,FVA,FR,SC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Contract_Accounting_Read</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Grants Account Users access to view all contracts.</description>
+        <label>Contract Accounting Read</label>
+        <sharedTo>
+            <group>Accounting_General</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF,FVA,FR,SC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Contract_CF_CAO_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Grants CF CAOs access to view/edit contracts where Line of Business = ‘CF’.</description>
+        <label>Contract CF CAO RW</label>
+        <sharedTo>
+            <group>CAO_CF</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Contract_FAS_CAO_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Grants FAS CAOs access to view/edit contracts where Line of Business = ‘FAS’.</description>
+        <label>Contract FAS CAO RW</label>
+        <sharedTo>
+            <group>CAO_FVA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FVA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Contract_FR_CAO_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Grants FR CAOs access to view/edit contracts where Line of Business = ‘FR’.</description>
+        <label>Contract FR CAO RW</label>
+        <sharedTo>
+            <group>CAO_FR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Contract_SC_CAO_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Grants SC CAOs access to view/edit contracts where Line of Business = ‘SC’.</description>
+        <label>Contract SC CAO RW</label>
+        <sharedTo>
+            <group>CAO_SC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>SC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

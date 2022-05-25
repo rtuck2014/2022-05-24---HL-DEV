@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamlSsoConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <identityLocation>SubjectNameId</identityLocation>
+    <identityMapping>FederationId</identityMapping>
+    <issuer>http://auth.hl.com/adfs/services/trust</issuer>
+    <loginUrl>https://auth.hl.com/adfs/ls/</loginUrl>
+    <name>ProdCert Aug16</name>
+    <oauthTokenEndpoint>https://hl--dev.my.salesforce.com/services/oauth2/token?so=00D530000004chA</oauthTokenEndpoint>
+    <redirectBinding>true</redirectBinding>
+    <requestSignatureMethod>0</requestSignatureMethod>
+    <requestSigningCertId>0P15A000001VyU7</requestSigningCertId>
+    <salesforceLoginUrl>https://hl--dev.my.salesforce.com?so=00D530000004chA</salesforceLoginUrl>
+    <samlEntityId>https://hl.my.salesforce.com</samlEntityId>
+    <samlVersion>SAML2_0</samlVersion>
+    <useConfigRequestMethod>true</useConfigRequestMethod>
+    <userProvisioning>false</userProvisioning>
+    <validationCert>MIIC0jCCAbqgAwIBAgIQEPhzm2jr671I7ZKG0iOE1DANBgkqhkiG9w0BAQsFADAlMSMwIQYDVQQDExpBREZTIFNpZ25pbmcgLSBhdXRoLmhsLmNvbTAeFw0xOTAxMDkxODM4MDRaFw0yMjAxMDgxODM4MDRaMCUxIzAhBgNVBAMTGkFERlMgU2lnbmluZyAtIGF1dGguaGwuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlAhsl27lSC9I49DDsQdJmoQbahfnMSWup6bpx8zyK69BkMqVBNwDfoMj8KStYvFneRqRkNIs5U8Ko8Tv4hFcyR7j17U8q7konuqDdhIn0Ja8jvLKZ1JmfWCxtwbx4FIBrksIUDRRzPOX4KmXzv4nzgz59kG8kPleMz7ErNNSLmSSjFcTfW2GC0uWzOSiIAEV0pja9pPl1f1oEvVo47XBew71pcBfoVBef87PlmAfP4GQ9wfKfC+6BEAAZVk/VMCxreJ04XSoVYIA88Ir7YbCiCuVsicC9S/na9IMmx6EAt7ATHog268mA4k+RH4psaUxdKV9N+7CtVNm1bSTRqLFyQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQBIcj62MD0mqWv7fYuFuvEA6KGyeIlVpZOIzzgU5b++4B8x+CLtq+ihI9F5Oqs1m9QDUBLazkwQGKx5qtEoGGOCpkncSvwgzzlTTjEWI9qYBaQv7XVVJkTdBZkOKCxPwx64nl5rpiwunRKSoVH/LDZRK/fhwSCak/sXVZsyZBmMBw5oXuhvGQNeZPitlYIwLmEWkgaM2BbBu5xn73dYhDrYfeWI6nL1hii3y+sBsxrQTKkRjuXM1oDRI6jODGBFXwlFf5OMCKRV7rUKks8e27oH8oh+S0lFvDhfl14bdME3er4KaAwTV5E54qtShFCV0ICDwRdyWx44NgjHG6VVbGtn</validationCert>
+</SamlSsoConfig>

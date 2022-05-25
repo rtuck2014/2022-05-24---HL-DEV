@@ -1,0 +1,599 @@
+# Language: Vietnamese
+Language code: vi
+Type: Bilingual
+
+------------------TRANSLATED-------------------
+
+# KEY	LABEL	TRANSLATION	OUT OF DATE
+
+CustomApp.lmscons__Learning_Cloud	Learning Cloud	Learning Cloud	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	Phải được kiểm tra trong trường hợp nếu việc tạo đào tạo định kỳ cho chỉ định này là cần thiết. Đồng thời hãy nhớ đặt số thời gian đào tạo định kỳ và loại thời gian đào tạo định kỳ (tháng hoặc năm)	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	"Số lượng thời gian đào tạo định kỳ. Sau khi qua thời gian này, chỉ định sẽ được chỉ định lại."	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Ngày khi chỉ định được tạo/chỉ định lại	-
+CustomField.lmscons__Curriculum__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"""Theo mặc định, người dùng phải hoàn thành tất cả các phần. Để tùy chỉnh tiêu chí này, vui lòng đặt các giá trị là một hoặc cả hai tùy chọn""."	-
+CustomField.lmscons__Curriculum__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"""Bạn có thể chỉ rõ đơn vị thời gian sau một giá trị thời gian 'X', chẳng hạn như Xd, Xh hoặc Xm, để cho biết tương ứng với ngày (d), giờ (h) và phút (m).\nNếu bạn không chỉ rõ đơn vị thời gian, đơn vị sẽ được giả định là phút""."	-
+CustomField.lmscons__Curriculum__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"""Theo mặc định, người dùng phải hoàn thành tất cả các phần. Để tùy chỉnh tiêu chí này, vui lòng đặt các giá trị là một hoặc cả hai tùy chọn""."	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	Phải được kiểm tra trong trường hợp nếu việc tạo đào tạo định kỳ cho chỉ định này là cần thiết. Đồng thời hãy nhớ đặt số thời gian đào tạo định kỳ và loại thời gian đào tạo định kỳ (tháng hoặc năm)	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.HelpText	Type of recurring training period (year or month)	Loại thời gian đào tạo định kỳ (năm hoặc tháng)	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	"Số lượng thời gian đào tạo định kỳ. Sau khi qua thời gian này, chỉ định sẽ được chỉ định lại."	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Ngày khi chỉ định được tạo/chỉ định lại	-
+CustomField.lmscons__Learning_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"""Theo mặc định, người dùng phải hoàn thành tất cả các phần. Để tùy chỉnh tiêu chí này, vui lòng đặt các giá trị là một hoặc cả hai tùy chọn""."	-
+CustomField.lmscons__Learning_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"""Bạn có thể chỉ rõ đơn vị thời gian sau một giá trị thời gian 'X', chẳng hạn như Xd, Xh hoặc Xm, để cho biết tương ứng với ngày (d), giờ (h) và phút (m).\nNếu bạn không chỉ rõ đơn vị thời gian, đơn vị sẽ được giả định là phút""."	-
+CustomField.lmscons__Learning_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"""Theo mặc định, người dùng phải hoàn thành tất cả các phần. Để tùy chỉnh tiêu chí này, vui lòng đặt các giá trị là một hoặc cả hai tùy chọn""."	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__Cornerstone_Callback_URL.HelpText	The URL of the notification page set up for your organization.	URL của trang thông báo được thiết lập cho tổ chức của bạn.	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__CyberUSecretSignKey.HelpText	Secret key to sign CyberU callbacks	Mã khóa bí mật để đăng nhập gọi lại CyberU	-
+CustomField.lmscons__Quiz__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"""Bạn có thể chỉ rõ đơn vị thời gian sau một giá trị thời gian 'X', chẳng hạn như Xd, Xh hoặc Xm, để cho biết tương ứng với ngày (d), giờ (h) và phút (m).\nNếu bạn không chỉ rõ đơn vị thời gian, đơn vị sẽ được giả định là phút""."	-
+CustomField.lmscons__Training_Content_License__c.lmscons__Seats.HelpText	Total number of seats included in this license. Leave blank for unlimited.	Tổng số chỗ được bao gồm trong giấy phép này. Bỏ trống chỗ không giới hạn.	-
+CustomField.lmscons__Training_Content__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as  Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"""Bạn có thể chỉ rõ đơn vị thời gian sau một giá trị thời gian 'X', chẳng hạn như Xd, Xh hoặc Xm, để cho biết tương ứng với ngày (d), giờ (h) và phút (m).\nNếu bạn không chỉ rõ đơn vị thời gian, đơn vị sẽ được giả định là phút""."	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	Phải được kiểm tra trong trường hợp nếu việc tạo đào tạo định kỳ cho chỉ định này là cần thiết. Đồng thời hãy nhớ đặt số thời gian đào tạo định kỳ và loại thời gian đào tạo định kỳ (tháng hoặc năm)	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	"Số lượng thời gian đào tạo định kỳ. Sau khi qua thời gian này, chỉ định sẽ được chỉ định lại."	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Ngày khi chỉ định được tạo/chỉ định lại	-
+CustomField.lmscons__Training_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria,  please set values to one or both options.	"""Theo mặc định, người dùng phải hoàn thành tất cả các phần. Để tùy chỉnh tiêu chí này, vui lòng đặt các giá trị là một hoặc cả hai tùy chọn""."	-
+CustomField.lmscons__Training_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"""Bạn có thể chỉ rõ đơn vị thời gian sau một giá trị thời gian 'X', chẳng hạn như Xd, Xh hoặc Xm, để cho biết tương ứng với ngày (d), giờ (h) và phút (m).\nNếu bạn không chỉ rõ đơn vị thời gian, đơn vị sẽ được giả định là phút""."	-
+CustomField.lmscons__Training_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	"""Theo mặc định, người dùng phải hoàn thành tất cả các phần. Để tùy chỉnh tiêu chí này, vui lòng đặt các giá trị là một hoặc cả hai tùy chọn""."	-
+CustomField.lmscons__Training_Unit__c.lmscons__Remaining_Training_Units.HelpText	Number of units available for spending	Số đơn vị có sẵn để sử dụng	-
+CustomField.lmscons__Training_User_License__c.lmscons__Purchased.HelpText	Indicates if this user license has been purchased or only assigned.	Cho biết liệu giấy phép người dùng này đã được mua hay chỉ được chỉ định.	-
+CustomField.lmsilt__Development_Plan__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"Bạn có thể chỉ rõ đơn vị thời gian sau một giá trị thời gian 'X', chẳng hạn như Xd, Xh hoặc Xm, để cho biết tương ứng với ngày (d), giờ (h) và phút (m) .\nNếu bạn không chỉ rõ đơn vị thời gian, đơn vị sẽ được giả định là phút."	-
+CustomField.lmsilt__Event__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	"Bạn có thể chỉ rõ đơn vị thời gian sau một giá trị thời gian 'X', chẳng hạn như Xd, Xh hoặc Xm, để cho biết tương ứng với ngày (d), giờ (h) và phút (m) .\nNếu bạn không chỉ rõ đơn vị thời gian, đơn vị sẽ được giả định là phút."	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Profile	Profile	Hồ sơ	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Role	Role	Vai trò	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Days	Days	Ngày	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Hours	Hours	Giờ	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Indefinite	Indefinite	Không xác định	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Month	Month	Tháng	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Weeks	Weeks	Tuần	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Years	Years	Năm	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Complete	Complete	Hoàn thành	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.New	New	Mới	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Processing	Processing	Đang xử lý	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	Tháng	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	Năm	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Completed	Completed	Đã hoàn thành	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.In Progress	In Progress	Đang tiến hành	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Not Started	Not Started	Chưa bắt đầu	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Delivery_Type.Online	Online	Trực tuyến	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Administrator	Administrator	Quản trị viên	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Developer	Developer	Lập trình viên	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.IT Professional	IT Professional	Chuyên gia CNTT	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Chuyên gia bán hàng	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.da	da	Tiếng Đan Mạch	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.de	de	Tiếng Đức	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.en_US	en_US	Tiếng Anh	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.es	es	Tiếng Tây Ban Nha	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fi	fi	Tiếng Phần Lan	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fr	fr	Tiếng Pháp	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.it	it	Tiếng Ý	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ja	ja	Tiếng Nhật	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ko	ko	Tiếng Hàn	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.nl_NL	nl_NL	Tiếng Hà Lan	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.pt_BR	pt_BR	Tiếng Bồ Đào Nha	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ru	ru	Tiếng Nga	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.sv	sv	Tiếng Thụy Điển	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.th	th	Tiếng Thái	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_CN	zh_CN	Tiếng Trung (Giản thể)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_TW	zh_TW	Tiếng Trung (Phồn thể)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Kết nối Force.com	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Ứng dụng di động của Force.com	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Sales Cloud	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.Force.com Connect	Force.com Connect	Kết nối Force.com	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Ứng dụng di động của Force.com	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Error	Error	Lỗi	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Info	Info	Thông tin	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Warning	Warning	Cảnh báo	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	Tháng	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	Năm	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Completed	Completed	Đã hoàn thành	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.In Progress	In Progress	Đang tiến hành	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Not Started	Not Started	Chưa bắt đầu	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Delivery_Type.Online	Online	Trực tuyến	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Administrator	Administrator	Quản trị viên	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Developer	Developer	Lập trình viên	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.IT Professional	IT Professional	Chuyên gia CNTT	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Chuyên gia bán hàng	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.da	da	Tiếng Đan Mạch	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.de	de	Tiếng Đức	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.en_US	en_US	Tiếng Anh	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.es	es	Tiếng Tây Ban Nha	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fi	fi	Tiếng Phần Lan	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fr	fr	Tiếng Pháp	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.it	it	Tiếng Ý	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ja	ja	Tiếng Nhật	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ko	ko	Tiếng Hàn	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.nl_NL	nl_NL	Tiếng Hà Lan	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.pt_BR	pt_BR	Tiếng Bồ Đào Nha	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ru	ru	Tiếng Nga	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.sv	sv	Tiếng Thụy Điển	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.th	th	Tiếng Thái	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_CN	zh_CN	Tiếng Trung (Giản thể)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_TW	zh_TW	Tiếng Trung (Phồn thể)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Kết nối Force.com	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Ứng dụng di động của Force.com	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Sales Cloud	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.Force.com Connect	Force.com Connect	Kết nối Force.com	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Ứng dụng di động của Force.com	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Completed	Completed	Đã hoàn thành	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Pending	Pending	Đang chờ	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Download	Download	Tải xuống	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Purchase	Purchase	Mua	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Days	Days	Ngày	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Hours	Hours	Giờ	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Indefinite	Indefinite	Không xác định	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Months	Months	Tháng	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Weeks	Weeks	Tuần	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Years	Years	Năm	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.English	English	Tiếng Anh	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.French	French	Tiếng Pháp	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Completed	Completed	Đã hoàn thành	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Failed	Failed	Không thành công	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.In Progress	In Progress	Đang tiến hành	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Passed	Passed	Đạt	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Retired	Retired	Nghỉ hưu	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Exit	Exit	Thoát	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Message	Message	Thông báo	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.da	da	Tiếng Đan Mạch	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.de	de	Tiếng Đức	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.en_US	en_US	Tiếng Anh	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.es	es	Tiếng Tây Ban Nha	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fi	fi	Tiếng Phần Lan	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fr	fr	Tiếng Pháp	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.it	it	Tiếng Ý	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ja	ja	Tiếng Nhật	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ko	ko	Tiếng Hàn	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.nl_NL	nl_NL	Tiếng Hà Lan (Hà Lan)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.pt_BR	pt_BR	Tiếng Bồ Đào Nha (Brazil)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ru	ru	Tiếng Nga	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.sv	sv	Tiếng Thụy Điển	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.th	th	Tiếng Thái	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_CN	zh_CN	Tiếng Trung (Giản thể)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_TW	zh_TW	Tiếng Trung (Phồn thể)	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Easy	Easy	Dễ	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Hard	Hard	Khó	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Medium	Medium	Trung bình	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Long Text	Long Text	Văn bản dài	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Short Text	Short Text	Văn bản ngắn	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Free Text	Free Text	Văn bản miễn phí	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Multi Select	Multi Select	Chọn nhiều	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Single Select	Single Select	Chọn duy nhất	-
+PicklistValue.lmscons__Question__c.lmscons__Type.True/False	True/False	Đúng/Sai	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.da	da	Tiếng Đan Mạch	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.de	de	Tiếng Đức	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.en_US	en_US	Tiếng Anh	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.es	es	Tiếng Tây Ban Nha	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fi	fi	Tiếng Phần Lan	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fr	fr	Tiếng Pháp	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.it	it	Tiếng Ý	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ja	ja	Tiếng Nhật	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ko	ko	Tiếng Hàn	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.nl_NL	nl_NL	Tiếng Hà Lan	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.pt_BR	pt_BR	Tiếng Bồ Đào Nha (Brazil)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ru	ru	Tiếng Nga	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.sv	sv	Tiếng Thụy Điển	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.th	th	Tiếng Thái	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_CN	zh_CN	Tiếng Trung (Giản thể)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_TW	zh_TW	Tiếng Trung (Phồn thể)	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Course	Course	Khóa học	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Curriculum	Curriculum	Chương trình giảng dạy	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Learning Path	Learning Path	Lộ trình học tập	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Module	Module	Mô-đun	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Quiz	Quiz	Bài kiểm tra	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.ALL	ALL	TẤT CẢ	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NEW	NEW	MỚI	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NON_COMPLETE	NON_COMPLETE	NON_COMPLETE	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Days	Days	Ngày	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Hours	Hours	Giờ	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Indefinite	Indefinite	Không xác định	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Month	Month	Tháng	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Weeks	Weeks	Tuần	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Years	Years	Năm	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Implementation	Implementation	Thực hiện	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Learning	Learning	Học tập	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Sale	Sale	Bán hàng	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Delivery_Type.Free eLearning	Free eLearning	eLearning miễn phí	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Administrator	Administrator	Quản trị viên	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Channel Manager	Channel Manager	Người quản lý kênh	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Developer	Developer	Lập trình viên	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.IT Professional	IT Professional	Chuyên gia CNTT	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Implementation Team	Implementation Team	Nhóm thực hiện	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Marketing	Marketing	Tiếp thị	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Partner	Partner	Đối tác	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Manager	Sales Manager	Người quản lý kinh doanh	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Chuyên gia bán hàng	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Rep	Sales Rep	Đại diện bán hàng	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Support Rep	Support Rep	Đại diện bộ phận hỗ trợ	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.da	da	Tiếng Đan Mạch	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.de	de	Tiếng Đức	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.en_US	en_US	Tiếng Anh	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.es	es	Tiếng Tây Ban Nha	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fi	fi	Tiếng Phần Lan	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fr	fr	Tiếng Pháp	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.it	it	Tiếng Ý	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ja	ja	Tiếng Nhật	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ko	ko	Tiếng Hàn	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.nl_NL	nl_NL	Tiếng Hà Lan	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.pt_BR	pt_BR	Tiếng Bồ Đào Nha	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ru	ru	Tiếng Nga	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.sv	sv	Tiếng Thụy Điển	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.th	th	Tiếng Thái	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_CN	zh_CN	Tiếng Trung (Giản thể)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_TW	zh_TW	Tiếng Trung (Phồn thể)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Development Plan Task	Development Plan Task	Công việc kế hoạch phát triển	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Event	Event	Sự kiện	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Module	Module	Mô-đun	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Quiz	Quiz	Bài kiểm tra	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Block	Block	Khối	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Course	Course	Khóa học	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Administrator	Administrator	Quản trị viên	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Channel Manager	Channel Manager	Người quản lý kênh	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Developer	Developer	Lập trình viên	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Implementation Team	Implementation Team	Nhóm thực hiện	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Marketing	Marketing	Tiếp thị	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Partner	Partner	Đối tác	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Manager	Sales Manager	Người quản lý kinh doanh	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Rep	Sales Rep	Đại diện bán hàng	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Support Rep	Support Rep	Đại diện bộ phận hỗ trợ	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Kết nối Force.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com platform	Force.com platform	Nền tảng Force.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM CSS	Salesforce CRM CSS	CSS đội ngũ bán hàng CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Content	Salesforce CRM Content	Nội dung đội ngũ bán hàng CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Ideas	Salesforce CRM Ideas	Ý tưởng đội ngũ bán hàng CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Marketing	Salesforce CRM Marketing	Tiếp thị đội ngũ bán hàng CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Mobile	Salesforce CRM Mobile	Ứng dụng di động đội ngũ bán hàng CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Mạng lưới đối tác đội ngũ bán hàng CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM SFA	Salesforce CRM SFA	SFA đội ngũ bán hàng CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Đội ngũ bán hàng CRM cho các ứng dụng Google	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce to Salesforce	Salesforce to Salesforce	Đội ngũ bán hàng tới đội ngũ bán hàng	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com Connect	Force.com Connect	Kết nối Force.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com platform	Force.com platform	Nền tảng Force.com	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM CSS	Salesforce CRM CSS	CSS đội ngũ bán hàng CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Content	Salesforce CRM Content	Nội dung đội ngũ bán hàng CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Ideas	Salesforce CRM Ideas	Ý tưởng đội ngũ bán hàng CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Marketing	Salesforce CRM Marketing	Tiếp thị đội ngũ bán hàng CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Mobile	Salesforce CRM Mobile	Ứng dụng di động đội ngũ bán hàng CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Mạng lưới đối tác đội ngũ bán hàng CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM SFA	Salesforce CRM SFA	SFA đội ngũ bán hàng CRM	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Đội ngũ bán hàng CRM cho các ứng dụng Google	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce to Salesforce	Salesforce to Salesforce	Đội ngũ bán hàng tới đội ngũ bán hàng	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.FAILURE	FAILURE	LỖI	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.SUCCESS	SUCCESS	THÀNH CÔNG	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Completed	Completed	Đã hoàn thành	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Failed	Failed	Không thành công	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.In Progress	In Progress	Đang tiến hành	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Passed	Passed	Đạt	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Retired	Retired	Nghỉ hưu	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Months	Months	Tháng	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Years	Years	Năm	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Completed	Completed	Đã hoàn thành	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.In Progress	In Progress	Đang tiến hành	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Not Started	Not Started	Chưa bắt đầu	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Retired	Retired	Nghỉ hưu	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Delivery_Type.Online	Online	Trực tuyến	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.CSS	CSS	CSS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Content	Content	Nội dung	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Customer Portal	Customer Portal	Cổng thông tin khách hàng	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.FDC	FDC	FDC	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Ideas	Ideas	Ý tưởng	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Partner Portal	Partner Portal	Cổng thông tin đối tác	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.SFA	SFA	SFA	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Administrator	Administrator	Quản trị viên	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Developer	Developer	Lập trình viên	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.IT Professional	IT Professional	Chuyên gia CNTT	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Sales Professional	Sales Professional	Chuyên gia bán hàng	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.da	da	Tiếng Đan Mạch	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.de	de	Tiếng Đức	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.en_US	en_US	Tiếng Anh	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.es	es	Tiếng Tây Ban Nha	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fi	fi	Tiếng Phần Lan	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fr	fr	Tiếng Pháp	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.it	it	Tiếng Ý	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ja	ja	Tiếng Nhật	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ko	ko	Tiếng Hàn	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.nl_NL	nl_NL	Tiếng Hà Lan	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.pt_BR	pt_BR	Tiếng Bồ Đào Nha	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ru	ru	Tiếng Nga	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.sv	sv	Tiếng Thụy Điển	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.th	th	Tiếng Thái	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_CN	zh_CN	Tiếng Trung (Giản thể)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_TW	zh_TW	Tiếng Trung (Phồn thể)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.Force.com Connect	Force.com Connect	Kết nối Force.com	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Ứng dụng di động của Force.com	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Sales Cloud	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.Force.com Connect	Force.com Connect	Kết nối Force.com	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Ứng dụng di động của Force.com	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.Completed	Completed	Đã hoàn thành	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.In Progress	In Progress	Đang tiến hành	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Completed	Completed	Đã hoàn thành	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Failed	Failed	Không thành công	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.In Progress	In Progress	Đang tiến hành	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Passed	Passed	Đạt	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Retired	Retired	Nghỉ hưu	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Unenrolled	Unenrolled	Đã hủy đăng ký	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Completed	Completed	Đã hoàn thành	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Failed	Failed	Không thành công	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.LO Error	LO Error	Lỗi LO	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Pending	Pending	Đang chờ	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Skipped	Skipped	Đã bỏ qua	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.contains	contains	chứa	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.does not contain	does not contain	không chứa	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.equals	equals	bằng	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.excludes	excludes	ngoại trừ	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater or equal	greater or equal	lớn hơn hoặc bằng	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater than	greater than	lớn hơn	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.includes	includes	bao gồm	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less or equal	less or equal	nhỏ hơn hoặc bằng	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less than	less than	nhỏ hơn	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.not equal to	not equal to	không bằng với	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.starts with	starts with	bắt đầu bằng	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Account	Account	Tài khoản	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Case	Case	Trường hợp	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Contact	Contact	Liên hệ	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Lead	Lead	Lãnh đạo	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Opportunity	Opportunity	Cơ hội	-
+PicklistValue.User.lmscons__CFS_Status.Active	Active	Hiện hành	-
+PicklistValue.User.lmscons__CFS_Status.Deactivated	Deactivated	Đã ngừng kích hoạt	-
+PicklistValue.User.lmscons__CFS_Status.Not CFS user	Not CFS user	Không phải người dùng CFS	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Completed	Completed	Đã hoàn thành	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.In Progress	In Progress	Đang tiến hành	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Not Started	Not Started	Chưa bắt đầu	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Relative Dates	Relative Dates	Ngày tương đối	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Static Dates	Static Dates	Ngày cố định	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Failed	Failed	Không thành công	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Success	Success	Thành công	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Import	Import	Nhập vào	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Manual	Manual	Thủ công	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Delete	Delete	Xóa	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Insert	Insert	Chèn	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Update	Update	Cập nhật	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Completed	Completed	Đã hoàn thành	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.In Progress	In Progress	Đang tiến hành	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Not Started	Not Started	Chưa bắt đầu	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Internal	Internal	Nội bộ	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Private	Private	Riêng tư	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Public	Public	Công khai	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Completed	Completed	Đã hoàn thành	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.In Progress	In Progress	Đang tiến hành	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Not Started	Not Started	Chưa bắt đầu	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Manager	Manager	Người quản lý	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Self	Self	Tự	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.User	User	Người dùng	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Delivery_Type.Online	Online	Trực tuyến	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Administrator	Administrator	Quản trị viên	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.IT Professional	IT Professional	Chuyên gia CNTT	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	Chuyên gia bán hàng	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.da	da	Tiếng Đan Mạch	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.de	de	Tiếng Đức	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.en_US	en_US	Tiếng Anh	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.es	es	Tiếng Tây Ban Nha	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fi	fi	Tiếng Phần Lan	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fr	fr	Tiếng Pháp	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.it	it	Tiếng Ý	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ja	ja	Tiếng Nhật	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ko	ko	Tiếng Hàn	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.nl_NL	nl_NL	Tiếng Hà Lan	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.pt_BR	pt_BR	Tiếng Bồ Đào Nha (Brazil)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ru	ru	Tiếng Nga	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.sv	sv	Tiếng Thụy Điển	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.th	th	Tiếng Thái	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_CN	zh_CN	Tiếng Trung (Giản thể)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_TW	zh_TW	Tiếng Trung (Phồn thể)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Product_Category.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Products.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Active	Active	Hiện hành	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Retired	Retired	Nghỉ hưu	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Administrator	Administrator	Quản trị viên	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.IT Professional	IT Professional	Chuyên gia CNTT	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	Chuyên gia bán hàng	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.da	da	Tiếng Đan Mạch	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.de	de	Tiếng Đức	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.en_US	en_US	Tiếng Anh	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.es	es	Tiếng Tây Ban Nha	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fi	fi	Tiếng Phần Lan	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fr	fr	Tiếng Pháp	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.it	it	Tiếng Ý	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ja	ja	Tiếng Nhật	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ko	ko	Tiếng Hàn	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.nl_NL	nl_NL	Tiếng Hà Lan	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.pt_BR	pt_BR	Tiếng Bồ Đào Nha	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ru	ru	Tiếng Nga	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.sv	sv	Tiếng Thụy Điển	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.th	th	Tiếng Thái	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_CN	zh_CN	Tiếng Trung (Giản thể)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_TW	zh_TW	Tiếng Trung (Phồn thể)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmsilt__Event__c.lmsilt__Product_Category.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmsilt__Event__c.lmsilt__Products.CFS Learning	CFS Learning	Học tập CFS	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Attended	Attended	Đã tham dự	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Not Attended	Not Attended	Không tham dự	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Optional	Optional	Tùy chọn	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Recommended	Recommended	Được khuyến nghị	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Required	Required	Bắt buộc	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Admin	Admin	Quản trị viên	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Instructor	Instructor	Người hướng dẫn	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Manager	Manager	Người quản lý	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Select User	Select User	Chọn Người dùng	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.User	User	Người dùng	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Optional	Optional	Tùy chọn	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Recommended	Recommended	Được khuyến nghị	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Required	Required	Bắt buộc	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.After	After	Sau	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Anytime	Anytime	Mọi lúc	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Before	Before	Trước	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.During	During	Trong	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Active	Active	Hiện hành	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Inactive	Inactive	Không hoạt động	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Attended	Attended	Đã tham dự	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Not Attended	Not Attended	Không tham dự	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Partially Attended	Partially Attended	Đã tham dự một phần	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Failed	Failed	Không thành công	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Passed	Passed	Đạt	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Cancelled	Cancelled	Đã hủy	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Enrolled	Enrolled	Đã đăng ký	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Waitlisted	Waitlisted	Đã đưa vào danh sách chờ	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Withdrawn	Withdrawn	Đã rút khỏi	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.AMER	AMER	AMER	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.APAC	APAC	APAC	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.EMEA	EMEA	EMEA	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.JAPAN	JAPAN	NHẬT BẢN	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Alabama	Alabama	Alabama	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Alaska	Alaska	Alaska	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Arizona	Arizona	Arizona	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Arkansas	Arkansas	Arkansas	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.California	California	California	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Colorado	Colorado	Colorado	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Connecticut	Connecticut	Connecticut	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Delaware	Delaware	Delaware	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Florida	Florida	Florida	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Georgia	Georgia	Georgia	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Hawaii	Hawaii	Hawaii	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Idaho	Idaho	Idaho	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Illinois	Illinois	Illinois	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Indiana	Indiana	Indiana	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Iowa	Iowa	Iowa	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Kansas	Kansas	Kansas	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Kentucky	Kentucky	Kentucky	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Louisiana	Louisiana	Louisiana	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Maine	Maine	Maine	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Maryland	Maryland	Maryland	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Massachusetts	Massachusetts	Massachusetts	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Michigan	Michigan	Michigan	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Minnesota	Minnesota	Minnesota	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Mississippi	Mississippi	Mississippi	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Missouri	Missouri	Missouri	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Montana	Montana	Montana	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Nebraska	Nebraska	Nebraska	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Nevada	Nevada	Nevada	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Hampshire	New Hampshire	New Hampshire	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Jersey	New Jersey	New Jersey	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New Mexico	New Mexico	New Mexico	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.New York	New York	New York	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.North Carolina	North Carolina	Bắc Carolina	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.North Dakota	North Dakota	Bắc Dakota	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Ohio	Ohio	Ohio	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Oklahoma	Oklahoma	Oklahoma	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Oregon	Oregon	Oregon	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Pennsylvania	Pennsylvania	Pennsylvania	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Rhode Island	Rhode Island	Đảo Rhode	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.South Carolina	South Carolina	Nam Carolina	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.South Dakota	South Dakota	Nam Dakota	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Tennessee	Tennessee	Tennessee	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Texas	Texas	Texas	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Utah	Utah	Utah	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Vermont	Vermont	Vermont	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Virginia	Virginia	Virginia	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Washington	Washington	Washington	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.West Virginia	West Virginia	West Virginia	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Wisconsin	Wisconsin	Wisconsin	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__State.Wyoming	Wyoming	Wyoming	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Corporate Headquarters	Corporate Headquarters	Trụ sở công ty	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Hotel	Hotel	Khách sạn	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Office	Office	Văn phòng	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Announce Name	Announce Name	Tên thông báo	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Beep	Beep	Bíp	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.No Tone	No Tone	Không có âm báo	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.ILT	ILT	ILT	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.vILT	vILT	vILT	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PRIVATE	PRIVATE	RIÊNG TƯ	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PUBLIC	PUBLIC	CÔNG KHAI	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.UNLISTED	UNLISTED	KHÔNG ĐƯỢC LIỆT KÊ	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.GoToTraining	GoToTraining	GoToTraining	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.WebEx	WebEx	WebEx	-
+PicklistValue.lmsilt__Session__c.lmsilt__Telephony_Support.CALLIN	CALLIN	CALLIN	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+00:00) Greenwich Mean Time (GMT)	(GMT+00:00) Greenwich Mean Time (GMT)	(GMT+00:00) Giờ chuẩn Greenwich (GMT)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) British Summer Time (Europe/London)	(GMT+01:00) British Summer Time (Europe/London)	(GMT+01:00) Giờ mùa hè Anh (Châu Âu/London)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Central European Time (Africa/Algiers)	(GMT+01:00) Central European Time (Africa/Algiers)	(GMT+01:00) Giờ Trung tâm Châu Âu (Châu Phi/Algiers)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Irish Summer Time (Europe/Dublin)	(GMT+01:00) Irish Summer Time (Europe/Dublin)	(GMT+01:00) Giờ mùa hè Ireland (Châu Âu/Dublin)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+01:00) Western European Summer Time (Europe/Lisbon)	(GMT+01:00) Western European Summer Time (Europe/Lisbon)	(GMT+01:00) Giờ mùa hè Tây Âu (Châu Âu/Lisbon)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Amsterdam)	(GMT+02:00) Central European Summer Time (Europe/Amsterdam)	(GMT+02:00) Giờ mùa hè Trung tâm Châu Âu (Châu Âu/Amsterdam)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Berlin)	(GMT+02:00) Central European Summer Time (Europe/Berlin)	(GMT+02:00) Giờ mùa hè Trung tâm Châu Âu (Châu Âu/Berlin)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Brussels)	(GMT+02:00) Central European Summer Time (Europe/Brussels)	(GMT+02:00) Giờ mùa hè Trung tâm Châu Âu (Châu Âu/Brussels)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Paris)	(GMT+02:00) Central European Summer Time (Europe/Paris)	(GMT+02:00) Giờ mùa hè Trung tâm Châu Âu (Châu Âu/Paris)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Prague)	(GMT+02:00) Central European Summer Time (Europe/Prague)	(GMT+02:00) Giờ mùa hè Trung tâm Châu Âu (Châu Âu/Prague)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Central European Summer Time (Europe/Rome)	(GMT+02:00) Central European Summer Time (Europe/Rome)	(GMT+02:00) Giờ mùa hè Trung tâm Châu Âu (Châu Âu/Rome)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) Eastern European Time (Africa/Cairo)	(GMT+02:00) Eastern European Time (Africa/Cairo)	(GMT+02:00) Giờ Đông Âu (Châu Phi/Cairo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+02:00) South Africa Standard Time (Africa/Johannesburg)	(GMT+02:00) South Africa Standard Time (Africa/Johannesburg)	(GMT+02:00) Giờ chuẩn Nam Phi (Châu Phi/Johannesburg)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Baghdad)	(GMT+03:00) Arabian Standard Time (Asia/Baghdad)	(GMT+03:00) Giờ chuẩn Ả Rập (Châu Á/Baghdad)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Kuwait)	(GMT+03:00) Arabian Standard Time (Asia/Kuwait)	(GMT+03:00) Giờ chuẩn Ả Rập (Châu Á/Kuwait)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Arabian Standard Time (Asia/Riyadh)	(GMT+03:00) Arabian Standard Time (Asia/Riyadh)	(GMT+03:00) Giờ chuẩn Ả Rập (Châu Á/Riyadh)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) East Africa Time (Africa/Nairobi)	(GMT+03:00) East Africa Time (Africa/Nairobi)	(GMT+03:00) Giờ Đông Phi (Châu Phi/Nairobi)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Athens)	(GMT+03:00) Eastern European Summer Time (Europe/Athens)	(GMT+03:00) Giờ mùa hè Đông Âu (Châu Âu/Athens)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Bucharest)	(GMT+03:00) Eastern European Summer Time (Europe/Bucharest)	(GMT+03:00) Giờ mùa hè Đông Âu (Châu Âu/Bucharest)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Helsinki)	(GMT+03:00) Eastern European Summer Time (Europe/Helsinki)	(GMT+03:00) Giờ mùa hè Đông Âu (Châu Âu/Helsinki)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Summer Time (Europe/Istanbul)	(GMT+03:00) Eastern European Summer Time (Europe/Istanbul)	(GMT+03:00) Giờ mùa hè Đông Âu (Châu Âu/Istanbul)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Eastern European Time (Europe/Minsk)	(GMT+03:00) Eastern European Time (Europe/Minsk)	(GMT+03:00) Giờ Đông Âu (Châu Âu/Minsk)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+03:00) Israel Daylight Time (Asia/Jerusalem)	(GMT+03:00) Israel Daylight Time (Asia/Jerusalem)	(GMT+03:00) Giờ ban ngày Israel (Châu Á/Jerusalem)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Georgia Time (Asia/Tbilisi)	(GMT+04:00) Georgia Time (Asia/Tbilisi)	(GMT+04:00) Giờ Georgia (Châu Á/Tbilisi)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Gulf Standard Time (Asia/Dubai)	(GMT+04:00) Gulf Standard Time (Asia/Dubai)	(GMT+04:00) Giờ chuẩn Gulf (Châu Á/Dubai)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:00) Moscow Standard Time (Europe/Moscow)	(GMT+04:00) Moscow Standard Time (Europe/Moscow)	(GMT+04:00) Giờ chuẩn Moscow (Châu Âu/Moscow)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:30) Afghanistan Time (Asia/Kabul)	(GMT+04:30) Afghanistan Time (Asia/Kabul)	(GMT+04:30) Giờ Afghanistan (Châu Á/Kabul)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+04:30) Iran Daylight Time (Asia/Tehran)	(GMT+04:30) Iran Daylight Time (Asia/Tehran)	(GMT+04:30) Giờ ban ngày Iran (Châu Á/Tehran)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:00) Pakistan Time (Asia/Karachi)	(GMT+05:00) Pakistan Time (Asia/Karachi)	(GMT+05:00) Giờ Pakistan (Châu Á/Karachi)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:00) Uzbekistan Time (Asia/Tashkent)	(GMT+05:00) Uzbekistan Time (Asia/Tashkent)	(GMT+05:00) Giờ Uzbekistan (Châu Á/Tashkent)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:30) India Standard Time (Asia/Calcutta)	(GMT+05:30) India Standard Time (Asia/Calcutta)	(GMT+05:30) Giờ chuẩn Ấn Độ (Châu Á/Calcutta)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:30) India Standard Time (Asia/Colombo)	(GMT+05:30) India Standard Time (Asia/Colombo)	(GMT+05:30) Giờ chuẩn Ấn Độ (Châu Á/Colombo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+05:45) Nepal Time (Asia/Katmandu)	(GMT+05:45) Nepal Time (Asia/Katmandu)	(GMT+05:45) Giờ Nepal (Châu Á/Katmandu)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:00) Bangladesh Time (Asia/Dacca)	(GMT+06:00) Bangladesh Time (Asia/Dacca)	(GMT+06:00) Giờ Bangladesh (Châu Á/Dacca)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:00) Yekaterinburg Time (Asia/Yekaterinburg)	(GMT+06:00) Yekaterinburg Time (Asia/Yekaterinburg)	(GMT+06:00) Giờ Yekaterinburg (Châu Á/Yekaterinburg)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+06:30) Myanmar Time (Asia/Rangoon)	(GMT+06:30) Myanmar Time (Asia/Rangoon)	(GMT+06:30) Giờ Myanmar (Châu Á/Rangoon)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Indochina Time (Asia/Bangkok)	(GMT+07:00) Indochina Time (Asia/Bangkok)	(GMT+07:00) Giờ Đông Dương (Châu Á/Bangkok)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Indochina Time (Asia/Saigon)	(GMT+07:00) Indochina Time (Asia/Saigon)	(GMT+07:00) Giờ Đông Dương (Châu Á/Sài Gòn)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+07:00) Western Indonesia Time (Asia/Jakarta)	(GMT+07:00) Western Indonesia Time (Asia/Jakarta)	(GMT+07:00) Giờ miền tây Indonesia (Châu Á/Jakarta)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Australian Western Standard Time (Australia/Perth)	(GMT+08:00) Australian Western Standard Time (Australia/Perth)	(GMT+08:00) Giờ chuẩn Tây Úc (Úc/Perth)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) China Standard Time (Asia/Shanghai)	(GMT+08:00) China Standard Time (Asia/Shanghai)	(GMT+08:00) Giờ chuẩn Trung Quốc (Châu Á/Thượng Hải)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Hong Kong Time (Asia/Hong_Kong)	(GMT+08:00) Hong Kong Time (Asia/Hong_Kong)	(GMT+08:00) Giờ Hồng Kông (Châu Á/Hong_Kong)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Malaysia Time (Asia/Kuala_Lumpur)	(GMT+08:00) Malaysia Time (Asia/Kuala_Lumpur)	(GMT+08:00) Giờ Malaysia (Châu Á/Kuala_Lumpur)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Philippine Time (Asia/Manila)	(GMT+08:00) Philippine Time (Asia/Manila)	(GMT+08:00) Giờ Philippine (Châu Á/Manila)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Singapore Standard Time (Asia/Singapore)	(GMT+08:00) Singapore Standard Time (Asia/Singapore)	(GMT+08:00) Giờ chuẩn Singapore (Châu Á/Singapore)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+08:00) Taipei Standard Time (Asia/Taipei)	(GMT+08:00) Taipei Standard Time (Asia/Taipei)	(GMT+08:00) Giờ chuẩn Đài Bắc (Châu Á/Đài Bắc)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:00) Japan Standard Time (Asia/Tokyo)	(GMT+09:00) Japan Standard Time (Asia/Tokyo)	(GMT+09:00) Giờ chuẩn Nhật Bản (Châu Á/Tokyo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:00) Korean Standard Time (Asia/Seoul)	(GMT+09:00) Korean Standard Time (Asia/Seoul)	(GMT+09:00) Giờ chuẩn Hàn Quốc (Châu Á/Seoul)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:30) Australian Central Standard Time (Australia/Adelaide)	(GMT+09:30) Australian Central Standard Time (Australia/Adelaide)	(GMT+09:30) Giờ chuẩn Trung tâm Úc (Úc/Adelaide)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+09:30) Australian Central Standard Time (Australia/Darwin)	(GMT+09:30) Australian Central Standard Time (Australia/Darwin)	(GMT+09:30) Giờ chuẩn Trung tâm Úc (Úc/Darwin)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:00) Australian Eastern Standard Time (Australia/Brisbane)	(GMT+10:00) Australian Eastern Standard Time (Australia/Brisbane)	(GMT+10:00) Giờ chuẩn Đông Úc (Úc/Brisbane)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:00) Australian Eastern Standard Time (Australia/Sydney)	(GMT+10:00) Australian Eastern Standard Time (Australia/Sydney)	(GMT+10:00) Giờ chuẩn Đông Úc (Úc/Sydney)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+10:30) Lord Howe Standard Time (Australia/Lord_Howe)	(GMT+10:30) Lord Howe Standard Time (Australia/Lord_Howe)	(GMT+10:30) Giờ chuẩn Lord Howe (Úc/Lord_Howe)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+11:00) Solomon Islands Time (Pacific/Guadalcanal)	(GMT+11:00) Solomon Islands Time (Pacific/Guadalcanal)	(GMT+11:00) Giờ quần đảo Solomon (Thái Bình Dương/Guadalcanal)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+11:30) Norfolk Islands Time (Pacific/Norfolk)	(GMT+11:30) Norfolk Islands Time (Pacific/Norfolk)	(GMT+11:30) Giờ quần đảo Norfolk (Thái Bình Dương/Norfolk)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) Fiji Time (Pacific/Fiji)	(GMT+12:00) Fiji Time (Pacific/Fiji)	(GMT+12:00) Giờ Fiji (Thái Bình Dương/Fiji)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) Magadan Time (Asia/Kamchatka)	(GMT+12:00) Magadan Time (Asia/Kamchatka)	(GMT+12:00) Giờ Magadan (Châu Á/Kamchatka)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:00) New Zealand Standard Time (Pacific/Auckland)	(GMT+12:00) New Zealand Standard Time (Pacific/Auckland)	(GMT+12:00) Giờ chuẩn New Zealand (Thái Bình Dương/Auckland)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+12:45) Chatham Standard Time (Pacific/Chatham)	(GMT+12:45) Chatham Standard Time (Pacific/Chatham)	(GMT+12:45) Giờ chuẩn Chatham (Thái Bình Dương/Chatham)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+13:00) Phoenix Islands Time (Pacific/Enderbury)	(GMT+13:00) Phoenix Islands Time (Pacific/Enderbury)	(GMT+13:00) Giờ quần đảo Phoenix (Thái Bình Dương/Enderbury)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+13:00) Tonga Time (Pacific/Tongatapu)	(GMT+13:00) Tonga Time (Pacific/Tongatapu)	(GMT+13:00) Giờ Tonga (Thái Bình Dương/Tongatapu)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT+14:00) Line Islands Time (Pacific/Kiritimati)	(GMT+14:00) Line Islands Time (Pacific/Kiritimati)	(GMT+14:00) Giờ Quần đảo Line (Thái Bình Dương/Kiritimati)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-01:00) Cape Verde Time (Atlantic/Cape_Verde)	(GMT-01:00) Cape Verde Time (Atlantic/Cape_Verde)	(GMT-01:00) Giờ Cabo Verde (Đại Tây Dương/Cape_Verde)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-02:00) South Georgia Time (Atlantic/South_Georgia)	(GMT-02:00) South Georgia Time (Atlantic/South_Georgia)	(GMT-02:00) Giờ Nam Georgia (Đại Tây Dương/South_Georgia)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-02:30) Newfoundland Daylight Time (America/St_Johns)	(GMT-02:30) Newfoundland Daylight Time (America/St_Johns)	(GMT-02:30) Giờ ban ngày Newfoundland (Châu Mỹ/St_Johns)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Argentina Time (America/Buenos_Aires)	(GMT-03:00) Argentina Time (America/Buenos_Aires)	(GMT-03:00) Giờ Argentina (Châu Mỹ/Buenos_Aires)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Atlantic Daylight Time (America/Halifax)	(GMT-03:00) Atlantic Daylight Time (America/Halifax)	(GMT-03:00) Giờ ban ngày Đại Tây Dương (Châu Mỹ/Halifax)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Atlantic Daylight Time (Atlantic/Bermuda)	(GMT-03:00) Atlantic Daylight Time (Atlantic/Bermuda)	(GMT-03:00) Giờ ban ngày Đại Tây Dương (Đại Tây Dương/Bermuda)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-03:00) Brasilia Time (America/Sao_Paulo)	(GMT-03:00) Brasilia Time (America/Sao_Paulo)	(GMT-03:00) Giờ Brasilia (Châu Mỹ/Sao_Paulo)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Atlantic Standard Time (America/Puerto_Rico)	(GMT-04:00) Atlantic Standard Time (America/Puerto_Rico)	(GMT-04:00) Giờ chuẩn Đại Tây Dương (Châu Mỹ/Puerto_Rico)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Chile Time (America/Santiago)	(GMT-04:00) Chile Time (America/Santiago)	(GMT-04:00) Giờ Chile (Châu Mỹ/Santiago)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Eastern Daylight Time (America/Indianapolis)	(GMT-04:00) Eastern Daylight Time (America/Indianapolis)	(GMT-04:00) Giờ ban ngày miền đông (Mỹ/Indianapolis)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:00) Eastern Daylight Time (America/New_York)	(GMT-04:00) Eastern Daylight Time (America/New_York)	(GMT-04:00) Giờ ban ngày miền đông (Mỹ/New_York)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-04:30) Venezuela Time (America/Caracas)	(GMT-04:30) Venezuela Time (America/Caracas)	(GMT-04:30) Giờ Venezuela (Châu Mỹ/Caracas)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Central Daylight Time (America/Chicago)	(GMT-05:00) Central Daylight Time (America/Chicago)	(GMT-05:00) Giờ ban ngày ở khu vực trung tâm (Mỹ/Chicago)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Central Daylight Time (America/Mexico_City)	(GMT-05:00) Central Daylight Time (America/Mexico_City)	(GMT-05:00) Giờ ban ngày ở khu vực trung tâm (Mỹ/Mexico_City)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Colombia Time (America/Bogota)	(GMT-05:00) Colombia Time (America/Bogota)	(GMT-05:00) Giờ Colombia (Châu Mỹ/Bogota)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Eastern Standard Time (America/Panama)	(GMT-05:00) Eastern Standard Time (America/Panama)	(GMT-05:00) Giờ chuẩn miền đông (Châu Mỹ/Panama)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-05:00) Peru Time (America/Lima)	(GMT-05:00) Peru Time (America/Lima)	(GMT-05:00) Giờ Peru (Châu Mỹ/Lima)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-06:00) Central Standard Time (America/El_Salvador)	(GMT-06:00) Central Standard Time (America/El_Salvador)	(GMT-06:00) Giờ chuẩn ở khu vực trung tâm (Châu Mỹ/El_Salvador)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-06:00) Mountain Daylight Time (America/Denver)	(GMT-06:00) Mountain Daylight Time (America/Denver)	(GMT-06:00) Giờ ban ngày miền núi (Mỹ/Denver)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Mountain Standard Time (America/Phoenix)	(GMT-07:00) Mountain Standard Time (America/Phoenix)	(GMT-07:00) Giờ chuẩn miền núi (Mỹ/Phoenix)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Pacific Daylight Time (America/Los_Angeles)	(GMT-07:00) Pacific Daylight Time (America/Los_Angeles)	(GMT-07:00) Giờ ban ngày Thái Bình Dương (Châu Mỹ/Los_Angeles)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-07:00) Pacific Daylight Time (America/Tijuana)	(GMT-07:00) Pacific Daylight Time (America/Tijuana)	(GMT-07:00) Giờ ban ngày Thái Bình Dương (Châu Mỹ/Tijuana)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-08:00) Alaska Daylight Time (America/Anchorage)	(GMT-08:00) Alaska Daylight Time (America/Anchorage)	(GMT-08:00) Giờ ban ngày Alaska (Mỹ/Anchorage)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-10:00) Hawaii-Aleutian Standard Time (Pacific/Honolulu)	(GMT-10:00) Hawaii-Aleutian Standard Time (Pacific/Honolulu)	(GMT-10:00) Giờ chuẩn Hawaii-Aleutian (Thái Bình Dương/Honolulu)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-11:00) Niue Time (Pacific/Niue)	(GMT-11:00) Niue Time (Pacific/Niue)	(GMT-11:00) Giờ Niue (Thái Bình Dương/Niue)	-
+PicklistValue.lmsilt__Session__c.lmsilt__Time_Zone.(GMT-11:00) Samoa Standard Time (Pacific/Pago_Pago)	(GMT-11:00) Samoa Standard Time (Pacific/Pago_Pago)	(GMT-11:00) Giờ chuẩn Samoa (Thái Bình Dương/Pago_Pago)	-

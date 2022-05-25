@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Eng_VP__c$Engagement__c</field>
+    </columns>
+    <columns>
+        <field>Eng_VP__c$Name</field>
+    </columns>
+    <columns>
+        <field>Eng_VP__c.Eng_VP_Positions__r$Name</field>
+    </columns>
+    <columns>
+        <field>Eng_VP__c.Eng_VP_Positions__r$Status__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Eng_VP__c.Eng_VP_Positions__r$Report_Fee__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Eng_VP__c.Eng_VP_Positions__r$Engagement_VP__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>Historical Valuation</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>PV_Status</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Portfolio_Valuation_Templates_Report_Type_Eng__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Eng_VP__c.Eng_VP_Positions__r$Name</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Eng_VP__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

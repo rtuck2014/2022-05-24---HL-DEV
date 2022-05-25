@@ -1,0 +1,236 @@
+<style type="text/css">
+.b-overlay {
+	display:none;
+	height:100%;
+	bottom:0;
+	left:0;
+	position:fixed;
+	right:0;
+	top:0;
+	opacity:0.35;
+	background:#000000;
+	z-index:10000;
+	filter:alpha(opacity=35);
+}
+
+</style>
+<script>
+	function closeLightBox(lightbox) {
+		$('.' + lightbox).fadeOut('fast');
+		$('.b-overlay').fadeOut('fast');
+	}
+	function closeLoadingLightBox2() {
+		$('.b-lightbox-context').fadeOut('fast');
+		$('.b-overlay-context').fadeOut('fast');
+	}
+</script>
+<div ng-if="object.objectId != null" ng-init="init()">
+	<div class="b-lightbox-loading">
+		<div id="lightboxmsg" style="height: 150px;"></div>
+		<button class="btn" type="button" onClick="closeLightBox('b-lightbox-loading');">{{labels.lmscons__MyTraining_Close}}</button>
+		<a class="close-modal" aria-label="Close" href="javascript:void(0)" onClick="closeLightBox('b-lightbox-loading');"><i class="fa fa-times"></i></a>
+	</div>
+	<div class="b-lightbox-confirm">
+		<table border="0" cellpadding="15" cellspacing="0" style="width: 100%; height: 100%">
+			<tr>
+				<td style="padding: 10px; text-align: center">
+					<h3 class="pageSubtitle">Cancellation Policy</h3>
+				</td>
+			</tr>
+			<tr>
+				<td style="padding: 10px;">
+					<div id="confirmMsg" style="max-height: 300px; overflow: scroll; text-align: left;"></div>
+				</td>
+			</tr>
+			<tr>
+				<td style="padding: 10px; text-align: center;">
+					<button class="btn" type="button" onClick="closeLightBox('b-lightbox-confirm');" ng-click="enroll(object.objectId)" ng-disabled="enrollDisabled">{{labels.Accept}}</button>
+					<button class="btn" type="button" onClick="closeLightBox('b-lightbox-confirm');">{{labels.lmscons__MyTraining_Close}}</button>
+					<a class="close-modal" aria-label="Close" href="javascript:void(0)" onClick="closeLightBox('b-lightbox-confirm');"><i class="fa fa-times"></i></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="b-overlay"></div>
+	<nav class="breadCrumb">
+		<ul>
+			<li>
+				<a ng-if="object.tabName == 'mytraining'" href="{{object.tabLink}}" ng-click="navigate(object.tabLink)">{{labels.lmscons__myTraining}}</a>
+				<a ng-if="object.tabName == 'completed'" href="{{object.tabLink}}" ng-click="navigate(object.tabLink)">{{labels.lmscons__completedTab}}</a>
+				<a ng-if="object.tabName == 'catalog'" href="{{object.tabLink}}?filter=true" ng-click="navigate(object.tabLink +'?filter=true')">{{labels.lmscons__Back_To_Search_Results}}</a>
+				<a ng-if="object.tabName == 'devplans'" href="{{object.tabLink}}" ng-click="navigate(object.tabLink)">{{labels.MyTraining_Development_Plans_Tab}}</a>
+				<a ng-if="object.tabName == 'calendar'"></a>			
+			</li>
+			<li class="dot" ng-if="object.parentObjectId != object.objectId">
+				<span class="divider"></span>&nbsp;
+				<a href="{{object.parentLink}}" ng-click="navigate(object.parentLink)">{{object.parentTitle}}</a>
+			</li>
+		</ul>
+	</nav>
+	<ul class="trainingPlanDetail" ng-class="{pastDue : object.isPastDue == true}">
+		<li class="pageTitle">
+			<h2>{{object.title}}</h2>
+		</li>
+	<h3 class="pageSubtitle" ng-if="object.trainingType == 'ILT_CLASS'" >
+		<span ng-if="object.status == 'In Progress'">{{labels.EUI_Class_Already_Started}}</span>
+		<span ng-if="object.status == 'Ended'">{{labels.EUI_Class_Has_Ended}}</span>
+	</h3>
+
+	<div ng-if="object.trainingType == 'ILT_CLASS' || object.trainingType == 'ACTIVITY'">
+		<li class="dateRange">
+			<span ng-if="object.startDateDisplay" class="dateFrom">{{labels.Date_From}} {{object.startDateDisplay}}</span>
+			<span ng-if="object.endDateDisplay" class="dateTo">{{labels.Date_To}} {{object.endDateDisplay}}</span>
+		</li>
+	</div>
+
+	<div ng-if="object.trainingType == 'SESSION'">
+		<li class="dateRange" >
+			<span ng-if="object.startTimeDisplay" class="dateFrom">{{labels.Date_From}} {{object.startTimeDisplay}}</span>
+			<span ng-if="object.endTimeDisplay" class="dateTo">{{labels.Date_To}} {{object.endTimeDisplay}}</span>
+		</li>
+	</div>
+
+	<div ng-if="object.trainingType != 'ACTIVITY'" >
+		<property ng-if="object.propertyList && object.propertyList.length > 0" ng-repeat="property in object.propertyList">
+			<li class="{{property.class}}"><span class="lbl">{{property.label}}</span> <span>{{property.value}}</span></li>
+			<li class="dot" ng-if="!$last" />
+		</property>
+		<li class="certificate" ng-if="object.showCertificate == true" title="{{labels.lmscons__CERTIFICATE_OF_COMPLETION}}"><a href="{{object.certificateLink}}" ng-click="navigate(object.certificateLink)" target="_blank"><i class="fa fa-star"></i></a></li>
+	</div>
+		<li class="description">{{object.description}}</li>
+		<li class="events" ng-if="(object.trainingType == 'EVENT' || object.trainingType == 'ILT_CLASS') && object.materials.length > 0">
+			<table>
+				<tr>
+					<th>Material</th>
+					<th>Description</th>
+					<th>Instructions</th>
+					<th>Downloads</th>
+				</tr>
+				<tr ng-repeat="item in object.materials | orderBy: ['name']">
+					<td>{{item.name}}</td>
+					<td>{{item.description}}</td>
+					<td>{{item.instructions}}</td>
+					<td><span ng-if="item.attachments.length > 0" ng-repeat="attach in item.attachments | orderBy: ['name']"><a target="_blank" href="../servlet/servlet.FileDownload?file={{attach.objectId}}" ng-click="navigate('../servlet/servlet.FileDownload?file='+attach.objectId)">[ {{attach.name}} ]</a> </span></td>
+				</tr>
+			</table>
+		</li>
+		<li class="events" ng-if="(object.trainingType == 'DEV_PLAN_TASK') && object.taskAttachments.length > 0">
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Download</th>
+				</tr>
+				<tr ng-repeat="item in object.taskAttachments | orderBy: ['name']">
+					<td>{{item.name}}</td>
+					<td>{{item.description}}</td>
+					<td><a target="_blank" href="/servlet/servlet.FileDownload?file={{item.objectId}}" ng-click="navigate('/servlet/servlet.FileDownload?file='+item.objectId)">[ {{item.name}} ]</a></td>
+				</tr>
+			</table>
+		</li>
+		<li class="progression" ng-if="object.progress >= 0 && object.trainingType != 'ACTIVITY'">
+			<div ng-if="object.ajaxComplete == true">
+				<module-progress id="detail{{object.objectId}}" item="object" adjustcss="true"></module-progress>
+			</div>
+		</li>
+		<li class="buttons" ng-switch="object.contextualAction">
+			<button ng-switch-when="LAUNCH" class="btn" type="button" ng-click="launch(object);">{{labels.lmscons__MyTraining_LaunchCourse}}</button>
+
+			<button ng-switch-when="PAST_MAX_ATTEMPTS" class="btn" type="button"  ng-click="openLoadingLightBox(labels.lmscons__Quiz_max_attempts_reached);">{{labels.lmscons__MyTraining_LaunchCourse}}</button>
+
+			<div ng-switch-when="MARK_COMPLETE"> <!-- Mark complete can show in addition to a launch button if the contextualActionLink is not blank-->
+				<button ng-if="object.contextualActionLink" class="btn" type="button" ng-click="launch(object);">{{labels.lmscons__MyTraining_LaunchCourse}}</button>
+				<button id="markCompleteBtn" class="btn" type="button" ng-click="markComplete(object.objectId);">{{labels.Mark_Complete}}</button>
+			</div>
+
+			<button ng-switch-when="VIEW_PREREQ" class="btn" type="button" ng-click="autoScrollToElement('spnPrereqs');">{{labels.lmscons__EUI_View_Prerequisites}}</button>
+
+			<button ng-switch-when="ENROLL" class="btn btn-info" type="button" ng-disabled="enrollDisabled" ng-click="enroll(object.objectId)">{{labels.lmscons__SearchCatalog_Enroll}}</button>
+
+			<button ng-switch-when="WITHDRAW" class="btn btn-info" type="button" ng-disabled="unenrollDisabled" ng-click="unenrollClass(object.objectId)">{{labels.Withdraw}}</button>
+
+			<button ng-switch-when="CANCELLATION" id="btnViewPolicy" class="btn btn-info" type="button" ng-click="openConfirmation(object.cancellationPolicy);">{{labels.EUI_View_Policy}}</button>
+
+			<button ng-switch-when="NO_WITHDRAW" ng-click="openLoadingLightBox(labels.EUI_No_Withdraw);">{{labels.Withdraw}}</button>
+
+			<div class="alert alert-danger" role="alert" ng-if="object.enrollErrorMessage == true">
+				<strong>{{labels.lmscons__ConsumerUser_Error}}</strong> {{object.enrollMessage}}
+			</div>
+			<div class="alert alert-success" role="alert" ng-if="object.enrollSuccessMessage == true">
+				<strong>{{labels.lmscons__EUI_Success}}</strong> {{object.enrollMessage}}
+			</div>
+			<div id="progressbar" style="display: none">
+		        <div class="progress-label">
+		        </div>
+			</div>	
+		</li>
+	</ul>
+	<h3 class="pageSubtitle">
+		<span ng-if="object.containerItems.length > 0">{{labels.lmscons__EUI_Training_Included}} ({{object.containerItems.length}})</span>
+		<span ng-if="object.containerItems.length == 0 && object.trainingType != 'EVENT'">{{labels.lmscons__EUI_No_Training_Included}}</span>
+		<span ng-if="object.containerItems.length == 0 && object.trainingType == 'EVENT'">{{labels.There_are_no_current_classes_available_for_enrollment}}</span>
+	</h3>
+</div>
+<div ng-if="object.urls.length > 0" style="border: 2px solid #dedede; width: 66%;">
+	<div class="b-lightbox-context">
+		<h3 class="pageSubtitle" style="color:#2890a0 !important;">{{object.confirmTitle}}</h3>
+		<p>{{object.confirmMessage}}</p>
+		<div id="lightboxmsg">
+			<div id="listOfParents" style="height: 100%; overflow: scroll; text-align: left; width: 100%">
+				<ul>
+					<li ng-repeat="item in object.urls">
+						<a href="{{item.url}}" ng-click="navigate(item.url)">{{item.urlText}}</a>
+					</li>
+				</ul>
+			</div>
+		</div> 
+		<a class="close-modal" aria-label="Close" href="javascript:void(0)" onClick="closeLoadingLightBox2();"><i class="fa fa-times"></i></a>
+	</div>
+	<div class="b-overlay-context"></div>
+</div>
+<style>
+#cfsWrapper .b-lightbox-context {
+	background:#fff;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	color:#5d6e7d;
+	left:50%;
+	margin-left:-333px;
+	margin-top:-200px;
+	position:fixed;
+	text-align:left;
+	top:50%;
+	height: 400px;
+	width:666px;
+	z-index:10001;
+	padding: 15px;
+}
+#cfsWrapper .b-lightbox-context #lightboxmsg {
+	font-size:15px;
+	font-weight:normal;
+	margin-top:25px;
+	margin-bottom:25px;
+	height: 295px !important;
+}
+
+#cfsWrapper .b-overlay-context {
+	height: 100%;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	opacity: 0.35;
+	background: #000000;
+	z-index: 10000;
+	filter: alpha(opacity=35);
+}
+#cfsWrapper .b-lightbox-context .close-modal {
+	color:#5d6e7d;
+	font-size:30px;
+	position:absolute;
+	right:8px;
+	top:4px;
+}
+</style>

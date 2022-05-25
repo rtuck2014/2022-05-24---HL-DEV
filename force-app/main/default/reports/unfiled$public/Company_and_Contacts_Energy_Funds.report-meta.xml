@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Contact.Contact_Full_Name__c</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>PHONE1</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_STREET</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_CITY</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_STATE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_ZIP</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_COUNTRY</field>
+    </columns>
+    <columns>
+        <field>Account.Company_Address__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>((1 OR 3) and 2) OR (4 AND 5)</booleanFilter>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>&quot;Apollo Global Management, LLC&quot;,Arcadius Capital Partners,&quot;Ares Management, LLC&quot;,Avista Capital Partners L.P.,Bayou City Energy,The Blackstone Group L P,Bluescape Energy Partners,Cadent Energy Partners LLC,The Carlyle Group,Carnelian Energy Capital,Chambers Energy Capital,CSG Investments,Denham Capital Management LP,EIG Global Energy Partners,EMG,&quot;EnCap Investments, LLC&quot;,Energy Capital Partners,Energy Spectrum Capital,Energy Trust Partners,&quot;EnerVest, Ltd.&quot;,First Reserve Corporation,Five Point Energy,Five States Capital,Fleur de Lis Energy LLC,Fortress Investment Group LLC,&quot;GE Energy Financial Services, Inc.&quot;,Glendale Energy Capital,Hastings Equity Partners,&quot;Intervale Capital, LLC&quot;,&quot;IOG Capital, LP&quot;,Kayne Anderson MLP Investment Company,KKR Financial Holdings LLC,Lime Rock Partners,Magnetar Capital LLC,&quot;Merit Energy Company, LLC&quot;,Mountain Capital Management,NGP Energy Capital Management</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ADDRESS2_STATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Texas,TX</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>&quot;Oaktree Capital Management, L.P.&quot;,Och-Ziff Capital Management Group LLC,&quot;OFS Energy Fund, LLC&quot;,&quot;Parallel Resource Partners, LLC&quot;,Pearl Energy Investments,&quot;PetroCap, LLC&quot;,Pine Brook Partners,&quot;Post Oak Energy Capital, L.P.&quot;,Quantum Energy Partners,Ramas Capital,Ridgemont Equity Partners,Riverstone Holdings LLC,&quot;Rock Hill Capital Group, LLC&quot;,Rockland Capital Partners,Sage Road Capital,&quot;SCF Partners, LP&quot;,Scout Energy Partners,Tailwater Capital,Talara Capital Management,&quot;TPG Capital, L.P.&quot;,Triangle Peak Partners LP,&quot;Turnbridge Capital, LLC&quot;,Warburg Pincus LLC,Waterous Energy Fund,White Deer Energy</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ACCOUNT.NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMG,&quot;GE Energy Financial Services, Inc.&quot;,KKR Financial Holdings LLC,Magnetar Capital LLC,&quot;Oaktree Capital Management, L.P.&quot;,Ramas Capital,The Blackstone Group L P,&quot;TPG Capital, L.P.&quot;,Triangle Peak Partners LP,Warburg Pincus LLC,Waterous Energy Fund</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ADDRESS2_COUNTRY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>USA,US,united Staes</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Company and Contacts_Energy Funds</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ContactList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

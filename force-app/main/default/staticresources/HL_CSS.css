@@ -1,0 +1,194 @@
+th {vertical-align: top;}
+.bold {font-weight: bold;}
+.brandZeronaryFgr{display:none}
+.center {text-align:center;}
+.datePicker{z-index: 200;}
+.hide {display: none;}
+.highlight {background-color: yellow;}
+.highlight-light {background-color: BlanchedAlmond!important;}
+.indent{padding-left: 10px;}
+.pointer{cursor: pointer;}
+.right{text-align: right;}
+.text-medium{font-size: 1.1em;}
+.top {vertical-align: top;}
+.top-important {vertical-align: top!important;}
+.underline {text-decoration: underline;}
+.date {width: 80px}
+.instructionalText {
+        width: 100%;
+        background-color: #E5F2F6;
+        border: solid 1px #76B8AD;
+        border-radius: 7px;
+        margin-bottom: 10px;
+        /*margin-top: 50px;*/
+        /*padding-top: 5px;
+        padding-bottom: 5px;*/
+}
+.instructionalText .instructions {
+        /*padding-left: 15px;
+        padding-right: 10px;*/
+}
+.instructionImg {
+        width: 32px;
+        padding-left: 10px;
+        padding-top: 10px;
+        vertical-align: top;
+}
+.link-options {color: #015ba7; text-decoration: none; cursor: pointer; white-space: nowrap;}
+.link-options:hover {text-decoration: underline;}
+.numeric-short{font-family: Tahoma, Arial; width: 50px; text-align: right;}
+.numeric-medium{font-family: Tahoma, Arial; width: 75px; text-align: right;}
+.numeric-long{font-family: Tahoma, Arial; width: 100px; text-align: right;}
+.numeric-short-output-calc{display: inline-block; height: 25px; text-align: right; width: 100%;}
+.overlay{
+          position: absolute;
+          top: 10;
+          left: 0;
+          margin-left: 10px;
+          margin-right: 10px;
+          width: 98.5%;
+          z-index: 10;
+}
+
+<!-----Home Pages---------->
+.objectHome h2 {padding-top: 10px !important;}
+.objectHome table.searchRadio {margin-top:-10px; padding:0px; margin-left:-20px;}
+.objectHome fieldset {padding-bottom: 0px;}
+.objectHome .pbTitle {display: none;}
+.objectHome .actionButton {width: 105px;}
+.objectHome .searchButtonPanel {padding-top: 5px; padding-bottom: 5px;}
+.objectHome .pageDisplay {width:180px; font-weight: bold;}
+.objectHome .recordsPerPage {width:160px; font-weight: bold;}
+.objectHome .totalRecords {width:120px; font-weight: bold; text-align: right;}
+
+<!-----Activity Event-------->
+.activityEvent .actionButton {width: 90px;}
+.activityEvent .additionalItems .pbSubExtra {display: none;}
+
+<!-----Engagement LOB Split Edit------>
+.engagementLOBSplitEdit .bPageBlock .list{ width: 0% !important;}
+.engagementLOBSplitEdit .headerRow {display: none !important;}
+.engagementLOBSplitEdit tr.dataRow td {border: none !important;}
+
+<!-----Engagement Office Split Edit------>
+.engagementOfficeSplitEdit .bPageBlock .list{ width: 0% !important;}
+.engagementOfficeSplitEdit .headerRow {display: none !important;}
+.engagementOfficeSplitEdit tr.dataRow td {border: none !important;}
+
+<!-----Opportunity Client Subject Modify---------->
+.opportunityClientSubjectModify .pbTitle {display: none;}
+.opportunityClientSubjectModify .actionButton {width: 90px;}
+
+<!-----Manual PageBlockTable---------->
+.td-header{background: #f2f3f3;
+           border: 1px solid #ededed;
+       border-width: 0 0 1px 1px;
+       border-color: #e0e3e5;
+       color: #000;
+       font-size: .9em;
+       font-weight: bold;
+       padding: 5px 2px 4px 5px;
+}
+
+<!-----Engagement Summary CSS--------->
+.cfEngagementSummary td label {color:#4a4a56; font-size: 10.9200000762939px;}
+.cfEngagementSummary .headerRow, .cfEngagementSummary .headerRow label {color:#black; font-size: 10.8000001907349px !important; font-weight: bold;}
+.cfEngagementSummary .column-header {background-color: #3d8d8d; color: white !important; font-weight: bold; font-size: 1.1em; padding: 2px 0px 2px 5px;}
+.cfEngagementSummary .column-header label, .cfEngagementSummary .column-header label.bold {color: white;}
+.cfEngagementSummary h2.mainTitle {font-size: 1.2em !important; color: #27282e !important;}
+.cfEngagementSummary .rich-panelbar-header-act{background-image: none; background-color: #3d8d8d; font-size: 1.1em; }
+.cfEngagementSummary .sectionTitle{font-weight: bold;font-size: 1.1em;padding: 5px;}
+.cfEngagementSummary .subTitle{color:white !important;background:#1797c0 !important;font-size: 1.2em;font-weight: bold;padding: 2px;}
+
+<!-----Role Classes--------->
+.column-role {width: 50px;}
+
+<!-----Pipeline Manager------>
+.pipelineManager section {
+  position: relative;
+  border: 1px solid #000;
+  padding-top: 37px;
+  background: White; /*#500*/
+}
+.pipelineManager section.positioned {
+  position: absolute;
+  top:100px;
+  left:100px;
+  width:800px;
+  box-shadow: 0 0 15px #333;
+}
+.pipelineManager .container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 450px;
+  min-height: 350px!important;
+}
+.pipelineManager .container table {
+  border-spacing: 0;
+  width:100%;
+}
+.pipelineManager .container td + td {
+  border-left:1px solid #eee;
+}
+.pipelineManager .container  td, .pipelineManager .container  th {
+  border-bottom:1px solid #eee;
+  background: White;
+  color: Black;
+  padding: 2px 8px;
+}
+.pipelineManager .container th {
+  height: 0;
+  line-height: 0;
+  padding-top: 0;
+  padding-bottom: 0px;
+  color: transparent;
+  border: none;
+  white-space: nowrap;
+}
+.pipelineManager .container th div{
+  position: absolute;
+  background: White;
+  color: Black;
+  padding: 5px 5px;
+  top: 235px;
+  margin-left: -8px;
+  line-height: normal;
+  border-left: 1px solid #e0e3e5;
+}
+.pipelineManager .container th:first-child div{
+  border: none;
+}
+.ft_container table { border-width: 0px; margin: 0px; border-collapse: collapse; margin: 0; outline-style: none; font-weight: normal; font-size: 1.0em; background-color: #fff; }
+.ft_container table tr:nth-child(even) {background: #EEF1F6}
+.ft_container table tr th {	font-weight: bold; }
+
+.ft_container table thead { -moz-user-select: none;-webkit-user-select: none;}
+.ft_container table tr th,
+.ft_container table tr td { border-collapse: collapse; padding: 2px 4px; word-wrap: break-word; border: 1px solid #CCCCCC; border-top-width: 0px; border-left-width: 0px; border-right-width: 1px; border-bottom-width: 1px; overflow:hidden; word-wrap: break-word;}
+
+.ft_container table tr:first-child td,
+.ft_container table tr:first-child th { border-top-width: 1px; border-color: #CCCCCC; }
+.ft_container table tr td:first-child,
+.ft_container table tr th:first-child { border-left-width: 1px; border-color: #CCCCCC; }
+
+.ft_container { overflow: hidden; padding: 0px; }
+
+.ft_rel_container { position: relative; overflow: hidden; border-width: 0px; width: 100%; height: 100%; }
+
+.ft_r, .ft_rc { background-image: none; }
+.ft_rc { position: absolute; z-index: 1005; }
+.ft_r, .ft_c { position: relative; }
+
+.ft_rwrapper, .ft_cwrapper { overflow: hidden; position: absolute; z-index: 1001; border-width: 0px;  padding: 0px; margin: 0px; }
+/*.ft_rwrapper { width: 100%; padding-right: 17px; }*/
+
+.ft_scroller { overflow: auto; height: 100%; padding: 0px; margin: 0px;}
+
+.ft_container tbody tr.ui-widget-content, thead.ui-widget-header { background-image: none; }
+
+.ft_container table.sorttable thead tr th { cursor: pointer; }
+.ft_container table thead tr th.fx_sort_bg{ background-image: url(images/bg.gif); background-position: right center; background-repeat: no-repeat; }
+.ft_container table thead tr th.fx_sort_asc{ background-image: url(images/asc.gif); }
+.ft_container table thead tr th.fx_sort_desc{ background-image: url(images/desc.gif); }
+.ft_container .ui-widget-header {font-weight: normal;}
+.ft_c .ui-widget-content {font-weight: bold;}

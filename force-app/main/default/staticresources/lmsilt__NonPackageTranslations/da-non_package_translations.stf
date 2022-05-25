@@ -1,0 +1,485 @@
+# Language: Danish
+Language code: da
+Type: Bilingual
+
+------------------TRANSLATED-------------------
+
+# KEY	LABEL	TRANSLATION	OUT OF DATE
+
+CustomApp.lmscons__Learning_Cloud	Learning Cloud	Undervisningssky	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Action.HelpText	The resulting action of clicking the CFS Link	"Handlingen, der udføres, når der klikkes på CFS-linket"	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Assigned.HelpText	True if the target learning object was assigned as a result of clicking the CFS Link	"Sandt, hvis målundervisningsobjektet blev tildelt som resultat af, at der blev klikket på CFS-linket"	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.HelpText	The status of the CFS Link when accessed by the User	"Status for CFS-linket, når brugeren klikker på det"	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Error.HelpText	If clicking on the CFS Link results in an error, this picklist provides the cause of the error.	"Hvis der opstår en fejl, når der klikkes på CFS-linket, angiver denne liste årsagen til fejlen."	-
+CustomField.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.HelpText	The Target Learning Object's status on the User's Transcript when accessed by the User	"Status for målundervisningsobjektet i brugerens journal, når dette åbnes af brugeren"	-
+CustomField.lmscons__CFS_Link__c.lmscons__Channel.HelpText	Target channel (internal app, a community, portal, or site) for this link	"Målkanal (intern app, fællesskab, portal eller websted) for dette link"	-
+CustomField.lmscons__CFS_Link__c.lmscons__End_Date.HelpText	Deep Link End Date; if this field is null, the Deep Link is always active (if marked Active)	"Slutdato for Deep Link. Hvis dette felt er null, er Deep Link altid aktivt (hvis det er markeret Aktivt)"	-
+CustomField.lmscons__CFS_Link__c.lmscons__IsActive.HelpText	Checkbox that marks the deep link as active or not. If marked inactive, this will override the default behavior based on start date and end date. 	"Afkrydsningsfelt, der markerer, om deep-linket er aktivt. Hvis det er markeret som inaktivt, tilsidesætter dette standardadfærden på baggrund af start- og slutdato. "	-
+CustomField.lmscons__CFS_Link__c.lmscons__Start_Date.HelpText	Deep Link Start Date; if this field is null, the Deep Link is active immediately (if marked Active)	"Startdato for Deep Link. Hvis dette felt er null, er Deep Link aktivt med det samme (hvis det er markeret Aktivt)"	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	Skal markeres, hvis det er nødvendigt at oprette tilbagevendende undervisning for denne tildeling. Husk også at angive antallet af perioder med tilbagevendende undervisning og periodetype for tilbagevendende undervisning (måneder eller år)	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	Antal af perioder med tilbagevendende undervisning Efter denne vil der blive foretaget en ny periodetildeling.	-
+CustomField.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Dato for oprettelse/gentildeling af tildeling	-
+CustomField.lmscons__Curriculum__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	Brugeren skal som standard fuldføre alle komponenter. For at tilpasse dette kriterium skal du angive værdier for én eller begge muligheder.	-
+CustomField.lmscons__Curriculum__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	Du kan angive en tidsenhed efter en tidsværdi "X", f.eks. som Xd, Xt eller Xm, der hhv. repræsenterer (d), timer (t) og minutter (m).\nHvis der ikke angives en tidsenhed, vil minutter blive anvendt.	-
+CustomField.lmscons__Curriculum__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	Brugeren skal som standard fuldføre alle komponenter. For at tilpasse dette kriterium skal du angive værdier for én eller begge muligheder.	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	Skal markeres, hvis det er nødvendigt at oprette tilbagevendende undervisning for denne tildeling. Husk også at angive antallet af perioder med tilbagevendende undervisning og periodetype for tilbagevendende undervisning (måneder eller år)	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.HelpText	Type of recurring training period (year or month)	Type af periode for tilbagevendende undervisning (år eller måned)	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	Antal af perioder med tilbagevendende undervisning Efter denne vil der blive foretaget en ny periodetildeling.	-
+CustomField.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Dato for oprettelse/gentildeling af tildeling	-
+CustomField.lmscons__Learning_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	Brugeren skal som standard fuldføre alle komponenter. For at tilpasse dette kriterium skal du angive værdier for én eller begge muligheder.	-
+CustomField.lmscons__Learning_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	Du kan angive en tidsenhed efter en tidsværdi "X", f.eks. som Xd, Xt eller Xm, der hhv. repræsenterer (d), timer (t) og minutter (m).\nHvis der ikke angives en tidsenhed, vil minutter blive anvendt.	-
+CustomField.lmscons__Learning_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	Brugeren skal som standard fuldføre alle komponenter. For at tilpasse dette kriterium skal du angive værdier for én eller begge muligheder.	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__Cornerstone_Callback_URL.HelpText	The URL of the notification page set up for your organization.	URL for den notifikationsside, der er konfigureret for din organisation.	-
+CustomField.lmscons__LMS_Consumer_Settings__c.lmscons__CyberUSecretSignKey.HelpText	Secret key to sign CyberU callbacks	Hemmelig nøgle til signering af tilbagekald til CyberU	-
+CustomField.lmscons__Quiz__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	Du kan angive en tidsenhed efter en tidsværdi "X", f.eks. som Xd, Xt eller Xm, der hhv. repræsenterer (d), timer (t) og minutter (m).\nHvis der ikke angives en tidsenhed, vil minutter blive anvendt.	-
+CustomField.lmscons__Training_Content_License__c.lmscons__Seats.HelpText	Total number of seats included in this license. Leave blank for unlimited.	Det samlede antal pladser, der indgår i denne licens. Efterlad tomt for ubegrænset.	-
+CustomField.lmscons__Training_Content__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as  Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	Du kan angive en tidsenhed efter en tidsværdi "X", f.eks. som Xd, Xt eller Xm, der hhv. repræsenterer (d), timer (t) og minutter (m).\nHvis der ikke angives en tidsenhed, vil minutter blive anvendt.	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Enabled.HelpText	Should be checked in case if it is necessary to create recurring training for this assignment. Also remember to set number of recurring training periods and recurring training period type (months or years)	Skal markeres, hvis det er nødvendigt at oprette tilbagevendende undervisning for denne tildeling. Husk også at angive antallet af perioder med tilbagevendende undervisning og periodetype for tilbagevendende undervisning (måneder eller år)	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Periods.HelpText	Number of recurring training periods. After passing this periods assignment will be reassigned.	Antal af perioder med tilbagevendende undervisning Efter denne vil der blive foretaget en ny periodetildeling.	-
+CustomField.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Reassign_Date.HelpText	Date when assignment was created/reassigned	Dato for oprettelse/gentildeling af tildeling	-
+CustomField.lmscons__Training_Path__c.lmscons__Components_For_Completion.HelpText	By default, user must complete all components. To customize this criteria,  please set values to one or both options.	Brugeren skal som standard fuldføre alle komponenter. For at tilpasse dette kriterium skal du angive værdier for én eller begge muligheder.	-
+CustomField.lmscons__Training_Path__c.lmscons__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	Du kan angive en tidsenhed efter en tidsværdi "X", f.eks. som Xd, Xt eller Xm, der hhv. repræsenterer (d), timer (t) og minutter (m).\nHvis der ikke angives en tidsenhed, vil minutter blive anvendt.	-
+CustomField.lmscons__Training_Path__c.lmscons__Minutes_For_Completion.HelpText	By default, user must complete all components. To customize this criteria, please set values to one or both options.	Brugeren skal som standard fuldføre alle komponenter. For at tilpasse dette kriterium skal du angive værdier for én eller begge muligheder.	-
+CustomField.lmscons__Training_Unit__c.lmscons__Remaining_Training_Units.HelpText	Number of units available for spending	Antal tilgængelige enheder at bruge	-
+CustomField.lmscons__Training_User_License__c.lmscons__Purchased.HelpText	Indicates if this user license has been purchased or only assigned.	Angiver, om denne brugerlicens er købt eller blot tildelt.	-
+CustomField.lmsilt__Development_Plan__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	Du kan angive en tidsenhed efter en tidsværdi "X", f.eks. som Xd, Xt eller Xm, der hhv. repræsenterer (d), timer (t) og minutter (m).\nHvis der ikke angives en tidsenhed, vil minutter blive anvendt.	-
+CustomField.lmsilt__Event__c.lmsilt__DurationTime.HelpText	You can specify a time unit after a time value 'X', such as Xd, Xh or Xm, to represent days (d), hours (h) and minutes (m), respectively.\nIf you do not specify a time unit, minute will be assumed.	Du kan angive en tidsenhed efter en tidsværdi "X", f.eks. som Xd, Xt eller Xm, der hhv. repræsenterer (d), timer (t) og minutter (m).\nHvis der ikke angives en tidsenhed, vil minutter blive anvendt.	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Profile	Profile	Profil	-
+PicklistValue.lmscons__Assign_member__c.lmscons__Type.Role	Role	Rolle	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.Error	Error	Fejl	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.Launch	Launch	Start	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Action.View Details	View Details	Vis detaljer	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Active	Active	Aktivt	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Expired	Expired	Udløbet	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Inactive	Inactive	Inaktivt	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__CFS_Link_Status.Not Started	Not Started	Ikke startet	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Inactive Link	Inactive Link	Inaktivt link	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Learning Object Not Found	Learning Object Not Found	Undervisningsobjektet blev ikke fundet	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Link Expired	Link Expired	Linket er udløbet	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.Link Not Started	Link Not Started	Linket er ikke startet	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Error.No Access	No Access	Ingen adgang	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Assigned	Assigned	Tildelt	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Completed	Completed	Fuldført	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Enrolled	Enrolled	Tilmeldt	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.In Progress	In Progress	Igangværende	-
+PicklistValue.lmscons__CFS_Link_Activity__c.lmscons__Target_LO_Status.Unassigned	Unassigned	Ikke-tildelt	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Days	Days	Dage	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Hours	Hours	Timer	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Indefinite	Indefinite	Uendelig	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Month	Month	Måned	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Weeks	Weeks	Uger	-
+PicklistValue.lmscons__Content_License__c.lmscons__License_Period.Years	Years	År	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Complete	Complete	Fuldfør	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.New	New	Ny	-
+PicklistValue.lmscons__Content_Upload__c.lmscons__Status.Processing	Processing	Behandler	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	Måneder	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	År	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Completed	Completed	Fuldført	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.In Progress	In Progress	Igangværende	-
+PicklistValue.lmscons__Curriculum_Assignment__c.lmscons__Status.Not Started	Not Started	Ikke startet	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Developer	Developer	Udvikler	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.IT Professional	IT Professional	IT-medarbejder	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Sælger	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.da	da	Dansk	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.de	de	Tysk	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.en_US	en_US	Engelsk	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.es	es	Spansk	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fi	fi	Finsk	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.fr	fr	Fransk	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.it	it	Italiensk	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ja	ja	Japansk	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ko	ko	Koreansk	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.nl_NL	nl_NL	Hollandsk	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.pt_BR	pt_BR	Portugisisk	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.ru	ru	Russisk	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.sv	sv	Svensk	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.th	th	Thailandsk	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_CN	zh_CN	Kinesisk (forenklet)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Language.zh_TW	zh_TW	Kinesisk (traditionelt)	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com Mobil	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Salgssky	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmscons__Curriculum__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com Mobil	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Error	Error	Fejl	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Info	Info	Oplysninger	-
+PicklistValue.lmscons__DebugLog__c.lmscons__Level.Warning	Warning	Advarsel!	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Months	Months	Måneder	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Recurring_Training_Period_Type.Years	Years	År	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Completed	Completed	Fuldført	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.In Progress	In Progress	Igangværende	-
+PicklistValue.lmscons__Learning_Path_Assignment__c.lmscons__Status.Not Started	Not Started	Ikke startet	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Developer	Developer	Udvikler	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.IT Professional	IT Professional	IT-medarbejder	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Sælger	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.da	da	Dansk	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.de	de	Tysk	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.en_US	en_US	Engelsk	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.es	es	Spansk	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fi	fi	Finsk	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.fr	fr	Fransk	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.it	it	Italiensk	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ja	ja	Japansk	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ko	ko	Koreansk	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.nl_NL	nl_NL	Hollandsk	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.pt_BR	pt_BR	Portugisisk	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.ru	ru	Russisk	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.sv	sv	Svensk	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.th	th	Thailandsk	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_CN	zh_CN	Kinesisk (forenklet)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Language.zh_TW	zh_TW	Kinesisk (traditionelt)	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com Mobil	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Salgssky	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmscons__Learning_Path__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com Mobil	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Completed	Completed	Fuldført	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Purchase_Status.Pending	Pending	Venter	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Download	Download	Hent	-
+PicklistValue.lmscons__LMS_Cart__c.lmscons__Type.Purchase	Purchase	Køb	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Days	Days	Dage	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Hours	Hours	Timer	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Indefinite	Indefinite	Uendelig	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Months	Months	Måneder	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Weeks	Weeks	Uger	-
+PicklistValue.lmscons__LMS_Consumer_Settings__c.lmscons__Default_License_Period.Years	Years	År	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.English	English	Engelsk	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Language.French	French	Fransk	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Completed	Completed	Fuldført	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Failed	Failed	Ikke-bestået	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.In Progress	In Progress	Igangværende	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Passed	Passed	Bestået	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Status_Progress.Retired	Retired	Afgået	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Exit	Exit	Afslut	-
+PicklistValue.lmscons__LMS_Content__c.lmscons__Time_Limit_Action.Message	Message	Meddelelse	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.da	da	Dansk	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.de	de	Tysk	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.en_US	en_US	Engelsk	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.es	es	Spansk	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fi	fi	Finsk	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.fr	fr	Fransk	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.it	it	Italiensk	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ja	ja	Japansk	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ko	ko	Koreansk	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.nl_NL	nl_NL	Hollandsk (Holland)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.pt_BR	pt_BR	Portugisisk (Brasilien)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.ru	ru	Russisk	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.sv	sv	Svensk	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.th	th	Thailandsk	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_CN	zh_CN	Kinesisk (forenklet)	-
+PicklistValue.lmscons__Localization__c.lmscons__Language.zh_TW	zh_TW	Kinesisk (traditionelt)	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Easy	Easy	Nem	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Hard	Hard	Svær	-
+PicklistValue.lmscons__Question__c.lmscons__Difficulty.Medium	Medium	Medium	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Long Text	Long Text	Lang tekst	-
+PicklistValue.lmscons__Question__c.lmscons__Text_Type.Short Text	Short Text	Kort tekst	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Free Text	Free Text	Fri tekst	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Multi Select	Multi Select	Flere valg	-
+PicklistValue.lmscons__Question__c.lmscons__Type.Single Select	Single Select	Vælg enkelt	-
+PicklistValue.lmscons__Question__c.lmscons__Type.True/False	True/False	Sand/falsk	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.da	da	Dansk	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.de	de	Tysk	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.en_US	en_US	Engelsk	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.es	es	Spansk	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fi	fi	Finsk	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.fr	fr	Fransk	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.it	it	Italiensk	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ja	ja	Japansk	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ko	ko	Koreansk	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.nl_NL	nl_NL	Hollandsk	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.pt_BR	pt_BR	Portugisisk (Brasilien)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.ru	ru	Russisk	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.sv	sv	Svensk	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.th	th	Thailandsk	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_CN	zh_CN	Kinesisk (forenklet)	-
+PicklistValue.lmscons__Quiz__c.lmscons__Language.zh_TW	zh_TW	Kinesisk (traditionelt)	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Course	Course	Kursus	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Curriculum	Curriculum	Læseplan	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Learning Path	Learning Path	Undervisningssti	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Module	Module	Modul	-
+PicklistValue.lmscons__Rule_Learning_Object__c.lmscons__Record_Type.Quiz	Quiz	Quiz	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.ALL	ALL	ALLE	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NEW	NEW	NY	-
+PicklistValue.lmscons__temp_xlsx__c.lmscons__Update_Type.NON_COMPLETE	NON_COMPLETE	IKKE-FULDFØRT	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Days	Days	Dage	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Hours	Hours	Timer	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Indefinite	Indefinite	Uendelig	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Month	Month	Måned	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Weeks	Weeks	Uger	-
+PicklistValue.lmscons__Training_Content_License__c.lmscons__License_Period.Years	Years	År	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Implementation	Implementation	Implementering	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Learning	Learning	Undervisning	-
+PicklistValue.lmscons__Training_Content__c.lmscons__ContentCatalog.Sale	Sale	Salg	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Delivery_Type.Free eLearning	Free eLearning	Gratis e-undervisning	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Channel Manager	Channel Manager	Kanalleder	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Developer	Developer	Udvikler	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.IT Professional	IT Professional	IT-medarbejder	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Implementation Team	Implementation Team	Implementeringsteam	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Marketing	Marketing	Markedsføring	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Partner	Partner	Partner	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Manager	Sales Manager	Salgsleder	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Professional	Sales Professional	Sælger	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Sales Rep	Sales Rep	Salgsrepræsentant	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Job_Roles.Support Rep	Support Rep	Supportrepræsentant	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.da	da	Dansk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.de	de	Tysk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.en_US	en_US	Engelsk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.es	es	Spansk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fi	fi	Finsk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.fr	fr	Fransk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.it	it	Italiensk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ja	ja	Japansk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ko	ko	Koreansk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.nl_NL	nl_NL	Hollandsk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.pt_BR	pt_BR	Portugisisk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.ru	ru	Russisk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.sv	sv	Svensk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.th	th	Thailandsk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_CN	zh_CN	Kinesisk (forenklet)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Language.zh_TW	zh_TW	Kinesisk (traditionelt)	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Development Plan Task	Development Plan Task	Udviklingsplanopgave	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Event	Event	Begivenhed	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Module	Module	Modul	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Module_Type.Quiz	Quiz	Quiz	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Block	Block	Blok	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Object_Type.Course	Course	Kursus	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Channel Manager	Channel Manager	Kanalleder	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Developer	Developer	Udvikler	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Implementation Team	Implementation Team	Implementeringsteam	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Marketing	Marketing	Markedsføring	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Partner	Partner	Partner	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Manager	Sales Manager	Salgsleder	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Sales Rep	Sales Rep	Salgsrepræsentant	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Job_Role.Support Rep	Support Rep	Supportrepræsentant	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Force.com platform	Force.com platform	Force.com-platform	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM CSS	Salesforce CRM CSS	Salgsafdeling – CRM CSS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Content	Salesforce CRM Content	Salgsafdeling – CRM-indhold	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Ideas	Salesforce CRM Ideas	Salgsafdeling – CRM-ideer	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Marketing	Salesforce CRM Marketing	Salgsafdeling – CRM-markedsføring	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Mobile	Salesforce CRM Mobile	Salgsafdeling – CRM-mobil	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Salgsafdeling – CRM-partnernetværk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM SFA	Salesforce CRM SFA	Salgsafdeling – CRM SFA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Salgsafdeling – CRM for Google-apps	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Primary_Product.Salesforce to Salesforce	Salesforce to Salesforce	Salgsafdeling til salgsafdeling	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Force.com platform	Force.com platform	Force.com-platform	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM CSS	Salesforce CRM CSS	Salgsafdeling – CRM CSS	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Content	Salesforce CRM Content	Salgsafdeling – CRM-indhold	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Ideas	Salesforce CRM Ideas	Salgsafdeling – CRM-ideer	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Marketing	Salesforce CRM Marketing	Salgsafdeling – CRM-markedsføring	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Mobile	Salesforce CRM Mobile	Salgsafdeling – CRM-mobil	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM Partner Networks	Salesforce CRM Partner Networks	Salgsafdeling – CRM-partnernetværk	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM SFA	Salesforce CRM SFA	Salgsafdeling – CRM SFA	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce CRM for Google Apps	Salesforce CRM for Google Apps	Salgsafdeling – CRM for Google-apps	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Products.Salesforce to Salesforce	Salesforce to Salesforce	Salgsafdeling til salgsafdeling	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.FAILURE	FAILURE	MISLYKKEDES	-
+PicklistValue.lmscons__Training_Content__c.lmscons__StatusUpdate.SUCCESS	SUCCESS	LYKKEDES	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Completed	Completed	Fuldført	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Failed	Failed	Ikke-bestået	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.In Progress	In Progress	Igangværende	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Passed	Passed	Bestået	-
+PicklistValue.lmscons__Training_Content__c.lmscons__Status_Progress.Retired	Retired	Afgået	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Months	Months	Måneder	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__Recurring_Training_Period_Type.Years	Years	År	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Completed	Completed	Fuldført	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.In Progress	In Progress	Igangværende	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Not Started	Not Started	Ikke startet	-
+PicklistValue.lmscons__Training_Path_Assignment_Progress__c.lmscons__StatusPicklist.Retired	Retired	Afgået	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.CSS	CSS	CSS	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Content	Content	Indhold	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Customer Portal	Customer Portal	Kundeportal	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.FDC	FDC	FDC	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Ideas	Ideas	Ideer	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.Partner Portal	Partner Portal	Partnerportal	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Functional_Area.SFA	SFA	SFA	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Administrator	Administrator	Administrator	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Developer	Developer	Udvikler	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.IT Professional	IT Professional	IT-medarbejder	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Job_Role.Sales Professional	Sales Professional	Sælger	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.da	da	Dansk	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.de	de	Tysk	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.en_US	en_US	Engelsk	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.es	es	Spansk	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fi	fi	Finsk	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.fr	fr	Fransk	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.it	it	Italiensk	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ja	ja	Japansk	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ko	ko	Koreansk	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.nl_NL	nl_NL	Hollandsk	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.pt_BR	pt_BR	Portugisisk	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.ru	ru	Russisk	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.sv	sv	Svensk	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.th	th	Thailandsk	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_CN	zh_CN	Kinesisk (forenklet)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Language.zh_TW	zh_TW	Kinesisk (traditionelt)	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Primary_Product.Force.com Mobile	Force.com Mobile	Force.com Mobil	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Product_Category.Sales Cloud	Sales Cloud	Salgssky	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmscons__Training_Path__c.lmscons__Products.Force.com Mobile	Force.com Mobile	Force.com Mobil	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.Completed	Completed	Fuldført	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmscons__Status.In Progress	In Progress	Igangværende	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Completed	Completed	Fuldført	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Failed	Failed	Ikke-bestået	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.In Progress	In Progress	Igangværende	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Passed	Passed	Bestået	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Retired	Retired	Afgået	-
+PicklistValue.lmscons__Transcript_Line__c.lmscons__Status.Unenrolled	Unenrolled	Afmeldt	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Completed	Completed	Fuldført	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Failed	Failed	Ikke-bestået	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.LO Error	LO Error	UO-fejl	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Pending	Pending	Venter	-
+PicklistValue.lmscons__Trigger_Assign_Status__c.lmscons__Status.Skipped	Skipped	Sprunget over	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.contains	contains	indeholder	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.does not contain	does not contain	indeholder ikke	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.equals	equals	er lig med	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.excludes	excludes	ekskluderer	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater or equal	greater or equal	større end eller lig med	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.greater than	greater than	større end	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.includes	includes	omfatter	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less or equal	less or equal	mindre end eller lig med	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.less than	less than	mindre end	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.not equal to	not equal to	ikke lig med	-
+PicklistValue.lmscons__Trigger_Condition__c.lmscons__Operator.starts with	starts with	starter med	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Account	Account	Konto	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Case	Case	Sag	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Contact	Contact	Kontakt	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Lead	Lead	Leder	-
+PicklistValue.lmscons__Trigger_Rule__c.lmscons__Object_Type.Opportunity	Opportunity	Mulighed	-
+PicklistValue.User.lmscons__CFS_Status.Active	Active	Aktiv	-
+PicklistValue.User.lmscons__CFS_Status.Deactivated	Deactivated	Deaktiveret	-
+PicklistValue.User.lmscons__CFS_Status.Not CFS user	Not CFS user	Ikke-CFS-bruger	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Completed	Completed	Fuldført	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.In Progress	In Progress	Igangværende	-
+PicklistValue.lmsilt__Activity_Assignment__c.lmsilt__Status.Not Started	Not Started	Ikke startet	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Relative Dates	Relative Dates	Relative datoer	-
+PicklistValue.lmsilt__Activity__c.lmsilt__Date_type.Static Dates	Static Dates	Faste datoer	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Failed	Failed	Ikke-bestået	-
+PicklistValue.lmsilt__Assignment_Process_Member__c.lmsilt__Status.Success	Success	Lykkedes	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Import	Import	Import	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Action_type.Manual	Manual	Manuel	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Delete	Delete	Slet	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Insert	Insert	Indsæt	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Operation_type.Update	Update	Opdater	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Completed	Completed	Fuldført	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.In Progress	In Progress	Igangværende	-
+PicklistValue.lmsilt__Assignment_Process__c.lmsilt__Progress.Not Started	Not Started	Ikke startet	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Internal	Internal	Intern	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Private	Private	Privat	-
+PicklistValue.lmsilt__Class__c.lmsilt__Type.Public	Public	Offentlig	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Completed	Completed	Fuldført	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.In Progress	In Progress	Igangværende	-
+PicklistValue.lmsilt__Development_Plan_Assignment__c.lmsilt__Status.Not Started	Not Started	Ikke startet	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Manager	Manager	Leder	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.Self	Self	Selv	-
+PicklistValue.lmsilt__Development_Plan_Task__c.lmsilt__Task_Manager.User	User	Bruger	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Delivery_Type.Online	Online	Online	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.IT Professional	IT Professional	IT-medarbejder	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	Sælger	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.da	da	Dansk	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.de	de	Tysk	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.en_US	en_US	Engelsk	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.es	es	Spansk	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fi	fi	Finsk	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.fr	fr	Fransk	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.it	it	Italiensk	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ja	ja	Japansk	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ko	ko	Koreansk	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.nl_NL	nl_NL	Hollandsk	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.pt_BR	pt_BR	Portugisisk (Brasilien)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.ru	ru	Russisk	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.sv	sv	Svensk	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.th	th	Thailandsk	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_CN	zh_CN	Kinesisk (forenklet)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Language.zh_TW	zh_TW	Kinesisk (traditionelt)	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Product_Category.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Products.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Active	Active	Aktiv	-
+PicklistValue.lmsilt__Development_Plan__c.lmsilt__Status.Retired	Retired	Afgået	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Administrator	Administrator	Administrator	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.IT Professional	IT Professional	IT-medarbejder	-
+PicklistValue.lmsilt__Event__c.lmsilt__Job_Roles.Sales Professional	Sales Professional	Sælger	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.da	da	Dansk	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.de	de	Tysk	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.en_US	en_US	Engelsk	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.es	es	Spansk	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fi	fi	Finsk	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.fr	fr	Fransk	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.it	it	Italiensk	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ja	ja	Japansk	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ko	ko	Koreansk	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.nl_NL	nl_NL	Hollandsk	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.pt_BR	pt_BR	Portugisisk	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.ru	ru	Russisk	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.sv	sv	Svensk	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.th	th	Thailandsk	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_CN	zh_CN	Kinesisk (forenklet)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Languages.zh_TW	zh_TW	Kinesisk (traditionelt)	-
+PicklistValue.lmsilt__Event__c.lmsilt__Primary_Product.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmsilt__Event__c.lmsilt__Product_Category.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmsilt__Event__c.lmsilt__Products.CFS Learning	CFS Learning	CFS-undervisning	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Attended	Attended	Deltaget	-
+PicklistValue.lmsilt__GoToTraining_Session__c.lmsilt__Status.Not Attended	Not Attended	Ikke deltaget	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Optional	Optional	Valgfri	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Recommended	Recommended	Anbefalet	-
+PicklistValue.lmsilt__Learning__c.lmsilt__Required.Required	Required	Påkrævet	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Event	Event	Begivenhed	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Module	Module	Modul	-
+PicklistValue.lmscons__Training_Content__c.lmsilt__Module_Type.Task	Task	Opgave	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Pending	Pending	Venter	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Refunded	Refunded	Tilbagebetalt	-
+PicklistValue.lmscons__Training_Unit_Usage__c.lmsilt__Training_Unit_Status.Used	Used	Brugt	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Admin	Admin	Administration	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Instructor	Instructor	Instruktør	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Manager	Manager	Leder	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.Select User	Select User	Vælg bruger	-
+PicklistValue.lmsilt__Material__c.lmsilt__Material_Manager.User	User	Bruger	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Optional	Optional	Valgfri	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Recommended	Recommended	Anbefalet	-
+PicklistValue.lmsilt__Material__c.lmsilt__Required.Required	Required	Påkrævet	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.After	After	Efter	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Anytime	Anytime	Vilkårligt tidspunkt	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.Before	Before	Før	-
+PicklistValue.lmsilt__Material__c.lmsilt__Sequence.During	During	Under	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Active	Active	Aktiv	-
+PicklistValue.lmsilt__Meeting__c.lmsilt__Status.Inactive	Inactive	Inaktiv	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Attended	Attended	Deltaget	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Not Attended	Not Attended	Ikke deltaget	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Attendance_Status.Partially Attended	Partially Attended	Delvist deltaget	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Failed	Failed	Ikke-bestået	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Grade.Passed	Passed	Bestået	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Cancelled	Cancelled	Annulleret	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Enrolled	Enrolled	Tilmeldt	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Waitlisted	Waitlisted	Placeret på venteliste	-
+PicklistValue.lmsilt__Roster__c.lmsilt__Status.Withdrawn	Withdrawn	Trukket tilbage	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.AMER	AMER	AMER	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.APAC	APAC	APAC	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.EMEA	EMEA	EMEA	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Region.JAPAN	JAPAN	JAPAN	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Corporate Headquarters	Corporate Headquarters	Virksomheds hovedkontor	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Hotel	Hotel	Hotel	-
+PicklistValue.lmsilt__Session_Location__c.lmsilt__Type.Office	Office	Kontor	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Announce Name	Announce Name	Bekendtgør navn	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.Beep	Beep	Bip	-
+PicklistValue.lmsilt__Session__c.lmsilt__Entry_Exit_Tone.No Tone	No Tone	Ingen tone	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.ILT	ILT	Klasseværelse	-
+PicklistValue.lmsilt__Session__c.lmsilt__ILT_vILT.vILT	vILT	Virtuel	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PRIVATE	PRIVATE	PRIVAT	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.PUBLIC	PUBLIC	OFFENTLIG	-
+PicklistValue.lmsilt__Session__c.lmsilt__Listing_Type.UNLISTED	UNLISTED	IKKE-OPFØRT	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.GoToTraining	GoToTraining	GoToTraining	-
+PicklistValue.lmsilt__Session__c.lmsilt__Meeting_Type.WebEx	WebEx	WebEx	-
+PicklistValue.lmsilt__Session__c.lmsilt__Telephony_Support.CALLIN	CALLIN	CALLIN	-

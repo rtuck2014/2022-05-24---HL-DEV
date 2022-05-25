@@ -1,0 +1,50 @@
+define([
+  'angular',
+  'app',
+  'services/historyStorage',
+  'services/pageManager',
+  'services/jobManager',
+  'services/dataProvider'
+], function (angular, app) {
+  app.controller('MyLearningCtrl', ['$scope', '$rootScope', 'historyStorage', 'pageManager', 'jobManager', 'dataProvider', 'constants',
+    function ($scope, $rootScope, historyStorage, pageManager, jobManager, dataProvider, constants) {
+        
+      jobManager.startJob();
+      pageManager.setCurrentPage(constants.MY_LEARNING_PAGE);
+
+      $scope.model = {};
+
+      var cachedState = historyStorage.getState();
+
+      if (cachedState && cachedState.orderBy) {
+        $scope.$parent.state = cachedState;
+      } else {
+        // default state.
+        $scope.$parent.state = {
+          searchStr: '',
+          currentSearchStr: '',
+          orderBy: constants.ORDER_BY_TITLE_ASCENDING,
+          ascending: true,
+          searchVisible: true
+        };
+      }
+
+      dataProvider.getMyLearning().then(function (data) {
+          
+          if (data && data.isCFSUser === false){
+              pageManager.goToAccessDeniedPage();
+              return;
+          }
+          
+        console.warn('GOOD');
+        $scope.model.items = data.items;
+        jobManager.finishJob();
+        console.log(data);
+        
+        $scope.$emit('showBackToTop');
+      }, function (error) {
+        console.error('ERROR');
+        pageManager.goToErrorPage(error);
+      });
+    }]);
+});

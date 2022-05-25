@@ -1,0 +1,91 @@
+body{background-color: white; font-family:'ProximaNovaSoft-Regular';}
+input{
+	text-transform: capitalize;
+}
+.website{
+	text-transform: lowercase;
+}
+.left{
+ 	float: left;
+}
+.right{
+ 	float: right;
+ }
+.container {
+ 	color: #686c70;
+    font-family: "ProximaNovaSoft-Regular", Calibri; 
+    font-size: 110%;
+    padding-top: 12px;
+    margin: 4px;
+    width: 100%;
+}
+.container input[type=text],.container select {
+    font-size: 18px;
+    width: 100%;
+    height: 35px;
+    -webkit-appearance: none;
+    margin: 4px 0;
+    line-height: 21px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+}
+.container textarea{
+ 	font-family: "ProximaNovaSoft-Regular", Calibri; 
+ 	font-size: 18px;
+    width: 100%;
+    -webkit-appearance: none;
+    line-height: 21px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+}
+.container button {
+ 	font-size: 18px;
+    -webkit-appearance: button;
+ 	color: #686c70;
+    border-radius: 3px;
+    display: block;
+    padding: 12px;
+    margin: 4px 0;
+    width: 100%;
+    background: #eee;
+    border: solid 1px #ccc;    
+}
+.container .save-warning{
+ 	color: green;
+ 	font-size: 0.8em; 
+}
+.container .relationship-header-block {
+ 	width: 100%; 
+    display: inline-block;
+ }
+ .container .relationship-header-text{
+ 	font-size: 1.2em;
+ }
+.mobile-card {margin-left: 13px;}
+ul.card-list{list-style: none; padding: 0px;}
+ul.card-list li .title {font-size: 18px; color:#3c3d3e; margin: 5px;}
+ul.card-list li .detail {font-size: 12px; font-weight: normal; color:#3c3d3e; margin: 5px;}
+ul.card-list li .detail li {font-size: 12px; font-weight: normal; color:#3c3d3e; list-style-type:disc; margin-left: 1.5em;}
+ul.card-list li input {font-size: 12px;  font-weight: normal; color:#3c3d3e;}
+ul.card-list li .section {font-size: 16px; color:#3c3d3e; margin: 5px; background-color: #EEF1F6}
+ .mobile-card .button-relatedlist{
+    background-color: white!important;
+    border-color: white!important;
+    text-align: left;
+}
+.mobile-card .container{
+    padding-top: 0px;
+    padding-bottom: 5px;
+    margin-left: -12px;
+}
+.mobile-card .container button{font-size: 1rem; padding: 0px; }
+.mobile-card .header-label{
+    font-family: ProximaNovaSoft-Regular;
+    font-size: 1.05rem;;
+    color: #3c3d3e;
+    padding-left: 10px;
+}

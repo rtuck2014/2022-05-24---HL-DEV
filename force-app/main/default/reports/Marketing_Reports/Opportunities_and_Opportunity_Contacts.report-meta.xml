@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity__c$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c$Client__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c$Stage__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c.Opportunity_Client_Teams__r$Contact__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c.Opportunity_Client_Teams__r$Contact__c.Title</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c.Opportunity_Client_Teams__r$Primary__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c$Status__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>For title analysis</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity__c.Opportunity_Client_Teams__r$Opportunity_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Dead,Hold,Active</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity__c$Line_of_Business__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Opportunities and Opportunity Contacts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Opportunities_with_Opportunity_Contacts__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity__c$Expense_Available_Until__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

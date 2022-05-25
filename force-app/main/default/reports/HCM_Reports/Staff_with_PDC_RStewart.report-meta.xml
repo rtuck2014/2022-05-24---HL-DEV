@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Contact$Name</field>
+    </columns>
+    <columns>
+        <field>Contact$Company_Name__c</field>
+    </columns>
+    <columns>
+        <field>Contact$Title</field>
+    </columns>
+    <columns>
+        <field>Contact$Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>Contact$Industry_Group__c</field>
+    </columns>
+    <columns>
+        <field>Contact$Product_Specialty__c</field>
+    </columns>
+    <columns>
+        <field>Contact$Primary_PDC__c</field>
+    </columns>
+    <columns>
+        <field>Contact$Secondary_PDC__c</field>
+    </columns>
+    <columns>
+        <field>Contact$Status__c</field>
+    </columns>
+    <columns>
+        <field>Contact$Departure_Date__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Report of all HL Staff and their PDC for Performance Management project</description>
+    <filter>
+        <criteriaItems>
+            <column>Contact$Account</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>houlihan lokey</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Staff with PDC (RStewart)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Contacts_IT__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Contact$Departure_Date__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Contact$Birthdate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

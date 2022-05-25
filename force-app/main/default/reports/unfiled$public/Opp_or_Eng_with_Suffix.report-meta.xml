@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity__c$Opportunity_Number__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c$Opportunity_Number_Suffix__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c.Engagements__r$Engagement_Number__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c.Engagements__r$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c.Engagements__r$Engagement_Number_Suffix__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity__c$Opportunity_Number_Suffix__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>A,B</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity__c.Engagements__r$Engagement_Number_Suffix__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>A,B</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Opp or Eng with Suffix A or B</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Opportunities_With_Engagements__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity__c$Expense_Available_Until__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

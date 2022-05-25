@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>OppCommCP_CF_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>OppCommCP CF RW</label>
+        <sharedTo>
+            <group>CAO_CF</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>OppCommCP_FAS_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>OppCommCP FVA RW</label>
+        <sharedTo>
+            <group>CAO_FVA</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FVA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>OppCommCP_FR_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>OppCommCP FR RW</label>
+        <sharedTo>
+            <group>CAO_FR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>OppCommCP_SC_RW</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>OppCommCP SC RW</label>
+        <sharedTo>
+            <group>CAO_SC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>SC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>OppCommCP_View_All</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>OppCommCP View All</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+        <criteriaItems>
+            <field>Comment_Type__c</field>
+            <operation>notEqual</operation>
+            <value>Administrative</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

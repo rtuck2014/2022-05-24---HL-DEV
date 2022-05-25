@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>HL_Report_Link_Accounting</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share with Accounting</description>
+        <label>HL Report Link Accounting</label>
+        <sharedTo>
+            <group>Accounting_General</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Security_Assignment_Aggregate__c</field>
+            <operation>contains</operation>
+            <value>Accounting</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>HL_Report_Link_All</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>These reports are open to all</description>
+        <label>HL Report Link All</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>Security_Assignment_Aggregate__c</field>
+            <operation>contains</operation>
+            <value>All</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Security_Assignment_Aggregate__c</field>
+            <operation>contains</operation>
+            <value>Team</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>HL_Report_Link_Backlog</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share with Backlog Group</description>
+        <label>HL Report Link Backlog</label>
+        <sharedTo>
+            <group>Backlog_Report</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Security_Assignment_Aggregate__c</field>
+            <operation>contains</operation>
+            <value>Backlog</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>HL_Report_Link_CFR</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share HL Report Links with the Industry CFR Public Group</description>
+        <label>HL Report Link CFR</label>
+        <sharedTo>
+            <group>Industry_CFR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Security_Assignment_Aggregate__c</field>
+            <operation>contains</operation>
+            <value>Industry_CFR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>HL_Report_Link_CFR_MD</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share HL Report Links with CFR MD Members</description>
+        <label>HL Report Link CFR MD</label>
+        <sharedTo>
+            <group>Industry_Group_MD_CFR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Security_Assignment_Aggregate__c</field>
+            <operation>contains</operation>
+            <value>MD_CFR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>HL_Report_Link_CFR_Member</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share HL Report Links with CFR Members</description>
+        <label>HL Report Link CFR Member</label>
+        <sharedTo>
+            <group>Industry_Group_Member_CFR</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Security_Assignment_Aggregate__c</field>
+            <operation>contains</operation>
+            <value>Member_CFR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>HL_Report_Link_EU_MKTG</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share with EU MKTG Group</description>
+        <label>HL Report Link EU MKTG</label>
+        <sharedTo>
+            <group>EU_MKTG</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Security_Assignment_Aggregate__c</field>
+            <operation>contains</operation>
+            <value>EU_MKTG</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>HL_Report_Link_FS</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share with FS</description>
+        <label>HL Report Link FS</label>
+        <sharedTo>
+            <group>FS_General</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Security_Assignment_Aggregate__c</field>
+            <operation>contains</operation>
+            <value>FS</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>HL_Report_Link_Industry_Head</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share with Industry Heads</description>
+        <label>HL Report Link Industry Head</label>
+        <sharedTo>
+            <group>Industry_Groups</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Security_Assignment_Aggregate__c</field>
+            <operation>contains</operation>
+            <value>IndustryHead</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>HL_Report_Link_LOB_Head</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Share with LOB Heads</description>
+        <label>HL Report Link LOB Head</label>
+        <sharedTo>
+            <group>CAO_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Security_Assignment_Aggregate__c</field>
+            <operation>contains</operation>
+            <value>LOBHead</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>JMC</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>JMC</label>
+        <sharedTo>
+            <group>JMC</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Security_Assignment_Aggregate__c</field>
+            <operation>contains</operation>
+            <value>JMC</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>
