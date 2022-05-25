@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__AddLPToCurriculum</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Add Learning Path to Curriculum</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>top.location.href  = &apos;{!$Site.prefix}/apex/lmscons__AddItems?objId={!lmscons__Learning_Path__c.Id}&amp;item=Curriculum&amp;devName=Learning_Path2&apos;;</url>
+</WebLink>

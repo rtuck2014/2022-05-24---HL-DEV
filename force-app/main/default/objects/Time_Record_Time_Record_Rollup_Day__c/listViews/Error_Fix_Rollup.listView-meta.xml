@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Error_Fix_Rollup</fullName>
+    <columns>NAME</columns>
+    <columns>Time_Record__c</columns>
+    <columns>Time_Record_Rollup_Day__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>CREATEDBY_USER.ALIAS</columns>
+    <columns>CURRENCY_ISO_CODE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATEDBY_USER</field>
+        <operation>equals</operation>
+        <value>Sean Scott</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>12/7/2021 12:00 AM</value>
+    </filters>
+    <label>Error Fix_Rollup</label>
+    <sharedTo>
+        <group>SFDC_ADMINS</group>
+    </sharedTo>
+</ListView>

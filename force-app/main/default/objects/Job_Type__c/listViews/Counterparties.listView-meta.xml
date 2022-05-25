@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Counterparties</fullName>
+    <columns>NAME</columns>
+    <columns>Product_Line__c</columns>
+    <columns>Product_Type__c</columns>
+    <columns>Job_Code__c</columns>
+    <columns>Is_Active__c</columns>
+    <columns>Buyer_Types__c</columns>
+    <columns>Primary_Line_of_Business__c</columns>
+    <columns>Has_Retainer__c</columns>
+    <columns>Engagement_Record_Type__c</columns>
+    <columns>Engagement_Default_Stage__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Is_Transactional__c</columns>
+    <columns>Product_Line_Reporting__c</columns>
+    <columns>Product_Type_Code__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Buyer_Types__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Primary_Line_of_Business__c</field>
+        <operation>equals</operation>
+        <value>CF</value>
+    </filters>
+    <label>Counterparties</label>
+    <language>en_US</language>
+</ListView>

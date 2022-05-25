@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Technology_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Technology Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Semiconductor Manufacturing Machinery</fullName>
+                <default>false</default>
+                <label>Semiconductor Manufacturing Machinery</label>
+            </value>
+            <value>
+                <fullName>Analog and Mixed Signal</fullName>
+                <default>false</default>
+                <label>Analog and Mixed Signal</label>
+            </value>
+            <value>
+                <fullName>Digital</fullName>
+                <default>false</default>
+                <label>Digital</label>
+            </value>
+            <value>
+                <fullName>Semiconductor Manufacturing Services</fullName>
+                <default>false</default>
+                <label>Semiconductor Manufacturing Services</label>
+            </value>
+            <value>
+                <fullName>Internet Software</fullName>
+                <default>false</default>
+                <label>Internet Software</label>
+            </value>
+            <value>
+                <fullName>Online Services</fullName>
+                <default>false</default>
+                <label>Online Services</label>
+            </value>
+            <value>
+                <fullName>Infrastructure Services</fullName>
+                <default>false</default>
+                <label>Infrastructure Services</label>
+            </value>
+            <value>
+                <fullName>Internet Merchant Services</fullName>
+                <default>false</default>
+                <label>Internet Merchant Services</label>
+            </value>
+            <value>
+                <fullName>Information Technology (IT) Consulting</fullName>
+                <default>false</default>
+                <label>Information Technology (IT) Consulting</label>
+            </value>
+            <value>
+                <fullName>Collaboration Tools</fullName>
+                <default>false</default>
+                <label>Collaboration Tools</label>
+            </value>
+            <value>
+                <fullName>Drawing and Imaging Software</fullName>
+                <default>false</default>
+                <label>Drawing and Imaging Software</label>
+            </value>
+            <value>
+                <fullName>Enterprise Software</fullName>
+                <default>false</default>
+                <label>Enterprise Software</label>
+            </value>
+            <value>
+                <fullName>Groupware</fullName>
+                <default>false</default>
+                <label>Groupware</label>
+            </value>
+            <value>
+                <fullName>Math and Science Software</fullName>
+                <default>false</default>
+                <label>Math and Science Software</label>
+            </value>
+            <value>
+                <fullName>Multimedia Software</fullName>
+                <default>false</default>
+                <label>Multimedia Software</label>
+            </value>
+            <value>
+                <fullName>Office and Home Productivity Software</fullName>
+                <default>false</default>
+                <label>Office and Home Productivity Software</label>
+            </value>
+            <value>
+                <fullName>Educational and Training Software</fullName>
+                <default>false</default>
+                <label>Educational and Training Software</label>
+            </value>
+            <value>
+                <fullName>Entertainment Software</fullName>
+                <default>false</default>
+                <label>Entertainment Software</label>
+            </value>
+            <value>
+                <fullName>Automation Products and Services</fullName>
+                <default>false</default>
+                <label>Automation Products and Services</label>
+            </value>
+            <value>
+                <fullName>Backup and Recovery Software</fullName>
+                <default>false</default>
+                <label>Backup and Recovery Software</label>
+            </value>
+            <value>
+                <fullName>Computer Telephone Integration (CTI) Software</fullName>
+                <default>false</default>
+                <label>Computer Telephone Integration (CTI) Software</label>
+            </value>
+            <value>
+                <fullName>Design Automation</fullName>
+                <default>false</default>
+                <label>Design Automation</label>
+            </value>
+            <value>
+                <fullName>Development Tools</fullName>
+                <default>false</default>
+                <label>Development Tools</label>
+            </value>
+            <value>
+                <fullName>License Distribution and Control Software</fullName>
+                <default>false</default>
+                <label>License Distribution and Control Software</label>
+            </value>
+            <value>
+                <fullName>Maintenance Software</fullName>
+                <default>false</default>
+                <label>Maintenance Software</label>
+            </value>
+            <value>
+                <fullName>Network Administration</fullName>
+                <default>false</default>
+                <label>Network Administration</label>
+            </value>
+            <value>
+                <fullName>Operating System Software</fullName>
+                <default>false</default>
+                <label>Operating System Software</label>
+            </value>
+            <value>
+                <fullName>Performance Monitoring and Analysis Software</fullName>
+                <default>false</default>
+                <label>Performance Monitoring and Analysis Software</label>
+            </value>
+            <value>
+                <fullName>Security Software</fullName>
+                <default>false</default>
+                <label>Security Software</label>
+            </value>
+            <value>
+                <fullName>Software Configuration and Control</fullName>
+                <default>false</default>
+                <label>Software Configuration and Control</label>
+            </value>
+            <value>
+                <fullName>Software Research</fullName>
+                <default>false</default>
+                <label>Software Research</label>
+            </value>
+            <value>
+                <fullName>Wireless Access</fullName>
+                <default>false</default>
+                <label>Wireless Access</label>
+            </value>
+            <value>
+                <fullName>Communications Processing Equipment</fullName>
+                <default>false</default>
+                <label>Communications Processing Equipment</label>
+            </value>
+            <value>
+                <fullName>Communications Towers</fullName>
+                <default>false</default>
+                <label>Communications Towers</label>
+            </value>
+            <value>
+                <fullName>Networking Equipment</fullName>
+                <default>false</default>
+                <label>Networking Equipment</label>
+            </value>
+            <value>
+                <fullName>Radio and Television Broadcasting Equipment</fullName>
+                <default>false</default>
+                <label>Radio and Television Broadcasting Equipment</label>
+            </value>
+            <value>
+                <fullName>RFID Systems</fullName>
+                <default>false</default>
+                <label>RFID Systems</label>
+            </value>
+            <value>
+                <fullName>Satellite and Microwave Equipment</fullName>
+                <default>false</default>
+                <label>Satellite and Microwave Equipment</label>
+            </value>
+            <value>
+                <fullName>Telephone and Telecommunications Equipment</fullName>
+                <default>false</default>
+                <label>Telephone and Telecommunications Equipment</label>
+            </value>
+            <value>
+                <fullName>Computer Components</fullName>
+                <default>false</default>
+                <label>Computer Components</label>
+            </value>
+            <value>
+                <fullName>Data Storage</fullName>
+                <default>false</default>
+                <label>Data Storage</label>
+            </value>
+            <value>
+                <fullName>Facsimile Machines</fullName>
+                <default>false</default>
+                <label>Facsimile Machines</label>
+            </value>
+            <value>
+                <fullName>Industry Specific Electronics</fullName>
+                <default>false</default>
+                <label>Industry Specific Electronics</label>
+            </value>
+            <value>
+                <fullName>Labeling Machines</fullName>
+                <default>false</default>
+                <label>Labeling Machines</label>
+            </value>
+            <value>
+                <fullName>Paper Processing Machines</fullName>
+                <default>false</default>
+                <label>Paper Processing Machines</label>
+            </value>
+            <value>
+                <fullName>Personal Computers And Accessories</fullName>
+                <default>false</default>
+                <label>Personal Computers And Accessories</label>
+            </value>
+            <value>
+                <fullName>Photocopiers</fullName>
+                <default>false</default>
+                <label>Photocopiers</label>
+            </value>
+            <value>
+                <fullName>Printers</fullName>
+                <default>false</default>
+                <label>Printers</label>
+            </value>
+            <value>
+                <fullName>Servers</fullName>
+                <default>false</default>
+                <label>Servers</label>
+            </value>
+            <value>
+                <fullName>Smart Cards</fullName>
+                <default>false</default>
+                <label>Smart Cards</label>
+            </value>
+            <value>
+                <fullName>Wireless Telephone Equipment</fullName>
+                <default>false</default>
+                <label>Wireless Telephone Equipment</label>
+            </value>
+            <value>
+                <fullName>Electronic Components</fullName>
+                <default>false</default>
+                <label>Electronic Components</label>
+            </value>
+            <value>
+                <fullName>Calculating and Accounting Machines</fullName>
+                <default>false</default>
+                <label>Calculating and Accounting Machines</label>
+            </value>
+            <value>
+                <fullName>Mail Machines</fullName>
+                <default>false</default>
+                <label>Mail Machines</label>
+            </value>
+            <value>
+                <fullName>Time Clocks and Other Time Recording Devices</fullName>
+                <default>false</default>
+                <label>Time Clocks and Other Time Recording Devices</label>
+            </value>
+            <value>
+                <fullName>Measuring, Analyzing, and Controlling Instruments</fullName>
+                <default>false</default>
+                <label>Measuring, Analyzing, and Controlling Instruments</label>
+            </value>
+            <value>
+                <fullName>Security, Control, Surveillance and Detection Equipment</fullName>
+                <default>false</default>
+                <label>Security, Control, Surveillance and Detection Equipment</label>
+            </value>
+            <value>
+                <fullName>Electronics Manufacturing Equipment</fullName>
+                <default>false</default>
+                <label>Electronics Manufacturing Equipment</label>
+            </value>
+            <value>
+                <fullName>Manufacturing Services</fullName>
+                <default>false</default>
+                <label>Manufacturing Services</label>
+            </value>
+            <value>
+                <fullName>Outsourced Technology Manufacturing Services</fullName>
+                <default>false</default>
+                <label>Outsourced Technology Manufacturing Services</label>
+            </value>
+            <value>
+                <fullName>Commercial Electronics Distribution</fullName>
+                <default>false</default>
+                <label>Commercial Electronics Distribution</label>
+            </value>
+            <value>
+                <fullName>Communications Equipment Distribution</fullName>
+                <default>false</default>
+                <label>Communications Equipment Distribution</label>
+            </value>
+            <value>
+                <fullName>Semiconductor Equipment and Product Distribution</fullName>
+                <default>false</default>
+                <label>Semiconductor Equipment and Product Distribution</label>
+            </value>
+            <value>
+                <fullName>Software Distribution</fullName>
+                <default>false</default>
+                <label>Software Distribution</label>
+            </value>
+            <value>
+                <fullName>Technology Hardware and Equipment Distribution</fullName>
+                <default>false</default>
+                <label>Technology Hardware and Equipment Distribution</label>
+            </value>
+            <value>
+                <fullName>Broadband Telecommunications Services</fullName>
+                <default>false</default>
+                <label>Broadband Telecommunications Services</label>
+            </value>
+            <value>
+                <fullName>Satellite Communication Services</fullName>
+                <default>false</default>
+                <label>Satellite Communication Services</label>
+            </value>
+            <value>
+                <fullName>Calling Card Provider Services</fullName>
+                <default>false</default>
+                <label>Calling Card Provider Services</label>
+            </value>
+            <value>
+                <fullName>Conferencing Services</fullName>
+                <default>false</default>
+                <label>Conferencing Services</label>
+            </value>
+            <value>
+                <fullName>Directory Assistance Services</fullName>
+                <default>false</default>
+                <label>Directory Assistance Services</label>
+            </value>
+            <value>
+                <fullName>Facsimile Transmission Services</fullName>
+                <default>false</default>
+                <label>Facsimile Transmission Services</label>
+            </value>
+            <value>
+                <fullName>Local Telecommunications Services</fullName>
+                <default>false</default>
+                <label>Local Telecommunications Services</label>
+            </value>
+            <value>
+                <fullName>Long Distance Telecommunications Services</fullName>
+                <default>false</default>
+                <label>Long Distance Telecommunications Services</label>
+            </value>
+            <value>
+                <fullName>Pay Phone Provider Services</fullName>
+                <default>false</default>
+                <label>Pay Phone Provider Services</label>
+            </value>
+            <value>
+                <fullName>Ship-To-Shore Broadcasting Communications</fullName>
+                <default>false</default>
+                <label>Ship-To-Shore Broadcasting Communications</label>
+            </value>
+            <value>
+                <fullName>Telephone Answering Services</fullName>
+                <default>false</default>
+                <label>Telephone Answering Services</label>
+            </value>
+            <value>
+                <fullName>Cellular Services</fullName>
+                <default>false</default>
+                <label>Cellular Services</label>
+            </value>
+            <value>
+                <fullName>Mobile Data Services</fullName>
+                <default>false</default>
+                <label>Mobile Data Services</label>
+            </value>
+            <value>
+                <fullName>Paging Services</fullName>
+                <default>false</default>
+                <label>Paging Services</label>
+            </value>
+            <value>
+                <fullName>Telecommunications</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Telecommunications</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>10</visibleLines>
+</CustomField>

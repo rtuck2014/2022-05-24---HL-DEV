@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsNBC_BasedOn_JobType__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(Or(Text(Job_Type__c)==&apos;Activism Advisory&apos;,Text(Job_Type__c)==&apos;Corporate Alliances&apos;,Text(Job_Type__c)==&apos;Debt Advisory&apos;,text(Job_Type__c)==&apos;ESOP Corporate Finance&apos;,text(Job_Type__c)==&apos;Financing&apos;,text(Job_Type__c)==&apos;Partners&apos;,text(Job_Type__c)==&apos;Real Estate Brokerage&apos;,text(Job_Type__c)==&apos;Special Situations&apos;,text(Job_Type__c)==&apos;Strategic Alternatives Study&apos;,text(Job_Type__c)==&apos;Take Over Defense&apos;),false,true)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>IsNBC_BasedOn_JobType</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Log_Activity_For_Email__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Determines whether or not activity should log against the contact when user sends an email.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Determines whether or not activity should log against the contact when user sends an email.</inlineHelpText>
+    <label>Log Activity For Email</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

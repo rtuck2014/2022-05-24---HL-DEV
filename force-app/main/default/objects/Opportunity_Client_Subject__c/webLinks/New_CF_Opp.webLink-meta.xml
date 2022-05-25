@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_CF_Opp</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>New CF Opportunity</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>/a0I/e?RecordType=012i0000000tPyF&amp;ent=01Ii0000001pvsm&amp;
+Name={!Account.Name}&amp;
+CF00Ni000000D7zoC={!Account.Name}&amp;
+CF00Ni000000D7zoC_lkid={!Account.Id}&amp;
+CF00Ni000000D80OZ={!Account.Name}&amp;
+CF00Ni000000D80OZ_lkid={!Account.Id}&amp;
+retURL=/{!Account.Id}</url>
+</WebLink>

@@ -1,0 +1,90 @@
+<apex:page name="HL_SendEmail" controller="HL_EmailController" tabStyle="Account" lightningStylesheets="true">
+    
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    
+    <apex:form rendered="{!!PrimaryContactEmailTitleCheck}" >
+    
+
+        <apex:pageMessage severity="Error" strength="3" summary="{!$Label.HL_NoEmailTitleOnPrimaryContact}">
+            <apex:outputlabel value="Primary Contact"  rendered="{!(PrimaryContactWithNoEmailTitleSize) }" / >
+                <ul>
+                    <apex:repeat value="{!PrimaryContactWithNoEmailTitle}" var="PrimaryCon" rendered="{!(PrimaryContactWithNoEmailTitleSize) }">
+                        <li>
+                            {!PrimaryCon}
+                        </li>
+                    </apex:repeat>
+                </ul>
+            <apex:outputlabel value="Billing Contact"  rendered="{!(BillingContactWithNoEmailTitleSize) }" / >
+                <ul>
+                    <apex:repeat value="{!BillingContactWithNoEmailTitle}" var="BillingCon" rendered="{!(BillingContactWithNoEmailTitleSize) }">
+                        <li>
+                            {!BillingCon}
+                        </li>
+                    </apex:repeat>
+                </ul>
+                    <apex:commandButton value="Back To Engagement" action="{!Cancel}" immediate="true" />
+            </apex:pageMessage> 
+        </apex:form>
+        
+        <apex:form rendered="{!PrimaryContactEmailTitleCheck}">
+            <apex:pageBlock id="pbSendEmail" title="Send Email">
+                <apex:pageBlockButtons >
+                    <apex:commandButton id="SendEmail" action="{!SendEmail}" value="Send Email"/>
+                    <apex:commandButton id="Cancel" action="{!Cancel}" value="Cancel" immediate="true"></apex:commandButton>
+                </apex:pageBlockButtons>
+                <apex:pageBlockSection id="pbsMain" columns="1" rendered="{!NOT(CONTAINS(EmailTemplate.Name,'NBC'))}">
+                    <apex:inputField id="Contact" value="{!EmailTemplate.Distribution_Group__c}"  required="true" label="To" taborderhint="1" />
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Additional CCs" columns="1" id="pbsAdditionalCCs" rendered="{!NOT(CONTAINS(EmailTemplate.Name,'NBC'))}">
+                    <script> 
+                    var ccSize = '{!EmailCCs.size}'; 
+                    if(ccSize === '0')
+                        twistSection(document.getElementById('{!$Component.pbsAdditionalCCs}').getElementsByTagName('img')[0]) 
+                        </script>
+                    <apex:pageBlockTable id="pbtEmailCCs" value="{!EmailCCs}" var="cc" rendered="{!EmailCCs.size > 0}">
+                        <apex:column headerValue="Remove" styleClass="center" headerClass="center" style="width: 50px;">
+                            <apex:commandLink value="Del" action="{!RemoveCC}" onclick="return confirmDelete();" styleClass="removeCCCheckbox">
+                                <apex:param name="p2" assignTo="{!DelId}" value="{!cc.Id}"></apex:param>
+                            </apex:commandLink>
+                        </apex:column>
+                        <apex:column value="{!cc.Name}" headerValue="Employee"/>
+                        <apex:column value="{!cc.Title}" />
+                        <apex:column value="{!cc.Email}" />
+                    </apex:pageBlockTable>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Lookup CC"></apex:outputLabel>
+                        <apex:outputPanel >
+                            <apex:inputText id="inputCCId" value="{!SelectedCCName}" html-placeholder="Begin Typing Name - 2 Characters Min..." style="width:250px;">
+                                <apex:inputHidden value="{!SelectedCCId}" id="inputCCId_lkid"></apex:inputHidden>
+                                <apex:outputPanel id="ccSelection">
+                                    <c:HL_AutoComplete objectname="DistributionList" sObjectFieldName="Name" delay="1200"
+                                                       autocomplete_textbox="{!$Component.inputCCId}" autocomplete_actionbutton="{!$Component.addCC}" bgColor="white" fontSize="11"/>  
+                                </apex:outputPanel>
+                            </apex:inputText>
+                            <apex:commandButton id="addCC" action="{!AddCC}" value="Add CC" style="display:none;" />
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection columns="1">
+                    <apex:pageBlockSectionItem rendered="{!NOT(CONTAINS(EmailTemplate.Name,'NBC')) && NOT(CONTAINS(EmailTemplate.Name,'FR_Summary'))}">
+                        <apex:outputLabel value="Attachment"></apex:outputLabel>
+                        <apex:inputFile value="{!EmailFileBody}" fileName="{!EmailFileName}" title="Add Attachment - Must be Under 5 MB" ></apex:inputFile>
+                    </apex:pageBlockSectionItem>     
+                    <apex:inputField id="Subject" value="{!EmailTemplate.Email_Subject__c}" required="true" label="Subject" taborderhint="3" style="width: 99%;"></apex:inputField>
+                    <apex:inputTextarea id="Body" value="{!EmailTemplate.Template_Body__c}" richText="true" label="Email Body" style="width: 100%" rows="65" />                 
+                </apex:pageBlockSection>
+                
+                <!-- ayu addition -->
+                <apex:pageBlockSection title="Attachments" columns="1" rendered="{!CONTAINS(EmailTemplate.Name, 'NBC') || CONTAINS(EmailTemplate.Name, 'CBC')}">
+                    <apex:pageBlockTable value="{!notesAndAttachments}" var="na">
+                        <apex:column headerValue="Name">
+                            <apex:outputLink value="{!URLFOR('/' + na.id + '?retURL=' + $CurrentPage.parameters.Id)}">
+                                {!na.Name}</apex:outputLink>
+                        </apex:column>
+                        <apex:column value="{!na.LastModifiedDate}"/>
+                        <apex:column value="{!na.LastModifiedById}"/>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:form>
+    </apex:page>

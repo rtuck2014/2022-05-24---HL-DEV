@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Engagement_Letter_Criteria__c</fullName>
+    <externalId>false</externalId>
+    <label>Engagement Letter Criteria</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Fairness opinion or fairness opinion &amp; no broker-dealer activities</fullName>
+                <default>false</default>
+                <label>Fairness opinion or fairness opinion &amp; no broker-dealer activities</label>
+            </value>
+            <value>
+                <fullName>Fairness opinion plus broker-dealer activities</fullName>
+                <default>false</default>
+                <label>Fairness opinion plus broker-dealer activities</label>
+            </value>
+            <value>
+                <fullName>Not yet clear</fullName>
+                <default>false</default>
+                <label>Not yet clear</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

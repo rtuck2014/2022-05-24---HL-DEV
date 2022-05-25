@@ -1,0 +1,53 @@
+<apex:page standardController="Offsite_Template_Industry__c" extensions="HL_OTIListController"  recordSetVar="ind" lightningStylesheets="true">
+    <apex:form >
+       <apex:pageMessages ></apex:pageMessages>
+       <apex:pageBlock title="Update Offsite Template Industries">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!updateIndustries}" value="Save"/>
+                <apex:commandButton action="{!updateIndustriesAndReturn}" value="Save and Return"/>
+                <apex:commandButton action="{!cancel}" value="Cancel"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!Industries}" var="i">
+                <apex:column >
+                    <apex:outputLink value="{!URLFOR($Action.Offsite_Template_Industry__c.Edit, i.Id,[retURL=i.Offsite_Template__c])}" target="_self">Edit</apex:outputLink>
+                </apex:column>
+                <apex:column value="{!i.Industry__c}"/>
+                <apex:column headerValue="Focus">
+                    <apex:inputCheckbox styleClass="focus" value="{!i.Focus__c}"/>
+                    <apex:facet name="header"> 
+                        <apex:outputPanel >
+                        <apex:inputCheckbox >
+                            <apex:actionSupport event="onclick" onsubmit="toggleAllFocus(this)" rerender=""/>
+                         </apex:inputCheckbox>
+                         <apex:outputText value="Focus"></apex:outputText>
+                        </apex:outputPanel>
+                     </apex:facet>
+                </apex:column> 
+                <apex:column headerValue="Meeting">
+                    <apex:inputCheckbox styleClass="meeting" value="{!i.Meeting__c}"/>
+                    <apex:facet name="header"> 
+                        <apex:outputPanel >
+                            <apex:inputCheckbox >
+                                <apex:actionSupport event="onclick" onsubmit="toggleAllMeeting(this)" rerender=""/>
+                            </apex:inputCheckbox>
+                            <apex:outputText value="Meeting"></apex:outputText>
+                        </apex:outputPanel>
+                     </apex:facet>
+                </apex:column> 
+            </apex:pageBlockTable> 
+        </apex:pageBlock>
+        <apex:pageMessages ></apex:pageMessages>
+    </apex:form>    
+    <script type="text/javascript">
+        function toggleAllMeeting(chk){
+            var inputElem = document.getElementsByClassName("meeting");
+            for(var i=0; i<inputElem.length; i++)
+                inputElem[i].checked = chk.checked;
+        } 
+        function toggleAllFocus(chk){
+            var inputElem = document.getElementsByClassName("focus");
+            for(var i=0; i<inputElem.length; i++)
+                inputElem[i].checked = chk.checked;
+        } 
+     </script>
+</apex:page>

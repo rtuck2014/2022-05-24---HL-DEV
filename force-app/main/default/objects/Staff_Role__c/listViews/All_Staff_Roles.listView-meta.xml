@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Staff_Roles</fullName>
+    <columns>NAME</columns>
+    <columns>Execution_Team__c</columns>
+    <columns>Display_Name__c</columns>
+    <columns>Opportunity__c</columns>
+    <columns>SC__c</columns>
+    <columns>Engagement__c</columns>
+    <columns>CF__c</columns>
+    <columns>FAS__c</columns>
+    <columns>FR__c</columns>
+    <columns>FS__c</columns>
+    <columns>Registered_Only__c</columns>
+    <columns>Non_Registered_Only__c</columns>
+    <columns>Fin_Only__c</columns>
+    <columns>Non_Fin_Only__c</columns>
+    <columns>Registered_Excluded_Job_Codes__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Staff Roles</label>
+</ListView>

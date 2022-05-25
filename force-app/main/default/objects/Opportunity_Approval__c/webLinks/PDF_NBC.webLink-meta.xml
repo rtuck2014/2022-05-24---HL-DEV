@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PDF_NBC</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>PDF</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>https://mycognostest.hl.com/ibmcognos/bi/v1/disp?b_action=cognosViewer&amp;run.outputFormat=PDF&amp;run.prompt=false&amp;ui.object=storeID%28%22iD29E565465BD4D848268778E29A8D35B%22%29&amp;ui.action=run&amp;cv.header=true&amp;cv.toolbar=false&amp;ui_appbar=true&amp;p_p_OpportunityId={!Opportunity_Approval__c.Related_Opportunity_Case_Safe__c}</url>
+</WebLink>

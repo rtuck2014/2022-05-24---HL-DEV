@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Convert_to_Engagement</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Convert to Engagement</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)}
+
+    var request = new sforce.SObject(&quot;Opportunity__c&quot;);
+    request.Id = &quot;{!Opportunity__c.Id}&quot;;
+    var isNBCApprovalRequied = &quot;{!Opportunity__c.NBC_Approved__c}&quot;;
+    var oppLOB = &quot;{!Opportunity__c.Line_of_Business__c}&quot;;
+	if(oppLOB == &apos;CF&apos; &amp;&amp; isNBCApprovalRequied == false){
+		alert(&apos;ERROR: NBC form approval is now required!&apos;);
+	}
+	else{
+				var conversionResult = sforce.apex.execute(&quot;SL_Convert_Engagement&quot;, &quot;convertEngagement&quot;, {opportunityId: request.Id});
+		if (conversionResult.toString().substring(0,5)==&quot;ERROR&quot;){
+			alert( conversionResult.toString());
+		}
+		else if (conversionResult.toString().substring(0,15)==request.Id){
+					window.location.href = window.location.href;
+		}
+		else{
+					window.location.href = &quot;/apex/HL_EngagementView?id=&quot;+conversionResult+&quot;&amp;&amp;converted=true&quot;;
+		}
+	}</url>
+</WebLink>

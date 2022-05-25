@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Time__c</fullName>
+    <externalId>false</externalId>
+    <formula>TEXT(FLOOR(Hours_Worked__c))
+&amp;&apos;hr&apos;&amp; 
+if((Hours_Worked__c*60)&gt;59.9,TEXT(FLOOR(MOD((Hours_Worked__c *60),60))),TEXT((Hours_Worked__c*60)))
+&amp;&apos;min&apos; &amp; if(FLOOR(MOD((Hours_Worked__c*3600),60))&gt;59.9,TEXT(FLOOR(MOD((FLOOR(MOD((Hours_Worked__c*3600),60))),60))),TEXT(FLOOR(MOD((Hours_Worked__c*3600),60))))&amp;&apos;sec&apos;</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Time</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

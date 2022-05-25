@@ -1,0 +1,6 @@
+<apex:page standardController="Monthly_Revenue_Process_Control__c" extensions="SL_MonthlyRevenueProcessControllerExt" action="{!createRecord}" lightningStylesheets="true">
+<apex:slds /> 
+
+    <apex:pageMessages escape="false" />
+    
+</apex:page>

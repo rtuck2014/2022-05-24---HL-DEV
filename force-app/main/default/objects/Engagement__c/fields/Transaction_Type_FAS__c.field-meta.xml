@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transaction_Type_FAS__c</fullName>
+    <description>FOR FVA</description>
+    <externalId>false</externalId>
+    <inlineHelpText>FVA Transaction Types</inlineHelpText>
+    <label>Transaction Type FVA</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <controllingField>Job_Type__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Buy Side</fullName>
+                <default>false</default>
+                <label>Buy Side</label>
+            </value>
+            <value>
+                <fullName>Collateral Valuation</fullName>
+                <default>false</default>
+                <label>Collateral Valuation</label>
+            </value>
+            <value>
+                <fullName>Commercially Reasonable Opinion</fullName>
+                <default>false</default>
+                <label>Commercially Reasonable Opinion</label>
+            </value>
+            <value>
+                <fullName>Concurrent Sale/Rollup</fullName>
+                <default>false</default>
+                <label>Concurrent Sale/Rollup</label>
+            </value>
+            <value>
+                <fullName>Contractual Arrangement</fullName>
+                <default>false</default>
+                <label>Contractual Arrangement</label>
+            </value>
+            <value>
+                <fullName>Cross Trade or Fund Transfer</fullName>
+                <default>false</default>
+                <label>Cross Trade or Fund Transfer</label>
+            </value>
+            <value>
+                <fullName>Dividend With No Incremental Leverage</fullName>
+                <default>false</default>
+                <label>Dividend With No Incremental Leverage</label>
+            </value>
+            <value>
+                <fullName>Equity Investment</fullName>
+                <default>false</default>
+                <label>Equity Investment</label>
+            </value>
+            <value>
+                <fullName>ESOP</fullName>
+                <default>false</default>
+                <label>ESOP</label>
+            </value>
+            <value>
+                <fullName>Fund Recapitalization</fullName>
+                <default>false</default>
+                <label>Fund Recapitalization</label>
+            </value>
+            <value>
+                <fullName>Fund Seeding</fullName>
+                <default>false</default>
+                <label>Fund Seeding</label>
+            </value>
+            <value>
+                <fullName>Going Private</fullName>
+                <default>false</default>
+                <label>Going Private</label>
+            </value>
+            <value>
+                <fullName>Joint Venture</fullName>
+                <default>false</default>
+                <label>Joint Venture</label>
+            </value>
+            <value>
+                <fullName>Merger/Acquisition/Sale</fullName>
+                <default>false</default>
+                <label>Merger/Acquisition/Sale</label>
+            </value>
+            <value>
+                <fullName>Merger Of Equals</fullName>
+                <default>false</default>
+                <label>Merger Of Equals</label>
+            </value>
+            <value>
+                <fullName>Minority Investment</fullName>
+                <default>false</default>
+                <label>Minority Investment</label>
+            </value>
+            <value>
+                <fullName>PIPE</fullName>
+                <default>false</default>
+                <label>PIPE</label>
+            </value>
+            <value>
+                <fullName>Principal Trade</fullName>
+                <default>false</default>
+                <label>Principal Trade</label>
+            </value>
+            <value>
+                <fullName>Recapitalization</fullName>
+                <default>false</default>
+                <label>Recapitalization</label>
+            </value>
+            <value>
+                <fullName>Sell Side (Company)</fullName>
+                <default>false</default>
+                <label>Sell Side (Company)</label>
+            </value>
+            <value>
+                <fullName>Sell Side (Divestiture)</fullName>
+                <default>false</default>
+                <label>Sell Side (Divestiture)</label>
+            </value>
+            <value>
+                <fullName>Spinoff/Dividend</fullName>
+                <default>false</default>
+                <label>Spinoff/Dividend</label>
+            </value>
+            <value>
+                <fullName>Statutory Requirement</fullName>
+                <default>false</default>
+                <label>Statutory Requirement</label>
+            </value>
+            <value>
+                <fullName>Valuation Pursuant To A Shareholder Agmt</fullName>
+                <default>false</default>
+                <label>Valuation Pursuant To A Shareholder Agmt</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>FA - Fund Opinions-Non-Fairness</controllingFieldValue>
+            <controllingFieldValue>FA - Fund Opinions-Fairness</controllingFieldValue>
+            <valueName>Contractual Arrangement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FA - Fund Opinions-Non-Fairness</controllingFieldValue>
+            <controllingFieldValue>FA - Fund Opinions-Fairness</controllingFieldValue>
+            <valueName>Cross Trade or Fund Transfer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FA - Fund Opinions-Non-Fairness</controllingFieldValue>
+            <controllingFieldValue>FA - Fund Opinions-Fairness</controllingFieldValue>
+            <valueName>Fund Recapitalization</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FA - Fund Opinions-Non-Fairness</controllingFieldValue>
+            <controllingFieldValue>FA - Fund Opinions-Fairness</controllingFieldValue>
+            <valueName>Fund Seeding</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FA - Fund Opinions-Non-Fairness</controllingFieldValue>
+            <controllingFieldValue>FA - Fund Opinions-Fairness</controllingFieldValue>
+            <valueName>Principal Trade</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FA - Fund Opinions-Non-Fairness</controllingFieldValue>
+            <controllingFieldValue>Fairness</controllingFieldValue>
+            <controllingFieldValue>FMV Transaction Based Opinion</controllingFieldValue>
+            <controllingFieldValue>Solvency</controllingFieldValue>
+            <controllingFieldValue>FA - Fund Opinions-Fairness</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fairness</controllingFieldValue>
+            <valueName>Buy Side</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fairness</controllingFieldValue>
+            <controllingFieldValue>FMV Transaction Based Opinion</controllingFieldValue>
+            <valueName>Collateral Valuation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fairness</controllingFieldValue>
+            <valueName>ESOP</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fairness</controllingFieldValue>
+            <valueName>Going Private</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fairness</controllingFieldValue>
+            <valueName>Merger Of Equals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fairness</controllingFieldValue>
+            <valueName>Minority Investment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fairness</controllingFieldValue>
+            <valueName>PIPE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fairness</controllingFieldValue>
+            <valueName>Sell Side (Company)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fairness</controllingFieldValue>
+            <valueName>Sell Side (Divestiture)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FMV Transaction Based Opinion</controllingFieldValue>
+            <valueName>Equity Investment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FMV Transaction Based Opinion</controllingFieldValue>
+            <controllingFieldValue>Solvency</controllingFieldValue>
+            <valueName>Merger/Acquisition/Sale</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>FMV Transaction Based Opinion</controllingFieldValue>
+            <valueName>Valuation Pursuant To A Shareholder Agmt</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Solvency</controllingFieldValue>
+            <valueName>Recapitalization</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Solvency</controllingFieldValue>
+            <valueName>Spinoff/Dividend</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Solvency</controllingFieldValue>
+            <valueName>Statutory Requirement</valueName>
+        </valueSettings>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

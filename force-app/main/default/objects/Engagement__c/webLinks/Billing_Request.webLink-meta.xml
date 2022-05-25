@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Request</fullName>
+    <availability>online</availability>
+    <description>Old Value: /email/author/emailauthor.jsp?retURL=/{!Engagement__c.Id}&amp;p2_lkid=003i000002E9urV&amp;p3_lkid={!Engagement__c.Id}&amp;template_id=00Xi0000000dqjs&amp;retURL=/{!Engagement__c.Id}</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Billing Request</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>/apex/HL_SendEmail?retURL={!Engagement__c.Id}&amp;template=Billing_Request&amp;ro={!Engagement__c.Id}</url>
+</WebLink>

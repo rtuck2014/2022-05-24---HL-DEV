@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Reports</fullName>
+    <availability>online</availability>
+    <description>Report Page used in Browser</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>Opportunity Reports</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <url>/apex/HL_OpportunityReportLinks?id={!Opportunity__c.Full_Opportunity_ID__c}</url>
+</WebLink>

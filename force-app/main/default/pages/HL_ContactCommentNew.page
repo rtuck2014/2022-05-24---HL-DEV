@@ -1,0 +1,43 @@
+<apex:page standardcontroller="Contact_Comment__c" extensions="HL_ContactCommentController" lightningStyleSheets="true">    
+    <div class="bPageTitle"><div class="ptBody"><div class="content"><img src="/img/s.gif" alt="Custom" class="pageTitleIcon" title="Custom"/><h1 class="pageType">
+     HL Contact Comment Edit<span class="titleSeparatingColon">:</span></h1><h2 class="pageDescription">New HL Contact Comment</h2><div class="blank">&nbsp;</div></div>
+     <div class="links"><a href="javascript:openPopupFocusEscapePounds(%27https://hl--c.na25.visual.force.com/apex/HL_UserGuide?loc=help&amp;target=co_edit.htm&amp;
+     section=CustomObjects&amp;showSplash=true%27, %27Help%27, 1024, 768, %27width=1024,height=768,resizable=yes,toolbar=yes,status=yes,scrollbars=yes,menubar=yes,directories=no,
+     location=yes,dependant=no%27, false, false);" title="Help for this Page (New Window)"><span class="helpLink">Help for this Page</span><img src="/img/s.gif" alt="" 
+     class="helpIcon"/></a></div></div><div class="ptBreadcrumb"></div></div>
+    
+    <!--------------- JS Section ------------------------------>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}"/>
+    
+    <script>
+        j$ = jQuery.noConflict(); 
+        function blockme() {
+            j$.blockUI({ css: {
+                border: 'none',
+                padding: '15px',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .5,
+                color: '#fff'
+            }}); 
+        }
+    </script>
+    <!--------------- Main Field Section------------------------>
+    <apex:form id="frmId">     
+        <apex:pageBlock title="HL Contact Comment Edit" mode="Edit"> 
+            <apex:pageMessages />    
+            <apex:pageBlockButtons location="Top">     
+                <apex:commandButton action="{!SaveRecord}" value="Save" rerender="frmId" onclick="blockme()" oncomplete="j$.unblockUI();"/>      
+                <apex:commandButton action="{!SaveNewRecord}" value="Save & New" rerender="frmId" onclick="blockme()" oncomplete="j$.unblockUI();"/>    
+                <apex:commandButton action="{!CancelRecord}" value="Cancel" immediate="true" />   
+            </apex:pageBlockButtons>  
+            <apex:pageBlockSection title="Information" columns="1">
+                <apex:outputField value="{!ContCommentNew.Comment_Type__c}"/>         
+                <apex:inputField value="{!Contact_Comment__c.Comment__c}" style="width: 360px; height: 200px" />    
+            </apex:pageBlockSection>       
+        </apex:pageBlock>       
+    </apex:form>
+</apex:page>

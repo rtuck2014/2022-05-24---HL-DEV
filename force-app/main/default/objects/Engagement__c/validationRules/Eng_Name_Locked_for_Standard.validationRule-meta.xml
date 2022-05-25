@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Eng_Name_Locked_for_Standard</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(ISCHANGED(DND_Status__c), FALSE, (ISCHANGED( Name ) &amp;&amp; $User.ProfileId = &apos;00ei0000001XLGD&apos;))</errorConditionFormula>
+    <errorMessage>Insufficient privileges to change Engagement Name.</errorMessage>
+</ValidationRule>

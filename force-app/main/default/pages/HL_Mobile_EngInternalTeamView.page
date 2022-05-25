@@ -1,0 +1,106 @@
+<apex:page standardController="Engagement__c"  docType="html-5.0" sidebar="false" showHeader="false" standardStylesheets="false" lightningStylesheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_MobileCSS)}"></apex:stylesheet>
+    <style>
+        body{background-color: white; color: #3c3d3e;}
+        .mobile-card {margin-left: 13px;}
+        ul.card-list{list-style: none; color: font-family:'ProximaNovaSoft-Regular'; padding: 0px;}
+        ul.card-list li h4 {font-size: 18px; font-family:'ProximaNovaSoft-Regular'; color:#3c3d3e; margin: 5px;}
+        ul.card-list li h5 {font-size: 12px; font-weight: normal; font-family:'ProximaNovaSoft-Regular'; color:#3c3d3e; margin: 5px;}
+    </style>
+    <apex:remoteObjects jsNamespace="RemoteObjectModel">
+        <apex:remoteObjectModel name="Engagement_Internal_Team__c" fields="Engagement__c,Contact__c,Contact_Name__c,Contact_Office__c,Contact_LOB__c,Contact_Title__c,Active_On_Engagement__c,Role__c" jsShorthand="EIT"></apex:remoteObjectModel>
+    </apex:remoteObjects>
+     <input id="engagementId" type="hidden" value="{!Id}" /> 
+       <div class="mobile-card">
+        <div class="container">
+            <div class="row">
+                    <div class="col-sm-1">
+                        <button id="btnEIT" class="button-relatedlist"><table>
+                            <tr><td><img class="icon uiImage relatedList" title="" alt="" height="38px" style="background-color:#49bcd3; border-radius: 3px;" src="{!URLFOR($Resource.HL_Images,'icon-group.png')}"/></td><td class="header-label">HL Internal Team</td></tr>
+                            </table>
+                        </button>  
+                    </div>
+                </div>
+          </div>  
+        </div>
+        <hr />
+        <ul id="teamList" class="card-list"></ul>
+        <span id="noResults" style="display: none;"><h4>No HL Internal Team to Display</h4></span>
+         <script src="/soap/ajax/9.0/connection.js" type="text/javascript"></script>
+        <script>
+        $j = jQuery.noConflict();
+        $j(document).ready(function () {
+            DocumentReady();
+        });      
+        function DocumentReady(){
+            var engagementId = $j("#engagementId").val();
+            var eit = new RemoteObjectModel.EIT();
+            
+            eit.retrieve({where: {
+                                       Engagement__c: {eq: engagementId},
+                                       Active_On_Engagement__c: {eq: true}
+                                    },
+                                    orderby: [ {Contact_Name__c: 'ASC'}, {Contact__c : 'ASC'}, {Role__c : 'ASC'} ],
+                                    limit: 100
+                                   }, function(err, records, event){
+                if(err){alert(err);}
+                else{
+                    var contactIds = [];
+                    var lastId = '';
+                    var roleText = '';
+                    var currentRecord,lastRecord;
+                    var ul = document.getElementById("teamList");
+                    if(records.length > 0){
+                        records.forEach(function(record) {
+                            var contactId = record.get("Contact__c");
+                            currentRecord = record;
+                            if(lastId && contactId != lastId)
+                                 AddNode(ul,lastRecord, roleText);
+                            
+                            if(contactIds.indexOf(contactId) < 0){
+                                roleText = record.get("Role__c");
+                                lastId = record.get("Contact__c");
+                            }
+                            else if(contactId === lastId){
+                                roleText = roleText + ', ' + record.get("Role__c");
+                            }
+                            
+                            contactIds.push(record.get("Contact__c"));
+                            lastRecord = record;
+                        });  
+                        AddNode(ul,currentRecord, roleText);
+                    }
+                    else
+                        $j("#noResults").show();
+                }
+            });
+        }
+        function AddNode(ul, record, roleText){
+            // Build the text for a OIT line item
+            var nameText = record.get("Contact_Name__c");
+            var officeText = record.get("Contact_Office__c");
+            var titleText = record.get("Contact_Title__c");
+            var lobText = record.get("Contact_LOB__c");
+            // Add the line item to the OIT list
+            var li = document.createElement("li");
+            var h4 = document.createElement("h4");
+            var h5Office = document.createElement("h5");
+            var h5Title = document.createElement("h5");
+            var h5LOB = document.createElement("h5");
+            var h5Role = document.createElement("h5");
+            h4.appendChild(document.createTextNode(nameText));
+            h5Office.appendChild(document.createTextNode(officeText));
+            h5Title.appendChild(document.createTextNode(titleText));
+            h5LOB.appendChild(document.createTextNode(lobText));
+            h5Role.appendChild(document.createTextNode(roleText));
+            li.appendChild(h4);
+            li.appendChild(h5Office);
+            li.appendChild(h5Title);
+            li.appendChild(h5LOB);
+            li.appendChild(h5Role);
+            li.appendChild(document.createElement("hr"));
+            ul.appendChild(li);
+        }
+        </script>
+</apex:page>

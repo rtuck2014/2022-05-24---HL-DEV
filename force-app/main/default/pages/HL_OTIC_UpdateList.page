@@ -1,0 +1,104 @@
+<apex:page id="oticUpdateList" standardController="Offsite_Template_Investment_Company__c" extensions="HL_OTICListController" recordSetVar="ind" lightningStylesheets="true">
+    <apex:form >
+        <apex:pageMessages ></apex:pageMessages>
+       <apex:pageBlock id="pbInvestments" title="Update Offsite Template Investments">
+            <apex:pageBlockButtons location="top" >
+                <apex:commandButton action="{!updateInvestments}" value="Save"/>
+                <apex:commandButton action="{!updateInvestmentsAndReturn}" value="Save and Return"/>
+                <apex:commandButton action="{!cancel}" value="Cancel"/>
+                <div style="float: right;">  
+                    <apex:outputPanel id="panFilter">
+                        <apex:inputHidden value="{!AlphabetFilter}" id="alphabetFilterValue"></apex:inputHidden>
+                        <apex:commandButton id="btnFilter" action="{!Filter}" status="loadingStatus" style="display:none;"/>
+                        <c:HL_AlphabetFilter selectedFilter="{!AlphabetFilter}" actionButton="{!$Component.btnFilter}" rerenderList="{!$Component.pbInvestments}" valueField="{!$Component.alphabetFilterValue}"></c:HL_AlphabetFilter>
+                        <br />
+                        <div style="padding-top: 10px; margin-left: -5px;">
+                            <apex:inputCheckbox value="{!CurrentOnly}">
+                                <apex:actionSupport event="onclick" action="{!Filter}" rerender="pbInvestments" status="loadingStatus"></apex:actionSupport>
+                            </apex:inputCheckbox>
+                            <apex:outputText style="font-style:bold;" value="Current Investments Only"/>
+                            <apex:actionStatus id="loadingStatus">
+                                <apex:facet name="start" ><apex:outputPanel ><img style="padding-left: 10px;" src="/img/loading.gif" /><span>&nbsp;Loading...</span></apex:outputPanel></apex:facet>
+                            </apex:actionStatus> 
+                        </div>
+                    </apex:outputPanel> 
+                </div>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!Investments}" var="i">
+                <apex:column >
+                    <apex:outputLink value="{!URLFOR($Action.Offsite_Template_Investment_Company__c.Edit, i.Id,[retURL=i.Offsite_Template__c])}" target="_self">Edit</apex:outputLink>
+                </apex:column>
+                <!--<apex:column headerValue="Investment">
+                    <apex:outputLink value="{!URLFOR($Action.Investment__c.View, i.Investment_Company__c,[retURL=i.Offsite_Template__c])}" target="_self">Details</apex:outputLink>
+                </apex:column>-->
+                <apex:column value="{!i.Portfolio_Company__c}"/>
+                <apex:column value="{!i.Investment_Date__c}"/>
+                <apex:column value="{!i.Status__c}"/>
+                <apex:column headerValue="{!$ObjectType.Offsite_Template_Investment_Company__c.Fields.Service__c.Label}">
+                    <apex:inputField value="{!i.Service__c}"/>
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.Offsite_Template_Investment_Company__c.Fields.Prospect__c.Label}">
+                    <apex:inputCheckbox value="{!i.Prospect__c}"/>
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.Offsite_Template_Investment_Company__c.Fields.Description__c.Label}">
+                    <apex:inputTextarea value="{!i.Description__c}"></apex:inputTextarea>
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.Offsite_Template_Investment_Company__c.Fields.Include__c.Label}">
+                    <apex:inputCheckbox styleClass="include" value="{!i.Include__c}"/>
+                     <apex:facet name="header"> 
+                        <apex:outputPanel >
+                            <apex:inputCheckbox >
+                                <apex:actionSupport event="onclick" onsubmit="toggleAllInclude(this)" rerender=""/>
+                            </apex:inputCheckbox>
+                            <apex:outputLabel value="Include"></apex:outputLabel>
+                        </apex:outputPanel>
+                     </apex:facet>
+                </apex:column> 
+            </apex:pageBlockTable> 
+             <apex:outputText value="No records to display" rendered="{!(investments.size == 0)}"></apex:outputText>
+         <!-- Pagination -->
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    Page: <apex:outputText value="{!setCon.PageNumber} of {! if(CEILING(setCon.ResultSize/setCon.PageSize) > 0,CEILING(setCon.ResultSize/setCon.PageSize),1) }"></apex:outputText>
+                </td>
+                <td align="center">
+                    <!-- Previous page -->
+                    <!-- active, didn't put rerender here since we want them to be taken back to the top -->
+                    <apex:commandLink action="{!Previous}" value="<< Previous" rendered="{!setCon.HasPrevious}"></apex:commandLink>
+                    <!--inactive (no earlier pages) -->
+                    <apex:outputText style="color: #ccc;" value="<< Previous" rendered="{! NOT(setCon.HasPrevious) }"></apex:outputText>
+                    &nbsp;&nbsp;
+                    <!-- Next page -->
+                    <!-- active, didn't put rerender here since we want them to be taken back to the top -->
+                    <apex:CommandLink action="{!Next}" value="Next >>" rendered="{! setCon.HasNext}"></apex:CommandLink>
+                    <!--inactive (no more pages) -->
+                    <apex:outputText style="color: #ccc;" value="Next >>" rendered="{! NOT(setCon.HasNext)}"></apex:outputText>
+                </td>
+                <td align="right">
+                    Total Records:
+                    <apex:outputLabel value="{!setCon.ResultSize}"></apex:outputLabel>
+                </td>
+            </tr>    
+        </table>
+        <apex:pageBlockButtons location="bottom" >
+               <apex:commandButton action="{!updateInvestments}" value="Save"/>
+               <apex:commandButton action="{!updateInvestmentsAndReturn}" value="Save and Return"/>
+               <apex:commandButton action="{!cancel}" value="Cancel"/>
+           </apex:pageBlockButtons>
+        </apex:pageBlock>
+        <apex:pageMessages ></apex:pageMessages>
+    </apex:form>    
+    <style>
+        td.pbTitle {vertical-align: top!important;}
+        td {vertical-align: top!important;}
+        .multiSelectPicklistTable tr:first-child{display: none;}
+    </style>
+    <script type="text/javascript">
+        function toggleAllInclude(chk){
+            var inputElem = document.getElementsByClassName("include");
+            for(var i=0; i<inputElem.length; i++)
+                inputElem[i].checked = chk.checked;
+        } 
+    </script>
+</apex:page>

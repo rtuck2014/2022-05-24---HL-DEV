@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_PreparationEffort_for_Dead</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISCHANGED(Stage__c) &amp;&amp;
+ISPICKVAL(Line_of_Business__c, &apos;CF&apos;) &amp;&amp;
+ISPICKVAL(Stage__c, &apos;Dead&apos;) &amp;&amp;
+ISBLANK(TEXT( Preparation_Effort__c))</errorConditionFormula>
+    <errorDisplayField>Preparation_Effort__c</errorDisplayField>
+    <errorMessage>Engagement is Dead, please enter Preparation Effort.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,24 @@
+<apex:page standardController="Financing__c" showHeader="false" sidebar="false" lightningStylesheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_FinancingEdit.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <script type="text/javascript">
+    function ClosePopup(){
+         window.parent.$j("[title$=Close]").trigger('click');
+    }
+    </script>
+    <apex:form >
+    <apex:pageBlock mode="Edit" tabStyle="Approval_Object__c">
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!QuickSave}" value="Save" oncomplete="ClosePopup();"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1">
+                <apex:inputField id="editFinancingType" value="{!Financing__c.Financing_Type__c}" />
+                <apex:inputField id="editFinancingOther" value="{!Financing__c.Notes__c}" label="Other" />
+                <apex:inputField value="{!Financing__c.Security_Type__c}" />
+                <apex:inputField value="{!Financing__c.Financing_Amount__c}" styleClass="numeric-short"></apex:inputField>
+            </apex:pageBlockSection>  
+    </apex:pageBlock>   
+    </apex:form>
+</apex:page>

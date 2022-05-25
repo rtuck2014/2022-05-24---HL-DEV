@@ -1,0 +1,83 @@
+<apex:page standardController="SL_Mass_Implementation__c" extensions="SL_LIB16_SetupButtons" tabStyle="SL_Mass_Implementation__c">
+<apex:sectionHeader title="Setup Custom Buttons" />
+<script>
+if (!window.console) {var console = {};}
+if (!console.log) {console.log = function() {};}
+</script>
+<apex:form id="Form">
+<apex:pageBlock title="Settings for Custom Buttons">
+
+    <apex:pageBlockSection title="Single-ADD List Button for Target Object ({!SL_Mass_Implementation__c.targetObjectName__c})" columns="2">
+        <ul>
+                <li>Label: 'Single Add'</li>
+                <li>Name: 'Single_Add'</li>
+                <li>Display Type: List Button (Display Checkboxes: unchecked)</li>
+                <li>Behavior: Execute JavaScript</li>
+                <li>Content Source: OnClick JavaScript</li>
+                <li>OnClick JavaScript (text-editor): <br/>
+                <textarea rows="8" cols="40" style="width:100%;direction: ltr;" readonly="readonly" spellcheck="false" onclick="this.focus(); this.select()" dir="ltr">{!addSingle}</textarea>
+                </li>
+        </ul>
+    </apex:pageBlockSection>
+
+
+    <apex:pageBlockSection title="Multi-ADD List Button for Target Object ({!SL_Mass_Implementation__c.targetObjectName__c})" columns="2">
+        <ul>
+                <li>Label: 'Multi Add'</li>
+                <li>Name: 'Multi_Add'</li>
+                <li>Display Type: List Button (Display Checkboxes: checked)</li>
+                <li>Behavior: Display in existing window with sidebar</li>
+                <li>Content Source: URL</li>
+                <li>Link URL (text-editor): <br/>
+                    <textarea rows="2" cols="40" style="width:100%;direction: ltr;" readonly="readonly" spellcheck="false" onclick="this.focus(); this.select()" dir="ltr">{!addUrl}</textarea>
+                </li>
+        </ul>
+    </apex:pageBlockSection>
+    <apex:pageBlockSection title="Multi-EDIT List button for Target Object ({!SL_Mass_Implementation__c.targetObjectName__c})" columns="2">
+        <ul>
+                <li>Label: 'Multi Edit'</li>
+                <li>Name: 'Multi_Edit'</li>
+                <li>Display Type: List Button (Display Checkboxes: unchecked)</li>
+                <li>Behavior: Display in existing window with sidebar</li>
+                <li>Content Source: URL</li>
+                <li>Link URL (text-editor): <br/>
+                    <textarea rows="2" cols="40" style="width:100%;direction: ltr;" readonly="readonly" spellcheck="false" onclick="this.focus(); this.select()" dir="ltr">{!editUrl}</textarea>
+                </li>
+        </ul>
+    </apex:pageBlockSection>
+    
+    <apex:pageBlockSection title="Manage-Targets Detail page button for Parent Object ({!SL_Mass_Implementation__c.parentObjectName__c})" columns="2">
+        <ul>
+                <li>Go to: Setup->Create->Objects->{!ParentObjName}->Buttons, Links, and Actions</li>
+                <li>Click "New Button of Link"</li>
+                <li>Label: 'Manage Targets'</li>
+                <li>Name: 'Manage_Targets'</li>
+                <li>Display Type: Detail Page Button</li>
+                <li>Behavior: Display in existing window with sidebar</li>
+                <li>Content Source: URL</li>
+                <li>Link URL (text-editor): <br/>
+                    <textarea rows="2" cols="40" style="width:100%;direction: ltr;" readonly="readonly" spellcheck="false" onclick="this.focus(); this.select()" dir="ltr">{!manageTargetsUrl}</textarea>
+                </li>
+        </ul>
+    </apex:pageBlockSection>
+    
+    <apex:pageBlockSection title="Multi-DELETE List button for Target Object ({!SL_Mass_Implementation__c.targetObjectName__c})" columns="2">
+        <ul>
+                <li>Label: 'Multi Delete'</li>
+                <li>Name: 'Multi_Delete'</li>
+                <li>Display Type: List Button (Display Checkboxes: checked)</li>
+                <li>Behavior: Execute JavaScript</li>
+                <li>Content Source: OnClick JavaScript</li>
+                <li>OnClick JavaScript (text-editor): <br/>
+                    <textarea rows="8" cols="40" style="width:100%;direction: ltr;" readonly="readonly" spellcheck="false" onclick="this.focus(); this.select()" dir="ltr">{!deleteUrl}</textarea>
+                </li>
+        </ul>
+    </apex:pageBlockSection>
+    
+    <apex:pageBlockButtons >
+        <apex:commandButton value="Back" action="{!goBack}" />
+    </apex:pageBlockButtons>
+</apex:pageBlock>
+</apex:form>
+
+</apex:page>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assets_Transferred__c</fullName>
+    <externalId>false</externalId>
+    <label>Assets Transferred</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Franchise</fullName>
+                <default>false</default>
+                <label>Franchise</label>
+            </value>
+            <value>
+                <fullName>Copyrights</fullName>
+                <default>false</default>
+                <label>Copyrights</label>
+            </value>
+            <value>
+                <fullName>Trade Secrets</fullName>
+                <default>false</default>
+                <label>Trade Secrets</label>
+            </value>
+            <value>
+                <fullName>Patents</fullName>
+                <default>false</default>
+                <label>Patents</label>
+            </value>
+            <value>
+                <fullName>Know-How</fullName>
+                <default>false</default>
+                <label>Know-How</label>
+            </value>
+            <value>
+                <fullName>Trade Names</fullName>
+                <default>false</default>
+                <label>Trade Names</label>
+            </value>
+            <value>
+                <fullName>Trademarks</fullName>
+                <default>false</default>
+                <label>Trademarks</label>
+            </value>
+            <value>
+                <fullName>Technology</fullName>
+                <default>false</default>
+                <label>Technology</label>
+            </value>
+            <value>
+                <fullName>Software</fullName>
+                <default>false</default>
+                <label>Software</label>
+            </value>
+            <value>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+                <label>Marketing</label>
+            </value>
+            <value>
+                <fullName>Logo</fullName>
+                <default>false</default>
+                <label>Logo</label>
+            </value>
+            <value>
+                <fullName>Minerals</fullName>
+                <default>false</default>
+                <label>Minerals</label>
+            </value>
+            <value>
+                <fullName>Information</fullName>
+                <default>false</default>
+                <label>Information</label>
+            </value>
+            <value>
+                <fullName>R&amp;D</fullName>
+                <default>false</default>
+                <label>R&amp;D</label>
+            </value>
+            <value>
+                <fullName>Web Content</fullName>
+                <default>false</default>
+                <label>Web Content</label>
+            </value>
+            <value>
+                <fullName>Debt</fullName>
+                <default>false</default>
+                <label>Debt</label>
+            </value>
+            <value>
+                <fullName>Equity</fullName>
+                <default>false</default>
+                <label>Equity</label>
+            </value>
+            <value>
+                <fullName>Options</fullName>
+                <default>false</default>
+                <label>Options</label>
+            </value>
+            <value>
+                <fullName>Revenue Sharing Contract</fullName>
+                <default>false</default>
+                <label>Revenue Sharing Contract</label>
+            </value>
+            <value>
+                <fullName>Capital Assets</fullName>
+                <default>false</default>
+                <label>Capital Assets</label>
+            </value>
+            <value>
+                <fullName>Business Unit</fullName>
+                <default>false</default>
+                <label>Business Unit</label>
+            </value>
+            <value>
+                <fullName>Company</fullName>
+                <default>false</default>
+                <label>Company</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

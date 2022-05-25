@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_Multiple_Deliverables__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates if the deal has multiple deliverables, by default. If this is true, the accrual can be made according to the stage.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates if the deal has multiple deliverables, by default. If this is true, the accrual can be made according to the stage.</inlineHelpText>
+    <label>Has Multiple Deliverables</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

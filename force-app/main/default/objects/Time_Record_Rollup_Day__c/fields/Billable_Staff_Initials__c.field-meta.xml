@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billable_Staff_Initials__c</fullName>
+    <description>Used for reporting/dashboard</description>
+    <externalId>false</externalId>
+    <formula>Time_Record_Period_Staff_Member__r.Contact__r.Initials__c + &apos; - &apos; +  IF(Is_Billable__c, &apos;Chargeable&apos;, &apos;Non-Charge&apos;)</formula>
+    <label>Billable Staff Initials</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

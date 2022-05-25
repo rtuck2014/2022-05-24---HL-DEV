@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LOB__c</fullName>
+    <externalId>false</externalId>
+    <label>LOB</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CF</fullName>
+                <default>false</default>
+                <label>CF</label>
+            </value>
+            <value>
+                <fullName>FVA</fullName>
+                <default>false</default>
+                <label>FVA</label>
+            </value>
+            <value>
+                <fullName>FRG</fullName>
+                <default>false</default>
+                <label>FRG</label>
+            </value>
+            <value>
+                <fullName>SC</fullName>
+                <default>false</default>
+                <label>SC</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

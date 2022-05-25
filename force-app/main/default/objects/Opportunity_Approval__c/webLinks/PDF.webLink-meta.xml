@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PDF</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>PDF</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>var FormType = &quot;{!Opportunity_Approval__c.Form_Type__c}&quot;;
+
+IF(FormType = &quot;NBC&quot;){
+navigateToUrl($Setup.HL_General__c.Cognos_Protocol__c + $Setup.HL_General__c.Cognos_Domain__c + &quot;/ibmcognos/cgi-bin/cognosisapi.dll?b_action=cognosViewer&amp;ui.action=run&amp;ui.object=%2fcontent%2ffolder%5b%40name%3d%27Salesforce%20Reports%27%5d%2ffolder%5b%40name%3d%27Opportunity%27%5d%2ffolder%5b%40name%3d%27CF%27%5d%2freport%5b%40name%3d%27NBC%27%5d&amp;ui.name=NBC&amp;run.outputFormat=&amp;run.prompt=true&quot;);
+}</url>
+</WebLink>

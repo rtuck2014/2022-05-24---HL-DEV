@@ -1,0 +1,591 @@
+<apex:page standardcontroller="Eng_VP__c" name="HL_EngValuationPeriodView" extensions="HL_EngVPController,HL_Eng_VP_Custom_Links" lightningStyleSheets="true">
+    <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+<link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />-->
+    
+    <input type="hidden" id="SelectedInProgressItemID" />     
+    <script>              
+    function delRec(recid){
+        var respond = confirm('{!$Label.HL_PositionDelete}');
+        if(respond)
+        {
+            blockme();
+            callToDel(recid);
+        }
+    }  
+    </script> 
+    <script>
+    //var originalselectedId = '';
+    j$ = jQuery.noConflict();               
+    
+    function blockme() {
+        j$.blockUI({ css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+        } }); 
+        
+    }
+    </script>
+    <script>
+    // workaround is necessary since inline editing of VF picklist and/or checkboxes won't commit changes before action if the user doesn't "click out" first.  
+    function focusAndSave() {                
+        document.getElementById('focusMe').click();
+        blockme();
+        saveFields();            
+    }
+    </script>
+    <style type="text/css">
+        .popupBackground{
+        background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 20);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9998;
+        }
+        .custPopup{
+        background-color: white;
+        border-width: 2px;
+        border-style: solid;
+        z-index: 9999;
+        left: 50%;
+        padding:10px;
+        position: absolute;
+        width: 500px;
+        margin-left: -250px;
+        top:40%;
+        }
+        
+    </style>
+    <div class="bPageTitle"><div class="ptBody"><div class="content"><img src="/img/s.gif" alt="Custom" class="pageTitleIcon" title="Custom"/><h1 class="pageType">
+        Engagement Valuation Period<span class="titleSeparatingColon">:</span></h1><h2 class="pageDescription">{!Eng_VP__c.Name}</h2><div class="blank">&nbsp;</div></div><div class="links"> 
+        <a href="javascript:openPopupFocusEscapePounds(%27https://hl--c.na25.visual.force.com/apex/HL_UserGuide?loc=help&amp;target=getstart_help.htm&amp;section=Getting_Started&amp;showSplash=true%27, 
+                 %27Help%27, 1024, 768, %27width=1024,height=768,resizable=yes,toolbar=yes,status=yes,scrollbars=yes,menubar=yes,directories=no,location=yes,dependant=no%27, false, false);" title="Help for this Page
+                                                                                                                                                                                                     (New Window)"><span class="helpLink">Help for this Page</span><img src="/img/s.gif" alt="" class="helpIcon"/></a></div></div><div class="ptBreadcrumb"></div></div>
+    
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:form id="frmId" >
+        <apex:actionFunction action="{!saveRc}" name="saveFields"  reRender="pgmsgId" oncomplete="j$.unblockUI();"/>
+        <apex:actionRegion >
+            <apex:actionFunction action="{!DummyReset}" name="DummyReset1"  reRender="NameFieldId">
+                <apex:param name="field1" assignTo="{!fieldAPI}" value="" />
+            </apex:actionFunction>  
+            <apex:actionFunction action="{!DummyReset}" name="DummyReset2"  reRender="FrequencyId,MonthQuarterId">
+                <apex:param name="field2" assignTo="{!fieldAPI}" value="" />
+            </apex:actionFunction>
+            <apex:actionFunction action="{!}" name="DummyReset3"  reRender="SummaryId">
+                <apex:param name="field3" assignTo="{!fieldAPI}" value="" />
+            </apex:actionFunction>
+         
+        </apex:actionRegion>
+        <apex:pageBlock title="Engagement Valuation Period Detail" mode="Maindetail" id="pbid">
+            <apex:pageMessages id="pgmsgId" />
+            <apex:pageBlockButtons location="Top"> 
+                <apex:commandButton action="{!Edit}" value="Edit" id="OnEdit" rendered="{!AND((userProfileName != 'System Administrator (Read Only)'))}"/>  
+                <apex:commandButton action="{!DeleteRecord}" value="Delete" reRender="pgmsgId" id="Ondelete" rendered="{!AND(IsSuperVisorOrAdmin, IsHavingPVPermissionSetOrIsSysAdmin, (userProfileName != 'System Administrator (Read Only)'))}"/> 
+                <apex:commandButton value="Save" id="Onsave" style="display: none;" onclick="focusAndSave(); return false;" reRender="pgmsgId" rendered="{!AND((userProfileName != 'System Administrator (Read Only)'))}"/>        
+                <apex:commandButton action="{!Cancel}" value="Cancel" id="Oncancel" reRender="pbid" style="display: none;"/>     
+                <apex:commandButton Value="Import Positions" action="{!ImportPosition}" id="OnImportposition"  rendered="{!AND((userProfileName != 'System Administrator (Read Only)'))}"/>    
+                <apex:commandButton Value="Back To Eng Valuation Period List" action="{!Backtovp}" id="Onbacktovp" /> 
+            </apex:pageBlockButtons>        
+            <input type="text" id="focusMe" style="display:none" />
+            
+            <apex:pageBlockSection title="Engagement Information" >
+                <apex:outputField value="{!Eng_VP__c.Engagement__r.Client__c}" />
+                <apex:outputField value="{!Eng_VP__c.Engagement__c}"/>
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:outputField value="{!Eng_VP__c.Engagement_Number__c}"/>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Valuation Information" id="pbsId">
+                
+                <apex:outputField value="{!EngVPView.name}" id="NameFieldId" >
+                    <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                                            hideOnEdit="OnEdit,Ondelete,Onvoidposition,Onbacktovp,OnImportposition" event="ondblclick" 
+                                            changedStyleClass="inlineEditRequiredDiv" resetFunction="DummyReset1('Name');" disabled="{!!AND((userProfileName != 'System Administrator (Read Only)'))}" />
+                </apex:outputField> 
+                <apex:outputField value="{!EngVPView.Frequency__c}" id="FrequencyId">
+                    <apex:inlineEditSupport showOnEdit="Onsave,Oncancel"
+                                            hideOnEdit="OnEdit,Ondelete,Onvoidposition,Onbacktovp,OnImportposition" event="ondblclick" 
+                                            changedStyleClass="myBoldClass" resetFunction="DummyReset2('Frequency__c');" disabled="{!!AND((userProfileName != 'System Administrator (Read Only)'))}" />
+                </apex:outputField> 
+                <apex:outputField value="{!EngVPView.Summary__c}" id="SummaryId">
+                    <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                                            hideOnEdit="OnEdit,Ondelete,Onvoidposition,Onbacktovp,OnImportposition" event="ondblclick" 
+                                            changedStyleClass="myBoldClass" resetFunction="DummyReset3('Summary__c');" disabled="{!!AND((userProfileName != 'System Administrator (Read Only)'))}" />    
+                </apex:outputField> 
+                <apex:outputField value="{!EngVPView.Month_Quarter__c}" id="MonthQuarterId">
+                    <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                                            hideOnEdit="OnEdit,Ondelete,Onvoidposition,Onbacktovp,OnImportposition" event="ondblclick" 
+                                            changedStyleClass="myBoldClass" resetFunction="DummyReset4('Month_Quarter__c');" disabled="{!!AND((userProfileName != 'System Administrator (Read Only)'))}" />
+                </apex:outputField> 
+                <apex:outputField value="{!EngVPView.Valuation_Date__c}" id="ValuationDateId">
+                    <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                                            hideOnEdit="OnEdit,Ondelete,Onvoidposition,Onbacktovp,OnImportposition" event="ondblclick" 
+                                            changedStyleClass="inlineEditRequiredDiv" resetFunction="DummyReset5('Valuation_Date__c');" disabled="{!!AND((userProfileName != 'System Administrator (Read Only)'))}" />
+                       
+                                            
+                </apex:outputField>          
+                <apex:outputField value="{!Eng_VP__c.Overall_VP_Status__c}"/>
+                <apex:outputField value="{!Eng_VP__c.Job_Type__c}"/>      
+                
+                
+                <apex:outputField value="{!EngVPView.Fee_Total__c}" rendered="{!IshavingValidRoleForRevAccrual}"/>  
+                <apex:InputField value="{!EngVPView.Total_Fee_Completed__c}" rendered="{!IshavingValidRoleForRevAccrual}" />
+                <apex:outputField value="{!EngVPView.Fee_Notes_Description__c}" rendered="{!IshavingValidRoleForRevAccrual}"/>
+               
+                <apex:outputField value="{!Eng_VP__c.Hours_per_Investment_Analyst__c}" id="HoursperInvestmentAnalystID">
+                    <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                                            hideOnEdit="OnEdit,Ondelete,Onvoidposition,Onbacktovp,OnImportposition" event="ondblclick" 
+                                            changedStyleClass="inlineEditRequiredDiv" resetFunction="DummyReset6('Hours_per_Investment_Analyst__c');" disabled="{!!AND((userProfileName != 'System Administrator (Read Only)'))}" />
+                </apex:outputField>                   
+                <apex:outputField value="{!Eng_VP__c.Client_Complexity__c}" id="ClientComplexityId">
+                    <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                                            hideOnEdit="OnEdit,Ondelete,Onvoidposition,Onbacktovp,OnImportposition" event="ondblclick" 
+                                            changedStyleClass="inlineEditRequiredDiv" resetFunction="DummyReset7('Client_Complexity__c');" disabled="{!!AND((userProfileName != 'System Administrator (Read Only)'))}" />
+
+                </apex:outputField>    
+                <apex:outputField value="{!Eng_VP__c.Hours_per_Investment_Associate__c}" id="HoursperInvestmentAssociateID">
+                    <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                                            hideOnEdit="OnEdit,Ondelete,Onvoidposition,Onbacktovp,OnImportposition" event="ondblclick" 
+                                            changedStyleClass="inlineEditRequiredDiv" resetFunction="DummyReset8('Hours_per_Investment_Associate__c');" disabled="{!!AND((userProfileName != 'System Administrator (Read Only)'))}" />
+             
+                </apex:outputField>          
+                <apex:outputField value="{!Eng_VP__c.Client_Draft_Deadline__c}" id="ClientDraftDeadlineId">
+                     <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                                            hideOnEdit="OnEdit,Ondelete,Onvoidposition,Onbacktovp,OnImportposition" event="ondblclick" 
+                                            changedStyleClass="inlineEditRequiredDiv" resetFunction="DummyReset9('Client_Draft_Deadline__c');" disabled="{!!AND((userProfileName != 'System Administrator (Read Only)'))}" />
+
+                </apex:outputField> 
+                <apex:outputField value="{!Eng_VP__c.Hours_per_Investment_Admin__c}" id="HoursperInvestmentAdminID">
+                    <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                                            hideOnEdit="OnEdit,Ondelete,Onvoidposition,Onbacktovp,OnImportposition" event="ondblclick" 
+                                            changedStyleClass="inlineEditRequiredDiv" resetFunction="DummyReset10('Hours_per_Investment_Admin__c');" disabled="{!!AND((userProfileName != 'System Administrator (Read Only)'))}" />
+    
+                </apex:outputField>  
+                   <apex:outputField value="{!EngVPView.ClientStartDate__c}" id="ClientStartDatelineId">
+                <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                                            hideOnEdit="OnEdit,Ondelete,Onvoidposition,Onbacktovp,OnImportposition" event="ondblclick" 
+                                            changedStyleClass="inlineEditRequiredDiv" resetFunction="DummyReset11('ClientStartDate__c');" disabled="{!!AND((userProfileName != 'System Administrator (Read Only)'))}" />
+                                      
+                                           
+                </apex:outputField>        
+                <apex:outputField value="{!Eng_VP__c.Client_Final_Deadline__c}" id="ClientFinalDeadlineId">
+                <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                                            hideOnEdit="OnEdit,Ondelete,Onvoidposition,Onbacktovp,OnImportposition" event="ondblclick" 
+                                            changedStyleClass="inlineEditRequiredDiv" resetFunction="DummyReset12('Client_Final_Deadline__c');" disabled="{!!AND((userProfileName != 'System Administrator (Read Only)'))}" />
+                                      
+                                           
+                </apex:outputField>   
+
+                     <apex:outputField value="{!EngVPView.Invoices__c}" id="invoiceId1">
+                    <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                                            hideOnEdit="OnEdit,Ondelete,Onvoidposition,Onbacktovp,OnImportposition" event="ondblclick" 
+                                            changedStyleClass="myBoldClass" resetFunction="DummyReset3('Invoices__c');" disabled="{!!AND((userProfileName != 'System Administrator (Read Only)'))}" />    
+                </apex:outputField> 
+            </apex:pageBlockSection>    
+            <apex:pageBlockSection title="Report Section" columns="1" rendered="{!IsValidUser}">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Custom Links</apex:outputLabel>
+                    <apex:outputLink Value="/{!Reportlink1}" target="_blank">All Positions and Team Members</apex:outputLink>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputLabel>
+                    <apex:outputLink Value="/{!Reportlink2}" target="_blank">All Positions by Team Members</apex:outputLink> 
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputLabel>
+                    <apex:outputLink Value="/{!Reportlink3}" target="_blank">Valuation Portfolio Report Fees</apex:outputLink> 
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>       
+            <apex:pageBlockSection title="System Information">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Created By" ></apex:outputLabel>
+                    <apex:outputPanel ><apex:outputField value="{!Eng_VP__c.createdByID}"/> &nbsp;         
+                        <apex:outputText value="{0,date,MM/dd/yyyy h:mm a}"> <apex:param value="{!Eng_VP__c.CreatedDate+offset}" /> </apex:outputText>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>            
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Last Modified By" ></apex:outputLabel>
+                    <apex:outputPanel ><apex:outputField value="{!Eng_VP__c.LastModifiedByID}" /> &nbsp;        
+                        <apex:outputText value="{0,date,MM/dd/yyyy h:mm a}"> <apex:param value="{!Eng_VP__c.LastModifiedDate+offset}" /> </apex:outputText>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection> 
+        </apex:pageBlock>   
+        <!-------------------------------------------------------------------------------RELATED LIST -------------------------------------------------------------------------------------------------------------------------->
+        <apex:actionFunction action="{!EditRecord}" name="callToEdit" reRender="RelatedRecordPanelId" >
+            <apex:param value="" assignTo="{!SelectedRecId}" name="recIdToEdit" />
+        </apex:actionFunction>
+        <apex:actionFunction action="{!DeleteSelectedRecord}" name="callToDel" reRender="RelatedRecordPanelId,PBBtnsId,pbsId" oncomplete="j$.unblockUI();clearSelectionOnDelete();" >
+            <apex:param value="" assignTo="{!SelectedRecId}" name="recIdToDel" />
+        </apex:actionFunction>
+        <apex:actionFunction action="{!GenerateAccrual}" name="SaveMe" rerender="PeriodPositionsRL" onComplete="j$.unblockUI();">
+            <apex:param value="" assignTo="{!SelectedInProgressItem}" name="SelectedRecords" />
+        </apex:actionFunction>
+        <apex:pageBlock title="Eng Valuation Period Positions" id="PeriodPositionsRL"> 
+            <apex:pageBlockButtons location="Top"  >
+                <apex:outputPanel id="PBBtnsId">
+                    
+                    <apex:commandButton value="New Eng Valuation Period Position" action="{!NewPosition}" rendered="{!(userProfileName != 'System Administrator (Read Only)')}" />                    
+                    
+                    <!--<apex:commandButton reRender="PeriodPositionsRL" value="Save" onclick="SaveMeJS();" rendered="{!AND((userProfileName != 'System Administrator (Read Only)'),IshavingValidRoleForRevAccrual,IF(RelatedPositionList.size>0, true, false ))}"  onComplete="j$.unblockUI();" />-->
+                    <apex:outputPanel rendered="{!AND((userProfileName != 'System Administrator (Read Only)'),IshavingValidRoleForRevAccrual,IF(RelatedPositionList.size>0, true, false ))}">
+                        <input type="button" onclick="SaveMeJS();" value="Save" class="btn" />
+                    </apex:outputPanel>
+                    <input type="button" id="btnShow" value="Billing Request" class="btn" />
+                    
+                    <apex:commandButton value="Update Automation Tool Usage" action="{!updatePosition}" rendered="{!AND((userProfileName != 'System Administrator (Read Only)'),IshavingValidRoleForRevAccrual,IF(RelatedPositionList.size>0, true, false ))}" />
+                    
+                </apex:outputPanel>
+            </apex:pageBlockButtons>
+                <apex:outputPanel id="tstpopup" rendered="{!showPopup}">
+                    <apex:outputPanel styleClass="popupBackground" layout="block" />
+                    <apex:outputPanel styleClass="custPopup" layout="block" >
+                        <center>
+                           <apex:pageMessage escape="false" severity="Warning" strength="3" summary="A) Please check Automation status to <b>confirm Automation Tool usage</b>.<br/><br/>B) Please also confirm that all team members have been entered correctly. If applicable, position should include an <b>Analyst, Associate, Manager, and Principal</b>.<br/><br/>Please click “Continue” to accrue position(s) or click “Cancel” to return to Valuation Period.<br/>">
+                            <apex:pageBlockTable value="{!positionToDisplayInPopup}" var="PositionInPopup" rendered="{!positionToDisplayInPopup.size > 0}">
+                                <apex:column headerValue="Position Name">
+                                    <apex:outputLink value="/{!PositionInPopup.Id}" target="_blank">{!PositionInPopup.Name}</apex:outputLink>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                            <apex:commandButton value="Continue" reRender="RelatedRecordPanelId,PeriodPositionsRL"  action="{!GenerateAccrualFinal}" onclick="blockme();" oncomplete="j$.unblockUI();" />
+                            <apex:commandButton value="Cancel" action="{!CancelIt}" />
+                             </apex:pageMessage>
+                        </center>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            
+            <!--Start: For report Fee Popup -->
+            <script > 
+            $jq = jQuery.noConflict();  
+            $jq(function () {
+                $jq("#dialog").dialog({
+                    modal: true,
+                    autoOpen: false,
+                    title: "O&M Billing",
+                    width: 350,
+                    height: 150
+                }).prev(".ui-dialog-titlebar").css("background","#1797C0");
+                $jq("#btnShow").click(function () { 
+                    $jq('#dialog').dialog('open');
+                });
+            });
+            
+           
+            
+            function StoreInHiddenVariable(x){
+                
+                document.getElementById('btnShow').Value = x;        
+            }
+            
+            function passReportFeeToClass(){
+                var SelectedReportFee = document.getElementById('btnShow').Value ;
+                passReportFeeAF(SelectedReportFee );
+                return false;
+            }
+            </script>
+            <div id="WarningPanel" style="display: none" align = "center">
+                
+                
+                <apex:actionFunction action="{!reportFeeRedirect}" name="passReportFeeAF" reRender="out" status="status">
+                    <apex:param name="SelectedReportFee" assignTo="{!reportFeeSelected}" value="" />
+                </apex:actionFunction>
+                <apex:commandButton value="OK" onclick="blockme();return passReportFeeToClass();" onComplete="j$.unblockUI();" rerender="out" status="status"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" rerender="out" status="status"/>
+            </div>
+            
+            <div id="dialog" style="display: none" align = "center">
+                
+                <apex:selectRadio value="{!reportFeeSelected}" onChange="StoreInHiddenVariable(this.value);" id="hhh">
+                    <apex:selectOptions value="{!ReportFeeOption}" />
+                </apex:selectRadio><p/>
+                <apex:actionFunction action="{!reportFeeRedirect}" name="passReportFeeAF" reRender="out" status="status">
+                    <apex:param name="SelectedReportFee" assignTo="{!reportFeeSelected}" value="" />
+                </apex:actionFunction>
+                <apex:commandButton value="Save" onclick="blockme();return passReportFeeToClass();" onComplete="j$.unblockUI();" rerender="out" status="status"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" rerender="out" status="status"/>
+            </div>
+            
+            <!--End: For report Fee Popup -->
+            
+            <apex:outputPanel id="RelatedRecordPanelId" >      
+                <apex:outputLabel rendered="{!IF(RelatedPositionList.size>0, false, true )}" >No records to display</apex:outputLabel>
+                <apex:outputPanel rendered="{!IF(RelatedPositionList.size>0, true, false )}">                                        
+                    <apex:pageMessages /> 
+                    
+                    <script type="text/javascript"> 
+                    
+                    $j1 = jQuery.noConflict();        
+                    function CalculatSelectedInProgressItem(x,y)
+                    {
+                        if(x)
+                        {   
+                            var a = [];
+                            var initialValue = document.getElementById('SelectedInProgressItemID').value;                            
+                            console.log('==length=='+initialValue.length+'==is comma==='+initialValue.includes(','));
+                            if(initialValue.length == 0)
+                            {
+                                a.push(y);
+                                
+                            }
+                            else if(initialValue.length > 0  && !initialValue.includes(','))
+                            {
+                                var tempVal;
+                                tempVal = (document.getElementById('SelectedInProgressItemID').value);
+                                a.push(tempVal);
+                                a.push(y);          
+                                
+                            }     
+                                else if(initialValue.length > 0 && initialValue.includes(',')) 
+                                {
+                                    a = (document.getElementById('SelectedInProgressItemID').value).split(',');
+                                    a.push(y);
+                                    
+                                }
+                            document.getElementById('SelectedInProgressItemID').value  = a;                            
+                            if(a.length == 0)
+                                $j1('.masterCheckBox').attr('checked',false);    
+                            else if(a.length  == '{!NoOfInProgressItems}')
+                                $j1('.masterCheckBox').attr('checked',true);  
+                        }
+                        else
+                        {
+                            var b = [];
+                            var initialValue = document.getElementById('SelectedInProgressItemID').value;                            
+                            console.log('==length=='+initialValue.length+'==is comma==='+initialValue.includes(','));
+                            if(initialValue.length == 0)
+                            {
+                                //nothing to do 
+                            }
+                            else if(initialValue.length > 0  && !initialValue.includes(','))
+                            {
+                                var tempVal;
+                                tempVal = (document.getElementById('SelectedInProgressItemID').value);
+                                b.push(tempVal);
+                                var i = b.indexOf(y);                                
+                                if(i != -1) {
+                                    b.splice(i, 1);
+                                } 
+                                console.log('==b1=='+b);
+                            }     
+                                else if(initialValue.length > 0 && initialValue.includes(',')) 
+                                {
+                                    b = (document.getElementById('SelectedInProgressItemID').value).split(',');                                
+                                    var i = b.indexOf(y);                                
+                                    if(i != -1) {
+                                        b.splice(i, 1);
+                                    }
+                                    console.log('==b2=='+b);                                                  
+                                }
+                            document.getElementById('SelectedInProgressItemID').value = b;
+                            if(b.length == 0)
+                                $j1('.masterCheckBox').attr('checked',false);    
+                            else if(b.length  == '{!NoOfInProgressItems}')
+                                $j1('.masterCheckBox').attr('checked',true);                            
+                        }
+                    }                    
+                    
+                    function resetMasterCheckBox()
+                    {
+                        $j1('.masterCheckBox').attr('checked',false);
+                    }
+                    
+                    function Markasubcheckboxes()
+                    {    
+                        var k = [];
+                        var initialValue = document.getElementById('SelectedInProgressItemID').value; 
+                        console.log('==length=='+initialValue.length+'==is comma==='+initialValue.includes(','));
+                        if(initialValue.length == 0)
+                        {
+                            $j1.each($j1('.selectionCheckbox'), function(key,value){                    
+                                $j1('.selectionCheckbox').attr('checked',false)                            
+                            }); 
+                        }
+                        else if(initialValue.length > 0  && !initialValue.includes(','))
+                        {
+                            var tempVal;
+                            tempVal = (document.getElementById('SelectedInProgressItemID').value);
+                            k.push(tempVal); 
+                            //if($j1('.masterCheckBox').attr('checked') == 'checked'){
+                            $j1.each($j1('.selectionCheckbox'), function(key,value){                                
+                                var class_name = $j1(value).attr('class').split(' ')[1];
+                                var itemIndex = 0;
+                                itemIndex = k.indexOf(class_name);                                    
+                                console.log(itemIndex);
+                                if(itemIndex >= 0){                                                                  
+                                    $j1(value).attr('checked',true);
+                                    
+                                }else
+                                    $j1(value).attr('checked',false);                            
+                            });                                                      
+                            //}
+                            
+                            
+                        }     
+                            else if(initialValue.length > 0 && initialValue.includes(',')) 
+                            {
+                                k = (document.getElementById('SelectedInProgressItemID').value).split(',');
+                                //if($j1('.masterCheckBox').attr('checked') == 'checked'){
+                                $j1.each($j1('.selectionCheckbox'), function(key,value){                                
+                                    var class_name = $j1(value).attr('class').split(' ')[1];
+                                    var itemIndex = 0;
+                                    itemIndex = k.indexOf(class_name);                                    
+                                    if(itemIndex >= 0){                                                                  
+                                        $j1(value).attr('checked',true);
+                                        
+                                    }else
+                                        $j1(value).attr('checked',false);                            
+                                });                                                      
+                                //}  
+                            }     
+                    }
+                    
+                    function ControlSubCheckBoxOnClickMaster()
+                    {
+                        var c = [];
+                        if($j1('.masterCheckBox').attr('checked') == 'checked'){                                                        
+                            $j1.each($j1('.selectionCheckbox'), function(key,value){                                                    
+                                $j1('.selectionCheckbox').attr('checked',true)                            
+                            });
+                            var mylistItem = '{!SelectedInPgItemList}';
+                            mylistItem = mylistItem.replace('[','');
+                            mylistItem = mylistItem.replace(']','');                                                                                      
+                            c = mylistItem.split(', ');                                          
+                        }
+                        else
+                        {
+                            $j1.each($j1('.selectionCheckbox'), function(key,value){                    
+                                $j1('.selectionCheckbox').attr('checked',false)                            
+                            });                            
+                        }
+                        document.getElementById('SelectedInProgressItemID').value = c; 
+                    }
+                    
+                    function SaveMeJS()
+                    {
+                        blockme();
+                        var r = [];
+                        var initialValue = document.getElementById('SelectedInProgressItemID').value;                            
+                        var noOfSelectedInPrgItems = 0;
+                        if(initialValue.length == 0)
+                        {
+                            noOfSelectedInPrgItems = 0;                               
+                        }
+                        else if(initialValue.length > 0  && !initialValue.includes(','))
+                        {
+                            var tempVal;
+                            tempVal = (document.getElementById('SelectedInProgressItemID').value);
+                            noOfSelectedInPrgItems = 1;         
+                            
+                        }     
+                            else if(initialValue.length > 0 && initialValue.includes(',')) 
+                            {
+                                a = (document.getElementById('SelectedInProgressItemID').value).split(',');
+                                noOfSelectedInPrgItems = a.length;                                
+                            }
+                        
+                        SaveMe(noOfSelectedInPrgItems);                        
+                    }
+                    
+                    function clearSelectionOnDelete(){
+                        var m = [];
+                        document.getElementById('SelectedInProgressItemID').value  = m;
+                    }
+                    </script>
+                    
+                    <!----------------------------- Position Record Table --------------------------------------------------------------------------->
+                    <apex:pageBlockTable value="{!RelatedPositionList}" var="RelatedPosData" id="pbtableId2" rows="{!CurPageSize}" >                                                
+                        <apex:column style="width:10px" rendered="{!(userProfileName != 'System Administrator (Read Only)')}" >
+                            <apex:facet name="header">Action</apex:facet>
+                            <apex:commandLink onclick="callToEdit('{!RelatedPosData.EngVPPositionRecord.Id}')" reRender="RelatedRecordPanelId" ><font color="#065CA6">Edit</font></apex:commandLink>
+                            <apex:outputPanel rendered="{!AND(IsSuperVisorOrAdmin, IsHavingPVPermissionSetOrIsSysAdmin)}" >&nbsp;|&nbsp;
+                                <apex:commandLink onclick="delRec('{!RelatedPosData.EngVPPositionRecord.Id}')" reRender="RelatedRecordPanelId,PBBtnsId" ><font color="#065CA6">Del</font></apex:commandLink>
+                            </apex:outputPanel>
+                        </apex:column>
+                        <apex:column headerValue="Name">
+                            <apex:outputLink value="/{!RelatedPosData.EngVPPositionRecord.Id}" >{!RelatedPosData.EngVPPositionRecord.Name}</apex:outputLink>
+                        </apex:column>
+                        <apex:column value="{!RelatedPosData.EngVPPositionRecord.Company__c}" />
+                        
+                        <apex:column value="{!RelatedPosData.EngVPPositionRecord.Industry_Group_Picklist__c}" headerValue="Industry Group"
+                                     rendered="{!IF(((RelatedPosData.EngVPPositionRecord.Sector__c == null) && (RelatedPosData.EngVPPositionRecord.Industry_Group_Picklist__c == null)),false,true)}"/>               
+                        <apex:column value="{!RelatedPosData.EngVPPositionRecord.Industry_Group__c}" headerValue="Industry Group"
+                                     rendered="{!IF(((RelatedPosData.EngVPPositionRecord.Sector__c == null) && (RelatedPosData.EngVPPositionRecord.Industry_Group_Picklist__c == null)),true,false)}"/>  
+                        
+                        <apex:column value="{!RelatedPosData.EngVPPositionRecord.Sector__c}" headerValue="Sector" 
+                                     rendered="{!IF(((RelatedPosData.EngVPPositionRecord.Sector__c == null) && (RelatedPosData.EngVPPositionRecord.Industry_Group_Picklist__c == null)),false,true)}"/>                               
+                        <apex:column value="{!RelatedPosData.EngVPPositionRecord.Company_Sector__c}" headerValue="Sector" 
+                                     rendered="{!IF(((RelatedPosData.EngVPPositionRecord.Sector__c == null) && (RelatedPosData.EngVPPositionRecord.Industry_Group_Picklist__c == null)),true,false)}"/>   
+                        
+                        
+                        <apex:column value="{!RelatedPosData.EngVPPositionRecord.Asset_Classes__c}" />
+                        <apex:column value="{!RelatedPosData.EngVPPositionRecord.Report_Fee__c}" rendered="{!IshavingValidRoleForRevAccrual}" />
+                        <apex:column value="{!RelatedPosData.EngVPPositionRecord.Status__c}" /> 
+                        <apex:column rendered="{!AND((userProfileName != 'System Administrator (Read Only)'),IshavingValidRoleForRevAccrual)}">                            
+                            <apex:facet name="header">
+                                <apex:outputPanel >
+                                    <apex:inputCheckbox id="checkAll" styleClass="masterCheckBox" onClick="ControlSubCheckBoxOnClickMaster();" value="{!IsCheckAll}" disabled="{!!IF(NoOfInProgressItems >0,true,false)}" />&nbsp;{!$Label.HL_MarkAsCompleted}                                   
+                                </apex:outputPanel>
+                            </apex:facet>                            
+                            <apex:inputCheckbox styleClass="selectionCheckbox {!RelatedPosData.EngVPPositionRecord.Id}" id="myCheckbox" onClick="CalculatSelectedInProgressItem(this.checked,'{!RelatedPosData.EngVPPositionRecord.Id}');" rendered="{!RelatedPosData.EngVPPositionRecord.Status__c == 'In Progress'}"  value="{!RelatedPosData.isSelected}" />
+                        </apex:column>      
+                        <apex:column value="{!RelatedPosData.EngVPPositionRecord.Completed_Date__c}">
+                        <apex:facet name="header">
+                         <apex:commandLink action="{!ViewData}" value="Date/Time Completed{!IF(sortExpression=='Completed_Date__c',IF(sortDirection='ASC','▼','▲'),'')}" reRender="pbtableId2">
+                         <apex:param value="Completed_Date__c" name="column" assignTo="{!sortExpression}" ></apex:param> </apex:commandLink>
+                        </apex:facet>
+                       </apex:column>
+
+                        <apex:column value="{!RelatedPosData.EngVPPositionRecord.Fee_Approval_Date__c}">
+                        <apex:facet name="header">
+                         <apex:commandLink action="{!ViewData}" value="Fee Approval Date{!IF(sortExpression=='Fee_Approval_Date__c',IF(sortDirection='ASC','▼','▲'),'')}" reRender="pbtableId2">
+                         <apex:param value="Fee_Approval_Date__c" name="column" assignTo="{!sortExpression}" ></apex:param> </apex:commandLink>
+                        </apex:facet>
+                       </apex:column>                 
+                    </apex:pageBlockTable>
+                    <!----------------------------- Navigation links --------------------------------------------------------------------------->
+                    
+                    <apex:outputPanel rendered="{!(NoOfPosition >CurPageSize)}">
+                        <apex:commandlink action="{!showMore}" onComplete="Markasubcheckboxes();" value="Show All" id="theCommandLink" reRender="RelatedRecordPanelId" ></apex:commandLink><apex:outputLabel >&nbsp; | &nbsp;</apex:outputLabel>
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="First" action="{!first}" rerender="RelatedRecordPanelId" onComplete="Markasubcheckboxes();"
+                                                                                       rendered="{!IF(pageNumber==1, false, true)}" status="MCSub" /> <apex:outputLabel value="First" rendered="{!IF(pageNumber==1, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                        
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Prev" action="{!previous}" rerender="RelatedRecordPanelId" onComplete="Markasubcheckboxes();"
+                                                                                       rendered="{!IF(pageNumber==1, false, true)}" status="MCSub" /> <apex:outputLabel value="Prev" rendered="{!IF(pageNumber==1, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>                   
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Next" action="{!next}" rerender="RelatedRecordPanelId" onComplete="Markasubcheckboxes();"
+                                                                                       rendered="{!IF(pageNumber==pageSize, false, true)}"
+                                                                                       status="MCSub" />                              
+                            <apex:outputLabel value="Next"
+                                              rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Last" action="{!last}" rerender="RelatedRecordPanelId" onComplete="Markasubcheckboxes();"
+                                                                                       rendered="{!IF(pageNumber==pageSize, false, true)}"
+                                                                                       status="MCSub" /> <apex:outputLabel value="Last"
+                                                                                                                           rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                        </span>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </apex:outputPanel>
+            
+        </apex:pageBlock>            
+    </apex:form> 
+    <apex:relatedList list="Eng_Valuation_Period_Allocation__r"/>
+    <apex:relatedList list="Histories" pageSize="10" rendered="{!OR((IsMemberofAPTeam),(userProfileName == 'System Administrator'))}"/> 
+</apex:page>

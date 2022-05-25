@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BTP_Send_by_User__c</fullName>
+    <description>The user name of the person who clicked “Send BTP Email” button on the Engagement Summary</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The person who clicked “Send BTP Email” button on the Engagement Summary</inlineHelpText>
+    <label>Sent BTP Email (User)</label>
+    <length>150</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

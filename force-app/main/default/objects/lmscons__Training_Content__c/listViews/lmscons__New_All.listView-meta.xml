@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__New_All</fullName>
+    <columns>lmscons__isArchived__c</columns>
+    <columns>NAME</columns>
+    <columns>lmscons__Title__c</columns>
+    <columns>lmscons__Description__c</columns>
+    <columns>lmscons__ContentCatalog__c</columns>
+    <columns>lmscons__Used__c</columns>
+    <columns>lmscons__Enable_Certificate__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

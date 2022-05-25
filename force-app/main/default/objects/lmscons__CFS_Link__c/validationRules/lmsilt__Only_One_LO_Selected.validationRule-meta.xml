@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmsilt__Only_One_LO_Selected</fullName>
+    <active>true</active>
+    <description>Validates that there is no more than one Learning Object Selected</description>
+    <errorConditionFormula>IF( ISBLANK(lmscons__Module__c), 0, 1) +
+IF( ISBLANK(lmscons__Quiz__c), 0, 1) +
+IF( ISBLANK(lmscons__Course__c), 0, 1) +
+IF( ISBLANK(lmscons__Learning_Path__c), 0, 1) +
+IF( ISBLANK(lmscons__Curriculum__c ), 0, 1) +
+IF( ISBLANK(lmsilt__Development_Plan__c ), 0, 1) +
+IF( ISBLANK(lmsilt__Event__c ), 0, 1) +
+IF( ISBLANK(lmsilt__Class__c), 0, 1) +
+IF( ISBLANK(lmsilt__Session__c), 0, 1)
+&gt;
+1</errorConditionFormula>
+    <errorMessage>You must select only one Learning Object for a Deep Link</errorMessage>
+</ValidationRule>

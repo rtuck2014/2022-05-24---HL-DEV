@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Engagement_Financials_Final_Present__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Roll-up to count if required Engagement Financials &quot;Final&quot; has been entered</inlineHelpText>
+    <label>Engagement Financials Final Present</label>
+    <summaryFilterItems>
+        <field>Engagement_Financials__c.EBITDA_LTM_MM__c</field>
+        <operation>notEqual</operation>
+        <value></value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Engagement_Financials__c.Revenue_LTM_MM__c</field>
+        <operation>notEqual</operation>
+        <value></value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Engagement_Financials__c.Type__c</field>
+        <operation>equals</operation>
+        <value>Final</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Engagement_Financials__c.Related_Engagement__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

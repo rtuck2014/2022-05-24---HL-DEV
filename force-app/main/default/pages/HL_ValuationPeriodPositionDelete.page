@@ -1,0 +1,10 @@
+<apex:page name="HL_ValuationPeriodPositionDelete" controller="HL_ValuationPeriodPositionDeleteClass" lightningStylesheets="true">
+    <apex:form id="frmId">        
+        <apex:pageMessage summary="{!$Label.HL_PositionDelete}" severity="info" strength="3" >
+            <apex:commandButton value=" Yes " action="{!onDelete}" reRender="frmId"/>
+            &nbsp;
+            <apex:commandButton value=" No " action="{!Back}"/>        
+       </apex:pageMessage>
+       <apex:pageMessages />
+    </apex:form>
+</apex:page>

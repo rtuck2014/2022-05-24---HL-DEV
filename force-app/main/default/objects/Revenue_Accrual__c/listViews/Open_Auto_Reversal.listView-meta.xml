@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Open_Auto_Reversal</fullName>
+    <columns>Engagement_Number__c</columns>
+    <columns>Corporate_Finance_Split__c</columns>
+    <columns>FAS_Split__c</columns>
+    <columns>Cumulative_AR__c</columns>
+    <columns>Cumulative_WIP__c</columns>
+    <columns>Cumulative_Deferred_Income__c</columns>
+    <columns>Total_Accrued_Fees__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Open</value>
+    </filters>
+    <label>Open Auto Reversal</label>
+</ListView>

@@ -1,0 +1,6 @@
+<apex:page showHeader="{!ShowHeaderAndSideBar}" sidebar="{!ShowHeaderAndSideBar}" controller="HL_InternalTeamModifyController" lightningStyleSheets="true">
+    <script>
+        if (location.href.match(/inline=1/)) window.top.location=location.href.replace(/inline=1/, '');
+    </script>
+    <c:HL_InternalTeamReadOnly SpecialStaffRole="{!SpecialRole}" ></c:HL_InternalTeamReadOnly>
+</apex:page>

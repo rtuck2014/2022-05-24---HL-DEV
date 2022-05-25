@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Report_Subject_Fields__c</fullName>
+    <description>Reporting Use 
+01 = Name 
+02 = Billing Street 
+03 = Billing City 
+04 = Billing State 
+05 = Billing Postal Code 
+06 = Billing Country 
+07 = Phone 
+08 = Fax 
+09 = Ownership 
+10 = Industry Group 
+11 = Industry Umbrella</description>
+    <externalId>false</externalId>
+    <formula>Engagement__r.Report_Subject_Fields__c</formula>
+    <label>Report Subject Fields</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

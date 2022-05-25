@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Billable__c</fullName>
+    <description>Indicates if the time is billable</description>
+    <externalId>false</externalId>
+    <formula>IF(
+Special_Project__c != null, 
+Special_Project__r.Is_Billable__c, 
+IF(
+AND( OR(ISNULL(Special_Project__c) ,  ISBLANK(Special_Project__c) )
+,TEXT(Time_Record_Period_Staff_Member__r.Time_Record_Period__r.Period_Category__c) =&quot;Beta&quot;
+,OR(
+TEXT(Activity_Type__c)=&quot;Non-Billable - NB&quot; , TEXT(Activity_Type__c)=&quot;Marketing - NB&quot;
+)
+)
+
+, FALSE, TRUE))</formula>
+    <label>Is Billable</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

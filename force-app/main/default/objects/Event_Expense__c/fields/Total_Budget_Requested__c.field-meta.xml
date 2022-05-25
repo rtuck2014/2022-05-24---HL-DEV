@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Budget_Requested__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(TEXT(LOB__c) = &apos;FVA&apos;, Expected_Travel_cost__c  +  Expected_F_B_cost__c  +  Any_additional_cost_Specify__c, IF(TEXT(LOB__c) = &apos;CF&apos;, Expected_Airfare_Cost__c + Expected_Lodging_Cost__c + Expected_Registration_Fee__c +  Expected_F_B_cost__c  +  Any_additional_cost_Specify__c, 0) )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Budget Requested</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

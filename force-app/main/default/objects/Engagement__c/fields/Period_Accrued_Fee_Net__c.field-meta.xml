@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Period_Accrued_Fee_Net__c</fullName>
+    <description>Includes Reversal
+NOTE: This formula is simply: Current_Revenue_Accrual__r.Period_Accrued_Fee_Net__c, but it has to be written out this way because we are at the limit of 15 relationship lookups for the Engagement Object.</description>
+    <externalId>false</externalId>
+    <formula>IF(Or(VALUE(Current_Revenue_Accrual__r.FY__c)&lt;2019 
+,And(Current_Revenue_Accrual__r.Line_of_Business__c = &apos;FVA&apos; 
+,Current_Revenue_Accrual__r.Percent_Complete__c = 1) 
+,Current_Revenue_Accrual__r.Line_of_Business__c &lt;&gt; &apos;FVA&apos; 
+,Or(ISPICKVAL(HL_Entity__c, &apos;HL Netherlands B.V.&apos;) 
+,ISPICKVAL(HL_Entity__c, &apos;HL Leonardo &amp; Co SpA&apos;))) 
+, Current_Revenue_Accrual__r.Period_JE_Net_Old_Method__c 
+,0) 
++ 
+IF( 
+And(VALUE(Current_Revenue_Accrual__r.FY__c)&gt;=2019 
+,Current_Revenue_Accrual__r.Line_of_Business__c = &apos;FVA&apos; 
+,Current_Revenue_Accrual__r.Percent_Complete__c=1) 
+,Current_Revenue_Accrual__r.Prior_Carried_Over_Accrual__c 
+,0) 
++ 
+Current_Revenue_Accrual__r.Accrual_Adjustment__c 
++ 
+Current_Revenue_Accrual__r.Period_JS_Net__c 
++ 
+Current_Revenue_Accrual__r.Period_JW_Net__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Includes Reversal</inlineHelpText>
+    <label>Period Accrued Fee Net</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

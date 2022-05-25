@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_Opp_VP_is_locked_EngNoReqstd</fullName>
+    <active>true</active>
+    <description>Valuation Period can not be modified during Engagement Number is requested.</description>
+    <errorConditionFormula>IF((AND( NOT(ISNEW()),NOT(ISCHANGED(IsConverted__c)), AND(AND( ISPICKVAL(Opportunity__r.Approval_Process__c, &apos;CONVERSION&apos;), ISPICKVAL(Opportunity__r.Engagement_Approval_Status__c, &apos;Pending&apos;) ), NOT(ISCHANGED( Opportunity__c ))))), true, false)</errorConditionFormula>
+    <errorMessage>Valuation Period can not be modified as Opportunity is locked for Engagement Number Approval Process. Please try once the process is completed or Contact to System Administrator.</errorMessage>
+</ValidationRule>

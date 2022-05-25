@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Early_Look_Final_Report_Email1_S</fullName>
+    <columns>NAME</columns>
+    <columns>Distribution_List__c</columns>
+    <columns>Subscriber__c</columns>
+    <columns>Active__c</columns>
+    <columns>Line_of_Business__c</columns>
+    <columns>Product_Type__c</columns>
+    <columns>Industry_Group__c</columns>
+    <columns>Industry_Umbrella__c</columns>
+    <columns>Office__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Custom_Sort_Order__c</columns>
+    <columns>Subscription_Type__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Distribution_List__c</field>
+        <operation>contains</operation>
+        <value>Auto Reversal</value>
+    </filters>
+    <filters>
+        <field>Line_of_Business__c</field>
+        <operation>equals</operation>
+        <value>FVA</value>
+    </filters>
+    <label>Early Look - Final Report Email-s</label>
+</ListView>

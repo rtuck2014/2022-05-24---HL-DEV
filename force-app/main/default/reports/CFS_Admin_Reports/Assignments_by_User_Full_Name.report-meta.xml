@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>lmscons__Transcript_Line__c$lmscons__Content_Title__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Transcript_Line__c$lmscons__Progress__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12</booleanFilter>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Ann Baltazar</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Kerry Morell</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>nicole fizor</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>melanie remsey</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>mary cruz</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>sarah schmitz</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>wladlen dneprov</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>nikolai grimm</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>david gins</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>roxana madrid</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>olivia ricketts</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>caroline noakes</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Assignments by User_Full Name</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_CFS_Assignments__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>lmscons__Transcript_Line__c$lmscons__Progress__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>lmscons__Transcript_Line__c$lmscons__Completed_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

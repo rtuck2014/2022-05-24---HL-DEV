@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Engagement_Summary__c$Engagement__c.Close_Date__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Summary__c$Engagement__c.Engagement_Number__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Summary__c$Engagement__c.Client__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Summary__c$Engagement__c.Job_Type__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Summary__c$Engagement__c.Industry_Group__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Summary__c$Transaction_Value_for_Fee_Calc__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Summary__c$Total_Fee__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>Deal Summary</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Engagement_Summaries__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Engagement_Summary__c$Engagement__c.Close_Date__c</dateColumn>
+        <endDate>2015-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2012-01-01</startDate>
+    </timeFrameFilter>
+</Report>

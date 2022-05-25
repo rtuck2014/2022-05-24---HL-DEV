@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_Opp_Position_is_locked_EngNoRqst</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF((AND( NOT(ISNEW()),  AND( AND( ISPICKVAL(Opportunity_VP__r.Opportunity__r.Approval_Process__c, &apos;CONVERSION&apos;), ISPICKVAL(Opportunity_VP__r.Opportunity__r.Engagement_Approval_Status__c, &apos;Pending&apos;) ), NOT(ISCHANGED(Opportunity_VP__c))))), true, false)</errorConditionFormula>
+    <errorMessage>Position can not be modified as Opportunity is locked for Engagement Number Approval Process. Please try once the process is completed or Contact to System Administrator.</errorMessage>
+</ValidationRule>

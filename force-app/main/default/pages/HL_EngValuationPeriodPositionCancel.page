@@ -1,0 +1,12 @@
+<apex:page standardcontroller="Eng_VP_Position__c" extensions="HL_ValuationPeriodPositionCancel" lightningStyleSheets="true">
+    <apex:form >
+   <apex:pageMessage rendered="{!!isError}" summary="{!If(OR(EngVpPosition.Status__c == $Label.HL_Eng_VP_Status_Completed,EngVpPosition.Status__c == 'In Progress'),$Label.HL_VP_Position_Cancel_Reverse_Accruals, IF(EngVpPosition.Status__c == 'Cancelled', $Label.HL_Position_Already_Cancelled,'' ))}" severity="info" strength="3" >
+            <apex:commandButton rendered="{!If(OR(EngVpPosition.Status__c == $Label.HL_Eng_VP_Status_Completed,EngVpPosition.Status__c == 'In Progress'),True,False)}" value=" Yes " action="{!CancelAccural}" />
+            &nbsp;<apex:commandButton value="{!If(OR(EngVpPosition.Status__c == $Label.HL_Eng_VP_Status_Completed,EngVpPosition.Status__c == 'In Progress'),' No ',' Back to Valuation Period ')}"  rendered="{!OR(EngVpPosition.Status__c == $Label.HL_Eng_VP_Status_Completed,EngVpPosition.Status__c == 'In Progress')}" action="{!No}" />        
+            <apex:commandButton value="Back to Valuation Period" rendered="{!(EngVpPosition.Status__c == 'Cancelled')}" action="{!Back}" />
+    </apex:pageMessage>
+    <apex:pageMessages rendered="{!isError}">        
+    </apex:pageMessages>
+    <apex:commandButton rendered="{!isError}" value="Back to Valuation Period" action="{!Back}" />
+</apex:form>
+</apex:page>

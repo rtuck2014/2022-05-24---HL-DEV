@@ -1,0 +1,13 @@
+<apex:page standardController="Offsite_Template_Investment_Company__c" extensions="HL_OTICListController"  recordSetVar="ind" action="{!updateInclude}" lightningStylesheets="true">
+   <apex:form >
+       <apex:pageBlock title="Update Include for Investments">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!updateInvestments}" value="Confirm"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!selected}" var="i">
+                <apex:column value="{!i.Portfolio_Company__c}"/>
+                <apex:column value="{!i.Include__c}"/>
+            </apex:pageBlockTable> 
+        </apex:pageBlock>
+    </apex:form>    
+</apex:page>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Next_Scheduled_Call_form__c</fullName>
+    <description>Used for Cognos reporting</description>
+    <externalId>false</externalId>
+    <formula>IF(Next_Scheduled_Call__c, &quot;TRUE&quot;, &quot;FALSE&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Next Scheduled Call</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Est_Transaction_Size_Market_Cap_MM__c</fullName>
+    <description>USED ON CF NBC FORM TO PULL FROM OPPORTUNITY FIELD OF THE SAME NAME. NOT USED ON THE FEIS FORM.</description>
+    <externalId>false</externalId>
+    <formula>Related_Opportunity__r.Estimated_Transaction_Size_MM__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Est. Transaction Size / Market Cap (MM</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

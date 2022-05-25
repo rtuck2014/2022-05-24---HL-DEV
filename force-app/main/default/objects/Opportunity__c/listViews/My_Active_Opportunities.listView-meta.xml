@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Active_Opportunities</fullName>
+    <columns>NAME</columns>
+    <columns>Opportunity_Number__c</columns>
+    <columns>Client__c</columns>
+    <columns>Client_MN_Name__c</columns>
+    <columns>Industry_Group__c</columns>
+    <columns>Job_Type__c</columns>
+    <columns>Stage__c</columns>
+    <columns>Total_Estimated_Fee__c</columns>
+    <columns>Win_Probability__c</columns>
+    <columns>Pitch_Date__c</columns>
+    <columns>Opportunity_Comments__c</columns>
+    <columns>Last_Opportunity_Comment_PIPELINE__c</columns>
+    <columns>Last_Opportunity_Comment_Any__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>My_Opportunity__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Active</value>
+    </filters>
+    <label>My Active Opportunities</label>
+</ListView>

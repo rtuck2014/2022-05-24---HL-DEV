@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Subsequent_Accrual</fullName>
+    <active>true</active>
+    <description>If there is uncured AR or uncured WIP, a user is only allowed to accrue up to the amount of the deferred income (DI). If the user accrues more than that, the amount beyond DI will not be posted to JDE, but will be placed as subsequent accrual.</description>
+    <errorConditionFormula>NOT(Exclude_From_Reversal__c) &amp;&amp;
+(
+   Uncured_AR__c &gt; 0 ||
+   Uncured_WIP__c &gt; 0
+) &amp;&amp;
+(
+  (ISBLANK(Period_Deferred_Income__c) &amp;&amp; Period_Accrued_Fees__c &gt; 0)
+  ||
+  (NOT(ISBLANK(Period_Deferred_Income__c)) &amp;&amp; Period_Accrued_Fees__c &gt;  Period_Deferred_Income__c)
+) &amp;&amp; 
+$Profile.Name != &apos;System Administrator&apos;</errorConditionFormula>
+    <errorMessage>Uncured AR/WIP can only be accrued up to the Period Deferred Income amount.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_Accrual_before_Eng_Num_CF_SC_FR</fullName>
+    <active>true</active>
+    <description>The accrual should not be made until the engagement number is assigned. CF/SC/FR rule.</description>
+    <errorConditionFormula>(ISPICKVAL( Engagement__r.Line_of_Business__c, &apos;CF&apos;) || ISPICKVAL( Engagement__r.Line_of_Business__c, &apos;SC&apos;)||
+ISPICKVAL( Engagement__r.Line_of_Business__c, &apos;FR&apos;)) &amp;&amp;ISBLANK(Engagement__r.Engagement_Number__c)</errorConditionFormula>
+    <errorMessage>An engagement number must be assigned before revenue accruals can be created.</errorMessage>
+</ValidationRule>

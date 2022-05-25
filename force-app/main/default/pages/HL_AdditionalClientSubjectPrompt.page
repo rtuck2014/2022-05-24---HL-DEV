@@ -1,0 +1,85 @@
+<apex:page controller="HL_AdditionalClientsSubjectsController" showHeader="false" sidebar="false" lightningStylesheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_AdditionalClientSubjectPrompt.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <apex:form >
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageBlock title="Additional Clients:" id="pbAdditionalClients">
+            <apex:actionStatus id="refreshStatusClients" startText="Refreshing..." stopText="" startStyle="font-weight: bold; font-size: 1.5em;">
+              <apex:facet name="start" ><apex:outputPanel ><img src="/img/loading.gif" /><span>&nbsp;Refreshing...</span></apex:outputPanel></apex:facet>
+            </apex:actionStatus>
+            <apex:pageBlockButtons location="top" rendered="{!NOT(AdditionalClients.size <= 1 && Opp.Completed_Additional_Client__c == true)}">
+                <input type='button' value='Add Client' id='newClient' class="btn" />
+                <apex:commandButton id="additionalClientsRefresh" action="{!RefreshAdditionalClients}" reRender="pbAdditionalClients" status="refreshStatusClients" style="display:none;" oncomplete="DocumentReady();"/>
+                <apex:commandButton id="noAdditionalClients" action="{!NoClients}" reRender="pbAdditionalClients" status="refreshStatusClients" oncomplete="DocumentReady();" rendered="{!AdditionalClients.size <= 1}" value="No Additional Clients" onclick="if(!CheckForNoResponsePrompt('client')){return};"></apex:commandButton>
+            </apex:pageBlockButtons>
+            <apex:outputPanel style="padding-bottom: 10px; display: inline-block;" rendered="{!Opp.Completed_Additional_Client__c == false || AdditionalClients.size > 1}">
+                <apex:outputLabel id="noAdditionalClientsIndicated" value="You have indicated that you have additional clients to enter for this opportunity.  Please enter your additional clients here:" styleClass="bold"></apex:outputLabel>
+            </apex:outputPanel>
+            <apex:outputPanel style="padding-bottom: 10px; display: inline-block; width: 100%;" rendered="{!Opp.Completed_Additional_Client__c == true && AdditionalClients.size <= 1}">
+                <apex:outputLabel value="You have indicated that you have no Additional Clients for this opportunity." styleClass="bold warning"></apex:outputLabel><br />
+            </apex:outputPanel>
+           <apex:pageBlockTable value="{!AdditionalClients}" var="ac" rendered="{!NOT(Opp.Completed_Additional_Client__c == true && AdditionalClients.size <= 1)}">
+               <apex:column style="width:40px;">
+                     <apex:outputPanel rendered="{!NOT(ac.Primary__c)}">
+                          <apex:commandLink action="{!RemoveClient}" value="Del" reRender="pbAdditionalClients" onclick="if(!confirm('Are you sure?')){return};" status="refreshStatusClients" oncomplete="DocumentReady();">
+                            <apex:param name="deleteClientParam" value="{!ac.Id}" assignTo="{!ClientToRemove}"/>
+                        </apex:commandLink>
+                     </apex:outputPanel>
+               </apex:column>
+               <apex:column value="{!ac.Client_Subject__r.Name}" headerValue="Company"/>
+                <apex:column headerValue="Address">
+                    <apex:outputLabel value="{!ac.Client_Subject__r.BillingStreet}  "></apex:outputLabel>
+                    <apex:outputLabel value="{!ac.Client_Subject__r.BillingCity}, "></apex:outputLabel><apex:outputLabel value="{!ac.Client_Subject__r.BillingState}  "></apex:outputLabel><apex:outputLabel value="{!ac.Client_Subject__r.BillingPostalCode}"></apex:outputLabel>
+                </apex:column>
+               <apex:column value="{!ac.Primary__c}" style="width: 40px;" styleClass="center"></apex:column>
+            </apex:pageBlockTable>
+            <apex:outputPanel style="padding-top: 10px; display: inline-block;" rendered="{!AdditionalClients.size > 1}">
+                <br />
+                <apex:outputLabel value="Are the interests of any of the clients adverse to any other clients?" styleClass="bold"></apex:outputLabel>&nbsp;&nbsp;&nbsp;<apex:inputField id="hasAdverseClients" value="{!Opp.Has_Adverse_Clients__c}"></apex:inputField>
+            </apex:outputPanel>
+        </apex:pageBlock>
+        <apex:pageBlock title="Additional Subjects:" id="pbAdditionalSubjects">
+            <apex:actionStatus id="refreshStatusSubjects" startText="Refreshing..." stopText="" startStyle="font-weight: bold; font-size: 1.5em;">
+              <apex:facet name="start" ><apex:outputPanel ><img src="/img/loading.gif" /><span>&nbsp;Refreshing...</span></apex:outputPanel></apex:facet>
+            </apex:actionStatus>
+            <apex:pageBlockButtons location="top" rendered="{!NOT(AdditionalSubjects.size <= 1 && Opp.Completed_Additional_Subject__c == true)}">
+                <input type='button' value='Add Subject' id='newSubject' class="btn" />
+                <apex:commandButton id="additionalSubjectsRefresh" action="{!RefreshAdditionalSubjects}" reRender="pbAdditionalSubjects" status="refreshStatusSubjects" style="display:none;" oncomplete="DocumentReady();"/>
+                <apex:commandButton id="noAdditionalSubjects" action="{!NoSubjects}" reRender="pbAdditionalSubjects" status="refreshStatusSubjects" oncomplete="DocumentReady();" rendered="{!AdditionalSubjects.size <= 1}" value="No Additional Subjects" onclick="if(!CheckForNoResponsePrompt('subject')){return};"></apex:commandButton>
+            </apex:pageBlockButtons>
+            <apex:outputPanel style="padding-bottom: 10px; display: inline-block;" rendered="{!Opp.Completed_Additional_Subject__c == false || AdditionalSubjects.size > 1}"> 
+                <apex:outputLabel value="You have indicated that you have additional subjects to enter for this opportunity.  Please enter your additional subjects here:" styleClass="bold"></apex:outputLabel>
+            </apex:outputPanel>
+            <apex:outputPanel style="padding-bottom: 10px; display: inline-block;" rendered="{!Opp.Completed_Additional_Subject__c == true && AdditionalSubjects.size <= 1}">
+                <apex:outputLabel value="You have indicated that you have no Additional Subjects for this opportunity." styleClass="bold warning"></apex:outputLabel>
+            </apex:outputPanel>
+            <apex:pageBlockTable value="{!AdditionalSubjects}" var="as" rendered="{!NOT(Opp.Completed_Additional_Subject__c == true && AdditionalSubjects.size <= 1)}">
+                <apex:column style="width:40px;">
+                     <apex:outputPanel rendered="{!NOT(as.Primary__c)}">
+                        <apex:commandLink action="{!RemoveSubject}" value="Del" reRender="pbAdditionalSubjects" onclick="if(!confirm('Are you sure?')){return};" status="refreshStatusSubjects" oncomplete="DocumentReady();">
+                            <apex:param name="deleteSubjectParam" value="{!as.Id}" assignTo="{!SubjectToRemove}"/>
+                        </apex:commandLink>
+                     </apex:outputPanel>
+                </apex:column>
+                <apex:column value="{!as.Client_Subject__r.Name}" headerValue="Company"/>
+                <apex:column headerValue="Address">
+                    <apex:outputLabel value="{!as.Client_Subject__r.BillingStreet}  "></apex:outputLabel>
+                    <apex:outputLabel value="{!as.Client_Subject__r.BillingCity},  "></apex:outputLabel><apex:outputLabel value="{!as.Client_Subject__r.BillingState}  "></apex:outputLabel><apex:outputLabel value="{!as.Client_Subject__r.BillingPostalCode}  "></apex:outputLabel>
+                </apex:column>
+                <apex:column value="{!as.Primary__c}" style="width: 40px;" styleClass="center"></apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        <center>
+            <apex:commandButton action="{!SaveOpp}" value="Save & Close" onclick="if(!Validate()){return};" oncomplete="ClosePopup();" />
+        </center>
+    </apex:form>
+    <apex:outputLabel id="lookupAccountUrl" value="{!URLFOR('/apex/HL_LookupAccount')}" styleClass="hidden"></apex:outputLabel>
+    <apex:outputLabel id="entityId" value="{!EntityId}" styleClass="hidden"></apex:outputLabel>
+    <apex:outputLabel id="jobType" value="{!Opp.Job_Type__c}" styleClass="hidden"></apex:outputLabel>
+    <apex:outputLabel id="internalTeamPrompt" value="{!Opp.Internal_Team_Prompt__c}" styleClass="hidden"></apex:outputLabel>
+    <apex:outputLabel id="internalTeamUrl" value="{!URLFOR('/apex/HL_InternalTeamModifyView')}" styleClass="hidden"></apex:outputLabel>
+</apex:page>

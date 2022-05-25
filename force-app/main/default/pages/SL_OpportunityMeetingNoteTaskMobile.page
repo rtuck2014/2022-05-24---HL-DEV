@@ -1,0 +1,4 @@
+<apex:page applyBodyTag="false" showHeader="false" standardStylesheets="false" standardController="Opportunity__c" lightningStylesheets="true">
+<apex:slds />
+  <c:SL_MeetingNoteMobile activityType="Task" origin="publisher" objectId="{!Opportunity__c.Id}" objectType="Opportunity__c"/>
+</apex:page>

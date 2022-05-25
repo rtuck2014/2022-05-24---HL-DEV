@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FS_ENG_Officer_Activity1</fullName>
+    <active>false</active>
+    <errorConditionFormula>(NOT(ISBLANK(Coverage_Officer_1__c))&amp;&amp;
+ISPICKVAL( Activity_Level_1__c,&apos;&apos; )) ||
+
+(ISBLANK(Coverage_Officer_1__c) &amp;&amp; NOT(ISPICKVAL(Activity_Level_1__c,&apos;&apos;)))</errorConditionFormula>
+    <errorDisplayField>Activity_Level_1__c</errorDisplayField>
+    <errorMessage>Activity Level required only when Coverage Officer selected.</errorMessage>
+</ValidationRule>

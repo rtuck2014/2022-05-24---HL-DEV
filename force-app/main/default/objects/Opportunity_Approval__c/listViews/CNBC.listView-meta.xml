@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CNBC</fullName>
+    <columns>NAME</columns>
+    <columns>Submit_For_Review__c</columns>
+    <columns>Job_Type__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity_Approval__c.CNBC_L</value>
+    </filters>
+    <label>CNBC</label>
+</ListView>

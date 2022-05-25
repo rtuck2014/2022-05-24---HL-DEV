@@ -1,0 +1,2319 @@
+<apex:page standardcontroller="Engagement_Summary__c" tabStyle="Investment__c" extensions="HL_CF_EngagementSummaryController" lightningStylesheets="true">
+   <div class="cfEngagementSummary">
+   <apex:sectionHeader title="{!Engagement_Summary__c.Engagement__r.Name}" subtitle="CF Engagement Summary">
+   </apex:sectionHeader>
+   <apex:form id="cfEngagementSummary" >
+   <apex:pageMessages ></apex:pageMessages>
+   <apex:pageBlock rendered="{!NOT(DisplayConfirmation)}">
+    <apex:pageBlockButtons >
+        <apex:commandButton value="Save" action="{!SaveAll}" disabled="{!Engagement_Summary__c.Summary_Status__c != 'In Process' && !ApprovedEditAccess}"></apex:commandButton>
+        <apex:commandButton value="Return to Engagement" action="{!SaveAndReturn}" rendered="{!Engagement_Summary__c.Summary_Status__c == 'In Process' || ApprovedEditAccess}"></apex:commandButton>
+        <apex:commandButton value="Submit For Review" action="{!SubmitForApproval}" rendered="{!Engagement_Summary__c.Summary_Status__c == 'In Process'}"></apex:commandButton>
+        <a href="{!Engagement_Summary__c.Engagement_Summary_Report__c}" target="_blank" style="float: right;">View Summary Report</a>
+    </apex:pageBlockButtons>
+    <apex:outputPanel id="panSummary">
+    <apex:tabPanel switchType="client" id="dealSummaryTabPanel">
+        <apex:tab label="Seller Details" id="tabSellerDetails" rendered="{!Engagement_Summary__c.Engagement__r.RecordType.DeveloperName <> 'Buyside'}">
+            <apex:pageBlock title="Seller Details" mode="edit" >
+
+                <table cellpadding="5" cellspacing="5">
+                    <tr>
+                        <td colspan="4">
+                            <apex:inputCheckbox value="{!Engagement_Summary__c.Has_Public_Debt__c}"></apex:inputCheckbox><apex:outputLabel value="Private Company with Public Debt" styleClass="bold"></apex:outputLabel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Transaction_Rationale__c.Label}" styleClass="bold required"></apex:outputLabel>
+                        </td>
+                        <td colspan="3">
+                            <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                <apex:inputField value="{!Engagement_Summary__c.Transaction_Rationale__c}"></apex:inputField>
+                            </apex:outputPanel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Book_Value__c.Label}" styleClass="bold"></apex:outputLabel>
+                        </td>
+                        <td>
+                             <apex:inputField value="{!Engagement_Summary__c.Book_Value__c}" styleClass="numeric-short"/>
+                        </td>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Total_Asset_Value__c.Label}" styleClass="bold"></apex:outputLabel>
+                        </td>
+                        <td>
+                            <apex:inputField value="{!Engagement_Summary__c.Total_Asset_Value__c}" styleClass="numeric-short" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Pitch_EBITDA_LTM__c.Label}" styleClass="bold"></apex:outputLabel>
+                        </td>
+                        <td>
+                             <apex:inputField value="{!Engagement_Summary__c.Pitch_EBITDA_LTM__c}" styleClass="numeric-short"/>
+                        </td>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Pitch_EBITDA_FYE__c.Label}" styleClass="bold"></apex:outputLabel>
+                        </td>
+                        <td>
+                            <apex:inputField value="{!Engagement_Summary__c.Pitch_EBITDA_FYE__c}" styleClass="numeric-short"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Pitch_Value_Low__c.Label}" styleClass="bold"></apex:outputLabel>
+                        </td>
+                        <td>
+                             <apex:inputField value="{!Engagement_Summary__c.Pitch_Value_Low__c}" styleClass="numeric-short"/>
+                        </td>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Pitch_Value_High__c.Label}" styleClass="bold"></apex:outputLabel>
+                        </td>
+                        <td>
+                            <apex:inputField value="{!Engagement_Summary__c.Pitch_Value_High__c}" styleClass="numeric-short"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Engagement_Letter_Base__c.Label}" styleClass="bold"></apex:outputLabel>
+                        </td>
+                        <td>
+                             <apex:inputField value="{!Engagement_Summary__c.Engagement_Letter_Base__c}" styleClass="numeric-short"/>
+                        </td>
+                    </tr>
+                </table>
+            </apex:pageBlock>
+            <apex:pageBlock title="Seller Contacts" id="externalContacts">
+                <apex:pageBlockTable id="sellerContacts" value="{!SellerContacts}" var="et" rendered="{!(SellerContacts.size > 0)}">
+                    <apex:column value="{!et.Role__c}">
+                        <apex:facet name="header">
+                            Classification
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{!et.Contact__r.Name}">
+                        <apex:facet name="header">
+                            Company/Contact
+                        </apex:facet>
+                    </apex:column>
+                </apex:pageBlockTable>
+                <apex:outputText value="No records to display" rendered="{!(SellerContacts.size == 0)}"></apex:outputText>
+            </apex:pageBlock>
+        </apex:tab>
+       <apex:tab label="{!IF(Engagement_Summary__c.Engagement__r.RecordType.DeveloperName == 'Buyside', 'Buyer Details', 'Winning Counterparty Details')}" id="tabBuyerDetails">
+            <apex:pageBlock title="{!IF(Engagement_Summary__c.Engagement__r.RecordType.DeveloperName == 'Buyside', 'Buyer Details', 'Winning Counterparty Details')}" mode="edit">
+                <apex:pageBlockTable value="{!WinningCounterparties}" var="wc">
+                    <apex:column value="{!wc.Company__r.Name}"></apex:column>
+                    <apex:column >
+                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:inputField value="{!wc.Process_Type__c}"></apex:inputField>
+                        </apex:outputPanel>
+                        <apex:facet name="header">
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Counterparty__c.Fields.Process_Type__c.Label}"></apex:outputLabel>
+                        </apex:facet>
+                    </apex:column>
+                     <apex:column >
+                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:inputField value="{!wc.Platform_Type__c}"></apex:inputField>
+                        </apex:outputPanel>
+                         <apex:facet name="header">
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Counterparty__c.Fields.Platform_Type__c.Label}"></apex:outputLabel>
+                        </apex:facet>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+            <apex:pageBlock title="{!IF(Engagement_Summary__c.Engagement__r.RecordType.DeveloperName == 'Buyside', 'Team', 'Counterparty Team')}">
+                <apex:pageBlockTable value="{!CounterpartyContacts}" var="cc">
+                    <apex:column value="{!cc.Type__c}">
+                        <apex:facet name="header">Classification</apex:facet>
+                    </apex:column>
+                    <apex:column value="{!cc.Contact__r.Name}">
+                        <apex:facet name="header">Company/Contact</apex:facet>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </apex:tab>
+       <apex:tab label="Seller Details" id="tabSellerBuysideDetails" rendered="{!Engagement_Summary__c.Engagement__r.RecordType.DeveloperName == 'Buyside'}">
+            <apex:pageBlock title="Seller Details" mode="edit" >
+                <table cellpadding="5" cellspacing="5">
+                    <tr>
+                        <td colspan="4">
+                            <apex:inputCheckbox value="{!Engagement_Summary__c.Has_Public_Debt__c}"></apex:inputCheckbox><apex:outputLabel value="Private Company with Public Debt" styleClass="bold"></apex:outputLabel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Transaction_Rationale__c.Label}" styleClass="bold"></apex:outputLabel>
+                        </td>
+                        <td colspan="3">
+                            <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                <apex:inputField value="{!Engagement_Summary__c.Transaction_Rationale__c}"></apex:inputField>
+                            </apex:outputPanel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Book_Value__c.Label}" styleClass="bold"></apex:outputLabel>
+                        </td>
+                        <td>
+                             <apex:inputField value="{!Engagement_Summary__c.Book_Value__c}" styleClass="numeric-short"/>
+                        </td>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Total_Asset_Value__c.Label}" styleClass="bold"></apex:outputLabel>
+                        </td>
+                        <td>
+                            <apex:inputField value="{!Engagement_Summary__c.Total_Asset_Value__c}" styleClass="numeric-short"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="{!SUBSTITUTE($ObjectType.Engagement_Summary__c.Fields.Pitch_EBITDA_LTM__c.Label,'Pitch','')}" styleClass="bold"></apex:outputLabel>
+                        </td>
+                        <td>
+                             <apex:inputField value="{!Engagement_Summary__c.Pitch_EBITDA_LTM__c}" styleClass="numeric-short"/>
+                        </td>
+                        <td>
+                            <apex:outputLabel value="{!SUBSTITUTE($ObjectType.Engagement_Summary__c.Fields.Pitch_EBITDA_FYE__c.Label,'Pitch','')}" styleClass="bold"></apex:outputLabel>
+                        </td>
+                        <td>
+                            <apex:inputField value="{!Engagement_Summary__c.Pitch_EBITDA_FYE__c}" styleClass="numeric-short"/>
+                        </td>
+                    </tr>
+                </table>
+            </apex:pageBlock>
+            <apex:pageBlock title="Seller Contacts" id="externalSellerBuysideContacts">
+                <apex:pageBlockTable id="sellerContacts" value="{!SellerContacts}" var="et" rendered="{!(SellerContacts.size > 0)}">
+                    <apex:column value="{!et.Role__c}">
+                        <apex:facet name="header">
+                            Classification
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{!et.Contact__r.Name}">
+                        <apex:facet name="header">
+                            Company/Contact
+                        </apex:facet>
+                    </apex:column>
+                </apex:pageBlockTable>
+                <apex:outputText value="No records to display" rendered="{!(SellerContacts.size == 0)}"></apex:outputText>
+            </apex:pageBlock>
+        </apex:tab>
+       <apex:tab label="Public Company Process" id="tabPublicCompanyProcess" rendered="{!CONTAINS(Engagement_Summary__c.Engagement__r.Subject_Company_Ownership__c,'Public')}">
+           <apex:pageBlock title="Public Company Process" mode="edit" id="pbPublicCompanyProcess">
+               <div id="loading-curtain-div"/>
+               <table id="purchasePricePremium" cellpadding="5" cellspacing="5">
+                   <td style="vertical-align: top">
+                        <table cellpadding="5" cellspacing="5">
+                            <tr>
+                                <td colspan="3" class="column-header">
+                                    <apex:outputLabel value="Purchase Price Premium"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Offer_Price__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td></td>
+                                <td class="right">
+                                    <apex:inputField id="offerPrice" value="{!Engagement_Summary__c.Offer_Price__c}" styleClass="numeric-short" label="">
+                                    </apex:inputField>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.High_52_Week__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField id="high52Week" value="{!Engagement_Summary__c.High_52_Week__c}" styleClass="numeric-short"></apex:inputField>
+                                </td>
+                                <td class="right">
+                                    <apex:outputField id="high52WeekPercent" value="{!Engagement_Summary__c.High_52_Week_Percent__c}" styleClass="numeric-short-output"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Low_52_Week__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField id="low52Week" value="{!Engagement_Summary__c.Low_52_Week__c}" styleClass="numeric-short"></apex:inputField>
+                                </td>
+                                <td class="right">
+                                    <apex:outputField id="low52WeekPercent"  value="{!Engagement_Summary__c.Low_52_Week_Percent__c}" styleClass="numeric-short-output"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Prior_Close__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField id="priorClose" value="{!Engagement_Summary__c.Prior_Close__c}" styleClass="numeric-short"></apex:inputField>
+                                </td>
+                                <td class="right">
+                                    <apex:outputField id="priorClosePercent" value="{!Engagement_Summary__c.Prior_Close_Percent__c}" styleClass="numeric-short-output"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Weighted_Avg_30_Day__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField id="weightedAvg30Day" value="{!Engagement_Summary__c.Weighted_Avg_30_Day__c}" styleClass="numeric-short"></apex:inputField>
+                                </td>
+                                <td class="right">
+                                    <apex:outputField id="weightedAvg30DayPercent" value="{!Engagement_Summary__c.Weighted_Avg_30_Day_Percent__c}" styleClass="numeric-short-output"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Weighted_Avg_60_Day__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField id="weightedAvg60Day" value="{!Engagement_Summary__c.Weighted_Avg_60_Day__c}" styleClass="numeric-short"></apex:inputField>
+                                </td>
+                                <td class="right">
+                                    <apex:outputField id="weightedAvg60DayPercent" value="{!Engagement_Summary__c.Weighted_Avg_60_Day_Percent__c}" styleClass="numeric-short-output"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Weighted_Avg_90_Day__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField id="weightedAvg90Day" value="{!Engagement_Summary__c.Weighted_Avg_90_Day__c}" styleClass="numeric-short"></apex:inputField>
+                                </td>
+                                <td class="right">
+                                    <apex:outputField id="weightedAvg90DayPercent" value="{!Engagement_Summary__c.Weighted_Avg_90_Day_Percent__c}" styleClass="numeric-short-output"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="column-header">
+                                     <apex:outputLabel value="Transaction Structure"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Transaction_Structure__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td colspan="2">
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Transaction_Structure__c}" styleClass="width: 160px;"/>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Pro_Forma_Ownership__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td colspan="2">
+                                     <apex:inputField value="{!Engagement_Summary__c.Pro_Forma_Ownership__c}"/>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Tactical_Approach__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td colspan="2">
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Tactical_Approach__c}"/>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                       </table>
+                   </td>
+                   <td style="vertical-align: top">
+                        <table cellpadding="5" cellspacing="5">
+                            <tr>
+                                <td colspan="2" class="column-header">
+                                    <apex:outputLabel value="Fiduciary Obligations and Deal Protection"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Had_Special_Committee_Review__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Had_Special_Committee_Review__c}"/>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Members_On_Special_Committee__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!Engagement_Summary__c.Members_On_Special_Committee__c}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Was_Board_Vote_Unanimous__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Was_Board_Vote_Unanimous__c}"/>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <apex:outputLabel value="Advisors:" styleClass="bold"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Did_Committee_Have_Separate_Advisor__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Did_Committee_Have_Separate_Advisor__c}"/>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Had_Second_Fairness_Opinion__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Had_Second_Fairness_Opinion__c}"/>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Had_Lockup_Provision__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Had_Lockup_Provision__c}"/>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Outstanding_Lockup_Percent__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!Engagement_Summary__c.Outstanding_Lockup_Percent__c}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Had_Go_Shop_Provision__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Had_Go_Shop_Provision__c}"/>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Go_Shop_Provision_Months__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!Engagement_Summary__c.Go_Shop_Provision_Months__c}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Original_Bidder_Had_Matching_Right__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Original_Bidder_Had_Matching_Right__c}"/>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <apex:outputLabel value="Was There a Fiduciary Out on a Superior Proposal"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Was_Fiduciary_Out__c}"/>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <apex:outputLabel value="Financing Out in the Agreement?"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Was_Financing_Out__c}"/>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="Was a Commitment Letter Delivered At Signing?"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Was_Commitment_Letter_Delivered__c}"/>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Termination_Fee__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!Engagement_Summary__c.Termination_Fee__c}"/>
+                                </td>
+                            </tr>
+                       </table>
+                   </td>
+                   <td style="vertical-align: top">
+                       <table cellpadding="5" cellspacing="5">
+                            <tr>
+                                <td colspan="2" class="column-header">
+                                    <apex:outputLabel value="Shareholders" styleClass="bold"></apex:outputLabel>
+                                </td>
+                           </tr>
+                           <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Management_Ownership_Percent__c.Label}"></apex:outputLabel>
+                               </td>
+                               <td>
+                                    <apex:inputField value="{!Engagement_Summary__c.Management_Ownership_Percent__c}" styleClass="numeric-short"/>
+                               </td>
+                           </tr>
+                           <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Total_Insider_Ownership_Percent__c.Label}"></apex:outputLabel>
+                               </td>
+                               <td>
+                                    <apex:inputField value="{!Engagement_Summary__c.Total_Insider_Ownership_Percent__c}" styleClass="numeric-short"/>
+                               </td>
+                           </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Controlling_Shareholder_Ownership__c.Label}"></apex:outputLabel>
+                               </td>
+                               <td>
+                                    <apex:inputField value="{!Engagement_Summary__c.Controlling_Shareholder_Ownership__c}" styleClass="numeric-short"/>
+                               </td>
+                           </tr>
+                           <tr>
+                                <td colspan="2">
+                                    <apex:outputLabel value="Participants in Lock-up Provisions:" styleClass="bold"></apex:outputLabel>
+                               </td>
+                           </tr>
+                           <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Lockup_Controlling_Shareholders__c.Label}"></apex:outputLabel>
+                               </td>
+                               <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Lockup_Controlling_Shareholders__c}"/>
+                                    </apex:outputPanel>
+                               </td>
+                           </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Lockup_Insiders__c.Label}"></apex:outputLabel>
+                               </td>
+                               <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                         <apex:inputField value="{!Engagement_Summary__c.Lockup_Insiders__c}"/>
+                                    </apex:outputPanel>
+                               </td>
+                           </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Lockup_Management__c.Label}"></apex:outputLabel>
+                               </td>
+                               <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Lockup_Management__c}"/>
+                                    </apex:outputPanel>
+                               </td>
+                           </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Shareholders_Voted_Favorably__c.Label}"></apex:outputLabel>
+                               </td>
+                               <td>
+                                    <apex:inputField value="{!Engagement_Summary__c.Shareholders_Voted_Favorably__c}"/>
+                               </td>
+                           </tr>
+                           <tr>
+                                <td colspan="2" class="column-header">
+                                     <apex:outputLabel value="Company Defense Profile"></apex:outputLabel>
+                               </td>
+                           </tr>
+                           <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Staggered_Classified_Board__c.Label}"></apex:outputLabel>
+                               </td>
+                               <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Staggered_Classified_Board__c}"/>
+                                    </apex:outputPanel>
+                               </td>
+                           </tr>
+                           <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Rights_Offering_Plan__c.Label}"></apex:outputLabel>
+                               </td>
+                               <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Rights_Offering_Plan__c}"/>
+                                    </apex:outputPanel>
+                               </td>
+                           </tr>
+                           <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Vote_Required_For_Ammendments__c.Label}"></apex:outputLabel>
+                               </td>
+                               <td>
+                                    <apex:inputField value="{!Engagement_Summary__c.Vote_Required_For_Ammendments__c}"/>
+                               </td>
+                           </tr>
+                           <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Fair_Price_Provisions__c.Label}"></apex:outputLabel>
+                               </td>
+                               <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Fair_Price_Provisions__c}"/>
+                                    </apex:outputPanel>
+                               </td>
+                           </tr>
+                           <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Advance_Notice_Requirement__c.Label}"></apex:outputLabel>
+                               </td>
+                               <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Advance_Notice_Requirement__c}"/>
+                                    </apex:outputPanel>
+                               </td>
+                           </tr>
+                       </table>
+                   </td>
+               </table>
+           </apex:pageBlock>
+        </apex:tab>
+       <apex:tab label="Purchase Price & Structure" id="tabPurchasePriceAndStructure">
+           <apex:pageBlock title="Purchase Price & Structure" mode="edit">
+               <table style="width: 100%" cellpadding="5" cellspacing="5">
+                   <tr>
+                        <td style="vertical-align: top;">
+                            <table cellpadding="5" cellspacing="5">
+                   <tr>
+                      <td colspan="2" class="bold">
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Purchase_Type__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                        <apex:actionRegion >
+                           <apex:outputPanel styleClass="requiredInput" layout="block">
+                           <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <apex:inputField id="purchaseType" value="{!Engagement_Summary__c.Purchase_Type__c}" styleClass="spread">
+                                <apex:actionSupport event="onchange" rerender="pan338Label,pan338" oncomplete="DocumentReady();"/>
+                            </apex:inputField>
+                           </apex:outputPanel>
+                        </apex:actionRegion>
+                       </td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                       <td colspan="2">
+                           <apex:outputPanel id="pan338Label">
+                            <apex:outputLabel id="purchaseTypeDependentLabel" value="{!$ObjectType.Engagement_Summary__c.Fields.Took_338_Selection__c.Label}" rendered="{!Engagement_Summary__c.Purchase_Type__c <> 'Asset'}"></apex:outputLabel>
+                           </apex:outputPanel>
+                       </td>
+                       <td class="right">
+                            <apex:outputPanel id="pan338">
+                                <apex:outputPanel rendered="{!Engagement_Summary__c.Purchase_Type__c <> 'Asset'}">
+                                <apex:outputPanel styleClass="requiredInput" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                    <apex:inputField value="{!Engagement_Summary__c.Took_338_Selection__c}" styleClass="spread" />
+                                </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                       </td>
+                       <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="column-header">
+                            <apex:outputLabel value="Purchase Price (MM)" styleClass="bold"></apex:outputLabel>
+                       </td>
+                   </tr>
+                   <tr>
+                        <td colspan="2">
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Purchase_Price_Base__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right" style="width: 90px;">
+                             <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField id="purchasePriceBase" value="{!Engagement_Summary__c.Purchase_Price_Base__c}" styleClass="numeric-medium spread" />
+                            </apex:outputPanel>
+                       </td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                        <td colspan="2">
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Working_Capital_Adjustment__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="workingCapitalAdjustments" value="{!Engagement_Summary__c.Working_Capital_Adjustment__c}" styleClass="numeric-medium spread" />
+                       </td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                        <td colspan="2">
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Post_Closing_Adjustment__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="postClosingAdjustments" value="{!Engagement_Summary__c.Post_Closing_Adjustment__c}" styleClass="numeric-medium spread" />
+                       </td>
+                       <td>
+                            <apex:image id="imgPostClosingAdjustmentNote" url="{!URLFOR($Resource.HL_Images,'Note.png')}" styleClass="pointer"/>
+                            <div id="postClosingAdjustmentNoteDialog" style="display:none;">
+                                <apex:inputTextarea cols="80" rows="6" value="{!Engagement_Summary__c.Post_Closing_Adjustment_Note__c}"/>
+                           </div>
+                       </td>
+                   </tr>
+                   <tr>
+                        <td colspan="2"></td>
+                       <td><hr /></td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                       <td class="bold" colspan="2">
+                            Total Purchase Price
+                       </td>
+                       <td class="right bold">
+                            <apex:outputField id="totalPurchasePrice" value="{!Engagement_Summary__c.Total_Purchase_Price__c}"/>
+                       </td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                       <td class="column-header">
+                            <apex:outputLabel value="Type of Consideration" styleClass="bold"></apex:outputLabel>
+                       </td>
+                       <td class="column-header">
+                            <apex:outputLabel value="Amount (MM)" styleClass="bold"></apex:outputLabel>
+                       </td>
+                       <td class="right column-header">
+                            <apex:outputLabel value="% of Value" styleClass="bold"></apex:outputLabel>
+                       </td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                       <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Consideration_Cash__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="considerationCash" value="{!Engagement_Summary__c.Consideration_Cash__c}" label="" styleClass="numeric-medium"/>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="considerationCashPercent" value="{!Engagement_Summary__c.Consideration_Cash_Percent__c}"></apex:outputField>
+                       </td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Consideration_Seller_Notes__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:actionRegion >
+                                <apex:inputField id="considerationSellerNotes" value="{!Engagement_Summary__c.Consideration_Seller_Notes__c}" label="" styleClass="numeric-medium">
+                                        <apex:actionSupport event="onchange" rerender="panSellerNotesTerm,panSellerNotesInterest, panSellerNotesConversionRight" oncomplete="DocumentReady();"/>
+                                </apex:inputField>
+                            </apex:actionRegion>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="considerationSellerNotesPercent" value="{!Engagement_Summary__c.Consideration_Seller_Notes_Percent__c}"></apex:outputField>
+                       </td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Consideration_Stock__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="considerationStock" value="{!Engagement_Summary__c.Consideration_Stock__c}" label="" styleClass="numeric-medium"/>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="considerationStockPercent" value="{!Engagement_Summary__c.Consideration_Stock_Percent__c}"></apex:outputField>
+                       </td>
+                       <td><apex:image id="imgPreferredOrCommonStockNote" url="{!URLFOR($Resource.HL_Images,'Note.png')}" styleClass="pointer"/></td>
+                       <div id="preferredOrCommonStockNoteDialog" style="display:none;">
+                                <apex:inputTextarea cols="80" rows="6" value="{!Engagement_Summary__c.Consideration_Stock_Note__c}"/>
+                       </div>
+                   </tr>
+                   <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Consideration_Earnout_Payments__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="considerationEarnout" value="{!Engagement_Summary__c.Consideration_Earnout_Payments__c}" label="" styleClass="numeric-medium"/>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="considerationEarnoutPercent" value="{!Engagement_Summary__c.Consideration_Earnout_Payments_Percent__c}"></apex:outputField>
+                       </td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                        <td>
+                             <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Consideration_Other_Payments__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="considerationOtherPayments" value="{!Engagement_Summary__c.Consideration_Other_Payments__c}" label="" styleClass="numeric-medium"/>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="considerationOtherPaymentsPercent" value="{!Engagement_Summary__c.Consideration_Other_Percent__c}"></apex:outputField>
+                       </td>
+                       <td><apex:image id="imgOtherPaymentsNote" url="{!URLFOR($Resource.HL_Images,'Note.png')}" styleClass="pointer"/></td>
+                       <div id="otherPaymentsNoteDialog" style="display:none;">
+                                <apex:inputTextarea cols="80" rows="6" value="{!Engagement_Summary__c.Consideration_Other_Payments_Note__c}"/>
+                       </div>
+                   </tr>
+                   <tr>
+                        <td class="bold">
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Total_Consideration__c.Label}" styleClass="bold"></apex:outputLabel>
+                       </td>
+                       <td class="right bold">
+                            <apex:outputField id="totalConsideration" value="{!Engagement_Summary__c.Total_Consideration__c}"/>
+                       </td>
+                       <td></td>
+                       <td></td>
+                   </tr>
+               </table>
+                       </td>
+                       <td style="vertical-align: top; padding-left: 20px;">
+                           <table cellpadding="5" cellspacing="5">
+                               <tr>
+                                   <td class="column-header">
+                                        <apex:outputLabel value="Post Closing Adjustment Metrics" styleClass="bold"></apex:outputLabel>
+                                   </td>
+                                   <td class="column-header">
+                                        <apex:outputLabel value="Included" styleClass="bold"></apex:outputLabel>
+                                   </td>
+                                   <td class="column-header">
+                                        <apex:outputLabel value="Metric 1" styleClass="bold"></apex:outputLabel>
+                                   </td>
+                                   <td class="column-header">
+                                        <apex:outputLabel value="Metric 2" styleClass="bold"></apex:outputLabel>
+                                   </td>
+                               </tr>
+                               <tr>
+                                    <td>
+                                        <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Metrics_Used__c.Label}"></apex:outputLabel>
+                                   </td>
+                                   <td>
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                            <apex:inputField value="{!Engagement_Summary__c.Metrics_Used__c}" label=""></apex:inputField>
+                                        </apex:outputPanel>
+                                   </td>
+                                   <td>
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                            <apex:inputField value="{!Engagement_Summary__c.First_Metric__c}" label=""></apex:inputField>
+                                        </apex:outputPanel>
+                                   </td>
+                                   <td>
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                            <apex:inputField value="{!Engagement_Summary__c.Second_Metric__c}" label=""></apex:inputField>
+                                        </apex:outputPanel>
+                                   </td>
+                               </tr>
+                               <tr>
+                                    <td>
+                                         <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Preparing_Party__c.Label}"></apex:outputLabel>
+                                   </td>
+                                   <td colspan="3">
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                            <apex:inputField value="{!Engagement_Summary__c.Preparing_Party__c}" label=""></apex:inputField>
+                                        </apex:outputPanel>
+                                   </td>
+                               </tr>
+                               <tr>
+                                    <td>
+                                        <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Had_Separate_Escrow__c.Label}"></apex:outputLabel>
+                                   </td>
+                                   <td colspan="3">
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                            <apex:inputField value="{!Engagement_Summary__c.Had_Separate_Escrow__c}"></apex:inputField>
+                                        </apex:outputPanel>
+                                   </td>
+                               </tr>
+                               <tr>
+                                 <td colspan="4" class="column-header">
+                                        <apex:outputLabel value="Earnouts(MM)" styleClass="bold"></apex:outputLabel>
+                                 </td>
+                               </tr>
+                               <tr>
+                                    <td colspan="3">
+                                        <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Was_Earnout_Included__c.Label + ' (If yes, please fill out the below)'}"></apex:outputLabel>
+                                   </td>
+                                   <td>
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                            <apex:actionRegion >
+                                                <apex:inputField value="{!Engagement_Summary__c.Was_Earnout_Included__c}">
+                                                    <apex:actionSupport event="onchange" rerender="panEarnoutMetricRequired,panEarnoutPeriodRequired,panEarnoutAccelerateRequired,panEarnoutOffsetRequired" oncomplete="DocumentReady();" />
+                                                </apex:inputField>
+                                            </apex:actionRegion>
+                                        </apex:outputPanel>
+                                   </td>
+                               </tr>
+                               <tr>
+                                    <td colspan="3">
+                                        <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Earnout_Metric__c.Label}"></apex:outputLabel>
+                                   </td>
+                                   <td>
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel id="panEarnoutMetricRequired" styleClass="{!IF(Engagement_Summary__c.Was_Earnout_Included__c == 'Yes','requiredBlock','')}" layout="block" />
+                                            <apex:inputField value="{!Engagement_Summary__c.Earnout_Metric__c}"></apex:inputField>
+                                        </apex:outputPanel>
+                                   </td>
+                               </tr>
+                               <tr>
+                                    <td colspan="3">
+                                        <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Earnout_Period__c.Label}"></apex:outputLabel>
+                                   </td>
+                                   <td>
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel id="panEarnoutPeriodRequired" styleClass="{!IF(Engagement_Summary__c.Was_Earnout_Included__c == 'Yes','requiredBlock','')}" layout="block" />
+                                            <apex:inputField value="{!Engagement_Summary__c.Earnout_Period__c}" styleClass="earnout"></apex:inputField>
+                                        </apex:outputPanel>
+                                   </td>
+                               </tr>
+                               <tr>
+                                    <td colspan="3">
+                                        <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Does_Earnout_Accelerate__c.Label}"></apex:outputLabel>
+                                   </td>
+                                   <td>
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel id="panEarnoutAccelerateRequired" styleClass="{!IF(Engagement_Summary__c.Was_Earnout_Included__c == 'Yes','requiredBlock','')}" layout="block" />
+                                            <apex:inputField value="{!Engagement_Summary__c.Does_Earnout_Accelerate__c}" styleClass="earnout"></apex:inputField>
+                                        </apex:outputPanel>
+                                   </td>
+                               </tr>
+                               <tr>
+                                    <td colspan="3">
+                                        <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Is_Buyer_Able_To_Offset_Earnout__c.Label}"></apex:outputLabel>
+                                   </td>
+                                   <td>
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel id="panEarnoutOffsetRequired" styleClass="{!IF(Engagement_Summary__c.Was_Earnout_Included__c == 'Yes','requiredBlock','')}" layout="block" />
+                                            <apex:inputField value="{!Engagement_Summary__c.Is_Buyer_Able_To_Offset_Earnout__c}" styleClass="earnout"></apex:inputField>
+                                        </apex:outputPanel>
+                                   </td>
+                               </tr>
+                               <tr>
+                                    <td colspan="4" class="column-header">
+                                        <apex:outputLabel value="Seller Notes" styleClass="bold"></apex:outputLabel>
+                                   </td>
+                               </tr>
+                               <tr>
+                                    <td colspan="4">
+                                        <table cellpadding="5">
+                                            <tr>
+                                                <td>
+                                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Seller_Notes_Term__c.Label}"></apex:outputLabel>
+                                                </td>
+                                                <td>
+                                                    <apex:outputPanel id="panSellerNotesTerm" styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel id="panSellerNotesTermRequired" styleClass="{!IF(BLANKVALUE(Engagement_Summary__c.Consideration_Seller_Notes__c,0) > 0,'requiredBlock','')}" layout="block" />
+
+                                                    <apex:inputField value="{!Engagement_Summary__c.Seller_Notes_Term__c}" styleClass="numeric-short" rendered="{!BLANKVALUE(Engagement_Summary__c.Consideration_Seller_Notes__c,0) > 0}"></apex:inputField>
+                                                    <apex:outputPanel rendered="{!BLANKVALUE(Engagement_Summary__c.Consideration_Seller_Notes__c,0) == 0}">
+                                                        <input class="numeric-short" disabled="true" />
+                                                    </apex:outputPanel>
+                                                    </apex:outputPanel>
+                                                </td>
+                                                <td>
+                                                     <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Seller_Notes_Interest_Percent__c.Label}"></apex:outputLabel>
+                                                </td>
+                                                <td>
+                                                    <apex:outputPanel id="panSellerNotesInterest" styleClass="requiredInput" layout="block">
+                                                    <apex:outputPanel id="panSellerNotesInterestRequired" styleClass="{!IF(BLANKVALUE(Engagement_Summary__c.Consideration_Seller_Notes__c,0) > 0,'requiredBlock','')}" layout="block" />
+                                                    <apex:outputPanel rendered="{!BLANKVALUE(Engagement_Summary__c.Consideration_Seller_Notes__c,0) > 0}">
+                                                    <apex:inputField value="{!Engagement_Summary__c.Seller_Notes_Interest_Percent__c}" styleClass="numeric-short"></apex:inputField>
+                                                    </apex:outputPanel>
+                                                     <apex:outputPanel rendered="{!BLANKVALUE(Engagement_Summary__c.Consideration_Seller_Notes__c,0) == 0}">
+                                                        <input class="numeric-short" disabled="true" />
+                                                    </apex:outputPanel>
+                                                    </apex:outputPanel>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                     <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Has_Seller_Note_Conversion_Rights__c.Label}"></apex:outputLabel>
+                                                </td>
+                                                <td>
+                                                    <apex:outputPanel id="panSellerNotesConversionRight" styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel id="panSellerNotesConversionRightRequired" styleClass="{!IF(BLANKVALUE(Engagement_Summary__c.Consideration_Seller_Notes__c,0) > 0,'requiredBlock','')}" layout="block" />
+                                                    <apex:inputField value="{!Engagement_Summary__c.Has_Seller_Note_Conversion_Rights__c}" rendered="{!BLANKVALUE(Engagement_Summary__c.Consideration_Seller_Notes__c,0) > 0}"></apex:inputField>
+                                                    <apex:outputPanel rendered="{!BLANKVALUE(Engagement_Summary__c.Consideration_Seller_Notes__c,0) == 0}">
+                                                        <input class="numeric-medium" disabled="true" />
+                                                    </apex:outputPanel>
+                                                    </apex:outputPanel>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                   </td>
+                               </tr>
+                           </table>
+                       </td>
+                   </tr>
+               </table>
+           </apex:pageBlock>
+        </apex:tab>
+       <apex:tab label="Key Contract Terms" id="tabKeyContractTerms">
+           <apex:pageBlock title="Key Contract Terms" mode="edit">
+               <table>
+                    <td>
+                        <table cellpadding="5" cellspacing="5">
+                            <tr>
+                                <td colspan="2" class="column-header">
+                                    <apex:outputLabel value="Representations and Warranties Insurance (MM)" styleClass="required"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="Did the Buyer/Seller Purchase R&W Insurance"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:actionRegion >
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                           <apex:inputField value="{!Engagement_Summary__c.Representations_and_Warranties_Insurance__c}" styleClass="spread">
+                                               <apex:actionSupport event="onchange" rerender="panRepsAndWarrantiesLimit,panRepsAndWarrantiesCost,panRepsAndWarrantiesRetention" oncomplete="DocumentReady();" />
+                                           </apex:inputField>
+                                        </apex:outputPanel>
+                                    </apex:actionRegion>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel id="repsAndWarrantiesInsuranceLimitLabel" value="If Yes, What was the Limit of the Insurance Coverage Purchased ($)?"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:outputPanel id="panRepsAndWarrantiesLimit">
+                                         <apex:inputField id="repsAndWarrantiesInsurancePolicyLimit" value="{!Engagement_Summary__c.Reps_and_Warranties_Insurance_Limit__c}" styleClass="numeric-medium" rendered="{!Engagement_Summary__c.Representations_and_Warranties_Insurance__c == 'Yes'}"></apex:inputField>
+                                         <apex:outputPanel rendered="{!Engagement_Summary__c.Representations_and_Warranties_Insurance__c != 'Yes'}">
+                                            <input class="numeric-medium" disabled="true" />
+                                         </apex:outputPanel>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel id="repsAndWarrantiesInsuranceCostLabel" value="If Yes, What was the Cost of the Insurance Policy ($)?"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:outputPanel id="panRepsAndWarrantiesCost">
+                                         <apex:inputField id="repsAndWarrantiesInsurancePolicyCost" value="{!Engagement_Summary__c.Reps_and_Warranties_Insurance_Cost__c}" styleClass="numeric-medium" rendered="{!Engagement_Summary__c.Representations_and_Warranties_Insurance__c == 'Yes'}"></apex:inputField>
+                                         <apex:outputPanel rendered="{!Engagement_Summary__c.Representations_and_Warranties_Insurance__c != 'Yes'}">
+                                            <input class="numeric-medium" disabled="true" />
+                                         </apex:outputPanel>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel id="repsAndWarrantiesInsuranceRetentionLabel" value="If Yes, What was the Retention Amount ($)?"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:outputPanel id="panRepsAndWarrantiesRetention">
+                                         <apex:inputField id="repsAndWarrantiesInsurancePolicyRetention" value="{!Engagement_Summary__c.Reps_and_Warranties_Insurance_Retention__c}" styleClass="numeric-medium" rendered="{!Engagement_Summary__c.Representations_and_Warranties_Insurance__c == 'Yes'}"></apex:inputField>
+                                         <apex:outputPanel rendered="{!Engagement_Summary__c.Representations_and_Warranties_Insurance__c != 'Yes'}">
+                                            <input class="numeric-medium" disabled="true" />
+                                         </apex:outputPanel>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="column-header">
+                                    <apex:outputLabel value="Basket (MM)"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Indemnity_Basket_Type__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Indemnity_Basket_Type__c}" styleClass="spread"></apex:inputField>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Indemnity_Basket_Size__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:inputField id="indemnityBasketSize" value="{!Engagement_Summary__c.Indemnity_Basket_Size__c}" styleClass="numeric-short"></apex:inputField>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Indemnity_Basket_Size_Percent__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:inputField id="indemnityBasketSizePercent" value="{!Engagement_Summary__c.Indemnity_Basket_Size_Percent__c}"></apex:inputField>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Indemnity_Basket_Threshold_Remedy__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Indemnity_Basket_Threshold_Remedy__c}" styleClass="spread"></apex:inputField>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="column-header">
+                                    <apex:outputLabel value="Caps (MM)"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Indemnity_Caps_Type__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Indemnity_Caps_Type__c}" styleClass="spread"></apex:inputField>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Indemnity_Caps_Size__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:inputField id="indemnityCapsSize" value="{!Engagement_Summary__c.Indemnity_Caps_Size__c}" styleClass="numeric-short"></apex:inputField>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Indemnity_Caps_Size_Percent__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:inputField id="indemnityCapsSizePercent" value="{!Engagement_Summary__c.Indemnity_Caps_Size_Percent__c}"></apex:inputField>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Indemnity_Caps_Term__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Indemnity_Caps_Term__c}" styleClass="spread"></apex:inputField>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Indemnity_Caps_Threshold_Remedy__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Indemnity_Caps_Threshold_Remedy__c}" styleClass="spread"></apex:inputField>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="column-header">
+                                     <apex:outputLabel value="Escrow/Holdbacks (MM)"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Indemnity_Escrow_Type__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Indemnity_Escrow_Type__c}" styleClass="spread"></apex:inputField>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Indemnity_Escrow_Size__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:inputField id="indemnityEscrowSize" value="{!Engagement_Summary__c.Indemnity_Escrow_Size__c}" styleClass="numeric-short"></apex:inputField>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Indemnity_Escrow_Size_Percent__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:inputField id="indemnityEscrowSizePercent" value="{!Engagement_Summary__c.Indemnity_Escrow_Size_Percent__c}"></apex:inputField>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Indemnity_Escrow_Term__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Indemnity_Escrow_Term__c}" styleClass="spread"></apex:inputField>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                        </table>
+                   </td>
+                    <td>
+                        <table cellpadding="5" cellspacing="5">
+                            <tr>
+                                <td colspan="2" class="column-header">
+                                    <apex:outputLabel value="Cap Carveout - Environmental (MM)"></apex:outputLabel>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Carveout_Environmental_Type__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Carveout_Environmental_Type__c}" styleClass="spread"></apex:inputField>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Carveout_Environmental_CapSize__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:inputField value="{!Engagement_Summary__c.Carveout_Environmental_CapSize__c}" styleClass="numeric-short"></apex:inputField>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Carveout_Environmental_BasketSize__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:inputField value="{!Engagement_Summary__c.Carveout_Environmental_BasketSize__c}" styleClass="numeric-short"></apex:inputField>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Carveout_Environmental_SurvivalPeriod__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td class="right">
+                                    <apex:inputField value="{!Engagement_Summary__c.Carveout_Environmental_SurvivalPeriod__c}" styleClass="numeric-short"></apex:inputField>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="column-header">
+                                    <apex:outputLabel value="Carveouts (REQUIRED - check all that apply)"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                        <table style="width: 100%">
+                                <tr>
+                                    <td>
+                                         <apex:outputLabel value=""></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel value="For Survival" styleClass="bold"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel value="For Basket" styleClass="bold"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel value="For Caps" styleClass="bold"></apex:outputLabel>
+                                    </td>
+                                    <td class="center">
+                                         <apex:outputLabel value="Details (if any)" styleClass="bold"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="Capitalization"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                            <apex:inputField value="{!Engagement_Summary__c.Carveout_Capitalization_Survival__c}"></apex:inputField>
+                                        </apex:outputPanel>
+                                    </td>
+                                    <td>
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                            <apex:inputField value="{!Engagement_Summary__c.Carveout_Capitalization_Basket__c}"></apex:inputField>
+                                        </apex:outputPanel>
+                                    </td>
+                                    <td>
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                            <apex:inputField value="{!Engagement_Summary__c.Carveout_Capitalization_Caps__c}"></apex:inputField>
+                                        </apex:outputPanel>
+                                    </td>
+                                    <td class="center">
+                                        <apex:image id="imgCarveoutCapitalizationDetails" url="{!URLFOR($Resource.HL_Images,'Edit.png')}" styleClass="pointer"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                        <apex:panelBar id="pbCarveoutCapitalizationDetails" switchType="client">
+                                            <apex:panelBarItem expanded="False" label="Capitalization Details (Click to Hide)" >
+                                                <apex:pageBlockSection columns="1">
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Capitalization_Type__c}"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Capitalization_CapSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Capitalization_BasketSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Capitalization_SurvivalPeriod__c}" styleClass="numeric-short"></apex:inputfield>
+                                                </apex:pageBlockSection>
+                                            </apex:panelBarItem>
+                                        </apex:panelBar>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><apex:outputLabel value="Ownership"></apex:outputLabel></td>
+                                    <td>
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                            <apex:inputField value="{!Engagement_Summary__c.Carveout_Ownership_Survival__c}"></apex:inputField>
+                                        </apex:outputPanel>
+                                    </td>
+                                    <td>
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                            <apex:inputField value="{!Engagement_Summary__c.Carveout_Ownership_Basket__c}"></apex:inputField>
+                                        </apex:outputPanel>
+                                    </td>
+                                    <td>
+                                        <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                            <apex:inputField value="{!Engagement_Summary__c.Carveout_Ownership_Caps__c}"></apex:inputField>
+                                        </apex:outputPanel>
+                                    </td>
+                                    <td class="center"><apex:image id="imgCarveoutOwnershipDetails" url="{!URLFOR($Resource.HL_Images,'Edit.png')}" styleClass="pointer"/></td>
+                                 </tr>
+                                 <tr>
+                                    <td colspan="5">
+                                        <apex:panelBar id="pbCarveoutOwnershipDetails" switchType="client">
+                                            <apex:panelBarItem expanded="False" label="Ownership Details (Click to Hide)" >
+                                                <apex:pageBlockSection columns="1">
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Ownership_Type__c}"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Ownership_CapSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Ownership_BasketSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Ownership_SurvivalPeriod__c}" styleClass="numeric-short"></apex:inputfield>
+                                                </apex:pageBlockSection>
+                                            </apex:panelBarItem>
+                                        </apex:panelBar>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td><apex:outputLabel value="Due Authority"></apex:outputLabel></td>
+                                        <td>
+                                            <apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                                <apex:inputField value="{!Engagement_Summary__c.Carveout_DueAuthority_Survival__c}"></apex:inputField>
+                                            </apex:outputPanel>
+                                        </td>
+                                        <td>
+                                            <apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                                <apex:inputField value="{!Engagement_Summary__c.Carveout_DueAuthority_Basket__c}"></apex:inputField>
+                                            </apex:outputPanel>
+                                        </td>
+                                        <td>
+                                            <apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                                <apex:inputField value="{!Engagement_Summary__c.Carveout_DueAuthority_Caps__c}"></apex:inputField>
+                                            </apex:outputPanel>
+                                        </td>
+                                        <td class="center"><apex:image id="imgCarveoutDueAuthorityDetails" url="{!URLFOR($Resource.HL_Images,'Edit.png')}" styleClass="pointer"/></td>
+                                    </tr>
+                                    <tr>
+                                    <td colspan="5">
+                                        <apex:panelBar id="pbCarveoutDueAuthorityDetails" switchType="client">
+                                            <apex:panelBarItem expanded="False" label="Due Authority Details (Click to Hide)" >
+                                                <apex:pageBlockSection columns="1">
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_DueAuthority_Type__c}"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_DueAuthority_CapSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_DueAuthority_BasketSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_DueAuthority_SurvivalPeriod__c}" styleClass="numeric-short"></apex:inputfield>
+                                                </apex:pageBlockSection>
+                                            </apex:panelBarItem>
+                                        </apex:panelBar>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td><apex:outputLabel value="Taxes"></apex:outputLabel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_Taxes_Survival__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_Taxes_Basket__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_Taxes_Caps__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td class="center"><apex:image id="imgCarveoutTaxesDetails" url="{!URLFOR($Resource.HL_Images,'Edit.png')}" styleClass="pointer"/></td>
+                                    </tr>
+                                    <tr>
+                                    <td colspan="5">
+                                        <apex:panelBar id="pbCarveoutTaxesDetails" switchType="client">
+                                            <apex:panelBarItem expanded="False" label="Taxes Details (Click to Hide)" >
+                                                <apex:pageBlockSection columns="1">
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Taxes_Type__c}"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Taxes_CapSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Taxes_BasketSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Taxes_SurvivalPeriod__c}" styleClass="numeric-short"></apex:inputfield>
+                                                </apex:pageBlockSection>
+                                            </apex:panelBarItem>
+                                        </apex:panelBar>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td><apex:outputLabel value="Due Organization"></apex:outputLabel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_DueOrganization_Survival__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_DueOrganization_Basket__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_DueOrganization_Caps__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td class="center"><apex:image id="imgCarveoutDueOrganizationDetails" url="{!URLFOR($Resource.HL_Images,'Edit.png')}" styleClass="pointer"/></td>
+                                    </tr>
+                                    <tr>
+                                    <td colspan="5">
+                                        <apex:panelBar id="pbCarveoutDueOrganizationDetails" switchType="client">
+                                            <apex:panelBarItem expanded="False" label="Due Organization Details (Click to Hide)" >
+                                                <apex:pageBlockSection columns="1">
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_DueOrganization_Type__c}"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_DueOrganization_CapSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_DueOrganization_BasketSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_DueOrganization_SurvivalPeriod__c}" styleClass="numeric-short"></apex:inputfield>
+                                                </apex:pageBlockSection>
+                                            </apex:panelBarItem>
+                                        </apex:panelBar>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td><apex:outputLabel value="Broker's / Finder's Fee"></apex:outputLabel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_BrokerFinderFee_Survival__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_BrokerFinderFee_Basket__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_BrokerFinderFee_Caps__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td class="center"><apex:image id="imgCarveoutBrokerFinderFeeDetails" url="{!URLFOR($Resource.HL_Images,'Edit.png')}" styleClass="pointer"/></td>
+                                    </tr>
+                                    <tr>
+                                    <td colspan="5">
+                                        <apex:panelBar id="pbCarveoutBrokerFinderFeeDetails" switchType="client">
+                                            <apex:panelBarItem expanded="False" label="Broker's / Finder's Fee Details (Click to Hide)" >
+                                                <apex:pageBlockSection columns="1">
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_BrokerFinderFee_Type__c}"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_BrokerFinderFee_CapSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_BrokerFinderFee_BasketSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_BrokerFinderFee_SurvivalPeriod__c}" styleClass="numeric-short"></apex:inputfield>
+                                                </apex:pageBlockSection>
+                                            </apex:panelBarItem>
+                                        </apex:panelBar>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td><apex:outputLabel value="Fraud"></apex:outputLabel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_Fraud_Survival__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_Fraud_Basket__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_Fraud_Caps__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td class="center"><apex:image id="imgCarveoutFraudDetails" url="{!URLFOR($Resource.HL_Images,'Edit.png')}" styleClass="pointer"/></td>
+                                    </tr>
+                                    <tr>
+                                    <td colspan="5">
+                                        <apex:panelBar id="pbCarveoutFraudDetails" switchType="client">
+                                            <apex:panelBarItem expanded="False" label="Fraud Details (Click to Hide)" >
+                                                <apex:pageBlockSection columns="1">
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Fraud_Type__c}"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Fraud_CapSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Fraud_BasketSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_Fraud_SurvivalPeriod__c}" styleClass="numeric-short"></apex:inputfield>
+                                                </apex:pageBlockSection>
+                                            </apex:panelBarItem>
+                                        </apex:panelBar>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td><apex:outputLabel value="Intentional Breach - Seller Covenants"></apex:outputLabel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_IntentionalBreach_Survival__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_IntentionalBreach_Basket__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td><apex:outputPanel styleClass="requiredInput" layout="block">
+                                                <apex:outputPanel styleClass="requiredBlock" layout="block"/><apex:inputField value="{!Engagement_Summary__c.Carveout_IntentionalBreach_Caps__c}"></apex:inputField></apex:outputPanel></td>
+                                        <td class="center"><apex:image id="imgCarveoutIntentionalBreachDetails" url="{!URLFOR($Resource.HL_Images,'Edit.png')}" styleClass="pointer"/></td>
+                                    </tr>
+                                     <tr>
+                                    <td colspan="5">
+                                        <apex:panelBar id="pbCarveoutIntentionalBreachDetails" switchType="client">
+                                            <apex:panelBarItem expanded="False" label="Intentional Breach Details (Click to Hide)" >
+                                                <apex:pageBlockSection columns="1">
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_IntentionalBreach_Type__c}"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_IntentionalBreach_CapSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_IntentionalBreach_BasketSize__c}" styleClass="numeric-short"></apex:inputfield>
+                                                    <apex:inputfield value="{!Engagement_Summary__c.Carveout_IntentionalBreach_SurvivalPer__c}" styleClass="numeric-short"></apex:inputfield>
+                                                </apex:pageBlockSection>
+                                            </apex:panelBarItem>
+                                        </apex:panelBar>
+                                    </td>
+                                </tr>
+                            </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="column-header">
+                                    <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Key_Contract_Comments__c.Label}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                   <div>
+                                        <apex:inputTextarea value="{!Engagement_Summary__c.Key_Contract_Comments__c}" style="width: 100%"  rows="18"/>
+                                   </div>
+                                </td>
+                            </tr>
+                        </table>
+                   </td>
+               </table>
+           </apex:pageBlock>
+        </apex:tab>
+       <apex:tab label="Employee Terms" id="tabEmployeeTerms">
+            <apex:pageBlock title="Management/Employee Terms" mode="edit">
+                <table cellpadding="5" cellspacing="5">
+                    <tr>
+                        <td colspan="2" class="column-header">
+                            <apex:outputLabel value="Pre-Transaction" styleClass="bold"></apex:outputLabel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="Did Seller Implement a Management Incentive / KERP Plan?" styleClass="bold"></apex:outputLabel>
+                        </td>
+                        <td>
+                            <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:actionRegion >
+                                            <apex:inputField value="{!Engagement_Summary__c.Seller_Had_Incentive_Plan__c}">
+                                                <apex:actionSupport event="onchange" rerender="panIncentivePlanRequired" oncomplete="DocumentReady();" />
+                                            </apex:inputField>
+                                        </apex:actionRegion>
+                            </apex:outputPanel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="indent">
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Incentive_Plan__c.Label}"></apex:outputLabel>
+                        </td>
+                        <td>
+                            <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel id="panIncentivePlanRequired" styleClass="{!IF(Engagement_Summary__c.Seller_Had_Incentive_Plan__c == 'Yes','requiredBlock','')}" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Incentive_Plan__c}"></apex:inputField>
+                            </apex:outputPanel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="indent">
+                            <apex:outputLabel value="Number of Employees Part of KERP Plan"></apex:outputLabel>
+                        </td>
+                        <td>
+                             <apex:inputField value="{!Engagement_Summary__c.Employees_In_Incentive_Plan__c}" styleClass="numeric-short"></apex:inputField>
+                        </td>
+                    </tr>
+                </table>
+
+                        <apex:pageBlockTable value="{!ExternalTeam}" var="et" rendered="{!(ExternalTeam.size > 0)}" columnsWidth="20px">
+                            <apex:column value="{!et.Role__c}">
+                                <apex:facet name="header">
+                                    Classification
+                                </apex:facet>
+                            </apex:column>
+                            <apex:column value="{!et.Contact__r.Name}">
+                                <apex:facet name="header">
+                                    Company/Contact
+                                </apex:facet>
+                            </apex:column>
+                            <apex:column >
+                                <apex:inputField value="{!et.Pre_Transaction_Title__c}" style="width: 120px"></apex:inputField>
+                                <apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Engagement_External_Team__c.Fields.Pre_Transaction_Title__c.Label}"></apex:outputLabel></apex:facet>
+                            </apex:column>
+                            <apex:column >
+                                <apex:inputField id="preTransactionSalary" value="{!et.Pre_Transaction_Salary__c}" styleClass="numeric-medium"></apex:inputField>
+                                <apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Engagement_External_Team__c.Fields.Pre_Transaction_Salary__c.Label}"></apex:outputLabel></apex:facet>
+                            </apex:column>
+                            <apex:column >
+                                <apex:inputField id="preTransactionBonus" value="{!et.Pre_Transaction_Bonus__c}" styleClass="numeric-medium"></apex:inputField>
+                                <apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Engagement_External_Team__c.Fields.Pre_Transaction_Bonus__c.Label}"></apex:outputLabel></apex:facet>
+                            </apex:column>
+                            <apex:column id="preTransactionTotalComp" value="{!et.Pre_Transaction_Total_Comp__c}">
+                                <apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Engagement_External_Team__c.Fields.Pre_Transaction_Total_Comp__c.Label}"></apex:outputLabel></apex:facet>
+                            </apex:column>
+                            <apex:column >
+                                <apex:inputField value="{!et.Pre_Transaction_Employment_Length__c}" styleClass="numeric-short"></apex:inputField>
+                                <apex:facet name="header">Employment<br />Length (Yrs)</apex:facet>
+                            </apex:column>
+                            <apex:column >
+                                <apex:inputField value="{!et.Pre_Transaction_Equity_Ownership__c}" styleClass="numeric-short"></apex:inputField>
+                                 <apex:facet name="header">Equity<br />Ownership %</apex:facet>
+                            </apex:column>
+                            <apex:column >
+                                <apex:inputField id="equityFromTransaction" value="{!et.Equity_From_Transaction__c}" styleClass="numeric-short"></apex:inputField>
+                                <apex:facet name="header">Equity $<br />From Trans</apex:facet>
+                            </apex:column>
+                            <apex:column >
+                                <apex:inputField id="incentivesAtClose" value="{!et.Transaction_Incentives_At_Close__c}" styleClass="numeric-short"></apex:inputField>
+                                <apex:facet name="header">Incentives / <br /> KERP $ at Close</apex:facet>
+                            </apex:column>
+                            <apex:column id="totalEmployeeProceedsAtClose" value="{!et.Total_Proceeds_At_Close__c}">
+                                <apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Engagement_External_Team__c.Fields.Total_Proceeds_At_Close__c.Label}"></apex:outputLabel></apex:facet>
+                            </apex:column>
+                        </apex:pageBlockTable>
+                        <apex:outputText value="No records to display" rendered="{!(ExternalTeam.size == 0)}"></apex:outputText>
+                        <table cellpadding="5" cellspacing="5">
+                           <tr>
+                                <td colspan="2" class="column-header">
+                                     <apex:outputLabel value="Post-Transaction" styleClass="bold"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="Did the Buyer Require Management to Sign New Employment Agreements?" styleClass="bold"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Required_New_Employment_Agreements__c}"></apex:inputField>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="Did the Buyer Require Management to Rollover Any Equity?" styleClass="bold"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Required_Rollover_Equity__c}"></apex:inputField>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputLabel value="Did the Buyer Implement a New Option Pool or Equity Appreciation Plan?" styleClass="bold"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                        <apex:inputField value="{!Engagement_Summary__c.Implemented_New_Option_Pool_Equity_Plan__c}"></apex:inputField>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="indent">
+                                    <apex:outputLabel value="Total Pool/Plan as a % of Equity"></apex:outputLabel>
+                                </td>
+                                <td>
+                                            <apex:inputField value="{!Engagement_Summary__c.Total_Pool_Percent_Of_Equity__c}"></apex:inputField>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="indent">
+                                    <apex:outputLabel value="Is the Pool/Plan Preferred or Common Equity?"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!Engagement_Summary__c.Is_Preferred_Equity__c}"></apex:inputField>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="indent">
+                                    <apex:outputLabel value="Number of Employees Part of New Option Plan"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!Engagement_Summary__c.Employees_In_Option_Plan__c}"></apex:inputField>
+                                </td>
+                            </tr>
+                        </table>
+                        <apex:pageBlockTable value="{!ExternalTeam}" var="et" rendered="{!(ExternalTeam.size > 0)}">
+                            <apex:column value="{!et.Role__c}">
+                                <apex:facet name="header">
+                                    Classification
+                                </apex:facet>
+                            </apex:column>
+                            <apex:column value="{!et.Contact__r.Name}">
+                                <apex:facet name="header">
+                                    Company/Contact
+                                </apex:facet>
+                            </apex:column>
+                            <apex:column >
+                                <apex:inputField value="{!et.Post_Transaction_Title__c}" style="width: 120px"></apex:inputField>
+                                <apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Engagement_External_Team__c.Fields.Post_Transaction_Title__c.Label}"></apex:outputLabel></apex:facet>
+                            </apex:column>
+                             <apex:column >
+                                <apex:inputField id="postTransactionSalary" value="{!et.Post_Transaction_Salary__c}" styleClass="numeric-medium"></apex:inputField>
+                                <apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Engagement_External_Team__c.Fields.Post_Transaction_Salary__c.Label}"></apex:outputLabel></apex:facet>
+                            </apex:column>
+                            <apex:column >
+                                <apex:inputField id="postTransactionBonus" value="{!et.Post_Transaction_Bonus__c}" styleClass="numeric-medium"></apex:inputField>
+                                <apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Engagement_External_Team__c.Fields.Post_Transaction_Bonus__c.Label}"></apex:outputLabel></apex:facet>
+                            </apex:column>
+                             <apex:column id="postTransactionTotalComp" value="{!et.Post_Transaction_Total_Comp__c}">
+                                <apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Engagement_External_Team__c.Fields.Post_Transaction_Total_Comp__c.Label}"></apex:outputLabel></apex:facet>
+                            </apex:column>
+                            <apex:column >
+                                <apex:inputField value="{!et.Post_Transaction_Employment_Agreement__c}" styleClass="numeric-short"></apex:inputField>
+                                <apex:facet name="header">New<br />Employment<br />Agreement<br />(Years)</apex:facet>
+                            </apex:column>
+                            <apex:column >
+                                <apex:inputField value="{!et.Post_Transaction_Rollover_Required__c}" styleClass="numeric-short"></apex:inputField>
+                                <apex:facet name="header">Rollover<br />Required ($)</apex:facet>
+                            </apex:column>
+                            <apex:column >
+                                <apex:inputField value="{!et.Post_Transaction_New_Equity_Ownership__c}" styleClass="numeric-short"></apex:inputField>
+                                <apex:facet name="header">New Equity<br />Ownership<br />(%)</apex:facet>
+                            </apex:column>
+                            <apex:column >
+                                <apex:inputField value="{!et.Post_Transaction_Options_Percent__c}" styleClass="numeric-short"></apex:inputField>
+                                <apex:facet name="header">Options as<br />% of Equity</apex:facet>
+                            </apex:column>
+                            <apex:column >
+                                <apex:inputField value="{!et.Post_Transaction_Options_Vested_On__c}"></apex:inputField>
+                                <apex:facet name="header">Options Vesting Based On</apex:facet>
+                            </apex:column>
+                        </apex:pageBlockTable>
+                        <apex:outputText value="No records to display" rendered="{!(ExternalTeam.size == 0)}"></apex:outputText>
+            </apex:pageBlock>
+        </apex:tab>
+        <apex:tab label="Capitalization Details" id="tabCapitalization">
+           <apex:pageBlock title="Capitalization" mode="edit">
+               <table>
+                   <tr>
+                        <td>
+                            <table cellpadding="5" cellspacing="5">
+                                <tr>
+                                    <td colspan="3" class="column-header">
+                                        <apex:outputLabel value="Source of Funds" styleClass="bold"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                   <tr>
+                        <td>
+                            <apex:outputLabel value="Source" styleClass="bold"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:outputLabel value="$" styleClass="bold"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:outputLabel value="%" styleClass="bold"></apex:outputLabel>
+                       </td>
+                   </tr>
+                   <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Source_Revolving_Credit_Facility__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="revolvingCreditFacility" value="{!Engagement_Summary__c.Source_Revolving_Credit_Facility__c}" styleClass="numeric-medium"></apex:inputField>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="revolvingCreditFacilityPercent" value="{!Engagement_Summary__c.Source_Revolving_Credit_Facility_Percent__c}"></apex:outputField>
+                       </td>
+                   </tr>
+                   <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Source_Term_Loan_A__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="termLoanA" value="{!Engagement_Summary__c.Source_Term_Loan_A__c}" styleClass="numeric-medium"></apex:inputField>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="termLoanAPercent" value="{!Engagement_Summary__c.Source_Term_Loan_A_Percent__c}"></apex:outputField>
+                       </td>
+                   </tr>
+                   <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Source_Term_Loan_B__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="termLoanB" value="{!Engagement_Summary__c.Source_Term_Loan_B__c}" styleClass="numeric-medium"></apex:inputField>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="termLoanBPercent" value="{!Engagement_Summary__c.Source_Term_Loan_B_Percent__c}"></apex:outputField>
+                       </td>
+                   </tr>
+                   <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Source_Term_Loan_C__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="termLoanC" value="{!Engagement_Summary__c.Source_Term_Loan_C__c}" styleClass="numeric-medium"></apex:inputField>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="termLoanCPercent" value="{!Engagement_Summary__c.Source_Term_Loan_C_Percent__c}"></apex:outputField>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Source_Delayed_Draw_Term_Loan__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="delayedDrawTermLoan" value="{!Engagement_Summary__c.Source_Delayed_Draw_Term_Loan__c}" styleClass="numeric-medium"></apex:inputField>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="delayedDrawTermLoanPercent" value="{!Engagement_Summary__c.Source_Delayed_Draw_Term_Loan_Percent__c}"></apex:outputField>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Source_Senior_Subordinated_Debt__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="seniorSubordinatedDebt" value="{!Engagement_Summary__c.Source_Senior_Subordinated_Debt__c}" styleClass="numeric-medium"></apex:inputField>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="seniorSubordinatedDebtPercent" value="{!Engagement_Summary__c.Source_Senior_Subordinated_Debt_Percent__c}"></apex:outputField>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Source_Junior_Subordinated_Debt__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="juniorSubordinatedDebt" value="{!Engagement_Summary__c.Source_Junior_Subordinated_Debt__c}" styleClass="numeric-medium"></apex:inputField>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="juniorSubordinatedDebtPercent" value="{!Engagement_Summary__c.Source_Junior_Subordinated_Debt_Percent__c}"></apex:outputField>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Source_Unitranche_Debt__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="unitrancheDebt" value="{!Engagement_Summary__c.Source_Unitranche_Debt__c}" styleClass="numeric-medium"></apex:inputField>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="unitrancheDebtPercent" value="{!Engagement_Summary__c.Source_Unitranche_Debt_Percent__c}"></apex:outputField>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Source_Preferred_Equity__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="preferredEquity" value="{!Engagement_Summary__c.Source_Preferred_Equity__c}" styleClass="numeric-medium"></apex:inputField>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="preferredEquityPercent" value="{!Engagement_Summary__c.Source_Preferred_Equity_Percent__c}"></apex:outputField>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Source_Common_Equity__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="commonEquity" value="{!Engagement_Summary__c.Source_Common_Equity__c}" styleClass="numeric-medium"></apex:inputField>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="commonEquityPercent" value="{!Engagement_Summary__c.Source_Common_Equity_Percent__c}"></apex:outputField>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Source_Seller_Notes__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="sellerNotes" value="{!Engagement_Summary__c.Source_Seller_Notes__c}" styleClass="numeric-medium"></apex:inputField>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="sellerNotesPercent" value="{!Engagement_Summary__c.Source_Seller_Notes_Percent__c}"></apex:outputField>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Source_Company_Cash_AR__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:inputField id="companyCashAR" value="{!Engagement_Summary__c.Source_Company_Cash_AR__c}" styleClass="numeric-medium"></apex:inputField>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="companyCashARPercent" value="{!Engagement_Summary__c.Source_Company_Cash_AR_Percent__c}"></apex:outputField>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td class="bold">
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Source_Of_Funds_Total__c.Label}"></apex:outputLabel>
+                       </td>
+                       <td class="right bold">
+                            <apex:outputField id="sourceOfFundsTotal" value="{!Engagement_Summary__c.Source_Of_Funds_Total__c}"></apex:outputField>
+                       </td>
+                       <td>
+                       </td>
+                   </tr>
+               </table>
+                       </td>
+                       <td style="padding-left: 40px;">
+                            <table cellpadding="5" cellspacing="5">
+                                <tr>
+                                    <td colspan="3" class="column-header">
+                                        <apex:outputLabel value="Use of Funds" styleClass="bold"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td>
+                                        <apex:outputLabel value="Funding Use" styleClass="bold"></apex:outputLabel>
+                                   </td>
+                                   <td class="right">
+                                        <apex:outputLabel value="$" styleClass="bold"></apex:outputLabel>
+                                   </td>
+                                   <td class="right">
+                                        <apex:outputLabel value="%" styleClass="bold"></apex:outputLabel>
+                                   </td>
+                               </tr>
+                               <tr>
+                                     <td>
+                                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Use_Purchase_Price__c.Label}"></apex:outputLabel>
+                                       </td>
+                                       <td class="right">
+                                            <apex:inputField id="purchasePrice" value="{!Engagement_Summary__c.Use_Purchase_Price__c}" styleClass="numeric-medium"></apex:inputField>
+                                       </td>
+                                       <td class="right">
+                                            <apex:outputField id="purchasePricePercent" value="{!Engagement_Summary__c.Use_Purchase_Price_Percent__c}"></apex:outputField>
+                                       </td>
+                                </tr>
+                                 <tr>
+                                     <td>
+                                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Use_Fees_And_Expenses__c.Label}"></apex:outputLabel>
+                                       </td>
+                                       <td class="right">
+                                            <apex:inputField id="feesAndExpenses" value="{!Engagement_Summary__c.Use_Fees_And_Expenses__c}" styleClass="numeric-medium"></apex:inputField>
+                                       </td>
+                                       <td class="right">
+                                            <apex:outputField id="feesAndExpensesPercent" value="{!Engagement_Summary__c.Use_Fees_Expenses_Percent__c}"></apex:outputField>
+                                       </td>
+                                </tr>
+                                 <tr>
+                                     <td>
+                                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Use_Closing_Cash_Balance__c.Label}"></apex:outputLabel>
+                                       </td>
+                                       <td class="right">
+                                            <apex:inputField id="closingCashBalance" value="{!Engagement_Summary__c.Use_Closing_Cash_Balance__c}" styleClass="numeric-medium"></apex:inputField>
+                                       </td>
+                                       <td class="right">
+                                            <apex:outputField id="closingCashBalancePercent" value="{!Engagement_Summary__c.Use_Closing_Cash_Balance_Percent__c}"></apex:outputField>
+                                       </td>
+                                </tr>
+                                <tr>
+                                     <td>
+                                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Use_Proceeds_To_Shareholders__c.Label}"></apex:outputLabel>
+                                       </td>
+                                       <td class="right">
+                                            <apex:inputField id="proceedsToShareholders" value="{!Engagement_Summary__c.Use_Proceeds_To_Shareholders__c}" styleClass="numeric-medium"></apex:inputField>
+                                       </td>
+                                       <td class="right">
+                                            <apex:outputField id="proceedsToShareholdersPercent" value="{!Engagement_Summary__c.Use_Proceeds_To_Shareholders_Percent__c}"></apex:outputField>
+                                       </td>
+                                </tr>
+                                <tr>
+                                     <td>
+                                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Use_Debt_Paid_At_Closing__c.Label}"></apex:outputLabel>
+                                       </td>
+                                       <td class="right">
+                                            <apex:inputField id="debtPaidAtClosing" value="{!Engagement_Summary__c.Use_Debt_Paid_At_Closing__c}" styleClass="numeric-medium"></apex:inputField>
+                                       </td>
+                                       <td class="right">
+                                            <apex:outputField id="debtPaidAtClosingPercent" value="{!Engagement_Summary__c.Use_Debt_Paid_at_Closing_Percent__c}"></apex:outputField>
+                                       </td>
+                                </tr>
+                                <tr>
+                                     <td>
+                                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Use_Assumption_Of_Debt__c.Label}"></apex:outputLabel>
+                                       </td>
+                                       <td class="right">
+                                            <apex:inputField id="assumptionOfDebt" value="{!Engagement_Summary__c.Use_Assumption_Of_Debt__c}" styleClass="numeric-medium"></apex:inputField>
+                                       </td>
+                                       <td class="right">
+                                            <apex:outputField id="assumptionOfDebtPercent" value="{!Engagement_Summary__c.Use_Assumption_of_Debt_Percent__c}"></apex:outputField>
+                                       </td>
+                                </tr>
+                                <tr>
+                                     <td>
+                                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Use_Deal_Bonuses__c.Label}"></apex:outputLabel>
+                                       </td>
+                                       <td class="right">
+                                            <apex:inputField id="dealBonuses" value="{!Engagement_Summary__c.Use_Deal_Bonuses__c}" styleClass="numeric-medium"></apex:inputField>
+                                       </td>
+                                       <td class="right">
+                                            <apex:outputField id="dealBonusesPercent" value="{!Engagement_Summary__c.Use_Deal_Bonuses_Percent__c}"></apex:outputField>
+                                       </td>
+                                </tr>
+                                <tr>
+                                     <td>
+                                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Use_Other__c.Label}"></apex:outputLabel>
+                                       </td>
+                                       <td class="right">
+                                            <apex:inputField id="useOther" value="{!Engagement_Summary__c.Use_Other__c}" styleClass="numeric-medium"></apex:inputField>
+                                       </td>
+                                       <td class="right">
+                                            <apex:outputField id="useOtherPercent" value="{!Engagement_Summary__c.Use_Other_Percent__c}"></apex:outputField>
+                                       </td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">
+                                        <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Use_Of_Funds_Total__c.Label}"></apex:outputLabel>
+                                    </td>
+                                    <td class="right bold">
+                                        <apex:outputField id="useOfFundsTotal" value="{!Engagement_Summary__c.Use_Of_Funds_Total__c}"></apex:outputField>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                           </table>
+                       </td>
+                   </tr>
+               </table>
+           </apex:pageBlock>
+        </apex:tab>
+       <apex:tab label="Credit Facilities" id="tabCreditFacilities">
+           <apex:actionStatus id="refreshCreditFacilityStatus" startText="Refreshing..." stopText="" startStyle="font-weight: bold; font-size: 1.5em;">
+                         <apex:facet name="start" ><apex:outputPanel ><img src="/img/loading.gif" /><span>&nbsp;Refreshing...</span></apex:outputPanel></apex:facet>
+            </apex:actionStatus>
+           <apex:pageBlock id="pbCreditFacilities" title="Credit Facilities" mode="edit">
+               <apex:pageBlockButtons location="top">
+                   <input type='button' value='New Credit Facility' id='newCreditFacility' class="btn" />
+                   <apex:commandButton id="creditFacilityRefresh" action="{!RefreshCreditFacilities}" reRender="pbCreditFacilities" style="display:none;" oncomplete="DocumentReady();" status="refreshCreditFacilityStatus"/>
+               </apex:pageBlockButtons>
+               <apex:pageBlockTable id="creditFacilities" value="{!CapitalizationRecords}" var="cr">
+                   <apex:column style="vertical-align:top; width: 50px;">
+                       <a id='editCreditFacility' class="pointer underline" style="padding-right: 5px;">Edit</a>
+                       <apex:outputLabel value="{!cr.DebtStructure.Id}" styleClass="hidden"></apex:outputLabel>
+                       <apex:commandLink value="Del" action="{!DeleteDebtStructure}" onclick="return confirmDelete();">
+                                <apex:param name="p1" assignTo="{!DelId}" value="{!cr.DebtStructure.Id}"></apex:param>
+                       </apex:commandLink>
+                   </apex:column>
+                   <apex:column style="vertical-align:top;" headerValue="Key Creditors">
+                        <apex:repeat value="{!cr.Lenders}" var="c">
+                             <apex:outputLink value="{!'/' + c.Client_Subject__r.Id}" target="_blank">{!c.Client_Subject__r.Name}</apex:outputLink><br />
+                        </apex:repeat>
+                   </apex:column>
+                   <apex:column style="vertical-align:top;" value="{!cr.DebtStructure.Security_Type__c}"></apex:column>
+                   <apex:column style="vertical-align:top;" value="{!cr.DebtStructure.Maturity_Date__c}"></apex:column>
+                   <apex:column style="vertical-align:top;" value="{!cr.DebtStructure.Facility_Balance_MM__c}"></apex:column>
+                   <apex:column style="vertical-align:top;" value="{!cr.DebtStructure.Interest__c}"></apex:column>
+                   <apex:column style="vertical-align:top;" value="{!cr.DebtStructure.OID_Percent__c}"></apex:column>
+                   <apex:column style="vertical-align:top;" value="{!cr.DebtStructure.Amoritization__c}"></apex:column>
+                   <apex:column style="vertical-align:top;" value="{!cr.DebtStructure.Call_Provisions_Prepayment_Premiums__c}"></apex:column>
+                   <apex:column style="vertical-align:top;" value="{!cr.DebtStructure.Mandatory_Prepayments_ECF_Sweep__c}"></apex:column>
+                   <apex:column style="vertical-align:top;" value="{!cr.DebtStructure.Covenants__c}"></apex:column>
+                   <apex:column style="vertical-align:top;" value="{!cr.DebtStructure.Fees_Expenses__c}"></apex:column>
+               </apex:pageBlockTable>
+               <apex:inputField value="{!Engagement_Summary__c.No_Credit_Facility_Data__c}" rendered="{!CapitalizationRecords.size == 0}"></apex:inputField>
+               <apex:outputLabel value="No Credit Facility Data to Report" rendered="{!CapitalizationRecords.size == 0}" styleClass="bold"></apex:outputLabel>
+           </apex:pageBlock>
+        </apex:tab>
+       <apex:tab label="EL/Engagement Dynamics" id="tabELDealDynamics">
+            <apex:pageBlock title="EL/Engagement Dynamics" mode="edit">
+                <table cellspacing="5" cellpadding="5">
+                    <tr>
+                        <td class="column-header">
+                             <apex:outputLabel value="Fees (Actual Dollars)" styleClass="bold"></apex:outputLabel>
+                        </td>
+                        <td class="column-header"></td>
+                        <td class="column-header">
+                            <apex:outputLabel value="Creditable" styleClass="bold"></apex:outputLabel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Retainer_Fees__c.Label}"></apex:outputLabel>
+                        </td>
+                        <td>
+                             <apex:inputField id="retainerFees" value="{!Engagement_Summary__c.Retainer_Fees__c}" styleClass="numeric-long"></apex:inputField>
+                        </td>
+                        <td class="td-center">
+                            <apex:inputField id="retainerFeesCreditable" value="{!Engagement_Summary__c.Is_Retainer_Fee_Creditable__c}"></apex:inputField>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <apex:outputLabel value="Progress and Other Fees" styleClass="bold"></apex:outputLabel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Completion_Of_CIM__c.Label}"></apex:outputLabel>
+                        </td>
+                        <td>
+                             <apex:inputField id="completionOfCIM" value="{!Engagement_Summary__c.Completion_Of_CIM__c}" styleClass="numeric-long"></apex:inputField>
+                        </td>
+                        <td class="td-center">
+                            <apex:inputField id="completionOfCIMCreditable" value="{!Engagement_Summary__c.Is_Completion_of_CIM_Creditable__c}"></apex:inputField>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.First_Round_Bid__c.Label}"></apex:outputLabel>
+                        </td>
+                        <td>
+                             <apex:inputField id="firstRoundBid" value="{!Engagement_Summary__c.First_Round_Bid__c}" styleClass="numeric-long"></apex:inputField>
+                        </td>
+                        <td class="td-center">
+                            <apex:inputField id="firstRoundBidCreditable" value="{!Engagement_Summary__c.Is_First_Round_Bid_Creditable__c}"></apex:inputField>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Second_Round_Bid__c.Label}"></apex:outputLabel>
+                        </td>
+                        <td>
+                             <apex:inputField id="secondRoundBid" value="{!Engagement_Summary__c.Second_Round_Bid__c}" styleClass="numeric-long"></apex:inputField>
+                        </td>
+                        <td class="td-center">
+                            <apex:inputField id="secondRoundBidCreditable" value="{!Engagement_Summary__c.Is_Second_Round_Bid_Creditable__c}"></apex:inputField>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.LOI__c.Label}"></apex:outputLabel>
+                        </td>
+                        <td>
+                             <apex:inputField id="loi" value="{!Engagement_Summary__c.LOI__c}" styleClass="numeric-long"></apex:inputField>
+                        </td>
+                        <td class="td-center">
+                            <apex:inputField id="loiCreditable" value="{!Engagement_Summary__c.Is_LOI_Creditable__c}"></apex:inputField>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Signed_Agreement__c.Label}"></apex:outputLabel>
+                        </td>
+                        <td>
+                             <apex:inputField id="signedAgreement" value="{!Engagement_Summary__c.Signed_Agreement__c}" styleClass="numeric-long"></apex:inputField>
+                        </td>
+                        <td class="td-center">
+                            <apex:inputField id="signedAgreementCreditable" value="{!Engagement_Summary__c.Is_Signed_Agreement_Creditable__c}"></apex:inputField>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                             <apex:inputField value="{!Engagement_Summary__c.Other_Fee_Type_01__c}" html-placeholder="Describe Other Fee..."></apex:inputField>
+                        </td>
+                        <td>
+                            <apex:inputField id="otherFee01" value="{!Engagement_Summary__c.Other_Fee_01__c}" styleClass="numeric-long"></apex:inputField>
+                        </td>
+                        <td class="td-center">
+                            <apex:inputField id="otherFee01Creditable" value="{!Engagement_Summary__c.Is_Other_Fee_01_Creditable__c}" Label=""></apex:inputField>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:inputField value="{!Engagement_Summary__c.Other_Fee_Type_02__c}" html-placeholder="Describe Other Fee..."></apex:inputField>
+                        </td>
+                        <td>
+                            <apex:inputField id="otherFee02" value="{!Engagement_Summary__c.Other_Fee_02__c}" styleClass="numeric-long"></apex:inputField>
+                        </td>
+                        <td class="td-center">
+                            <apex:inputField id="otherFee02Creditable" value="{!Engagement_Summary__c.Is_Other_Fee_02_Creditable__c}" Label=""></apex:inputField>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="column-header">
+                            <apex:outputLabel value="Transaction Fees" styleClass="bold"></apex:outputLabel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:inputField value="{!Engagement_Summary__c.Transaction_Fee_Type__c}" label="Type"></apex:inputField>
+                        </td>
+                        <td>
+                             <apex:inputField id="transactionFee" value="{!Engagement_Summary__c.Transaction_Fee__c}" styleClass="numeric-long"></apex:inputField>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="column-header">
+                             <apex:outputLabel value="Incentive Structure" styleClass="bold"></apex:outputLabel>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                            <apex:outputLabel value="{!$ObjectType.Engagement_Summary__c.Fields.Transaction_Value_for_Fee_Calc__c.Label}"><div><c:HL_HelpText helpText="{!$ObjectType.Engagement_Summary__c.Fields.Transaction_Value_for_Fee_Calc__c.inlineHelpText}"/></div></apex:outputLabel>
+                        </td>
+                        <td>
+                            <apex:inputField id="transactionValueForFeeCalc" value="{!Engagement_Summary__c.Transaction_Value_for_Fee_Calc__c}" styleClass="numeric-medium"></apex:inputField>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+
+                    <apex:panelGrid columns="7" style="padding-left: 5px;">
+                         <apex:outputLabel value="1st Ratchet"></apex:outputLabel>
+                         <apex:inputField id="ratchet01Percent" value="{!Engagement_Summary__c.First_Ratchet_Percent__c}" styleClass="numeric-medium"></apex:inputField>
+                         <apex:outputLabel value="% from"></apex:outputLabel>
+                         <apex:inputField id="ratchet01From" value="{!Engagement_Summary__c.First_Ratchet_From_Amount__c}" styleClass="numeric-long"></apex:inputField>
+                         <apex:outputLabel value="to"></apex:outputLabel>
+                         <apex:inputField id="ratchet01To" value="{!Engagement_Summary__c.First_Ratchet_To_Amount__c}" styleClass="numeric-long"></apex:inputField>
+                         <apex:outputLabel value="plus;"></apex:outputLabel>
+                         <apex:outputLabel value="2nd Ratchet"></apex:outputLabel>
+                         <apex:inputField id="ratchet02Percent" value="{!Engagement_Summary__c.Second_Ratchet_Percent__c}" styleClass="numeric-medium"></apex:inputField>
+                         <apex:outputLabel value="% of incremental from"></apex:outputLabel>
+                         <apex:inputField id="ratchet02From" value="{!Engagement_Summary__c.Second_Ratchet_From_Amount__c}" styleClass="numeric-long"></apex:inputField>
+                         <apex:outputLabel value="to"></apex:outputLabel>
+                         <apex:inputField id="ratchet02To" value="{!Engagement_Summary__c.Second_Ratchet_To_Amount__c}" styleClass="numeric-long"></apex:inputField>
+                         <apex:outputLabel value="plus;"></apex:outputLabel>
+                         <apex:outputLabel value="3rd Ratchet"></apex:outputLabel>
+                         <apex:inputField id="ratchet03Percent" value="{!Engagement_Summary__c.Third_Ratchet_Percent__c}" styleClass="numeric-medium"></apex:inputField>
+                         <apex:outputLabel value="% of incremental from"></apex:outputLabel>
+                         <apex:inputField id="ratchet03From" value="{!Engagement_Summary__c.Third_Ratchet_From_Amount__c}" styleClass="numeric-long"></apex:inputField>
+                         <apex:outputLabel value="to"></apex:outputLabel>
+                         <apex:inputField id="ratchet03To" value="{!Engagement_Summary__c.Third_Ratchet_To_Amount__c}" styleClass="numeric-long"></apex:inputField>
+                         <apex:outputLabel value="plus;"></apex:outputLabel>
+                         <apex:outputLabel value="Additional Ratchet"></apex:outputLabel>
+                         <apex:inputField id="ratchet04Percent" value="{!Engagement_Summary__c.Fourth_Ratchet_Percent__c}" styleClass="numeric-medium"></apex:inputField>
+                         <apex:outputLabel value="% of incremental from"></apex:outputLabel>
+                         <apex:inputField id="ratchet04From" value="{!Engagement_Summary__c.Fourth_Ratchet_From_Amount__c}" styleClass="numeric-long"></apex:inputField>
+                         <apex:outputLabel value="to"></apex:outputLabel>
+                         <apex:inputField id="ratchet04To" value="{!Engagement_Summary__c.Fourth_Ratchet_To_Amount__c}" styleClass="numeric-long"></apex:inputField>
+                         <apex:outputLabel value="plus;"></apex:outputLabel>
+                         <apex:outputLabel value="Final Ratchet"></apex:outputLabel>
+                         <apex:inputField id="finalRatchetPercent" value="{!Engagement_Summary__c.Final_Ratchet_Percent__c}" styleClass="numeric-medium"></apex:inputField>
+                         <apex:outputLabel value="% of incremental above"></apex:outputLabel>
+                         <apex:inputField id="finalRatchetAmount" value="{!Engagement_Summary__c.Final_Ratchet_Amount__c}" styleClass="numeric-long"></apex:inputField>
+                    </apex:panelGrid>
+
+                <hr />
+                <table cellpadding="5" cellspacing="5">
+                   <tr>
+                        <td>
+                            <apex:outputLabel value="Total Fee" styleClass="bold"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="totalFees" value="{!Engagement_Summary__c.Total_Fee__c}"/>
+                       </td>
+                       <td colspan="2"></td>
+                   </tr>
+                   <tr>
+                        <td>
+                            <apex:outputLabel value="Less: Credits*" styleClass="bold"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="totalCredits" value="{!Engagement_Summary__c.Total_Credits__c}"/>
+                       </td>
+                       <td colspan="2"></td>
+                   </tr>
+                    <tr>
+                        <td>
+                            <apex:outputLabel value="Payment On Closing" styleClass="bold"></apex:outputLabel>
+                       </td>
+                       <td class="right">
+                            <apex:outputField id="paymentOnClosing" value="{!Engagement_Summary__c.Payment_On_Closing__c}"/>
+                       </td>
+                       <td>
+                            <apex:inputField value="{!Engagement_Summary__c.Fee_Subject_To_Contingent_Fees__c}"/>
+                       </td>
+                       <td>
+                            <apex:outputLabel value="Fee subject to contingent future payments or negative adjustments from earnouts, escrow, referral fees or other."></apex:outputLabel>
+                        </td>
+                   </tr>
+                   <tr>
+                       <td colspan="4">
+                          <apex:outputLabel value="*Include any retainer, progress and other credits"></apex:outputLabel>
+                       </td>
+                   </tr>
+                </table>
+           </apex:pageBlock>
+        </apex:tab>
+    </apex:tabPanel>
+    </apex:outputPanel>
+    </apex:pageBlock>
+    <apex:pageBlock rendered="{!DisplayConfirmation}">
+    <apex:pageBlockButtons rendered="{!ApprovalStatus <> 'Pending'}" location="bottom" >
+        <apex:commandButton value="Cancel" action="{!StepBack}"></apex:commandButton>
+        <apex:commandButton value="Confirmed" action="{!PrepareApprovalSubmission}"></apex:commandButton>
+         <a href="{!Engagement_Summary__c.Engagement_Summary_Report__c}" target="_blank" style="float: right;">View Summary Report</a>
+    </apex:pageBlockButtons>
+    <apex:pageBlockButtons rendered="{!ApprovalStatus == 'Pending'}" location="bottom" >
+        <apex:commandButton id="btnReject" value="Reject" action="{!RejectProcess}" immediate="true"></apex:commandButton>
+        <apex:commandButton id="btnApprove" value="Confirmed/Approved" action="{!ApproveProcess}"></apex:commandButton>
+         <a href="{!Engagement_Summary__c.Engagement_Summary_Report__c}" target="_blank" style="float: right;">View Summary Report</a>
+    </apex:pageBlockButtons>
+    <apex:outputPanel rendered="{!NOT ISBLANK(WarningMessage)}">
+        <div class="message infoM3">
+            <div>
+                <img style="vertical-align: middle;" src="/img/msg_icons/warning24.png" title="/img/msg_icons/warning24.png" />
+                <span class="bold">The following entries have been left blank.  Please confirm these fields are not applicable to this engagement process before proceeding</span>
+            </div>
+            <div style="padding-top: 5px"><apex:outputText id="warning" value="{!WarningMessage}" escape="Boolean" style="white-space: pre-wrap;"/></div>
+        </div>
+    </apex:outputPanel>
+    </apex:pageBlock>
+     <apex:inputHidden value="{!Engagement_Summary__c.Approver_01__c}"/>
+     <apex:inputHidden value="{!Engagement_Summary__c.Approver_02__c}"/>
+     <apex:inputHidden value="{!Engagement_Summary__c.Approver_03__c}"/>
+     <apex:inputHidden value="{!Engagement_Summary__c.Approver_04__c}"/>
+     <apex:inputHidden value="{!Engagement_Summary__c.Approver_05__c}"/>
+     <apex:inputHidden value="{!Engagement_Summary__c.Approver_06__c}"/>
+     <apex:inputHidden value="{!Engagement_Summary__c.Approver_07__c}"/>
+     <apex:inputHidden value="{!Engagement_Summary__c.Approver_08__c}"/>
+     <input id="summaryStatus" type="hidden" value="{!IF(ApprovedEditAccess, 'In Process', Engagement_Summary__c.Summary_Status__c)}" />
+    </apex:form>
+     <apex:relatedList list="ProcessSteps" rendered="{!NOT(DisplayConfirmation)}"/>
+     <apex:outputLabel id="debtStructureModifyUrl" value="{!URLFOR('/apex/HL_DebtStructureModify')}" style="display:none;"></apex:outputLabel>
+     <apex:outputLabel id="engagementId" value="{!EngagementId}" style="display:none;"></apex:outputLabel>
+     <apex:outputLabel id="lookupAccountUrl" value="{!URLFOR('/apex/HL_LookupAccount')}" style="display:none;"></apex:outputLabel>
+     <apex:outputLabel id="lookupContactUrl" value="{!URLFOR('/apex/HL_LookupContact')}" style="display:none;"></apex:outputLabel>
+    </div>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_Shared.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_CF_EngagementSummary.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <style>
+        .cfEngagementSummary td label {color:#4a4a56; font-size: 10.9200000762939px;}
+        .cfEngagementSummary .headerRow, .cfEngagementSummary .headerRow label {color:#black; font-size: 10.8000001907349px !important; font-weight: bold;}
+        .cfEngagementSummary .column-header {background-color: #3d8d8d; color: white !important; font-weight: bold; font-size: 1.1em; padding: 2px 0px 2px 5px;}
+        .cfEngagementSummary .column-header label, .cfEngagementSummary .column-header label.bold {color: white;}
+        .cfEngagementSummary h2.mainTitle {font-size: 1.2em !important; color: #27282e !important;}
+        .cfEngagementSummary .rich-panelbar-header-act{background-image: none; background-color: #3d8d8d; font-size: 1.1em; }
+        .cfEngagementSummary .sectionTitle{font-weight: bold;font-size: 1.1em;padding: 5px;}
+        .cfEngagementSummary .subTitle{color:white !important;background:#1797c0 !important;font-size: 1.2em;font-weight: bold;padding: 2px;}
+        .cfEngagementSummary .spread {width: 100%;}
+    </style>
+</apex:page>

@@ -1,0 +1,23 @@
+<apex:page standardController="Account" extensions="HL_ActivityListController" lightningStyleSheets="true">
+    <apex:detail inlineEdit="true" oncomplete="DocumentReady();" />
+    <input id="accountId" type="hidden" value="{!Account.Id}" />
+    <input id="activityLogUrl" type="hidden" value="{!URLFOR('/apex/HL_ActivityLog')}" />
+    <input id="profileId" type="hidden" value="{!$Profile.Name}" />
+    <input id="userSyncRights" type="hidden" value="{!$User.Contact_Sync_Rights__c}"/>
+    <input id="dataDotCom" type="hidden" value="{!$User.Data_com_User__c}"/>
+    <input id="opportunityViewUrl" type="hidden" value="{!URLFOR('/apex/HL_CompanyRelatedOppsView')}" />
+    <input id="engagementViewUrl" type="hidden" value="{!URLFOR('/apex/HL_CompanyRelatedEngagementsView')}" />
+    <input id="engagementsShownViewUrl" type="hidden" value="{!URLFOR('/apex/HL_CompanyRelatedEngagementsShown')}" />
+    <apex:pageBlock >
+    <apex:pageBlockSection >
+        <apex:pageBlockTable id="pbtActivities" value="{!Activities}" var="a" styleClass="top" columnClasses="top" style="display:none;">
+        </apex:pageBlockTable>
+        <input id="totalActivityRecords" type="hidden" value="{!TotalRecords}" />
+    </apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_CompanyView.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+</apex:page>

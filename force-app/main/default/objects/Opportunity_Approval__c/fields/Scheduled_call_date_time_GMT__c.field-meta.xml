@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Scheduled_call_date_time_GMT__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(!isblank(Scheduled_call_date_time__c),(text(Month( DATEVALUE(Scheduled_call_date_time__c) ))&amp; &quot;/&quot; &amp; text(Day( DATEVALUE(Scheduled_call_date_time__c) ))&amp; &quot;/&quot; &amp; text(Year( DATEVALUE(Scheduled_call_date_time__c) )) &amp; &quot; &quot; &amp;
+text(IF( OR( VALUE( MID( TEXT( Scheduled_call_date_time__c ), 12, 2 ) ) = 0, VALUE( MID( TEXT( Scheduled_call_date_time__c ), 12, 2 ) ) = 12 ), 12, VALUE( MID( TEXT( Scheduled_call_date_time__c  ), 12, 2 ) ) - IF( VALUE( MID( TEXT( Scheduled_call_date_time__c  ), 12, 2 ) ) &lt; 12, 0, 12 ) )) &amp; &quot;:&quot; &amp;
+MID(Text(Scheduled_call_date_time__c),15,2) &amp; &quot; &quot; &amp;
+IF( VALUE( MID( TEXT( Scheduled_call_date_time__c ), 12, 2 ) ) &lt; 12, &quot;AM&quot;, &quot;PM&quot; )&amp; &quot;  GMT&quot; ),&apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Scheduled call date &amp; time(GMT)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

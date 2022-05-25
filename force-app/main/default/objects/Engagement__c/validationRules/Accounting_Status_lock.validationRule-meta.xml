@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Accounting_Status_lock</fullName>
+    <active>true</active>
+    <description>Cannot set accounting status to closed when stage is not set to closed.</description>
+    <errorConditionFormula>ISCHANGED( Accounting_Status__c ) &amp;&amp; ISPICKVAL( Accounting_Status__c, &quot;Closed&quot;) &amp;&amp; ISPICKVAL( Stage__c , &quot;Closed&quot;) = false &amp;&amp; ISPICKVAL( Stage__c , &quot;DEAD&quot;) = FALSE</errorConditionFormula>
+    <errorMessage>Cannot set Accounting Status to Closed when Stage is not set to Closed.</errorMessage>
+</ValidationRule>

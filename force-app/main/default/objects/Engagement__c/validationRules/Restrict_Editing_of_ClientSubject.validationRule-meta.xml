@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restrict_Editing_of_ClientSubject</fullName>
+    <active>true</active>
+    <description>only CAO should be able to edit Client/Subject once an Engagement has a Number from Accounting</description>
+    <errorConditionFormula>NOT(ISNULL(Engagement_Number__c)) &amp;&amp;
+(ISCHANGED( Client__c ) || ISCHANGED( Subject__c )) &amp;&amp;
+ $User.ProfileId != &apos;00ei0000001XKVV&apos; &amp;&amp;
+ $User.ProfileId != &apos;00ei00000016T4B&apos;</errorConditionFormula>
+    <errorMessage>Please contact your LOB Admin to change the Engagement&apos;s Client/Subject.</errorMessage>
+</ValidationRule>

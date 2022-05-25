@@ -1,0 +1,149 @@
+<apex:page standardController="Contact" tabStyle="Relationship__c" extensions="HL_RelationshipController" lightningStylesheets="true">
+  <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+  <div class="objectHome">
+  <apex:sectionHeader title="Relationships" subtitle="{!Contact.Name}"/>
+  <apex:form id="relationshipsForm">
+      <apex:actionStatus id="loadingStatus" startText="Loading..." stopText="" startStyle="font-weight: bold; font-size: 1.5em;"><apex:facet name="start" >
+            <apex:outputPanel ><br /><img src="/img/loading.gif" /><span>&nbsp;Loading...</span></apex:outputPanel>
+        </apex:facet></apex:actionStatus>
+      <apex:pageBlock id="relationships_list" title="HL Relationships" tabStyle="Relationship__c" >
+        <apex:pageBlockButtons styleClass="center">
+            <apex:commandButton action="{!Cancel}" value="Return to Contact" styleClass="center"/>  
+        </apex:pageBlockButtons>
+        <apex:pageBlockTable value="{!Relationships}" var="r">
+          <apex:column rendered="{!Contact.RecordType.DeveloperName == 'External_Contact'}" >
+            <apex:outputLink value="/{!r.HL_Contact__c}">{!r.HL_Contact__r.Name}</apex:outputLink>
+            <apex:facet name="header">
+                <apex:commandLink action="{!ApplySort}" reRender="relationships_list" status="loadingStatus">
+                    <apex:param assignTo="{!NewSort}" value="HL_Contact__r.Name"/>
+                    <apex:outputText value="{!$ObjectType.Relationship__c.Fields.HL_Contact__c.Label}"></apex:outputText>
+                    <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'HL_Contact__r.Name' && SortDirection == 'ASC'}"/>
+                    <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'HL_Contact__r.Name' && SortDirection <> 'ASC'}"/>
+                </apex:commandLink>
+            </apex:facet>    
+          </apex:column>
+          <apex:column rendered="{!Contact.RecordType.DeveloperName == 'Houlihan_Employee'}" >
+            <apex:outputLink value="/{!r.External_Contact__c}">{!r.External_Contact__r.Name}</apex:outputLink>
+            <apex:facet name="header">
+                <apex:commandLink action="{!ApplySort}" reRender="relationships_list" status="loadingStatus">
+                    <apex:param assignTo="{!NewSort}" value="External_Contact__r.Name"/>
+                    <apex:outputText value="{!$ObjectType.Relationship__c.Fields.External_Contact__c.Label}"></apex:outputText>
+                    <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'External_Contact__r.Name' && SortDirection == 'ASC'}"/>
+                    <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'External_Contact__r.Name' && SortDirection <> 'ASC'}"/>
+                </apex:commandLink>
+            </apex:facet>    
+          </apex:column>
+          <apex:column value="{!r.Strength_Rating__c}">
+            <apex:facet name="header">
+                <apex:commandLink action="{!ApplySort}" reRender="relationships_list" status="loadingStatus">
+                    <apex:param assignTo="{!NewSort}" value="Strength_Rating__c"/>
+                    <apex:outputText value="{!$ObjectType.Relationship__c.Fields.Strength_Rating__c.Label}"></apex:outputText>
+                    <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Strength_Rating__c' && SortDirection == 'ASC'}"/>
+                    <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Strength_Rating__c' && SortDirection <> 'ASC'}"/>
+                </apex:commandLink>
+            </apex:facet>  
+         </apex:column>
+         <apex:column value="{!r.Number_of_Activities_LTM__c}">
+              <apex:facet name="header">
+                    <apex:commandLink action="{!ApplySort}" reRender="relationships_list" status="loadingStatus">
+                        <apex:param assignTo="{!NewSort}" value="Strength_Rating__c"/>
+                        <apex:outputText value="{!$ObjectType.Relationship__c.Fields.Number_of_Activities_LTM__c.Label}"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Number_of_Activities_LTM__c' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Number_of_Activities_LTM__c' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink>
+                </apex:facet> 
+          </apex:column>
+          <apex:column value="{!r.Last_Activity_Date__c}">
+              <apex:facet name="header">
+                    <apex:commandLink action="{!ApplySort}" reRender="relationships_list" status="loadingStatus">
+                        <apex:param assignTo="{!NewSort}" value="Last_Activity_Date__c"/>
+                        <apex:outputText value="{!$ObjectType.Relationship__c.Fields.Last_Activity_Date__c.Label}"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Last_Activity_Date__c' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Last_Activity_Date__c' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink>
+                </apex:facet> 
+          </apex:column>
+          <apex:column value="{!r.Share_Active_Deal__c}">
+              <apex:facet name="header">
+                    <apex:commandLink action="{!ApplySort}" reRender="relationships_list" status="loadingStatus">
+                        <apex:param assignTo="{!NewSort}" value="Share_Active_Deal__c"/>
+                        <apex:outputText value="{!$ObjectType.Relationship__c.Fields.Share_Active_Deal__c.Label}"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Share_Active_Deal__c' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Share_Active_Deal__c' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink>
+                </apex:facet> 
+          </apex:column>
+          <apex:column value="{!r.Share_Open_Opp__c}">
+              <apex:facet name="header">
+                    <apex:commandLink action="{!ApplySort}" reRender="relationships_list" status="loadingStatus">
+                        <apex:param assignTo="{!NewSort}" value="Share_Open_Opp__c"/>
+                        <apex:outputText value="{!$ObjectType.Relationship__c.Fields.Share_Open_Opp__c.Label}"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Share_Open_Opp__c' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Share_Open_Opp__c' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink>
+                </apex:facet> 
+          </apex:column>
+          <apex:column value="{!r.Type__c}">
+              <apex:facet name="header">
+                    <apex:commandLink action="{!ApplySort}" reRender="relationships_list" status="loadingStatus">
+                        <apex:param assignTo="{!NewSort}" value="Type__c"/>
+                        <apex:outputText value="{!$ObjectType.Relationship__c.Fields.Type__c.Label}"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Type__c' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Type__c' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink>
+                </apex:facet> 
+          </apex:column>
+          <apex:column value="{!r.Contact_Status__c}">
+              <apex:facet name="header">
+                    <apex:commandLink action="{!ApplySort}" reRender="relationships_list" status="loadingStatus">
+                        <apex:param assignTo="{!NewSort}" value="Contact_Status__c"/>
+                        <apex:outputText value="{!$ObjectType.Relationship__c.Fields.Contact_Status__c.Label}"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Contact_Status__c' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Contact_Status__c' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink>
+                </apex:facet> 
+          </apex:column>
+          <apex:column value="{!r.Sync_to_Outlook__c}">
+              <apex:facet name="header">
+                    <apex:commandLink action="{!ApplySort}" reRender="relationships_list" status="loadingStatus">
+                        <apex:param assignTo="{!NewSort}" value="Sync_to_Outlook__c"/>
+                        <apex:outputText value="{!$ObjectType.Relationship__c.Fields.Sync_to_Outlook__c.Label}"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Sync_to_Outlook__c' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Sync_to_Outlook__c' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink>
+                </apex:facet> 
+          </apex:column>
+        </apex:pageBlockTable>
+        <!-- StandardSetCon Pagination -->
+        <apex:outputPanel >
+        <table style="width: 100%">
+            <tr>
+                <td class="pageDisplay">
+                    Page: <apex:outputText value="{!setCon.PageNumber} of {! if(CEILING(setCon.ResultSize/setCon.PageSize) > 0, CEILING(setCon.ResultSize/setCon.PageSize), 1) }"></apex:outputText>
+                </td>
+                <td align="center">
+                    <!-- Previous page -->
+                    <!-- active -->
+                    <apex:commandLink action="{!setCon.Previous}" value="<< Previous" status="loadingStatus" rendered="{! setCon.HasPrevious}" reRender="relationshipsForm"></apex:commandLink>
+                    <!--inactive (no earlier pages) -->
+                    <apex:outputText style="color: #ccc;" value="<< Previous" rendered="{! NOT(setCon.HasPrevious) }"></apex:outputText>
+                    &nbsp;&nbsp;
+                    <!-- Next page -->
+                    <!-- active -->
+                    <apex:CommandLink action="{!setCon.Next}" value="Next >>" status="loadingStatus" rendered="{! setCon.HasNext}" reRender="relationshipsForm"></apex:CommandLink>
+                    <!--inactive (no more pages) -->
+                    <apex:outputText style="color: #ccc;" value="Next >>" rendered="{! NOT(setCon.HasNext)}"></apex:outputText>
+                </td>
+                <td align="right" class="totalRecords">
+                    Total Records:
+                    <apex:outputLabel value="{!setCon.ResultSize}" rendered="{!ActualCount <= 1000}"></apex:outputLabel>
+                    <apex:outputLabel value="*{!ActualCount}" rendered="{!ActualCount > 1000}"></apex:outputLabel>
+                </td>
+            </tr>    
+        </table>
+            <apex:outputLabel value="*Note: Only the First 1000 Records are Returned - Use a Column Sort to Find Specific" styleClass="warning" style="font-style:italic;" rendered="{!ActualCount > 1000}"></apex:outputLabel>
+        </apex:outputPanel>
+      </apex:pageBlock>
+  </apex:form>
+  </div>
+</apex:page>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_Industry_LK__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>HL&apos;s perspective on the selected Investment&apos;s Industry</inlineHelpText>
+    <label>HL Industry LK</label>
+    <lookupFilter>
+        <active>false</active>
+        <errorMessage>Only FSC Industries are allowed.</errorMessage>
+        <filterItems>
+            <field>Industry__c.FSC__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Industry__c</referenceTo>
+    <relationshipLabel>Investment</relationshipLabel>
+    <relationshipName>Investment</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

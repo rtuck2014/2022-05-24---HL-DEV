@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LOOP_Plus</fullName>
+    <availability>online</availability>
+    <displayType>link</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>Draw LOOP test</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <url>/apex/loop__looplus?sessionId={!$Api.Session_ID}&amp;eid={!Engagement__c.Id}</url>
+</WebLink>

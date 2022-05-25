@@ -1,0 +1,186 @@
+<apex:page controller="SL_GiftApprovalController" readOnly="false" lightningStylesheets="true">
+<apex:slds />
+    <apex:form id="theForm">
+        <apex:pageMessages />
+        <apex:pageBlock >
+            <apex:outputLabel value="Month" style="font-weight: bold" for="monthOptions"/>
+            <apex:selectList id="monthOptions" size="1" value="{!MonthFilter}">
+                <apex:selectOptions value="{!MonthFilterOptions}" />
+            </apex:selectList> 
+            <apex:outputLabel value="Year" style="font-weight: bold" for="yearOptions"/>
+            <apex:selectList id="yearOptions" size="1" value="{!YearFilter}">
+                <apex:selectOptions value="{!YearFilterOptions}" />
+            </apex:selectList>   
+            <apex:outputLabel value="Approved Status " style="font-weight: bold" for="searchOptions"/> 
+            <apex:selectList id="searchOptions" size="1" value="{!ViewType}">
+                <apex:selectOptions value="{!ApprovalOptions}" />
+            </apex:selectList>       
+            <apex:outputLabel value="Recipient Last Name " style="font-weight: bold" for="recipientName"/> 
+            <apex:inputTextArea id="recipientName" rows="1" style="vertical-align:middle" value="{!NameFilter}" />
+            <apex:commandButton action="{!SearchGifts}" value="Go" reRender="rr"/>
+        </apex:pageBlock>
+        <apex:pageBlock id="rr">
+            <apex:pageBlockButtons >
+                <apex:commandButton style="display: {!if(ViewType != 'Pending', if(ViewType == 'Approved', 'none', ''), '')}" value="Approve Selected" action="{!ApproveSelectedGifts}" rerender="theForm"/>
+                <apex:commandButton style="display: {!if(ViewType != 'Pending', if(ViewType == 'Denied', 'none', ''), '')}" value="Deny Selected" action="{!DenySelectedGifts}" rerender="theForm"/>
+            </apex:pageBlockButtons>
+                                                  <!--       Pagination  -->
+                                                  <apex:panelGrid columns="4">
+                                                    <!--           <apex:commandButton action="{!SearchGifts}" value="Search" reRender="rr"/> -->
+                                                               <apex:commandButton value="First Page" reRender="rr" action="{!FirstPage}" disabled="{!prev}"/>
+                                                               <apex:commandButton value="Previous" reRender="rr" action="{!previous}" disabled="{!prev}"/>
+                                                               <apex:commandButton value="Next" reRender="rr" action="{!next}" disabled="{!nxt}"/>
+                                                                                
+                                   
+                                                                   </apex:panelGrid> 
+                                                               <!-- End Pagination  -->
+            <apex:pageBlockTable value="{!GiftList}" var="g" id="table">
+                <apex:column >
+                    <apex:inputCheckbox value="{!g.selected}" style="display: {!if(g.gift.Approved__c == 'Pending', 'block', 'block')}" /> 
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header"><apex:commandLink action="{!ApplySort}" reRender="table">
+                        <apex:param assignTo="{!NewSort}" value="GiftName"/>
+                        <apex:outputText value="Gift Description"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'GiftName' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'GiftName' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink></apex:facet>
+                    <apex:commandLink rerender="GiftDetail">
+                        <apex:outputText value="{!g.gift.Name}"/>
+                        <apex:param name="gid" value="{!g.gift.Id}" />
+                        </apex:commandLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header"><apex:commandLink action="{!ApplySort}" reRender="table">
+                        <apex:param assignTo="{!NewSort}" value="Recipient"/>
+                        <apex:outputText value="Recipient"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Recipient' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Recipient' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink></apex:facet>
+                    <apex:outputLink value="/{!g.gift.Recipient__r.Id}">{!g.gift.Recipient__r.Name}</apex:outputLink>
+                </apex:column>
+                <apex:column value="{!g.gift.Recipient_Company_Name__c}">
+                    <apex:facet name="header"><apex:commandLink action="{!ApplySort}" reRender="table">
+                        <apex:param assignTo="{!NewSort}" value="RecipientCompany"/>
+                        <apex:outputText value="Recipient Company"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'RecipientCompany' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'RecipientCompany' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink></apex:facet>
+                </apex:column>
+                <apex:column value="{!g.gift.Submitted_By__r.Office__c}" rendered="{! ViewType == 'Pending'}">
+                    <apex:facet name="header"><apex:commandLink action="{!ApplySort}" reRender="table">
+                        <apex:param assignTo="{!NewSort}" value="Office"/>
+                        <apex:outputText value="Office"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'RecipientOffice' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'RecipientOffice' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink></apex:facet>
+                </apex:column>
+                <apex:column value="{!g.gift.Submitted_For__r.Name}">
+                    <apex:facet name="header"><apex:commandLink action="{!ApplySort}" reRender="table">
+                        <apex:param assignTo="{!NewSort}" value="SubmittedFor"/>
+                        <apex:outputText value="Submitted For"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'SubmittedFor' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'SubmittedFor' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink></apex:facet>
+                </apex:column>
+                <apex:column value="{!g.gift.Submitted_By__r.Name}" rendered="{! ViewType == 'Pending'}">
+                    <apex:facet name="header"><apex:commandLink action="{!ApplySort}" reRender="table">
+                        <apex:param assignTo="{!NewSort}" value="SubmittedBy"/>
+                        <apex:outputText value="Submitted By"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'SubmittedBy' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'SubmittedBy' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink></apex:facet>
+                </apex:column>
+                <apex:column value="{!g.gift.CreatedDate}" rendered="{! ViewType == 'Pending'}">
+                    <apex:facet name="header"><apex:commandLink action="{!ApplySort}" reRender="table">
+                        <apex:param assignTo="{!NewSort}" value="CreatedDate"/>
+                        <apex:outputText value="Submitted Date"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'CreatedDate' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'CreatedDate' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink></apex:facet>
+                </apex:column>
+                <apex:column value="{!g.gift.Desired_Date__c}">
+                    <apex:facet name="header"><apex:commandLink action="{!ApplySort}" reRender="table">
+                        <apex:param assignTo="{!NewSort}" value="DesiredDate"/>
+                        <apex:outputText value="Desired Date"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'DesiredDate' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'DesiredDate' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink></apex:facet>
+                </apex:column>                
+                <apex:column >
+                    <apex:outputText value="{0, number, USD 00.0}">
+                        <apex:param value="{!g.GiftPrevYTD}" />
+                    </apex:outputText>
+                    <apex:facet name="header"><apex:commandLink action="{!ApplySort}" reRender="table">
+                        <apex:param assignTo="{!NewSort}" value="PrevYTD"/>
+                        <apex:outputText value="Prev YTD"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'PrevYTD' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'PrevYTD' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink></apex:facet>
+                </apex:column>
+                <apex:column value="{!g.gift.Gift_Value__c}" style="{!if(ViewType="Approved", 'font-weight: normal; color: #000000', if(g.giftValueOver,'font-weight: bold; color: #FF0000', 'font-weight: normal; color: #000000'))}">
+                    <apex:facet name="header"><apex:commandLink action="{!ApplySort}" reRender="table">
+                        <apex:param assignTo="{!NewSort}" value="GiftValue"/>
+                        <apex:outputText value="Value"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'GiftValue' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'GiftValue' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink></apex:facet>
+                </apex:column>
+                <apex:column style="{!if(ViewType="Approved", 'font-weight: normal; color: #000000', if( g.totalOver,'font-weight: bold; color: #FF0000', 'font-weight: normal; color: #000000'))}">
+                    <apex:outputText value="{0, number, USD 00.0}" rendered="{!(ViewType == 'Approved' || ViewType == 'Denied')}">
+                        <apex:param value="{!if(ViewType == 'Approved'||ViewType=='Denied',g.GiftPrevYTD, g.GiftYTD)}" />
+                    </apex:outputText>
+                    <apex:outputText value="{0, number, 00.0}" rendered="{!ViewType == 'Pending'}">
+                        {!g.gift.CurrencyIsoCode} &nbsp; <apex:param value="{!if(ViewType == 'Approved'||ViewType=='Denied',g.GiftPrevYTD, g.GiftYTD)}" />
+                    </apex:outputText>
+                    <apex:facet name="header"><apex:commandLink action="{!ApplySort}" reRender="table">
+                        <apex:param assignTo="{!NewSort}" value="GiftYTD"/>
+                        <apex:outputText value="New YTD"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'GiftYTD' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'GiftYTD' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink> </apex:facet>
+                </apex:column>                
+                <apex:column value="{!g.gift.Approved__c}">
+                    <apex:facet name="header">Approved?</apex:facet>
+                </apex:column>                                
+                <apex:column rendered="{! ViewType == 'Approved'}">
+                    <apex:facet name="header"><apex:commandLink action="{!ApplySort}" reRender="table">
+                        <apex:param assignTo="{!NewSort}" value="ApprovalDate"/>
+                        <apex:outputText value="Approval Date"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'ApprovalDate' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'ApprovalDate' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink></apex:facet>
+                    <apex:outputText value="{!g.gift.Approve_Date__c}"/>
+                </apex:column>
+                <apex:column rendered="{! ViewType == 'Denied'}">
+                    <apex:facet name="header"><apex:commandLink action="{!ApplySort}" reRender="table">
+                        <apex:param assignTo="{!NewSort}" value="ApprovalDate"/>
+                        <apex:outputText value="Denial Date"></apex:outputText>
+                        <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'ApprovalDate' && SortDirection == 'ASC'}"/>
+                        <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'ApprovalDate' && SortDirection <> 'ASC'}"/>
+                    </apex:commandLink></apex:facet>
+                    <apex:outputText value="{!g.gift.Approve_Date__c}"/>
+                </apex:column>                
+            </apex:pageBlockTable>
+                      <!--       Pagination  -->
+                      <apex:panelGrid columns="4">
+                 <!--           <apex:commandButton action="{!SearchGifts}" value="Search" reRender="rr"/> -->
+                            <apex:commandButton value="First Page" reRender="rr" action="{!FirstPage}" disabled="{!prev}"/>
+                            <apex:commandButton value="Previous" reRender="rr" action="{!previous}" disabled="{!prev}"/>
+                            <apex:commandButton value="Next" reRender="rr" action="{!next}" disabled="{!nxt}"/>
+                                             
+
+                                </apex:panelGrid> 
+                            <!-- End Pagination  -->
+            <div>
+                <br />
+                <apex:outputLabel style="font-weight: bold">Approval/Denial Comment (Note: this comment will be applied to the entire batch):</apex:outputLabel>
+                <br />
+                <apex:inputTextarea id="txtApprovalComment" value="{!ApprovalComment}" rows="4" cols="150" />
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:outputPanel id="GiftDetail" >
+        <apex:detail subject="{!$CurrentPage.parameters.gid}" relatedList="true" title="false" inlineEdit="false" showChatter="false" />
+    </apex:outputPanel>
+</apex:page>

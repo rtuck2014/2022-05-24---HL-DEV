@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Comments_for_Dead</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(AND(ISPICKVAL( Line_of_Business__c, &apos;FVA&apos; )&amp;&amp;
+
+(ISPICKVAL(Stage__c, &apos;Dead&apos;)||
+ISPICKVAL(Stage__c,&apos;Hold&apos;)) &amp;&amp;
+ISBLANK( Stage_Comments__c )),
+
+AND(ISPICKVAL( Line_of_Business__c, &apos;CF&apos; )&amp;&amp; ISPICKVAL(Stage__c,&apos;Hold&apos;) &amp;&amp; ISBLANK( Stage_Comments__c )))</errorConditionFormula>
+    <errorDisplayField>Stage_Comments__c</errorDisplayField>
+    <errorMessage>Engagement is Dead/On Hold, please enter Comments.</errorMessage>
+</ValidationRule>

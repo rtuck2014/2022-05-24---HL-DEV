@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Status</fullName>
+    <columns>NAME</columns>
+    <columns>Lookup_Group__c</columns>
+    <columns>Short_Text__c</columns>
+    <columns>Text__c</columns>
+    <columns>Status_Category__c</columns>
+    <columns>OBJECT_ID</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Lookup_Group__c</field>
+        <operation>contains</operation>
+        <value>Email</value>
+    </filters>
+    <label>Email Status</label>
+</ListView>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Coverage_Contact__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Related Coverage Contact</description>
+    <externalId>false</externalId>
+    <label>Coverage Contact</label>
+    <referenceTo>Coverage_Contact__c</referenceTo>
+    <relationshipLabel>Offsite Template Coverage Contacts</relationshipLabel>
+    <relationshipName>Offsite_Template_Coverage_Contact_del</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

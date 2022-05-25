@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Archpoint_On_Hold__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>On Hold and Declined can not be checked at the same time</description>
+    <externalId>false</externalId>
+    <label>Archpoint On Hold</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

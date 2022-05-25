@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Available_for_Internal_Project__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Available for Internal Project on Opportunity, Only Internal opportunity Record Type should select these Legal Entities</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Available for Internal Opportunities Only</inlineHelpText>
+    <label>Available for Internal Project</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

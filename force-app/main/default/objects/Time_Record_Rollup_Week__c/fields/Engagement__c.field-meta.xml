@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Engagement__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Related engagement</description>
+    <externalId>false</externalId>
+    <label>Engagement</label>
+    <referenceTo>Engagement__c</referenceTo>
+    <relationshipLabel>Time Record Rollup Weeks</relationshipLabel>
+    <relationshipName>Time_Record_Rollup_Weeks</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

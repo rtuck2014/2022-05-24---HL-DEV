@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Specialty__c</fullName>
+    <description>Product specialty the subledger is set up for. This field is used in the expense detail report to categorize the expenses that are manually entered in JDE. With Oracle, we&apos;ll need an equivalent field on Opportunity.</description>
+    <externalId>false</externalId>
+    <label>Product_Specialty</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

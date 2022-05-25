@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( RecordType.Name = &apos;FR&apos;, 
+IF(ISPICKVAL(Stage__c, &apos;Lost&apos;),&apos;Lost&apos;,
+IF(ISPICKVAL(Stage__c, &apos;Dead&apos;),&apos;Dead&apos;,
+IF(ISPICKVAL(Stage__c, &apos;Engaged&apos;),&apos;Engaged&apos;,
+IF(ISPICKVAL(Stage__c, &apos;Hold&apos;),&apos;Hold&apos;,
+&apos;Active&apos;)))),
+
+IF(ISPICKVAL(Stage__c, &apos;Hold&apos;),&apos;Hold&apos;,
+IF(ISPICKVAL(Stage__c, &apos;Lost&apos;),&apos;Lost&apos;,
+IF(ISPICKVAL(Stage__c, &apos;Dead&apos;),&apos;Dead&apos;,
+IF(ISPICKVAL(Stage__c, &apos;Engaged&apos;),&apos;Engaged&apos;,
+&apos;Active&apos;)))))</formula>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

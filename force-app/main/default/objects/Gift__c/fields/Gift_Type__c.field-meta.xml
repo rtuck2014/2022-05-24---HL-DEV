@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gift_Type__c</fullName>
+    <description>Type of gift</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Type of gift</inlineHelpText>
+    <label>Gift Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Charitable Contribution</fullName>
+                <default>false</default>
+                <label>Charitable Contribution</label>
+            </value>
+            <value>
+                <fullName>Closing Party Client Gifts</fullName>
+                <default>false</default>
+                <label>Closing Party Client Gifts</label>
+            </value>
+            <value>
+                <fullName>Gifts: Customers</fullName>
+                <default>false</default>
+                <label>Gifts: Customers</label>
+            </value>
+            <value>
+                <fullName>Gifts: Customers Europe</fullName>
+                <default>false</default>
+                <label>Gifts: Customers Europe</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

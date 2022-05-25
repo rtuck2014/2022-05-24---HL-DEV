@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__widthPopup</fullName>
+    <active>true</active>
+    <description>Width popup can only be within the permissible limits : min=400, max=1024</description>
+    <errorConditionFormula>OR(OR(lmscons__Popup_Width__c  &lt; 400,lmscons__Popup_Width__c &gt; 1024), NULLVALUE(lmscons__Popup_Width__c  , 0) = 0)</errorConditionFormula>
+    <errorDisplayField>lmscons__Popup_Width__c</errorDisplayField>
+    <errorMessage>Width popup can only be within the permissible limits : min=400, max=1024</errorMessage>
+</ValidationRule>

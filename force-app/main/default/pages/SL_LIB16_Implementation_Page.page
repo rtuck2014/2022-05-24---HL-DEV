@@ -1,0 +1,174 @@
+<apex:page cache="false" standardController="SL_Mass_Implementation__c" extensions="SL_LIB16_Implementation_Page">
+<apex:sectionHeader title="Implementation Edit" subtitle="{!pageTitle}"/>
+<script>
+if (!window.console) {var console = {};}
+if (!console.log) {console.log = function() {};}
+</script>
+
+
+<apex:form id="FormPre">
+    <apex:inputHidden value="{!inTargetObject}" id="inTargetObject"/>
+    <apex:inputHidden value="{!inParentObject}" id="inParentObject"/>
+    <apex:inputHidden value="{!inSearchObject}" id="inSearchObject"/>
+    
+    <apex:inputHidden value="{!curNewRecordVal.name}" required="false" id="des_fld_Rec_Name"/>
+    <apex:inputHidden value="{!curNewRecordVal.Search_Page_Title__c}" required="false" id="des_fld_Search_Page_Title"/>
+    <apex:inputHidden value="{!curNewRecordVal.Search_Object_Title__c}" required="false" id="des_fld_Search_Object_Title"/>
+    <apex:inputHidden value="{!curNewRecordVal.Get_Element_from_List_Tab__c}" required="false" id="des_fld_Get_Element_from_List_Tab"/>
+    <apex:inputHidden value="{!curNewRecordVal.Show_Views_on_MassAdd_Page__c}" required="false" id="des_fld_Show_Views_on_MassAdd_Page"/>
+    <apex:inputHidden value="{!curNewRecordVal.Show_Views_on_MassEdit_Page__c}" required="false" id="des_fld_Show_Views_on_MassEdit_Page"/>
+    <apex:inputHidden value="{!curNewRecordVal.Use_Step2_Multi_Add_Form__c}" required="false" id="des_fld_Use_Step2_Multi_Add_Form"/>
+    <apex:inputHidden value="{!curNewRecordVal.Row_Qty_Values__c}" required="false" id="des_fld_Row_Qty_Values"/>
+    <apex:inputHidden value="{!curNewRecordVal.Lookup_Title_Get_List_Page__c}" required="false" id="des_fld_Lookup_Title_Get_List_Page"/>
+    
+    
+    
+    <script>
+    var inTargetObject = document.getElementById('{!$Component.inTargetObject}');
+    var inParentObject = document.getElementById('{!$Component.inParentObject}');
+    var inSearchObject = document.getElementById('{!$Component.inSearchObject}');
+    
+    var obj_des_fld_Rec_Name = document.getElementById('{!$Component.des_fld_Rec_Name}');
+    var obj_des_fld_Search_Page_Title = document.getElementById('{!$Component.des_fld_Search_Page_Title}');
+    var obj_des_fld_Search_Object_Title = document.getElementById('{!$Component.des_fld_Search_Object_Title}');
+    var obj_des_fld_Get_Element_from_List_Tab = document.getElementById('{!$Component.des_fld_Get_Element_from_List_Tab}');
+    var obj_des_fld_Show_Views_on_MassAdd_Page = document.getElementById('{!$Component.des_fld_Show_Views_on_MassAdd_Page}');
+    var obj_des_fld_Show_Views_on_MassEdit_Page = document.getElementById('{!$Component.des_fld_Show_Views_on_MassEdit_Page}');
+    var obj_des_fld_Use_Step2_Multi_Add_Form = document.getElementById('{!$Component.des_fld_Use_Step2_Multi_Add_Form}');
+    var obj_des_fld_Row_Qty_Values = document.getElementById('{!$Component.des_fld_Row_Qty_Values}');
+    var obj_des_fld_Lookup_Title_Get_List_Page = document.getElementById('{!$Component.des_fld_Lookup_Title_Get_List_Page}');
+    
+    
+    function setInputVal(inType, inVal)
+    {
+        if(inType=='Target'){ inTargetObject.value = inVal;}
+        else if(inType=='Parent'){ inParentObject.value = inVal;}
+        else if(inType=='Search'){ inSearchObject.value = inVal;}
+        
+        obj_des_fld_Rec_Name.value = obj_fld_Rec_Name.value;
+        obj_des_fld_Search_Page_Title.value = obj_fld_Search_Page_Title.value;
+
+        obj_des_fld_Search_Object_Title.value = obj_fld_Search_Object_Title.value;
+        obj_des_fld_Get_Element_from_List_Tab.value = obj_fld_Get_Element_from_List_Tab.value;
+        obj_des_fld_Show_Views_on_MassAdd_Page.value = obj_fld_Show_Views_on_MassAdd_Page.checked;
+        obj_des_fld_Show_Views_on_MassEdit_Page.value = obj_fld_Show_Views_on_MassEdit_Page.checked;
+        obj_des_fld_Use_Step2_Multi_Add_Form.value = obj_fld_Use_Step2_Multi_Add_Form.checked;
+        obj_des_fld_Row_Qty_Values.value = obj_fld_Row_Qty_Values.value;
+        obj_des_fld_Lookup_Title_Get_List_Page.value = obj_fld_Lookup_Title_Get_List_Page.value;
+        
+        //alert(obj_fld_Show_Views_on_MassAdd_Page.checked);
+        
+        chMainObjectFun();
+    }
+    
+    </script>
+    <apex:actionFunction name="chMainObjectFun" action="{!chMainObject}" rerender="mBlock" status="MCSub"/>
+</apex:form>
+
+
+<apex:outputPanel id="mBlock">
+<apex:form id="Form">
+
+
+
+<apex:pageBlock title="Implementation Edit">
+    <apex:pageMessages id="theError"/>
+    <apex:pageBlockSection title="" showHeader="false" columns="2">
+
+        <apex:inputField value="{!objNewRecord.name}" required="true" id="fld_Rec_Name"/>
+        <apex:inputField value="{!objNewRecord.Search_Page_Title__c}" id="fld_Search_Page_Title"/>
+        
+    
+        <apex:pageBlockSectionItem >
+            <apex:outputLabel value="Target Object" for="inpTargetObject"/>
+            <apex:selectList onchange="setInputVal('Target',this.value)" label="Target Object" value="{!strTargetObject}" multiselect="false" id="inpTargetObject" size="1">
+                <apex:selectOptions value="{!objectListItems}"/>
+            </apex:selectList>
+        </apex:pageBlockSectionItem>
+        <apex:inputField value="{!objNewRecord.Search_Object_Title__c}" id="fld_Search_Object_Title"/>
+        
+
+        <apex:pageBlockSectionItem >
+            <apex:outputLabel value="Parent Object" for="inpParentObject"/>
+            <apex:selectList onchange="setInputVal('Parent',this.value)" label="Parent Object" value="{!strParentObject}" multiselect="false" id="inpParentObject" size="1">
+                <apex:selectOptions value="{!objectListItems}"/>
+            </apex:selectList>
+        </apex:pageBlockSectionItem>
+        <apex:inputField value="{!objNewRecord.Get_Element_from_List_Tab__c}" id="fld_Get_Element_from_List_Tab"/>
+
+
+        <apex:pageBlockSectionItem >
+            <apex:outputLabel value="Search Object" for="inpSearchObject"/>
+            <apex:selectList onchange="setInputVal('Search',this.value)" label="Search Object" value="{!strSearchObject}" multiselect="false" id="inpSearchObject" size="1">
+                <apex:selectOptions value="{!objectListItems}"/>
+            </apex:selectList>
+        </apex:pageBlockSectionItem>
+        <apex:inputField value="{!objNewRecord.Lookup_Title_Get_List_Page__c}" id="fld_Lookup_Title_Get_List_Page"/>
+        
+        <apex:pageBlockSectionItem id="parentFld">
+            <apex:outputLabel value="Target Object Parent Field Name" for="inpTargetObjectParentFld"/>
+            <apex:selectList label="Target Object Parent Field Name" value="{!strTargetObjectParentFld}" multiselect="false" id="inpTargetObjectParentFld" size="1">
+                <apex:selectOptions value="{!fieldList4Parent}"/>
+            </apex:selectList>
+        </apex:pageBlockSectionItem>
+        <apex:inputField value="{!objNewRecord.Show_Views_on_MassAdd_Page__c}" id="fld_Show_Views_on_MassAdd_Page"/>
+        
+        
+        <apex:pageBlockSectionItem id="targetFld">
+            <apex:outputLabel value="Target Object Search Field Name" for="inpTargetObjectSearchFld"/>
+            <apex:selectList label="Target Object Search Field Name" value="{!strTargetObjectSearchFld}" multiselect="false" id="inpTargetObjectSearchFld" size="1">
+                <apex:selectOptions value="{!fieldList4Search}"/>
+            </apex:selectList>
+        </apex:pageBlockSectionItem>
+        <apex:inputField value="{!objNewRecord.Show_Views_on_MassEdit_Page__c}" id="fld_Show_Views_on_MassEdit_Page"/>
+        
+        <apex:inputField value="{!objNewRecord.Use_Step2_Multi_Add_Form__c}" id="fld_Use_Step2_Multi_Add_Form"/>
+        <apex:inputField value="{!objNewRecord.Row_Qty_Values__c}" id="fld_Row_Qty_Values"/>
+        <apex:pageBlockSectionItem >
+
+        <script>
+            var obj_fld_Rec_Name = document.getElementById('{!$Component.fld_Rec_Name}');
+            var obj_fld_Search_Page_Title = document.getElementById('{!$Component.fld_Search_Page_Title}');
+
+            var obj_fld_Search_Object_Title = document.getElementById('{!$Component.fld_Search_Object_Title}');
+            var obj_fld_Get_Element_from_List_Tab = document.getElementById('{!$Component.fld_Get_Element_from_List_Tab}');
+            var obj_fld_Show_Views_on_MassAdd_Page = document.getElementById('{!$Component.fld_Show_Views_on_MassAdd_Page}');
+            var obj_fld_Show_Views_on_MassEdit_Page = document.getElementById('{!$Component.fld_Show_Views_on_MassEdit_Page}');
+            var obj_fld_Use_Step2_Multi_Add_Form = document.getElementById('{!$Component.fld_Use_Step2_Multi_Add_Form}');
+            var obj_fld_Row_Qty_Values = document.getElementById('{!$Component.fld_Row_Qty_Values}');
+            var obj_fld_Lookup_Title_Get_List_Page = document.getElementById('{!$Component.fld_Lookup_Title_Get_List_Page}');
+        </script>
+        </apex:pageBlockSectionItem>
+    </apex:pageBlockSection>
+    <apex:pageBlockButtons >
+            <apex:commandButton value="Save" action="{!btnSave}" reRender="mBlock"  status="MCSub" />
+            <apex:commandButton value="Save & New" action="{!btnSaveAndNew}" reRender="mBlock"  status="MCSub" />
+            <apex:commandButton immediate="true" value="Cancel" action="{!btnCancel}"/>
+            
+            <apex:commandButton immediate="true" value="Standard Form" action="{!goStForm}"/>
+    </apex:pageBlockButtons>
+</apex:pageBlock>
+
+</apex:form>
+
+</apex:outputPanel>
+
+<apex:actionstatus id="MCSub" startText="Processing...">
+        <apex:facet name="start">
+            <div id="salesforceSource_blurybackground" style="position:absolute; left:1px; top:1px; width:100%; height:100%; text-align:center; vertical-align: middle; background-color: #dcdcdc; opacity:0.6;filter:alpha(opacity=60)"></div>
+            <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 80%; display: ''; ">
+                <div style="width: 144px;vertical-align: middle;" class="waitingHolder">
+                <table align="center" valign="top" style="width: 100%; height: 30%">
+                <tr align="center" valign="top" style="width: 100%; height: 30%">
+                    <td valign="top"><img class="waitingImage" src="/img/loading.gif"/><span class="waitingDescription">Processing......</span></td>
+                </tr>
+                </table>
+                </div>
+            </div>
+            <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 100%; display: ''; "/>
+            <script>document.getElementById('ManageMembersViewport_loading').height = window.innerHeight * (3/4);</script>
+        </apex:facet>
+        <apex:facet name="stop"></apex:facet>
+</apex:actionstatus>
+
+</apex:page>

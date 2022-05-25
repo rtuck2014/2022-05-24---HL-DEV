@@ -1,0 +1,50 @@
+<apex:page standardController="Account" extensions="HL_CapIQCloneController" lightningStylesheets="true">
+    <apex:form >
+        <apex:pageBlock title="Matched Existing Companies">
+            <apex:pageBlockTable var="r" value="{!relatedAccounts}" rendered="{!relatedAccounts.size > 0}">
+                <apex:column value="{!r.Company_Name_URL__c}" headerValue="Company Name"/>
+                <apex:column value="{!r.BillingStreet}"/>
+                <apex:column value="{!r.BillingCity}"/>
+                <apex:column value="{!r.BillingState}"/>
+                <apex:column value="{!r.BillingCountry}"/>
+                <apex:column value="{!r.RecordType.Name}" headerValue="Company Type"/>
+            </apex:pageBlockTable>
+            <apex:pageMessage summary="No Potential Matches" severity="error" rendered="{!relatedAccounts.size == 0}" strength="1"/>
+        </apex:pageBlock>
+        <apex:pageBlock title="Create a New Salesforce Company from CapIQ Data">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!Save}" value="Create" onclick="if({!relatedAccounts.size} > 0){
+                                                                                return confirm ('Are you sure all Matched Existing Companies are invalid?');
+                                                                            }
+                                                                                else{
+                                                                                    return;
+                                                                                }" />
+                <apex:commandButton action="{!cancel}" value="Cancel and Back"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Company Type</apex:outputLabel>
+                    <apex:outputPanel layout="block" styleClass="requiredInput">
+                        <apex:outputPanel layout="block" styleClass="requiredBlock" />
+                            <apex:selectList label="Company Type" value="{!newAcc.RecordTypeId}" multiselect="false" required="true">
+                                <apex:selectOptions value="{!RecordTypes}"/>
+                            </apex:selectList>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:inputField value="{!newAcc.Name}" required="true" />
+                <apex:inputField value="{!newAcc.Ownership}"/>
+                <apex:inputField value="{!newAcc.BillingStreet}" style="width:165px; height:100px" />
+                <apex:inputField value="{!newAcc.BillingCity}"/>
+                <apex:inputField value="{!newAcc.BillingState}"/>
+                <apex:inputField value="{!newAcc.BillingPostalCode}"/>
+                <apex:inputField value="{!newAcc.BillingCountry}"/>
+                <apex:inputField value="{!newAcc.Phone}"/>
+                <apex:inputField value="{!newAcc.Fax}"/>
+                <apex:inputField value="{!newAcc.Website}"/>
+                <apex:inputField value="{!newAcc.Description}" style="overflow:auto; width:350px; height:150px"/>
+                <apex:inputField value="{!newAcc.TickerSymbol}"/>
+                <apex:inputField value="{!newAcc.CapIQ_Company__c}" required="true" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>    
+    </apex:form>
+</apex:page>

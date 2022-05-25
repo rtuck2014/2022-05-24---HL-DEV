@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lock_Opp_Post_Conversion</fullName>
+    <active>true</active>
+    <description>Opp is locked if it&apos;s been converted to an Engagement. Only Profile System Admin (Standard) can make edits.</description>
+    <errorConditionFormula>IF( 
+AND 
+( 
+$User.ProfileId != &apos;00ei00000016T4B&apos;, 
+OR( 
+ISCHANGED( Pitch_Date__c) , 
+ISCHANGED( Pitch_Email_Sent__c) 
+), 
+AND 
+( 
+OR( 
+ISCHANGED(Pitch_Date__c) , 
+ISCHANGED(Pitch_Email_Sent__c) 
+) 
+,NOT(ISCHANGED(Name)) 
+,NOT(ISCHANGED(Client__c)) 
+,NOT(ISCHANGED(Subject__c)) 
+,NOT(ISCHANGED(Line_of_Business__c)) 
+,NOT(ISCHANGED(Job_Type__c)) 
+,NOT(ISCHANGED(Industry_Group__c)) 
+,NOT(ISCHANGED(Sector__c)) 
+,NOT(ISCHANGED(SIC_Code__c)) 
+,NOT(ISCHANGED(Legacy_System_ID__c)) 
+,NOT(ISCHANGED(Allow_Deal_Team_Email_Group__c)) 
+,NOT(ISCHANGED(Opportunity_Number__c)) 
+,NOT(ISCHANGED(Stage__c)) 
+,NOT(ISCHANGED(Reason_Dead__c)) 
+,NOT(ISCHANGED(Valuation_Date__c)) 
+,NOT(ISCHANGED(Valuation_Frequency__c)) 
+,NOT(ISCHANGED(Date_Engaged__c)) 
+,NOT(ISCHANGED(Revisit_on_Date__c)) 
+,NOT(ISCHANGED(Lost_To__c)) 
+,NOT(ISCHANGED(Additional_Client__c)) 
+,NOT(ISCHANGED(Additional_Subject__c)) 
+,NOT(ISCHANGED(One_Pager_Date__c)) 
+,NOT(ISCHANGED(One_Pager_Office__c)) 
+,NOT(ISCHANGED(EU_Initiatives__c)) 
+,NOT(ISCHANGED(Total_Debt_MM__c)) 
+,NOT(ISCHANGED(Total_Debt_Currency__c)) 
+,NOT(ISCHANGED(One_Pager_File_Link__c)) 
+,NOT(ISCHANGED(Summary_File_Link__c)) 
+,NOT(ISCHANGED(Pitch_Book_File_Link__c)) 
+,NOT(ISCHANGED(Opportunity_Description__c)) 
+,NOT(ISCHANGED(TAS_Services__c)) 
+,NOT(ISCHANGED(Referral_Type__c)) 
+,NOT(ISCHANGED(Referral_Contact__c)) 
+,NOT(ISCHANGED(Estimated_Transaction_Size_MM__c)) 
+,NOT(ISCHANGED(CurrencyIsoCode)) 
+,NOT(ISCHANGED(Retainer__c)) 
+,NOT(ISCHANGED(ProgressMonthly_Fee__c)) 
+,NOT(ISCHANGED(Contingent_Fee__c)) 
+,NOT(ISCHANGED(Fee__c)) 
+,NOT(ISCHANGED(Fee_Notes_Description__c)) 
+,NOT(ISCHANGED(Expense_Cap__c)) 
+,NOT(ISCHANGED(MNPI__c)) 
+,NOT(ISCHANGED(Confidentiality_Agreement__c)) 
+,NOT(ISCHANGED(CA_Received_by_Legal__c)) 
+,NOT(ISCHANGED(CA_Comments__c)) 
+,NOT(ISCHANGED(Date_CA_Signed__c)) 
+,NOT(ISCHANGED(Date_CA_Expires__c)) 
+,NOT(ISCHANGED(Legal_Hold__c)) 
+,NOT(ISCHANGED(Primary_Office__c)) 
+,NOT(ISCHANGED(HL_Entity__c)) 
+,NOT(ISCHANGED(External_Disclosure_Status__c)) 
+,NOT(ISCHANGED(Available_In_Expense_Application__c)) 
+,NOT(ISCHANGED(Expense_Available_Until__c)) 
+,NOT(ISCHANGED(Latest_Stage_Change__c)) 
+,NOT(ISCHANGED(Internal_Team_Prompt__c)) 
+,NOT(ISCHANGED(Completed_Additional_Client__c)) 
+,NOT(ISCHANGED(Completed_Additional_Subject__c)) 
+,NOT(ISCHANGED(FEIS_Approved__c)) 
+,NOT(ISCHANGED(Win_Probability__c)) 
+,NOT(ISCHANGED(Marketing_Comments__c)) 
+,NOT(ISCHANGED(Converted_to_Engagement__c)) 
+,NOT(ISCHANGED(Engagement_Team_Assembled__c)) 
+,NOT(ISCHANGED(RecordTypeId)) 
+,NOT(ISCHANGED(OwnerId)) 
+,NOT(ISCHANGED(Name__c)) 
+,NOT(ISCHANGED(Conflicts_Check__c)) 
+,NOT(ISCHANGED(Conflicts_Check_Current_Processor__c)) 
+,NOT(ISCHANGED(Conflicts_Check_Requestor__c)) 
+,NOT(ISCHANGED(Conflicts_Check_Admin__c)) 
+,NOT(ISCHANGED(Conflicts_Check_Outcome_Processor__c)) 
+,NOT(ISCHANGED(Conflicts_Check_Type__c)) 
+,NOT(ISCHANGED(Conflicts_Check_Request_Date__c)) 
+,NOT(ISCHANGED(Conflicts_Check_Current_Status__c)) 
+,NOT(ISCHANGED(Conflicts_Check_Perform_Date__c)) 
+,NOT(ISCHANGED(Conflicts_Check_Outcome_Date__c)) 
+,NOT(ISCHANGED(Conflicts_Check_Outcome__c)) 
+) 
+), FALSE, 
+
+IF 
+( 
+OR(ISCHANGED(Approval_Process__c), ISCHANGED(TAS_DND__c)), 
+FALSE, 
+IF 
+( 
+AND 
+( 
+$User.Id = &apos;005i0000002a1lI&apos;,
+OR(
+ISCHANGED(Referring_Engagement__c),
+ISCHANGED(Referral_Type__c),
+ISCHANGED(Referral_Contact__c))
+) 
+,FALSE, 
+(PRIORVALUE(Converted_to_Engagement__c) &amp;&amp; $User.ProfileId != &apos;00ei00000016T4B&apos;) 
+) 
+) 
+)</errorConditionFormula>
+    <errorMessage>Opportunity no longer editable because it&apos;s been converted to an Engagement.</errorMessage>
+</ValidationRule>

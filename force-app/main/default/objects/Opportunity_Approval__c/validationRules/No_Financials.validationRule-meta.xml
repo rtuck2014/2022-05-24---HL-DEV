@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_Financials</fullName>
+    <active>false</active>
+    <errorConditionFormula>No_Financials__c = TRUE &amp;&amp;
+ISBLANK(No_Financials_Explanation__c)</errorConditionFormula>
+    <errorDisplayField>No_Financials_Explanation__c</errorDisplayField>
+    <errorMessage>Please provide an explanation for why Financials are unavailable.</errorMessage>
+</ValidationRule>

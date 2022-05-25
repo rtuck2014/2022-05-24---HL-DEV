@@ -1,0 +1,115 @@
+<apex:page id="thePage"  controller="SL_RTR_LIB209_ctrl_Demo" lightningStylesheets="true">
+<apex:slds />
+<style> 
+.label {
+    -moz-border-radius:5px 5px 0px 0px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    border-top: solid 1px #A6C9E2;
+    border-left: solid 1px #A6C9E2;
+    border-right: solid 1px #A6C9E2; 
+    color:#222222;
+    padding: 5px;
+    font-weight: bold;
+}
+select {
+    -moz-border-radius:5px 5px 5px 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    border: solid 1px #A6C9E2;
+    color:#222222;
+    padding: 1px;
+}
+.panel {
+    -moz-border-radius: 0px 5px 5px 5px;
+    -webkit-border-top-right-radius: 5px;
+    //-webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    border: solid 1px #A6C9E2;
+    padding: 5px;
+    font-family: Verdana;
+    font-size: 13px;
+    color: #424242;
+    display: inline-block;
+}
+.panelHeader {
+    -moz-border-radius:5px 5px 0px 0px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    border-top: solid 1px #A6C9E2;
+    border-left: solid 1px #A6C9E2;
+    border-right: solid 1px #A6C9E2;
+    background-color: #66CCFF;
+    padding: 2px;
+    font-family: Verdana;
+    font-size: 11px;
+    font-weight: bold;
+    color: whitesmoke;
+    display: inline-block;
+}
+</style>
+<br />
+<apex:outputpanel id="pmsg"><apex:pageMessages /></apex:outputpanel>
+
+<apex:outputPanel id="mainPContainer">
+<apex:includeScript value="{!URLFOR($Resource.SL_RTR_LIB16_jQuerySFFiltres, 'js/jquery-1.4.2.min.js')}" />
+
+<apex:form id="theForm">
+
+    <apex:actionFunction name="assignVar"><apex:param name="selected" value="" assignTo="{! sSelectedOption }" /></apex:actionFunction>
+    <apex:actionFunction name="searchBtnClick" action="{!searchBtnClick}" rerender="panel" status="MCSub" />
+
+    <apex:selectList value="{! sSelectedOption }" size="1" onchange="assignVar( this.value )" >
+        <apex:selectOptions value="{! aObjectsOptions }" />
+    </apex:selectList>
+
+    <div><c:SL_RTR_LIB209_SearchBlock params="{!searchCompParams}"/></div>
+
+    <br /><br />
+    <apex:outputPanel id="panel">
+        <apex:outputText styleClass="panelHeader" value="WHERE" rendered="{! ComponentWhereClause != '' }" />
+        <apex:outputPanel style="margin-left: 5px; color: #B8B8B8; font-family: Verdana; font-size: 10px; ">
+            <apex:actionStatus startText="updating..." stopText="" id="status"/>
+        </apex:outputPanel>
+        <br />
+        <apex:outputText styleClass="panel" value="{! ComponentWhereClause }" rendered="{! ComponentWhereClause != '' }" />
+        <br />
+        <!--<apex:outputText styleClass="panel" value="{! sDebugInfo }" />-->
+        
+        <apex:pageBlock >
+            <apex:sectionHeader title="{! sSelectedOption } records" />
+            <apex:pageBlockTable value="{! aRecords }" var="record" >
+                <apex:repeat value="{! aSearchColumns }" var="column" >
+                    <apex:column >
+                        <apex:facet name="header">{! aSearchColumnLabels[column] }</apex:facet>
+                        <apex:outputText value="{! record[column] }" rendered="{! column != 'Name' }" />
+                        <apex:outputLink value="/{! record.Id }" rendered="{! column == 'Name' }" >{! record[column] }</apex:outputLink>
+                        &nbsp;
+                    </apex:column>
+                 </apex:repeat>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:outputPanel>
+
+</apex:form>
+
+
+
+<apex:actionstatus id="MCSub" startText="Processing......">
+<apex:facet name="start">
+    <div id="salesforceSource_blurybackground" style="z-index: 100; position: fixed; left: 0; top: 0; bottom: 0; right: 0; background-color: #dcdcdc; opacity: 0.6; filter: alpha(opacity =60)"></div>
+    <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 80%; display: '';">
+        <div style="width: 144px; vertical-align: middle;" class="waitingHolder"><table align="center" valign="top" style="width: 100%; height: 30%">
+            <tr align="center" valign="top" style="width: 100%; height: 30%"><td valign="top"><img class="waitingImage" src="/img/loading.gif" /> <span class="waitingDescription">Processing......</span></td></tr>
+        </table></div>
+    </div>
+    <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 100%; display: '';" />
+</apex:facet>
+<apex:facet name="stop" />
+</apex:actionstatus>
+
+</apex:outputPanel>
+</apex:page>

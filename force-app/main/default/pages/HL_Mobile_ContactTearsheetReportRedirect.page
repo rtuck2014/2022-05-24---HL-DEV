@@ -1,0 +1,12 @@
+<apex:page standardController="Contact" lightningStylesheets="true">
+  <h1>Please Wait</h1>
+    Redirecting ....
+  <script>
+    if ( (typeof window.sforce != 'undefined') && (window.sforce!=null) ) {
+      sforce.one.navigateToURL('/apex/HL_Mobile_ContactTearsheetReport?id={!Contact.id}');
+    }
+    else {
+      alert('Not in SF1 :(');
+    }
+ </script>
+</apex:page>

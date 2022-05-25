@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <applicationVisibilities>
+        <application>HL_Meeting_Place</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <description>Using this permission set to assign different items to key people for testing.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Testing Apps</label>
+    <license>Salesforce</license>
+</PermissionSet>

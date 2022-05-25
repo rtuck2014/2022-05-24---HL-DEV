@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Default_Groove_Team__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Controls to which Groove team the user will be assigned to by default. If the value of this field matches a team that exists in Groove (case-sensitive), Groove will automatically assign the user to that team in Groove. This happens every 24 hours.</inlineHelpText>
+    <label>Default Groove Team</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

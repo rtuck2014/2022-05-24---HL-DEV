@@ -1,0 +1,88 @@
+<apex:page standardController="Contact" docType="html-5.0" sidebar="false" showHeader="false" standardStylesheets="false" lightningStylesheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_MobileCSS)}"></apex:stylesheet>
+    <style>
+        body{background-color: white;}
+        .mobile-card {margin-left: 13px;}
+        ul.card-list{list-style: none; color: font-family:'ProximaNovaSoft-Regular'; padding: 0px;}
+        ul.card-list li h4 {font-size: 18px; font-family:'ProximaNovaSoft-Regular'; color:#3c3d3e; margin: 5px;}
+        ul.card-list li h5 {font-size: 12px; font-weight: normal; font-family:'ProximaNovaSoft-Regular'; color:#3c3d3e; margin: 5px;}
+    </style>
+    <apex:remoteObjects jsNamespace="RemoteObjectModel">
+        <apex:remoteObjectModel name="Engagement_External_Team__c" fields="Engagement__c,Contact__c,Engagement_Name__c,Engagement_Client_Name__c,Engagement_Subject_Name__c,Engagement_Status__c" jsShorthand="EngagementExternalTeam"></apex:remoteObjectModel>
+    </apex:remoteObjects>
+    <input id="contactId" type="hidden" value="{!Id}" />
+    <div class="mobile-card">
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-1">
+            <button id="btnEngagements" class="button-relatedlist"><table>
+                <tr><td><img class="icon uiImage relatedList" title="" alt="" height="38px" style="background-color:#ef697f; border-radius: 3px;" src="{!URLFOR($Resource.HL_Images,'icon-engagement.png')}"/></td><td class="header-label">Engagements</td></tr>
+                </table>
+            </button>  
+        </div>
+        </div>
+    </div>
+    </div>
+    <hr />
+    <ul id="engagementsList" class="card-list"></ul>
+    <span id="noResults" style="display: none;"><h4>No Engagements to Display</h4></span>
+   <script src="/soap/ajax/9.0/connection.js" type="text/javascript"></script>
+   <script>
+        $j = jQuery.noConflict();
+        $j(document).ready(function () {
+            DocumentReady();
+        });      
+        function DocumentReady(){
+            var contactId = $j("#contactId").val();
+            var engagementET = new RemoteObjectModel.EngagementExternalTeam();
+            
+            //Query the Engagement External Team for the Current Contact
+            engagementET.retrieve({ where: {
+                                            Contact__c: {eq: contactId}
+                                    },
+                                    orderby: [ {Engagement_Name__c: 'ASC'} ],
+                                    limit: 100
+                                   }, function(err, records, event){
+                if(err){alert(err);}
+                else{
+                    var engagementIds = [];
+                    var ul = document.getElementById("engagementsList");
+                    if(records.length > 0){
+                        records.forEach(function(record) {
+                            var engagementId = record.get("Engagement__c");
+                            if(engagementIds.indexOf(engagementId) < 0){
+                                // Build the text for a engagements line item
+                                var engText = record.get("Engagement_Name__c");
+                                var clientText = record.get("Engagement_Client_Name__c");
+                                var subjectText = record.get("Engagement_Subject_Name__c");
+                                // Add the line item to the engagements list
+                                var li = document.createElement("li");
+                                var h4 = document.createElement("h4");
+                                var h5Client = document.createElement("h5");
+                                var h5Subject = document.createElement("h5");
+                                h4.appendChild(document.createTextNode(engText));
+                                h5Client.appendChild(document.createTextNode('Client: ' + clientText));
+                                h5Subject.appendChild(document.createTextNode('Subject: ' + subjectText));
+                                li.appendChild(h4);
+                                li.appendChild(h5Client);
+                                li.appendChild(h5Subject);
+                                li.appendChild(document.createElement("hr"));
+                                li.onclick = function(){
+                                     NavigateToEngagement(engagementId);  
+                                };
+                                ul.appendChild(li);
+                                engagementIds.push(record.get("Engagement__c"));
+                            }
+                        });   
+                    }
+                    else
+                        $j("#noResults").show();
+                }
+            });
+        }
+        function NavigateToEngagement(engagementId){
+            sforce.one.navigateToSObject(engagementId);
+        }
+        </script>
+</apex:page>

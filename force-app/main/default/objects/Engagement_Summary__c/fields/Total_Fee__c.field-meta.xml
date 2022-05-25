@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Fee__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(!Is_Retainer_Fee_Creditable__c,Retainer_Fees__c, 0) + 
+IF(!Is_Completion_of_CIM_Creditable__c, Completion_Of_CIM__c, 0) + 
+IF(!Is_First_Round_Bid_Creditable__c,First_Round_Bid__c, 0) + 
+IF(!Is_Second_Round_Bid_Creditable__c,Second_Round_Bid__c, 0) + 
+IF(!Is_LOI_Creditable__c,LOI__c, 0) + 
+IF(!Is_Signed_Agreement_Creditable__c,Signed_Agreement__c, 0) + 
+IF(!Is_Other_Fee_01_Creditable__c,Other_Fee_01__c, 0) + 
+IF(!Is_Other_Fee_02_Creditable__c,Other_Fee_02__c, 0) + 
+Transaction_Fee__c + Total_Fee_Ratchet__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Fee</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

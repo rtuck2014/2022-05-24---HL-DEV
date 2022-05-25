@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Public_Group__c</fullName>
+    <description>The time tracking public group name</description>
+    <externalId>false</externalId>
+    <formula>CASE(TEXT(Period_Category__c), &quot;PV&quot;, &quot;Time_Tracking_PV&quot;, &quot;FR&quot;, &quot;Time_Tracking_FR&quot;, &quot;Beta&quot;, &quot;Time_Tracking_Beta&quot;, &quot;Litigation&quot;, &quot;Time_Tracking_Litigation&quot;, &quot;TFR&quot;, &quot;Time_Tracking_TFR&quot;, &quot;SC&quot;, &quot;Time_Tracking_SC&quot;, null)</formula>
+    <label>Public Group</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

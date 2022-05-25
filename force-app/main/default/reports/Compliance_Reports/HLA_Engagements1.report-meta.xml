@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Engagement__c$Name</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Engagement_Number__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Client__c.BillingCountry</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Client__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Subject__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Subject__c.BillingCountry</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Line_of_Business__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Estimated_Close_Date__c</field>
+    </columns>
+    <columns>
+        <field>Engagement__c$Status__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>HLA Engagements</description>
+    <filter>
+        <criteriaItems>
+            <column>Engagement__c$HL_Entity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>HL Australia</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>HLA Engagements</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Engagements__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Engagement__c$Engagement_Number__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Engagement__c$CreatedDate</dateColumn>
+        <endDate>2019-09-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2019-01-01</startDate>
+    </timeFrameFilter>
+</Report>

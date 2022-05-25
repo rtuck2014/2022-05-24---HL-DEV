@@ -1,0 +1,191 @@
+<apex:page standardController="Engagement__c" extensions="SL_BuyerAccountPDFReport" cache="false" readonly="true" standardStyleSheets="false" applyHtmlTag="false" showHeader="false" renderAs="pdf" lightningStylesheets="true">
+<apex:slds />
+    <head>
+        <apex:stylesheet value="{!URLFOR($Resource.SL_BuyerAccountPDFReport, '/css/SL_BuyerAccountListPDFReport.css')}"/>
+    </head> 
+    <div class="footer">
+        <table width="100%">
+            <tr>
+                <td style="width:50%; text-align: left;">
+                    <strong><div style="color:#930000;font-size: 13px;">Confidential – Property of Houlihan Lokey</div></strong>
+                    <div style="font-size: 10px; font-style: italic;"> Potential Investors List</div>
+                </td>
+                <td style="width:50%; text-align:right; font-size: 10px; font-style: italic;">
+                    <div>Page <span class="pagenumber"/> of <span class="pagecount"/></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <table width="100%" cellpadding="2" cellspacing="0" class="tableStyle"> 
+        <thead> 
+            <tr style="padding-bottom: 20px;">
+                <td  style="text-align:left;border:none;width:20%;" >
+                    <apex:image value="{!URLFOR($Resource.SL_BuyerAccountPDFReport,'/images/logo.jpg')}" style="width:250px; height:35px;"/>
+                </td>
+                <td style="text-align:center;border-bottom:none;width:60%;" >
+                    <div class="Table" style="width:100%;">
+                        <div class="Row" style="width:100%;">
+                            <div class="Cell" style="width:50%; text-align: right;">
+                                <strong><span style="color:#930000;font-size: 24px; font-weight: bold;">Potential Investors List</span></strong>
+                            </div>
+                            <div class="Cell" style="width:50%; text-align: left;">
+                                <span style="font-size: 24px; font-weight: bold;">&nbsp;-&nbsp;{!engagement.Name}</span><br/>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td style="text-align:right;border-bottom:none;width:20%;" valign="top">
+                    <span style="font-size: 12px;">{!CurrentDateTime}</span>
+                </td>
+            </tr> 
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="3">
+                    <table width="100%" cellpadding="2" cellspacing="0" class="tableStyle maintable" >
+                        <thead>
+                            <tr>
+                                <th style="font-size: 13px; text-align: left;width:10%;">Engagement Counterparty Name</th>
+                                <apex:repeat value="{!ColumnWrappers}" var="column"> 
+                                    <th style="display: {!If(AND(column.strAPIName != 'Tier__c', column.strAPIName != 'hlcontacts'), '','none')}; font-size: 12px; text-align:{!If(column.strFieldType != 'DATE' ,'center','left')};" width="{!if(column.strAPIName != 'Type__c', 90/(ColumnWrappers.size)-3, 90/(ColumnWrappers.size)+5)}%"><apex:outputLabel value="{!If(column.strLabel != 'Type', column.strLabel, 'Engagement Counterparty Type')}" escape="false"/></th>
+                                    <th style="font-size: 12px; display: {!If(AND(column.strAPIName == 'Tier__c', strDlRank == 'true'), '','none')}; text-align:center;" width="{!90/(ColumnWrappers.size)}%"><apex:outputLabel value="{!column.strLabel}" escape="false"/></th>
+                                </apex:repeat>
+                            </tr>
+                        </thead>
+                        <apex:repeat value="{!BuyerAccountRegularWrappers}" var="objBAW">
+                             <tbody style="page-break-inside: avoid;">
+                                 <tr>
+                                    <td style="font-size: 10px; text-align: left; color:#930000; width:10%; border: none!important" valign="top">
+                                        <apex:outputText value="{!objBAW.objBAWrapper.ECounterparty.Company__r.Name}" escape="false"/>
+                                    </td>
+                                    <apex:repeat value="{!ColumnWrappers}" var="column"> 
+                                        <td style="display: {!If(AND(column.strAPIName != 'Tier__c', column.strAPIName != 'hlcontacts'), '','none')}; font-size: 10px; border: none!important; text-align:{!If(column.strFieldType != 'DATE' && column.strAPIName != 'hlcontacts','center','left')};" width="{!90/(ColumnWrappers.size-2)}%" valign="top">
+                                            <apex:outputText value="{0,date,MM'/'dd'/'yy}" rendered="{!IF(column.strFieldType == 'DATE' && column.strAPIName != 'hlcontacts' && column.strAPIName != 'NA', true, false)}">
+                                                <apex:param value="{!objBAW.objBAWrapper.ECounterparty[column.strAPIName]}"/>
+                                            </apex:outputText>
+                                            <apex:outputText style="color:#333399;" value="{!objBAW.objBAWrapper.ECounterparty[column.strAPIName]}" rendered="{!IF(column.strFieldType != 'DATE' && column.strAPIName != 'hlcontacts' && column.strAPIName != 'NA', true, false)}"/>
+                                        </td>
+                                        <td style="border: none!important; font-size: 10px; display: {!If(AND(column.strAPIName == 'Tier__c', strDlRank == 'true'), '','none')}; text-align:center" width="90/(ColumnWrappers.size-1)" valign="top">
+                                            <apex:outputText value="{!objBAW.objBAWrapper.ECounterparty[column.strAPIName]}" rendered="{!IF(column.strAPIName != 'hlcontacts' && column.strAPIName != 'NA', true, false)}"/>
+                                        </td>
+                                    </apex:repeat>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style="font-size: 10px; text-align: left; color:#333399; border: none!important; " valign="top">
+                                        <table width="100%" cellpadding="2" cellspacing="0">
+                                            <tr>
+                                                <td colspan="2" style="width:100%; text-align: left; border: none!important;">
+                                                    <strong style="color: black">Ownership: </strong><apex:outputText value="{!objBAW.objBAWrapper.ECounterparty.Company__r.Ownership}" escape="false"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="text-align: left; text-decoration: underline; color: black; border: none!important;">
+                                                    Permanent Address
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="width:100%; text-align: left; border: none!important;">
+                                                    <apex:outputText value="{!objBAW.objPermanentAddress.strLocation}" escape="false"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="display: {!If(strPhFax == 'true', '','none')}; width:25%; text-align: left; border: none!important; color: black;"><strong>Phone:</strong></td>
+                                                <td style="width:75%; text-align: left; border: none!important;">{!objBAW.objPermanentAddress.strPhone}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="display: {!If(strPhFax == 'true', '','none')}; width:25%; text-align: left; border: none!important; color: black;"><strong>Fax:</strong></td>
+                                                <td style="width:75%; text-align: left; border: none!important;">{!objBAW.objPermanentAddress.strFax}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:25%; text-align: left; border: none!important; color: black;"><strong>Website:</strong></td>
+                                                <td style="width:75%; text-align: left; border: none!important;">
+                                                    <a href="http://{!objBAW.objPermanentAddress.strWebsite}" style="text-decoration: none; color:#333399;">{!objBAW.objPermanentAddress.strWebsite}</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="text-align: left; text-decoration: underline; color: black; border: none!important;">
+                                                    Mailing Address
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="width:100%; text-align: left; border: none!important;">
+                                                    <apex:outputText value="{!objBAW.objMailingAddress.strLocation}" escape="false"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    
+                                    <td colspan="3" style="font-size: 10px; text-align: left; color:#333399;  border: none!important; " valign="top">
+                                         <table width="100%" cellpadding="2" cellspacing="0">
+                                            <tr>
+                                                <td style="text-align: left; text-decoration: underline; color: black; border: none!important;">
+                                                    <strong>Contact</strong>
+                                                </td>
+                                            </tr>
+                                            <apex:repeat value="{!objBAW.lstECC}" var="ecc">
+                                                <tr>
+                                                    <td style="width:100%; border: none!important; color:#930000;">{!ecc.Contact__r.Name}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width:100%; border: none!important;">{!ecc.Contact__r.LeadSource}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width:100%; border: none!important;">P: {!ecc.Contact__r.Phone}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width:100%; border: none!important;">F: {!ecc.Contact__r.Fax}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width:100%; border: none!important;">C: {!ecc.Contact__r.MobilePhone}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width:100%; border: none!important;">
+                                                        {!ecc.Contact__r.Email}
+                                                    </td>
+                                                </tr>
+                                            </apex:repeat>
+                                        </table>
+                                    </td>
+                                    <td style="font-size: 10px; text-align: left; color:#333399;border: none!important;" valign="top"></td>
+                                    <td colspan="3" style="font-size: 10px; text-align: left; color:#333399;  border: none!important; " valign="top">
+                                         <table width="100%" cellpadding="2" cellspacing="0">
+                                            <tr>
+                                                <td style="text-align: left; text-decoration: underline; color: black; border: none!important;">
+                                                    <strong>HL Contact</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width:100%; border: none!important; color:black;">
+                                                    <apex:outputText value="{!objBAW.objBAWrapper.HLContact}" escape="false"/>
+<!--                                                <td style="width:100%; border: none!important; color:black;">{!objBAW.objBAWrapper.HLContact}</td> -->
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                   <td colspan="{!ColumnWrappers.size - 16}"  style="font-size: 10px; text-align: left; color:#333399; border: none!important; " valign="top"></td>
+                                   <td colspan="6" style="font-size: 10px; text-align: left; color:#333399;  border: none!important;" valign="top">
+                                         <table width="100%" cellpadding="2" cellspacing="0">
+                                            <tr>
+                                                <td style="text-align: left; text-decoration: underline; color: black; border: none!important;">
+                                                    <strong>Discussion/Correspondence Log</strong>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left; color: black; border-bottom: 0.5px #333399 solid;" valign="top">
+                                        <strong>Business Description</strong>
+                                    </td>
+                                    <td colspan="{!ColumnWrappers.size - 1}"  style="font-size: 10px; text-align: left; color:#333399;border-bottom: 0.5px #333399 solid;" valign="top">
+                                        <apex:outputText value="{!objBAW.objBAWrapper.ECounterparty.Company__r.Description}" escape="false"/>
+                                    </td>
+                                </tr>
+                            </tbody>  
+                        </apex:repeat>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</apex:page>

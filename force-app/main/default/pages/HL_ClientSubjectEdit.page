@@ -1,0 +1,30 @@
+<apex:page standardController="Engagement_Client_Subject__c" extensions="hlClientSubjectEditController" sidebar="false" showHeader="false" lightningStylesheets="true"> 
+  <apex:form >        
+    <apex:actionFunction name="redirectToNew" action="{!redirectToNew}" rerender="out" status="myStatus"/>
+  </apex:form>
+  
+   <apex:includeLightning />
+    <div id="lwcDemo" />
+    <script>
+       document.addEventListener("doRedirectToNew", function(event){     
+         console.log('event listener');   
+        redirectToNew();
+    });
+     var parentRecId='{!engVPId}';
+    $Lightning.use("c:HL_ClientSubjectEditApp", function() {
+        $Lightning.createComponent("c:hlClientSubjectEdit", {
+            //pass parameter values to lwc js controller
+          parentRecordId: "{!engVPId}",
+          jobType: "{!jobType}",
+          objectApiName : "Engagement_Client_Subject__c"
+        },
+        "lwcDemo",
+            function(component) {
+             console.log("Lightning Web Component created Successfully!!");
+              // extend the functionality as per your requirement
+              
+            }
+       );
+    });
+    </script>
+</apex:page>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GroupingObjectAPIName__c</fullName>
+    <description>This field is used to store the grouping object name by which the grouping will done.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is used to store the grouping object name by which the grouping will done.</inlineHelpText>
+    <label>GroupingObjectAPIName</label>
+    <length>200</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

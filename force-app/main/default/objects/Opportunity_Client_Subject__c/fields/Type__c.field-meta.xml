@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Key Creditor: (i) creditor-side HL client, (ii) AHG member, (iii) other creditor with meaningful negotiation with the debtor, or (iv) lender holding &gt;10% of total debt or &gt;$50m</inlineHelpText>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Client</fullName>
+                <default>false</default>
+                <label>Client</label>
+            </value>
+            <value>
+                <fullName>Contra</fullName>
+                <default>false</default>
+                <label>Contra</label>
+            </value>
+            <value>
+                <fullName>Key Creditor</fullName>
+                <default>false</default>
+                <label>Key Creditor</label>
+            </value>
+            <value>
+                <fullName>PE Firm</fullName>
+                <default>false</default>
+                <label>PE Firm</label>
+            </value>
+            <value>
+                <fullName>Subject</fullName>
+                <default>false</default>
+                <label>Subject</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

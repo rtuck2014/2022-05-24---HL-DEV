@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Currency_Lockdown</fullName>
+    <active>true</active>
+    <description>System Admins and Jacob Liu can modify currrency once eng number assigned. Everyone else cannot.</description>
+    <errorConditionFormula>NOT(ISBLANK( Engagement_Number__c )) &amp;&amp;
+ISCHANGED( CurrencyIsoCode ) &amp;&amp;  $User.ProfileId != &apos;00ei00000016T4B&apos; &amp;&amp;  $User.Id != &apos;005i0000004bkch&apos;</errorConditionFormula>
+    <errorDisplayField>CurrencyIsoCode</errorDisplayField>
+    <errorMessage>Currency cannot be changed once Engagement Number is assigned.</errorMessage>
+</ValidationRule>

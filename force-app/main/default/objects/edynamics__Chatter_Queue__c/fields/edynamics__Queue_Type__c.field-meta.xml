@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>edynamics__Queue_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>Queue Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Old Post</fullName>
+                <default>false</default>
+                <label>Old Post</label>
+            </value>
+            <value>
+                <fullName>HTTP Message Failure</fullName>
+                <default>false</default>
+                <label>HTTP Message Failure</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

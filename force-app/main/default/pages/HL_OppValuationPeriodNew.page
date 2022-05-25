@@ -1,0 +1,29 @@
+<apex:page standardcontroller="Opp_VP__c" extensions="HL_OppVP_ViewController" id="pgId" lightningStylesheets="true">    
+     <div class="bPageTitle"><div class="ptBody"><div class="content"><img src="/img/s.gif" alt="Custom" class="pageTitleIcon" title="Custom"/><h1 class="pageType">Opportunity Valuation Period Edit<span class="titleSeparatingColon">:</span></h1><h2 class="pageDescription">New Opportunity Valuation Period</h2><div class="blank">&nbsp;</div></div><div class="links"><a href="javascript:openPopupFocusEscapePounds(%27https://hl--c.na25.visual.force.com/apex/HL_UserGuide?loc=help&amp;target=co_edit.htm&amp;section=CustomObjects&amp;showSplash=true%27, %27Help%27, 1024, 768, %27width=1024,height=768,resizable=yes,toolbar=yes,status=yes,scrollbars=yes,menubar=yes,directories=no,location=yes,dependant=no%27, false, false);" title="Help for this Page (New Window)"><span class="helpLink">Help for this Page</span><img src="/img/s.gif" alt="" class="helpIcon"/></a></div></div><div class="ptBreadcrumb"></div></div>
+    <apex:form >   
+     <apex:pageBlock title="Opportunity Valuation Period Edit" mode="Edit" id="pbid" >
+     <apex:pageMessages />
+     <apex:pageBlockButtons location="Top">     
+     <apex:commandButton action="{!Save}" value="Save" id="Onsave" rendered="{!!isOpportunityConverted}" reRender="pbid"/>
+     <apex:commandButton action="{!Cancel}" value="Cancel" id="Oncancel" reRender="pbid"/>         
+     </apex:pageBlockButtons>    
+
+     <apex:pageBlockSection title="Information">
+     
+         <apex:inputField value="{!Opp_VP__c.name}" required="True"/>         
+         <apex:inputField value="{!Opp_VP__c.Frequency__c}"/>         
+         <apex:inputField value="{!Opp_VP__c.Summary__c}"/>         
+         <apex:inputField value="{!Opp_VP__c.Month_Quarter__c}"/>     
+         <apex:inputField value="{!Opp_VP__c.Valuation_Date__c}"/>
+         <apex:outputField value="{!Opp_VP__c.Overall_VP_Status__c}" />  
+                  
+                
+     </apex:pageBlockSection>    
+     <apex:pageBlockSection title="Valuation Administration" >
+         <apex:outputField value="{!Opp_VP__c.Opportunity__c}" />
+         <apex:outputLabel ></apex:outputLabel>
+         <apex:outputLabel ></apex:outputLabel>               
+     </apex:pageBlockSection>
+      </apex:pageBlock>       
+    </apex:form>
+</apex:page>

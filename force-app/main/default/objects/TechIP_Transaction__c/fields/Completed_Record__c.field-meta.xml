@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Completed_Record__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>&quot;Completed Record&quot; refers to whether or not the transaction research and inputs have been fully exhausted. The transaction record does not necessarily need to be completely filled out given the information may be scarce on a case by case basis, but a completed record should indicate that there is no more public information that can be retrieved for this particular transaction.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>A completed record should indicate that there is no more public information that can be retrieved for this particular transaction.</inlineHelpText>
+    <label>Completed Record</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

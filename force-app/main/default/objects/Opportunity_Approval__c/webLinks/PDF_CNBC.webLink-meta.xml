@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PDF_CNBC</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>PDF</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>https://{!$Setup.HL_General__c.Cognos_Domain__c}/ibmcognos/bi/v1/disp?b_action=cognosViewer&amp;run.outputFormat=PDF&amp;run.prompt=false&amp;ui.object=storeID%28%22i47D7BCC8B00A47959D12ACD4FC64CA74%22%29ui.action=run&amp;cv.header=false&amp;cv.toolbar=true&amp;ui_appbar=true&amp;p_p_OpportunityId={!Opportunity_Approval__c.Related_Opportunity_Case_Safe__c}</url>
+</WebLink>

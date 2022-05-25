@@ -1,0 +1,1291 @@
+<apex:page standardController="Opportunity_Approval__c" extensions="HL_NBCController" tabStyle="Approval_Object__c" lightningStylesheets="true">
+    <apex:form id="NBCForm" title="NBC" >
+        <apex:actionFunction name="handleFieldChange" action="{!onchangeFlagSet}" rerender="attachmentList"/>
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:outputPanel rendered="{!validAccess}">
+        <apex:sectionHeader title="NBC" subtitle="{!Opportunity_Approval__c.Related_Opportunity__r.Name}"></apex:sectionHeader>
+        <apex:outputLabel value="{!Opportunity_Approval__c.Related_Opportunity__c}" rendered="false"></apex:outputLabel>
+        <apex:pageBlock mode="edit">
+            <div style="float: right;" class="bold">
+                <input id="toggleTabs" type="checkbox"/><span>Toggle Tabs</span>
+            </div>
+            <table class="instructionalText">
+                <tbody><tr>
+                    <td class="instructionImg"><img src="/img/msg_icons/info32.png" title="Instructions"/></td>
+                    <td class="instructions">
+                        <p align="center" class="bold" style="font-size:1.5em">
+                            NEW BUSINESS COMMITTEE REVIEW FORM
+                        </p>
+                        <p align="center" class="bold" style="color:red">
+                            CONFIDENTIAL – FOR INTERNAL USE ONLY                            
+                        </p>
+                        <p align="center">
+                            *An officer on the deal team must complete and submit this form as early as possible in the engagement process (before any fee estimate or engagement letter is submitted to the client).
+                        </p>
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+            <apex:pageBlockButtons style="text-align:center">
+                <apex:outputPanel rendered="{!OR($Profile.Name <> 'System Administrator' && $Profile.Name <> 'CAO' && (Opportunity_Approval__c.Locked__c || NOT(OnOIT)),onNBCViewAccess)}">
+                    <a href="/{!Opportunity_Approval__c.Related_Opportunity__c}" class="btn" style="text-decoration:none;">Return to Opportunity</a>
+                </apex:outputPanel>
+               <apex:outputPanel rendered="{!And(NOT($Profile.Name <> 'System Administrator' && $Profile.Name <> 'CAO' && (Opportunity_Approval__c.Locked__c || NOT(OnOIT))),NOT(onNBCViewAccess))}">
+                    <apex:commandButton id="saveRecord" action="{!SaveRecord}" value="Save NBC" rendered="{!NOT(EnableRequirements)}"  />
+                    <apex:commandButton id="btnReturn" action="{!SaveAndReturn}" value="Return to Opportunity" rendered="{!NOT(EnableRequirements)}" />
+                    <apex:commandButton id="btnCancel" action="{!CancelSubmission}" value="Cancel Submission" rendered="{!EnableRequirements}" immediate="true" onclick="return confirm('Are you sure?\nNote: Any changes made will still be saved.')" />
+                    <apex:commandButton id="btnSubmitForReview" action="{!TriggerValidation}" value="Submit for Review" oncomplete="SubmitForReview()" rendered="{!NOT(Opportunity_Approval__c.Locked__c)}"/>
+                    <apex:commandButton action="{!SubmitForReview}" id="submit00" value="Submit for Review" style="display:none;"/><!--style="display:none;" -->
+                    <apex:commandButton action="{!EUOverride}" id="euOverride" value="EU Override" rendered="{!$Profile.Name = 'CAO' || $Profile.Name = 'System Administrator'}"/>
+                </apex:outputPanel>
+                <a href= "{!Opportunity_Approval__c.PDF_View__c}" target="_blank" class="btn" style="text-decoration:none;">PDF View</a>
+            </apex:pageBlockButtons>
+            <div id="tabs">
+                <ul id="tabsList">
+                    <li><a href="#tabs-1">OVERVIEW AND FINANCIALS</a></li>
+                    <li><a href="#tabs-2">FEES</a></li>
+                    <li><a href="#tabs-3">PITCH</a></li>
+                    <li><a href="#tabs-4">FINANCING CHECKLIST</a></li>
+                    <li><a href="#tabs-5">FAIRNESS CHECKLIST</a></li>
+                    <li><a href="#tabs-6">ADMINISTRATIVE</a></li>
+                    <li><a href="#tabs-7">REVIEW</a></li>                      
+                </ul>
+                <div id="tabs-1">
+                    <apex:pageBlockSection columns="2" title="Opportunity Overview">
+                        <apex:outputField value="{!Opportunity_Approval__c.Related_Opportunity__r.Name}"></apex:outputField>
+                        <apex:outputField value="{!Opportunity_Approval__c.Opportunity_Number__c}"></apex:outputField>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Client Company"></apex:outputLabel>
+                            <apex:outputField value="{!Opportunity_Approval__c.Client_Company__c}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Subject Company"></apex:outputLabel>
+                            <apex:outputField value="{!Opportunity_Approval__c.Subject_Company__c}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel styleClass="padLeft" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Client_Ownership__c=='','red','')}" value="-Client Ownership"></apex:outputLabel>   
+                            <apex:outputField value="{!Opportunity_Approval__c.Client_Ownership__c}"></apex:outputField>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel styleClass="padLeft" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Company_Ownership_Type__c=='','red','')}" value="-Subject Ownership"></apex:outputLabel> 
+                            <apex:outputField value="{!Opportunity_Approval__c.Company_Ownership_Type__c}"></apex:outputField>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel styleClass="padLeft" value="-Client Country"></apex:outputLabel>
+                            <apex:outputField value="{!Opportunity_Approval__c.Client_Country__c}"></apex:outputField>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel styleClass="padLeft" value="-Subject Country"></apex:outputLabel>
+                            <apex:outputField value="{!Opportunity_Approval__c.Subject_Country__c}"></apex:outputField>
+                        </apex:pageBlockSectionItem>                     
+                        <apex:outputField value="{!Opportunity_Approval__c.Job_Type__c}"></apex:outputField>
+                           <apex:outputField value="{!Opportunity_Approval__c.Secondary_Job_Type__c}" label="Secondary Job Type" rendered="{!onNBCViewAccess}" ></apex:outputField>
+                  
+                        <apex:inputField value="{!Opportunity_Approval__c.Secondary_Job_Type__c}" label="Secondary Job Type" onchange="handleFieldValueChange()"  rendered="{!!onNBCViewAccess}" ></apex:inputField>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="1">
+                        <apex:outputPanel >
+                            <table>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="MajoritySaleTXT" styleClass="padRight" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Is_Majority_Sale__c=='','red','')}" value="Is this an engagement (a) by a company with publicly held securities, where the scope of the engagement may cover a transaction involving the sale, merger or other disposition of all or a substantial part of the company’s equity, assets or business, (b) by a company with publicly held securities, where the scope of the engagement may cover an acquisition of another company or asset representing a material portion (approximately 10% or more) of the company’s (i.e., the acquiror client’s) enterprise value, (c) by a company (whether privately or publicly held), where the scope of the engagement may cover an acquisition of all or a substantial part of the equity, assets or business of another company with publicly held securities, or (d) in connection with which we may be requested to provide a fairness or other financial opinion?"></apex:outputLabel>
+                                          <apex:outputField value="{!Opportunity_Approval__c.Is_Majority_Sale__c}" label="Secondary Job Type" rendered="{!onNBCViewAccess}" ></apex:outputField>
+                  
+                                        <apex:inputField id="MajoritySale" value="{!Opportunity_Approval__c.Is_Majority_Sale__c}" label="" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange"  rerender="MajoritySaleTXT"/>                                         
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputText id="MajoritySale01" style="font-style:italic; color:red" rendered="{!Opportunity_Approval__c.Is_Client_EU__c = 'FALSE'}" value="*Please add Mark Mikullitz, Rick A. Lacher or Steven Tishman to the Public role in the HL Internal Team section.">
+                                        </apex:outputText>                                            
+                                    </td>
+                                </tr>
+                                <tr id="MajoritySale02">
+                                    <td class="indent">
+                                        <apex:outputText style="font-style:italic; color:red" rendered="{!Opportunity_Approval__c.Is_Client_EU__c}" value="*Please inform the EU CF Co-Heads of the Opportunity and place an approved staff member in the Public role in the HL Internal Team section.">
+                                        </apex:outputText>
+                                        <br/>
+                                        <br/>
+                                        <apex:outputText style="font-style:italic; color:red" rendered="{!Opportunity_Approval__c.Is_Client_EU__c}"  value="Please also consider whether the activity you wish to undertake is regulated financial activity (in which case consideration will need to be given as to the appropriate Houlihan Lokey group company to engage on this Opportunity).  Please contact Legal if uncertain." >
+                                        </apex:outputText>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr style="height:15px">
+                                    <td style="vertical-align:middle;width:20px" valign="middle">
+                                        <apex:outputField id="HeadApprovalOp" value="{!Opportunity_Approval__c.Head_Approval__c}" styleClass="required"  rendered="{!onNBCViewAccess}"/>
+                                        
+                                       <apex:inputField id="HeadApproval" value="{!Opportunity_Approval__c.Head_Approval__c}" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionSupport event="onchange" rerender="HeadApprovalTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                    <td style="vertical-align:middle" valign="middle">
+                                        <apex:outputLabel id="HeadApprovalTXT" style="color:{!IF(EnableRequirements && NOT(Opportunity_Approval__c.Head_Approval__c), 'red','')}" value="Please confirm that a group head has approved prior to submitting to the committee."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="1" title="Overview and Financials">
+                        <apex:outputLabel id="TransTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Transaction_Overview__c=='','red','')}" value="Transaction Overview (include information pertaining to potential Fairness Opinion)"></apex:outputLabel>
+                        <apex:inputTextarea value="{!Opportunity_Approval__c.Transaction_Overview__c}" label="" rows="3" cols="90" styleClass="required" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                            <apex:actionsupport event="onchange" rerender="TransTXT" />
+                        </apex:inputTextarea>
+                        <apex:outputLabel id="CurrentStatusTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Current_Status__c=='','red','')}" value="Current Status (Retainer Outstanding/Sent, Pitched, Preparing Pitch, etc.)"></apex:outputLabel>
+                        <apex:inputTextarea value="{!Opportunity_Approval__c.Current_Status__c}" label="" rows="3" cols="90" styleClass="required" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                            <apex:actionsupport event="onchange" rerender="CurrentStatusTXT"/>
+                        </apex:inputTextarea>
+                        <apex:outputLabel id="CompDescTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Company_Description__c=='','red','')}" value="Company Description (Include Location & Industry Classification)"></apex:outputLabel>
+                        <apex:inputTextarea value="{!Opportunity_Approval__c.Company_Description__c}" label="" rows="3" cols="90" styleClass="required" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                            <apex:actionsupport event="onchange" rerender="CompDescTXT"/>
+                        </apex:inputTextarea>
+                        <apex:outputPanel >
+                            <table cellpadding="3">
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="InternationalAngleTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.International_Angle__c=='','red','')}" styleClass="padRight" value="Cross-border Angle?"></apex:outputLabel>   
+                                        <apex:outputField id="InternationalAngleOp" value="{!Opportunity_Approval__c.International_Angle__c}" styleClass="required"  rendered="{!onNBCViewAccess}"/>
+                                        
+                                        <apex:inputField id="InternationalAngle" value="{!Opportunity_Approval__c.International_Angle__c}" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="InternationalAngleTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="InternationalAngle01" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.International_Angle_Notes__c=='','red','')}" value="-Please provide Cross-border Angle detail."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:inputTextarea id="InternationalAngle02" value="{!Opportunity_Approval__c.International_Angle_Notes__c}" label="" rows="3" cols="90" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="InternationalAngle01"/>
+                                        </apex:inputTextarea>      
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="AsiaAngleTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Asia_Angle__c=='','red','')}" styleClass="padRight" value="Asia Angle - Does the company have material operations, sales or key suppliers in Asia or does it have plans for growth in Asia? (Outsourced or contract manufacturing is generally not considered to be Asia Angle)"></apex:outputLabel>   
+                                        <apex:outputField id="AsiaAngleOp" value="{!Opportunity_Approval__c.Asia_Angle__c}" styleClass="required" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="AsiaAngle" value="{!Opportunity_Approval__c.Asia_Angle__c}" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="AsiaAngleTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="AsiaAngle01" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Asia_Angle_Notes__c=='','red','')}" value="-Please provide Asia Angle detail."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:inputTextarea id="AsiaAngle02" value="{!Opportunity_Approval__c.Asia_Angle_Notes__c}" label="" rows="3" cols="90" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="AsiaAngle01"/>
+                                        </apex:inputTextarea>      
+                                    </td>
+                                </tr>
+                                
+                                 <!-- New Code -->
+                                    <tr>
+                                        <td>
+                                            <apex:outputLabel id="RealEstateAngleTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Real_Estate_Angle__c =='','red','')}" styleClass="padRight" value="Real Estate Angle - Does the company have material owned real estate assets?"></apex:outputLabel> 
+                                            <apex:outputField id="RealEstateAngleOp" value="{!Opportunity_Approval__c.Real_Estate_Angle__c}" styleClass="required"  rendered="{!onNBCViewAccess}"/>                                       
+                                            <apex:inputField id="RealEstateAngle" value="{!Opportunity_Approval__c.Real_Estate_Angle__c}" styleClass="required" onchange="handleFieldValueChange1(this)" rendered="{!!onNBCViewAccess}">
+                                                <apex:actionsupport event="onchange" rerender="RealEstateAngleTXT"/>
+                                            </apex:inputField>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="indent">
+                                            <apex:outputLabel id="RealEstateAngle01" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Real_Estate_Angle_Notes__c=='','red','')}" value="-Please provide Real Estate detail."></apex:outputLabel>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="indent">
+                                            <apex:inputTextarea id="RealEstateAngle02" value="{!Opportunity_Approval__c.Real_Estate_Angle_Notes__c}" label="" rows="3" cols="90" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                                <apex:actionsupport event="onchange" rerender="RealEstateAngle01"/>
+                                            </apex:inputTextarea>      
+                                        </td>
+                                    </tr>
+                                     <!-- New Code -->
+                                
+                                
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="OwnershipTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Ownership_and_Capital_Structure__c=='','red','')}" value="Ownership Structure & Capital Structure (PLEASE INCLUDE DEBT SUMMARY)"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText style="font-style:italic" styleClass="alertText" value="*For Buyside opportunities: enter Subject's structures." rendered="{!IF(Opportunity_Approval__c.Job_Type__c ='Buyside',true,false)}"> </apex:outputText>
+                                    </td>
+                                </tr>    
+                                <tr>
+                                    <td>
+                                        <apex:inputTextarea value="{!Opportunity_Approval__c.Ownership_and_Capital_Structure__c}" label="" rows="3" cols="90" styleClass="required" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="OwnershipTXT"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td style="padding-top: 5px;">
+                                                    <apex:outputLabel id="TotalDebtTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Total_Debt_MM__c==NULL,'red','')}" styleclass="singleLine" value="Total Debt(MM)"></apex:outputLabel>
+                                                </td>
+                                                <td>
+                                                 <apex:outputField id="TotalDebt1" value="{!Opportunity_Approval__c.Total_Debt_MM__c}" styleClass="required numeric-short" rendered="{!onNBCViewAccess}"/>
+                                                   
+                                                    <apex:inputField id="TotalDebt" value="{!Opportunity_Approval__c.Total_Debt_MM__c}" styleClass="required numeric-short" onkeyup="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                                        <apex:actionSupport event="onchange" reRender="TotalDebtTXT" />
+                                                    </apex:inputField>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <apex:outputLabel style="font-size:1.2em" value="Summary and Pro-Forma Financials (MM)"/>                                         
+                                                    <input type='button' value='Add Financials' id='newFinancials' class="btn" />
+                                                    <apex:commandButton id="RefreshFinancials" action="{!RefreshFinancials}" reRender="panFinancials" style="display:none;" status="refreshStatus" oncomplete="DocumentReady();"/>
+                                                </td>     
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <apex:outputText style="font-style:italic" styleClass="alertText" value="*For Buyside opportunities: enter Subject's Financials if applicable." rendered="{!IF(Opportunity_Approval__c.Job_Type__c ='Buyside',true,false)}"> </apex:outputText>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <apex:outputPanel id="panFinancials">
+                                                        <apex:pageBlockTable value="{!Financials}" var="fin">
+                                                            <apex:column width="60px">
+                                                                <a id='editFinancials' class="pointer underline" style="padding-right: 5px;">Edit</a>
+                                                                <apex:outputLabel value="{!fin.Id}" styleClass="hidden"></apex:outputLabel>
+                                                                <apex:commandLink value="Del" action="{!DeleteFinancial}" onclick="return confirmDelete();">
+                                                                    <apex:param name="p1" assignTo="{!DelId}" value="{!fin.Id}"></apex:param>
+                                                                </apex:commandLink> 
+                                                            </apex:column>
+                                                            <apex:column value="{!fin.Year__c}" headerValue="Year" />
+                                                            <apex:column value="{!fin.Type__c}" headerValue="Type"/>
+                                                            <apex:column value="{!fin.Revenue_MM__c}" headerValue="Revenue"/>
+                                                            <apex:column value="{!fin.EBIT_MM__c}" headerValue="EBIT"/>
+                                                            <apex:column value="{!fin.EBITDA__c}" headerValue="EBITDA"/>
+                                                            <apex:column value="{!fin.Interest_and_Fee_Income__c}" headerValue="Interest & Fee Income*" />
+                                                            <apex:column value="{!fin.Pre_Tax_Income__c}" headerValue="Pre-Tax Income"/>
+                                                            <apex:column value="{!fin.Book_Value_MM__c}" headerValue="Book Value" />
+                                                            <apex:column value="{!fin.Assets_Under_Management__c}" headerValue="Assets Under Mgmt" />
+                                                            <apex:column value="{!fin.Face_Value_MM__c}" headerValue="Face Value" />
+                                                            <apex:column value="{!fin.Net_Asset_Value_MM__c}" headerValue="Net Asset Value" />
+                                                            <apex:column value="{!fin.Number_of_Companies__c}" headerValue="# of Companies" />
+                                                            <apex:column value="{!fin.Number_of_Loans__c}" headerValue="# of Loans" />
+                                                            <apex:column value="{!fin.Number_of_Interests__c}" headerValue="# of Interests" />
+                                                            <apex:column value="{!fin.Number_of_Policies__c}" headerValue="# of Policies" />                                               
+                                                        </apex:pageBlockTable>
+                                                    </apex:outputPanel>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <apex:outputText style="font-size:1em;font-weight:normal;font-style:italic" value="*Interest & Fee Income not in millions."></apex:outputText>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                         <apex:outputField id="NoFinancials1" value="{!Opportunity_Approval__c.No_Financials__c}" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="NoFinancials" value="{!Opportunity_Approval__c.No_Financials__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}"></apex:inputField>
+                                        <apex:outputLabel value="Financials Unavailable"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="NoFinancials01" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.No_Financials_Explanation__c=='','red','')}" value="-Explain why Financials are unavailable"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:inputTextarea id="NoFinancials02" value="{!Opportunity_Approval__c.No_Financials_Explanation__c}" label="" rows="5" cols="90" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="NoFinancials01"/>
+                                        </apex:inputTextarea>
+                                    </td>                            
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputlabel id="FinAudit00" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Financials_Subject_to_Audit__c=='','red','')}" value="Have the above financials been subject to an audit?" />
+                                       <apex:outputField id="FinAudit02" value="{!Opportunity_Approval__c.Financials_Subject_to_Audit__c}" label="" styleClass="required" rendered="{!!onNBCViewAccess}"/>
+                                       <apex:inputField id="FinAudit01" value="{!Opportunity_Approval__c.Financials_Subject_to_Audit__c}" label="" styleClass="required" onkeyup="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="FinAudit00"/>       
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="FinAuditExplain00" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Financials_Audit_Notes__c=='','red','')}" value="-If No, Explain."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:inputTextarea id="FinAuditExplain01" value="{!Opportunity_Approval__c.Financials_Audit_Notes__c}" label="" rows="3" cols="90" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="FinAuditExplain00"/> 
+                                        </apex:inputTextarea>      
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="estValuTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Estimated_Valuation__c==NULL,'red','')}" value="Estimated Valuation (MM) (Best estimate for preliminary valuation expressed as a currency value in millions)">
+                                        </apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputField styleClass="numeric-short, required" id="estValue" value="{!Opportunity_Approval__c.Estimated_Valuation__c}"  rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField styleClass="numeric-short, required" id="estValu" value="{!Opportunity_Approval__c.Estimated_Valuation__c}" onkeyup="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="estValuTXT"/>
+                                        </apex:inputField> 
+                                    </td>
+                                </tr>                                 
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="ValExTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Valuation_Expectations__c=='','red','')}" value="Valuation Expectations (if relevant) *If Public company sale, please indicate Market Cap in lieu of any valuation metrics."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:inputTextarea value="{!Opportunity_Approval__c.Valuation_Expectations__c}" label="" rows="3" cols="90" styleClass="required" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="ValExTXT"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="RiskTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Risk_Factors__c=='','red','')}" value="Risk Factors (transaction and fee structure)"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:inputTextarea value="{!Opportunity_Approval__c.Risk_Factors__c}" label="" rows="5" cols="90" styleClass="required" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="RiskTXT"/>
+                                        </apex:inputTextarea>
+                                    </td>                            
+                                </tr>
+                            </table>
+                        </apex:outputPanel>                        
+                    </apex:pageBlockSection>
+                </div>                    
+                <div id="tabs-2">
+                    <apex:pageBlockSection columns="1" title="Fees">
+                        <apex:outputLabel style="font-size:1.2em" rendered="{!Opportunity_Approval__c.Is_Client_EU__c = 'FALSE'}" value="Suggested Fees:"></apex:outputLabel>
+                        <apex:outputPanel rendered="{!Opportunity_Approval__c.Is_Client_EU__c = 'FALSE'}">
+                            <table cellpadding="3" frame="box" border="1">
+                                <th colspan="7" align="left">
+                                    <apex:outputText rendered="{!Opportunity_Approval__c.Is_Client_EU__c = 'FALSE'}" value="Based on Public Comps"></apex:outputText>
+                                </th>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="Transaction Size Ranges ($MM)"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="$50-$100"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="$100-$200"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="$200-$300"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="$300-$400"></apex:outputLabel>                                    
+                                    </td>
+                                    <!-- <td align="center">
+<apex:outputLabel value="$400-$500"></apex:outputLabel>                                    
+</td>
+<td align="center">
+<apex:outputLabel value="$500-$1000"></apex:outputLabel>                                    
+</td> -->
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="Average Fee($MM)"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$1.83"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$2.63"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$4.64"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$5.21"></apex:outputText>                                    
+                                    </td>
+                                    <!-- <td align="center">
+<apex:outputText value="$7.18"></apex:outputText>                                    
+</td>
+<td align="center">
+<apex:outputText value="$9.18"></apex:outputText>                                    
+</td> -->
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="Average Percentage"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="2.50%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.83%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.84%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.50%"></apex:outputText>                                    
+                                    </td>
+                                    <!-- <td align="center">
+<apex:outputText value="1.63%"></apex:outputText>                                    
+</td> 
+<td align="center">
+<apex:outputText value="1.28%"></apex:outputText>                                    
+</td> -->
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="Median Fee($MM)"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$1.75"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$2.56"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$4.50"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$4.91"></apex:outputText>                                    
+                                    </td>
+                                    <!-- <td align="center">
+<apex:outputText value="$6.80"></apex:outputText>                                    
+</td>
+<td align="center">
+<apex:outputText value="$8.70"></apex:outputText>                                    
+</td> -->
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="Median Percentage"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="2.31%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.80%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.67%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.37%"></apex:outputText>                                    
+                                    </td>
+                                    <!-- <td align="center">
+<apex:outputText value="1.64%"></apex:outputText>                                    
+</td> 
+<td align="center">
+<apex:outputText value="1.27%"></apex:outputText>                                    
+</td> -->
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                        <apex:outputLabel style="font-size:1.2em" rendered="{!Opportunity_Approval__c.Is_Client_EU__c}" value="Target European M&A Fees:"></apex:outputLabel>
+                        <apex:outputPanel rendered="{!Opportunity_Approval__c.Is_Client_EU__c}">
+                            <table cellpadding="3" frame="box" border="1">
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="Transaction Size Ranges (£/€MM)"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="0-50"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="50-100"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="100-200"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="200-300"></apex:outputLabel>                                    
+                                    </td>  
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="Base Fee Percentage*"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.50%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.25%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.00%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="0.75%"></apex:outputText>                                    
+                                    </td>
+                                </tr>
+                            </table>
+                            <apex:outputText style="font-size:1em;font-weight:normal;font-style:italic" value="*In addition to base fees, target sellside ratchets of 3%, 5% and 7%, and buyside discretionary fees whenever possible."/>
+                        </apex:outputPanel>
+                        <apex:outputPanel >
+                            <table>
+                                <!--       <tr>
+<td>
+<apex:outputLabel id="estMinFeeTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Estimated_Minimum_Fee__c==NULL,'red','')}" value="Estimated Minimum Fee (MM)"></apex:outputLabel>
+</td>
+</tr>
+<tr>
+<td>
+<apex:outputField styleClass="numeric-short, required" id="estMinFee1" value="{!Opportunity_Approval__c.Estimated_Minimum_Fee__c}" rendered="{!onNBCViewAccess}"/>
+<apex:inputField styleClass="numeric-short, required" id="estMinFee" value="{!Opportunity_Approval__c.Estimated_Minimum_Fee__c}" rendered="{!!onNBCViewAccess}">
+<apex:actionsupport event="onchange" rerender="estMinFeeTXT"/>
+</apex:inputField> 
+</td>
+</tr>                          
+<tr>
+<td>
+<apex:outputLabel id="estHighFeeTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Estimated_High_End_Fee__c==NULL,'red','')}" value="Estimated High-End Fee (MM)"></apex:outputLabel>
+</td>
+</tr>
+<tr>
+<td>
+<apex:outputField styleClass="numeric-short, required" id="estHighFee1" value="{!Opportunity_Approval__c.Estimated_High_End_Fee__c}" rendered="{!onNBCViewAccess}"/>
+
+<apex:inputField styleClass="numeric-short, required" id="estHighFee" value="{!Opportunity_Approval__c.Estimated_High_End_Fee__c}" rendered="{!!onNBCViewAccess}">
+<apex:actionsupport event="onchange" rerender="estHighFeeTXT"/>
+</apex:inputField> 
+</td>
+</tr>    -->    
+                                <!-- Added for new field Estimated_Minimum_Fee__c -------------------------------------------------------------->                           
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="estMinFeeNBC" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Estimated_Minimum_Fee__c==NULL,'red','')}" value="Estimated Fee (MM)"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <apex:outputField styleClass="numeric-short, required" id="estMinFee1" value="{!Opportunity_Approval__c.Estimated_Minimum_Fee__c}" rendered="{!onNBCViewAccess}"/>
+                                        
+                                        <apex:inputField styleClass="numeric-short, required" id="estMinFee" value="{!Opportunity_Approval__c.Estimated_Minimum_Fee__c}" onkeyup="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="estMinFeeNBC"/>
+                                        </apex:inputField> 
+                                    </td>
+                                </tr>
+                                <!-- Estimated_Minimum_Fee__c Field logic End------------------------------------------------------------------------ -->                           
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="FeeStrucTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Fee_Structure__c=='','red','')}" value="Fee Structure (include the retainer amount in the fee structure)" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:inputTextarea value="{!Opportunity_Approval__c.Fee_Structure__c}" label="" rows="5" cols="90" styleClass="required" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="FeeStrucTXT"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="LockupTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Lockups_on_Future_M_A_or_Financing_Work__c=='','red','')}" value="Lockups on Future M&A or Financing Work"></apex:outputLabel>
+                                        <apex:outputField value="{!Opportunity_Approval__c.Lockups_on_Future_M_A_or_Financing_Work__c}" styleClass="required" rendered="{!onNBCViewAccess}"/>
+                                        
+                                        <apex:inputField value="{!Opportunity_Approval__c.Lockups_on_Future_M_A_or_Financing_Work__c}" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="LockupTXT"/>   
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="RefFeeTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Referral_Fee_Owed__c=='','red','')}" value="Referral Fee Owed (any referral fee arrangement must be reviewed and pre-approved by the Legal Department and Scott Adelson or Bob Hotz)"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                     <apex:outputField value="{!Opportunity_Approval__c.Referral_Fee_Owed__c}" styleClass="required" rendered="{!onNBCViewAccess}"/>
+                                        
+                                        <apex:inputField value="{!Opportunity_Approval__c.Referral_Fee_Owed__c}" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="RefFeeTXT"/>
+                                        </apex:inputField> 
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>        
+                        
+                    </apex:pageBlockSection>
+                </div>                    
+                <div id="tabs-3">
+                    <apex:pageBlockSection columns="1" title="Pre-Pitch">
+                        <apex:outputPanel >
+                            <table>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="PitchTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Will_there_be_a_pitch__c=='','red','')}" value="Will there be a pitch?"></apex:outputLabel>
+                                    </td>
+                                    <td><apex:outputField id="Pitch001" value="{!Opportunity_Approval__c.Will_there_be_a_pitch__c}" label="" styleClass="required" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="Pitch00" value="{!Opportunity_Approval__c.Will_there_be_a_pitch__c}" label="" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="PitchTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="Pitch01" value="Pitch Date"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:outputField id="Pitch02" value="{!Opportunity_Approval__c.Pitch_Date__c}"></apex:outputField>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="ExistTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Existing_or_Repeat_Client__c=='','red','')}" styleClass="padRight" value="Existing or Repeat Client?"></apex:outputLabel>
+                                        <apex:outputField id="Exist1" value="{!Opportunity_Approval__c.Existing_or_Repeat_Client__c}" label="" styleClass="required" rendered="{!onNBCViewAccess}"/>
+                                        
+                                        <apex:inputField id="Exist" value="{!Opportunity_Approval__c.Existing_or_Repeat_Client__c}" label="" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="ExistTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="Exist01" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Previous_Transactions__c=='','red','')}" value="-List previous transactions:"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:inputTextarea id="Exist02" value="{!Opportunity_Approval__c.Previous_Transactions__c}" label="" cols="90" rows="5" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="Exist01"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="HLCompTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Houlihan_Lokey_Competition__c=='','red','')}" value="Houlihan Lokey Competition"></apex:outputLabel>
+                                        <apex:inputTextarea value="{!Opportunity_Approval__c.Houlihan_Lokey_Competition__c}" label="" rows="2" cols="90" styleClass="required" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="HLCompTXT"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel style="font-size:1.2em" value="HL Internal Team"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!NOT(Opportunity_Approval__c.Locked__c)}">
+                            <apex:iframe height="auto" scrolling="true" src="/apex/HL_InternalTeamModifyView?id={!OpportunityApproval.Related_Opportunity__c}&showheader=false" />
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!Opportunity_Approval__c.Locked__c}">
+                            <apex:iframe height="auto" scrolling="true" src="/apex/HL_InternalTeamReadOnlyView?id={!OpportunityApproval.Related_Opportunity__c}&showheader=false" />
+                        </apex:outputPanel>
+                        <apex:outputLabel value="Who is/are the key decision maker(s)/influencer(s) regarding this opportunity? (Please describe the politics of the situation as well as how much the Company already knows about HL.)"></apex:outputLabel>
+                        <apex:inputTextarea value="{!Opportunity_Approval__c.Key_Decision_Makers_and_Influencers__c}" label="" cols="120" rows="5" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}"></apex:inputTextarea>
+                        <apex:outputPanel >
+                            <table>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="ExistingRelTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Existing_Relationships__c=='','red','')}" value="Have you checked Salesforce for existing relationships?"></apex:outputLabel>
+                                        <!-- <apex:outputLabel id="ExistingRelTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Met_with_Company__c=='','red','')}" value="Have you checked Salesforce for existing relationships?"></apex:outputLabel> -->
+                                    </td>
+                                    <td>
+                                     <apex:outputField id="ExistingRel1" value="{!Opportunity_Approval__c.Existing_Relationships__c}" label="" styleClass="required" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="ExistingRel" value="{!Opportunity_Approval__c.Existing_Relationships__c}" label="" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <!-- <apex:inputField id="ExistingRel" value="{!Opportunity_Approval__c.Met_with_Company__c}" label="" styleClass="required"> -->
+                                            <apex:actionsupport event="onchange" rerender="ExistingRelTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="TASTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.TAS_Assistance_Benefit__c=='','red','')}" value="Would the opportunity benefit from TAS Assistance?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:outputField id="TAS001" value="{!Opportunity_Approval__c.TAS_Assistance_Benefit__c}" label="" styleClass="required" rendered="{!onNBCViewAccess}"/>
+                                       
+                                       <apex:inputField id="TAS00" value="{!Opportunity_Approval__c.TAS_Assistance_Benefit__c}" label="" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="TASTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="TAS01" value="Who from TAS has been contacted?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                    <apex:outputField id="TAS021" value="{!Opportunity_Approval__c.TAS_Bridge_Contact__c}" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="TAS02" value="{!Opportunity_Approval__c.TAS_Bridge_Contact__c}" onkeyup="handleFieldValueChange()" rendered="{!!onNBCViewAccess}"></apex:inputField>
+                                    </td>
+                                </tr>
+                                
+                                
+                            </table>
+                        </apex:outputPanel>
+                        <apex:outputPanel >
+                            <table>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="Referral Type:"/>
+                                    </td>
+                                    <td>
+                                        <apex:outputField value="{!Opportunity_Approval__c.Referral_Type__c}"></apex:outputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="Referral Source:"/>
+                                    </td>
+                                    <td>
+                                        <apex:outputField value="{!Opportunity_Approval__c.Referral_Source__c}"></apex:outputField>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                        <apex:outputLabel id="OutsideCouncilTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.OutsideCouncil__c=='','red','')}" value="If known, identify the name(s) of the client’s outside counsel and/or other advisors (If any):"></apex:outputLabel>
+                        <apex:inputTextarea id="OutsideCouncil" value="{!Opportunity_Approval__c.OutsideCouncil__c}" label="" rows="3" cols="90"  styleClass="required" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                            <apex:actionSupport event="onchange" rerender="OutsideCouncilTXT"/>
+                        </apex:inputTextarea>
+                    </apex:pageBlockSection>
+                </div>
+                <div id="tabs-4">
+                    <apex:pageBlockSection columns="1" title="Financing Checklist">
+                        <apex:outputPanel >
+                            <table>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="CMConsultTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Capital_Markets_Consulted__c=='','red','')}" value="Has the Capital Markets Group been consulted regarding financing or capital structure?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                    <apex:outputField value="{!Opportunity_Approval__c.Capital_Markets_Consulted__c}" styleClass="required" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField value="{!Opportunity_Approval__c.Capital_Markets_Consulted__c}" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="CMConsultTXT"/>
+                                        </apex:inputField> 
+                                    </td>
+                                </tr>
+                            </table>                
+                        </apex:outputPanel>
+                        <apex:outputLabel id="FinArrTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Existing_Financial_Arrangement_Notes__c=='','red','')}" value="Please summarize the existing financial arrangements:"></apex:outputLabel>
+                        <apex:inputTextarea value="{!Opportunity_Approval__c.Existing_Financial_Arrangement_Notes__c}" label="" rows="5" cols="90" styleClass="required" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                            <apex:actionsupport event="onchange" rerender="FinArrTXT"/>
+                        </apex:inputTextarea>                 
+                    </apex:pageBlockSection>
+                </div>
+                <div id="tabs-5">
+                    <apex:pageBlockSection columns="1" title="Fairness Checklist">
+                        <apex:outputPanel >
+                            <table>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="FairnessTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Fairness_Opinion_Provided__c=='','red','')}" value="Is there a potential Fairness Opinion component to this assignment?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                    <apex:outputField id="Fairness1" value="{!Opportunity_Approval__c.Fairness_Opinion_Provided__c}" styleClass="required" rendered="{!!onNBCViewAccess}"/>
+                                        <apex:inputField id="Fairness" value="{!Opportunity_Approval__c.Fairness_Opinion_Provided__c}" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="FairnessTXT,PublicDiscloseTXT,ShareholderVoteTXT,ProposalFeeRangeTXT,FeeInclusionTXT,StaffNotesTXT,FormOfOpinion,OtherFormsTXT,RelatedPartyTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel> 
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="1">
+                        <apex:outputLabel style="font-size:1.2em" value="Fairness Opinion*"></apex:outputLabel>                
+                        <apex:outputText style="font-size:1em;font-weight:normal;font-style:italic" value="*If a Fairness Opinion will be provided the M&A Committee Memo must be sent to Chris Croft, Jennifer Muller, Rick Lacher, and Liz Hedgcock for further approval - outside counsel must also be engaged."></apex:outputText>                
+                        <apex:outputPanel id="FairnessChecklist">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="PublicDiscloseTXT" style="color:{!IF(Opportunity_Approval__c.Fairness_Opinion_Provided__c=='Yes' && Opportunity_Approval__c.Fairness_Opinion_Publicly_Disclosed__c='','red','')}" value="Will the Opinion be Publicly Disclosed?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                     <apex:outputField id="PublicDisclose1" value="{!Opportunity_Approval__c.Fairness_Opinion_Publicly_Disclosed__c}" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="PublicDisclose" value="{!Opportunity_Approval__c.Fairness_Opinion_Publicly_Disclosed__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionSupport event="onchange" rerender="PublicDiscloseTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="ShareholderVoteTXT" style="color:{!IF(Opportunity_Approval__c.Fairness_Opinion_Provided__c=='Yes' && Opportunity_Approval__c.Shareholder_Vote__c='','red','')}" value="Will there be a Shareholder Vote?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                     <apex:outputField id="ShareholderVote1" value="{!Opportunity_Approval__c.Shareholder_Vote__c}" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="ShareholderVote" value="{!Opportunity_Approval__c.Shareholder_Vote__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionSupport event="onchange" rerender="ShareholderVoteTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="ProposalFeeRangeTXT" style="color:{!IF(Opportunity_Approval__c.Fairness_Opinion_Provided__c=='Yes' && Opportunity_Approval__c.Proposed_Fee_Range__c='','red','')}" value="Proposed Fee Range:"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    
+                                        <apex:inputTextarea id="ProposalFeeRange" value="{!Opportunity_Approval__c.Proposed_Fee_Range__c}" label="" rows="2" cols="30" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionSupport event="onchange" rerender="ProposalFeeRangeTXT"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="FeeInclusionTXT" style="color:{!IF(Opportunity_Approval__c.Fairness_Opinion_Provided__c=='Yes' && Opportunity_Approval__c.Fairness_Fee_Inclusion__c='','red','')}" value="Will Fairness fee be included in M&A fee or priced additionally?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                    <apex:outputField id="FeeInclusion1" value="{!Opportunity_Approval__c.Fairness_Fee_Inclusion__c}" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="FeeInclusion" value="{!Opportunity_Approval__c.Fairness_Fee_Inclusion__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionSupport event="onchange" rerender="FeeInclusionTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>                      
+                            </table> 
+                        </apex:outputPanel>
+                        <apex:outputLabel id="StaffNotesTXT" style="color:{!IF(Opportunity_Approval__c.Fairness_Opinion_Provided__c=='Yes' && Opportunity_Approval__c.Fairness_Opinion_Staffing_Notes__c='','red','')}" value="Provide detail on Fairness staff members and roles if they differ from M&A staffing."></apex:outputLabel>
+                        <apex:inputTextarea id="StaffNotes" value="{!Opportunity_Approval__c.Fairness_Opinion_Staffing_Notes__c}" label="" rows="3" cols="60" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                            <apex:actionSupport event="onchange" rerender="StaffNotesTXT"/>
+                        </apex:inputTextarea>
+                        <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>                    
+                        <apex:outputLabel id="FormOfOpinion" style="font-size:1.2em;color:{!IF(Opportunity_Approval__c.Fairness_Opinion_Provided__c=='Yes' && Opportunity_Approval__c.FEIS_Opine_Option_1__c=FALSE && Opportunity_Approval__c.FEIS_Opine_Option_2__c=FALSE && Opportunity_Approval__c.FEIS_Opine_Option_3__c=FALSE && Opportunity_Approval__c.FEIS_Opine_Option_4__c=FALSE && Opportunity_Approval__c.FEIS_Opine_Option_5__c=FALSE && Opportunity_Approval__c.FEIS_Opine_Option_6__c=FALSE && Opportunity_Approval__c.Form_of_Opinion_Not_Yet_Known__c=FALSE,'red','')}" value="Form of Opinion"></apex:outputLabel>
+                        <apex:outputText style="font-weight:normal;font-size:1em" value="With respect to which of the following are we being asked to opine?"></apex:outputText>                   
+                        <apex:outputPanel >
+                            <table>
+                                <tr>
+                                    <td>
+                                    <apex:outputField id="Opine11" value="{!Opportunity_Approval__c.FEIS_Opine_Option_1__c}" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="Opine1" value="{!Opportunity_Approval__c.FEIS_Opine_Option_1__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="FormOfOpinion"/>
+                                        </apex:inputField>
+                                        <apex:outputLabel value="The consideration to be received by the Unaffiliated Stockholders in the Transaction is fair to them from a financial point of view."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <apex:outputField value="{!Opportunity_Approval__c.FEIS_Opine_Option_2__c}" rendered="{!onNBCViewAccess}"/>
+                                        
+                                        <apex:inputField id="Opine2" value="{!Opportunity_Approval__c.FEIS_Opine_Option_2__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="FormOfOpinion"/>
+                                        </apex:inputField>
+                                        <apex:outputLabel value="The consideration to be received by the Company in the Transaction is fair to the Company from a financial point of view."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <apex:outputField value="{!Opportunity_Approval__c.FEIS_Opine_Option_3__c}" rendered="{!!onNBCViewAccess}"/>
+                                        <apex:inputField id="Opine3" value="{!Opportunity_Approval__c.FEIS_Opine_Option_3__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="FormOfOpinion"/>
+                                        </apex:inputField>
+                                        <apex:outputLabel value="The consideration to be paid by the Company in the Transaction is fair from a financial point of view."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><apex:outputField value="{!Opportunity_Approval__c.FEIS_Opine_Option_4__c}" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="Opine4" value="{!Opportunity_Approval__c.FEIS_Opine_Option_4__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="FormOfOpinion"/>
+                                        </apex:inputField>
+                                        <apex:outputLabel value="The Exchange Ratio provided for in the Transaction is fair to the Company from a financial point of view."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><apex:outputField value="{!Opportunity_Approval__c.FEIS_Opine_Option_5__c}" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="Opine5" value="{!Opportunity_Approval__c.FEIS_Opine_Option_5__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="FormOfOpinion"/>
+                                        </apex:inputField>
+                                        <apex:outputLabel value="The Exchange Ratio provided for in the Transaction is fair to the Unaffiliated Stockholders from a financial point of view."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><apex:outputField id="OpineNOT1" value="{!Opportunity_Approval__c.Form_of_Opinion_Not_Yet_Known__c}" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="OpineNOT" value="{!Opportunity_Approval__c.Form_of_Opinion_Not_Yet_Known__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="FormOfOpinion"/>
+                                        </apex:inputField>
+                                        <apex:outputLabel value="Not Yet Known."></apex:outputLabel>
+                                    </td>
+                                </tr>    
+                                <tr>
+                                    <td><apex:outputField id="Opine61" value="{!Opportunity_Approval__c.FEIS_Opine_Option_6__c}" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="Opine6" value="{!Opportunity_Approval__c.FEIS_Opine_Option_6__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="FormOfOpinion,OtherFormsTXT"/>
+                                        </apex:inputField>
+                                        <apex:outputLabel id="OtherFormsTXT" style="color:{!IF(Opportunity_Approval__c.Fairness_Opinion_Provided__c=='Yes' && Opportunity_Approval__c.Form_of_Opinion_Notes__c=='' && Opportunity_Approval__c.FEIS_Opine_Option_6__c==TRUE,'red','')}" value="Other, specify below:"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:inputTextarea id="OtherForms" value="{!Opportunity_Approval__c.Form_of_Opinion_Notes__c}" label="" rows="5" cols="90" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="OtherFormsTXT"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                        <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                        <apex:outputPanel >
+                            <table>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="RelatedPartyTXT" style="color:{!IF(Opportunity_Approval__c.Related_Party_Transaction__c=='' && Opportunity_Approval__c.Fairness_Opinion_Provided__c=='Yes','red','')}" styleClass="padright" value="Is this a Related Party Transaction?"></apex:outputLabel>
+                                        <apex:outputField id="RelatedParty1" value="{!Opportunity_Approval__c.Related_Party_Transaction__c}" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="RelatedParty" value="{!Opportunity_Approval__c.Related_Party_Transaction__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="RelatedPartyTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="RelatedParty01" style="color:{!IF(Opportunity_Approval__c.Related_Party_Affiliation_Notes__c=='' && Opportunity_Approval__c.Related_Party_Transaction__c=='Yes','red','')}" value="-If yes, please provide the affiliation between parties."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:inputTextarea id="RelatedParty02" value="{!Opportunity_Approval__c.Related_Party_Affiliation_Notes__c}" label="" rows="3" cols="90" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="RelatedParty01"/>
+                                        </apex:inputTextarea>      
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                </div>
+                <div id="tabs-6">
+                    <apex:pageBlockSection columns="1" title="Administrative">
+                        <apex:outputLabel style="font-size:1.2em" value="Restricted List Information"></apex:outputLabel>
+                        <apex:outputPanel > 
+                            <table>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="RestrictedListTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Restricted_List__c=='','red','')}" value="Restricted List?"></apex:outputLabel>   
+                                    </td>
+                                    <td><apex:outputField id="RestrictedList1" value="{!Opportunity_Approval__c.Restricted_List__c}" styleClass="required" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="RestrictedList" value="{!Opportunity_Approval__c.Restricted_List__c}" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionSupport event="onchange" rerender="RestrictedListTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <apex:outputLabel id="RestrictedListYESTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Restricted_List__c=='Yes' && Opportunity_Approval__c.Restricted_List_Date__c==null,'red','')}" value="Restricted Date"></apex:outputLabel> 
+                                    </td>
+                                    <td>
+                                     <apex:outputField id="RestrictedListYES1" value="{!Opportunity_Approval__c.Restricted_List_Date__c}" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="RestrictedListYES" value="{!Opportunity_Approval__c.Restricted_List_Date__c}" onchange="handleFieldValueChange()" onkeyup="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionSupport event="onchange" rerender="RestrictedListYESTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                        <apex:outputLabel style="font-size:1.2em" value="Conflicts Check Information - (the answers to each of these questions must be verified with each member of the deal team)"></apex:outputLabel>
+                        <apex:outputPanel > 
+                            <table>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="Conflicts Check Status: "></apex:outputLabel>
+                                    </td>
+                                    <td class="indent">
+                                        <apex:outputField value="{!Opportunity_Approval__c.Conflict_Check_Status__c}"></apex:outputField>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                        <apex:outputPanel >
+                            <table>
+                                <apex:outputPanel rendered="{!IF(Opportunity_Approval__c.Conflicts_Outcome__c == 'Cleared' || Opportunity_Approval__c.Conflicts_Outcome__c == 'Managed', 'true', 'false')}">
+                                    <tr>
+                                        <td>
+                                            <apex:outputLabel id="Conflicts2aTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_2a_Not_Listed__c=='','red','')}" value="Are there any pitches to, or engagements by, the potential client or, if known, the likely counterparty(ies), that are not listed in the completed conflicts check report?"></apex:outputLabel>
+                                        </td>
+                                        <td><apex:outputField id="Conflicts2a1" value="{!Opportunity_Approval__c.Conflicts_2a_Not_Listed__c}" styleClass="required" rendered="{!onNBCViewAccess}"/>
+                                            <apex:inputField id="Conflicts2a" value="{!Opportunity_Approval__c.Conflicts_2a_Not_Listed__c}" styleClass="required" onkeyup="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                                <apex:actionsupport event="onchange" rerender="Conflicts2aTXT"/>
+                                            </apex:inputField>
+                                        </td>
+                                    </tr>
+                                </apex:outputPanel>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="Conflicts2b00" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_2b_Not_Listed_TXT__c=='','red','')}" value="If yes, please list these pitches and/or engagements and their respective deal teams:"> </apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>   
+                                    <td class="indent">
+                                        <apex:inputTextarea id="Conflicts2b01" value="{!Opportunity_Approval__c.Conflicts_2b_Not_Listed_TXT__c}" label="" rows="5" cols="90" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="Conflicts2b01"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="Conflicts3aTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_3a_Related_to_Transaction__c=='','red','')}" value="Have any of the deal team members had, or do any of them currently have, any direct or indirect financial interests in or exposures to, the potential transaction, any related transactions, the potential client or, if known, the likely counterparty(ies) (or any of their respective affiliates)?"> </apex:outputLabel>
+                                    </td>
+                                    <td><apex:outputField id="Conflicts3a1" value="{!Opportunity_Approval__c.Conflicts_3a_Related_to_Transaction__c}" styleClass="required" rendered="{!!onNBCViewAccess}"/>
+                                        <apex:inputField id="Conflicts3a" value="{!Opportunity_Approval__c.Conflicts_3a_Related_to_Transaction__c}" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="Conflicts3aTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="Conflicts3b00" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_3b_Related_to_Transaction_TXT__c=='','red','')}" value="If yes, please describe:"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>   
+                                    <td class="indent">
+                                        <apex:inputTextarea id="Conflicts3b01" value="{!Opportunity_Approval__c.Conflicts_3b_Related_to_Transaction_TXT__c}" label="" rows="5" cols="90" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="Conflicts3b00"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="Conflicts35aTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_35a_Related_to_Client__c=='','red','')}" value="Have any of the deal team members had, or do any of them currently have, any business, employment, family or other similar relationships with the potential client or, if known, the likely counterparty(ies) (or any of their respective affiliates or management teams)?"> </apex:outputLabel>
+                                    </td>
+                                    <td><apex:outputField id="Conflicts35a1" value="{!Opportunity_Approval__c.Conflicts_35a_Related_to_Client__c}" styleClass="required" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="Conflicts35a" value="{!Opportunity_Approval__c.Conflicts_35a_Related_to_Client__c}" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="Conflicts35aTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="Conflicts35b00" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_35a_Related_to_Client_TXT__c=='','red','')}" value="If yes, please describe:"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>   
+                                    <td class="indent">
+                                        <apex:inputTextarea id="Conflicts35b01" value="{!Opportunity_Approval__c.Conflicts_35a_Related_to_Client_TXT__c}" label="" rows="5" cols="90" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="Conflicts35b00"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="Conflicts4aTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_4a_Conflict_of_Interest__c=='','red','')}" value="Have any of the deal team members (or to their knowledge, any other Houlihan Lokey employees) (a) had any discussions (including, but not limited to, any pitches) with any likely counterparty(ies) (or any of their respective affiliates) regarding a potential transaction with the potential client, or (b) had any discussions with such counterparty(ies) (or any of their respective affiliates) that might create the perception of a conflict of interest?"> </apex:outputLabel>
+                                    </td>
+                                    <td> <apex:outputField id="Conflicts4a1" value="{!Opportunity_Approval__c.Conflicts_4a_Conflict_of_Interest__c}" styleClass="required" rendered="{!onNBCViewAccess}"/>
+                                        <apex:inputField id="Conflicts4a" value="{!Opportunity_Approval__c.Conflicts_4a_Conflict_of_Interest__c}" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="Conflicts4aTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="Conflicts4b00" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_4b_Conflict_of_Interest_TXT__c=='','red','')}" value="If yes, please describe:"> </apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>   
+                                    <td class="indent">
+                                        <apex:inputTextarea id="Conflicts4b01" value="{!Opportunity_Approval__c.Conflicts_4b_Conflict_of_Interest_TXT__c}" label="" rows="5" cols="90" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="Conflicts4b00"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="Conflicts5aTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_5a_Other_Conflicts__c=='','red','')}" value="Are any of the deal team members aware of any relationships or discussions not specified above that might create the perception of a conflict of interest?"></apex:outputLabel>
+                                    </td>
+                                    <td><apex:outputField id="Conflicts5a1" value="{!Opportunity_Approval__c.Conflicts_5a_Other_Conflicts__c}" styleClass="required" rendered="{!onNBCViewAccess}"/>
+                                        
+                                        <apex:inputField id="Conflicts5a" value="{!Opportunity_Approval__c.Conflicts_5a_Other_Conflicts__c}" styleClass="required" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="Conflicts5aTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="Conflicts5b00" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_5b_Other_Conflicts_TXT__c=='','red','')}" value="If yes, please describe:"> </apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>   
+                                    <td class="indent">
+                                        <apex:inputTextarea id="Conflicts5b01" value="{!Opportunity_Approval__c.Conflicts_5b_Other_Conflicts_TXT__c}" label="" rows="5" cols="90" onkeyup="handleFieldValueChange()" disabled="{!onNBCViewAccess}">
+                                            <apex:actionsupport event="onchange" rerender="Conflicts5b00"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText style="font-style:italic" value="*Note: Do not address with the client the existence (or lack thereof) of any potential or actual conflicts during pitches, or at any other point during the engagement process, without coordinating any such statements with the Legal Department."> </apex:outputText>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText id="legal00" style="font-style:italic; color:red" value="**Upon submission, a copy of this form will be sent to the Legal Department. You must coordinate with the Legal Department what (if any) steps should be taken with respect to any conflicts and/or relationships."> </apex:outputText>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                </div>
+                <div id="tabs-7">
+                    <apex:pageBlockSection columns="1" title="Review">
+                        <apex:outputField id="reviewGrade1" value="{!Opportunity_Approval__c.Grade__c}" rendered="{!onNBCViewAccess}"></apex:outputField>                     
+                        <apex:inputField id="reviewGrade" value="{!Opportunity_Approval__c.Grade__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}"></apex:inputField>                     
+                        <apex:inputTextarea id="reviewNotes" value="{!Opportunity_Approval__c.Notes__c}" rows="5" cols="90" onkeyup="handleFieldValueChange()"></apex:inputTextarea>
+                        <apex:outputField id="dateSubmit1" value="{!Opportunity_Approval__c.Date_Submitted__c}" rendered="{!onNBCViewAccess}"></apex:outputField>
+                        <apex:inputField id="dateSubmit" value="{!Opportunity_Approval__c.Date_Submitted__c}" onchange="handleFieldValueChange()" onkeyup="handleFieldValueChange()" rendered="{!!onNBCViewAccess}"></apex:inputField>
+                        <apex:inputTextarea id="reasonWonLost" value="{!Opportunity_Approval__c.Reason_WonLost__c}" rows="5" cols="90" onkeyup="handleFieldValueChange()"></apex:inputTextarea>
+                        <apex:inputTextarea id="feeDiff" value="{!Opportunity_Approval__c.Fee_Differences__c}" rows="5" cols="90" onkeyup="handleFieldValueChange()"></apex:inputTextarea>
+                        <apex:outputField id="EUOverride" value="{!Opportunity_Approval__c.EU_Override__c}"></apex:outputField>
+                        <apex:outputField id="formType1" value="{!Opportunity_Approval__c.Form_Type__c}" rendered="{!onNBCViewAccess}"> </apex:outputField>
+                        <apex:inputField id="formType" value="{!Opportunity_Approval__c.Form_Type__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}"> </apex:inputField>
+                         <apex:outputField id="submittedToLegal1" value="{!Opportunity_Approval__c.Submitted_to_Legal__c}"  rendered="{!onNBCViewAccess}"></apex:outputField>
+                  
+                       <apex:inputField id="submittedToLegal" value="{!Opportunity_Approval__c.Submitted_to_Legal__c}" onchange="handleFieldValueChange()" rendered="{!!onNBCViewAccess}"></apex:inputField>
+                    </apex:pageBlockSection>
+                </div>                
+            </div>
+        </apex:pageBlock>
+        
+        <apex:pageMessages ></apex:pageMessages>
+        </apex:outputPanel>
+    </apex:form>
+    
+    <input id="formType" type="hidden" value="{!Opportunity_Approval__c.Form_Type__c}" />
+    <apex:outputLabel id="opportunityApprovalId" value="{!Opportunity_Approval__c.Id}" style="display:none;"></apex:outputLabel>
+    <apex:outputLabel id="subjectId" value="{!Opportunity_Approval__c.Subject_Company_ID__c}" style="display:none;"></apex:outputLabel>
+    <apex:outputLabel id="currencyISO" value="{!Opportunity_Approval__c.Related_Opportunity__r.CurrencyIsoCode}" style="display:none;" />
+    <apex:outputLabel id="Conflicts00" value="{!Opportunity_Approval__c.Conflicts_Outcome__c}" style="display:none;" />
+    <apex:outputLabel id="opportunityFinancialsModify" value="{!URLFOR('/apex/HL_Financials')}" style="display:none;" />
+    
+     <apex:outputPanel rendered="{!validAccess}">
+     <c:HL_AttachmentList AttachmentsList="{!Opportunity_Approval__c.NotesAndAttachments}" hasUnsavedChanges="{!hasUnsavedChanges}" apexPageName="HL_NBC"  id="attachmentList"></c:HL_AttachmentList>
+    </apex:outputPanel>
+    <apex:outputLabel id="userProfileId" value="{!$User.ProfileId}" style="display:none;"/>
+    <input id="isLocked" type="hidden" value="{!$Profile.Name <> 'System Administrator' && (Opportunity_Approval__c.Locked__c || NOT(OnOIT))}" />
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_Shared.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_NBC_FEIS_SCRIPTS, 'HL_NBC.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <script type="text/javascript">
+    function handleFieldValueChange(){
+        let hasUnsavedChanges = '{!hasUnsavedChanges}';
+        if(hasUnsavedChanges){
+            handleFieldChange(); 
+        }    
+    }
+    
+    var previousOnload = window.onload; window.onload = function() { 
+        var val=document.getElementById("j_id0:NBCForm:j_id31:j_id77:RealEstateAngle").value;
+        //alert('===='+val);
+        if(val==='No' || val==''){
+            document.getElementById("j_id0:NBCForm:j_id31:j_id77:RealEstateAngle02").style.display ='none';
+            document.getElementById("j_id0:NBCForm:j_id31:j_id77:RealEstateAngle01").style.display ='none';
+          }
+         else{
+            document.getElementById("j_id0:NBCForm:j_id31:j_id77:RealEstateAngle02").style.display ='block';
+            document.getElementById("j_id0:NBCForm:j_id31:j_id77:RealEstateAngle01").style.display ='block';
+        }
+        // alert('loading...');
+    }
+    function handleFieldValueChange1(data){
+        //alert('===='+data.value);
+        if(data.value==='No' || data.value==''){
+            //$('[id$="RealEstateAngle02"]').j_id0:NBCForm:j_id31:j_id77:RealEstateAngle01
+            document.getElementById("j_id0:NBCForm:j_id31:j_id77:RealEstateAngle02").value='';
+            document.getElementById("j_id0:NBCForm:j_id31:j_id77:RealEstateAngle02").style.display ='none';
+            document.getElementById("j_id0:NBCForm:j_id31:j_id77:RealEstateAngle01").style.display ='none';
+        }
+        else{
+            document.getElementById("j_id0:NBCForm:j_id31:j_id77:RealEstateAngle02").style.display ='block';
+            document.getElementById("j_id0:NBCForm:j_id31:j_id77:RealEstateAngle01").style.display ='block';
+        }
+        let hasUnsavedChanges = '{!hasUnsavedChanges}';
+        if(hasUnsavedChanges){
+            handleFieldChange(); 
+        }   
+    }
+    </script>
+    <style>
+        th {vertical-align: top;}
+        .pbTitle {
+        display:none;
+        }
+        .padRight {
+        padding-right: 5px;
+        }
+        .padLeft {
+        padding-left: 15px;
+        }
+        .alertText{
+        color: #e74c3c;
+        }
+        .instructionalText {
+        width: 100%;
+        background-color: #E5F2F6;
+        border: solid 1px #76B8AD;
+        border-radius: 7px;
+        margin-bottom: 10px;
+        /*margin-top: 50px;*/
+        /*padding-top: 5px;
+        padding-bottom: 5px;*/
+        }
+        .instructionalText .instructions {
+        /*padding-left: 15px;
+        padding-right: 10px;*/
+        }
+        .instructionImg {
+        width: 32px;
+        padding-left: 10px;
+        padding-top: 10px;
+        vertical-align: top;
+        }
+        label {font-weight: bold; color: #4a4a56;}
+        .bPageBlock .labelCol {text-align: left; color: #4a4a56;}
+        .bPageBlock .detailList .data2Col {padding-left: 0px;}
+        #tipPopupContainer
+        {
+        position:absolute;
+        left:0;
+        top:0;
+        display:none;
+        z-index: 20000;
+        }
+        
+        #tipPopupContent
+        {
+        background-color: #FFF;
+        min-width: 175px;
+        min-height: 50px;
+        }
+        
+        .tipPopupPopup .tipPopupImage
+        {
+        margin: 5px;
+        margin-right: 15px;
+        }
+        
+        .tipPopupPopup .corner
+        {
+        width: 19px;
+        height: 15px;
+        }
+    </style>
+    
+</apex:page>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tigerface1__Test_No_Fields_Visible_Field_Set</fullName>
+    <description>This field set is used by the Apex test classes to verify field level security.</description>
+    <displayedFields>
+        <field>Tigerface1__Test_Geolocation__Latitude__s</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>Tigerface1__Test_Number__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <label>Test No Fields Visible Field Set</label>
+</FieldSet>

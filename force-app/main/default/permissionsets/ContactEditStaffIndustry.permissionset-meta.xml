@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>ContactEditStaffIndustry</name>
+    </customPermissions>
+    <description>This Permission Set allows those assigned the ability to edit the Staff Industry field on the Contact and not fire the Staff Industry Process Builder.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.StaffIndustryExclusion__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.StaffIndustry__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Contact - Edit Staff Industry</label>
+</PermissionSet>

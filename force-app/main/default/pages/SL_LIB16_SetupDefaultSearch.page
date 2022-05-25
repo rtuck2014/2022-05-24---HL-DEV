@@ -1,0 +1,143 @@
+<apex:page standardController="SL_LIB16_UserChoise__c" extensions="SL_LIB16_ctrl_SetupDefaultSearch" id="filterId" tabStyle="SL_Mass_Implementation__c">
+<script>
+if (!window.console) {var console = {};}
+if (!console.log) {console.log = function() {};}
+</script>
+
+<apex:outputpanel id="pmsg"><apex:pageMessages /></apex:outputpanel>
+<style> .pbSubheader h3 { display: inline !important;}</style>
+
+<apex:outputPanel id="mainPContainer">
+    <apex:sectionHeader title="Setup Default Search" subtitle="{!massEditSettings.Name}" />
+    <apex:includeScript value="{!URLFOR($Resource.SL_LIB16_jQuerySFFiltres, 'js/jquery-1.4.2.min.js')}" />
+</apex:outputPanel>
+
+<script>
+
+jQuery.noConflict();    
+(function($) {
+    $(document).ready(function() {
+        $( "#accordion" ).accordion({ autoHeight: false });
+        
+    })
+})(jQuery);
+
+function disableLKF()
+{
+    jQuery('#addContener2 > table > tbody > tr > td > div > input:first').val("");
+    jQuery('#addContener2 > table > tbody > tr > td > div > span > input').val("");
+    jQuery('#addContener4 > table > tbody > tr > td > div > input:first').val("");
+    jQuery('#addContener4 > table > tbody > tr > td > div > span > input').val("");
+}
+
+function objOn(obj)
+{
+    try
+    {
+        obj.style.display = "block";
+        obj.style.visibility = "visible";
+    }
+    catch(Exception){}
+}   
+
+function objOff(obj)
+{
+    try
+    {
+        obj.style.visibility = "hidden";
+        obj.style.display = "none";
+    }
+    catch(Exception){}
+}
+
+function changeBlockSt(el_val)
+{
+    if(el_val=='Search') objOn(oSubpanelId);
+    else  objOff(oSubpanelId);
+}
+
+function btnSubmit()
+{
+    var events =jQuery("#sf_filters").sfFilters("Serialize");
+    var advanced = jQuery("#sf_filters").sfFilters("AdvancedFilter");
+    
+    oSearchParamId.value = advanced;
+    re = /\|/gi;
+    oSearchQId.value = events.replace(re, "___");
+    
+    var sel_target = '';
+    jQuery('.tabRadioSelector').each(function(index, value) {
+        if (jQuery(value).attr('checked'))
+        {
+            if(jQuery(value).attr('value')=='Main'){ sel_target = jQuery(value).attr('value');}
+            else{ sel_target = 'Tab_'+jQuery(value).attr('value');}
+        }
+    });
+    oSearchObjId.value = sel_target;
+}
+
+
+
+</script>
+
+<apex:form id="theForm">
+
+    <apex:inputHidden id="oSearchParam" value="{!SearchParam}" />
+    <script> var oSearchParamId = document.getElementById("{!$Component.oSearchParam}");</script>
+    <apex:inputHidden id="oSearchQ" value="{!SearchQ}" />
+    <script> var oSearchQId = document.getElementById("{!$Component.oSearchQ}");</script>
+    <apex:inputHidden id="oSearchObj" value="{!SearchObj}" />
+    <script> var oSearchObjId = document.getElementById("{!$Component.oSearchObj}");</script>
+    <apex:inputHidden id="oSearchTarget" value="{!SearchTarget}" />
+    <script> var oSearchTargetId = document.getElementById("{!$Component.oSearchTarget}");</script>
+
+    <apex:pageBlock id="mblock">
+
+            <apex:inputHidden id="oSearchTarget" value="{!SearchTarget}" />
+            <script> var oSearchTargetId = document.getElementById("{!$Component.oSearchTarget}");</script>
+            
+            <apex:pageBlockSection title="Setup details" columns="2" collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Implementation" for="ImplementationID"/>
+                    <apex:outputfield value="{!currentSearchSettings.Mass_Implementation__c}" id="ImplementationID"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:inputfield value="{!currentSearchSettings.User__c}" label="User:"/>
+                <apex:inputfield value="{!currentSearchSettings.View__c}"/>
+                <apex:inputfield value="{!currentSearchSettings.Type__c}" label="Type:" required="true"/>
+                <apex:inputfield value="{!currentSearchSettings.Implementation_Type__c}" onchange="changeBlockSt(this.value)"/>
+                
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" id="pbSection" >
+            <apex:outputPanel id="subpanel" style="{! IF(currentSearchSettings.Implementation_Type__c='Search','','display:none') }">
+                <script> var oSubpanelId = document.getElementById("{!$Component.subpanel}");</script>
+                <c:SL_LIB209_SearchBlock params="{!searchCompParams}"/>
+            </apex:outputPanel>
+            </apex:pageBlockSection>
+
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Save" onclick="btnSubmit()" action="{!doSave}" />
+            <apex:commandButton value="Cancel" action="{!cancel}" />
+        </apex:pageBlockButtons>
+                        
+    </apex:pageBlock>
+
+</apex:form>
+<apex:actionstatus id="MCSub" startText="Processing...">
+        <apex:facet name="start">
+            <div id="salesforceSource_blurybackground" style="position:absolute; left:1px; top:1px; width:100%; height:100%; text-align:center; vertical-align: middle; background-color: #dcdcdc; opacity:0.6;filter:alpha(opacity=60)"></div>
+            <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 80%; display: ''; ">
+                <div style="width: 144px;vertical-align: middle;" class="waitingHolder">
+                <table align="center" valign="top" style="width: 100%; height: 30%">
+                <tr align="center" valign="top" style="width: 100%; height: 30%">
+                    <td valign="top"><img class="waitingImage" src="/img/loading.gif"/><span class="waitingDescription">Processing......</span></td>
+                </tr>
+                </table>
+                </div>
+            </div>
+            <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 100%; display: ''; "/>
+            <script>document.getElementById('ManageMembersViewport_loading').height = window.innerHeight * (3/4);</script>
+        </apex:facet>
+        <apex:facet name="stop"></apex:facet>
+</apex:actionstatus>
+</apex:page>

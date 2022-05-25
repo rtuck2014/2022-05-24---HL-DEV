@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event_Format__c</fullName>
+    <description>RFC#2547 - created new field as part of CF Expense Request functionality.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Event Format based on the Event Type</inlineHelpText>
+    <label>Event Format</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Event_Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CF Charitable Contribution Match</fullName>
+                <default>false</default>
+                <label>CF Charitable Contribution Match</label>
+            </value>
+            <value>
+                <fullName>Group Meals</fullName>
+                <default>false</default>
+                <label>Group Meals</label>
+            </value>
+            <value>
+                <fullName>Holiday Party</fullName>
+                <default>false</default>
+                <label>Holiday Party</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+            <value>
+                <fullName>Offsite Meeting</fullName>
+                <default>false</default>
+                <label>Offsite Meeting</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Teambuilding Activity</fullName>
+                <default>false</default>
+                <label>Teambuilding Activity</label>
+            </value>
+            <value>
+                <fullName>Team Drinks</fullName>
+                <default>false</default>
+                <label>Team Drinks</label>
+            </value>
+            <value>
+                <fullName>Training</fullName>
+                <default>false</default>
+                <label>Training</label>
+            </value>
+            <value>
+                <fullName>Branding and Leadership (IP)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Branding and Leadership (IP)</label>
+            </value>
+            <value>
+                <fullName>CF Management Request</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>CF Management Request</label>
+            </value>
+            <value>
+                <fullName>Client Entertainment</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Client Entertainment</label>
+            </value>
+            <value>
+                <fullName>Client Gifts</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Client Gifts</label>
+            </value>
+            <value>
+                <fullName>Closing Party</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Closing Party</label>
+            </value>
+            <value>
+                <fullName>Conference/Seminar</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Conference/Seminar</label>
+            </value>
+            <value>
+                <fullName>External Client Meeting</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>External Client Meeting</label>
+            </value>
+            <value>
+                <fullName>FY Annual Meeting</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>FY Annual Meeting</label>
+            </value>
+            <value>
+                <fullName>Local Marketing</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Local Marketing</label>
+            </value>
+            <value>
+                <fullName>Marketing Membership</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Marketing Membership</label>
+            </value>
+            <value>
+                <fullName>Networking Events</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Networking Events</label>
+            </value>
+            <value>
+                <fullName>Other Client Entertainment</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Other Client Entertainment</label>
+            </value>
+            <value>
+                <fullName>Other Professional Event</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Other Professional Event</label>
+            </value>
+            <value>
+                <fullName>Professional Memberships</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Professional Memberships</label>
+            </value>
+            <value>
+                <fullName>Regional Marketing</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Regional Marketing</label>
+            </value>
+            <value>
+                <fullName>Service Line Request</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Service Line Request</label>
+            </value>
+            <value>
+                <fullName>Sponsorship / Charity Events</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Sponsorship / Charity Events</label>
+            </value>
+            <value>
+                <fullName>Sporting Events</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Sporting Events</label>
+            </value>
+            <value>
+                <fullName>Staff Entertainment</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Staff Entertainment</label>
+            </value>
+            <value>
+                <fullName>Talent Development</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Talent Development</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Administrative</controllingFieldValue>
+            <valueName>CF Charitable Contribution Match</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Administrative</controllingFieldValue>
+            <valueName>Offsite Meeting</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Administrative</controllingFieldValue>
+            <controllingFieldValue>Staff Entertainment</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Administrative</controllingFieldValue>
+            <valueName>Training</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Branding and Advertising</controllingFieldValue>
+            <controllingFieldValue>Client Entertainment</controllingFieldValue>
+            <controllingFieldValue>Conference/Summit/Seminar</controllingFieldValue>
+            <controllingFieldValue>HL Hosted Client Event</controllingFieldValue>
+            <controllingFieldValue>HL Hosted Client Event (during 3rd - party events)</controllingFieldValue>
+            <controllingFieldValue>Membership Dues</controllingFieldValue>
+            <controllingFieldValue>Sponsorship</controllingFieldValue>
+            <controllingFieldValue>Third Party Conference/Seminar Attendance</controllingFieldValue>
+            <valueName>N/A</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Staff Entertainment</controllingFieldValue>
+            <valueName>Group Meals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Staff Entertainment</controllingFieldValue>
+            <valueName>Holiday Party</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Staff Entertainment</controllingFieldValue>
+            <valueName>Teambuilding Activity</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Staff Entertainment</controllingFieldValue>
+            <valueName>Team Drinks</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

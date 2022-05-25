@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SendEmail_SOSL__c</fullName>
+    <defaultValue>&apos;IN NAME FIELDS RETURNING Contact (Id, Name, Email WHERE Email!=null ORDER BY Name),Group (Id, Name,Type ORDER BY Name)&apos;</defaultValue>
+    <externalId>false</externalId>
+    <label>SendEmail SOSL</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

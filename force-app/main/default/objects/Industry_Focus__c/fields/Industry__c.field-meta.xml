@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Industry__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Industry</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Invalid Industry Value</errorMessage>
+        <filterItems>
+            <field>Industry__c.Contact__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Industry__c</referenceTo>
+    <relationshipLabel>Industry Focus</relationshipLabel>
+    <relationshipName>Contact_Industries</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

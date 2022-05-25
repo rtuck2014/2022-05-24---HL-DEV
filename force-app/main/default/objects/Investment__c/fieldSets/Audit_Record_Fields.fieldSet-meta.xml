@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Audit_Record_Fields</fullName>
+    <description>Used to indicate which fields should be tracked by the Audit Record object</description>
+    <displayedFields>
+        <field>FS_Prospect_Ranking__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <label>Audit Record Fields</label>
+</FieldSet>

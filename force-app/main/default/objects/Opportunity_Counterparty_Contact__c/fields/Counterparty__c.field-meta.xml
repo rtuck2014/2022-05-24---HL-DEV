@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Counterparty__c</fullName>
+    <externalId>false</externalId>
+    <label>Counterparty</label>
+    <referenceTo>Opportunity_Counterparty__c</referenceTo>
+    <relationshipLabel>Opportunity Counterparty Contacts</relationshipLabel>
+    <relationshipName>Opportunity_Counterparty_Contacts</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

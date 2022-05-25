@@ -1,0 +1,529 @@
+<apex:page showHeader="true"  sidebar="false" standardController="Event" extensions="HL_ActivityController" lightningStylesheets="true">
+    <div class="activityEvent">
+        <apex:form id="frmActivityEvent">
+        <script>
+            window.onload = function defaultShow_Hide() {
+                hide_show('{!Event.Type}');           
+           }    
+           function hide_show(x) {      
+                if(x == 'Internal Mentor Meeting' )
+                    document.getElementById('internalMentorHideId').style.display = "none";
+                else 
+                    document.getElementById('internalMentorHideId').style.display = "block";
+           }
+           function MakeSelect(mySelection, targetElement){
+                 document.getElementById(targetElement).checked = !mySelection.checked;
+           }
+        </script>
+            <apex:pageMessages id="messages" ></apex:pageMessages>
+            <apex:pageBlock id="activityedit" mode="Edit" title="Activity" rendered="{!HasModifyAccess || HasLimitedModifyAccess}">
+                <apex:pageBlockButtons >
+                    <apex:commandButton id="btnSave1" action="{!SaveRec}" value="Save" styleClass="actionButton"/>
+                    <apex:commandButton id="btnSave"  action="{!SaveRecord}" value="Save and Return to Contact" styleClass="actionButton" style=";width:240px;"/>
+                    <apex:commandButton action="{!DeleteRecord}" value="Delete" rendered="{!Activity.Id <> null}" onClick="return confirmDelete()" styleClass="actionButton"></apex:commandButton>
+                    <apex:commandButton action="{!CancelRecord}" value="Cancel" immediate="true" styleClass="actionButton" />
+                </apex:pageBlockButtons>
+                <apex:pageBlockSection id="activitydetails" title="Activity Details" columns="1" rendered="{!HasModifyAccess}">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Type"></apex:outputLabel>
+                        <apex:outputPanel >
+                            <apex:outputPanel id="panEventType" style="display:inline-block;" rendered="{!NOT(BEGINS(BLANKVALUE(Event.Type,' '),'Follow-up'))}">
+                                <apex:inputField id="eventType" value="{!Event.Type}" required="true" onchange="blockme(); hide_show(this.value); toggleInternalExternalAttendeeSection('{!Event.Type}')"></apex:inputField> 
+                            </apex:outputPanel>                             
+                            <apex:outputPanel id="panEventTypeReadOnly" style="display:inline-block;" rendered="{!BEGINS(BLANKVALUE(Event.Type,' '),'Follow-up')}">
+                                <apex:outputField id="eventTypeReadOnly" value="{!Event.Type}" rendered="{!BEGINS(BLANKVALUE(Event.Type,' '),'Follow-up')}"></apex:outputField>
+                            </apex:outputPanel>
+                            <apex:outputPanel id="panPrivate">
+                                <apex:outputPanel rendered="{!Event.Type <> 'Internal'}">
+                                    <apex:outputPanel rendered="{!Event.Type <> 'Internal Mentor Meeting'}">
+                                        <apex:actionRegion >
+                                            <apex:inputField value="{!Event.Private__c}" style="margin-left: 35px;">
+                                                <apex:actionSupport event="onchange" rerender="panNotifyCoverageTeam" oncomplete="DocumentReady();"/>
+                                            </apex:inputField>
+                                        </apex:actionRegion>
+                                        <apex:outputLabel value="{!$ObjectType.Event.fields.Private__c.label}"></apex:outputLabel>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                                <!--
+                                <apex:outputPanel id="pfgCheck">
+                                    <apex:outputPanel rendered="{!Event.Type <> 'Internal'}">
+                                            <apex:outputPanel rendered="{!Event.Type <> 'Internal Mentor Meeting'}">
+                                        <apex:actionRegion >
+                                            <apex:inputField id="chkpfgCheck" value="{!Event.PFG__c}" onclick="MakeSelect(this,'{!$Component.chkpanNotifyCoverageTeam}')" style="margin-left: 35px;">  
+                                            </apex:inputField>
+                                        </apex:actionRegion>
+                                            <apex:outputLabel value="{!$ObjectType.Event.fields.PFG__c.label}"></apex:outputLabel>
+                                        </apex:outputPanel>
+                                    </apex:outputPanel>                                
+                                </apex:outputPanel>
+                                -->
+                                <apex:outputPanel id="panSyncToOutlook">
+                                    <apex:outputPanel >
+                                        <apex:inputField value="{!Event.Sync_To_Outlook__c}" style="margin-left: 35px;"></apex:inputField>
+                                        <apex:outputLabel value="{!$ObjectType.Event.fields.Sync_To_Outlook__c.label}"></apex:outputLabel>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                            <apex:outputPanel id="panNotifyCoverageTeam">
+                                <apex:outputPanel rendered="{!!Event.Private__c && Event.Type <> 'Internal'}">
+                                    <apex:outputPanel rendered="{!!Event.Private__c && Event.Type <> 'Internal Mentor Meeting'}">
+                                        <apex:inputField id="chkpanNotifyCoverageTeam" value="{!Event.Notify_Coverage_Team__c}"    style="margin-left: 35px;"></apex:inputField>
+                                        <apex:outputLabel value="{!$ObjectType.Event.fields.Notify_Coverage_Team__c.label}"></apex:outputLabel>
+                                        <div id="notifyCoverageHelp" style="display:inline-block; padding-bottom: 12px;">
+                                            <c:HL_HelpText helpText="{!$ObjectType.Event.fields.Notify_Coverage_Team__c.InlineHelpText}"/>
+                                        </div>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                                <apex:inputField value="{!Event.Is_Complete__c}" style="margin-left: 20px;" rendered="{!BEGINS(BLANKVALUE(Event.Type,' '),'Follow-up')}"></apex:inputField>
+                                <apex:outputLabel value="Complete" rendered="{!BEGINS(BLANKVALUE(Event.Type,' '),'Follow-up')}"></apex:outputLabel>
+                            </apex:outputPanel>
+                        </apex:outputPanel> 
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Subject"></apex:outputLabel>
+                        <apex:inputText id="eventSubject" value="{!Event.Subject}" styleClass="required"></apex:inputText>
+                    </apex:pageBlockSectionItem>
+                    <apex:inputTextarea value="{!Event.Description}" cols="120" rows="5"/>
+                    <apex:inputTextarea value="{!ActivitySupplement.Internal_Notes__c}" cols="120" rows="7"/>
+                    <apex:pageBlockSectionItem > 
+                        <apex:outputLabel value="Purpose"></apex:outputLabel>
+                        <apex:inputField value="{!event.Purpose__c}"> </apex:inputField>                                                                
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                    <!--
+                    <apex:pageBlockSectionItem > 
+                       <apex:outputPanel >
+                        <apex:outputLabel value="PFG Notification"></apex:outputLabel>
+                        <div id="notifyCoverageHelp2" style="display:inline-block; padding-bottom: 12px;">
+                            <c:HL_HelpText helpText="{!$ObjectType.Event.fields.PFG_Notification__c.InlineHelpText}"/>
+                        </div>
+                       </apex:outputPanel>
+                        <apex:inputField value="{!event.PFG_Notification__c}"> </apex:inputField>                                                                
+                    </apex:pageBlockSectionItem>
+                    -->
+                    
+                    <!-- <apex:inputField value="{!event.Client_Participation__c}"> </apex:inputField> -->
+                    <apex:pageBlockSectionItem id="dateSection">    
+                        <apex:outputLabel value="Date"></apex:outputLabel>
+                        <apex:outputPanel >
+                            <apex:inputField id="startDate" value="{!Event.Start_Date__c}" styleClass="required"></apex:inputField>
+                            <apex:outputText id="formattedStartDate" value="{!FormattedStartDate}" label="Start Date/Time" style="display: none;"></apex:outputText>
+                            <apex:inputField id="startTime" value="{!Event.Start_Time__c}"></apex:inputField>
+                            <apex:outputLabel value="to" style="padding-right: 5px;"></apex:outputLabel>
+                            <apex:outputText id="formattedEndDate" value="{!FormattedEndDate}" label="End Date/Time" style="display: none;"></apex:outputText>
+                            <apex:inputField id="endTime" value="{!Event.End_Time__c}"></apex:inputField>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem > 
+                        <apex:outputLabel value="Industry Group"></apex:outputLabel>
+                        <apex:inputField value="{!event.Industry_Group__c}"> </apex:inputField>                                                                
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem > 
+                        <apex:outputLabel value="Product Type"></apex:outputLabel>
+                        <apex:inputField value="{!event.Product_Type__c}"> </apex:inputField>                                                                
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Activity Details" columns="1" collapsible="false" rendered="{!HasLimitedModifyAccess && !HasModifyAccess}">
+                    <apex:outputField value="{!Event.Type}"></apex:outputField>
+                    <apex:outputField value="{!Event.Subject}"></apex:outputField>
+                    <apex:outputField value="{!Event.Description}"></apex:outputField>
+                    <apex:inputTextarea value="{!ActivitySupplement.Internal_Notes__c}" cols="130" rows="5"/>
+                    <apex:outputText value="{!FormattedStart}" label="Start Date/Time"></apex:outputText>
+                    <apex:outputText value="{!FormattedEnd}" label="End Date/Time"></apex:outputText>
+                    <apex:outputField value="{!Event.Private__c}" />
+                    <apex:outputField value="{!Event.Sync_To_Outlook__c}" />
+                    <apex:outputField value="{!Event.Notify_Coverage_Team__c}" />
+                    <apex:outputLabel style="display:none" value="{!Event.StartDateTime}"></apex:outputLabel>
+                    <apex:outputLabel style="display:none" value="{!Event.EndDateTime}"></apex:outputLabel>
+                </apex:pageBlockSection>
+                <apex:outputPanel rendered="{!HasModifyAccess}" >
+                    <div class="additionalItems">
+                        <apex:outputPanel id="panInternalExternalAttendees">
+                            <apex:pageBlockSection title="External Attendees" columns="1" id="pbsExternalContacts" rendered="{!IF(AND(Event.Type != 'Internal',Event.Type != 'Internal Mentor Meeting'), TRUE, FALSE)}">
+                                <apex:pageBlockTable value="{!RelatedContacts}" var="e" rendered="{!RelatedContacts.size > 0}">
+                                    <apex:column headerValue="Remove" styleClass="center" headerClass="center" style="width: 50px;">
+                                        <apex:commandLink value="Del" action="{!RemoveExternal}" onclick="return confirmDelete();" styleClass="removeContactCheckbox">
+                                            <apex:param name="p1" assignTo="{!DelId}" value="{!e.Contact.Id}"></apex:param>
+                                        </apex:commandLink>
+                                    </apex:column>
+                                    <apex:column headerValue="Primary" styleClass="center" headerClass="center" style="width: 50px;">
+                                        <apex:inputCheckbox value="{!e.Primary}" styleClass="primaryContactCheckbox"/>
+                                    </apex:column>
+                                    <apex:column headerValue="External Contact">
+                                        <apex:outputLink value="/{!e.Contact.Id}" target="_blank">{!e.Contact.Name}</apex:outputLink>
+                                    </apex:column>
+                                    <apex:column headerValue="Company">
+                                        <apex:outputLink value="/{!e.Contact.Account.Id}" target="_blank">{!e.Contact.Account.Name}</apex:outputLink>
+                                    </apex:column>
+                                    <apex:column value="{!e.Contact.Title}" />
+                                    <apex:column value="{!e.Contact.Email}" />
+                                    <apex:column value="{!e.Contact.Phone}" />
+                                    <apex:column value="{!e.Contact.MobilePhone}" />
+                                </apex:pageBlockTable>
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputLabel value="Lookup Contact"></apex:outputLabel>
+                                    <apex:outputPanel >
+                                            <apex:inputText id="inputContactId" value="{!SelectedContactName}" html-placeholder="Begin Typing Name - 4 Characters Min..." style="width:250px;">
+                                            <apex:inputHidden value="{!SelectedContactId}" id="inputContactId_lkid"></apex:inputHidden>
+                                            <apex:outputPanel id="contactSelection">
+                                                <c:HL_AutoComplete objectname="ExternalContact" sObjectFieldName="Name" minLength="4" delay="1200"
+                                                                   autocomplete_textbox="{!$Component.inputContactId}" autocomplete_actionbutton="{!$Component.addContact}" bgColor="white" fontSize="11"/>
+                                            </apex:outputPanel>
+                                            
+                                        </apex:inputText>
+                                        <apex:commandButton id="addContact" action="{!AddContact}" value="Add Contact" reRender="pbsExternalContacts,messages" style="display:none;" oncomplete="OnAttendeeAdded()"/>
+                                        <apex:commandButton id="newContact" value="Add New Contact" onclick="return PopupNewContact();" ></apex:commandButton>
+                                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <apex:inputCheckbox value="{!Event.No_External_Contact__c}"  Id="chkNoExtnContact" label="No External Contact" styleClass="NoExternalContactClass" style="height: 11px; width: 11px;"/>
+                                        <apex:outputLabel value="No External Contact" style="font-weight: BOLD; font-size: 11px;"></apex:outputLabel>
+                                        <div id="notifyCoverageHelp2" style="display:inline-block; padding-bottom: 12px;">
+                                            <c:HL_HelpText helpText="{!$ObjectType.Event.fields.No_External_Contact__c.InlineHelpText}"/>
+                                        </div>
+                                        </apex:outputPanel>
+                              </apex:pageBlockSectionItem>
+                            </apex:pageBlockSection>
+                            <apex:pageBlockSection title="{!IF(Event.Type == 'Internal', 'Internal Meeting With', IF(Event.Type == 'Internal Mentor Meeting', 'Internal Meeting With - Mentee', 'External Attendees'))}" columns="1" id="pbsInternalContacts" rendered="{!IF(OR(Event.Type == 'Internal',Event.Type == 'Internal Mentor Meeting'), TRUE, FALSE)}">                                                        
+                               <apex:pageBlockTable value="{!RelatedContacts}" var="e" rendered="{!RelatedContacts.size > 0}">
+                                    <apex:column headerValue="Remove" styleClass="center" headerClass="center" style="width: 50px;">
+                                        <apex:commandLink value="Del" action="{!RemoveExternal}" onclick="return confirmDelete();" styleClass="removeContactCheckbox" rendered="{!(Event.Type <> 'Internal Mentor Meeting')}">
+                                            <apex:param name="p1" assignTo="{!DelId}" value="{!e.Contact.Id}"></apex:param>
+                                        </apex:commandLink>
+                                    </apex:column>
+                                    <apex:column headerValue="Primary" styleClass="center" headerClass="center" style="width: 50px;">
+                                        <apex:inputCheckbox value="{!e.Primary}" disabled="{!IF(Event.type == 'Internal Mentor Meeting',True,False)}" styleClass="primaryContactCheckbox"/>
+                                    </apex:column>
+                                    <apex:column headerValue="Internal Contact">
+                                        <apex:outputLink value="/{!e.Contact.Id}" target="_blank">{!e.Contact.Name}</apex:outputLink>
+                                    </apex:column>
+                                    <apex:column value="{!e.Contact.Title}" />
+                                    <apex:column value="{!e.Contact.Email}" />
+                                    <apex:column value="{!e.Contact.Phone}" />
+                                    <apex:column value="{!e.Contact.MobilePhone}" />
+                                </apex:pageBlockTable>
+                               <apex:pageBlockSectionItem rendered="{!IF(Event.Type != 'Internal Mentor Meeting',True, IF(AND(eventsId == 'Internal Mentor Meeting',IF(RelatedContacts.size > 0,true,false)), false, true))}">
+                                    <apex:outputLabel value="Lookup Contact"></apex:outputLabel>
+                                    <apex:outputPanel >
+                                        <apex:inputText id="inputInternalContactId" value="{!SelectedContactName}" html-placeholder="Begin Typing Name - 2 Characters Min..." style="width:250px;">
+                                            <apex:inputHidden value="{!SelectedContactId}" id="inputInternalContactId_lkid"></apex:inputHidden>
+                                            <apex:outputPanel id="contactSelection">
+                                                <c:HL_AutoComplete objectname="Contact" sObjectFieldName="Name" minLength="2" delay="1200"
+                                                                   autocomplete_textbox="{!$Component.inputInternalContactId}" autocomplete_actionbutton="{!$Component.addInternalContact}" bgColor="white" fontSize="11"/>
+                                            </apex:outputPanel>
+                                        </apex:inputText>
+                                        <apex:commandButton id="addInternalContact" action="{!AddContact}" value="Add Contact" reRender="pbsInternalContacts,messages" style="display:none;" oncomplete="OnInternalAttendeeAdded()"/>
+                                    </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                            </apex:pageBlockSection>                                                    
+                            <apex:pageBlockSection title="{!IF(Event.Type == 'Internal Mentor Meeting', 'HL Attendees - Mentor', 'HL Attendees')}" columns="1" id="pbsHLEmployees"> 
+                                <apex:pageBlockTable value="{!HLEmployees}" var="e" rendered="{!HLEmployees.size > 0}">
+                                    <apex:column headerValue="Remove" styleClass="center" headerClass="center" style="width: 50px;">
+                                        <apex:commandLink value="Del" action="{!RemoveEmployee}" onclick="return confirmDelete();" styleClass="removeEmployeeCheckbox" rendered="{!(Event.Type <> 'Internal Mentor Meeting')}">
+                                            <apex:param name="p2" assignTo="{!DelId}" value="{!e.Employee.Id}"></apex:param>
+                                        </apex:commandLink>
+                                    </apex:column>
+                                    <apex:column headerValue="Primary" styleClass="center" headerClass="center" style="width: 50px;">
+                                        <apex:inputCheckbox value="{!e.Primary}" disabled="{!IF(Event.type == 'Internal Mentor Meeting',True,False)}" styleClass="primaryCheckbox"/>
+                                    </apex:column>
+                                    <apex:column value="{!e.Employee.Name}" headerValue="Employee"/>
+                                    <apex:column value="{!e.Employee.Title}" />
+                                    <apex:column value="{!e.Employee.Email}" />
+                                    <apex:column value="{!e.Employee.Phone}" />
+                                    <apex:column value="{!e.Employee.User__c}" rendered="false"></apex:column>
+                                </apex:pageBlockTable>
+                                  <apex:pageBlockSectionItem id="LookupEmployeeId" rendered="{!IF(Event.Type != 'Internal Mentor Meeting',True, IF(AND(eventsId == 'Internal Mentor Meeting',IF(HLEmployees.size > 0,true,false)), false, true))}">
+                                   <apex:outputLabel value="Lookup Employee" rendered="{!IF(Event.Type != 'Internal Mentor Meeting', true, false)}"></apex:outputLabel> 
+                                        <apex:outputPanel >                                    
+                                        <apex:inputText id="inputEmployeeId" value="{!SelectedEmployeeName}" html-placeholder="Begin Typing Name - 2 Characters Min..." style="width:250px;">
+                                            <apex:inputHidden value="{!SelectedEmployeeId}" id="inputEmployeeId_lkid"></apex:inputHidden>
+                                            <apex:outputPanel id="employeeSelection">
+                                                <c:HL_AutoComplete objectname="Contact" sObjectFieldName="Name" delay="1200"
+                                                               autocomplete_textbox="{!$Component.inputEmployeeId}" autocomplete_actionbutton="{!$Component.addEmployee}" bgColor="white" fontSize="11"/>
+                                            </apex:outputPanel>
+                                        </apex:inputText>
+                                        <apex:commandButton id="addEmployee" action="{!AddEmployee}" value="Add Employee" style="display:none;" reRender="pbsHLEmployees,messages" oncomplete="OnEmployeeAdded()"  />
+                                    </apex:outputPanel>
+                                </apex:pageBlockSectionItem>
+                            </apex:pageBlockSection> 
+                        </apex:outputPanel> 
+                        <div Id="internalMentorHideId">                   
+                        <apex:pageBlockSection title="Companies Discussed" columns="1" id="pbsCompaniesDiscussed" >
+                            <apex:pageBlockTable value="{!RelatedCompanies}" var="rc" rendered="{!RelatedCompanies.size > 0}">
+                                <apex:column headerValue="Remove" styleClass="center" headerClass="center" style="width: 50px;">
+                                    <apex:commandLink value="Del" action="{!RemoveCompany}" onclick="return confirmDelete();">
+                                        <apex:param name="p3" assignTo="{!DelId}" value="{!rc.Id}"></apex:param>
+                                    </apex:commandLink>
+                                </apex:column>
+                                <apex:column headerValue="Company">
+                                    <apex:outputLink value="/{!rc.Id}" target="_blank">{!rc.Name}</apex:outputLink>
+                                </apex:column>
+                                <apex:column value="{!rc.BillingCity}"/>
+                                <apex:column value="{!rc.BillingState}"/>
+                                <apex:column value="{!rc.BillingCountry}"/>
+                            </apex:pageBlockTable>
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="Lookup Company"></apex:outputLabel>
+                                <apex:outputPanel >
+                                    <apex:inputText id="inputTxtId" value="{!SelectedAccountName}" html-placeholder="Begin Typing Name - 2 Characters Min..." style="width:250px;">
+                                        <apex:inputHidden value="{!SelectedAccountId}" id="inputTxtId_lkid"></apex:inputHidden>
+                                        <apex:outputPanel id="companySelection">
+                                            <c:HL_AutoComplete objectname="Account" sObjectFieldName="Name" customFilter="" minLength="2" delay="1200"
+                                                               autocomplete_textbox="{!$Component.inputTxtId}" autocomplete_actionbutton="{!$Component.addCompany}" bgColor="white" fontSize="11"/>
+                                        </apex:outputPanel>
+                                    </apex:inputText>
+                                    <apex:commandButton id="addCompany" action="{!AddCompany}" value="Add Company" style="display:none;" reRender="pbsCompaniesDiscussed,messages" oncomplete="OnCompanyAdded()" />
+                                    <apex:commandButton id="newCompany" value="Add New Company" onclick="return PopupNewCompany();"></apex:commandButton>
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection title="Opportunities Discussed" columns="1" id="pbsRelatedOpportunities">
+                            <apex:pageBlockTable value="{!RelatedOpportunities}" var="o" rendered="{!RelatedOpportunities.size > 0}">
+                                <apex:column headerValue="Remove" styleClass="center" headerClass="center" style="width: 50px;">
+                                    <apex:commandLink value="Del" action="{!RemoveOpp}" onclick="return confirmDelete();">
+                                        <apex:param name="p4" assignTo="{!DelId}" value="{!o.Id}"></apex:param>
+                                    </apex:commandLink>
+                                </apex:column>
+                                <apex:column headerValue="Opportunity">
+                                    <apex:outputLink value="/{!o.Id}" target="_blank">{!o.Name}</apex:outputLink>
+                                </apex:column>
+                                <apex:column value="{!o.Client__r.Name}" headerValue="Client Name"/>
+                                <apex:column value="{!o.Subject__r.Name}" headerValue="Subject Name"/>
+                                <apex:column value="{!o.Line_of_Business__c}"/>
+                                <apex:column value="{!o.Job_Type__c}"/>
+                                <apex:column value="{!o.Industry_Group__c}"/>
+                                <apex:column value="{!o.Stage__c}"/>
+                            </apex:pageBlockTable>
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="Lookup Opportunity"></apex:outputLabel>
+                                <apex:outputPanel >
+                                    <apex:inputText id="inputOpportunityId" value="{!SelectedOpportunityName}" html-placeholder="Begin Typing Name - 4 Characters Min..." style="width:250px;">
+                                        <apex:inputHidden value="{!SelectedOpportunityId}" id="inputOpportunityId_lkid"></apex:inputHidden>
+                                        <apex:outputPanel id="opportunitySelection">
+                                            <c:HL_AutoComplete objectname="Opportunity__c" sObjectFieldName="Name" customFilter="" minLength="4" delay="1200"
+                                                               autocomplete_textbox="{!$Component.inputOpportunityId}" autocomplete_actionbutton="{!$Component.addOpportunity}" bgColor="white" fontSize="11"/>
+                                        </apex:outputPanel>
+                                    </apex:inputText>
+                                    <apex:commandButton id="addOpportunity" action="{!AddOpportunity}" value="Add Opportunity" style="display:none;" reRender="pbsRelatedOpportunities,messages" oncomplete="OnOpportunityAdded()" />
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+
+                        <apex:pageBlockSection title="Engagements Discussed" columns="1" id="pbsRelatedEngagements">
+                            <apex:pageBlockTable value="{!RelatedEngagements}" var="eng" rendered="{!RelatedEngagements.size > 0}">
+                                <apex:column headerValue="Remove" styleClass="center" headerClass="center" style="width: 50px;">
+                                    <apex:commandLink value="Del" action="{!RemoveEng}" onclick="return confirmDelete();">
+                                        <apex:param name="p4" assignTo="{!DelId}" value="{!eng.Id}"></apex:param>
+                                    </apex:commandLink>
+                                </apex:column>
+                                <apex:column headerValue="Engagement">
+                                    <apex:outputLink value="/{!eng.Id}" target="_blank">{!eng.Name}</apex:outputLink>
+                                </apex:column>
+                                <apex:column value="{!eng.Client__r.Name}" headerValue="Client Name"/>
+                                <apex:column value="{!eng.Subject__r.Name}" headerValue="Subject Name"/>
+                                <apex:column value="{!eng.Line_of_Business__c}"/>
+                                <apex:column value="{!eng.Job_Type__c}"/>
+                                <apex:column value="{!eng.Industry_Group__c}"/>
+                                <apex:column value="{!eng.Stage__c}"/>
+                            </apex:pageBlockTable>
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="Lookup Engagement"></apex:outputLabel>
+                                <apex:outputPanel >
+                                    <apex:inputText id="inputEngagementId" value="{!SelectedEngagementName}" html-placeholder="Begin Typing Name - 4 Characters Min..." style="width:250px;">
+                                        <apex:inputHidden value="{!SelectedEngagementId}" id="inputEngagementId_lkid"></apex:inputHidden>
+                                        <apex:outputPanel id="engagementSelection">
+                                            <c:HL_AutoComplete objectname="Engagement__c" sObjectFieldName="Name" customFilter="" minLength="4" delay="1200"
+                                                               autocomplete_textbox="{!$Component.inputEngagementId}" autocomplete_actionbutton="{!$Component.addEngagement}" bgColor="white" fontSize="11"/>
+                                        </apex:outputPanel>
+                                    </apex:inputText>
+                                    <apex:commandButton id="addEngagement" action="{!AddEngagement}" value="Add Engagement" style="display:none;" reRender="pbsRelatedEngagements,messages" oncomplete="OnEngagementAdded()" />
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+
+
+                        <!-- <apex:pageBlockSection title="Related Campaigns" columns="1" id="pbsRelatedCampaigns">
+                            <apex:pageBlockTable value="{!RelatedCampaigns}" var="cp" rendered="{!RelatedCampaigns.size > 0}">
+                                <apex:column headerValue="Remove" styleClass="center" headerClass="center" style="width: 50px;">
+                                    <apex:commandLink value="Del" action="{!RemoveCam}" onclick="return confirmDelete();">
+                                        <apex:param name="p4" assignTo="{!DelId}" value="{!cp.Id}"></apex:param>
+                                    </apex:commandLink>
+                                </apex:column>
+                                <apex:column headerValue="Campaign Name">
+                                    <apex:outputLink value="/{!cp.Id}" target="_blank">{!cp.Name}</apex:outputLink>
+                                </apex:column>
+                                <apex:column value="{!cp.RecordType.Name}" headerValue="Campaign Type"/>
+                                <apex:column value="{!cp.Type}" headerValue="Sub-Type"/>
+                            </apex:pageBlockTable>
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="Lookup Campaign"></apex:outputLabel>
+                                <apex:outputPanel >
+                                    <apex:inputText id="inputCampaignId" value="{!SelectedCampaignName}" html-placeholder="Begin Typing Name - 4 Characters Min..." style="width:250px;">
+                                        <apex:inputHidden value="{!SelectedCampaignId}" id="inputCampaignId_lkid"></apex:inputHidden>
+                                        <apex:outputPanel id="CampaignSelection">
+                                            <c:HL_AutoComplete objectname="Campaign" sObjectFieldName="Name" customFilter="" minLength="4" delay="1200"
+                                                               autocomplete_textbox="{!$Component.inputCampaignId}" autocomplete_actionbutton="{!$Component.addCampaign}" bgColor="white" fontSize="11"/>
+                                        </apex:outputPanel>
+                                    </apex:inputText>
+                                    <apex:commandButton id="addCampaign" action="{!AddCampaign}" value="Add Campaign" style="display:none;" reRender="pbsRelatedCampaigns,messages" oncomplete="OnCampaignAdded()" />
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection> -->
+                        <apex:pageBlockSection id="pbFollowup" title="Schedule Followup" columns="1" rendered="{!IF(Event.Type != 'Internal Mentor Meeting', true, false)}">
+                            <apex:pageBlockSectionItem >
+                                <apex:outputLabel value="" />
+                                <apex:outputPanel >
+                                    <apex:inputField id="isFollowup" value="{!Event.isFollowUp__c}"></apex:inputField>
+                                    <apex:outputLabel value="Schedule Follow-up" id="lblScheduleFollowup"></apex:outputLabel>
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem labelStyleClass="followup" dataStyleClass="followup">
+                                <apex:outputLabel value="Follow-up Type"></apex:outputLabel>
+                                <apex:inputField id="followupType" value="{!Event.Followup_Type__c}" styleClass="required"></apex:inputField>
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem labelStyleClass="followup" dataStyleClass="followup">
+                                <apex:outputLabel value="Follow-up Date"></apex:outputLabel>
+                                <apex:outputPanel >
+                                    <apex:inputField id="followupStartDate" value="{!Event.Followup_Start_Date__c}" styleClass="required"></apex:inputField>
+                                    <apex:inputField id="followupStartTime" value="{!Event.Followup_Start_Time__c}"></apex:inputField>
+                                    <apex:outputLabel value="to" style="padding-right: 5px;"></apex:outputLabel>
+                                    <apex:inputField id="followupEndTime" value="{!Event.Followup_End_Time__c}"></apex:inputField>
+                                    <apex:inputField value="{!Event.Followup_Sync_To_Outlook__c}" style="margin-left: 30px;"></apex:inputField>
+                                    <apex:outputLabel value="Sync To Outlook"></apex:outputLabel>
+                                </apex:outputPanel>
+                            </apex:pageBlockSectionItem>
+                            <apex:pageBlockSectionItem labelStyleClass="followup" dataStyleClass="followup">
+                                <apex:outputLabel value="Follow-up Comments"></apex:outputLabel>
+                                <apex:inputTextarea value="{!Event.Followup_Comments__c}" cols="130" rows="4"/>
+                            </apex:pageBlockSectionItem>
+                        </apex:pageBlockSection>
+                   </div>
+                 </div> 
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!HasLimitedModifyAccess && !HasModifyAccess}">                      
+                    <apex:pageBlockSection title="{!IF(Event.Type == 'Internal', 'Internal Meeting With', IF(Event.Type == 'Internal Mentor Meeting', 'Internal Meeting With - Mentee', 'External Attendees'))}" columns="1" id="pbsExternalContactsView" collapsible="false">
+                        <apex:pageBlockTable value="{!RelatedContacts}" var="e" rendered="{!RelatedContacts.size > 0}">
+                            <apex:column headerValue="Primary" styleClass="center" headerClass="center" style="width: 50px;">
+                                <apex:inputCheckbox value="{!e.Primary}" styleClass="primaryCheckbox" disabled="true"/>
+                            </apex:column>
+                            <apex:column value="{!e.Contact.Name}" headerValue="{!IF(Event.Type == 'Internal', 'Internal Contact', IF(Event.Type == 'Internal Mentor Meeting', 'Internal Contact', 'External Contact'))}"/>
+                            <apex:column value="{!e.Contact.Account.Name}" />
+                            <apex:column value="{!e.Contact.Title}" />
+                            <apex:column value="{!e.Contact.Email}" />
+                            <apex:column value="{!e.Contact.Phone}" />
+                            <apex:column value="{!e.Contact.MobilePhone}" />
+                        </apex:pageBlockTable>                        
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection title="{!IF(Event.Type == 'Internal', 'HL Attendees', 'HL Attendees - Mentor')}" columns="1" id="pbsHLEmployeesView" collapsible="false">
+                        <apex:pageBlockTable value="{!HLEmployees}" var="e" rendered="{!HLEmployees.size > 0}">
+                            <apex:column headerValue="Primary" styleClass="center" headerClass="center" style="width: 50px;">
+                                <apex:inputCheckbox value="{!e.Primary}" styleClass="primaryCheckbox" disabled="true"/>
+                            </apex:column>
+                            <apex:column value="{!e.Employee.Name}" headerValue="Employee"/>                                        
+                            <apex:column value="{!e.Employee.Title}" />
+                            <apex:column value="{!e.Employee.Email}" />
+                            <apex:column value="{!e.Employee.Phone}" />
+                        </apex:pageBlockTable>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection title="Companies Discussed" columns="1" id="pbsCompaniesDiscussedView" collapsible="false">
+                        <apex:pageBlockTable value="{!RelatedCompanies}" var="rc" rendered="{!RelatedCompanies.size > 0}">
+                            <apex:column value="{!rc.Name}" headerValue="Company"/>
+                            <apex:column value="{!rc.BillingCity}"/>
+                            <apex:column value="{!rc.BillingState}"/>
+                            <apex:column value="{!rc.BillingCountry}"/>
+                        </apex:pageBlockTable>
+                        <apex:outputText value="No records to display" rendered="{!(RelatedCompanies.size == 0)}"></apex:outputText>
+                    </apex:pageBlockSection>                    
+                    <apex:pageBlockSection title="Opportunities Discussed" columns="1" id="pbsRelatedOpportunitiesView" collapsible="false">
+                        <apex:pageBlockTable value="{!RelatedOpportunities}" var="o" rendered="{!RelatedOpportunities.size > 0}">
+                            <apex:column value="{!o.Name}" headerValue="Opportunity"/>
+                            <apex:column value="{!o.Client__r.Name}" headerValue="Client Name"/>
+                            <apex:column value="{!o.Subject__r.Name}" headerValue="Subject Name"/>
+                            <apex:column value="{!o.Line_of_Business__c}"/>
+                            <apex:column value="{!o.Job_Type__c}"/>
+                            <apex:column value="{!o.Industry_Group__c}"/>
+                            <apex:column value="{!o.Stage__c}"/>
+                        </apex:pageBlockTable>
+                        <apex:outputText value="No records to display" rendered="{!(RelatedOpportunities.size == 0)}"></apex:outputText>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection title="Engagements Discussed" columns="1" id="pbsRelatedEngagementsView" collapsible="false">
+                        <apex:pageBlockTable value="{!RelatedEngagements}" var="eng" rendered="{!RelatedEngagements.size > 0}">
+                            <apex:column value="{!eng.Name}" headerValue="Engagement"/>
+                            <apex:column value="{!eng.Client__r.Name}" headerValue="Client Name"/>
+                            <apex:column value="{!eng.Subject__r.Name}" headerValue="Subject Name"/>
+                            <apex:column value="{!eng.Line_of_Business__c}"/>
+                            <apex:column value="{!eng.Job_Type__c}"/>
+                            <apex:column value="{!eng.Industry_Group__c}"/>
+                            <apex:column value="{!eng.Stage__c}"/>
+                        </apex:pageBlockTable>
+                        <apex:outputText value="No records to display" rendered="{!(RelatedEngagements.size == 0)}"></apex:outputText>
+                    </apex:pageBlockSection>
+                </apex:outputPanel>
+            </apex:pageBlock>
+            <apex:pageBlock title="Activity - Invalid Access" rendered="{!!HasModifyAccess && !HasLimitedModifyAccess}">
+                <apex:outputText style="color: Red" value="Invalid Access to this Activity"></apex:outputText>
+            </apex:pageBlock>
+            <apex:actionFunction name="toggleInternalExternalAttendeeSection" action="{!OnActivityTypeChanged}" oncomplete="ToggleInternalAccessWithFocus(); j$.unblockUI();"  rerender="panPrivate, panNotifyCoverageTeam, panInternalExternalAttendees, eventSubject, panEventType,internalMentorHideId,LookupEmployeeId"/>
+            <input id="hasInternalAccess" type="hidden" value="{!HasInternalAccess}" />
+            <input id="HasMentorActivityAccess" type="hidden" value="{!HasMentorActivityAccess}" />
+            <input id="NoExternalAccess" type="hidden" value="{!Event.No_External_Contact__c}" />
+        </apex:form>
+    </div>
+    <apex:outputLabel style="display:none" value="{!Event.CreatedById}"></apex:outputLabel>
+    <apex:outputLabel style="display:none" value="{!Event.Primary_Attendee_Id__c}"></apex:outputLabel>
+    <apex:outputLabel style="display:none" value="{!Event.Primary_Attendee__c}"></apex:outputLabel>
+    <apex:outputLabel style="display:none" value="{!Event.Primary_External_Contact_Id__c}"></apex:outputLabel>
+    <apex:outputLabel style="display:none" value="{!Event.Contact_User_Id__c}"></apex:outputLabel>
+    <apex:outputLabel style="display:none" value="{!Event.Primary_External_Contact__c}"></apex:outputLabel>
+    <apex:outputLabel id="newCompanyUrl" value="{!URLFOR('/apex/HL_LookupAccount')}" style="display:none;"></apex:outputLabel>
+    <apex:outputLabel id="newContactUrl" value="{!URLFOR('/apex/HL_ContactNew')}" style="display:none;"></apex:outputLabel>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_ActivityScripts, 'HL_ActivityEvent.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}"></apex:includeScript>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <script type="text/javascript">
+        if (location.href.match(/inline=1/)) 
+            window.top.location=location.href.replace(/inline=1/, '');
+        
+        var formattedStart = document.getElementById('{!$Component.frmActivityEvent.activityedit.activitydetails.dateSection.formattedStartDate}').innerText;
+        var formattedEnd = document.getElementById('{!$Component.frmActivityEvent.activityedit.activitydetails.dateSection.formattedEndDate}').innerText;
+    
+        if (formattedStart != null && formattedStart.length >= 8) {
+            var element = document.getElementById('{!$Component.frmActivityEvent.activityedit.activitydetails.dateSection.startTime}');
+            element.value = formattedStart;
+        }
+        if (formattedStart != null && formattedEnd.length >= 8) {
+            var element = document.getElementById('{!$Component.frmActivityEvent.activityedit.activitydetails.dateSection.endTime}');
+            element.value = formattedEnd;
+        }
+        
+    </script>    
+    <script>
+        j$ = jQuery.noConflict();    
+        function blockme() {
+            j$.blockUI({ css: {
+                border: 'none',
+                padding: '15px',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .5,
+                color: '#fff'
+            } }); 
+        }
+    </script>
+    <style>
+        .activityEvent .actionButton {width: 90px;}
+
+        .summaryColumn {
+            float: left;
+            width: 50%;
+        }
+
+        /* Clear floats after the columns */
+        .summryRow:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</apex:page>

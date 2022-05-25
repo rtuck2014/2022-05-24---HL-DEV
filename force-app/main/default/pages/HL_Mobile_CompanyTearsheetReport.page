@@ -1,0 +1,456 @@
+<apex:page standardController="Account" extensions="SL_CompanyReport" cache="false" readonly="true" standardStyleSheets="false" applyHtmlTag="true" showHeader="false" lightningStylesheets="true">
+    <div style="font-size: 0.5em !important;">
+    <table class="tableStyle">
+        <thead>
+        <tr>
+            <th style="font-size: 25px; font-weight: bold; width: 100%; border-bottom: 2px #000000 solid;" colspan="2">
+                <apex:outputText value="{!Company.Name}"/><br/>
+                <apex:outputText value="{!if(ISBLANK(Company.Ownership),'', '('+Company.Ownership+')')}" style="font-style:italic"/>   
+            </th>   
+        </tr>
+        </thead>
+           <tr>
+            <td width="50%" valign="top">    
+                <table width="100%"  >
+                    <tr >
+                        <td colspan="2" style="border: 2px solid #BFD4FF;background-color:#000000;text-align:center">
+                            <span style="color:#FFFFFF;"><b>Company Information</b></span> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-style:italic"><b>Company:</b></td>   
+                        <td>
+                            <apex:outputText value="{!Company.Name}"/>    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" style="font-style:italic"><b>Address:</b></td>  
+                        <td>
+                            <apex:outputText value="{!Company.BillingStreet}"/><br />
+                            <apex:outputText value="{!if(Company.BillingCity != null, Company.BillingCity + ', ', null)}"/>&nbsp;
+                            <apex:outputText value="{!Company.BillingState}"/>&nbsp;
+                    <apex:outputText value="{!Company.BillingPostalCode}"/><br />
+                            <apex:outputText value="{!Company.BillingCountry}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-style:italic"><b>Main Phone:</b></td>
+                        <td>
+                            <apex:outputText value="{!Company.Phone}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-style:italic"><b>Website:</b></td>
+                        <td>
+                            <apex:outputField value="{!Company.Website}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-style:italic"><b>Industry:</b></td>
+                        <td>
+                            <apex:outputText value="{!Company.Industry}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-style:italic"><b>Ownership:</b></td>
+                        <td>
+                            <apex:outputText value="{!Company.Ownership}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-style:italic"><b>Coverage Officer:</b></td>
+                        <td>
+                            <apex:outputText value="{!CoverageOfficer}"/>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="50%" valign="top">
+                <table width="100%">
+                    <tr>
+                        <td style="border: 2px solid #BFD4FF;background-color:#000000;text-align:center">
+                            <span style="color:#FFFFFF;"><b>Company Description</b></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="100%" style="text-align: justify;">
+                            <div style="height:180px;overflow: hidden;">
+                                <apex:outputText value="{!strCompanyDesc}"/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+           </tr>
+           <tr>
+            <td colspan="2">
+                <table width="100%" style="margin-top: 25px;" >
+                    <tr>
+                        <td colspan="5" style="border: 2px solid #BFD4FF;background-color:#000000;text-align:center">
+                            <span style="color:#FFFFFF;"><b>Company Financial Statistics</b></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>LTM Revenue(MM):</b></td>
+                        <td align="right">
+                            <apex:outputField value="{!Company.Revenue_MM__c}"/>&nbsp;
+                        </td>
+                        <td width="20%"/>
+                        <td><b>Total Debt:</b></td>
+                        <td align="right">
+                            <apex:outputField value="{!Company.Total_Debt_MM__c}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>LTM EBITDA:</b></td>
+                        <td align="right">
+                            <apex:outputField value="{!Company.EBITDA_MM__c}"/>&nbsp;
+                        </td>
+                        <td width="20%"/>
+                        <td><b>Total Debt/EBITDA:</b></td>
+                        <td align="right">
+                            <apex:outputField value="{!Company.Total_Debt_EBITDA__c}"/>
+                        </td>
+                    </tr>   
+                </table>
+            </td>   
+           </tr>
+           <tr>
+            <td colspan="2">
+                <table width="100%" style="margin-top: 25px;"  >
+                    <tr>
+                        <td colspan="7" style="border: 2px solid #BFD4FF;background-color:#000000;text-align:center">
+                            <span style="color:#FFFFFF;"><b>Open Opportunities</b></span>
+                        </td>
+                    </tr>
+                    <apex:outputText rendered="{!OpenOpportunities.size == 0}">
+                         <tr>
+                            <td colspan="5">
+                                <span><b>No records to display.</b></span>
+                            </td>
+                        </tr>
+                    </apex:outputText>
+                    <apex:outputText rendered="{!OpenOpportunities.size > 0}">
+                        <tr>
+                            <th >Date</th>
+                            <th >Client</th>
+                            <th >Subject</th>
+                            <th >Job Type</th>
+                            <th >Status</th>
+                            <th >Principal</th>
+                            <th align="right">Potential Fees</th>
+                        </tr>
+                        <apex:repeat value="{!OpenOpportunities}" var="Opportunity">
+                            <tr>
+                                <td>
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                        <apex:param value="{!Opportunity.objOpportunity.Pitch_Date__c}"/>
+                                    </apex:outputText>
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!Opportunity.objOpportunity.Client__r.Name}" />
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!Opportunity.objOpportunity.Subject__r.Name}" />
+                                </td>
+                                
+                                <td>
+                                    <apex:outputText value="{!Opportunity.objOpportunity.Job_Type__c}" />
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!Opportunity.objOpportunity.Stage__c}" />
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!Opportunity.strPrincipal}" />
+                                </td>
+                                <td align="right">
+                                    <apex:outputField value="{!Opportunity.objOpportunity.Total_Fee__c}"/>
+                                </td>
+                            </tr>
+                        </apex:repeat>
+                     </apex:outputText>   
+                </table>
+            </td>   
+           </tr>
+           <tr>
+            <td colspan="2">
+                <table width="100%" style="margin-top: 25px;" >
+                    <tr>
+                        <td colspan="7" style="border: 2px solid #BFD4FF;background-color:#000000;text-align:center">
+                            <span style="color:#FFFFFF;"><b>Engagement Involvement with HL</b></span>
+                        </td>
+                    </tr>
+                    <apex:outputText rendered="{!TransInvolvement.size == 0}">
+                         <tr>
+                            <td colspan="5">
+                                <span><b>No records to display.</b></span>
+                            </td>
+                        </tr>
+                    </apex:outputText>
+                    <apex:outputText rendered="{!TransInvolvement.size > 0}">
+                        <tr>
+                            <th >Date</th>
+                            <th >Project</th>
+                            <th >Client</th>
+                            <th >Subject</th>
+                            <th >HL Job Type</th>
+                            <th >Principal</th>
+                            <th >Status</th>
+                        </tr>
+                        <apex:repeat value="{!TransInvolvement}" var="hlTransactions">  
+                            <tr>
+                                <td style="display : {!If(hlTransactions.objEngagement.Active__c, 'table-cell', 'None')}">
+                                    <apex:outputText value="ACTIVE"/>
+                                </td>
+                                <td style="display : {!If(!hlTransactions.objEngagement.Active__c, 'table-cell', 'None')}">
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                        <apex:param value="{!hlTransactions.objEngagement.Latest_Stage_Change__c}"/>
+                                    </apex:outputText>  
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!hlTransactions.objEngagement.Name}" />
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!hlTransactions.objEngagement.Client__r.Name}" />
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!hlTransactions.objEngagement.Subject__r.Name}" />
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!hlTransactions.objEngagement.Job_Type__c}" />
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!hlTransactions.strTransPrincipal}" />
+                                </td>
+                                <td>
+                                   <apex:outputText value="{!hlTransactions.objEngagement.Status__c}" />
+                                </td>
+                            </tr>
+                        </apex:repeat>
+                        <tr style = "'table-row'">
+                            <td colspan="4"></td>
+                            <td style="border: 2px solid #000000;" colspan="2">
+                                <table width="100%">
+                                    <tr>
+                                        <td align="left" width="40%">Total Fees Last 3 Years:</td>
+                                        <td align="right">
+                                            <apex:outputText value="USD "/>
+                                            <apex:outputText value="{0, number, ###,###,###,##0.0}">
+                                                <apex:param value="{!FeeTotalLastThreeYears}"/>
+                                            </apex:outputText>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </apex:outputText>
+                </table>
+            </td>   
+           </tr>
+           <tr>
+            <td colspan="2">
+                <table width="100%" style="margin-top: 25px;"  >
+                    <tr>
+                        <td colspan="8" style="border: 2px solid #BFD4FF;background-color:#000000;text-align:center">
+                            <span style="color:#FFFFFF;"><b>Deals Shown</b></span>
+                        </td>
+                    </tr>
+                    <apex:outputText rendered="{!DealsData.size == 0}">
+                         <tr>
+                            <td colspan="6">
+                                <span><b>No records to display.</b></span>
+                            </td>
+                        </tr>
+                    </apex:outputText>
+                    <apex:outputText rendered="{!DealsData.size > 0}">
+                        <tr>
+                            <th >Date</th>
+                            <th >Project Name</th>
+                            <th >Client</th>
+                            <th >Subject</th>
+                            <th >Shown To</th>
+                            <th >Job Type</th>
+                            <th >Primary Company Contact</th>
+                            <th >Status</th>
+                        </tr>
+                        <apex:repeat value="{!DealsData}" var="Deal">
+                            <tr>
+                                <td>
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                        <apex:param value="{!Deal.dtDlDate}"/>
+                                    </apex:outputText>
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!Deal.strDlProjectName}" />
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!Deal.strDlProjectSubject}" />
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!Deal.strDlProjectClient}" />
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!Deal.strDlCompanyName}" />
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!Deal.strDlTransType}" /> 
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!Deal.strDlCompanyContact}" />
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!Deal.strDlStatus}" />   
+                                </td>
+                            </tr>
+                        </apex:repeat>
+                     </apex:outputText>   
+                </table>
+            </td>   
+           </tr>
+           <tr>
+            <td colspan="2" >
+                <table width="100%" style="margin-top: 25px;" >
+                    <tr>
+                        <td colspan="5" style="border: 2px solid #BFD4FF;background-color:#000000;text-align:center">
+                            <span style="color:#FFFFFF;"><b>Most Active Company Relationships</b></span>
+                        </td>
+                    </tr>
+                    <apex:outputText rendered="{!CompanyRelationship.size == 0}">
+                         <tr>
+                            <td colspan="5">
+                                <span><b>No records to display.</b></span>
+                            </td>
+                        </tr>
+                        </apex:outputText>
+                   <apex:outputText rendered="{!CompanyRelationship.size > 0}">
+                        <tr>
+                            <th>Name</th>
+                            <th>Title</th>
+                            <th style="text-align:center"># Of Activities</th>
+                            <th style="text-align:center">Last Activity Date</th>
+                            <th style="text-align:center">Last Activity</th>
+                        </tr>
+                        <apex:repeat value="{!CompanyRelationship}" var="exContact">
+                            <tr>
+                                <td>
+                                    <apex:outputText value="{!exContact.strName}" />
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!exContact.strTitle}" />
+                                </td>
+                                <td style="text-align:center">
+                                    <apex:outputText value="{!exContact.intTotalActivity}" />
+                                </td>
+                                <td style="text-align:center">
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                        <apex:param value="{!exContact.dtLastActivity}"/>
+                                    </apex:outputText>
+                                </td>
+                                <td style="text-align:center">
+                                    <apex:outputText value="{!exContact.strLastActivity}" />
+                                </td>
+                            </tr>
+                        </apex:repeat>
+                    </apex:outputText>  
+                </table>
+            </td>   
+           </tr>
+           <tr>
+            <td colspan="2">
+                <table width="100%" style="margin-top: 25px;" >
+                    <tr>
+                        <td colspan="5" style="border: 2px solid #BFD4FF;background-color:#000000;text-align:center">
+                            <span style="color:#FFFFFF;"><b>Most Active HL Relationships</b></span>
+                        </td>
+                    </tr>
+                    <apex:outputText rendered="{!HLRelationship.size == 0}">
+                         <tr>
+                            <td colspan="5">
+                                <span><b>No records to display.</b></span>
+                            </td>
+                        </tr>
+                    </apex:outputText>
+                    <apex:outputText rendered="{!HLRelationship.size > 0}">
+                        <tr>
+                            <th>Name</th>
+                            <th>Title</th>
+                            <th style="text-align:center"># Of Activities</th>
+                            <th style="text-align:center">Last Activity Date</th>
+                            <th style="text-align:center">Last Activity</th>
+                        </tr>
+                        <apex:repeat value="{!HLRelationship}" var="hlContact">
+                            <tr>
+                                <td>
+                                    <apex:outputText value="{!hlContact.strName}" />
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!hlContact.strTitle}" />
+                                </td>
+                                <td style="text-align:center">
+                                    <apex:outputText value="{!hlContact.intTotalActivity}" />
+                                </td>
+                                <td style="text-align:center">
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                        <apex:param value="{!hlContact.dtLastActivity}"/>
+                                    </apex:outputText>
+                                </td>
+                                <td style="text-align:center">
+                                    <apex:outputText value="{!hlContact.strLastActivity}" />
+                                </td>
+                            </tr>
+                        </apex:repeat>
+                    </apex:outputText>
+                </table>
+            </td>   
+           </tr>
+           <tr>
+            <td colspan="2">
+                <table width="100%" style="margin-top: 25px;"  >
+                    <tr>
+                        <td colspan="5" style="border: 2px solid #BFD4FF;background-color:#000000;text-align:center">
+                            <span style="color:#FFFFFF;"><b>Most Recent Activities</b></span>
+                        </td>
+                    </tr>
+                    <apex:outputText rendered="{!RecentActivities.size == 0}">
+                         <tr>
+                            <td colspan="5">
+                                <span><b>No records to display.</b></span>
+                            </td>
+                        </tr>
+                    </apex:outputText>
+                    <apex:outputText rendered="{!RecentActivities.size > 0}">
+                        <tr>
+                            <th >Date</th>
+                            <th >Activity</th>
+                            <th style="text-align:center">HL Employee</th>
+                            <th style="text-align:center">Title</th>
+                            <th style="text-align:center">External Employee</th>
+                        </tr>
+                        <apex:repeat value="{!RecentActivities}" var="CompanyActivity">
+                            <tr>
+                                <td>
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                        <apex:param value="{!CompanyActivity.dtActivityDate}"/>
+                                    </apex:outputText>
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!CompanyActivity.strActivity}" />
+                                </td>
+                                <td style="text-align:center">
+                                    <apex:outputText value="{!CompanyActivity.strHlEmployee}" />
+                                </td>
+                                <td style="text-align:center">
+                                    <apex:outputText value="{!CompanyActivity.strTitle}" />
+                                </td>
+                                <td style="text-align:center">
+                                    <apex:outputText value="{!CompanyActivity.strExternalContact}" />
+                                </td>
+                            </tr>
+                        </apex:repeat>
+                     </apex:outputText>   
+                </table>
+            </td>   
+           </tr>
+    </table>
+    </div>
+</apex:page>

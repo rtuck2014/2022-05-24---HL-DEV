@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RemoteSiteSetting xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Groove remote site. This must be enabled if you want bidirectional calendar sync and to assign Groove licenses from Salesforce.</description>
+    <disableProtocolSecurity>false</disableProtocolSecurity>
+    <isActive>true</isActive>
+    <url>https://app.grooveapp.com</url>
+</RemoteSiteSetting>

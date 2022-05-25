@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Industry</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>New Industry</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>/a4U/e?CF00N3100000Fvgj6={!Contact.Name}&amp;CF00N3100000Fvgj6_lkid={!Contact.Id}&amp;retURL={!Contact.Id}&amp;saveURL={!Contact.Id}</url>
+</WebLink>

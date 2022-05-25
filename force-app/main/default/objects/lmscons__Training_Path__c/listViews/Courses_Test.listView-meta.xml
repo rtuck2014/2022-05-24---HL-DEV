@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Courses_Test</fullName>
+    <columns>NAME</columns>
+    <columns>lmscons__Number_of_Items__c</columns>
+    <columns>lmscons__Description__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>test</value>
+    </filters>
+    <label>Courses (Test)</label>
+    <sharedTo>
+        <group>Training</group>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ACE_Banker_Dashboard</fullName>
+    <booleanFilter>1 OR 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Subscriber__c</columns>
+    <columns>HL_Report_Link__c</columns>
+    <columns>Distribution_List__c</columns>
+    <columns>Industry_Group__c</columns>
+    <columns>Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>HL_Report_Link__c</field>
+        <operation>startsWith</operation>
+        <value>ACE</value>
+    </filters>
+    <filters>
+        <field>HL_Report_Link__c</field>
+        <operation>equals</operation>
+        <value>Augmented Coverage &amp; Execution Dashboard</value>
+    </filters>
+    <label>ACE Banker Dashboard</label>
+</ListView>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CHILD_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_$Engagement__c.FR_Client__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Engagement__c.Current_Revenue_Accrual__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Engagement__c.PIPELINE_Period_Accrued_Fees__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Engagement__c.Referral_Contact__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Engagement__c.Primary_External_Contact__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Engagement__c.Primary_Contact_Email__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>CapIQ Company with FS Eng Email Conts</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$CapIQ_Company__c$FS_Engagement__c@FS_Engagement__c.Engagement__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

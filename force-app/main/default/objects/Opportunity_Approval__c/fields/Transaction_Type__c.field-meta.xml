@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transaction_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Transaction Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Buy Side</fullName>
+                <default>false</default>
+                <label>Buy Side</label>
+            </value>
+            <value>
+                <fullName>Concurrent Sale/Rollup</fullName>
+                <default>false</default>
+                <label>Concurrent Sale/Rollup</label>
+            </value>
+            <value>
+                <fullName>ESOP</fullName>
+                <default>false</default>
+                <label>ESOP</label>
+            </value>
+            <value>
+                <fullName>Going Private</fullName>
+                <default>false</default>
+                <label>Going Private</label>
+            </value>
+            <value>
+                <fullName>Joint Venture</fullName>
+                <default>false</default>
+                <label>Joint Venture</label>
+            </value>
+            <value>
+                <fullName>Merger of Equals</fullName>
+                <default>false</default>
+                <label>Merger of Equals</label>
+            </value>
+            <value>
+                <fullName>Minority Investment</fullName>
+                <default>false</default>
+                <label>Minority Investment</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>PIPE</fullName>
+                <default>false</default>
+                <label>PIPE</label>
+            </value>
+            <value>
+                <fullName>Sell Side (company)</fullName>
+                <default>false</default>
+                <label>Sell Side (company)</label>
+            </value>
+            <value>
+                <fullName>Sell Side (divestiture)</fullName>
+                <default>false</default>
+                <label>Sell Side (divestiture)</label>
+            </value>
+            <value>
+                <fullName>Spin-off</fullName>
+                <default>false</default>
+                <label>Spin-off</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

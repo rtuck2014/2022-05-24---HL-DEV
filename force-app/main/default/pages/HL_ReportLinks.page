@@ -1,0 +1,25 @@
+<apex:page controller="HL_ReportLinkController" lightningStyleSheets="true">
+    <apex:form >                   
+        <apex:repeat value="{!ReportGroup}" var="reportType">
+            <apex:pageBlock title="{!LEFT(reportType,LEN(reportType)-6)}">
+                <table width="100%">
+                    <tr>
+                        <th>Report</th>
+                        <th>Description</th>                            
+                    </tr>   
+                    <tr>
+                        <td colspan="3" style="border-top:1pt solid black;" height="10px"></td>
+                    </tr> 
+                    <apex:repeat value="{!LinkList}" var="Reports"> 
+                        <apex:outputPanel rendered="{!IF(reportType=Reports.Report_Type__c,true,false)}">                        
+                            <tr >
+                                <td width="30%" height="20px"><apex:outputLink value="{!Reports.Report_Link_URL__c}" id="theLink" target="_blank">{!Reports.Display_Name__c}</apex:outputLink></td>
+                                <td width="70%" height="20px">{!Reports.Report_Description__c}</td>
+                            </tr>
+                        </apex:outputPanel>            
+                  </apex:repeat>
+                </table>
+            </apex:pageBlock>            
+        </apex:repeat>
+    </apex:form>
+</apex:page>

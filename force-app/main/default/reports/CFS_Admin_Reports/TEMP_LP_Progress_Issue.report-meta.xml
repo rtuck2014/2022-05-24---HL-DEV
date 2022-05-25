@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$LastModifiedBy</field>
+    </columns>
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$lmscons__Completion_Date__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$LastModifiedDate</field>
+    </columns>
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$lmscons__Learning_Path__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$lmscons__Status__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$lmscons__Learning_Path_Progress__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$lmscons__Transcript__c.lmscons__Trainee__c.Name</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>lmscons__Learning_Path_Assignment__c$LastModifiedBy</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>phillip smith</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>TEMP_LP Progress Issue</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Learning_Path_custom_CFS__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>lmscons__Learning_Path_Assignment__c$lmscons__Completion_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

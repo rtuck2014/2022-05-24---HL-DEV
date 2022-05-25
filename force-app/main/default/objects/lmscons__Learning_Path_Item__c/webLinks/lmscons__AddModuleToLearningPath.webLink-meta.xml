@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__AddModuleToLearningPath</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Add Module to Learning Path</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>top.location.href  = &apos;{!$Site.prefix}/apex/lmscons__AddItems?objId={!lmscons__Training_Content__c.Id}&amp;item=LearningPath&amp;devName=Module&apos;;</url>
+</WebLink>

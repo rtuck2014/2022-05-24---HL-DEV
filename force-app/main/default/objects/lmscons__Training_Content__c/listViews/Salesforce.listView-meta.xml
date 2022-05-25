@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Salesforce</fullName>
+    <columns>lmscons__Title__c</columns>
+    <columns>NAME</columns>
+    <columns>lmscons__Description__c</columns>
+    <columns>lmscons__ContentCatalog__c</columns>
+    <columns>lmscons__Keywords__c</columns>
+    <columns>lmscons__Used__c</columns>
+    <columns>lmscons__Enable_Certificate__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>lmscons__Title__c</field>
+        <operation>contains</operation>
+        <value>Salesforce</value>
+    </filters>
+    <label>Salesforce</label>
+</ListView>

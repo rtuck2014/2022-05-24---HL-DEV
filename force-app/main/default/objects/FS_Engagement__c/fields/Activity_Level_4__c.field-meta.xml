@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activity_Level_4__c</fullName>
+    <externalId>false</externalId>
+    <label>Activity Level 4</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Actively Involved</fullName>
+                <default>false</default>
+                <label>Actively Involved</label>
+            </value>
+            <value>
+                <fullName>Somewhat Involved</fullName>
+                <default>false</default>
+                <label>Somewhat Involved</label>
+            </value>
+            <value>
+                <fullName>Not Involved</fullName>
+                <default>false</default>
+                <label>Not Involved</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

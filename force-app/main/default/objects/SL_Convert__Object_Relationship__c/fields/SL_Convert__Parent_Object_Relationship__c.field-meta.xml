@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SL_Convert__Parent_Object_Relationship__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>Parent Object Relationship</label>
+    <referenceTo>SL_Convert__Object_Relationship__c</referenceTo>
+    <relationshipLabel>Is a Parent Object for:</relationshipLabel>
+    <relationshipName>Object_Relationships</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,285 @@
+<apex:page cache="false" standardController="SL_View__c" extensions="SL_LIB16_Views_Page">
+<script>
+if (!window.console) {var console = {};}
+if (!console.log) {console.log = function() {};}
+</script>   
+    <apex:includeScript value="{!$Resource.SL_LIB16_getElementByClassName}"/>
+    <apex:includeScript value="{!URLFOR($Resource.SL_LIB16_jQuerySFFiltres, 'js/jquery-1.4.2.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.SL_LIB16_jQuerySFFiltres, 'js/jquery-ui-1.8.4.custom.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.SL_LIB16_jQuerySFFiltres, 'js/ui.timepicker.js')}" />
+<style>
+span.asteric {
+    font-weight: bold;
+    font-size: 17px;
+    display: inline;
+    color: red;
+} 
+span.saveNoteSpan {
+    font-weight: bold;
+    display: none;
+    color: red;
+} 
+</style>
+
+<apex:sectionHeader title="Views Edit" subtitle="{!pageTitle}"/>
+
+<apex:form id="FormPre">
+<apex:inputHidden value="{!inRecordName}" required="false" id="des_fld_Rec_Name"/>
+<apex:inputHidden value="{!inRecordType}" required="false" id="des_fld_Rec_Type"/>
+<apex:inputHidden value="{!inRecordRowsQty}" required="false" id="des_fld_Rec_RowsQty"/>
+<script>
+    var obj_des_fld_Rec_Name = document.getElementById('{!$Component.des_fld_Rec_Name}');
+    var obj_des_fld_Rec_Type = document.getElementById('{!$Component.des_fld_Rec_Type}');
+    var obj_des_fld_Rec_RowsQty = document.getElementById('{!$Component.des_fld_Rec_RowsQty}');
+    
+    function chrecordType(inVal)
+    {
+        obj_des_fld_Rec_Type.value = inVal;
+        obj_des_fld_Rec_Name.value = obj_fld_Rec_Name.value;
+        if(obj_fld_Rec_RowsQty!=null)
+        {
+            obj_des_fld_Rec_RowsQty.value = obj_fld_Rec_RowsQty.value;
+        }
+        
+        chMainObjectFun();
+    }
+    
+    </script>
+    <apex:actionFunction name="chMainObjectFun" action="{!chMainObject}" rerender="mBlock" status="MCSub"/>
+</apex:form>
+
+<apex:outputPanel id="mBlock">
+<script>
+function beforeSubmit()
+{
+    if(obj_fld_Rec_Name.value == '')
+    {
+        alert('Please enter a valid name');
+        obj_fld_Rec_Name.focus();
+        return;
+    }
+    
+    try
+    {
+        re = /\|/gi;
+        var events = jQuery("#sf_filters").sfFilters("Serialize").replace(re, "___");
+        obj_des_fld_Rec_FiltersCols.value = events;
+    } catch(err) {}
+    
+    try
+    {
+        var advanced = jQuery("#sf_filters").sfFilters("AdvancedFilter").toString();
+        if(advanced.toLowerCase().indexOf("object")==-1){ obj_des_fld_Rec_FiltersAdv.value = advanced;}
+        else{ obj_des_fld_Rec_FiltersAdv.value = '';}
+    } catch(err) {}
+    
+    try
+    {
+        var columns = getColumnsList(document.getElementById('__selected'));
+        obj_des_fld_Rec_SelCols.value = columns;
+        //alert(obj_des_fld_Rec_SelCols.value);
+    } catch(err) {}
+    
+    mainSaveFun();
+}
+
+/*
+(function($) {
+    $(document).ready(function() {
+    })
+})(jQuery);
+*/
+
+</script>
+
+<apex:form id="Form">
+<apex:inputHidden value="{!inRecordFiltersCols}" required="false" id="des_fld_Rec_FiltersCols"/>
+<apex:inputHidden value="{!inRecordFiltersAdv}" required="false" id="des_fld_Rec_FiltersAdv"/>
+<apex:inputHidden value="{!inRecordSelCols}" required="false" id="des_fld_Rec_SelCols"/>
+<script>
+    var obj_des_fld_Rec_FiltersCols = document.getElementById('{!$Component.des_fld_Rec_FiltersCols}');
+    var obj_des_fld_Rec_FiltersAdv = document.getElementById('{!$Component.des_fld_Rec_FiltersAdv}');
+    var obj_des_fld_Rec_SelCols = document.getElementById('{!$Component.des_fld_Rec_SelCols}');
+</script>
+
+
+<apex:pageBlock title="Implementation Edit">
+    <apex:pageMessages id="theError"/>
+    <apex:pageBlockSection title="" showHeader="false" columns="1">
+
+        <apex:inputField value="{!curRecordVal.name}" required="true" id="fld_Rec_Name"/>
+        <apex:outputField value="{!curRecordVal.Implementation__c}" />
+        <apex:inputField onchange="chrecordType(this.value)"  value="{!curRecordVal.Implementation_Type__c}" required="true" id="fld_Rec_Type"/>
+
+        <apex:inputField value="{!curRecordVal.User__c}" rendered="{!isTypeSelected}"/>
+        
+        <apex:selectList label="Rows Qty" value="{!curRecordVal.RowsCount__c}" multiselect="false" id="fld_Rec_RowsQty" size="1" rendered="{!isTypeSelected}">
+            <apex:selectOptions value="{!rowsQTYValues}"/>
+        </apex:selectList>
+        
+        <apex:pageBlockSectionItem rendered="{!isTypeSelected}">
+        <apex:outputLabel value="Columns" for="panSelectCol"/>
+        <apex:outputPanel id="panSelectCol">
+        <table class="multiSelectPicklistTable" border="0" cellspacing="1" cellpadding="1">
+        <tbody>
+            <tr>
+                <td><b>Available</b></td>
+                <td></td>
+                <td><b>Selected</b></td>
+                <td></td>
+            </tr>
+            <tr class="multiSelectPicklistRow">
+                <td style="border:none;">
+                    <span>
+                        <select id="__unselected" size="15" multiple="multiple" ondblclick="doSelect(document.getElementById('__unselected'), document.getElementById('__selected'));" style="width:200px;height:270px;">
+                            <apex:repeat value="{!unselectedColumns}" var="col">
+                                <option value="{!col.Value}">{!col.Label}</option>
+                            </apex:repeat>
+                        </select>
+                    </span>
+                </td>
+                <td class="multiSelectPicklistCell" style="border:none;">
+                    <a onclick="doSelect(document.getElementById('__unselected'), document.getElementById('__selected')); return false;" title="Add">
+                        <img src="/s.gif" alt="Add" class="picklistArrowRight" id="'+id+'_right_arrow" style="cursor:pointer;" title="Add"/>
+                    </a>
+                    <br/><br/>
+                    <a onclick="doSelect(document.getElementById('__selected'), document.getElementById('__unselected')); return false;" title="Remove">
+                        <img src="/s.gif" alt="Remove" class="picklistArrowLeft" id="'+id+'_left_arrow" style="cursor:pointer;" title="Remove"/>
+                    </a>
+                </td>
+                <td style="border:none;">
+                    <span>
+                        <select id="__selected" size="15" multiple="multiple" ondblclick="doSelect(document.getElementById('__selected'), document.getElementById('__unselected'));" style="width: 200px;height:270px;">
+                            <apex:repeat value="{!selectColumnsOrdered}" var="col">
+                                <option value="{!col.Value}">{!col.Label}</option>
+                            </apex:repeat>
+                        </select>
+                    </span>
+                </td>
+                <td class="multiSelectPicklistCell" style="border:none;">
+                    <a onclick="moveUp(document.getElementById('__selected')); return false;" title="Up">
+                        <img src="/s.gif" alt="Add" class="upArrowIcon" id="'+id+'_up_arrow" style="cursor:pointer;" title="Up"/>
+                    </a>
+                    <br/><br/>
+                    <a onclick="moveDown(document.getElementById('__selected')); return false;" title="Down">
+                        <img src="/s.gif" alt="Remove" class="downArrowIcon" id="'+id+'_down_arrow" style="cursor:pointer;" title="Down"/>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+<script>
+function getColumnsList(sel){
+    var res = '';
+    for (var i=0; i < sel.options.length; i++){
+        res += ',' + sel.options[i].value;
+    }
+    if (res.length > 0) res = res.substring(1);
+    return res;
+}
+
+function doSelect(selFrom, selTo){
+    //var selFrom = document.getElementById('__unselected');
+    //var selTo = document.getElementById('__selected');
+    for (var ind = 0; ind < selFrom.options.length; ind++){
+        if (selFrom.options[ind].selected){
+            selTo.options[selTo.options.length] = new Option(selFrom.options[ind].innerHTML, selFrom.options[ind].value);
+        }
+    }
+    for (var ind = selFrom.options.length-1; ind >= 0; ind--){
+        if (selFrom.options[ind].selected){
+            for (var ind2 = ind; ind2 < selFrom.options.length-1; ind2++){
+                selFrom.options[ind2] = new Option(selFrom.options[ind2+1].innerHTML, selFrom.options[ind2+1].value, selFrom.options[ind2+1].selected);
+            }
+            selFrom.options.length -= 1;
+        }
+    }
+}
+
+function moveUp(sel){
+    var index = -1;
+    for (var i = 0; i < sel.options.length; i++){
+        if (sel.options[i].selected){
+            if (index==-1) index = i;
+            else {
+                alert('Select only one field.');
+                return false;
+            }
+        }
+    }   
+    if (index > 0){
+        var t = sel.options[index-1];
+        sel.options[index-1] = new Option(sel.options[index].innerHTML, sel.options[index].value, sel.options[index].selected);
+        sel.options[index] = t;
+        sel.selectedIndex = index-1;
+    }
+}
+
+function moveDown(sel){
+    var index = -1;
+    for (var i = 0; i < sel.options.length; i++){
+        if (sel.options[i].selected){
+            if (index==-1) index = i;
+            else {
+                alert('Select only one field.');
+                return false;
+            }
+        }
+    }   
+    if (index >= 0 && index < sel.options.length-1){
+        var t = sel.options[index+1];
+        sel.options[index+1] = new Option(sel.options[index].innerHTML, sel.options[index].value, sel.options[index].selected);
+        sel.options[index] = t;
+        sel.selectedIndex = index+1;
+    }
+}
+</script>
+    <apex:outputPanel id="sfFiltersPanel" style="border: none; min-height: 30px; display: block" layout="block" rendered="{!isShowFilter}">
+    <br/>
+    Filters:<br/>
+    <c:SL_LIB209_SearchBlock params="{!searchCompParams}"/> 
+    </apex:outputPanel>
+
+    </apex:outputPanel>
+    </apex:pageBlockSectionItem>
+        <script>
+            var obj_fld_Rec_Name = document.getElementById('{!$Component.fld_Rec_Name}');
+            var obj_fld_Rec_RowsQty = document.getElementById('{!$Component.fld_Rec_RowsQty}');
+        </script>   
+    </apex:pageBlockSection>
+    
+    
+    <apex:pageBlockButtons >
+            <input class="btn" onclick="beforeSubmit()" value="Save" style="width:27px;"/>
+            <apex:commandButton immediate="true" value="Cancel" action="{!btnCancel}"/>
+            <apex:commandButton immediate="true" value="Standard Form" action="{!goStForm}"/>
+    </apex:pageBlockButtons>
+    
+</apex:pageBlock>
+<apex:actionFunction name="mainSaveFun" action="{!btnSave}" reRender="mBlock"  status="MCSub"/>
+
+</apex:form>
+
+
+
+</apex:outputPanel>
+
+<apex:actionstatus id="MCSub" startText="Processing...">
+        <apex:facet name="start">
+            <div id="salesforceSource_blurybackground" style="position:absolute; left:1px; top:1px; width:100%; height:100%; text-align:center; vertical-align: middle; background-color: #dcdcdc; opacity:0.6;filter:alpha(opacity=60)"></div>
+            <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 80%; display: ''; ">
+                <div style="width: 144px;vertical-align: middle;" class="waitingHolder">
+                <table align="center" valign="top" style="width: 100%; height: 30%">
+                <tr align="center" valign="top" style="width: 100%; height: 30%">
+                    <td valign="top"><img class="waitingImage" src="/img/loading.gif"/><span class="waitingDescription">Processing......</span></td>
+                </tr>
+                </table>
+                </div>
+            </div>
+            <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 100%; display: ''; "/>
+            <script>document.getElementById('ManageMembersViewport_loading').height = window.innerHeight * (3/4);</script>
+        </apex:facet>
+        <apex:facet name="stop"></apex:facet>
+</apex:actionstatus>
+
+</apex:page>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TAS_Services__c</fullName>
+    <externalId>false</externalId>
+    <label>TAS Services</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Bankruptcy/Restructuring</fullName>
+                <default>false</default>
+                <label>Bankruptcy/Restructuring</label>
+            </value>
+            <value>
+                <fullName>Buyside AFR</fullName>
+                <default>false</default>
+                <label>Buyside AFR</label>
+            </value>
+            <value>
+                <fullName>Buyside Diligence – Full Scope</fullName>
+                <default>false</default>
+                <label>Buyside Diligence – Full Scope</label>
+            </value>
+            <value>
+                <fullName>Buyside Diligence – Limited Scope Add-On</fullName>
+                <default>false</default>
+                <label>Buyside Diligence – Limited Scope Add-On</label>
+            </value>
+            <value>
+                <fullName>Capital Raise – IPO</fullName>
+                <default>false</default>
+                <label>Capital Raise – IPO</label>
+            </value>
+            <value>
+                <fullName>Capital Raise – Non-IPO</fullName>
+                <default>false</default>
+                <label>Capital Raise – Non-IPO</label>
+            </value>
+            <value>
+                <fullName>Data Analytics</fullName>
+                <default>false</default>
+                <label>Data Analytics</label>
+            </value>
+            <value>
+                <fullName>GAAP Conversion</fullName>
+                <default>false</default>
+                <label>GAAP Conversion</label>
+            </value>
+            <value>
+                <fullName>Lender Services – Diligence</fullName>
+                <default>false</default>
+                <label>Lender Services – Diligence</label>
+            </value>
+            <value>
+                <fullName>Lender Services – Other</fullName>
+                <default>false</default>
+                <label>Lender Services – Other</label>
+            </value>
+            <value>
+                <fullName>SEC/Financial Reporting Assistance</fullName>
+                <default>false</default>
+                <label>SEC/Financial Reporting Assistance</label>
+            </value>
+            <value>
+                <fullName>Sellside Diligence</fullName>
+                <default>false</default>
+                <label>Sellside Diligence</label>
+            </value>
+            <value>
+                <fullName>Spinoff/Carve-Out</fullName>
+                <default>false</default>
+                <label>Spinoff/Carve-Out</label>
+            </value>
+            <value>
+                <fullName>Tax Diligence</fullName>
+                <default>false</default>
+                <label>Tax Diligence</label>
+            </value>
+            <value>
+                <fullName>Tax – Other</fullName>
+                <default>false</default>
+                <label>Tax – Other</label>
+            </value>
+            <value>
+                <fullName>Tax Structuring</fullName>
+                <default>false</default>
+                <label>Tax Structuring</label>
+            </value>
+            <value>
+                <fullName>Technical Accounting</fullName>
+                <default>false</default>
+                <label>Technical Accounting</label>
+            </value>
+            <value>
+                <fullName>Buyside (full scope)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Buyside (full scope)</label>
+            </value>
+            <value>
+                <fullName>Buyside (limited scope-add on)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Buyside (limited scope-add on)</label>
+            </value>
+            <value>
+                <fullName>Deal Optimization</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Deal Optimization</label>
+            </value>
+            <value>
+                <fullName>Lender Services</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lender Services</label>
+            </value>
+            <value>
+                <fullName>Sellside</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Sellside</label>
+            </value>
+            <value>
+                <fullName>Tax</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Tax</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,26 @@
+<apex:page showHeader="false" standardController="Engagement_Summary__c" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" lightningStylesheets="true">
+    <apex:includeLightning />
+    <html>
+        <title>Engagement: {!$CurrentPage.parameters.name} {!Engagement_Summary__c.Engagement__c}</title>
+        <body id="VFContainer"></body>
+    </html>
+    <script>
+        function init(){
+            console.log('Init Fired');
+            let engagementId;
+            if('{!$CurrentPage.parameters.eId}') engagementId = '{!$CurrentPage.parameters.eId}';
+            else if('{!$CurrentPage.parameters.id}') engagementId = '{!Engagement_Summary__c.Engagement__c}';
+            $Lightning.use("c:hlEngageSumVFInterface", function() {
+                $Lightning.createComponent("c:hlEngageSumApp",
+                    { recordId : engagementId},
+                    "VFContainer",
+                    function(cmp) {
+                        console.log("HL LightningOut Initilalized - engagementVfId {!$CurrentPage.parameters.eId}");
+                        console.log("HL LightningOut Initilalized - engageSumVfId {!Engagement_Summary__c.Engagement__c}");
+                    }
+                );
+            });
+        }
+        init();
+    </script>
+</apex:page>

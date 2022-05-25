@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FY__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(VALUE(TEXT(Month__c)) &gt;= 4, TEXT(VALUE(TEXT(Year__c))+1), TEXT(Year__c))</formula>
+    <label>FY</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

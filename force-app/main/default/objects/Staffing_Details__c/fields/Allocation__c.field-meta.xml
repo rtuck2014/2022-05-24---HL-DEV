@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allocation__c</fullName>
+    <description>Allocation for the staff for the role</description>
+    <externalId>false</externalId>
+    <formula>IF(Total_Role_Allocation__c &lt;&gt; 0, IF(Role_Count__c &lt;&gt; 0, Role_Allocation__c / Role_Count__c, 0) / Total_Role_Allocation__c, 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Allocation for the staff for the role</inlineHelpText>
+    <label>Allocation</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>6</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

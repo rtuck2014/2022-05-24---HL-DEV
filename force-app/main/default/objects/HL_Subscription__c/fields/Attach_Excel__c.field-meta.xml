@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attach_Excel__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates to attach the report as Excel</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates to attach the report as Excel</inlineHelpText>
+    <label>Attach Excel</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

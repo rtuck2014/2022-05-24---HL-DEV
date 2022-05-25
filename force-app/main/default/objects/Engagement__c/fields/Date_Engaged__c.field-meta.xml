@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Date_Engaged__c</fullName>
+    <description>Changed by AYU 2/28, should be mapped to SLX&apos;s Engagement Letter Received.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Date on Engagement Letter</inlineHelpText>
+    <label>Date Engaged</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

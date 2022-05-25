@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Legal_Structure</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL( Legal_Structure__c ,&apos;Other&apos;) &amp;&amp;
+ISBLANK( FEIS_Other_Legal_Structure_Desc__c )</errorConditionFormula>
+    <errorDisplayField>Legal_Structure__c</errorDisplayField>
+    <errorMessage>Please enter other Legal Structure(s) below.</errorMessage>
+</ValidationRule>

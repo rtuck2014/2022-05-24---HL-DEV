@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Secondary_Job_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Secondary Job Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Activist Advisory</fullName>
+                <default>false</default>
+                <label>Activist Advisory</label>
+            </value>
+            <value>
+                <fullName>Buyside</fullName>
+                <default>false</default>
+                <label>Buyside</label>
+            </value>
+            <value>
+                <fullName>Buyside &amp; Financing Advisory</fullName>
+                <default>false</default>
+                <label>Buyside &amp; Financing Advisory</label>
+            </value>
+            <value>
+                <fullName>Corporate Alliances</fullName>
+                <default>false</default>
+                <label>Corporate Alliances</label>
+            </value>
+            <value>
+                <fullName>Debt Capital Markets</fullName>
+                <default>false</default>
+                <label>Debt Capital Markets</label>
+            </value>
+            <value>
+                <fullName>Debtor Advisors</fullName>
+                <default>false</default>
+                <label>Debtor Advisors</label>
+            </value>
+            <value>
+                <fullName>Discretionary Advisory</fullName>
+                <default>false</default>
+                <label>Discretionary Advisory</label>
+            </value>
+            <value>
+                <fullName>Equity Capital Markets</fullName>
+                <default>false</default>
+                <label>Equity Capital Markets</label>
+            </value>
+            <value>
+                <fullName>ESOP Corporate Finance</fullName>
+                <default>false</default>
+                <label>ESOP Corporate Finance</label>
+            </value>
+            <value>
+                <fullName>General Financial Advisory</fullName>
+                <default>false</default>
+                <label>General Financial Advisory</label>
+            </value>
+            <value>
+                <fullName>Going Private</fullName>
+                <default>false</default>
+                <label>Going Private</label>
+            </value>
+            <value>
+                <fullName>Illiquid Financial Assets</fullName>
+                <default>false</default>
+                <label>Illiquid Financial Assets</label>
+            </value>
+            <value>
+                <fullName>Liability Management</fullName>
+                <default>false</default>
+                <label>Liability Management</label>
+            </value>
+            <value>
+                <fullName>Merger</fullName>
+                <default>false</default>
+                <label>Merger</label>
+            </value>
+            <value>
+                <fullName>Negotiated Fairness</fullName>
+                <default>false</default>
+                <label>Negotiated Fairness</label>
+            </value>
+            <value>
+                <fullName>Partners</fullName>
+                <default>false</default>
+                <label>Partners</label>
+            </value>
+            <value>
+                <fullName>Post Merger Integration</fullName>
+                <default>false</default>
+                <label>Post Merger Integration</label>
+            </value>
+            <value>
+                <fullName>Private Funds: GP Advisory</fullName>
+                <default>false</default>
+                <label>Private Funds: GP Advisory</label>
+            </value>
+            <value>
+                <fullName>Private Funds: GP Stake Sale</fullName>
+                <default>false</default>
+                <label>Private Funds: GP Stake Sale</label>
+            </value>
+            <value>
+                <fullName>Private Funds: Primary Advisory</fullName>
+                <default>false</default>
+                <label>Private Funds: Primary Advisory</label>
+            </value>
+            <value>
+                <fullName>Private Funds: Secondary Advisory</fullName>
+                <default>false</default>
+                <label>Private Funds: Secondary Advisory</label>
+            </value>
+            <value>
+                <fullName>Real Estate Brokerage</fullName>
+                <default>false</default>
+                <label>Real Estate Brokerage</label>
+            </value>
+            <value>
+                <fullName>Sellside</fullName>
+                <default>false</default>
+                <label>Sellside</label>
+            </value>
+            <value>
+                <fullName>Special Committee Advisory</fullName>
+                <default>false</default>
+                <label>Special Committee Advisory</label>
+            </value>
+            <value>
+                <fullName>Special Situations Buyside</fullName>
+                <default>false</default>
+                <label>Special Situations Buyside</label>
+            </value>
+            <value>
+                <fullName>Special Situations Sellside</fullName>
+                <default>false</default>
+                <label>Special Situations Sellside</label>
+            </value>
+            <value>
+                <fullName>Strategic Alternatives Study</fullName>
+                <default>false</default>
+                <label>Strategic Alternatives Study</label>
+            </value>
+            <value>
+                <fullName>Strategy</fullName>
+                <default>false</default>
+                <label>Strategy</label>
+            </value>
+            <value>
+                <fullName>Syndicated Finance</fullName>
+                <default>false</default>
+                <label>Syndicated Finance</label>
+            </value>
+            <value>
+                <fullName>Take Over Defense</fullName>
+                <default>false</default>
+                <label>Take Over Defense</label>
+            </value>
+            <value>
+                <fullName>Tech+IP - Buyside</fullName>
+                <default>false</default>
+                <label>Tech+IP - Buyside</label>
+            </value>
+            <value>
+                <fullName>Tech+IP - Patent Sales</fullName>
+                <default>false</default>
+                <label>Tech+IP - Patent Sales</label>
+            </value>
+            <value>
+                <fullName>Tech+IP - Tech+IP Sales</fullName>
+                <default>false</default>
+                <label>Tech+IP - Tech+IP Sales</label>
+            </value>
+            <value>
+                <fullName>Valuation Advisory</fullName>
+                <default>false</default>
+                <label>Valuation Advisory</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

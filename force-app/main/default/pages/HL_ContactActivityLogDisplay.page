@@ -1,0 +1,195 @@
+<apex:page showHeader="false" sidebar="false" tabStyle="Opportunity__c" controller="HL_ActivitySearchController" readOnly="true" id="thepage" docType="html-5.0" lightningStyleSheets="true">
+    <!--<c:HL_ActivitySearch ></c:HL_ActivitySearch>-->
+    <apex:sectionHeader id="sectionHeader" title="" subtitle="Activities"/>
+    <apex:form id="thefrm">
+        <apex:pageBlock id="pbActivityLog" title="Activities" >
+            <apex:pageBlockButtons styleClass="center" location="top">
+                <!-- PS - Replaced "My" filtertext with All -->
+                <!-- <apex:commandLink id="btnAddActivity" value="Add Activity" action="{!NewActivity}" styleClass="btn" target="_parent" style="text-decoration: none;" rendered="{!EntityType <> 'Account' && EntityId <> $User.Id && EntityType <> 'Opportunity__c'}"  /> -->
+                <apex:commandLink id="btnAddActivity" value="Add Activity" action="{!NewActivity}" styleClass="btn" target="_parent" style="text-decoration: none;" rendered="{!EntityId <> $User.Id && EntityType <> 'Opportunity__c'}"  />
+                <!--<apex:commandButton action="{!FilterToday}" reRender="pbActivityLog" value="Today's Activities" status="loadingStatus" rendered="{!EntityId == $User.Id}"></apex:commandButton>
+                <apex:commandButton action="{!FilterUpcoming}" reRender="pbActivityLog" value="Upcoming Activities" status="loadingStatus" rendered="{!EntityId == $User.Id}"></apex:commandButton>
+                <apex:commandButton action="{!FilterAll}" reRender="pbActivityLog" value="All Activities" status="loadingStatus" rendered="{!EntityId == $User.Id}"></apex:commandButton>-->
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2">
+                <apex:selectList size="1" label="Type :" value="{!selectedTypevalue}">
+                    <apex:selectOptions value="{!TypeList}"></apex:selectOptions>
+                </apex:selectList>
+                <!--<apex:inputText id="datesearchKey" label="Date :" value="{!datesearchKey}" />-->
+                <apex:pageBlockSectionItem >
+                    Date: <apex:input type="date" value="{!datesearchKey}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <div class="searchButtonPanel">
+                <center>
+                    <apex:commandButton id="btnSearch" styleClass="actionButton" value="Search" action="{!fetchActivities}"  reRender="thefrm,footerId" status="loadingStatus" oncomplete="DocumentReady()"/>
+                    <apex:commandButton value="Back" styleClass="actionButton" action="{!redirectToContact}" reRender="thefrm,footerId" />
+                </center>
+            </div>
+            <div style="overflow: scroll; width: 100%; height: 330px;">
+                <apex:actionStatus id="loadingStatus" startText="Loading..." stopText="" startStyle="font-weight: bold; font-size: 1.5em;">
+                    <apex:facet name="start" >
+                        <apex:outputPanel ><img src="/img/loading.gif" /><span>&nbsp;Loading...</span></apex:outputPanel>
+                    </apex:facet>
+                </apex:actionStatus>
+                <apex:outputPanel id="panMyActivitesLabel" style="" >
+                    <apex:outputLabel value="{!FilterText} Activities" styleClass="bold" style="display:inline-block; font-size: 1.3em; padding-bottom: 10px;" rendered="{!EntityId == $User.Id}"></apex:outputLabel><br />
+                </apex:outputPanel>
+                
+                <apex:outputPanel id="panActivitiesList" rendered="{!Activities<>NULL}">
+                    <div style="overflow: auto; width: 100%;">
+                        <apex:pageBlockTable id="pbtActivities" value="{!Activities}" var="a" styleClass="top" columnClasses="top">
+                            
+                            <apex:column width="70px">  
+                                <apex:outputPanel rendered="{!(a.Activity!=null && ((a.Activity.Type != 'Internal' || a.ViewAccess) && (a.Activity.Type != 'Internal Mentor Meeting')) || (a.Activity.Type == 'Internal Mentor Meeting' && a.ViewAccess)) }"> 
+                                    <apex:outputLink rendered="{!Not(a.Activity.Private__c) || a.ViewAccess}" value="{!URLFOR('/apex/HL_ActivityEventView', a.LinkId,[id=a.LinkId,retURL=RetEntity,related_id=EntityId])}" target="_parent" style="padding-right: 5px;">View</apex:outputLink>
+                                    <apex:outputLink rendered="{!(EntityType == 'Contact' || EntityType == 'Account') && a.ModifyAccess}" value="{!URLFOR('/apex/HL_ActivityEvent', a.LinkId,[id=a.LinkId,retURL=RetEntity,who_id=EntityId])}" target="_parent">Edit</apex:outputLink>
+                                    <a href="{!a.Activity.Activity_Detail_Report__c}" target="_blank">Print</a>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!a.isTask}"> 
+                                    <apex:outputLink rendered="{!a.LinkId!=null}" value="/{!a.LinkId}" target="_parent" style="padding-right: 5px;">View</apex:outputLink>
+                                </apex:outputPanel>
+                            </apex:column>
+                            <apex:column headerValue="Start Date/Time" width="115px" >
+                                <apex:outputPanel rendered="{!a.Activity!=null}">
+                                    <apex:outputText value="{!a.FormattedStart}"></apex:outputText>
+                                    <apex:facet name="header">
+                                        <apex:commandLink action="{!ApplySort}" reRender="pbtActivities" status="loadingStatus" oncomplete="DocumentReady()">
+                                            <apex:param assignTo="{!NewSort}" value="StartDateTime"/>
+                                            <apex:outputText value="Start Date/Time"></apex:outputText>
+                                            <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'StartDateTime' && SortDirection == 'ASC'}"/>
+                                            <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'StartDateTime' && SortDirection <> 'ASC'}"/>
+                                        </apex:commandLink>
+                                    </apex:facet>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!a.isTask}"> 
+                                    <apex:outputText value="{!a.MessageDate}">
+                                    </apex:outputText>   
+                                </apex:outputPanel>
+                            </apex:column>
+                            <apex:column headerValue="Type">
+                                <apex:outputPanel rendered="{!a.Activity!=null}">
+                                    <apex:outputLabel rendered="{!((((a.Activity.Private__c || a.Activity.PFG__c)&& $User.Id <> a.Activity.CreatedById && !a.ViewAccess) && a.Activity.Type != 'Internal Mentor Meeting')|| (a.Activity.Type == 'Internal Mentor Meeting' && !a.ViewAccess))}" value="Private" styleClass="bold"></apex:outputLabel>
+                                    <apex:outputLabel rendered="{!((((Not(a.Activity.Private__c || a.Activity.PFG__c)) || $User.Id == a.Activity.CreatedById || a.ViewAccess) && a.Activity.Type != 'Internal Mentor Meeting') || (a.Activity.Type == 'Internal Mentor Meeting' && a.ViewAccess))}" value="{!a.Activity.Type}" ></apex:outputLabel>
+                                    <apex:outputLabel rendered="{!IF(BEGINS(a.Activity.Type, 'Follow-up') && a.Activity.Is_Complete__c, true, false)}" value="(Complete)"></apex:outputLabel>
+                                    <apex:outputLabel rendered="{!IF(BEGINS(a.Activity.Type, 'Follow-up') && !a.Activity.Is_Complete__c, true, false)}" value="(Pending)"></apex:outputLabel>
+                                    <apex:facet name="header">
+                                        <apex:commandLink action="{!ApplySort}" reRender="pbtActivities" status="loadingStatus" oncomplete="DocumentReady()">
+                                            <apex:param assignTo="{!NewSort}" value="Type"/>
+                                            <apex:outputText value="Type"></apex:outputText>
+                                            <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Type' && SortDirection == 'ASC'}"/>
+                                            <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Type' && SortDirection <> 'ASC'}"/>
+                                        </apex:commandLink>
+                                    </apex:facet>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!a.isTask}"> 
+                                    <apex:outputText value="{!a.Type}"></apex:outputText>
+                                </apex:outputPanel>
+                            </apex:column>
+                            <apex:column headerValue="Primary HL Contact">
+                                <apex:outputPanel rendered="{!a.Activity!=null}">
+                                    <apex:outputLabel value="{!a.PrimaryAttendee}"></apex:outputLabel>
+                                    <apex:facet name="header">
+                                        <apex:commandLink action="{!ApplySort}" reRender="pbtActivities" status="loadingStatus" oncomplete="DocumentReady()">
+                                            <apex:param assignTo="{!NewSort}" value="Primary_Attendee__c"/>
+                                            <apex:outputText value="Primary Attendee"></apex:outputText>
+                                            <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Primary_Attendee__c' && SortDirection == 'ASC'}"/>
+                                            <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Primary_Attendee__c' && SortDirection <> 'ASC'}"/>
+                                        </apex:commandLink>
+                                    </apex:facet>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!a.isTask}"> 
+                                    <apex:outputText value="{!a.PrimaryAttendee}"></apex:outputText>
+                                </apex:outputPanel>
+                            </apex:column>
+                            <apex:column headerValue="Primary Contact">
+                                <apex:outputPanel rendered="{!a.Activity!=null}">
+                                    <apex:outputLink value="/{!a.PrimaryContactId}" target="_top" rendered="{!AND (a.Activity.Type != 'Internal',a.Activity.Type != 'Internal Mentor Meeting' ) || a.ViewAccess}">{!a.PrimaryContact}</apex:outputLink>
+                                    <apex:outputLabel rendered="{!OR(a.Activity.Type == 'Internal',a.Activity.Type == 'Internal Mentor Meeting') && !a.ViewAccess}" value="Private" styleClass="bold"></apex:outputLabel>
+                                    <apex:facet name="header">
+                                        <apex:commandLink action="{!ApplySort}" reRender="pbtActivities" status="loadingStatus" oncomplete="DocumentReady()">
+                                            <apex:param assignTo="{!NewSort}" value="Primary_External_Contact__c"/>
+                                            <apex:outputText value="Primary Contact"></apex:outputText>
+                                            <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Primary_External_Contact__c' && SortDirection == 'ASC'}"/>
+                                            <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Primary_External_Contact__c' && SortDirection <> 'ASC'}"/>
+                                        </apex:commandLink>
+                                    </apex:facet>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!a.isTask}"> 
+                                    <apex:outputText value="{!a.PrimaryContact}"></apex:outputText>
+                                </apex:outputPanel>
+                            </apex:column>
+                            <apex:column headerValue="Subject">
+                                <apex:outputPanel rendered="{!a.Activity!=null}">
+                                    <apex:outputLabel rendered="{!(((((a.Activity.Private__c || a.Activity.PFG__c) && $User.Id <> a.Activity.CreatedById && !a.ViewAccess) || (a.Activity.Type == 'Internal' && !a.ViewAccess)) && a.Activity.Type != 'Internal Mentor Meeting') || (a.Activity.Type == 'Internal Mentor Meeting' && !a.ViewAccess))}" value="Private" styleClass="bold"></apex:outputLabel>
+                                    <apex:outputLabel rendered="{!NOT((((((a.Activity.Private__c || a.Activity.PFG__c) && $User.Id <> a.Activity.CreatedById && !a.ViewAccess) || (a.Activity.Type == 'Internal' && !a.ViewAccess)) && a.Activity.Type != 'Internal Mentor Meeting') || (a.Activity.Type == 'Internal Mentor Meeting' && !a.ViewAccess)))}" value="{!IF(LEN(a.Activity.Subject) > 50,LEFT(a.Activity.Subject,50) + '...', a.Activity.Subject)}"></apex:outputLabel>
+                                    <apex:facet name="header">
+                                        <apex:commandLink action="{!ApplySort}" reRender="pbtActivities" status="loadingStatus" oncomplete="DocumentReady()">
+                                            <apex:param assignTo="{!NewSort}" value="Subject"/>
+                                            <apex:outputText value="Subject"></apex:outputText>
+                                            <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Subject' && SortDirection == 'ASC'}"/>
+                                            <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Subject' && SortDirection <> 'ASC'}"/>
+                                        </apex:commandLink>
+                                    </apex:facet>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!a.isTask}"> 
+                                    <apex:outputText value="{!a.Subject}"></apex:outputText>
+                                </apex:outputPanel>
+                            </apex:column>
+                            <!--<apex:column headerValue="Description">-->
+                                <!--<apex:outputPanel rendered="{!a.Activity!=null}">
+<apex:outputLabel rendered="{!(((((a.Activity.Private__c || a.Activity.PFG__c) && $User.Id <> a.Activity.CreatedById && !a.ViewAccess) || (a.Activity.Type == 'Internal' && !a.ViewAccess)) && a.Activity.Type != 'Internal Mentor Meeting') || (a.Activity.Type == 'Internal Mentor Meeting' && !a.ViewAccess))}" value="Private" styleClass="bold"></apex:outputLabel>
+<apex:outputLabel rendered="{!NOT((((((a.Activity.Private__c || a.Activity.PFG__c) && $User.Id <> a.Activity.CreatedById && !a.ViewAccess) || (a.Activity.Type == 'Internal' && !a.ViewAccess)) && a.Activity.Type != 'Internal Mentor Meeting') || (a.Activity.Type == 'Internal Mentor Meeting' && !a.ViewAccess)))}" value="{!IF(LEN(a.Activity.Description) > 50,LEFT(a.Activity.Description,50) + '...', a.Activity.Description)}"></apex:outputLabel>
+</apex:outputPanel>
+<apex:outputPanel rendered="{!a.isTask}"> 
+<apex:outputLabel value="{!IF(LEN(a.Description) > 50,LEFT(a.Description,50) + '...', a.Description)}"></apex:outputLabel>
+
+</apex:outputPanel>-->
+                            <!--</apex:column>-->
+                        </apex:pageBlockTable>
+                        
+                    </div>
+                </apex:outputPanel>
+                       
+            </div>
+            <apex:outputPanel id="footerId">
+            <table style="width: 100%; padding-top: 5px; padding-bottom: 5px;">
+                            <tr>
+                                
+                                <td class="bold" style="width:180px;">
+                                    Page: <apex:outputText value="{!Page} of {!if(TotalPages > 0, TotalPages, 0)}"></apex:outputText>
+                                </td>
+                                <td align="center">
+                                    <!-- Previous page -->
+                                    <!-- active -->
+                                    <apex:commandLink action="{!PreviousPage}" value="<< Previous" rendered="{!HasPrevious}" reRender="pbActivityLog" status="loadingStatus" oncomplete="DocumentReady()"></apex:commandLink>
+                                    <!--inactive (no earlier pages) -->
+                                    <apex:outputText style="color: #ccc;" value="<< Previous" rendered="{! NOT(HasPrevious) }"></apex:outputText>
+                                    &nbsp;&nbsp;
+                                    <!-- Next page -->
+                                    <!-- active -->
+                                    <apex:CommandLink action="{!gonextPage}" value="Next >>" rendered="{!HasNext}" reRender="pbActivityLog" status="loadingStatus" oncomplete="DocumentReady()"></apex:CommandLink>
+                                    <!--inactive (no more pages) -->
+                                    <apex:outputText style="color: #ccc;" value="Next >>" rendered="{! NOT(HasNext)}"></apex:outputText>
+                                    
+                                </td>
+                                
+                                <td align="right" class="bold" style="width:120px;">
+                                    Total Activities:
+                                    <apex:outputLabel value="{!TotalRecords}"></apex:outputLabel>
+                                </td>
+                            </tr>
+                        </table>
+            <!--<center style="width: 100%;padding-bottom:10px;">
+                    <apex:commandButton action="{!PreviousPage}" value="Previous" reRender="pbActivityLog"/>
+                    <apex:commandButton action="{!gonextPage}" value="Next" reRender="pbActivityLog"/>
+                </center> -->
+             </apex:outputPanel>
+        </apex:pageBlock>
+        
+    </apex:form>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <style>
+        .pbTitle {display: none;}
+    </style>
+</apex:page>

@@ -1,0 +1,32 @@
+<apex:page controller="SL_GiftPreApprovalController" lightningStylesheets="true">
+<apex:slds />
+    <apex:form >
+    <h1>Congratulations</h1>
+    <br/>
+    You have submitted the following gift request(s) for approval:
+    
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!giftsJustAdded}" var="g" id="table">
+            <apex:column value="{!g.gift.Name}">
+                <apex:facet name="header">Gift Description</apex:facet>
+            </apex:column>
+            <apex:column value="{!g.gift.Recipient__r.Name}">
+                <apex:facet name="header">Recipient</apex:facet>
+            </apex:column>
+            <apex:column value="{!g.gift.Submitted_For__r.Name}">
+                <apex:facet name="header">Submitted For</apex:facet>
+            </apex:column>
+            <apex:column value="{!g.gift.Desired_Date__c}">
+                <apex:facet name="header">Desired Date</apex:facet>
+            </apex:column>
+            <apex:column value="{!g.gift.Gift_Value__c}" >
+                <apex:facet name="header">Value</apex:facet>
+            </apex:column>
+            <apex:column value="{!g.gift.CurrencyIsoCode}">
+                <apex:facet name="header">Currency</apex:facet>
+            </apex:column>
+        </apex:pageBlockTable>
+        <apex:commandButton value="Return to Pre-Approval Page" action="{!returnToBlankPreApproval}" />
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

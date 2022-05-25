@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PFG</fullName>
+    <active>false</active>
+    <description>&quot;Please enter a value for &quot;PFG Notification&quot;</description>
+    <errorConditionFormula>AND(PFG__c = TRUE,
+OR(
+ISBLANK(Text(PFG_Notification__c))))</errorConditionFormula>
+    <errorDisplayField>PFG_Notification__c</errorDisplayField>
+    <errorMessage>Please enter a value for PFG Notification.</errorMessage>
+</ValidationRule>

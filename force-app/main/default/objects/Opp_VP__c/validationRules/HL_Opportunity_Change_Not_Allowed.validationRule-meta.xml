@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_Opportunity_Change_Not_Allowed</fullName>
+    <active>true</active>
+    <description>To stop changing Opportunity on Opportunity Valuation Period.</description>
+    <errorConditionFormula>IF(NOT(ISNEW()),IF(ISCHANGED(Opportunity__c), true, false), false)</errorConditionFormula>
+    <errorDisplayField>Opportunity__c</errorDisplayField>
+    <errorMessage>You are not allowed to change &apos;Opportunity&apos;.</errorMessage>
+</ValidationRule>

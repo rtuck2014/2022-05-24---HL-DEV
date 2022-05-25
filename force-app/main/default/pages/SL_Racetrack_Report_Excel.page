@@ -1,0 +1,82 @@
+<apex:page controller="SL_RacetrackReport" showHeader="false" sidebar="false" cache="true" standardStyleSheets="false" contentType="application/x-excel#RacetrackReport.xls">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <apex:stylesheet value="{!URLFOR($Resource.SL_RaceTrackReport_CSS)}"/>
+    </head>
+    
+    <apex:outputPanel > 
+        <table border="" width="100%"> 
+            <thead>  
+                <tr>
+                    <td colspan="{!lstColumns.size}" style="text-align:center;border-bottom:none;padding-top:20px; height:70px;">
+                        <span class="reportTitle"><b> {!strParentObjectName} - Racetrack Report</b></span>
+                    </td>
+                    <td style="text-align:center;border-bottom:none;height:70px;">
+                        <apex:image value="{!strLogoURL}" rendered="{! IF(strLogoURL='','false','true')}"/><br style="mso-data-placement:same-cell;" />
+                        <span class="reportSubtitle"><apex:outputText value="{!CurrentDateTime}"/></span>
+                    </td>
+                </tr> 
+            </thead> 
+        </table>
+        
+        <br/>
+        
+        <table cellpadding="2" cellspacing="0" class="tableStyle" border="">
+            <thead>  
+                <tr>
+                    <th></th>
+                    <apex:repeat value="{!lstColumnHeader}" var="r">
+                        <th align="center"><apex:outputLabel value="{!r}" escape="false"/></th>
+                    </apex:repeat>
+                </tr>
+            </thead>
+            <tbody>
+                <apex:repeat value="{!lstGroupWrapper}" var="r">
+                    <tr>
+                        <td colspan="{!lstColumns.size+1}" style="text-align: left;font-weight: bold;"><apex:outputText value="{!r.strRT}"/></td>
+                    </tr>
+                    <apex:repeat value="{!r.lstRecordWrapper}" var="lst">
+                        <tr>
+                            <td width="10%" style="text-align: left;"><apex:outputText value="{!lst.companyName}"/></td>
+                            <apex:repeat value="{!lstColumns}" var="c">
+                                <td width="{!100/(lstColumns.size+1)}%" style="text-align:center;">
+                                    <apex:outputText value="{0,date,MM'/'dd'/'yyyy}" rendered="{!IF(AND(mapFieldNameToType[c]== 'DATE' && strReportType == 'dates',NOT(OR(ISBLANK(lst.sObj[c]),ISNULL(lst.sObj[c])))), true, false)}">
+                                        <apex:param value="{!lst.sObj[c]}"/>
+                                    </apex:outputText>
+                                    <apex:outputPanel rendered="{!IF(AND(mapFieldNameToType[c]== 'DATE' && strReportType == 'checks',NOT(OR(ISBLANK(lst.sObj[c]),ISNULL(lst.sObj[c])))), true, false)}">
+                                        <apex:outputText value="{!strCheckMark}"/>
+                                    </apex:outputPanel>
+                                    
+                                    <apex:outputText value="{!lst.sObj[c]}" rendered="{!IF(AND(mapFieldNameToType[c]!= 'DATE',NOT(OR(ISBLANK(lst.sObj[c]),ISNULL(lst.sObj[c])))), true, false)}"/>
+                                </td>
+                            </apex:repeat>
+                        </tr>
+                    </apex:repeat>
+                    <tr>
+                        <td style="text-align: left;font-weight: bold;">{!r.strRT} SubTotal</td>
+                        <apex:repeat value="{!lstColumns}" var="lst">
+                            <td style="text-align: center;font-weight: bold;">
+                            <apex:outputPanel rendered="{!IF(r.lstRecordWrapper!=null && r.lstRecordWrapper.size>0,true,false)}">
+                                <apex:outputText rendered="{!mapShowTotalVals[lst]}" value="{!IF(CONTAINS(lst,'__r.Name'),r.mapSubTotal[SUBSTITUTE(lst,'__r.Name','__c')],r.mapSubTotal[lst])}"/>
+                            </apex:outputPanel> 
+                            </td>
+                                
+                        </apex:repeat>
+                    </tr>
+                </apex:repeat>
+                <tr>
+                    <td style="text-align: left;font-weight: bold;">Grand Total </td>
+                    <apex:repeat value="{!lstColumns}" var="lst">
+                        <td style="text-align: center;font-weight: bold;padding-top: 10px;">
+                        <apex:outputPanel rendered="{!IF(lstGroupWrapper!=null && lstGroupWrapper.size>0,true,false)}">
+                            <apex:outputText rendered="{!mapShowTotalVals[lst]}" value="{!IF(CONTAINS(lst,'__r.Name'),mapGrandTotal[SUBSTITUTE(lst,'__r.Name','__c')],mapGrandTotal[lst])}"/>
+                        </apex:outputPanel> 
+                        </td>
+                    </apex:repeat>
+                </tr>
+            </tbody>
+        </table>
+        
+    </apex:outputPanel>
+    
+</apex:page>

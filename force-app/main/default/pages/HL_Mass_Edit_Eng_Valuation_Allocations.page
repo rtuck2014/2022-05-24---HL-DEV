@@ -1,0 +1,21 @@
+<apex:page standardController="Eng_Valuation_Period_Allocation__c" extensions="HL_MassEditEngValAllocationsCntrl" sidebar="true" showHeader="false" lightningStylesheets="true"> 
+
+   <apex:includeLightning />
+    <div id="lwcDemo" />
+    <script>
+     var parentRecId='{!engVPId}';
+   
+    $Lightning.use("c:HL_Mass_Edit_Eng_Valuation_AllocationsApp", function() {
+        $Lightning.createComponent("c:hlengVPAmassedit", {
+            //pass parameter values to lwc js controller
+          parentRecordId: "{!engVPId}"
+        },
+        "lwcDemo",
+            function(component) {
+             console.log("Lightning Web Component created Successfully!!");
+              // extend the functionality as per your requirement
+            }
+       );
+    });
+    </script>
+</apex:page>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Archpoint_Summ_Rpt_Sort_All_DOB__c</fullName>
+    <description>CASE(Status__c, 
+&quot;Declined&quot;, &quot;Z&quot;, 
+&quot;On Hold&quot;, &quot;Z&quot;, 
+&quot;A&quot;) &amp; &quot; - &quot; &amp; 
+CASE(Type__c, 
+&quot;Strategic&quot;, &quot;1&quot;, 
+&quot;Sponsor&quot;, &quot;2&quot;, 
+&quot;0&quot;) 
+&amp; &quot; - &quot; &amp; 
+CASE(TEXT(Tier__c ), 
+&quot;I&quot;, &quot;1&quot;, 
+&quot;II&quot;, &quot;2&quot;, 
+&quot;III&quot;, &quot;3&quot;, 
+&quot;0&quot;) 
+&amp; &quot; - &quot; &amp; Name</description>
+    <externalId>false</externalId>
+    <label>Archpoint Summ Rpt Sort - All - DOB</label>
+    <length>100</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

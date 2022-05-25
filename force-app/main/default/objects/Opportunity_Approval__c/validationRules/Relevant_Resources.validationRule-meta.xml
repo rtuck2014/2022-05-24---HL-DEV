@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Relevant_Resources</fullName>
+    <active>false</active>
+    <errorConditionFormula>(Product_s__c = TRUE &amp;&amp;  ISBLANK(Product_Team__c)) ||
+( Geography__c  = TRUE &amp;&amp;  ISBLANK( Geography_Team__c )) ||
+( Senior_Management__c  = TRUE &amp;&amp;  ISBLANK( Senior_Management_Team__c )) ||
+( Coverage_Officer_s__c  = TRUE &amp;&amp;  ISBLANK( Coverage_Officer_Team__c ))</errorConditionFormula>
+    <errorMessage>If Product, Geography, Senior Management, or Coverage Officer are checked, please provide teams in relevant text areas.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Counterparties</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Counterparties</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>/apex/SL_LIB16_MassEdit_CompanyListMember?clid={!Opportunity__c.Id}&amp;extId=3</url>
+</WebLink>

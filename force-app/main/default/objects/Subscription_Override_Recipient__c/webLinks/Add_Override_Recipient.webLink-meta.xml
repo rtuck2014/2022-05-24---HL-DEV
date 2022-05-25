@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_Override_Recipient</fullName>
+    <availability>online</availability>
+    <description>Add a new override recipient who receives the email, instead of the subscriber. In the URL, /a4x/ is the prefix of the object record, and 00N6300000JKtJ2 is the id of the field. They are different in each org.</description>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Add Override Recipient</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>/a52/e?CF00N2g000001AMnZ={!HL_Subscription__c.Name}&amp;CFN2g000001AMnZ_lkid={!HL_Subscription__c.Id}&amp;saveURL=%2F{!HL_Subscription__c.Id}&amp;retURL=%2F{!HL_Subscription__c.Id}</url>
+</WebLink>

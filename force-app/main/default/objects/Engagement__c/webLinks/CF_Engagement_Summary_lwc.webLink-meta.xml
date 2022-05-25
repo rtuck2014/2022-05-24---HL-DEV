@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CF_Engagement_Summary_lwc</fullName>
+    <availability>online</availability>
+    <description>&gt; Button that launches the Lightning Engagement Summary
+&gt; &quot;Detail Page Button&quot; on Engagement__c object points to &quot;/apex/hlEngageSumAppVfLwc?id={!Engagement__c.Id}&quot;
+&gt; Should be present on Engagement__c &quot;Sellside&quot; and &quot;Buyside&quot; page layouts</description>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>CF Engagement Summary (LWC)</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>window.open(&apos;/apex/hlEngageSumAppVfLwc?eId={!Engagement__c.Id}&amp;name={!Engagement__c.Name}&apos;, &apos;_blank&apos;);</url>
+</WebLink>

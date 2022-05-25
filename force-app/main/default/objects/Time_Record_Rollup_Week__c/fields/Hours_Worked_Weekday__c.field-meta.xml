@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hours_Worked_Weekday__c</fullName>
+    <defaultValue>0.0</defaultValue>
+    <description>Hours worked for the week for the project. Used in FR Time Tracking</description>
+    <externalId>false</externalId>
+    <label>Hours Worked Weekday</label>
+    <precision>5</precision>
+    <required>true</required>
+    <scale>1</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

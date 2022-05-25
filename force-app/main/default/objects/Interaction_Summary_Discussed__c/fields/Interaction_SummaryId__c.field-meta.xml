@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Interaction_SummaryId__c</fullName>
+    <externalId>false</externalId>
+    <label>Interaction Summary</label>
+    <referenceTo>Interaction_Summary__c</referenceTo>
+    <relationshipLabel>Interaction Summary Discussed</relationshipLabel>
+    <relationshipName>Interaction_Summary_Discussed</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

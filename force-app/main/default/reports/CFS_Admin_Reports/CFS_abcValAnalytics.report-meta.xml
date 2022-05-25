@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</field>
+    </columns>
+    <columns>
+        <field>lmscons__Transcript_Line__c$lmscons__Training_Path_Name__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Transcript_Line__c$lmscons__Status__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Training_Path_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>The ABC’s of Valuation Analytics</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>CFS_abcValAnalytics</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_CFS_Assignments__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>lmscons__Transcript_Line__c$lmscons__Completed_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

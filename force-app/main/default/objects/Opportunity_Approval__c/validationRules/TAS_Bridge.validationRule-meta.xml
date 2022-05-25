@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TAS_Bridge</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL(TAS_Assistance_Benefit__c, &apos;No&apos;) &amp;&amp;
+NOT(ISBLANK(TAS_Bridge_Contact__c))</errorConditionFormula>
+    <errorDisplayField>TAS_Bridge_Contact__c</errorDisplayField>
+    <errorMessage>TAS Bridge Contact must be blank if TAS Assistance Benefit is &apos;No.&apos;</errorMessage>
+</ValidationRule>

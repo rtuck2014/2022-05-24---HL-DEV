@@ -1,0 +1,876 @@
+<apex:page name="HL_EventExpenseLandingPage" standardController="Event_Expense__c" sidebar="false" extensions="HL_EventExpenseClass,HL_EventExpenseClassExt,HL_EventExpenseClassExt2" tabStyle="Event_Expense__c" lightningStyleSheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}" />
+    
+    <apex:form id="pageFormForMsg" rendered="{!!validUser}">
+        <apex:pageMessages />
+    </apex:form>
+    <apex:form id="pageForm" rendered="{!validUser}">
+        <apex:pageMessages id="pgmsg"/>
+        <style>
+            .activeTab {background-color: #236FBD; color:white; background-image:none}
+            .inactiveTab { background-color: lightgrey; color:black; background-image:none}
+        </style>
+
+        <!------------ Uppper Section ----------------> 
+        <apex:pageBlock title="New Expense Request">
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Create New Expense Form" action="{!newEventExpenseRecord}" onclick="blockme();"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2" >
+                <apex:pageblocksectionitem >
+                    <apex:outputlabel >LOB</apex:outputlabel>
+                    <apex:outputPanel layout="block" styleClass="requiredInput" >
+                        <div class="requiredBlock"></div>
+                        <apex:inputField value="{!initialEventExpense.LOB__c}" id="lob"/>
+                    </apex:outputPanel>
+                </apex:pageblocksectionitem>
+                <apex:pageblocksectionitem >
+                    <apex:outputlabel id="EventTypeFormatLabel">Event Type</apex:outputlabel>
+                    <apex:outputPanel layout="block" styleClass="requiredInput" id="EventTypeFormat">
+                        <div class="requiredBlock"></div>
+                        <apex:inputField value="{!initialEventExpense.Event_Type_Format__c}"/>
+                    </apex:outputPanel>
+                </apex:pageblocksectionitem>
+                <apex:pageblocksectionitem >
+
+                </apex:pageblocksectionitem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:tabPanel switchType="client" selectedTab="{!currentSelectedTab}" id="EETabPanel"
+                       tabClass="activeTab" inactiveTabClass="inactiveTab">
+            <apex:tab label="My Requests" name="MainTab" id="MainTab">     
+                <!--------------------------------------------- Data Table for Tab #1 ------------------------------------------------------------------->
+                
+                <!--------------------------------------------- Filter Section Tab #1 START ------------------------------------------------------------------->
+                <apex:pageBlock >
+                    
+                    <apex:pageBlockButtons location="bottom">
+                        <apex:commandButton value="Apply Filter" onclick="blockme();" action="{!applyFilter}" reRender="RelatedRecordPanelId1,pgmsg" onComplete="j$.unblockUI();"/>
+                        <apex:commandButton value="Reset Filter" onclick="blockme();" action="{!resetFilter}" reRender="srchFilterPBS,RelatedRecordPanelId1" onComplete="j$.unblockUI();"/>
+                    </apex:pageBlockButtons>
+                    
+                    <apex:pageBlockSection title="Search Filter Section" columns="2" id="srchFilterPBS">
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Criteria</apex:outputlabel>
+                            <apex:selectList value="{!logicCriteriaSelVal}" size="1">
+                                <apex:selectOptions value="{!logicCriteriaSelectOptions}" />
+                            </apex:selectList>
+                        </apex:pageblocksectionitem>
+                        
+                        <apex:inputField value="{!eventExp.Product_Type__c}"/>
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Submission Date</apex:outputlabel>
+                            <apex:selectList value="{!submissionDateSelVal}" size="1">
+                                <apex:selectOptions value="{!dateSelectOptions}" />
+                            </apex:selectList>
+                        </apex:pageblocksectionitem>
+                        
+                        <apex:inputField value="{!eventExp.Requestor_Name__c}"/>
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Created Date</apex:outputlabel>
+                            <apex:selectList value="{!createdDateSelVal}" size="1">
+                                <apex:selectOptions value="{!dateSelectOptions}" />
+                            </apex:selectList>
+                        </apex:pageblocksectionitem>
+                        
+                        <apex:inputField value="{!eventExp.LOB__c}">
+                            <apex:actionSupport event="onchange" reRender="evntFormat" onsubmit="blockme();" onComplete="j$.unblockUI();" action="{!resetEventTypeAndFormat}"/>
+                        </apex:inputField>
+                        
+                        <apex:inputField value="{!eventExp.Event_Name__c}"/>
+                        
+                        <apex:inputField value="{!eventExp.Event_Type_Format__c}">
+                            <apex:actionSupport event="onchange" reRender="evntFormat" onsubmit="blockme();" onComplete="j$.unblockUI();"/>
+                        </apex:inputField>
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Expense Request Number</apex:outputlabel>
+                            <apex:inputText value="{!evtExpNumberVal}"/>
+                        </apex:pageblocksectionitem>
+                        
+                        <apex:pageblockSectionItem >
+                            <apex:outputLabel value="Event Format" for="evntFormat"/>
+                            <apex:selectList size="1" value="{!eventExp.Event_Format__c}" id="evntFormat" disabled="{!ISNULL(eventExp.Event_Type_Format__c)}">
+                                <apex:selectOptions value="{!EvntFrmatValues}"/>
+                            </apex:selectList>
+                        </apex:pageblockSectionItem>
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Status</apex:outputlabel>
+                            <apex:selectList value="{!eventExp.Status__c}" multiselect="true" size="3">
+                                <apex:selectOptions value="{!statusSelectOptions}" />
+                            </apex:selectList>
+                        </apex:pageblocksectionitem>
+                        
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+                <!--------------------------------------------- Filter Section Tab #1 END ------------------------------------------------------------------->
+                
+                <apex:PageBlock Id="RelatedRecordPanelId1" title="{!TableTitle}">
+                    <apex:outputPanel rendered="{!IF(EventExpenseList.size>0, true, false)}">
+                        
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="First" action="{!first}" rerender="RelatedRecordPanelId1"
+                                                                                       rendered="{!IF(pageNumber==1, false, true)}" onclick="blockme();" onComplete="j$.unblockUI();" /> <apex:outputLabel value="First" rendered="{!IF(pageNumber==1, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                        
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Prev" action="{!previous}" rerender="RelatedRecordPanelId1"
+                                                                                       rendered="{!IF(pageNumber==1, false, true)}" onclick="blockme();" onComplete="j$.unblockUI();" /> <apex:outputLabel value="Prev" rendered="{!IF(pageNumber==1, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span> 
+                        
+                        <span style="display: inline; width: 25px;">
+                            <input type="text" value="{!pageNumber}" styleClass="pageInput" size="2" onkeypress="return onlyNumbers1(event,this.value,this.pageNumber);" />
+                            <apex:outputLabel value=" / {!pageCount+1}"/>
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span> 
+                        
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Next" action="{!next}" rerender="RelatedRecordPanelId1"
+                                                                                       rendered="{!IF(pageNumber==pageSize, false, true)}"
+                                                                                       onclick="blockme();" onComplete="j$.unblockUI();" /> 
+                            <apex:outputLabel value="Next"
+                                              rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                        
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Last" action="{!last}" rerender="RelatedRecordPanelId1"
+                                                                                       rendered="{!IF(pageNumber==pageSize, false, true)}"
+                                                                                       onclick="blockme();" onComplete="j$.unblockUI();" /> <apex:outputLabel value="Last"
+                                                                                                                                                              rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                        <span style="display: inline; width: 125px;"> Qty: &nbsp; <apex:selectList value="{!CurPageSize}" multiselect="false" size="1"
+                                                                                                   onchange="blockme();savePageSize1(this.value);">
+                            <apex:selectOptions value="{!pageSizeValues}" />
+                            </apex:selectList>
+                        </span>
+                    </apex:outputPanel>                    
+                    <apex:outputLabel rendered="{!EventExpenseList.size == 0}">No Request Exists</apex:outputLabel>
+                    <apex:pageBlockTable value="{!EventExpenseList}" rendered="{!EventExpenseList.size>0}" 
+                                         var="item" id="pbtableId1" rows="{!CurPageSize}" columnswidth="3%,8%,8%,8%,8%,8%,8%,8%,8%,8%,9%,8%,8%" >
+                        <!--var="item" id="pbtableId1" rows="{!CurPageSize}" columnswidth="3%,7%,5%,10%,3%,6%,10%,3%,6%,6%,6%,1%" -->
+                        <apex:column > 
+                            <apex:outputLink style="cursor: pointer;" value="/{!item.Id}/e" target="_blank" rendered="{!if(AND(item.Status__c != 'Waiting for Approval', item.Status__c != 'Deleted'), true, false)}">Edit</apex:outputLink>
+                            <apex:facet name="header">
+                                <apex:commandLink value="Action" rerender="RelatedRecordPanelId1"  >
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column > 
+                            <apex:outputLink style="cursor: pointer;" value="/{!item.Id}" target="_blank">{!item.Event_Name__c}</apex:outputLink>
+                            <apex:facet name="header">
+                                <apex:commandLink value="Event Name" action="{!toggleSort}" rerender="RelatedRecordPanelId1" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortField" value="Event_Name__c" assignTo="{!sortField}"/>
+                                    
+                                    <apex:outputPanel rendered="{!IF(sortField=='Event_Name__c',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Event_Name__c',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column > 
+                            <apex:outputLink style="cursor: pointer;" value="/{!item.Id}" target="_blank">{!item.Name}</apex:outputLink>
+                            <apex:facet name="header">
+                                <apex:commandLink value="Expense Preapproval Number" action="{!toggleSort}" rerender="RelatedRecordPanelId1" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortField" value="Name" assignTo="{!sortField}"/>
+                                    
+                                    <apex:outputPanel rendered="{!IF(sortField=='Name',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Name',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!item.Requestor_Name__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Requestor" action="{!toggleSort}" rerender="RelatedRecordPanelId1" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortField" value="Requestor_Name__r.Name" assignTo="{!sortField}"/>
+                                    
+                                    <apex:outputPanel rendered="{!IF(sortField=='Requestor_Name__r.Name',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Requestor_Name__r.Name',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!item.Start_Date__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Start Date" action="{!toggleSort}" rerender="RelatedRecordPanelId1" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortField" value="Start_Date__c" assignTo="{!sortField}"/>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Start_Date__c',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Start_Date__c',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!item.Total_Budget_Requested__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Total Budget Requested" action="{!toggleSort}" rerender="RelatedRecordPanelId1" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortField" value="Total_Budget_Requested__c" assignTo="{!sortField}"/>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Total_Budget_Requested__c',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Total_Budget_Requested__c',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!item.Industry_Group__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Industry Product" action="{!toggleSort}" rerender="RelatedRecordPanelId1" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortField" value="Industry_Group__c" assignTo="{!sortField}"/>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Industry_Group__c',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Industry_Group__c',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!item.Product_Type__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Product Type" action="{!toggleSort}" rerender="RelatedRecordPanelId1" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortField" value="Product_Type__c" assignTo="{!sortField}"/>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Product_Type__c',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Product_Type__c',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!item.Event_Type_Format__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Event Type" action="{!toggleSort}" rerender="RelatedRecordPanelId1" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortField" value="Event_Type_Format__c" assignTo="{!sortField}"/>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Event_Type_Format__c',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Event_Type_Format__c',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!item.Event_Format__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Event Format" action="{!toggleSort}" rerender="RelatedRecordPanelId1" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortField" value="Event_Format__c" assignTo="{!sortField}"/>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Event_Format__c',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Event_Format__c',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!item.CreatedDate}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Created Date" action="{!toggleSort}" rerender="RelatedRecordPanelId1" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortField" value="CreatedDate" assignTo="{!sortField}"/>
+                                    <apex:outputPanel rendered="{!IF(sortField=='CreatedDate',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortField=='CreatedDate',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!item.Submitted_Date__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Submitted Date" action="{!toggleSort}" rerender="RelatedRecordPanelId1" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortField" value="Submitted_Date__c" assignTo="{!sortField}"/>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Submitted_Date__c',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Submitted_Date__c',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column> 
+                        <apex:column value="{!item.Status__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Status" action="{!toggleSort}" rerender="RelatedRecordPanelId1" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortField" value="Status__c" assignTo="{!sortField}"/>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Status__c',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortField=='Status__c',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column> 
+                    </apex:pageBlockTable>
+                    
+                    <apex:actionFunction action="{!voidAction}" name="loadPage" rerender="pb0,opMsg" status="MCSub">
+                        <apex:param name="pageNumber1" assignTo="{!pageNumber}" value="{!pageNumber}"/>
+                    </apex:actionFunction>
+                    
+                    <apex:actionFunction action="{!goCurPageNumber}" name="goCurPageNumber1" rerender="RelatedRecordPanelId1" 
+                                         onComplete="j$.unblockUI();">
+                        <apex:param name="curpageNumber1" assignTo="{!CurPageNumber}" value="" />
+                    </apex:actionFunction>
+                    
+                    <apex:actionFunction name="savePageSize1" action="{!doSavePageSize}"
+                                         reRender="RelatedRecordPanelId1" oncomplete="j$.unblockUI();" >
+                        <apex:param name="curPageSize1" assignTo="{!CurPageSize}" value="" />
+                        <apex:param name="curPageNumber1" assignTo="{!CurPageNumber}" value="0" />
+                    </apex:actionFunction>
+                </apex:PageBlock>
+            </apex:tab>
+            
+            <!--------------------------------------- 2nd Tab  Implementation ------------------------------------------->
+            <apex:tab label="Requests Pending My Approval" name="asAllRequestsTab" id="asApproverTab">               
+                
+                <apex:actionFunction action="{!goCurPageNumberAT}"
+                                     name="goCurPageNumberAT" rerender="RelatedRecordPanelId" onComplete="j$.unblockUI();">
+                    <apex:param name="pageNumberAT" assignTo="{!CurPageNumberAT}" value="" />
+                </apex:actionFunction>
+                
+                <apex:actionFunction name="savePageSizeAT" action="{!doSavePageSizeAT}"
+                                     rerender="RelatedRecordPanelId,PBId" oncomplete="j$.unblockUI();" status="MCSub">
+                    <apex:param name="curPageSizeAT" assignTo="{!CurPageSizeAT}" value="" />
+                    <apex:param name="curPageNumberAT" assignTo="{!CurPageNumberAT}"
+                                value="0" />
+                </apex:actionFunction>
+                <input type="hidden" name="selectedItemholder" id="selectedItemholderId" />
+                
+                <!--------------------------------------------- Filter Section Tab #2 START ------------------------------------------------------------------->
+                <apex:pageBlock >
+                    <apex:pageBlockButtons location="bottom">
+                        <apex:commandButton value="Apply Filter" onclick="blockme();" action="{!applyFilterAT}" reRender="RelatedRecordPanelId,pgmsg" onComplete="j$.unblockUI();"/>
+                        <apex:commandButton value="Reset Filter" onclick="blockme();" onComplete="j$.unblockUI();" action="{!resetFilterAT}" reRender="srchFilterPBSAT,RelatedRecordPanelId"/>
+                    </apex:pageBlockButtons>
+                    
+                    <apex:pageBlockSection title="Search Filter Section" columns="2" id="srchFilterPBSAT">
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Criteria</apex:outputlabel>
+                            <apex:selectList value="{!logicCriteriaSelValAT}" size="1">
+                                <apex:selectOptions value="{!logicCriteriaSelectOptionsAT}" />
+                            </apex:selectList>
+                        </apex:pageblocksectionitem>
+                        
+                        <apex:inputField value="{!eventExpAT.Product_Type__c}"/>
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Submission Date</apex:outputlabel>
+                            <apex:selectList value="{!submissionDateSelValAT}" size="1">
+                                <apex:selectOptions value="{!dateSelectOptionsAT}" />
+                            </apex:selectList>
+                        </apex:pageblocksectionitem>
+                        
+                        <apex:inputField value="{!eventExpAT.Requestor_Name__c}"/>
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Created Date</apex:outputlabel>
+                            <apex:selectList value="{!createdDateSelValAT}" size="1">
+                                <apex:selectOptions value="{!dateSelectOptionsAT}" />
+                            </apex:selectList>
+                        </apex:pageblocksectionitem>
+                        
+                        <apex:inputField value="{!eventExpAT.LOB__c}">
+                            <apex:actionSupport event="onchange" reRender="evntFormatAT" onsubmit="blockme();" onComplete="j$.unblockUI();" action="{!resetEventTypeAndFormatAT}"/>
+                        </apex:inputField>
+                        
+                        <apex:inputField value="{!eventExpAT.Event_Name__c}"/>
+                        
+                        <apex:inputField value="{!eventExpAT.Event_Type_Format__c}">
+                            <apex:actionSupport event="onchange" reRender="evntFormatAT" onsubmit="blockme();" onComplete="j$.unblockUI();"/>
+                        </apex:inputField>
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Expense Request Number</apex:outputlabel>
+                            <apex:inputText value="{!evtExpNumberValAT}"/>
+                        </apex:pageblocksectionitem>
+                        
+                        <apex:pageblockSectionItem >
+                            <apex:outputLabel value="Event Format" for="evntFormatAT"/>
+                            <apex:selectList size="1" value="{!eventExpAT.Event_Format__c}" id="evntFormatAT" disabled="{!ISNULL(eventExpAT.Event_Type_Format__c)}">
+                                <apex:selectOptions value="{!EvntFrmatValuesAT}"/>
+                            </apex:selectList>
+                        </apex:pageblockSectionItem>
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Status</apex:outputlabel>
+                            <apex:selectList value="{!eventExpAT.Status__c}" multiselect="true" size="3">
+                                <apex:selectOptions value="{!statusSelectOptionsAT}" />
+                            </apex:selectList>
+                        </apex:pageblocksectionitem>
+                        
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+                <!--------------------------------------------- Filter Section Tab #2 END ------------------------------------------------------------------->
+                
+                <apex:PageBlock Id="RelatedRecordPanelId" title="{!TableTitle}">
+                    
+                    <apex:outputPanel rendered="{!IF(EventExpenseListAT.size>0, true, false)}">
+                        
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="First" action="{!firstAT}" rerender="RelatedRecordPanelId,PBId" rendered="{!IF(pageNumberAT==1, false, true)}" onclick="blockme();" onComplete="j$.unblockUI();" /> <apex:outputLabel value="First" rendered="{!IF(pageNumberAT==1, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                        
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Prev" action="{!previousAT}" rerender="RelatedRecordPanelId,PBId"
+                                                                                       rendered="{!IF(pageNumberAT==1, false, true)}" onclick="blockme();" onComplete="j$.unblockUI();" /> <apex:outputLabel value="Prev" rendered="{!IF(pageNumberAT==1, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span> 
+                        
+                        <span style="display: inline; width: 25px;">
+                            <input type="text" value="{!pageNumberAT}" styleClass="pageInput" size="2" onkeypress="return onlyNumbersAT(event,this.value,this.pageNumberAT);" /><!--onblur="if ((this.value-1)!=({!pageNumber})) { loadPage(this.value-1);}"/>-->
+                            <apex:outputLabel value=" / {!pageCountAT+1}"/>
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                        
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Next" action="{!nextAT}" rerender="RelatedRecordPanelId,PBId"
+                                                                                       rendered="{!IF(pageNumberAT==pageSizeAT, false, true)}"
+                                                                                       onclick="blockme();" onComplete="j$.unblockUI();" /> 
+                            <apex:outputLabel value="Next"
+                                              rendered="{!IF(pageNumberAT==pageSizeAT, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                        
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Last" action="{!lastAT}" rerender="RelatedRecordPanelId,PBId"
+                                                                                       rendered="{!IF(pageNumberAT==pageSizeAT, false, true)}"
+                                                                                       onclick="blockme();" onComplete="j$.unblockUI();" /> <apex:outputLabel value="Last"
+                                                                                                                                                              rendered="{!IF(pageNumberAT==pageSizeAT, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                        <span style="display: inline; width: 125px;"> Qty: &nbsp; <apex:selectList value="{!CurPageSizeAT}" multiselect="false" size="1"
+                                                                                                   onchange="blockme();savePageSizeAT(this.value);">
+                            <apex:selectOptions value="{!pageSizeValuesAT}" />
+                            </apex:selectList>
+                        </span>
+                    </apex:outputPanel>
+                    <apex:outputLabel rendered="{!EventExpenseListAT.size == 0}">No Pending Request Exists</apex:outputLabel>
+                    <apex:pageBlockTable value="{!EventExpenseListAT}" rendered="{!EventExpenseListAT.size>0}"
+                                         var="itemAT" id="pbtableId2" rows="{!CurPageSizeAT}" columnswidth="8%,8%,8%,8%,8%,8%,8%,8%,8%,9%,8%,8%" >
+                        <!--var="itemAT" id="pbtableId2" rows="{!CurPageSizeAT}" columnswidth="3%,7%,5%,10%,3%,6%,10%,3%,6%,6%,6%,1%" -->
+                        <apex:column > 
+                            <apex:outputLink style="cursor: pointer;" value="/{!itemAT.Id}" target="_blank">{!itemAT.Event_Name__c}</apex:outputLink>
+                            <apex:facet name="header">
+                                <apex:commandLink value="Event Name" action="{!toggleSortAT}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT" value="Event_Name__c" assignTo="{!sortFieldAT}"/>
+                                    
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Event_Name__c',IF(sortDirectionAT='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Event_Name__c',IF(sortDirectionAT='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column > 
+                            <apex:outputLink style="cursor: pointer;" value="/{!itemAT.Id}" target="_blank">{!itemAT.Name}</apex:outputLink>
+                            <apex:facet name="header">
+                                <apex:commandLink value="Expense Preapproval Number" action="{!toggleSortAT}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT" value="Name" assignTo="{!sortFieldAT}"/>
+                                    
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Name',IF(sortDirectionAT='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Name',IF(sortDirectionAT='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT.Requestor_Name__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Requestor" action="{!toggleSortAT}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT" value="Requestor_Name__r.Name" assignTo="{!sortFieldAT}"/>
+                                    
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Requestor_Name__r.Name',IF(sortDirectionAT='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Requestor_Name__r.Name',IF(sortDirectionAT='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT.Start_Date__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Start Date" action="{!toggleSortAT}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT" value="Start_Date__c" assignTo="{!sortFieldAT}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Start_Date__c',IF(sortDirectionAT='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Start_Date__c',IF(sortDirectionAT='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT.Total_Budget_Requested__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Total Budget Requested" action="{!toggleSortAT}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT" value="Total_Budget_Requested__c" assignTo="{!sortFieldAT}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Total_Budget_Requested__c',IF(sortDirectionAT='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Total_Budget_Requested__c',IF(sortDirectionAT='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT.Industry_Group__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Industry Product" action="{!toggleSortAT}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT" value="Industry_Group__c" assignTo="{!sortFieldAT}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Industry_Group__c',IF(sortDirectionAT='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Industry_Group__c',IF(sortDirectionAT='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT.Product_Type__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Product Type" action="{!toggleSortAT}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT" value="Product_Type__c" assignTo="{!sortFieldAT}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Product_Type__c',IF(sortDirectionAT='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Product_Type__c',IF(sortDirectionAT='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT.Event_Type_Format__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Event Type" action="{!toggleSortAT}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT" value="Event_Type_Format__c" assignTo="{!sortFieldAT}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Event_Type_Format__c',IF(sortDirectionAT='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Event_Type_Format__c',IF(sortDirectionAT='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT.Event_Format__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Event Format" action="{!toggleSortAT}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT" value="Event_Format__c" assignTo="{!sortFieldAT}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Event_Format__c',IF(sortDirectionAT='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Event_Format__c',IF(sortDirectionAT='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT.CreatedDate}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Created Date" action="{!toggleSortAT}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT" value="CreatedDate" assignTo="{!sortFieldAT}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='CreatedDate',IF(sortDirectionAT='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='CreatedDate',IF(sortDirectionAT='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT.Submitted_Date__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Submitted Date" action="{!toggleSortAT}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT" value="Submitted_Date__c" assignTo="{!sortFieldAT}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Submitted_Date__c',IF(sortDirectionAT='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Submitted_Date__c',IF(sortDirectionAT='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column> 
+                        <apex:column value="{!itemAT.Status__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Status" action="{!toggleSortAT}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT" value="Status__c" assignTo="{!sortFieldAT}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Status__c',IF(sortDirectionAT='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT=='Status__c',IF(sortDirectionAT='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column> 
+                    </apex:pageBlockTable>
+                    <br/>
+                    <apex:outputPanel rendered="{!if(actualRecordsAT >=1000,true,false)}">
+                        <div>
+                            <div style="float: left"><b><I><font color="#c00">*Note: Only the First 1000 Matching Records are Returned - Use Advanced Search and/or Sort to Find a particular Record</font></I></b>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                    <apex:pageBlockSection ></apex:pageBlockSection>
+                    
+                </apex:pageBlock>
+            </apex:tab>
+            <!-- ---------------------------------------------------3rd Tab Implementation------------------------------------------------------------------------------------------- -->
+            <apex:tab label="All Requests"  rendered="{!IF(OR($Profile.Name = 'System Administrator', $Profile.Name = 'CAO',IsMemberofAPTeam,IsMemberofEventExpenseCAOVisibility),true,false)}"  name="asApproverTab" id="asApproverTab3">        
+                <apex:actionFunction action="{!goCurpageNumberAT2}"
+                                     name="goCurPageNumberAT2" rerender="RelatedRecordPanelId3" onComplete="j$.unblockUI();">
+                    <apex:param name="pageNumberAT2" assignTo="{!CurpageNumberAT2}" value="" />
+                </apex:actionFunction>
+                
+                <apex:actionFunction name="savepageSizeAT2" action="{!doSavepageSizeAT2}"
+                                     rerender="RelatedRecordPanelId3,PBId" oncomplete="j$.unblockUI();" status="MCSub">
+                    <apex:param name="curpageSizeAT2" assignTo="{!CurpageSizeAT2}" value="" />
+                    <apex:param name="curpageNumberAT2" assignTo="{!CurpageNumberAT2}"
+                                value="0" />
+                </apex:actionFunction>
+                <input type="hidden" name="selectedItemholder" id="selectedItemholderId3" />
+                
+                <!--------------------------------------------- Filter Section Tab #3 START ------------------------------------------------------------------->
+                <apex:pageBlock >
+                    <apex:pageBlockButtons location="bottom">
+                        <apex:commandButton value="Apply Filter" onclick="blockme();" action="{!applyFilterAT2}" reRender="RelatedRecordPanelId3,pgmsg" onComplete="j$.unblockUI();"/>
+                        <apex:commandButton value="Reset Filter" onclick="blockme();" onComplete="j$.unblockUI();" action="{!resetFilterAT2}" reRender="srchFilterPBSAT2,RelatedRecordPanelId3"/>
+                    </apex:pageBlockButtons>
+                    
+                    <apex:pageBlockSection title="Search Filter Section" columns="2" id="srchFilterPBSAT2">
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Criteria</apex:outputlabel>
+                            <apex:selectList value="{!logicCriteriaSelValAT2}" size="1">
+                                <apex:selectOptions value="{!logicCriteriaSelectOptionsAT2}" />
+                            </apex:selectList>
+                        </apex:pageblocksectionitem>
+                        
+                        <apex:inputField value="{!eventExpAT2.Product_Type__c}"/>
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Submission Date</apex:outputlabel>
+                            <apex:selectList value="{!submissionDateSelValAT2}" size="1">
+                                <apex:selectOptions value="{!dateSelectOptionsAT2}" />
+                            </apex:selectList>
+                        </apex:pageblocksectionitem>
+                        
+                        <apex:inputField value="{!eventExpAT2.Requestor_Name__c}"/>
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Created Date</apex:outputlabel>
+                            <apex:selectList value="{!createdDateSelValAT2}" size="1">
+                                <apex:selectOptions value="{!dateSelectOptionsAT2}" />
+                            </apex:selectList>
+                        </apex:pageblocksectionitem>
+                        
+                        <apex:inputField value="{!eventExpAT2.LOB__c}">
+                            <apex:actionSupport event="onchange" reRender="evntFormatAT2" onsubmit="blockme();" onComplete="j$.unblockUI();" action="{!resetEventTypeAndFormatAT2}"/>
+                        </apex:inputField>
+                        
+                        <apex:inputField value="{!eventExpAT2.Event_Name__c}"/>
+                        
+                        <apex:inputField value="{!eventExpAT2.Event_Type_Format__c}">
+                            <apex:actionSupport event="onchange" reRender="evntFormatAT2" onsubmit="blockme();" onComplete="j$.unblockUI();"/>
+                        </apex:inputField>
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Expense Request Number</apex:outputlabel>
+                            <apex:inputText value="{!evtExpNumberValAT2}"/>
+                        </apex:pageblocksectionitem>
+                        
+                        <apex:pageblockSectionItem >
+                            <apex:outputLabel value="Event Format" for="evntFormatAT2"/>
+                            <apex:selectList size="1" value="{!eventExpAT2.Event_Format__c}" id="evntFormatAT2" disabled="{!ISNULL(eventExpAT2.Event_Type_Format__c)}">
+                                <apex:selectOptions value="{!EvntFrmatValuesAT2}"/>
+                            </apex:selectList>
+                        </apex:pageblockSectionItem>
+                        
+                        <apex:pageblocksectionitem >
+                            <apex:outputlabel >Status</apex:outputlabel>
+                            <apex:selectList value="{!eventExpAT2.Status__c}" multiselect="true" size="3">
+                                <apex:selectOptions value="{!statusSelectOptionsAT2}" />
+                            </apex:selectList>
+                        </apex:pageblocksectionitem>
+                        
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+                <!--------------------------------------------- Filter Section Tab #2 END ------------------------------------------------------------------->
+                
+                <apex:PageBlock Id="RelatedRecordPanelId3" title="{!TableTitle}">
+                    
+                    <apex:outputPanel rendered="{!IF(EventExpenseListAT2.size>0, true, false)}">
+                        
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="First" action="{!firstAT2}" rerender="RelatedRecordPanelId3,PBId" rendered="{!IF(pageNumberAT2==1, false, true)}" onclick="blockme();" onComplete="j$.unblockUI();" /> <apex:outputLabel value="First" rendered="{!IF(pageNumberAT2==1, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                        
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Prev" action="{!previousAT2}" rerender="RelatedRecordPanelId3,PBId"
+                                                                                       rendered="{!IF(pageNumberAT2==1, false, true)}" onclick="blockme();" onComplete="j$.unblockUI();" /> <apex:outputLabel value="Prev" rendered="{!IF(pageNumberAT2==1, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span> 
+                        
+                        <span style="display: inline; width: 25px;">
+                            <input type="text" value="{!pageNumberAT2}" styleClass="pageInput" size="2" onkeypress="return onlyNumbersAT2(event,this.value,this.pageNumberAT2);" /><!--onblur="if ((this.value-1)!=({!pageNumber})) { loadPage(this.value-1);}"/>-->
+                            <apex:outputLabel value=" / {!pageCountAT2+1}"/>
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span> 
+                        
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Next" action="{!nextAT2}" rerender="RelatedRecordPanelId3,PBId"
+                                                                                       rendered="{!IF(pageNumberAT2==pageSizeAT2, false, true)}"
+                                                                                       onclick="blockme();" onComplete="j$.unblockUI();" /> 
+                            <apex:outputLabel value="Next"
+                                              rendered="{!IF(pageNumberAT2==pageSizeAT2, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                        
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Last" action="{!lastAT2}" rerender="RelatedRecordPanelId3,PBId"
+                                                                                       rendered="{!IF(pageNumberAT2==pageSizeAT2, false, true)}"
+                                                                                       onclick="blockme();" onComplete="j$.unblockUI();" /> <apex:outputLabel value="Last"
+                                                                                                                                                              rendered="{!IF(pageNumberAT2==pageSizeAT2, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                        <span style="display: inline; width: 125px;"> Qty: &nbsp; <apex:selectList value="{!CurpageSizeAT2}" multiselect="false" size="1"
+                                                                                                   onchange="blockme();savepageSizeAT2(this.value);">
+                            <apex:selectOptions value="{!pageSizeValuesAT2}" />
+                            </apex:selectList>
+                        </span>
+                    </apex:outputPanel>
+                    <apex:outputLabel rendered="{!EventExpenseListAT2.size == 0}">No Pending Request Exists</apex:outputLabel>
+                    <apex:pageBlockTable value="{!EventExpenseListAT2}" rendered="{!EventExpenseListAT2.size>0}"
+                                         var="itemAT2" id="pbtableId3" rows="{!CurpageSizeAT2}" columnswidth="8%,8%,8%,8%,8%,8%,8%,8%,8%,9%,8%,8%" >
+                        
+                        <apex:column > 
+                            <apex:outputLink style="cursor: pointer;" value="/{!itemAT2.Id}" target="_blank">{!itemAT2.Event_Name__c}</apex:outputLink>
+                            <apex:facet name="header">
+                                <apex:commandLink value="Event Name" action="{!toggleSortAT2}" rerender="RelatedRecordPanelId3" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT2" value="Event_Name__c" assignTo="{!sortFieldAT2}"/>
+                                    
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Event_Name__c',IF(sortDirectionAT2='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Event_Name__c',IF(sortDirectionAT2='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column > 
+                            <apex:outputLink style="cursor: pointer;" value="/{!itemAT2.Id}" target="_blank">{!itemAT2.Name}</apex:outputLink>
+                            <apex:facet name="header">
+                                <apex:commandLink value="Expense Preapproval Number" action="{!toggleSortAT2}" rerender="RelatedRecordPanelId3" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT2" value="Name" assignTo="{!sortFieldAT2}"/>
+                                    
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Name',IF(sortDirectionAT2='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Name',IF(sortDirectionAT2='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT2.Requestor_Name__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Requestor" action="{!toggleSortAT2}" rerender="RelatedRecordPanelId3" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT2" value="Requestor_Name__r.Name" assignTo="{!sortFieldAT2}"/>
+                                    
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Requestor_Name__r.Name',IF(sortDirectionAT2='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Requestor_Name__r.Name',IF(sortDirectionAT2='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT2.Start_Date__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Start Date" action="{!toggleSortAT2}" rerender="RelatedRecordPanelId3" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT2" value="Start_Date__c" assignTo="{!sortFieldAT2}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Start_Date__c',IF(sortDirectionAT2='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Start_Date__c',IF(sortDirectionAT2='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT2.Total_Budget_Requested__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Total Budget Requested" action="{!toggleSortAT2}" rerender="RelatedRecordPanelId3" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT2" value="Total_Budget_Requested__c" assignTo="{!sortFieldAT2}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Total_Budget_Requested__c',IF(sortDirectionAT2='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Total_Budget_Requested__c',IF(sortDirectionAT2='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT2.Industry_Group__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Industry Product" action="{!toggleSortAT2}" rerender="RelatedRecordPanelId3" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT2" value="Industry_Group__c" assignTo="{!sortFieldAT2}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Industry_Group__c',IF(sortDirectionAT2='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Industry_Group__c',IF(sortDirectionAT2='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT2.Product_Type__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Product Type" action="{!toggleSortAT2}" rerender="RelatedRecordPanelId3" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT2" value="Product_Type__c" assignTo="{!sortFieldAT2}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Product_Type__c',IF(sortDirectionAT2='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Product_Type__c',IF(sortDirectionAT2='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT2.Event_Type_Format__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Event Type" action="{!toggleSortAT2}" rerender="RelatedRecordPanelId3" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT2" value="Event_Type_Format__c" assignTo="{!sortFieldAT2}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Event_Type_Format__c',IF(sortDirectionAT2='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Event_Type_Format__c',IF(sortDirectionAT2='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT2.Event_Format__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Event Format" action="{!toggleSortAT2}" rerender="RelatedRecordPanelId3" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT2" value="Event_Format__c" assignTo="{!sortFieldAT2}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Event_Format__c',IF(sortDirectionAT2='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Event_Format__c',IF(sortDirectionAT2='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT2.CreatedDate}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Created Date" action="{!toggleSortAT2}" rerender="RelatedRecordPanelId3" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT2" value="CreatedDate" assignTo="{!sortFieldAT2}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='CreatedDate',IF(sortDirectionAT2='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='CreatedDate',IF(sortDirectionAT2='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!itemAT2.Submitted_Date__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Submitted Date" action="{!toggleSortAT2}" rerender="RelatedRecordPanelId3" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT2" value="Submitted_Date__c" assignTo="{!sortFieldAT2}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Submitted_Date__c',IF(sortDirectionAT2='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Submitted_Date__c',IF(sortDirectionAT2='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column> 
+                        <apex:column value="{!itemAT2.Status__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink value="Status" action="{!toggleSortAT2}" rerender="RelatedRecordPanelId3" onclick="blockme();" onComplete="j$.unblockUI();" >
+                                    <apex:param name="sortFieldAT2" value="Status__c" assignTo="{!sortFieldAT2}"/>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Status__c',IF(sortDirectionAT2='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(sortFieldAT2=='Status__c',IF(sortDirectionAT2='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column> 
+                    </apex:pageBlockTable>
+                    <br/>
+                    <apex:outputPanel rendered="{!if(actualRecordsAT2 >=1000,true,false)}">
+                        <div>
+                            <div style="float: left"><b><I><font color="#c00">*Note: Only the First 1000 Matching Records are Returned - Use Advanced Search and/or Sort to Find a particular Record</font></I></b>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                    <apex:pageBlockSection ></apex:pageBlockSection>
+                </apex:pageBlock>
+            </apex:tab>
+        </apex:tabPanel>
+    </apex:form>
+    <script>                            
+        j$ = jQuery.noConflict();
+                               
+        function blockme() {
+            j$.blockUI({ css: {
+                border: 'none',
+                padding: '15px',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .5,
+                color: '#fff'
+            } }); 
+            
+        }                        
+        function onlyNumbers1(evt, val,pageNumber) {
+            var e = (typeof(event)!="undefined")?(event):(evt); // for trans-browser compatibility
+            var charCode = e.which || e.keyCode;
+            
+            if(charCode == 13)
+            {
+                
+                if ((val)!=(pageNumber)){blockme(); goCurPageNumber1(val);} 
+                return false;
+            }
+            if (charCode > 31 && (charCode < 48 || charCode > 57)){ return false;}
+            if (e.shiftkey){ return false;}
+            return true;
+        } 
+        function onlyNumbersAT(evt, val,pageNumber) {
+            var e = (typeof(event)!="undefined")?(event):(evt); // for trans-browser compatibility
+            var charCode = e.which || e.keyCode;
+            
+            if(charCode == 13)
+            {
+                
+                
+                if ((val)!=(pageNumber)){blockme(); goCurPageNumberAT(val);} 
+                return false;
+            }
+            if (charCode > 31 && (charCode < 48 || charCode > 57)){ return false;}
+            if (e.shiftkey){ return false;}
+            return true;
+        }    
+        function onlyNumbersAT2(evt, val,pageNumber) {
+            var e = (typeof(event)!="undefined")?(event):(evt); // for trans-browser compatibility
+            var charCode = e.which || e.keyCode;
+            
+            if(charCode == 13)
+            {
+                
+                
+                if ((val)!=(pageNumber)){blockme(); goCurPageNumberAT2(val);} 
+                return false;
+            }
+            if (charCode > 31 && (charCode < 48 || charCode > 57)){ return false;}
+            if (e.shiftkey){ return false;}
+            return true;
+        }
+        </script>
+        <script>
+            j$ =jQuery.noConflict();
+            j$(document).ready(function(){
+                j$("[id$=lob]").change(function(){
+                    if(this.value=="CF"){
+                        j$("[id$=EventTypeFormatLabel]").hide();  
+                        j$("[id$=EventTypeFormat]").hide();       
+                    }else{
+                        j$("[id$=EventTypeFormatLabel]").show();  
+                        j$("[id$=EventTypeFormat]").show();                       
+                    }
+                });
+            });        
+        </script>  
+        <script>
+
+        </script>
+
+</apex:page>

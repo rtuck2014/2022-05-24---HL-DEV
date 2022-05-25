@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Engagement_Counterparty__c$Engagement__c.Engagement_Number__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c$Name</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c.Bids__r$Round__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c.Bids__r$Round_Minimum__c</field>
+    </columns>
+    <columns>
+        <field>Engagement_Counterparty__c.Bids__r$Round_Maximum__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Bids from since date engaged 1/1/2017</description>
+    <filter>
+        <criteriaItems>
+            <column>Engagement_Counterparty__c$Company_Country__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>China</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Engagement_Counterparty__c$Engagement__c.Date_Engaged__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>1/1/2017</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>China Bids</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Engagement_Counterparties_with_Bids__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Engagement_Counterparty__c$Book_Returned__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

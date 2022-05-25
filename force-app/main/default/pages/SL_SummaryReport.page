@@ -1,0 +1,149 @@
+<apex:page standardController="Engagement__c" extensions="SL_SummaryReport" cache="false" readonly="true" standardStyleSheets="false" applyHtmlTag="false" showHeader="false" renderAs="pdf">
+    <head>
+        <apex:stylesheet value="{!URLFOR($Resource.SL_BuyerAccountPDFReport, '/css/SL_BuyerAccountListPDFReport.css')}"/>
+    </head> 
+    <div class="footer">
+        <table style="border-top: 0.5px #648129 solid; width:100%">      
+            <tr>
+                <td style="width:50%; text-align: left;">
+                    <strong><div style="color:#930000; font-size: 13px;">Confidential – Property of Houlihan Lokey</div></strong>
+                    <div style="font-size: 9px; padding-top: 10px;"> * Declined after receipt of book</div>
+                    <div style="font-size: 10px; font-style: italic;"> Summary of Potential Investors - </div>
+                </td>
+                <td style="width:50%; text-align:right; font-size: 10px; font-style: italic;">
+                    <div>Page <span class="pagenumber"/> of <span class="pagecount"/></div>  
+                </td>
+            </tr>
+        </table>
+    </div>
+    <table width="100%" cellpadding="2" cellspacing="0" class="tableStyle" style="page-break-inside: auto;"> 
+        <thead> 
+            <tr style="padding-bottom: 20px;">
+                <td  style="text-align:left;border:none;width:20%;padding-left: 8px;" >
+                    <apex:image value="{!URLFOR($Resource.SL_BuyerAccountPDFReport,'/images/logo.jpg')}" style="width:250px; height:35px;"/>
+                </td>
+                <td style="text-align:center;border-bottom:none;width:60%;" >
+                    <div class="Table" style="width:100%;">
+                        <div class="Row" style="width:100%;">
+                            <div class="Cell" style="width:50%; text-align: right;">
+                                <strong><span style="color:#930000;font-size: 14px; font-weight: bold;">Summary of Potential Investors</span></strong>
+                            </div>
+                            <div class="Cell" style="width:50%; text-align: left;">
+                                <span style="font-size: 14px; font-weight: bold;">&nbsp;-&nbsp;{!engagement.Name}</span>
+<!--                                <br/><span style="font-size: 12px; padding-left: 10px;">(All Lists)</span> -->
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td style="text-align:right;border-bottom:none;width:20%;" valign="top">
+                    <span style="font-size: 12px;">{!CurrentDateTime}</span>
+                </td>
+            </tr> 
+        </thead>
+        <tbody>
+            <tr style="display:{!IF(lstColumns.size > 0, '', 'none')};">
+                <td colspan="3" style="border-bottom: none!important; ">
+                    <table width="100%" cellpadding="2" cellspacing="0" class="tableStyle" style="page-break-inside: auto;">
+                        <thead>
+                            <tr>  
+                                <th colspan="{!lstColumns.size}"  style="border-bottom: 2px black solid; text-align: center;" valign="top">
+                                    <table width="100%" cellpadding="2" cellspacing="4">
+                                        <tr >
+                                            <apex:repeat value="{!lstColumns}" var="column" >
+                                                <th style="border:none; text-align: center;font-size: 12px; background-color: black; color: white;" width="{!98/(lstColumns.size)}%"> 
+                                                    <span>{!column.strLabel}</span>
+                                                </th>
+                                            </apex:repeat>
+                                        </tr>
+                                    </table>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <apex:repeat value="{!lstSummaryReport}" var="statusWrapper"> 
+                                    <td valign="top"  width="{!98/(lstColumns.size)}%">
+                                        <table style="page-break-inside: auto;">
+                                            <apex:repeat value="{!statusWrapper.lstTypeWrapper}" var="typeWrapper">
+                                        
+                                                <tr style="display:{!IF(typeWrapper.lstCompanyName.size > 0, '', 'none')};">
+                                                    <th style="font-size: 10px; text-align: left; border-bottom: none!important; text-decoration: underline;">
+                                                    {!typeWrapper.strType}
+                                                    </th>
+                                                </tr>
+                                                <apex:repeat value="{!typeWrapper.lstCompanyName}" var="company"> 
+                                                    <tr>
+                                                        <td style="font-size: 10px; text-align: left; color:#333399; border: none!important;">{!company}</td>  
+                                                    </tr> 
+                                                </apex:repeat>  
+                                            </apex:repeat>
+                                            <tr> 
+                                                <td style="font-size: 10px; text-align: right; color:#333399; border: none!important;">
+                                                    Total: {!statusWrapper.intGTotal}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </apex:repeat>
+                            </tr>
+                            <tr style="page-break-before: always;">
+                                <td colspan="{!lstColumns.size}"  style="border-bottom: 2px black solid;"  width="98%"></td>
+                            </tr>
+                            <apex:repeat value="{!lstSummarySubTotalWrapper}" var="subtotal"> 
+                                <tr>
+                                    <apex:repeat value="{!lstColumns}" var="column" > 
+                                        <th style="padding-left: 8px; font-size: 10px; text-align: right; border-bottom: none!important; " width="{!98/(lstColumns.size)}%">
+                                            <div class="Table" style="width:100%;">
+                                                <div class="Row" style="width:100%;">
+                                                    <div class="Cell" style="width:50%; text-align: left;">
+                                                        <apex:outputLabel value="{!subtotal.strType}" rendered="{!If(column.index == 1, true, false)}"/>
+                                                    </div>
+                                                    <div class="Cell" style="width:50%; text-align: right; padding-right: 2px;">
+                                                        {!subtotal.mapStatusToTotal[column.strLabel]}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </th>
+                                    </apex:repeat>
+                                </tr>
+                            </apex:repeat>
+                            <tr>
+                                <apex:repeat value="{!lstColumns}" var="column" > 
+                                    <th style="padding-left: 8px; font-size: 10px; text-align: right; border-bottom: none!important;" width="{!98/(lstColumns.size)}%">
+                                        <div class="Table" style="width:100%;">
+                                            <div class="Row" style="width:100%;">
+                                                <div class="Cell" style="width:50%; text-align: left;">
+                                                    <apex:outputLabel value="Total" rendered="{!If(column.index == 1, true, false)}"/>
+                                                </div>
+                                                <div class="Cell" style="width:50%; text-align: right; padding-right: 2px;">
+                                                    {!mapStatusToTotal[column.strLabel]}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </apex:repeat>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr style="display:{!IF(lstSummaryTotalWrapper.size > 0, '', 'none')};">
+                <td colspan="2"></td>
+                <td style="border-top: 1px black solid;">
+                    <table width="100%" cellpadding="2" cellspacing="0" style="page-break-inside: auto;">
+                        <apex:repeat value="{!lstSummaryTotalWrapper}" var="totalWrapper"> 
+                            <tr>
+                                <th style="font-size: 10px; text-align: left; border-bottom: none!important; ">
+                                    Total {!totalWrapper.strType} Contacted
+                                </th>
+                                <th style="font-size: 10px; text-align: right; border-bottom: none!important;">
+                                    {!totalWrapper.total}
+                                </th>
+                            </tr>
+                        </apex:repeat>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</apex:page>

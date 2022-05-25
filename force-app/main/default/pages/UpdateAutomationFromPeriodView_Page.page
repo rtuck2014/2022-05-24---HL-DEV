@@ -1,0 +1,8 @@
+<!-- 
+This page is calling "HL_AutomationToolMassUpdate_Component" to mass update Eng VP Position related to a Period.
+It is called from "Update Automation" button of 'HL_EngValuationPeriodView' page. 
+-->
+
+<apex:page name="UpdateAutomationFromPeriodView_Page" id="pgId" Controller="HL_EngVPController">
+    <c:HL_AutomationToolMassUpdate_Component PocList="{!posList}" id="compCallId"></c:HL_AutomationToolMassUpdate_Component>    
+</apex:page>

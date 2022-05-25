@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CommentsNotAllowed</fullName>
+    <active>true</active>
+    <description>For all lines of business, excluding &quot;Restructuring&quot;, if Stage is not &quot;Hold&quot; or &quot;Dead&quot;, then do not allow users to add a comment in the comment field.</description>
+    <errorConditionFormula>DATEVALUE(CreatedDate) &gt; DATE(2000,01,01) &amp;&amp;
+RecordType.Name &lt;&gt; &quot;Restructuring&quot; &amp;&amp;
+TEXT(Stage__c) &lt;&gt; &quot;Hold&quot; &amp;&amp;
+TEXT(Stage__c) &lt;&gt; &quot;Dead&quot; &amp;&amp;
+NOT(ISBLANK(Stage_Comments__c))</errorConditionFormula>
+    <errorDisplayField>Stage_Comments__c</errorDisplayField>
+    <errorMessage>The Comments field is only for Dead or Hold Engagements. Please remove the comment and save or transfer the comment to the Comments Related List</errorMessage>
+</ValidationRule>

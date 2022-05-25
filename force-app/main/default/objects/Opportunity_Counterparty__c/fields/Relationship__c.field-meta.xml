@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Relationship__c</fullName>
+    <externalId>false</externalId>
+    <label>Relationship</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Target</fullName>
+                <default>false</default>
+                <label>Target</label>
+            </value>
+            <value>
+                <fullName>Counterparty</fullName>
+                <default>false</default>
+                <label>Counterparty</label>
+            </value>
+            <value>
+                <fullName>Post-Transaction</fullName>
+                <default>false</default>
+                <label>Post-Transaction</label>
+            </value>
+            <value>
+                <fullName>Pre-Transaction</fullName>
+                <default>false</default>
+                <label>Pre-Transaction</label>
+            </value>
+            <value>
+                <fullName>PE Firm (Target)</fullName>
+                <default>false</default>
+                <label>PE Firm (Target)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Job_Type_Category__c</fullName>
+    <description>This field is used in the counterPartyEdit LWC to control the default list view on page load.</description>
+    <externalId>false</externalId>
+    <formula>if(CONTAINS(TEXT(Job_Type__c),&apos;Buyside&apos;),&apos;All_Buyside_Stages&apos;,
+if(CONTAINS(TEXT(Job_Type__c),&apos;Capital Market&apos;),&apos;All_Capital_Markets_Stages&apos;,
+if(CONTAINS(TEXT(Job_Type__c),&apos;Sellside&apos;),&apos;All_Sellside_Stages&apos;,
+			&apos;All&apos;)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Job Type Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

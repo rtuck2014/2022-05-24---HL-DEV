@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Recipient_of_Opinion_Text</fullName>
+    <active>true</active>
+    <errorConditionFormula>INCLUDES( Recipient_Of_Opinion__c, &apos;Other&apos;) &amp;&amp;
+ISBLANK( Other_Recipient_Of_Opinion_Note__c)</errorConditionFormula>
+    <errorMessage>Please enter Recipient Of Opinion details</errorMessage>
+</ValidationRule>

@@ -1,0 +1,48 @@
+<apex:page name="HL_EngagementView" standardController="Engagement__c" extensions="HL_EngagementViewController" lightningStyleSheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_EngagementView.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <apex:detail inlineEdit="true" oncomplete="DocumentReady();" />   
+    <input id="engagementId" type="hidden" value="{!Id}" />
+    <input id="profileId" type="hidden" value="{!$Profile.Name}" />
+    <input id="hasCommentsAccess" type="hidden" value="{!AddCommentsAccess}" />
+    <input id="internalTeamViewUrl" type="hidden" value="{!URLFOR('/apex/HL_InternalTeamView')}" />
+    <input id="jobType" type="hidden" value="{!Engagement__c.Job_Type__c}" />
+    <input id="isValidPVUserId" type="hidden" value="{!isValidPVUser}" />
+    <input id="iscounterparties" type="hidden" value="{!counterparties_permission}" />
+    <input id="LOB" type="hidden" value="{!Engagement__c.Line_of_Business__c}" />
+    <input id="onEIT" type="hidden" value="{!OnEIT}" />
+    <input id="revenueprojectionViewURL" type="hidden" value="{!URLFOR('/apex/HL_RevenueProjectionRelatedListView')}" />
+    
+    <script type="text/javascript">    
+    function PostRequestProcessing() 
+    {
+        RequestEngamentNumberValidation();
+    }
+    var isConverted = '{!isQueueableRun}';
+            if(isConverted){
+                alert('{!convertedMsg}');
+                var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id={!Engagement__c.Id}';
+                window.history.replaceState({path:newurl},'',newurl);
+            }
+    $j1 = jQuery.noConflict();
+    
+     $j1(document).ready(function () {
+         //alert($j1("#iscounterparties").val());
+            if($j1("#iscounterparties").val() ==='true') {           
+                $j1("[name$=counterparties]").show();
+            }//else
+         //$j1("[name$=counterparties]").  
+        }); 
+    /*$j1(document).ready(function () {
+            if($j1("#isValidPVUserId").val() === 'false') {           
+                $j1("[name$=portfolio_valuations]").hide();              
+            }
+            if(($j1("[name$=portfolio_valuations]").val() == 'Portfolio Valuation') && ($j1("#isValidPVUserId").val() === 'true')){
+                $j1("[name$=billing_request]").hide();
+            }
+            $j1("[name$=billing_request]").hide();
+            $j1("[name$=portfolio_valuations]").hide();        
+        }); */          
+    </script>
+</apex:page>

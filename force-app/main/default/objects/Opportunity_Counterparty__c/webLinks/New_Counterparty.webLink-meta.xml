@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Counterparty</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>New Counterparty</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>/a07/e?
+Name=OC+{!Opportunity__c.Name}&amp;
+retURL=/{!Opportunity__c.Id}&amp;
+saveURL=/{!Opportunity__c.Id}&amp;
+&amp;CF00Ni000000D7zBT={!Opportunity__c.Name}
+&amp;CF00Ni000000D7zBT_lkid={!Opportunity__c.Id}</url>
+</WebLink>

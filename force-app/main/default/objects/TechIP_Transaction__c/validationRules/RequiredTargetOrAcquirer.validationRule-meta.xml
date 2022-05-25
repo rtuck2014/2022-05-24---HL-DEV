@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RequiredTargetOrAcquirer</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISBLANK(Acquirer_Company__c), ISBLANK( Target_Company__c))</errorConditionFormula>
+    <errorMessage>Either a Target Company or Acquirer Company must be entered.</errorMessage>
+</ValidationRule>

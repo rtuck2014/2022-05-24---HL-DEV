@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Period_Accrued_Fee_Net__c</fullName>
+    <description>Period Accrued Fee Net as of the last revenue export</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Period Accrued Fee Net as of the last revenue export</inlineHelpText>
+    <label>Period Accrued Fee Net</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

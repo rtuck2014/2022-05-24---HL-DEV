@@ -1,0 +1,5 @@
+<apex:page Controller="HL_OpportunityReviewController"  action="{!opportunityreview}" lightningStylesheets="true"  >
+    <apex:pageBlock >
+        <apex:pageMessages rendered="true"/>
+    </apex:pageBlock>
+</apex:page>

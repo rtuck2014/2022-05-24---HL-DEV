@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_FY__c</fullName>
+    <description>FY of the revenue date on Opportunity</description>
+    <externalId>false</externalId>
+    <formula>IF(MONTH(  DATEVALUE(Opportunity__r.Revenue_Date__c) ) &gt;=4,   TEXT(YEAR( DATEVALUE(Opportunity__r.Revenue_Date__c))+1), TEXT(YEAR( DATEVALUE(Opportunity__r.Revenue_Date__c))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>FY of the revenue date on Opportunity</inlineHelpText>
+    <label>Opportunity FY</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

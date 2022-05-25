@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GroupByFieldSetAPIName__c</fullName>
+    <description>using child object FieldSet for GroupBy picklist options</description>
+    <externalId>false</externalId>
+    <label>GroupByFieldSetAPIName</label>
+    <length>200</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

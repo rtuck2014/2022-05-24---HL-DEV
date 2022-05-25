@@ -1,0 +1,13 @@
+<apex:page sidebar="true" standardStylesheets="true" lightningStylesheets="true">
+    <apex:includeScript value="/lightning/lightning.out.js" />
+    <div id="timeRecordManagerDiv"></div>
+    <script>
+        $Lightning.use("c:TimeRecordManagerAppVF", function() {
+            $Lightning.createComponent(
+                "c:TimeRecordManager",
+                {},
+                "timeRecordManagerDiv"
+            );
+        });
+    </script>
+</apex:page>

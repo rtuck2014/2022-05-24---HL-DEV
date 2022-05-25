@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ChangeOpportunityNotAllowed</fullName>
+    <active>true</active>
+    <description>Once the Opportunity is populated on a Pitch/Mandate Record, only Admins can change the Opportunity.</description>
+    <errorConditionFormula>$User.ProfileId  &lt;&gt; &apos;00ei00000016T4B&apos; &amp;&amp;
+NOT(ISBLANK(Opportunity__c)) &amp;&amp;
+ISCHANGED(Opportunity__c)</errorConditionFormula>
+    <errorMessage>The Opportunity cannot be change, please contact your Administrator.</errorMessage>
+</ValidationRule>

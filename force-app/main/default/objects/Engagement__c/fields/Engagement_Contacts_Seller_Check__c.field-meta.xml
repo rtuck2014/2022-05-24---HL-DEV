@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Engagement_Contacts_Seller_Check__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( AND(OR(Engagement_Contacts_Seller_Attorneys__c &gt; 0,Engagement_Contact_Seller_No_Attorney__c = true), Engagement_Contacts_Seller_Company__c &gt; 0), True, False)</formula>
+    <inlineHelpText>Indicates if required Engagement Contacts for Seller are present (an Attorney contact along with Company Contact and/or Board of Directors contacts are required)</inlineHelpText>
+    <label>Engagement Contacts Seller Check</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

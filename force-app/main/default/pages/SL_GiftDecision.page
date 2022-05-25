@@ -1,0 +1,39 @@
+<apex:page controller="SL_GiftPreApprovalController" lightningStylesheets="true">
+<apex:slds />
+    <apex:form >
+    <apex:pageMessages />
+    <apex:outputText style="font-weight: bolder; color: #FF0000" value="WARNING:">
+    </apex:outputText>
+    <br/>
+    <apex:outputText style="font-weight: bold; color: #FF0000" value="The following gift recipients will exceed their yearly gift maximum if the submitted gifts are approved.  This gift request is subject to approval by the Compliance Department.  Do you still wish to submit these gifts?">
+    </apex:outputText>
+    <apex:pageBlock >
+        <apex:outputPanel layout="block" style="width:100%; overflow:auto; height:200px; border: 1px solid #DADADA">
+                <apex:pageBlockTable value="{!clientsExceedingYTD}" var="r" id="table2">
+                    <apex:column value="{!r.recipient.Name}">
+                        <apex:facet name="header">Recipient</apex:facet>
+                    </apex:column>
+                    <apex:column value="{!r.recipient.Account.Name}">
+                        <apex:facet name="header">Account Name</apex:facet>
+                    </apex:column>
+                    <apex:column style="{!if(r.IsOver,'font-weight: bold; color: #FF0000', 'font-weight: normal; color: #000000')}">
+                        <apex:outputText value="{0, number, USD 00.0}">
+                            <apex:param value="{!r.GiftYTD}" />
+                        </apex:outputText>
+                        <apex:facet name="header">Current YTD Gift Amt</apex:facet>
+                    </apex:column>
+                    <apex:column style="{!if(r.NextYearIsOver,'font-weight: bold; color: #FF0000', 'font-weight: normal; color: #000000')}">
+                        <apex:outputText value="{0, number, USD 00.0}">
+                            <apex:param value="{!r.GiftNextYearYTD}" />
+                        </apex:outputText>
+                        <apex:facet name="header">Next Year Gift Amt Total</apex:facet>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:outputPanel>
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Revise Request" action="{!returnToPreApproval}" />
+            <apex:commandButton value="Submit Request" action="{!proceedToCongratulations}" />
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

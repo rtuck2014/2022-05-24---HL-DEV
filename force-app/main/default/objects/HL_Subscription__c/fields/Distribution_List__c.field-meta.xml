@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Distribution_List__c</fullName>
+    <description>This is name of the HL subscription. This has been replaced by Subscription Distribution List. Subscription Distribution List should be used, instead.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This is name of the HL subscription. This has been replaced by Subscription Distribution List. Subscription Distribution List should be used, instead.</inlineHelpText>
+    <label>Distribution List</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>A/R 60 Days</fullName>
+                <default>false</default>
+                <label>A/R 60 Days</label>
+            </value>
+            <value>
+                <fullName>Activity Notification</fullName>
+                <default>false</default>
+                <label>Activity Notification</label>
+            </value>
+            <value>
+                <fullName>ASC Banker Dashboard</fullName>
+                <default>false</default>
+                <label>ASC Banker Dashboard</label>
+            </value>
+            <value>
+                <fullName>ASC Friday BiWeekly Coverage Notification</fullName>
+                <default>false</default>
+                <label>ASC Friday BiWeekly Coverage Notification</label>
+            </value>
+            <value>
+                <fullName>ASC Friday BiWeekly Coverage Notification by Sector</fullName>
+                <default>false</default>
+                <label>ASC Friday BiWeekly Coverage Notification by Sector</label>
+            </value>
+            <value>
+                <fullName>ASC Friday Weekly Coverage Notification</fullName>
+                <default>false</default>
+                <label>ASC Friday Weekly Coverage Notification</label>
+            </value>
+            <value>
+                <fullName>ASC Friday Weekly Coverage Notification by Sector</fullName>
+                <default>false</default>
+                <label>ASC Friday Weekly Coverage Notification by Sector</label>
+            </value>
+            <value>
+                <fullName>ASC Group Head Dashboard</fullName>
+                <default>false</default>
+                <label>ASC Group Head Dashboard</label>
+            </value>
+            <value>
+                <fullName>ASC Monday BiWeekly Coverage Notification</fullName>
+                <default>false</default>
+                <label>ASC Monday BiWeekly Coverage Notification</label>
+            </value>
+            <value>
+                <fullName>ASC Monday BiWeekly Coverage Notification by Sector</fullName>
+                <default>false</default>
+                <label>ASC Monday BiWeekly Coverage Notification by Sector</label>
+            </value>
+            <value>
+                <fullName>ASC Monthly Coverage Notification</fullName>
+                <default>false</default>
+                <label>ASC Monthly Coverage Notification</label>
+            </value>
+            <value>
+                <fullName>ASC Monthly Coverage Notification CC</fullName>
+                <default>false</default>
+                <label>ASC Monthly Coverage Notification CC</label>
+            </value>
+            <value>
+                <fullName>ASC Monthly Opportunity Planning Notification</fullName>
+                <default>false</default>
+                <label>ASC Monthly Opportunity Planning Notification</label>
+            </value>
+            <value>
+                <fullName>ASC Monthly Opportunity Planning Notification CC</fullName>
+                <default>false</default>
+                <label>ASC Monthly Opportunity Planning Notification CC</label>
+            </value>
+            <value>
+                <fullName>ASC Tuesday BiWeekly Coverage Notification</fullName>
+                <default>false</default>
+                <label>ASC Tuesday BiWeekly Coverage Notification</label>
+            </value>
+            <value>
+                <fullName>ASC Tuesday BiWeekly Coverage Notification by Sector</fullName>
+                <default>false</default>
+                <label>ASC Tuesday BiWeekly Coverage Notification by Sector</label>
+            </value>
+            <value>
+                <fullName>ASC Tuesday Weekly Coverage Notification</fullName>
+                <default>false</default>
+                <label>ASC Tuesday Weekly Coverage Notification</label>
+            </value>
+            <value>
+                <fullName>ASC Tuesday Weekly Coverage Notification by Sector</fullName>
+                <default>false</default>
+                <label>ASC Tuesday Weekly Coverage Notification by Sector</label>
+            </value>
+            <value>
+                <fullName>ASC Weekly Coverage Notification</fullName>
+                <default>false</default>
+                <label>ASC Weekly Coverage Notification</label>
+            </value>
+            <value>
+                <fullName>ASC Weekly Coverage Notification by Sector</fullName>
+                <default>false</default>
+                <label>ASC Weekly Coverage Notification by Sector</label>
+            </value>
+            <value>
+                <fullName>ASC Weekly Coverage Notification CC</fullName>
+                <default>false</default>
+                <label>ASC Weekly Coverage Notification CC</label>
+            </value>
+            <value>
+                <fullName>ASC Weekly Industry Group Head</fullName>
+                <default>false</default>
+                <label>ASC Weekly Industry Group Head</label>
+            </value>
+            <value>
+                <fullName>ASC Weekly Notification By Sector</fullName>
+                <default>false</default>
+                <label>ASC Weekly Notification By Sector</label>
+            </value>
+            <value>
+                <fullName>ASC Weekly Sponsor Activity Notification</fullName>
+                <default>false</default>
+                <label>ASC Weekly Sponsor Activity Notification</label>
+            </value>
+            <value>
+                <fullName>ASC Weekly Sponsor Activity Notification CC</fullName>
+                <default>false</default>
+                <label>ASC Weekly Sponsor Activity Notification CC</label>
+            </value>
+            <value>
+                <fullName>CA Exception Report</fullName>
+                <default>false</default>
+                <label>CA Exception Report</label>
+            </value>
+            <value>
+                <fullName>CF Closed Engagement Notification</fullName>
+                <default>false</default>
+                <label>CF Closed Engagement Notification</label>
+            </value>
+            <value>
+                <fullName>CF Closed Engagements</fullName>
+                <default>false</default>
+                <label>CF Closed Engagements</label>
+            </value>
+            <value>
+                <fullName>CF Earnout</fullName>
+                <default>false</default>
+                <label>CF Earnout</label>
+            </value>
+            <value>
+                <fullName>CF Engagement Closed Notification</fullName>
+                <default>false</default>
+                <label>CF Engagement Closed Notification</label>
+            </value>
+            <value>
+                <fullName>CF Engagement Dead Notification</fullName>
+                <default>false</default>
+                <label>CF Engagement Dead Notification</label>
+            </value>
+            <value>
+                <fullName>CF Engagement Hold Notification</fullName>
+                <default>false</default>
+                <label>CF Engagement Hold Notification</label>
+            </value>
+            <value>
+                <fullName>CF Engagement Update Reminder</fullName>
+                <default>false</default>
+                <label>CF Engagement Update Reminder</label>
+            </value>
+            <value>
+                <fullName>CF Escrow</fullName>
+                <default>false</default>
+                <label>CF Escrow</label>
+            </value>
+            <value>
+                <fullName>CF Stage Update</fullName>
+                <default>false</default>
+                <label>CF Stage Update</label>
+            </value>
+            <value>
+                <fullName>CF Tail Earnout Escrow Past Due</fullName>
+                <default>false</default>
+                <label>CF Tail Earnout Escrow Past Due</label>
+            </value>
+            <value>
+                <fullName>CF Tail Expiration</fullName>
+                <default>false</default>
+                <label>CF Tail Expiration</label>
+            </value>
+            <value>
+                <fullName>Compliance Exam Status</fullName>
+                <default>false</default>
+                <label>Compliance Exam Status</label>
+            </value>
+            <value>
+                <fullName>Continuing Education Escalated</fullName>
+                <default>false</default>
+                <label>Continuing Education Escalated</label>
+            </value>
+            <value>
+                <fullName>Current Staffing Details</fullName>
+                <default>false</default>
+                <label>Current Staffing Details</label>
+            </value>
+            <value>
+                <fullName>Current Staffing Details with Agreed TB</fullName>
+                <default>false</default>
+                <label>Current Staffing Details with Agreed TB</label>
+            </value>
+            <value>
+                <fullName>Dead Engagement Notifications</fullName>
+                <default>false</default>
+                <label>Dead Engagement Notifications</label>
+            </value>
+            <value>
+                <fullName>Early Look - Final Report Email</fullName>
+                <default>false</default>
+                <label>Early Look - Final Report Email</label>
+            </value>
+            <value>
+                <fullName>Final Report Email</fullName>
+                <default>false</default>
+                <label>Final Report Email</label>
+            </value>
+            <value>
+                <fullName>FVA Closed Engagements</fullName>
+                <default>false</default>
+                <label>FVA Closed Engagements</label>
+            </value>
+            <value>
+                <fullName>FVA GEN REV Staffing Report</fullName>
+                <default>false</default>
+                <label>FVA GEN REV Staffing Report</label>
+            </value>
+            <value>
+                <fullName>FVA Special Project Notification</fullName>
+                <default>false</default>
+                <label>FVA Special Project Notification</label>
+            </value>
+            <value>
+                <fullName>FVA Special Project Notification Amount Specific</fullName>
+                <default>false</default>
+                <label>FVA Special Project Notification Amount Specific</label>
+            </value>
+            <value>
+                <fullName>Historical Staffing Details</fullName>
+                <default>false</default>
+                <label>Historical Staffing Details</label>
+            </value>
+            <value>
+                <fullName>HL Internal Team Change</fullName>
+                <default>false</default>
+                <label>HL Internal Team Change</label>
+            </value>
+            <value>
+                <fullName>HL Rehire Employee</fullName>
+                <default>false</default>
+                <label>HL Rehire Employee</label>
+            </value>
+            <value>
+                <fullName>HL Workday Import</fullName>
+                <default>false</default>
+                <label>HL Workday Import</label>
+            </value>
+            <value>
+                <fullName>JDE Vendor Duplicates</fullName>
+                <default>false</default>
+                <label>JDE Vendor Duplicates</label>
+            </value>
+            <value>
+                <fullName>Job Types Update</fullName>
+                <default>false</default>
+                <label>Job Types Update</label>
+            </value>
+            <value>
+                <fullName>Kickoff Email</fullName>
+                <default>false</default>
+                <label>Kickoff Email</label>
+            </value>
+            <value>
+                <fullName>New Deal by Industry</fullName>
+                <default>false</default>
+                <label>New Deal by Industry</label>
+            </value>
+            <value>
+                <fullName>Opportunity Exception Report</fullName>
+                <default>false</default>
+                <label>Opportunity Exception Report</label>
+            </value>
+            <value>
+                <fullName>PFG Activity</fullName>
+                <default>false</default>
+                <label>PFG Activity</label>
+            </value>
+            <value>
+                <fullName>Prelim Report Email</fullName>
+                <default>false</default>
+                <label>Prelim Report Email</label>
+            </value>
+            <value>
+                <fullName>PV Interested Parties Notification</fullName>
+                <default>false</default>
+                <label>PV Interested Parties Notification</label>
+            </value>
+            <value>
+                <fullName>Report Security Assignment</fullName>
+                <default>false</default>
+                <label>Report Security Assignment</label>
+            </value>
+            <value>
+                <fullName>SC Closed Engagements</fullName>
+                <default>false</default>
+                <label>SC Closed Engagements</label>
+            </value>
+            <value>
+                <fullName>Stale Opportunity</fullName>
+                <default>false</default>
+                <label>Stale Opportunity</label>
+            </value>
+            <value>
+                <fullName>Time Tracking - FR Staff</fullName>
+                <default>false</default>
+                <label>Time Tracking - FR Staff</label>
+            </value>
+            <value>
+                <fullName>Time Tracking - FR Supervisor</fullName>
+                <default>false</default>
+                <label>Time Tracking - FR Supervisor</label>
+            </value>
+            <value>
+                <fullName>Trade Balance</fullName>
+                <default>false</default>
+                <label>Trade Balance</label>
+            </value>
+            <value>
+                <fullName>Working Paper Files</fullName>
+                <default>false</default>
+                <label>Working Paper Files</label>
+            </value>
+            <value>
+                <fullName>WPF - Domestic Offices</fullName>
+                <default>false</default>
+                <label>WPF - Domestic Offices</label>
+            </value>
+            <value>
+                <fullName>WPF - International Offices</fullName>
+                <default>false</default>
+                <label>WPF - International Offices</label>
+            </value>
+            <value>
+                <fullName>Accounting Reports</fullName>
+                <default>false</default>
+                <label>Accounting Reports</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

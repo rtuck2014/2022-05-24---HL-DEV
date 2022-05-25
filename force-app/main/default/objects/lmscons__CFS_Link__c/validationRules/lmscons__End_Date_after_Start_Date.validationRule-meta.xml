@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__End_Date_after_Start_Date</fullName>
+    <active>true</active>
+    <description>Ensures that the end date is after the end date, when both are set</description>
+    <errorConditionFormula>AND(NOT(ISBLANK(lmscons__Start_Date__c)), NOT(ISBLANK(lmscons__End_Date__c)), lmscons__Start_Date__c &gt; lmscons__End_Date__c)</errorConditionFormula>
+    <errorDisplayField>lmscons__End_Date__c</errorDisplayField>
+    <errorMessage>End date must  be after Start date</errorMessage>
+</ValidationRule>

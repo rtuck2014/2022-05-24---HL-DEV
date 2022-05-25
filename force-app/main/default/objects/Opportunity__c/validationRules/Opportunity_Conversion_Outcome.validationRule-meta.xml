@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Conversion_Outcome</fullName>
+    <active>false</active>
+    <errorConditionFormula>((NOT(ISPICKVAL(Conflicts_Check_Outcome__c, &apos;Managed&apos;) || ISPICKVAL(Conflicts_Check_Outcome__c, &apos;Cleared&apos;)) || 
+TODAY() - Conflicts_Check_Outcome_Date__c &gt; 30) &amp;&amp; 
+Converted_to_Engagement__c)</errorConditionFormula>
+    <errorDisplayField>Conflicts_Check_Outcome__c</errorDisplayField>
+    <errorMessage>For an Opportunity to become Engaged, Conflicts Check Outcome must be Cleared or Managed within the last 30 days.</errorMessage>
+</ValidationRule>

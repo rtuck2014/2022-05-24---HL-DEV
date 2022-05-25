@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Fee_Ratchet__c</fullName>
+    <externalId>false</externalId>
+    <formula>First_Ratchet_Total__c + Second_Ratchet_Total__c + Third_Ratchet_Total__c + Fourth_Ratchet_Total__c + Final_Ratchet_Total__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Fee Ratchet</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

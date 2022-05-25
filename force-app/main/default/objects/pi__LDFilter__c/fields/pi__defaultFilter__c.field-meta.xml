@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pi__defaultFilter__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>boolean to determine whether this is this a default filter</description>
+    <externalId>false</externalId>
+    <inlineHelpText>boolean to determine whether this is this a default filter</inlineHelpText>
+    <label>Default Filter</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

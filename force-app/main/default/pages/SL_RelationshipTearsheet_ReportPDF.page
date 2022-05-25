@@ -1,0 +1,8 @@
+<apex:page id="MainPage" showHeader="false" cache="true" contentType="application/x-pdf#contact-tearsheet.pdf">
+
+    <apex:include pageName="SL_RelationshipTearsheet_Report"/>
+    <script>
+    window.close();
+    </script>
+    
+</apex:page>

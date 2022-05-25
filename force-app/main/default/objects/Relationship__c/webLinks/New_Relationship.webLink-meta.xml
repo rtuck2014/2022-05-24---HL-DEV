@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Relationship</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>New Relationship</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>var contactRT = &quot;{!Contact.RecordTypeId}&quot;;
+
+if(contactRT==&quot;012i0000000tEhe&quot;){
+navigateToUrl(&apos;/a00/e?CF00Ni000000D731K={!JSENCODE(Contact.Name)}&amp;CF00Ni000000D731K_lkid={!Contact.Id}&amp;retURL=/{!Contact.Id}&amp;saveURL=/{!Contact.Id}&apos;);
+}
+else
+{
+navigateToUrl(&apos;/a00/e?CF00Ni000000D731P={!JSENCODE(Contact.Name)}&amp;CF00Ni000000D731P_lkid={!Contact.Id}&amp;retURL=/{!Contact.Id}&amp;saveURL=/{!Contact.Id}&apos;);
+}</url>
+</WebLink>

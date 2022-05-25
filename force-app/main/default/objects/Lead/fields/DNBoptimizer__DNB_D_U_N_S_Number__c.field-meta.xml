@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__DNB_D_U_N_S_Number__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Upon successful match, Optimizer populates this field and references it for future refreshes. The Dun &amp; Bradstreet D-U-N-S® Number is an identification number assigned by Dun &amp; Bradstreet that uniquely identifies the entity in accordance with the Data Universal Numbering System (D-U-N-S).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Upon successful match, Optimizer populates this field and references it for future refreshes. It is an identification number assigned by Dun &amp; Bradstreet that uniquely identifies the entity based on the Data Universal Numbering System (D-U-N-S).</inlineHelpText>
+    <label>D&amp;B DUNS Number</label>
+    <length>9</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

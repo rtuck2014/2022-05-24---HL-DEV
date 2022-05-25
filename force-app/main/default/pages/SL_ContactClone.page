@@ -1,0 +1,3 @@
+<apex:page standardController="Contact" extensions="SL_ContactClone" action="{!cloneContact}" lightningStylesheets="true">
+<apex:slds />
+</apex:page>

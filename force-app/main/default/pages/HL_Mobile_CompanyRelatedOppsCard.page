@@ -1,0 +1,94 @@
+<apex:page standardController="Account" docType="html-5.0" sidebar="false" showHeader="false" standardStylesheets="false" lightningStyleSheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_MobileCSS)}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_MobileCSS)}"></apex:stylesheet>
+    <style>
+        body{background-color: white; color: #3c3d3e;}
+        .mobile-card {margin-left: 13px;}
+        ul.card-list{list-style: none; color: font-family:'ProximaNovaSoft-Regular'; padding: 0px;}
+        ul.card-list li h4 {font-size: 18px; font-family:'ProximaNovaSoft-Regular'; color:#3c3d3e; margin: 5px;}
+        ul.card-list li h5 {font-size: 12px; font-weight: normal; font-family:'ProximaNovaSoft-Regular'; color:#3c3d3e; margin: 5px;}
+    </style>
+    <apex:remoteObjects jsNamespace="RemoteObjectModel">
+        <apex:remoteObjectModel name="Opportunity_Client_Subject__c" fields="Opportunity__c,Opportunity_Name__c,Opportunity_Client_Name__c,Opportunity_Subject_Name__c,Opportunity_Status__c,Client_Subject__c" jsShorthand="OpportunityClientSubject"></apex:remoteObjectModel>
+    </apex:remoteObjects>
+    <input id="accountId" type="hidden" value="{!Id}" /> 
+    <div class="mobile-card">
+        <div class="container">
+    <div class="row">
+        <div class="col-sm-1">
+            <button id="btnActivities" class="button-relatedlist"><table>
+                <tr><td><img class="icon uiImage relatedList" title="" alt="" height="38px" style="background-color:#49bcd3; border-radius: 3px;" src="{!URLFOR($Resource.HL_Images,'icon-opportunity.png')}"/></td><td class="header-label">Opportunities</td></tr>
+                </table>
+            </button>  
+        </div>
+        </div>
+    </div>  
+    </div>
+    <hr />
+    <ul id="oppsList" class="card-list"></ul>
+    <span id="noResults" style="display: none;"><h4>No Opportunities to Display</h4></span>
+   <script src="/soap/ajax/9.0/connection.js" type="text/javascript"></script>
+   <script>
+        $j = jQuery.noConflict();
+        $j(document).ready(function () {
+            DocumentReady();
+        });      
+        function DocumentReady(){
+            var accountId = $j("#accountId").val();
+            var opportunityCS = new RemoteObjectModel.OpportunityClientSubject();
+            
+            //Query the OpportunityClientSubjects for the Current Account
+            opportunityCS.retrieve({where: {
+                                       Client_Subject__c: {eq: accountId},
+                                       Opportunity_Status__c: {ne: 'Engaged'}
+                                    },
+                                    orderby: [ {Opportunity_Name__c: 'ASC'} ],
+                                    limit: 100
+                                   }, function(err, records, event){
+                if(err){alert(err);}
+                else{
+                    var oppIds = [];
+                    var ul = document.getElementById("oppsList");
+                    if(records.length > 0){
+                        records.forEach(function(record) {
+                            var oppId = record.get("Opportunity__c");
+                            if(oppIds.indexOf(oppId) < 0){
+                                // Build the text for an opportunity line item
+                                var oppText = record.get("Opportunity_Name__c");
+                                var clientText = record.get("Opportunity_Client_Name__c");
+                                var subjectText = record.get("Opportunity_Subject_Name__c");
+                                var statusText = record.get("Opportunity_Status__c");
+                                // Add the line item to the opps list
+                                var li = document.createElement("li");
+                                var h4 = document.createElement("h4");
+                                var h5Client = document.createElement("h5");
+                                var h5Subject = document.createElement("h5");
+                                var h5Status = document.createElement("h5");
+                                h4.appendChild(document.createTextNode(oppText));
+                                h5Client.appendChild(document.createTextNode('Client: ' + clientText));
+                                h5Subject.appendChild(document.createTextNode('Subject: ' + subjectText));
+                                h5Status.appendChild(document.createTextNode('Status: '+ statusText));
+                                li.appendChild(h4);
+                                li.appendChild(h5Client);
+                                li.appendChild(h5Subject);
+                                li.appendChild(h5Status);
+                                li.appendChild(document.createElement("hr"));
+                                li.onclick = function(){
+                                     NavigateToOpportunity(oppId);  
+                                };
+                                ul.appendChild(li);
+                                oppIds.push(record.get("Opportunity__c"));
+                            }
+                        });   
+                    }
+                    else
+                        $j("#noResults").show();
+                }
+            });
+        }
+        function NavigateToOpportunity(oppId){
+            sforce.one.navigateToSObject(oppId);
+        }
+        </script>
+</apex:page>

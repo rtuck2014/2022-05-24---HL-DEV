@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SC_Assist</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL(SC_Assistance_Benefit__c, &apos;No&apos;) &amp;&amp;
+NOT(ISBLANK(SC_Contact__c))</errorConditionFormula>
+    <errorDisplayField>SC_Contact__c</errorDisplayField>
+    <errorMessage>Strategic Consulting (SC) Contact must be blank if SC Assistance Benefit is &apos;No.&apos;</errorMessage>
+</ValidationRule>

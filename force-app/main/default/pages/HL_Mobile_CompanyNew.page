@@ -1,0 +1,189 @@
+<apex:page docType="html-5.0" lightningStyleSheets="true">
+<c:importvisualstrap /> 
+<apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery.maskedinput.min.js')}"/>
+    <style>
+   input{
+        text-transform: capitalize;
+    }
+    .website{
+        text-transform: lowercase;
+    }
+    .container {
+        font-family: "ProximaNovaSoft-Regular", Calibri; 
+        font-size: 110%;
+        padding-top: 12px;
+        margin: 4px;
+        width: 100%;
+    }
+    .container input[type=text],.container select {
+        font-size: 18px;
+        width: 100%;
+        height: 35px;
+        -webkit-appearance: none;
+        margin: 4px 0;
+        line-height: 21px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        outline: none;
+    }
+    
+    .container button {
+        -webkit-appearance: button;
+        border-radius: 3px;
+        display: block;
+        padding: 12px;
+        margin: 4px 0;
+        width: 100%;
+        background: #eee;
+        border: solid 1px #ccc;
+        font-size: 18px;
+    }
+</style>
+    <apex:remoteObjects jsNamespace="RemoteObjectModel">
+        <apex:remoteObjectModel name="Account" fields="RecordTypeId, Name, BillingStreet, BillingCity, BillingState, BillingPostalCode, BillingCountry, Phone, Fax, Website"></apex:remoteObjectModel>
+        <apex:remoteObjectModel name="Postal_Code__c" fields="CITY__c,COUNTY__c,STATE__c,ZIPCODE__c" jsShorthand="PostalCode"></apex:remoteObjectModel>
+        <apex:remoteObjectModel name="RecordType" fields="Id, DeveloperName"></apex:remoteObjectModel>
+    </apex:remoteObjects>
+        <div class="container">
+            Company Type:
+            <select id="recordType" tabindex="1">
+                <option value="Operating_Company">Operating Company</option>
+                <option value="Capital_Provider">Capital Provider</option>
+            </select>
+            Company Name*:
+            <input type="text" id="companyName" tabindex="2"/>
+            Street:
+            <input type="text" id="street" tabindex="3"/>
+            City:
+            <input type="text" id="city" tabindex="5"/>
+            State/Province:
+            <input type="text" id="state" tabindex="6"/>
+            Zip/Postal Code:
+            <input type="text" id="postalCode" onchange="postalCodeLookup()" tabindex="4"/>
+            Country:
+            <input type="text" id="country" tabindex="7"/>
+            Phone:
+            <input type="text" id="phone" tabindex="8"/>
+            Fax:
+            <input type="text" id="fax" tabindex="9"/>
+            Website:
+            <input type="text" id="website" tabindex="10" class="website"/>
+            <button id="btnCreateCompany" onclick="createCompany()">Create Company</button>
+        </div>
+    <script>
+        String.prototype.capitalize = function() {
+            return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        }
+        $j = jQuery.noConflict();
+        $j(document).ready(function () {
+            DocumentReady();
+        });    
+        function postalCodeLookup(){
+            var postalCode = document.getElementById("postalCode").value;
+            var ct = new RemoteObjectModel.PostalCode();
+            
+            if(postalCode.length >= 5)
+            {
+                postalCode = postalCode.substring(0,5);
+                // Empty callback functions for simplicity
+                ct.retrieve({where: {ZIPCODE__c: {eq: postalCode }}}, function(err, records) {
+                    if (err) { 
+                        alert(err); 
+                    } 
+                    else { 
+                        if(records.length > 0)
+                        {
+                            if(records.length === 1){
+                                SelectZip(records,0);
+                            }
+                            else{
+                               SelectZip(records,0);
+                               var target = $j(this),
+                                short = target.attr( "id" ),
+                                closebtn = '<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>',
+                                header = '<div data-role="header"><h2>Select City</h2></div>',
+                                popup = '<div data-role="popup" id="popup-' + short + '" data-short="' + short +'" data-theme="none" data-overlay-theme="a" data-corners="false" data-tolerance="15"></div>';
+                            var selections = '<table class="selections">';
+                            for(var i = 0; i < records.length; i++){
+                                selections += '<tr><td><input type="button" value="Select" class="selectCity" onclick="SelectCity(' + i + ');"</input></td><td>' + records[i].get('CITY__c') + '</td><td>' + records[i].get('STATE__c') + '</td></tr>';
+                            }
+                            selections += '</table>'; 
+                            //Create the popup
+                            $j(header).appendTo($j(popup).appendTo($j.mobile.activePage).popup());
+                            //.toolbar()
+                            //.before(closebtn)
+                            //.after(selections);
+                            //alert(selections);
+                            //Wait with opening the popup until it has loaded in the DOM.
+                            //This ensures the popup gets the correct size and position
+                                //$j(".selections","#popup-" + short).load(function(){
+                                //Open the popup
+                                //$j("#popup-" + short).popup("open");
+                                //clear the fallback
+                                //clearTimeout(fallback);
+                                //});
+                            //Fallback in case the browser doesn't fire a load event
+                                //var fallback = setTimeout(function() {
+                                //$j("#popup-" + short).popup("open");
+                                //},2000);
+                                //}
+                           }
+                       }
+                    }               
+                }); 
+             }
+        }
+        function DocumentReady(){
+            $j("#phone,#fax").blur(function(){
+                if($j(this).val().length == 10){
+                    $j(this).mask("(999) 999-9999");
+                }
+            });
+            $j("#phone,#fax").focus(function(){
+                $j(this).unmask(); 
+            });
+        }
+        function createCompany() {
+            if(ValidateCompanyFields()){
+                $j("#btnCreateCompany").attr('disabled','disabled');
+                var recordTypeName = document.getElementById("recordType").value;
+                var companyName = document.getElementById("companyName").value.capitalize();
+                var street = document.getElementById("street").value;
+                var city = document.getElementById("city").value.capitalize();
+                var state = document.getElementById("state").value.toUpperCase();
+                var postalCode = document.getElementById("postalCode").value;
+                var country = document.getElementById("country").value;
+                var phone = document.getElementById("phone").value;
+                var fax = document.getElementById("fax").value;
+                var website = document.getElementById("website").value;
+                var account = new RemoteObjectModel.Account();
+                var recordTypeId;
+                var recordType = new RemoteObjectModel.RecordType();
+                recordType.retrieve({where: {DeveloperName: {eq: recordTypeName }}}, function(err,records,event) {
+                    recordTypeId = records[0].get("Id"); 
+                    account.create({RecordTypeId: recordTypeId, Name: companyName, BillingStreet: street, BillingCity: city, BillingState: state, BillingPostalCode: postalCode, BillingCountry: country, Phone: phone, Fax: fax, Website: website}, function(error, records) {
+                    if (error) {
+                        alert(error.message);
+                        $j("#btnCreateCompany").removeAttr('disabled');
+                    } else {
+                       sforce.one.navigateToSObject(records[0]);
+                    }
+                });
+                });  
+             }
+             else{
+                alert('Missing Required Fields');   
+             }
+        }
+        function SelectZip(result, index){
+             document.getElementById("city").value = result[index].get('CITY__c');
+             document.getElementById("state").value = result[index].get('STATE__c');
+             document.getElementById("country").value = 'USA';
+        }
+        function ValidateCompanyFields(){
+            return $j("#companyName").val() != ''
+        }
+    </script>
+</apex:page>

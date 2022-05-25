@@ -1,0 +1,356 @@
+<apex:page showHeader="false" sidebar="false" docType="html-5.0" applyBodyTag="false" applyHtmlTag="false" standardStylesheets="false" controller="MobileController" lightningStylesheets="true">
+<html>
+    <head>
+        <title>Learning</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />        
+        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.CFS_Mobile, 'css/bootstrap.min.css')}" />
+        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.CFS_Mobile, 'css/bootstrap-additions.min.css')}" />
+        <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.CFS_Mobile, 'css/overrides.css')}" />
+                
+        <script>
+            var apiPath = {
+                getConstants: {
+                    url: '{!$RemoteAction.MobileController.getConstants}',
+                    noParam: true
+                },
+                getMyLearning: {
+                    url: '{!$RemoteAction.MobileController.getMyLearningModel}'
+                },
+                getFindLearning: {
+                    url: '{!$RemoteAction.MobileController.getFindLearningModel}'
+                },
+                getCompletedLearning: {
+                    url: '{!$RemoteAction.MobileController.getCompletedLearningModel}'
+                },
+                getContainerDetails: {
+                    url: '{!$RemoteAction.MobileController.getContainerDetailsModel}'
+                },
+                getModuleDetails: {
+                    url: '{!$RemoteAction.MobileController.getDetailsModel}'
+                },
+                doEnroll: {
+                    url: '{!$RemoteAction.MobileController.enroll}',
+                    useCache: false
+                },
+                getLaunch: {
+                    url: '{!$RemoteAction.MobileController.getLaunchModel}',
+                    useCache: false
+                },
+                getQuizLaunchModel: {
+                    url: '{!$RemoteAction.MobileController.getQuizLaunchModel}',
+                    useCache: false,
+                    stateKey: false
+                },
+                saveTemporaryQuizAnswers: {
+                    url: '{!$RemoteAction.MobileController.saveTemporaryQuizAnswers}',
+                    useCache: false,
+                    stateKey: false
+                },
+                submitQuiz: {
+                    url: '{!$RemoteAction.MobileController.submitQuiz}',
+                    useCache: false,
+                    stateKey: false
+                }
+            };
+        </script>
+        
+        <script data-main="{!URLFOR($Resource.CFS_Mobile, 'js/build.js')}" src="{!URLFOR($Resource.CFS_Mobile, 'js/lib/require.js')}"></script>
+    </head>
+    
+    <body ng-controller="AppCtrl" ng-class="{iphone: util.isIphone}">
+        <app-header></app-header>
+        
+        <div class="content">
+            <div class="ng-view"></div>
+        </div>
+        
+        <div class="page-loader" ng-show="isBusy"></div>
+        
+        <script type="text/ng-template" id="app-header">
+            <header id="header">
+                <div ng-show="pageManager.isTopPage(currentPage)">
+                    <div class="toggle-search" ng-class="{opened: !state.searchVisible}"><span></span></div>
+                    <div class="header-dropdowns">
+                        <div class="custom-dropdown">
+                            <p class="current dropdown-toggle" ng-bind="labels.getLabel(currentPage)"></p>
+                            <ul>
+                                <li ng-hide="currentPage === CONSTANTS.MY_LEARNING_PAGE"><a href="" ng-bind="labels.getLabel(CONSTANTS.MY_LEARNING_PAGE)" ng-click="pageManager.goToPage('/')"></a></li>
+                                <li ng-hide="currentPage === CONSTANTS.FIND_LEARNING_PAGE"><a href="" ng-bind="labels.getLabel(CONSTANTS.FIND_LEARNING_PAGE)" ng-click="pageManager.goToPage('/FindLearning')"></a></li>
+                                <li ng-hide="currentPage === CONSTANTS.COMPLETED_LEARNING_PAGE"><a href="" ng-bind="labels.getLabel(CONSTANTS.COMPLETED_LEARNING_PAGE)" ng-click="pageManager.goToPage('/CompletedLearning')"></a></li>
+                            </ul>
+                        </div>
+                        <div class="custom-dropdown">
+                            <p class="current dropdown-toggle" ng-bind="labels.getLabel(state.orderBy)"></p>
+                            <ul>
+                                <li ng-hide="state.orderBy === CONSTANTS.ORDER_BY_TITLE_ASCENDING">
+                                    <a href="" data-order-by="{{CONSTANTS.ORDER_BY_TITLE_ASCENDING}}" data-ascending="true" ng-click="filter($event)" ng-bind="labels.getLabel(CONSTANTS.ORDER_BY_TITLE_ASCENDING)"></a>
+                                </li>
+                                <li ng-hide="state.orderBy === CONSTANTS.ORDER_BY_TITLE_DESCENDING">
+                                    <a href="" data-order-by="{{CONSTANTS.ORDER_BY_TITLE_DESCENDING}}" data-ascending="false" ng-click="filter($event)" ng-bind="labels.getLabel(CONSTANTS.ORDER_BY_TITLE_DESCENDING)"></a>
+                                </li>
+                                <li ng-hide="state.orderBy === CONSTANTS.ORDER_BY_TYPE">
+                                    <a href="" data-order-by="{{CONSTANTS.ORDER_BY_TYPE}}" data-ascending="true" ng-click="filter($event)" ng-bind="labels.getLabel(CONSTANTS.ORDER_BY_TYPE)"></a>
+                                </li>
+                                <li ng-hide="state.orderBy === CONSTANTS.ORDER_BY_STATUS || currentPage !== CONSTANTS.MY_LEARNING_PAGE">
+                                    <a href="" data-order-by="{{CONSTANTS.ORDER_BY_STATUS}}" data-ascending="true" ng-click="filter($event)" ng-bind="labels.getLabel(CONSTANTS.ORDER_BY_STATUS)"></a>
+                                </li>
+                                <li ng-hide="state.orderBy === CONSTANTS.ORDER_BY_DUE_DATE || currentPage !== CONSTANTS.MY_LEARNING_PAGE">
+                                    <a href="" data-order-by="{{CONSTANTS.ORDER_BY_DUE_DATE}}" data-ascending="true" ng-click="filter($event)" ng-bind="labels.getLabel(CONSTANTS.ORDER_BY_DUE_DATE)"></a>
+                                </li>
+                                <li ng-hide="state.orderBy === CONSTANTS.ORDER_BY_DURATION || currentPage !== CONSTANTS.FIND_LEARNING_PAGE">
+                                    <a href="" data-order-by="{{CONSTANTS.ORDER_BY_DURATION}}" data-ascending="true" ng-click="filter($event)" ng-bind="labels.getLabel(CONSTANTS.ORDER_BY_DURATION)"></a>
+                                </li>
+                                <li ng-hide="state.orderBy === CONSTANTS.ORDER_BY_COMPLETION || currentPage !== CONSTANTS.COMPLETED_LEARNING_PAGE">
+                                    <a href="" data-order-by="{{CONSTANTS.ORDER_BY_COMPLETION}}" data-ascending="true" ng-click="filter($event)" ng-bind="labels.getLabel(CONSTANTS.ORDER_BY_COMPLETION)"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <back-btn ng-hide="pageManager.isTopPage(currentPage) || currentPage === CONSTANTS.QUIZ_PAGE || currentPage === CONSTANTS.ERROR_PAGE" back-text="Back" ng-class="'button-back'"></back-btn>
+                <back-btn ng-show="currentPage === CONSTANTS.QUIZ_PAGE" back-text="Cancel"></back-btn>
+                
+                <div ng-show="showScrollToTop && !isBusy && pageManager.isScrolablePage" ng-click="goToTop('header')" class="back-to-top">Back To Top</div>
+            </header>
+            
+            <div class="inline-search-form" ng-show="pageManager.isTopPage(currentPage) && !state.searchVisible">
+                <form ng-submit="submitSearch()">
+                    <button type="submit" class="search-submit">Go</button>
+                    <div class="wrapper">
+                        <input type="text" ng-model="state.currentSearchStr" placeholder="Enter search term..." class="search-field" />
+                    </div>
+                </form>
+            </div>
+        </script>
+        
+        <script type="text/ng-template" id="learning">
+            <div class="total-size" ng-show="!isBusy && filteredItems.length.toString().length">
+                <span ng-bind="filteredItems.length + ' ' + CONSTANTS.RESULT_SINGLE" ng-show="filteredItems.length === 1"></span>
+                <span ng-bind="filteredItems.length + ' ' + CONSTANTS.RESULT_MULTIPLE" ng-hide="filteredItems.length === 1"></span>
+            </div>
+            
+            <div ng-hide="isBusy">
+                <div class="no-results" ng-hide="filteredItems.length">
+                    <p>No results found<span ng-hide="currentPage === CONSTANTS.FIND_LEARNING_PAGE"> in <span ng-bind="labels.getLabel(currentPage)"></span></span>.</p>
+                    <a ng-href="#/FindLearning{{state.searchStr ? '?q=' + state.searchStr : ''}}" class="button" ng-hide="currentPage == CONSTANTS.FIND_LEARNING_PAGE" ng-bind="labels.getLabel(CONSTANTS.FIND_LEARNING_PAGE)"></a>
+                </div>
+            </div>
+            
+            <ul class="ui-listview">
+                <li ng-repeat="item in filteredItems = (model.items | filterItems:state.searchStr | customOrder:state.orderBy:state.ascending)">
+                    <a ng-href="{{itemBuilder.buildUrl(item, pageManager.isTopPage(currentPage))}}" class="item-btn" ng-init="item = item" ng-include="'itemDetails'"></a>
+                </li>
+            </ul>
+        </script>
+        
+        <!-- Item template -->
+        <script type="text/ng-template" id="itemDetails">
+            <div ng-class="'{{itemBuilder.buildCls(item)}}'">
+                <span ng-bind-html="item.title | trustHtml"></span>
+                <br>
+            </div>
+            <div class="item-desc">
+                <span ng-show="item.durationFormatted != null && item.durationFormatted != ''" ng-bind="item.durationFormatted"></span>
+                <span ng-show="(item.durationFormatted != null && item.durationFormatted != '') && (item.description != null && item.description != '')">-&nbsp;</span>
+                <pre ng-bind-html="item.description | trustHtml"></pre>
+                <br>
+            </div>
+            <div class="item-stats" ng-show="!item.needRefresh">
+                <label>
+                    <span ng-show="item.status == CONSTANTS.NOT_STARTED_STATUS || item.status == CONSTANTS.FAILED_STATUS">
+                        <span ng-bind="item.status"></span>
+                        <span ng-hide="item.dueDateFormatted == null || item.dueDateFormatted == ''"> | 
+                            <span ng-class="{red: item.isDueDatePassed}">Due: <span ng-bind="item.dueDateFormatted"></span></span>
+                        </span>
+                    </span>
+                    
+                    <span ng-show="item.status == CONSTANTS.IN_PROGRESS_STATUS && item.objectType != CONSTANTS.MODULE_TYPE">
+                        <span ng-bind="item.progress + '%'"></span>
+                        <span ng-hide="item.dueDateFormatted == null || item.dueDateFormatted == ''"> | 
+                            <span ng-class="{red: item.isDueDatePassed}">Due: <span ng-bind="item.dueDateFormatted"></span></span>
+                        </span>
+                    </span>
+                    
+                    <span ng-show="(item.status == CONSTANTS.COMPLETED_STATUS) && item.objectType != CONSTANTS.MODULE_TYPE">
+                        <span ng-bind="item.status"></span><span ng-hide="item.completedDateFormatted == null || item.completedDateFormatted == ''">: <span ng-bind="item.completedDateFormatted"></span>
+                        </span>
+                    </span>
+                    
+                    
+                    <!-- Specially for the module -->
+                    <span ng-show="item.objectType == CONSTANTS.MODULE_TYPE && item.status == CONSTANTS.IN_PROGRESS_STATUS">
+                        <span ng-bind="item.status"></span>
+                        <span ng-hide="item.dueDateFormatted == null || item.dueDateFormatted == ''"> | 
+                            <span ng-class="{red: item.isDueDatePassed}">Due: <span ng-bind="item.dueDateFormatted"></span></span>
+                        </span>
+                    </span>
+                    
+                    <span ng-show="(item.objectType == CONSTANTS.MODULE_TYPE || item.objectType == CONSTANTS.QUIZ_TYPE) && util.isModuleCompleted(item.status)">
+                        <span ng-bind="item.status"></span><span ng-hide="item.completedDateFormatted == null || item.completedDateFormatted == ''">: <span ng-bind="item.completedDateFormatted"></span>
+                            <span ng-hide="item.score == null || item.score == ''" ng-bind=" ' | Score: ' + item.score"></span>
+                        </span>
+                    </span>
+                </label>
+            </div> 
+        </script>
+        
+        <script type="text/ng-template" id="containerDetails">
+            <div ng-repeat="parent in model.parents">
+                <div ng-init="item = parent" ng-include="'itemDetails'"></div>
+            </div>
+            
+            <enroll enroll-model="model.parent" model="model"></enroll>
+            
+            <div class="total-size" ng-show="filteredItems.length >= 0">
+                <span ng-bind="filteredItems.length + ' ' + CONSTANTS.LEARNING_OBJECT_SINGLE" ng-show="filteredItems.length === 1"></span>
+                <span ng-bind="filteredItems.length + ' ' + CONSTANTS.LEARNING_OBJECT_MULTIPLE" ng-hide="filteredItems.length === 1"></span>
+            </div>
+            
+            <div ng-hide="isBusy">
+                <div class="no-results" ng-hide="filteredItems.length">
+                    <p>No mobile learning found</p>
+                </div>
+            </div>
+            
+            <ul class="ui-listview">
+                <li ng-repeat="item in filteredItems = (model.items | customOrder:CONSTANTS.ORDER_BY_SEQUENCE:true)">
+                    <a ng-href="{{itemBuilder.buildUrl(item, pageManager.isTopPage(currentPage))}}" class="item-btn" ng-class="{completed: item.status == CONSTANTS.COMPLETED_STATUS}" ng-init="item = item" ng-include="'itemDetails'"></a>
+                </li>
+            </ul>
+        </script>
+        
+        <script type="text/ng-template" id="details">
+            <div ng-repeat="item in model.items">
+                <div ng-init="item = item" ng-include="'itemDetails'"></div>
+            </div>
+            
+            <launch ng-show="model.item.objectType === CONSTANTS.MODULE_TYPE"></launch>
+            <launch ng-show="model.item.objectType === CONSTANTS.QUIZ_TYPE" quiz-page="/QuizMobile"></launch>
+            
+            <div ng-show="model.assigned && !model.canLaunch">
+                <a href="" class="button disabled">Launch</a>
+            </div>
+            
+            <div ng-show="needRefresh">
+                <br/>
+                <br/>
+                <p>Please click Refresh to update status</p>
+                <button ng-click="refresh()" class="button">Refresh</button>
+            </div>
+            
+            <enroll enroll-model="model.item" model="model"></enroll>
+        </script>
+        
+        <script type="text/ng-template" id="quiz">
+            <div class="quiz-buttons" ng-hide="submittedMessage">
+                <button ng-hide="currentPage <= 0" ng-click="back()" class="button-head button-right">Back</button>
+                <button ng-hide="currentPage >= lastPage" ng-click="next()" class="button-head button-right">Next</button>
+            </div>
+            <div class="img-quiz">
+                <span ng-bind="model.title"></span>
+            </div>
+            <div class="quiz-elements">
+                <form ng-hide="submittedMessage">
+                    <div ng-repeat="question in model.questions | quizStartFrom:currentPage | limitTo:pageSize track by question.id" class="quiz-question" ng-hide="question.questionType === CONSTANTS.QUESTION_TYPE_PAGE_BREAK">
+                        <p class="question-title">
+                            <span ng-bind="question.sequenceNumber + '.'" ng-show="question.showNumber"></span> <span ng-bind="question.title"></span>
+                        </p>
+                        <div ng-include="question.templateUrl" class="question-body"></div>
+                        <button type="button" class="button" ng-show="currentPage >= lastPage" ng-disabled="emptyQuestions.length" ng-click="submitQuiz()">Submit</button>
+                    </div>
+                </form>
+                <div ng-show="submittedMessage">
+                    <p ng-bind="submittedMessage"></p>
+                </div>
+            </div>
+        </script>
+        
+        <!-- quiz elements -->
+        <script type="text/ng-template" id="multi-select">
+            {{question.selectedAnswers}}
+            <div ng-repeat="answer in question.answers track by answer.id" ng-init="validateQuestions(question.selectedAnswers, question.id)">
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" class="checkbox" name="{{question.id}}" ng-change="toggleMultiSelect(question, answer)" ng-model="answer.checked" />
+                        <span ng-bind="answer.answer"></span>
+                    </label>
+                </div>
+            </div>
+        </script>
+        
+        <script type="text/ng-template" id="single-select">
+            {{question.selectedAnswers}}
+            <div ng-repeat="answer in question.answers track by answer.id" ng-init="setInitialRadio(question); validateQuestions(question.selectedAnswers, question.id)">
+                <div class="form-group">
+                    <label>
+                        <input type="radio" class="radio" name="{{question.id}}" ng-model="question.selectedAnswers[0]" ng-value="answer" ng-change="toggleRadio(question, answer)" />
+                        <span ng-bind="answer.answer"></span>
+                    </label>
+                </div>
+            </div>
+        </script>
+        
+        <script type="text/ng-template" id="true-false">
+            <p>{{question.selectedAnswers}}</p>
+            <div ng-repeat="answer in question.answers track by answer.id" ng-init="setInitialRadio(question); validateQuestions(question.selectedAnswers, question.id)">
+                <div class="form-group">
+                    <label>
+                        <input type="radio" class="radio" name="{{question.id}}" ng-model="question.selectedAnswers[0]" ng-value="answer" ng-change="toggleRadio(question, answer)" />
+                        <span ng-bind="answer.answer"></span>
+                    </label>
+                </div>
+            </div>
+        </script>
+        
+        <script type="text/ng-template" id="free-text-true">
+            {{question.freeTextAnswer}}
+            <div class="form-group">
+                <textarea class="form-control" ng-model="question.freeTextAnswer" model-blur="saveAnswers(question)"></textarea>
+            </div>
+        </script>
+        
+        <script type="text/ng-template" id="free-text-false">
+            {{question.freeTextAnswer}}
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="question.freeTextAnswer" model-blur="saveAnswers(question)" />
+            </div>
+        </script>
+        
+        <script type="text/ng-template" id="empty-type">
+            empty type
+        </script>
+        
+        <script type="text/ng-template" id="page-break">
+            page break
+        </script>
+        <!-- end quiz elements -->
+        
+        <script type="text/ng-template" id="alert.tpl">
+            <div class="alert" tabindex="-1" ng-class="[type ? 'alert-' + type : null]">
+              <button type="button" class="close" ng-if="dismissable" ng-click="$hide()">&times;</button>
+              <strong ng-bind="title"></strong>&nbsp;<span ng-bind-html="content"></span>
+            </div>
+        </script>
+        
+        <script type="text/ng-template" id="error">
+            <pre ng-bind="errorMessage"></pre>
+            <!-- <button ng-click="refresh()" class="button">Refresh</button> -->
+        </script>
+        
+        <script type="text/ng-template" id="launch">
+            <div>
+                <button class="button" ng-class="{disabled: isLoading}" ng-disabled="isLoading" ng-show="model.assigned && model.canLaunch && !needRefresh">Launch</button>
+            </div>
+        </script>
+        
+        <script type="text/ng-template" id="enroll">
+            <button class="button" data-id="{{enrollModel.id}}" data-type="{{enrollModel.objectType}}" ng-show="model.canEnroll">Enroll</button>
+        </script>
+        
+        <script type="text/ng-template" id="back-btn">
+            <a ng-href="{{backUrl}}" class="button-head button-left" ng-bind="backText">Back</a>
+        </script>
+    </body>
+</html>
+</apex:page>

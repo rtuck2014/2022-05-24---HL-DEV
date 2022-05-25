@@ -1,0 +1,276 @@
+<apex:page docType="html-5.0" standardController="Contact" showHeader="false" sidebar="false" lightningStyleSheets="true">
+<apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-ui-1.8.18.custom.min.js')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+<apex:stylesheet value="{!URLFOR($Resource.HL_MobileCSS)}"></apex:stylesheet>
+<apex:remoteObjects jsNamespace="RemoteObjectModel">
+    <apex:remoteObjectModel name="Contact" fields="Id,Name,User__c"></apex:remoteObjectModel>
+    <apex:remoteObjectModel name="Relationship__c" fields="Id,External_Contact__c,HL_Contact__c,Strength_Rating__c,Type__c,Personal_Note__c,Sync_to_Outlook__c" />
+</apex:remoteObjects>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1">
+            <div class="relationship-header-block">
+                <div class="left relationship-header-text">
+                    <b class="title">Add Relationship: </b>
+                   <input id="contactId" type="hidden" />
+                </div>
+            </div>
+            <p class="relationship-header-text">
+                 <span id="contactName" />
+            </p>
+            <p>
+                 Relationship With*: <span id="employeeName"></span>
+            </p>
+            <p>
+                Lookup Employee (if relationship is not with you)
+                <input id="employee" type="text" />
+                <input id="employeeId" type="hidden"/>
+            </p>
+            <p>
+                Strength Rating
+                <select id="rating">
+                    <option value=""></option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </p>
+            <p>
+                Type*:
+                <select id="type">
+                    <option value="Business">Business</option>
+                    <option value="Personal">Personal</option>
+                </select>
+            </p>
+            <p>
+                 Personal Note:
+                <textarea id="personalNote" type="text" />
+            </p>
+             <p>
+                 Outlook Categories:
+                <textarea id="outlookCategories" type="text" />
+            </p>
+            <p>
+                <input id="syncToOutlook" type="checkbox" checked="checked" />Sync to Outlook
+            </p>
+            <p>
+                <button id="btnCreateRelationship" onclick="createRelationship()">Create Relationship</button>
+            </p>   
+    </div>
+    </div>
+    </div>
+<script src="/soap/ajax/9.0/connection.js" type="text/javascript"></script>
+<script>
+        $j = jQuery.noConflict();
+        $j(document).ready(function () {
+            DocumentReady();
+        });  
+        function checkForExistingRelationship(){
+             var contactId =  $j("#contactId").val();
+             var employeeId = document.getElementById("employeeId").value;
+             var rel = new RemoteObjectModel.Relationship__c();
+             //Query the Relationship to see if Exists 
+             rel.retrieve({where: {
+                                       External_Contact__c: {eq: contactId},
+                                       HL_Contact__c: {eq: employeeId}
+                                    }
+                                   }, function(err, records, event){
+                if(err){alert(err);}
+                else{
+                    if(records.length > 0){
+                        result = records[0];
+                        $j(".title").html("Edit Relationship");
+                        document.getElementById("rating").value = result.get('Strength_Rating__c');
+                        document.getElementById("type").value = result.get('Type__c');
+                        document.getElementById("syncToOutlook").checked = result.get('Sync_to_Outlook__c');
+                        $j("#btnCreateRelationship").html('Save');
+                    }
+                    else{
+                        $j(".title").html("Add Relationship");
+                        document.getElementById("rating").value = '';
+                        document.getElementById("type").value = 'Business';
+                        document.getElementById("syncToOutlook").checked = true;
+                        $j("#btnCreateRelationship").html('Create Relationship');
+                    }
+                }
+            });
+        }   
+        // Callback to handle update call
+        function updateCallback(err, ids){
+            if (err) { 
+                alert(err); 
+            } else {
+               alert('Relationship Updated');
+               sforce.one.back(true);   
+            }
+        }
+
+        function createRelationship(){            
+            var contact = new RemoteObjectModel.Contact();
+            var contactId =  $j("#contactId").val();
+            var rel = new RemoteObjectModel.Relationship__c();
+            var employeeId = document.getElementById("employeeId").value;
+            var rating = document.getElementById("rating").value;
+            var type = document.getElementById("type").value;
+            var personalNote = document.getElementById("personalNote").value;
+            var outlookCategories = document.getElementById("outlookCategories").value;
+            var syncToOutlook = document.getElementById("syncToOutlook").checked;
+
+            if(ValidateRelationshipFields()){
+                $j("#btnCreateRelationship").attr('disabled','disabled');
+
+                //Query the Relationship to see if Exists 
+                 rel.retrieve({where: {
+                                           External_Contact__c: {eq: contactId},
+                                           HL_Contact__c: {eq: employeeId}
+                                        }
+                                       }, 
+                    function(err, records, event){
+                        if(err){alert(err);}
+                        else{
+                            if(records.length > 0){
+                                result = records[0];
+                                var recordId = result.get("Id");
+                                var personalNoteUpdate = result.get("Personal_Note__c");
+                                if(personalNoteUpdate != '')
+                                    personalNoteUpdate = personalNoteUpdate + "\r\n" + personalNote;
+                                else
+                                    personalNoteUpdate = personalNote;
+                                var relUpdate = new RemoteObjectModel.Relationship__c({
+                                    Id: recordId,
+                                    Strength_Rating__c: rating,
+                                    Type__c: type,
+                                    Personal_Note__c: personalNoteUpdate,
+                                    Outlook_Categories__c : outlookCategories,
+                                    Sync_to_Outlook__c: syncToOutlook
+                                });  
+                                relUpdate.update(updateCallback);
+                            }
+                            else{
+                                rel.create({External_Contact__c: contactId, HL_Contact__c: employeeId, Strength_Rating__c: rating, Type__c: type, Personal_Note__c: personalNote, Outlook_Categories__c: outlookCategories, Sync_to_Outlook__c: syncToOutlook}, function(error, records) {
+                                    if (error) {
+                                        alert('Relationship Already Exists - Cannot Create Multiple Relationships Between the Same Employee and Contact');
+                                        $j("#btnCreateRelationship").removeAttr('disabled');
+                                    } else {
+                                        //sforce.one.navigateToSObject(contactId);
+                                        alert('Relationship Added');
+                                        sforce.one.back(true);
+                                    }
+                                   });
+                            }
+                        }
+                });               
+            }
+            else{
+                alert('Missing Required Fields');
+                $j("#btnCreateRelationship").removeAttr('disabled');
+            }
+        }
+        function ValidateRelationshipFields(){
+            return $j("#employeeId").val() != '' && $j("#type").val() != '';
+        }
+        function DocumentReady(){
+            var url = document.URL;
+            var contactId;
+            if(url.indexOf('id=') >= 0){
+                url = url.substring(url.indexOf('id=') + 3);
+                contactId = url.substring(0,18);
+                $j("#contactId").val(contactId);
+                var contact = new RemoteObjectModel.Contact();
+                contact.retrieve({where: {Id: {eq: contactId }}}, function(err,records,event) {
+                    if(!err) { $j("#contactId").html(records[0].get("Id")); $j("#contactName").html(records[0].get("Name")); }
+                    else alert(err);
+                }); 
+                var employee = new RemoteObjectModel.Contact();
+                //Get Current User
+                employee.retrieve({where: {User__c : {eq: '{!$User.Id}'}}}, function(err,records,event){
+                   if(!err){
+                        $j("#employeeId").val(records[0].get("Id")); 
+                        $j("#employeeName").html(records[0].get("Name"));
+                        checkForExistingRelationship();
+                        // var existingRelationship = 
+                         //alert(existingRelationship);
+                         //if(existingRelationship != null){
+                                //alert('Exists');
+                         //}
+                    }
+
+                   else alert(err);
+                });
+            }
+            var queryTerm, query;
+            $j("#employee").autocomplete({
+                minLength: 2,
+                delay: 500,
+                source: function(request, response) {
+                    var namepart01, namepart02;
+                    $j(".loadingResults,.noResults").remove();
+                    $j("#employee").parent().append('<span class="loadingResults" style="color: green;">Loading...</span>');
+                        queryTerm = request.term;
+                        queryTerm = queryTerm.trim();
+                        if(queryTerm.indexOf(' ') > 0)
+                        {
+                            namepart01 = queryTerm.split(' ')[0];
+                            namepart02 = queryTerm.split(' ')[1];
+                        }
+                        sforce.connection.sessionId = '{!$Api.Session_ID}';
+                        if(namepart02)
+                            query = "SELECT Id, Name, Title FROM Contact WHERE RecordType.Name = 'Houlihan Employee' AND Status__c = 'Active' AND (Name LIKE '%" + namepart01 + "%' AND Name LIKE '%" + namepart02 + "%' ) ORDER BY Name LIMIT 50 ";
+                        else
+                            query = "SELECT Id, Name, Title FROM Contact WHERE RecordType.Name = 'Houlihan Employee' AND Status__c = 'Active' AND Name LIKE '%" + queryTerm + "%' ORDER BY Name LIMIT 50 ";
+                        var lstSobjectResults = sforce.connection.query(query);
+                        var result = [];
+                        
+                        if(parseInt(lstSobjectResults.size) > 0)
+                        {   
+                            if(lstSobjectResults.size == 1)
+                            {
+                                var JSONObject;
+                                JSONObject = { "Id":lstSobjectResults.records.Id, "Name":lstSobjectResults.records.Name,"Title":lstSobjectResults.records.Title};
+                                result[0] = JSONObject;
+                            }
+                            else
+                            {
+                                for(var i = 0; i < lstSobjectResults.records.length; i++ ) 
+                                {
+                                    var JSONObject;
+                                    JSONObject = { "Id":lstSobjectResults.records[i].Id, "Name":lstSobjectResults.records[i].Name, "Title":lstSobjectResults.records[i].Title};                                          
+                                    result[i] = JSONObject;
+                                }
+                            }
+                           $j(".loadingResults,.noResults").remove();
+                        }
+                        else{
+                              $j(".loadingResults,.noResults").remove();
+                              $j("#employee").parent().append('<span class="noResults" style="color: red;">No Results Found</span>');
+                        };
+                    response(result);
+                },
+                focus: function( event, ui ) {
+                    itemName = ui.item.Name;
+                    $j(esc('#employee')).val(itemName);
+                    return false;
+                    },
+                select: function(event, ui) {
+                    $j('#employeeName').html( itemName );
+                    $j('#employeeId').val( ui.item.Id );
+                    $j('#employee').val('');
+                    checkForExistingRelationship();
+                    return false;
+                }
+            }).data("autocomplete")._renderItem = function( ul, item ) {
+                var entry = "<a>" + item.Name;
+                entry = entry + "<i> [" + (item.Title === null ? "N/A" : item.Title) + "]</i>";  
+                entry = entry + "</a>";
+                    return $j( "<li></li>" )
+                        .data( "item.autocomplete", item )
+                        .append( entry )
+                        .appendTo( ul );                
+             };
+        }
+        function esc(myid) {
+           return '#' + myid.replace(/(:|\.)/g,'\\\\$1');
+        }
+</script>
+</apex:page>

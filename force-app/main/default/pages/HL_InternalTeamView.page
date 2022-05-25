@@ -1,0 +1,3 @@
+<apex:page showHeader="{!ShowHeaderAndSideBar}" sidebar="{!ShowHeaderAndSideBar}" controller="HL_InternalTeamModifyController" lightningStyleSheets="true">
+    <c:HL_InternalTeamView ></c:HL_InternalTeamView>
+</apex:page>

@@ -1,0 +1,181 @@
+<apex:page controller="SL_PipelineManager" showHeader="false" sidebar="false" cache="false" applyBodyTag="false" standardStylesheets="false" renderAs="PDF">
+<apex:variable value="{!15}" var="colLimit"/>
+    <head>
+        <style>
+            <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+            <apex:stylesheet value="{!URLFOR($Resource.HL_PipelinePDF_CSS)}"/>
+        </style>
+    </head>
+    <body>
+        <table width="100%" >
+            <tr width="100%">
+                <td class="title">
+                    <apex:outputLabel value="{!PageTitle}" id="PageTitle" />
+                </td>
+            </tr>
+            <apex:outputPanel rendered="{!(enableOpportunity && lstColumnWrapperOpportunity.size > colLimit) || (enableEngagement && lstColumnWrapperEngagement.size > colLimit)}">
+            <tr>
+                <td>
+                    *Only the first {!colLimit + 1} columns are displayed
+                </td>
+            </tr>
+            </apex:outputPanel>
+        </table>
+        <apex:outputPanel rendered="{!enableOpportunity}">  
+            <table id="opportunitiesTable" border="0" cellpadding="5" cellspacing="5">
+                <thead>
+                    <tr>
+                        <apex:variable value="{!0}" var="colOppHeaderNum"/>
+                        <apex:repeat value="{!lstColumnWrapperOpportunity}" var="fieldName">
+                            <th>
+                                <apex:outputPanel rendered="{!fieldName.strFieldLabel <> 'View' && colOppHeaderNum <= colLimit}">
+                                    {!fieldName.strFieldLabel}
+                                </apex:outputPanel>
+                            </th>
+                            <apex:variable var="colOppHeaderNum" value="{!colOppHeaderNum + 1}"/>
+                        </apex:repeat>
+                    </tr>
+                    <tr>
+                        <td colspan="{!colOppHeaderNum + 1}"><div class="rowDivider"></div></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <apex:repeat value="{!opportunityRecords.lstSObjectWrappers}" var="opportunityWrapper">
+                        <tr class="dataRow">
+                            <apex:variable value="{!0}" var="colOppDetailNum"/>
+                            <apex:repeat value="{!lstColumnWrapperOpportunity}" var="fieldName">
+                                <td class="noRowsHeader" id="{!fieldName.strFieldAPI}_{!opportunityWrapper.sObjectRecord['Id']}">
+                                    <apex:outputPanel rendered="{!fieldName.strFieldLabel <> 'View' && colOppDetailNum <= colLimit}">
+                                    <apex:outputPanel rendered="{!If(AND(fieldName.strFieldType != 'reference', fieldName.strFieldType != 'name', fieldName.strFieldAPI != 'z_Pipeline_Manager__c', fieldName.strFieldAPI != 'z_Pipeline_Principal__c'), true, false)}">
+                                        <apex:outputField rendered="{!NOT(AND(fieldName.strFieldAPI = 'Last_Opportunity_Comment_PIPELINE__c',
+                                                                                               ((IsCAO && opportunityWrapper.sObjectRecord['Line_of_Business__c'] = strLOB) || IsSysAdmin)))}" value="{!opportunityWrapper.sObjectRecord[fieldName.strFieldAPI]}"
+                                                          />
+                                        
+                                        <apex:outputField rendered="{!AND(fieldName.strFieldAPI = 'Last_Opportunity_Comment_PIPELINE__c',
+                                                                                               ((IsCAO && opportunityWrapper.sObjectRecord['Line_of_Business__c'] = strLOB) || IsSysAdmin))}" value="{!opportunityWrapper.sObjectRecord['Last_Opportunity_Comment_Any__c']}"/>
+                                    </apex:outputPanel>                          
+                                    <apex:outputField rendered="{!If(AND(fieldName.strFieldType == 'reference', fieldName.strFieldType != 'name')
+                                                                , true, false)}" value="{!opportunityWrapper.sObjectRecord[fieldName.strFieldAPI]}"/>
+                                    <apex:outputField rendered="{!If(fieldName.strFieldType == 'name', true, false)}" value="{!opportunityWrapper.sObjectRecord[fieldName.strFieldAPI]}"/>
+                                    <div class="errorMsg" style="display: none; color: red;" id="errorDiv_{!fieldName.strFieldAPI}_{!opportunityWrapper.sObjectRecord['Id']}"/>
+                                    <apex:outputPanel rendered="{!fieldName.strFieldAPI == 'z_Pipeline_Manager__c'}">
+                                        <apex:variable var="idxOpportunityManager" value="{!0}"/><!--I know using variables in loops like this is not 'supported' but only way to get the comma to work-->
+                                        <apex:repeat value="{!opportunityWrapper.sObjectRecord['Opportunity_Internal_Teams__r']}" var="ot">
+                                            <apex:outputPanel rendered="{!ot.Role__c == 'Manager'}">
+                                                <apex:outputPanel rendered="{!NOT(idxOpportunityManager == 0)}">,<br /></apex:outputPanel>
+                                                {!ot.Contact__r.Name}
+                                                <apex:variable var="idxOpportunityManager" value="{!IF(ot.Role__c == 'Manager',idxOpportunityManager + 1,idxOpportunityManager)}" />
+                                            </apex:outputPanel>
+                                        </apex:repeat>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!fieldName.strFieldAPI == 'z_Pipeline_Principal__c'}">
+                                            <apex:variable var="idxOpportunityPrincipal" value="{!0}"/><!--I know using variables in loops like this is not 'supported' but only way to get the comma to work-->
+                                            <apex:repeat value="{!opportunityWrapper.sObjectRecord['Opportunity_Internal_Teams__r']}" var="ot">
+                                                <apex:outputPanel rendered="{!ot.Role__c == 'Principal'}">
+                                                    <apex:outputPanel rendered="{!NOT(idxOpportunityPrincipal == 0)}">,<br /></apex:outputPanel>
+                                                    {!ot.Contact__r.Name}
+                                                    <apex:variable var="idxOpportunityPrincipal" value="{!IF(ot.Role__c == 'Principal',idxOpportunityPrincipal + 1,idxOpportunityPrincipal)}" />
+                                                </apex:outputPanel>
+                                            </apex:repeat>
+                                        </apex:outputPanel>
+                                    </apex:outputPanel>
+                                </td>
+                                <apex:variable var="colOppDetailNum" value="{!colOppDetailNum + 1}"/>
+                            </apex:repeat>
+                        </tr>
+                        <tr>
+                            <td colspan="{!colOppDetailNum + 1}"><div class="rowDivider"></div></td>
+                        </tr>
+                    </apex:repeat>
+                    <tr class="dataRow" style="display : {!IF(opportunityRecords.lstSObjectWrappers.size == 0, '','none;')}">
+                        <td class="noRowsHeader" colspan="{!lstColumnWrapperOpportunity.size}">
+                            No Records.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!enableEngagement}">  
+            <table id="engagementsTable" border="0" cellpadding="5" cellspacing="5">
+                <thead>
+                    <tr>
+                        <apex:variable value="{!0}" var="colEngHeaderNum"/>
+                        <apex:repeat value="{!lstColumnWrapperEngagement}" var="fieldName">
+                            <th>
+                                <apex:outputPanel rendered="{!fieldName.strFieldLabel <> 'View' && colEngHeaderNum <= colLimit}">
+                                    {!fieldName.strFieldLabel}
+                                </apex:outputPanel>
+                            </th>
+                            <apex:variable var="colEngHeaderNum" value="{!colEngHeaderNum + 1}"/>
+                        </apex:repeat>
+                    </tr>
+                     <tr>
+                        <td colspan="{!colEngHeaderNum + 1}"><div class="rowDivider"></div></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <apex:repeat value="{!engagementRecords.lstSObjectWrappers}" var="engagementWrapper">
+                        <tr class="dataRow">
+                            <apex:variable value="{!0}" var="colEngDetailNum"/>
+                            <apex:repeat value="{!lstColumnWrapperEngagement}" var="fieldName">
+                                <td class="noRowsHeader" id="{!fieldName.strFieldAPI}_{!engagementWrapper.sObjectRecord['Id']}">
+                                     <apex:outputPanel rendered="{!fieldName.strFieldLabel <> 'View' && colEngDetailNum <= colLimit}">
+                                    <apex:outputPanel rendered="{!If(AND(fieldName.strFieldType != 'reference', fieldName.strFieldType != 'name', fieldName.strFieldAPI != 'Close_Date__c', fieldName.strFieldAPI != 'z_Pipeline_Manager__c', fieldName.strFieldAPI != 'z_Pipeline_Principal__c', ((fieldName.strFieldAPI != 'Stage__c' && fieldName.strFieldAPI != 'Total_Estimated_Fee__c') || ((fieldName.strFieldAPI == 'Stage__c' || fieldName.strFieldAPI == 'Total_Estimated_Fee__c') && (engagementWrapper.sObjectRecord['Line_of_Business__c'] != 'FVA' || strLOB == 'FVA' || IsCAO || isSysAdmin || isAdmin)
+                                                                )),(fieldName.strFieldAPI != 'Period_Accrued_Fees__c' || (fieldName.strFieldAPI == 'Period_Accrued_Fees__c' && (engagementWrapper.sObjectRecord['Line_of_Business__c'] != 'FR' || (engagementWrapper.sObjectRecord['Line_of_Business__c'] == 'FR' && (IsAcct || IsCAO || IsSysAdmin || (isAdmin && strLOB = 'FR'))))))), true, false)}">
+                                        <apex:outputField rendered="{!NOT(AND(fieldName.strFieldAPI = 'Last_Engagement_Comment_PIPELINE__c',
+                                                                                               ((IsCAO && engagementWrapper.sObjectRecord['Line_of_Business__c'] = strLOB) || IsSysAdmin)))}" value="{!engagementWrapper.sObjectRecord[fieldName.strFieldAPI]}" 
+                                                          />
+                                        
+                                        <apex:outputField rendered="{!AND(fieldName.strFieldAPI = 'Last_Engagement_Comment_PIPELINE__c',
+                                                                                               ((IsCAO && engagementWrapper.sObjectRecord['Line_of_Business__c'] = strLOB) || IsSysAdmin))}" value="{!engagementWrapper.sObjectRecord['Last_Engagement_Comment_Any__c']}" 
+                                                          />
+                                    </apex:outputPanel>
+                                    
+                                    <apex:outputField rendered="{!If(AND(fieldName.strFieldType != 'reference', fieldName.strFieldType != 'name', fieldName.strFieldAPI == 'Close_Date__c'), true, false)}" value="{!engagementWrapper.sObjectRecord[fieldName.strFieldAPI]}" />
+                                    <apex:outputField rendered="{!If(AND(fieldName.strFieldType == 'reference', fieldName.strFieldType != 'name') || (
+                                                                (fieldName.strFieldAPI == 'Stage__c' || fieldName.strFieldAPI == 'Total_Estimated_Fee__c') && !(engagementWrapper.sObjectRecord['Line_of_Business__c'] != 'FVA' || strLOB == 'FVA' || IsCAO || isSysAdmin || isAdmin)
+                                                                ) || (fieldName.strFieldAPI == 'Period_Accrued_Fees__c' && !(
+                                                                engagementWrapper.sObjectRecord['Line_of_Business__c'] != 'FR' || (engagementWrapper.sObjectRecord['Line_of_Business__c'] == 'FR' && (IsAcct || IsCAO || IsSysAdmin || (isAdmin && strLOB = 'FR')))
+                                                                )), true, false)}" value="{!engagementWrapper.sObjectRecord[fieldName.strFieldAPI]}" />
+                                    <apex:outputField rendered="{!If(fieldName.strFieldType == 'name', true, false)}" value="{!engagementWrapper.sObjectRecord[fieldName.strFieldAPI]}" />
+
+                                    <apex:outputPanel rendered="{!fieldName.strFieldAPI == 'z_Pipeline_Manager__c'}">
+                                        <apex:variable var="idxEngagementManager" value="{!0}"/><!--I know using variables in loops like this is not 'supported' but only way to get the comma to work-->
+                                        <apex:repeat value="{!engagementWrapper.sObjectRecord['Engagement_Teams__r']}" var="et">
+                                            <apex:outputPanel rendered="{!et.Role__c == 'Manager'}">
+                                                <apex:outputPanel rendered="{!NOT(idxEngagementManager == 0)}">,<br /></apex:outputPanel>
+                                                {!et.Contact__r.Name}
+                                                <apex:variable var="idxEngagementManager" value="{!IF(et.Role__c == 'Manager',idxEngagementManager + 1,idxEngagementManager)}" />
+                                            </apex:outputPanel>
+                                        </apex:repeat>
+                                     </apex:outputPanel>
+                                     <apex:outputPanel rendered="{!fieldName.strFieldAPI == 'z_Pipeline_Principal__c'}">
+                                             <apex:variable var="idxEngagementPrincipal" value="{!0}"/>
+                                             <apex:repeat value="{!engagementWrapper.sObjectRecord['Engagement_Teams__r']}" var="et">
+                                                 <apex:outputPanel rendered="{!et.Role__c == 'Principal'}">
+                                                     <apex:outputPanel rendered="{!NOT(idxEngagementPrincipal == 0)}">,<br /></apex:outputPanel>
+                                                     {!et.Contact__r.Name}
+                                                     <apex:variable var="idxEngagementPrincipal" value="{!IF(et.Role__c == 'Principal',idxEngagementPrincipal + 1,idxEngagementPrincipal)}" />
+                                                 </apex:outputPanel>
+                                             </apex:repeat>
+                                      </apex:outputPanel>
+                                    </apex:outputPanel>
+                                </td>
+                                <apex:variable var="colEngDetailNum" value="{!colEngDetailNum + 1}"/>
+                            </apex:repeat>
+                        </tr>
+                         <tr>
+                            <td colspan="{!colEngDetailNum + 1}"><div class="rowDivider"></div></td>
+                        </tr>
+                    </apex:repeat>
+                    <tr class="dataRow" style="display : {!IF(engagementRecords.lstSObjectWrappers.size == 0, '','none;')}">
+                        <td class="noRowsHeader" colspan="{!lstColumnWrapperEngagement.size}">
+                            No Records.
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table> 
+        </apex:outputPanel>
+    </body>
+</apex:page>

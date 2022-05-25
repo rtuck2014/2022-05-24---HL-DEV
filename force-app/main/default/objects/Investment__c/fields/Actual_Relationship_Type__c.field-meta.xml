@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Actual_Relationship_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Actual Relationship Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cancelled Acquisition/Investment</fullName>
+                <default>false</default>
+                <label>Cancelled Acquisition/Investment</label>
+            </value>
+            <value>
+                <fullName>Current Investment</fullName>
+                <default>false</default>
+                <label>Current Investment</label>
+            </value>
+            <value>
+                <fullName>Current Investment Arm</fullName>
+                <default>false</default>
+                <label>Current Investment Arm</label>
+            </value>
+            <value>
+                <fullName>Current Subsidiary/Operating Unit</fullName>
+                <default>false</default>
+                <label>Current Subsidiary/Operating Unit</label>
+            </value>
+            <value>
+                <fullName>Merged Entity</fullName>
+                <default>false</default>
+                <label>Merged Entity</label>
+            </value>
+            <value>
+                <fullName>Pending Acquisition/Investment</fullName>
+                <default>false</default>
+                <label>Pending Acquisition/Investment</label>
+            </value>
+            <value>
+                <fullName>Prior Investment</fullName>
+                <default>false</default>
+                <label>Prior Investment</label>
+            </value>
+            <value>
+                <fullName>Prior Investment Arm</fullName>
+                <default>false</default>
+                <label>Prior Investment Arm</label>
+            </value>
+            <value>
+                <fullName>Prior Subsidiary/Operating Unit</fullName>
+                <default>false</default>
+                <label>Prior Subsidiary/Operating Unit</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

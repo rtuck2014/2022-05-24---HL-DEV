@@ -1,0 +1,117 @@
+<apex:page standardController="Mass_Edit_Settings__c" extensions="SL_LIB16_ctrl_MassEditSettingsEdit" lightningStylesheets="true">
+<apex:slds />
+    <apex:sectionHeader title="Column Edit" subtitle="{!pageTitle}"/>
+<script>
+if (!window.console) {var console = {};}
+if (!console.log) {console.log = function() {};}
+</script>
+    <apex:form > 
+         <apex:pageBlock title="Mass Edit Settings Edit" mode="edit" id="mPage">
+            <apex:pageMessages id="error"/>
+            <apex:pageBlockSection title="Information" columns="1">
+            <apex:outputField value="{!CurMESettings.Implementation__c}"/>
+            <apex:outputField value="{!CurMESettings.Implementation_Type__c}"/>
+            <apex:inputField style="width:380px" label="Label" value="{!CurMESettings.Label__c}" id="MESLabel" required="true" onkeyup="setCustomChange(this)"/>
+                        
+<script>
+var obj_MESLabel = document.getElementById('{!$Component.MESLabel}');
+function capitaliseFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+var isCustomChange = false;
+
+
+if(obj_MESLabel.value!=''){ isCustomChange = true;}
+
+
+var sLabalLev1 = '';
+var sLabalLev2 = '';
+var sLabalLev3 = '';
+
+
+function setCustomChange(el)
+{
+    if(el.value=='') isCustomChange = false;
+    else isCustomChange = true;
+}
+
+function setFldLabel(inVal, inLevel)
+{
+    if(inVal.length>3)
+    {
+        if(inVal.substring(inVal.length-2,inVal.length)=='id'){ inVal = inVal.substring(0,inVal.length-2);}
+        else if(inVal.substring(inVal.length-3,inVal.length)=='__c'){ inVal = inVal.substring(0,inVal.length-3);}
+    }
+    //fullS.length
+    
+    if(!isCustomChange)
+    {
+        if(inLevel=='1')
+        {
+            sLabalLev2 = '';
+            sLabalLev3 = '';
+            sLabalLev1 = capitaliseFirstLetter(inVal);
+            obj_MESLabel.value = sLabalLev1;
+        }
+        else if(inLevel=='2')
+        {
+            sLabalLev3 = '';
+            sLabalLev2 = capitaliseFirstLetter(inVal);
+            obj_MESLabel.value = sLabalLev1+': '+sLabalLev2;
+        }
+        else if(inLevel=='3')
+        {
+            sLabalLev3 = capitaliseFirstLetter(inVal);
+            obj_MESLabel.value = sLabalLev1+': '+sLabalLev2+': '+sLabalLev3;
+        }
+        
+    }
+}
+
+
+</script>
+                                
+                        <apex:pageBlockSectionItem >
+
+
+
+
+
+                            <apex:outputLabel value="Field" for="MESField"/>
+                            <apex:outputPanel >
+                                <apex:selectList value="{!fieldLoader.primaryObjectValue}" multiselect="false" size="9" id="MESField" onSelect="updateSecondLevel()" onchange="setFldLabel(this.value,'1');updateSecondLevel();">
+                                    <apex:selectOptions value="{!fieldLoader.primaryObjectFields}"/>
+                                </apex:selectList>
+                                <apex:actionFunction name="updateSecondLevel" action="{!updateFieldLists}" rerender="secLevelFields, thirdLevelFields" />
+                                <apex:outputPanel id="secLevelFields" >
+                                    <apex:selectList value="{!fieldLoader.level2ObjectValue}" multiselect="false" size="9" id="MESFieldLevel2" rendered="{!fieldLoader.showLevel2}" onSelect="updateThirdLevel()" onChange="setFldLabel(this.value,'2');updateThirdLevel()">
+                                        <apex:selectOptions value="{!fieldLoader.level2ObjectFields}"/>
+                                    </apex:selectList>
+                                    <apex:actionFunction name="updateThirdLevel" action="{!updateFieldLists}" rerender="thirdLevelFields" />
+                                </apex:outputPanel>
+                                <apex:outputPanel id="thirdLevelFields" >
+                                    <apex:selectList value="{!fieldLoader.level3ObjectValue}" multiselect="false" size="9" id="MESFieldLevel3" rendered="{!fieldLoader.showLevel3}" onChange="setFldLabel(this.value,'3');">
+                                        <apex:selectOptions value="{!fieldLoader.level3ObjectFields}"/>
+                                    </apex:selectList>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!saveBtn}" reRender="mPage" status="MCSub"/>
+                <apex:commandButton value="Save & New" action="{!saveNewBtn}"  reRender="mPage" status="MCSub"/>
+                <apex:commandButton value="Cancel" action="{!cancelBtn}" immediate="true"/>
+                <!-- <input class="btn" type="button" value="Cancel" onClick="document.location.href='/{!CurMESettingsId}'"/-->
+                
+                <apex:commandButton value="Standard Form" action="{!goStForm}" immediate="true"/>
+                
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+       
+     
+    </apex:form>
+
+</apex:page>

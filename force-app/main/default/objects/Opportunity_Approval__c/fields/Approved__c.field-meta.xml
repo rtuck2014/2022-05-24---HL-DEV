@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approved__c</fullName>
+    <description>Indicate if the NBC has been approved; it&apos;s been graded with A+, A, A-, B+, B, B-, C+, C, C-</description>
+    <externalId>false</externalId>
+    <formula>IF(AND(NOT(ISBLANK(Date_Graded__c)), OR(LEFT(TEXT(Grade__c), 1) = &quot;A&quot;, LEFT(TEXT(Grade__c), 1) = &quot;B&quot;, LEFT(TEXT(Grade__c), 1) = &quot;C&quot;)), true, false)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Indicate if the NBC has been approved; it&apos;s been graded with A+, A, A-, B+, B, B-, C+, C, C-</inlineHelpText>
+    <label>Approved</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

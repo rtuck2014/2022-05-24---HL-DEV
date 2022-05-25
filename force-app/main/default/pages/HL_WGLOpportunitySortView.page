@@ -1,0 +1,15 @@
+<apex:page standardController="Opportunity_External_Team__c" recordSetVar="oet">
+<div style="padding-left: 20px;">
+    <div class="pbTitle" style="font-size:1.3em; padding-bottom: 10px;">
+        <h1>
+            Working Group List
+        </h1>
+    </div>
+    <div style="padding-bottom: 5px;">
+        <h3>
+            Drag the individual items to re-order them
+        </h3>
+    </div>
+    <c:HL_WGLSorter objecttoquery="Opportunity_External_Team__c" parentId="{!CASESAFEID(Id)}" parentRelationshipFieldName="Opportunity__c" hlReportLinkId="a1yi0000000aVsU"></c:HL_WGLSorter>  
+</div>
+ </apex:page>

@@ -1,0 +1,125 @@
+<apex:page standardController="Relationship__c" extensions="HL_RelationshipController" sidebar="{!Not(IsS1)}" lightningStylesheets="true">
+    <apex:form rendered="{!Not(IsS1)}" >
+    <apex:pageBlock >
+        <apex:pageBlockButtons >
+            <apex:commandButton action="{!Edit}" value="Edit"/>
+            <apex:commandButton action="{!Delete}" value="Delete" rendered="{!HasNoteAccess}"></apex:commandButton>
+            <apex:commandButton action="{!ReturnToContact}" value="Return to Contact"></apex:commandButton>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection title="Information" columns="2">
+            <apex:outputField value="{!Relationship__c.HL_Contact__c}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.Type__c}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.External_Contact__c}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.Company__c}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.Strength_Rating__c}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.Sync_to_Outlook__c}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.Contact_Status__c}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.External_Contact_Source__c}"></apex:outputField>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection showHeader="false" columns="1" rendered="{!HasNoteAccess}">
+            <apex:outputField value="{!Relationship__c.Personal_Note__c}"></apex:outputField>
+             <apex:outputField value="{!Relationship__c.Outlook_Categories__c}"></apex:outputField>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Objective Metrics">
+            <apex:outputField value="{!Relationship__c.Last_Activity_Date__c}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.Share_Active_Deal__c}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.Next_Activity_Date__c}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.Share_Open_Opp__c}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.Number_of_Activities_LTM__c}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.lastmodifiedbyid}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.lastmodifieddate}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.CreatedById}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.CreatedDate}"></apex:outputField>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="System Information" columns="2" rendered="{!IF($Profile.Name =='System Administrator'||$Profile.Name =='Data Hygiene', true , false)}">
+            <apex:outputField value="{!Relationship__c.CreatedById}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.CreatedDate}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.lastmodifiedbyid}"></apex:outputField>
+            <apex:outputField value="{!Relationship__c.lastmodifieddate}"></apex:outputField>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>
+    <apex:form rendered="{!IsS1}">
+        <c:importvisualstrap theme="default" />
+        <c:visualstrapblock >
+            <c:panel title="Relationship" type="info">
+                <c:formblock alignment="vertical">
+                    <c:formgroup >
+                        <apex:outputLabel value="HL Contact"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.HL_Contact_Name_Text__c}"></apex:outputField>
+                    </c:formgroup>
+                    <c:formgroup >
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.Type__c.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.Type__c}"></apex:outputField>
+                    </c:formgroup>
+                    <c:formgroup >
+                        <apex:outputLabel value="External Contact"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.External_Contact_Name_Text__c}"></apex:outputField>
+                    </c:formgroup>
+                    <c:formgroup >
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.Company__c.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.Company__c}"></apex:outputField>
+                    </c:formgroup>
+                    <c:formgroup >
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.Strength_Rating__c.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.Strength_Rating__c}"></apex:outputField>
+                    </c:formgroup>
+                    <c:formgroup >
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.Sync_to_Outlook__c.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.Sync_to_Outlook__c}"></apex:outputField>
+                    </c:formgroup>
+                    <c:formgroup >
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.Contact_Status__c.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.Contact_Status__c}"></apex:outputField>
+                    </c:formgroup>
+                    <c:formgroup rendered="{!HasNoteAccess}">
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.Personal_Note__c.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.Personal_Note__c}"></apex:outputField>
+                    </c:formgroup>
+                    <c:formgroup rendered="{!HasNoteAccess}">
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.Outlook_Categories__c.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.Outlook_Categories__c}"></apex:outputField>
+                    </c:formgroup>
+                </c:formblock>       
+            </c:panel>
+            <c:panel title="Objective Metrics" type="info">
+                <c:formgroup >
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.Last_Activity_Date__c.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.Last_Activity_Date__c}"></apex:outputField>
+                </c:formgroup>
+                <c:formgroup >
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.Share_Active_Deal__c.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.Share_Active_Deal__c}"></apex:outputField>
+                </c:formgroup>
+                <c:formgroup >
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.Next_Activity_Date__c.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.Next_Activity_Date__c}"></apex:outputField>
+                </c:formgroup>
+                <c:formgroup >
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.Share_Open_Opp__c.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.Share_Open_Opp__c}"></apex:outputField>
+                </c:formgroup>
+                <c:formgroup >
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.Number_of_Activities_LTM__c.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.Number_of_Activities_LTM__c}"></apex:outputField>
+                </c:formgroup>
+                <c:formgroup >
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.CreatedById.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.CreatedById}"></apex:outputField>
+                </c:formgroup>
+                <c:formgroup >
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.CreatedDate.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.CreatedDate}"></apex:outputField>
+                </c:formgroup>
+                <c:formgroup >
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.lastmodifiedbyid.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.lastmodifiedbyid}"></apex:outputField>
+                </c:formgroup>
+                <c:formgroup >
+                        <apex:outputLabel value="{!$ObjectType.Relationship__c.fields.lastmodifieddate.label}"></apex:outputLabel><br/>
+                        <apex:outputField styleClass="form-control" value="{!Relationship__c.lastmodifieddate}"></apex:outputField>
+                </c:formgroup>
+            </c:panel>
+        </c:visualstrapblock>
+    </apex:form>
+</apex:page>

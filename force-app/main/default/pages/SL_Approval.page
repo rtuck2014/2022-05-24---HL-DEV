@@ -1,0 +1,371 @@
+<apex:page controller="SL_Approval" showHeader="true" sidebar="true" tabStyle="Approval_Object__c" lightningStylesheets="true">
+    
+<style type="text/css">
+.label-float-left {
+    float: left;
+    margin-top: 4px;
+    margin-left: 10px;
+}
+.label-float-right {
+    float: right;
+    margin-top: 4px;
+    margin-right: 4px;
+}
+
+.bold {
+    font-weight: bold;
+}
+/*body .bEditBlock .pbBody {
+    padding-bottom: 30px;
+}*/
+.sinput {
+    text-align: center;
+    padding-bottom: 0px;
+    border: solid 1px #A5A5A5;
+    border-radius: 4px;
+    margin-top: 1px;
+}
+.sinput-current-page {
+    width: 35px;
+}
+.customLabel {
+    font-weight: bold;
+}
+.bPageBlock .pbHeader select, .bPageBlock .pbBottomButtons select {
+    font-size: inherit;
+    margin-right: .25em;
+}
+.instructionalText {
+    width: 100%;
+    background-color: #E5F2F6;
+    border: solid 1px #76B8AD;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    /*margin-top: 50px;*/
+    /*padding-top: 5px;
+    padding-bottom: 5px;*/
+}
+.instructionalText .instructions {
+    /*padding-left: 15px;
+    padding-right: 10px;*/
+}
+.instructionImg {
+    width: 32px;
+    padding-left: 10px;
+    padding-top: 10px;
+    vertical-align: top;
+}
+.hidden {
+    display: none;
+}
+.loading {
+    border: none;
+    position: absolute; 
+    background-color: rgba(245, 245, 245, 0.5); 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+}
+.loading img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+</style>
+
+<apex:form id="mainForm" styleClass="main-form" >
+    <apex:pageMessages id="messages" />
+
+    <apex:outputPanel layout="none" rendered="{!AND( access, NOT(AND(ISNULL(form),ISNULL(approvalObject))), pagination.hasPages )}">
+
+        <!--<apex:sectionHeader title="Opportunity Approval" subtitle="{initialCDD.Name}" rendered="{!access}"></apex:sectionHeader>-->
+        <apex:sectionHeader title="{!ApprovalObjectName}" subtitle="{!approvalObject.obj['Name']}" rendered="{!NOT(ISNULL(approvalObject.obj.Id))}"></apex:sectionHeader>
+        <apex:sectionHeader title="{!ApprovalObjectName}" subtitle="New {!ApprovalObjectName}" rendered="{!ISNULL(approvalObject.obj.Id)}"></apex:sectionHeader>
+
+        <apex:outputpanel rendered="{! NOT( instructionalText.empty ) }">
+            <table class="instructionalText">
+                <tr>
+                    <td class="instructionImg"><img src="/img/msg_icons/info32.png" title="Instructions" /></td>
+                    <td class="instructions">
+                        <apex:repeat value="{! instructionalText }" var="text">
+                            <ul><li><apex:outputText escape="false" value="{! text.Text__c }"/></li></ul>
+                        </apex:repeat>
+                    </td>
+                </tr>
+            </table>
+        </apex:outputpanel>
+        
+        <apex:pageBlock title="{!pagination.pageName}" mode="edit" id="mainPageBlock">
+
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton id="cancelButton" value="Cancel" action="{!Cancel}" />
+                <apex:commandButton id="saveButton" value="Save and Close" action="{!Save}" />
+                <apex:commandButton id="previousButton" value="< Previous" action="{!Previous}" rendered="{!pagination.hasPrevious}" />
+                <apex:selectList id="pageOptions" value="{!pagination.page}" size="1" rendered="{!pagination.hasPrevious || pagination.hasNext}">
+                    <apex:selectOptions value="{!pagination.pageOptions}" />
+                </apex:selectList>
+                <apex:commandButton id="goButton" value="Go!" action="{!ChangePage}" onclick="if(document.getElementById('{!$Component.pageOptions}').value=={!pagination.page})return false;" rendered="{!pagination.hasPrevious || pagination.hasNext}" />
+                <apex:commandButton id="nextButton" value="Next >" action="{!Next}" rendered="{!pagination.hasNext}" />
+                <!-- DIFF COMMENT <apex:commandButton id="submitForApprovalButton" value="Submit for Approval" action="{!SubmitForApproval}" rendered="{!isSubmitForApprovalButtonVisible}" />-->
+                <span class="label-float-right bold">Page {!pagination.page} of {!pagination.lastPage}</span>
+            </apex:pageBlockButtons>
+
+            <apex:repeat value="{!sections}" var="section" rendered="{!NOT(sections.empty)}">
+                <apex:pageBlockSection showHeader="true" title="{!section.obj.Name}" rendered="{!NOT(section.properties.empty)}" columns="1">
+                    <apex:repeat value="{!section.properties}" var="property">
+                        <apex:pageBlockSectionItem dataStyleClass="property-{!property.Id}" rendered="{!NOT(OR(ISBLANK(property.Field_API_Name__c),property.Hidden__c))}">
+                            <apex:panelGroup >
+                                <apex:outputLabel styleClass="customLabel" value="{!property.Name}:" rendered="{!ISBLANK(property.Text__c)}" />
+                                <apex:outputLabel styleClass="customLabel" value="{!property.Text__c}:" rendered="{!NOT(ISBLANK(property.Text__c))}" />
+                                <br/>
+                                <apex:inputField styleClass="property-input" value="{!approvalObject.obj[property.Field_API_Name__c]}" required="{!property.Required__c}" rendered="{!NOT(property.Read_only__c) && NOT(ISBLANK(property.Field_API_Name__c))}" html-data-initial-value="{!approvalObject.obj[property.Field_API_Name__c]}" onchange="hideChildren( this, '{!property.Id}' )" />
+                                <apex:outputField value="{!approvalObject.obj[property.Field_API_Name__c]}" rendered="{!property.Read_only__c && NOT(ISBLANK(property.Field_API_Name__c))}" />
+                            </apex:panelGroup>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem rendered="{!ISBLANK(property.Field_API_Name__c)}"></apex:pageBlockSectionItem>
+                    </apex:repeat>
+                </apex:pageBlockSection>
+            </apex:repeat>
+
+            <apex:repeat value="{!relatedLists}" var="rlist" rendered="{!NOT(relatedLists.empty)}">
+                <apex:outputPanel layout="block" style="margin:10px; position:relative" rendered="{!NOT(ISNULL(rlist.wrappers))}">
+                    <apex:actionRegion >
+                        <apex:pageBlock id="pageBlock" title="{!rlist.obj.Name}" mode="edit">
+
+                            <apex:pageBlockButtons location="top">
+                                <apex:commandButton id="rlSaveButton" value="Save" action="{!rlist.Save}" onclick="fixInlineEdit()" reRender="pageBlock, messages" status="actionStatus" />
+                                <!--<apex:commandButton id="rlCancelButton" value="Cancel" style="display:none" action="{!rlist.Cancel}" onclick="resetAllChanges();this.style.display='none';return false;" reRender="pageBlock, messages" status="actionStatus" />-->
+                                <apex:commandButton id="rlAddButton" value="Add Record" action="{!rlist.AddRow}" immediate="true" onclick="fixInlineEdit()" reRender="pageBlock, messages" status="actionStatus" />
+                                
+                                <apex:actionStatus id="selectStatus">
+                                    <apex:facet name="start">
+                                        <apex:commandButton id="rlRemoveButtonDisabled" value="Remove Record" action="{!rlist.RemoveRows}" immediate="true" onclick="fixInlineEdit()" reRender="pageBlock, messages" status="actionStatus" disabled="true" />
+                                    </apex:facet>
+                                    <apex:facet name="stop">
+                                        <apex:actionRegion >
+                                            <apex:commandButton id="rlRemoveButton" value="Remove Record" immediate="true" action="{!rlist.RemoveRows}" onclick="fixInlineEdit()" reRender="pageBlock, messages" status="actionStatus" />
+                                        </apex:actionRegion>
+                                    </apex:facet>
+                                </apex:actionStatus>
+                            </apex:pageBlockButtons>
+
+                            <apex:pageBlockTable value="{!rlist.wrappers}" var="wrapper" style="border:none" rendered="{!NOT(rlist.wrappers.empty)}">
+                                <!-- CHECKBOX COLUMN -->
+                                <apex:column width="25">
+                                    <apex:facet name="header">
+                                        <apex:actionRegion >
+                                            <apex:inputCheckbox value="{!rlist.selected}">
+                                                <apex:actionSupport event="onchange" action="{!rlist.selectAllRecords}" status="actionStatus" reRender="checkboxPanel" />
+                                            </apex:inputCheckbox>
+                                        </apex:actionRegion>
+                                    </apex:facet>
+                                    <apex:outputPanel id="checkboxPanel">
+                                        <apex:actionRegion >
+                                            <apex:inputCheckbox value="{!wrapper.selected}">
+                                                <apex:actionSupport event="onchange" action="{!wrapper.selectRecord}" status="selectStatus" reRender="checkboxPanel" />
+                                            </apex:inputCheckbox>
+                                        </apex:actionRegion>
+                                    </apex:outputPanel>
+                                </apex:column>
+
+                                <!-- RECORD FIELD COLUMNS -->
+                                <apex:repeat value="{!rlist.properties}" var="property">
+                                    <apex:column headerClass="property-{!property.Id}" styleClass="property-{!property.Id}" rendered="{!NOT(property.Hidden__c)}">
+                                        <apex:facet name="header">
+                                            <apex:panelGroup >
+                                                <apex:commandLink value="{!property.Name}" action="{!rlist.refreshRecords}" reRender="pageBlock, messages" status="actionStatus" rendered="{!rlist.describeInfo[property.Field_API_Name__c].isSortable}">
+                                                    <apex:param name="fieldName" value="{!property.Field_API_Name__c}" assignTo="{!rlist.sortBy}" />
+                                                    <apex:param name="sortDir" value="{!IF( rlist.sortBy == property.Field_API_Name__c && rlist.sortDirection == 'asc', 'desc', 'asc' )}" assignTo="{!rlist.sortDirection}" />
+                                                </apex:commandLink>
+                                                <apex:outputText value="{!property.Name}" rendered="{!NOT(rlist.describeInfo[property.Field_API_Name__c].isSortable)}"/>
+                                                <apex:image title="{!rlist.sortDirection}" value="/img/sort_{!rlist.sortDirection}_arrow.gif" rendered="{!rlist.sortBy == property.Field_API_Name__c}" />
+                                            </apex:panelGroup>
+                                        </apex:facet>
+                                        <apex:panelGroup layout="none" rendered="{!NOT(rlist.wrappers.empty)}">
+                                            <!-- Name as link to the record --> 
+                                            <apex:outputLink value="/{!wrapper.obj.Id}" rendered="{!NOT(ISNULL(wrapper.obj.Id)) && UPPER(property.Field_API_Name__c) == 'NAME'}">
+                                                {!wrapper.obj[property.Field_API_Name__c]}
+                                            </apex:outputLink>
+                                            <!-- Other fields -->
+                                            <apex:inputField styleClass="property-input" value="{!wrapper.obj[property.Field_API_Name__c]}" required="{!property.Required__c}" rendered="{!NOT(property.Read_only__c) && ISNULL(wrapper.obj.Id)}" html-data-initial-value="{!wrapper.obj[property.Field_API_Name__c]}" />
+                                            <apex:outputField value="{!wrapper.obj[property.Field_API_Name__c]}" rendered="{!NOT(ISNULL(wrapper.obj.Id)) && UPPER(property.Field_API_Name__c) != 'NAME'}">
+                                                <apex:inlineEditSupport event="ondblclick" changedStyleClass="inline-changed" disabled="{!property.Read_only__c}" />
+                                            </apex:outputField>
+                                        </apex:panelGroup>
+                                    </apex:column>
+                                </apex:repeat>
+                            </apex:pageBlockTable>
+
+                            <apex:outputPanel layout="none" rendered="{!rlist.wrappers.empty}">
+                                <table border="0" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="col" style="background-attachment: scroll;background-clip: border-box;background-color: #F8F8F8;background-image: none;background-origin: padding-box; border-bottom-color: black;border-bottom-style: none;border-bottom-width: 0px;border-collapse: separate;border-left-color: black;border-left-style: none;border-left-width: 0px;border-right-color: black;border-right-style: none;border-right-width: 0px;border-top-color: black;border-top-style: none;border-top-width: 0px; display: table-cell;font-family: Arial, Helvetica, sans-serif;font-size: 12px;font-weight: normal;height: 15px;margin-bottom: 0px;margin-left: 0px;margin-right: 0px;margin-top: 0px;padding-bottom: 4px;padding-left: 5px;padding-right: 2px;padding-top: 5px;text-align: left;vertical-align: middle;white-space: nowrap;width: 943px;">
+                                                No records to display
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </apex:outputPanel>
+
+                            <!-- RELATED LIST FOOTER --> 
+                            <apex:panelGroup rendered="{!NOT(rlist.wrappers.empty)}">
+                                <div style="height: 28px;">
+                                    <apex:outputPanel rendered="{!rlist.pagination.hasPrevious||rlist.pagination.hasNext}" styleClass="label-float-left">
+                                        <span>Page </span>
+                                            <apex:commandLink action="{!rlist.Previous}" rendered="{!rlist.pagination.hasPrevious}" reRender="pageBlock, messages" status="actionStatus" onclick="fixInlineEdit()" style="color:cornflowerblue">
+                                                <apex:image value="/img/func_icons/cal/leftArrow.gif" />
+                                            </apex:commandLink>
+                                            <apex:inputText styleClass="sinput sinput-current-page" value="{!rlist.pagination.page}">
+                                                <apex:actionSupport event="onchange" action="{!rlist.SaveAndRefresh}" reRender="pageBlock, messages" status="actionStatus" />
+                                            </apex:inputText>
+                                        <span> of {!rlist.pagination.lastPage} </span>
+                                        <apex:commandLink action="{!rlist.Next}" rendered="{!rlist.pagination.hasNext}" reRender="pageBlock, messages" status="actionStatus" onclick="fixInlineEdit()" style="color:cornflowerblue">
+                                            <apex:image value="/img/func_icons/cal/rightArrow.gif" />
+                                        </apex:commandLink>
+                                    </apex:outputPanel>
+                                    
+                                    <apex:outputPanel styleClass="label-float-right">
+                                        <span>Records per page: </span>
+                                        <apex:selectList value="{!rlist.pagination.itemsPerPage}" size="1" multiselect="false" styleClass="sinput">
+                                            <apex:selectOptions value="{!rlist.limitOptions}" />
+                                            <apex:actionSupport event="onchange" action="{!rlist.refreshRecordsAndPage}" reRender="pageBlock, messages" status="actionStatus" />
+                                        </apex:selectList> 
+                                    </apex:outputPanel>
+                                </div>
+                            </apex:panelGroup>
+
+                            <!-- Related list locking status -->
+                            <apex:actionStatus id="actionStatus" onstop="bindNumberInputs();initialHiding();">
+                                <apex:facet name="start">
+                                    <div class="loading">
+                                        <img src="/img/loading32.gif" />
+                                    </div>
+                                </apex:facet>
+                            </apex:actionStatus>
+
+                        </apex:pageBlock>
+                    </apex:actionRegion>
+                </apex:outputPanel>
+            </apex:repeat>
+
+        </apex:pageBlock>
+
+        <div id="page-loading" class="loading" style="display:none;z-index: 9999;">
+            <img src="/img/loading32.gif" />
+        </div>
+
+        <script type="text/javascript">
+        var dependentProperties = {!dependentPropertiesJSON};
+        </script>
+
+    </apex:outputPanel>
+</apex:form>
+
+
+
+<script type="text/javascript">
+var dependentProperties = dependentProperties || {};
+var loadingElem = document.getElementById( 'page-loading' );
+
+HTMLCollection.prototype.forEach = function( func ) {
+    for( var i = 0; this.item( i ) != undefined; i++ ) {
+        func( this.item( i ), i );
+    }
+};
+
+function showLoading() {
+    loadingElem.style.display = 'block';
+}
+
+function hideLoading() {
+    loadingElem.style.display = 'none';
+}
+
+function hideChildren( parentElement, propertyId ) {
+    if ( dependentProperties[propertyId] !== undefined ) {
+        for ( var i = 0; i < dependentProperties[propertyId].length; i++ ) {
+            showLoading();
+            document.getElementsByClassName( 'property-' + dependentProperties[propertyId][i].Id ).forEach( function( dependentElement ) {
+                var values = dependentProperties[propertyId][i].Parent_Property_Values__c;
+                if ( ( values === undefined && parentElement.value !== '' ) || 
+                    values && values.split(';').indexOf( String( convertValue( parentElement ) ) ) < 0
+                ) {
+                    dependentElement.getElementsByClassName( 'property-input' ).forEach( function( dependentInput ) {
+                        if ( dependentInput && dependentInput.dataset.initialValue !== undefined ) {
+                            dependentInput.value = dependentInput.dataset.initialValue;
+                        }
+                    } );
+                    dependentElement.classList.add( 'hidden' );
+                } else {
+                    dependentElement.classList.remove( 'hidden' );
+                }
+            } );
+            hideLoading();
+        }
+    }
+}
+
+function convertValue( element ) {
+    if ( element.type === 'checkbox' ) {
+        return element.checked; // to "true"/"false"
+    }
+    return element.value;
+}
+
+function initialHiding() {
+    // initial dependent properties hiding
+    for ( var key in dependentProperties ) {
+        document.getElementsByClassName( 'property-' + key ).forEach( function( property ) {
+            if ( property ) {
+                property.getElementsByClassName( 'property-input' ).forEach( function( propertyInput ) {
+                    hideChildren( propertyInput, key );
+                } );
+            }
+        } );
+    }
+}
+
+function bindNumberInputs() {
+    document.getElementsByClassName( 'sinput-current-page' ).forEach( function( elem, index ) {
+        if ( elem && elem.type ) {
+            elem.type = 'number';
+        }
+    } );
+}
+
+function fixInlineEdit() {
+    document.getElementsByClassName('main-form')[0].click();
+}
+
+function fixPageValue( elem, curPage, lastPage ) {
+    if( !isFinite( elem.value ) ) {
+        return false;
+    } else if ( elem.value < 1 ) {
+        event.target.value = 1;
+        return false;
+    } else if ( elem.value > lastPage ) {
+        elem.value = lastPage;
+        return false;
+    }
+    return true;
+}
+
+function resetAllChanges() {
+    document.getElementsByClassName( 'inlineEditUndoLink' ).forEach( function( element ) {
+        element.click();
+    } );
+}
+
+document.getElementsByTagName( 'textarea' ).forEach( function( elem ) {
+   elem.style.width = '100%';
+} );
+
+showLoading();
+bindNumberInputs();
+initialHiding();
+hideLoading();
+</script>
+
+</apex:page>

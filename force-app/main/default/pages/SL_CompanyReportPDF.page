@@ -1,0 +1,9 @@
+<apex:page id="MainPage" showHeader="false" cache="true" contentType="application/x-pdf#operating-company-tearsheet.pdf" lightningStylesheets="true">
+<apex:slds />
+    <script type="text/javascript">
+    window.close();
+    </script>
+    <apex:include pageName="SL_CompanyReport"/>
+    
+    
+</apex:page>

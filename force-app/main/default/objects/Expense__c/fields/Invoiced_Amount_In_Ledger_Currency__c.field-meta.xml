@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Invoiced_Amount_In_Ledger_Currency__c</fullName>
+    <description>Invoiced Expense Amount In Ledger Currency</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Invoiced Expense Amount In Ledger Currency</inlineHelpText>
+    <label>Invoiced Amount In Ledger Currency</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

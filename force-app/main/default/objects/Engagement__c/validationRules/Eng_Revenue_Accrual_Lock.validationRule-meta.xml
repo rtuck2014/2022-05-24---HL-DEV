@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Eng_Revenue_Accrual_Lock</fullName>
+    <active>true</active>
+    <errorConditionFormula>$Setup.HL_General__c.Revenue_Accrual_Locked__c  
+&amp;&amp; (
+  ISCHANGED( Period_Accrued_Fees__c) || 
+  ISCHANGED( Actual_Monthly_Fee__c ) || 
+  ISCHANGED( Actual_Transaction_Fee__c ) || 
+  ISCHANGED( Percentage_of_Completion__c ) || 
+  (TEXT(Line_of_Business__c) = &apos;FVA&apos; &amp;&amp; 
+    (ISCHANGED( Stage__c ) || 
+     ISCHANGED( Total_Estimated_Fee__c ))
+  )
+) &amp;&amp; $Profile.Name != &apos;System Administrator&apos; &amp;&amp; $Profile.Name != &apos;Accounting User&apos;</errorConditionFormula>
+    <errorMessage>Revenue Accrual + Engagement locked.</errorMessage>
+</ValidationRule>

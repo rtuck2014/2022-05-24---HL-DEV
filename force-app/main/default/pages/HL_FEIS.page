@@ -1,0 +1,796 @@
+<apex:page standardController="Opportunity_Approval__c" extensions="HL_FEISController" tabStyle="Approval_Object__c" lightningStyleSheets="true">
+    <apex:form title="FEIS" >
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:actionStatus id="refreshStatus" startText="Refreshing..." stopText="" startStyle="font-weight: bold; font-size: 1.5em;">
+            <apex:facet name="start" ><apex:outputPanel ><img src="/img/loading.gif" /><span>&nbsp;Refreshing...</span></apex:outputPanel></apex:facet>
+        </apex:actionStatus>
+        <apex:sectionHeader title="FEIS" subtitle="{!Opportunity_Approval__c.Related_Opportunity__r.Name}"></apex:sectionHeader>
+        <apex:outputLabel value="{!Opportunity_Approval__c.Related_Opportunity__c}" rendered="false"></apex:outputLabel>
+        <apex:pageBlock mode="edit">
+            <div style="float: right;" class="bold">
+                <input id="toggleTabs" type="checkbox"/><span>Toggle Tabs</span>
+            </div>
+            <table class="instructionalText">
+                <tbody><tr>
+                    <td class="instructionImg"><img src="/img/msg_icons/info32.png" title="Instructions"/></td>
+                    <td class="instructions">
+                        <p class="bold center" style="font-size: 1.5em;">
+                            FEIS (Part I) Form
+                        </p>
+                        <p>
+                            This form should be prepared or at least reviewed by an officer on the deal team and should be reviewed and approved by the Principal and distributed via e-mail to the FEC as early as possible in the engagement process (before the client is provided with any fee estimate or a draft of the engagement letter) and at least seven days prior to the expected delivery date of the fairness opinion. However, in the case of a fairness opinion that will be rendered as part of an M&amp;A advisory engagement, this form should be be sent only to the Transaction Opinion Administrative Coordinator and the Co-Chairs of the FEC at least seven days prior to the expected delivery date of the fairness opinion. For additional details, please consult the Fairness Opinion Engagement and Issuance Procedures. <br /> <br /> 
+                            No member of the deal team may have any material financial interests in, or any directorships, family relationships or other relationships with, the client or any other participant in the transaction that might create an actual or perceived conflict of interest. <br /> <br /> 
+                            Any fairness opinion engagement involving a public company should be staffed with at least one officer with sufficient experience in public company transactions.
+                        </p>
+                        <apex:outputPanel rendered="{!Opportunity_Approval__c.Reviewed__c}">
+                            <p style="color:red;">
+                                Since this form has previously been sent to the Fairness Engagement Committee, please ensure that any updated version of this form (and, if appropriate, an explanation of the changes) is also sent to the FEC.  If the proposed engagement has already received FEC approval based on the previous version of this form, and the changes that are going to be made are material, the FEC should re-approve the proposed engagement based on the updated version of this form.
+                            </p>
+                        </apex:outputPanel>
+                    </td>
+                    </tr>
+                </tbody></table>
+            <apex:pageBlockButtons style="text-align:center" >
+                <apex:outputPanel rendered="{!$Profile.Name <> 'System Administrator' && $Profile.Name <> 'CAO' && (Opportunity_Approval__c.Locked__c || NOT(OnOIT))}">
+                    <a href="/{!Opportunity_Approval__c.Related_Opportunity__c}" class="btn" style="text-decoration:none;">Return to Opportunity</a>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!NOT($Profile.Name <> 'System Administrator' && $Profile.Name <> 'CAO' && (Opportunity_Approval__c.Locked__c || NOT(OnOIT)))}">
+                    <apex:commandButton id="btnSave" action="{!SaveRecord}" value="Save FEIS (Part I)" rendered="{!NOT(EnableRequirements)}" />
+                    <apex:commandButton id="btnReturn" action="{!SaveAndReturn}" value="Return to Opportunity" rendered="{!NOT(EnableRequirements)}" />
+                    <apex:commandButton id="btnCancel" action="{!CancelSubmission}" value="Cancel Submission" rendered="{!EnableRequirements}" immediate="true" onclick="return confirm('Are you sure?\nNote: Any changes made will still be saved.')" />
+                    <apex:commandButton id="btnSubmit" action="{!TriggerValidation}" value="Submit FEIS (Part I) Form" oncomplete="SubmitForm()" rendered="{!NOT(Opportunity_Approval__c.Locked__c)}"/>
+                    <apex:commandButton id="SubmitForm" action="{!SubmitForm}" value="Submit FEIS (Part I) Form" style="display:none;" />               
+                </apex:outputPanel>
+                    <a href= "{!Opportunity_Approval__c.PDF_View__c}" target="_blank" class="btn" style="text-decoration:none;">PDF View</a> 
+            </apex:pageBlockButtons>
+            <div id="tabs">
+                <ul id="tabsList">
+                    <li><a href="#tabs-1">General and Background on Transaction</a></li>
+                    <li><a href="#tabs-2">Targets / Subjects and Counterparties</a></li>
+                    <li><a href="#tabs-3">Form of Opinion</a></li>
+                    <li><a href="#tabs-4">Legal Review Criteria</a></li>
+                    <li><a href="#tabs-5">Other Opinion Information</a></li>
+                    <li><a href="#tabs-6">Review</a></li>
+                </ul>
+                <div id="tabs-1">
+                    <apex:pageBlockSection columns="1" title="Opportunity Overview">
+                        <apex:outputField value="{!Opportunity_Approval__c.Related_Opportunity__r.Name}"></apex:outputField>
+                        <apex:outputField value="{!Opportunity_Approval__c.Job_Type__c}"></apex:outputField>
+                        <apex:outputField value="{!Opportunity_Approval__c.Client_Company__c}"></apex:outputField>
+                        <apex:outputField value="{!Opportunity_Approval__c.Subject_Company__c}"></apex:outputField>
+                        <apex:outputField value="{!Opportunity_Approval__c.Opportunity_Number__c}"></apex:outputField>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="1" title="Referral Information">
+                        <apex:outputField value="{!Opportunity_Approval__c.Referral_Type__c}"></apex:outputField>
+                        <apex:outputField value="{!Opportunity_Approval__c.Referral_Source__c}" label="Referral Contact"></apex:outputField>
+                    </apex:pageBlockSection> 
+                    <apex:pageBlockSection columns="1" title="General">
+                        <apex:inputField value="{!Opportunity_Approval__c.Estimated_Fee__c}" label="Proposed Aggregate Opinion Fee"></apex:inputField>
+                        <apex:inputField value="{!Opportunity_Approval__c.Retainer__c}" label="Amount Paid Upfront"></apex:inputField>
+                        <apex:inputField value="{!Opportunity_Approval__c.Amount_Paid_Upon_Delivery2__c}" label="Amount Paid Upon Delivery" styleClass="numeric-short"></apex:inputField>
+                        <apex:outputLabel value="Proposed Incremental Fees (if any) and Description of Additional Services (if any)"></apex:outputLabel>
+                        <apex:inputTextarea value="{!Opportunity_Approval__c.Proposed_Incremental_Fees__c}" label="" cols="90" rows="5"></apex:inputTextarea>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="1" title="Background on Transaction">
+                        <apex:outputLabel id="descriptionOfTransactionTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Transaction_Overview__c=='','red','')}" value="Transaction Overview"></apex:outputLabel>
+                            <apex:inputTextarea id="descriptionOfTransaction" value="{!Opportunity_Approval__c.Transaction_Overview__c}" cols="90" rows="5" label="" styleClass="required">
+                                <apex:actionSupport event="onchange" rerender="descriptionOfTransactionTXT"/>
+                            </apex:inputTextarea>
+                        <apex:outputPanel >
+                            <table cellpadding="3" cellspacing="3">
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="TransactionTypeTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Transaction_Type__c=='', 'red','')}" value="Transaction Type"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="TransactionType" value="{!Opportunity_Approval__c.Transaction_Type__c}" styleClass="required">
+                                            <apex:actionSupport event="onchange" rerender="TransactionTypeTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="TransactionType01" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.FEIS_Other_Job_Type_Desc__c=='', 'red','')}" value="Describe Other Transaction Type"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">    
+                                        <apex:inputTextarea id="TransactionType02" value="{!Opportunity_Approval__c.FEIS_Other_Job_Type_Desc__c}" cols="90" rows="5" label="">
+                                            <apex:actionSupport event="onchange" rerender="TransactionType01"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table cellpadding="3" cellspacing="3">
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="LegalStructureTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Legal_Structure__c=='', 'red','')}" value="Legal Structure"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="LegalStructure" value="{!Opportunity_Approval__c.Legal_Structure__c}" styleClass="required">
+                                            <apex:actionSupport event="onchange" rerender="LegalStructureTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="LegalStructure01" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.FEIS_Other_Legal_Structure_Desc__c=='', 'red','')}" value="Describe Other Legal Structure"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:inputTextarea id="LegalStructure02" value="{!Opportunity_Approval__c.FEIS_Other_Legal_Structure_Desc__c}" cols="90" rows="5" label="">
+                                            <apex:actionSupport event="onchange" rerender="LegalStructure01"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="1" title="Form and Amount of Consideration">
+                        <apex:outputPanel >
+                            <table cellpadding="3" cellspacing="3">
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="TransSizeTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Estimated_Transaction_Size_MM__c=null, 'red','')}" value="Transaction Size (EV) (MM)"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="TransSize" value="{!Opportunity_Approval__c.Estimated_Transaction_Size_MM__c}" styleClass="numeric-short required">
+                                            <apex:actionSupport event="onchange" rerender="TransSizeTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="EquitySizeTXT" value="Transaction Size (Equity) (MM)"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField value="{!Opportunity_Approval__c.Estimated_Transaction_Size_Equity_MM__c}" styleClass="numeric-short"> </apex:inputField>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="FormConsiderTXT" style="font-size: 0.9em; color:{!IF(EnableRequirements && Opportunity_Approval__c.Form_of_Consideration__c=='', 'red','')}" value="Form of Consideration (pick all that apply)" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:inputField id="FormConsider" value="{!Opportunity_Approval__c.Form_of_Consideration__c}" label="" styleClass="required">
+                                            <apex:actionSupport event="onchange" rerender="FormConsiderTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:outputLabel id="OtherFormTXT" style="color:{!IF(EnableRequirements && CONTAINS(Opportunity_Approval__c.Form_of_Consideration__c,'Other') && Opportunity_Approval__c.FEIS_Other_Forms_of_Consid_Desc__c=='', 'red','')}" value="Describe Other Form of Consideration"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="indent">
+                                        <apex:inputTextarea id="OtherForm" value="{!Opportunity_Approval__c.FEIS_Other_Forms_of_Consid_Desc__c}" cols="90" rows="5" label="">
+                                                <apex:actionSupport event="onchange" rerender="OtherFormTXT"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                </div>
+                <div id="tabs-2">
+                    <apex:pageBlockSection columns="1" title="Ownership and Advisors of Target/Subject Company(ies)">
+                        <center><input type='button' value='Add Target/Subject' id='newClientSubject' class="btn" /></center>
+                        <apex:commandButton id="clientsSubjectsRefresh" action="{!RefreshClientsSubjects}" reRender="panClientsSubjects,pbtShareholderCompanies"  status="refreshStatus" oncomplete="DocumentReady();" immediate="true" style="display:none;"/>
+                        <apex:outputPanel id="panClientsSubjects">
+                            <apex:pageBlockTable value="{!ClientsSubjects}" var="cs">
+                                <apex:column width="50px">
+                                    <apex:outputPanel rendered="{!NOT(Opportunity_Approval__c.Locked__c)}">
+                                        <a id='editClientSubject' class="pointer underline" style="padding-right: 5px;">Edit</a>
+                                        <apex:outputLabel value="{!cs.Id}" styleClass="hidden"></apex:outputLabel>
+                                        <apex:commandLink value="Del" action="{!DeleteClientSubject}" onclick="return confirmDelete();">
+                                            <apex:param name="p1" assignTo="{!DelId}" value="{!cs.Id}"></apex:param>
+                                        </apex:commandLink> 
+<!--<apex:outputLink value="{!URLFOR($Action.Opportunity_Client_Subject__c.Delete, cs.Id,[retURL='/apex/HL_FEIS?id=' + OpportunityApproval.Id])}" target="_parent" onClick="return confirmDelete()">Del</apex:outputLink>-->
+                                    </apex:outputPanel>
+                                </apex:column>
+                                <apex:column value="{!cs.Client_Subject__r.Name}" headerValue="Target/Subject Company Name"/>
+                                <apex:column value="{!cs.Public_Or_Private__c}" headerValue="Public/Private"/>
+                                <apex:column value="{!cs.Private_Equity_Ownership__c}" headerValue="Private Equity (%)"/>
+                                <apex:column value="{!cs.Market_Cap_MM__c}" headerValue="Market Cap (Mil)"/>
+                                <apex:column value="{!cs.ESOP__c}" headerValue="ESOP (%)"/>
+                                <apex:column value="{!cs.NFP__c}" headerValue="Not for Profit (%)"/>
+                                <apex:column value="{!cs.Insiders__c}" headerValue="Insiders (%)"/>
+                                <apex:column headerValue="More Details" width="30px" styleClass="center">
+                                    <apex:image styleClass="tipPopupTrigger pointer" alt="More Details" url="{!URLFOR($Resource.HL_Images,'Info.png')}" rendered="{!NOT ISBLANK(cs.Outside_Counsel__c) || NOT ISBLANK(cs.Financial_Advisors__c) || NOT ISBLANK(cs.Other_Financial_Advisor_Services__c)}" height="16px" title="More Details"/>
+                                    <apex:outputPanel styleClass="popupDetails" style="display:none;">
+                                        <apex:pageBlockSection columns="1" title="Additional Details for {!cs.Client_Subject__r.Name}" collapsible="false" >
+                                            <apex:outputLabel value="Outside Counsel - Identify the name(s) of all law firm(s) and attorney(ies)" style="padding-left:5px;"></apex:outputLabel>
+                                            <apex:outputField value="{!cs.Outside_Counsel__c}" styleClass="top" label=""/>
+                                            <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                                            <apex:outputLabel value="Financial Advisor(s) (other than Houlihan Lokey)" style="padding-left:5px;"></apex:outputLabel>
+                                            <apex:outputField value="{!cs.Financial_Advisors__c}" styleClass="top" label=""/>
+                                            <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                                            <apex:outputLabel value="Describe services being provided by other Financial Advisor(s)" style="padding-left:5px;"></apex:outputLabel>
+                                            <apex:outputField value="{!cs.Other_Financial_Advisor_Services__c}" styleClass="top" label=""/>
+                                        </apex:pageBlockSection>
+                                    </apex:outputPanel>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="1" title="Ownership and Advisors of Counterparty(ies) in the Transaction">
+                        <center><input type='button' value='Add Counterparty' id='newCounterparty' class="btn" /></center>
+                        <apex:commandButton id="counterpartiesRefresh" action="{!RefreshCounterparties}" reRender="panCounterparties,pbtShareholderCompanies" style="display:none;" status="refreshStatus" oncomplete="DocumentReady();" immediate="true"/>
+                        <apex:outputPanel id="panCounterparties">
+                            <apex:pageBlockTable value="{!Counterparties}" var="cp">
+                                <apex:column width="50px" >
+                                    <apex:outputPanel rendered="{!NOT(Opportunity_Approval__c.Locked__c)}">
+                                        <a id='editCounterparty' class="pointer underline" style="padding-right: 5px;">Edit</a>
+                                        <apex:outputLabel value="{!cp.Id}" styleClass="hidden"></apex:outputLabel>
+                                        <apex:commandLink value="Del" action="{!DeleteCounterparty}" onclick="return confirmDelete();">
+                                            <apex:param name="p2" assignTo="{!DelId}" value="{!cp.Id}"></apex:param>
+                                        </apex:commandLink> 
+                                        <!--<apex:outputLink value="{!URLFOR($Action.Opportunity_Client_Subject__c.Delete, cp.Id,[retURL='/apex/HL_FEIS?id=' + OpportunityApproval.Id])}" target="_parent" onClick="return confirmDelete()">Del</apex:outputLink>-->
+                                    </apex:outputPanel>
+                                </apex:column>
+                                <apex:column value="{!cp.Client_Subject__r.Name}" headerValue="Counterparty Company Name"/>
+                                <apex:column value="{!cp.Public_Or_Private__c}" headerValue="Public/Private"/>
+                                <apex:column value="{!cp.Private_Equity_Ownership__c}" headerValue="Private Equity (%)"/>
+                                <apex:column value="{!cp.Market_Cap_MM__c}" headerValue="Market Cap (Mil)"/>
+                                <apex:column value="{!cp.ESOP__c}" headerValue="ESOP (%)"/>
+                                <apex:column value="{!cp.NFP__c}" headerValue="Not for Profit (%)"/>
+                                <apex:column value="{!cp.Insiders__c}" headerValue="Insiders (%)"/>
+                                <apex:column headerValue="More Details" width="30px" styleClass="center">
+                                    <apex:image styleClass="tipPopupTrigger pointer" alt="More Details" url="{!URLFOR($Resource.HL_Images,'Info.png')}" height="16px" title="More Details" rendered="{!NOT ISBLANK(cp.Outside_Counsel__c) || NOT ISBLANK(cp.Financial_Advisors__c) || NOT ISBLANK(cp.Other_Financial_Advisor_Services__c)}"/>
+                                    <apex:outputPanel styleClass="popupDetails" style="display:none;">
+                                        <apex:pageBlockSection columns="1" title="Additional Details for {!cp.Client_Subject__r.Name}" collapsible="false" >
+                                            <apex:outputLabel value="Outside Counsel - Identify the name(s) of all law firm(s) and attorney(ies)" style="padding-left:5px;"></apex:outputLabel>
+                                            <apex:outputField value="{!cp.Outside_Counsel__c}" styleClass="top" label=""/>
+                                            <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                                            <apex:outputLabel value="Financial Advisor(s) (other than Houlihan Lokey)" style="padding-left:5px;"></apex:outputLabel>
+                                            <apex:outputField value="{!cp.Financial_Advisors__c}" styleClass="top" label=""/>
+                                            <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                                            <apex:outputLabel value="Describe services being provided by other Financial Advisor(s)" style="padding-left:5px;"></apex:outputLabel>
+                                            <apex:outputField value="{!cp.Other_Financial_Advisor_Services__c}" styleClass="top" label=""/>
+                                        </apex:pageBlockSection>
+                                    </apex:outputPanel>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                    <div style="padding: 5px 0px 5px 10px;">
+                        <apex:outputLabel value="Background on Target/Subject Company(ies) and Counterparty(ies) (including summary financial statements, relevant transaction multiples,etc.)" style="padding: 5px 0px 5px 0px;"></apex:outputLabel>
+                        <br /><br />
+                        <apex:inputTextarea value="{!Opportunity_Approval__c.Background_On_Additional_Companies__c}" cols="140" rows="5"/>
+                    </div>
+                    <apex:pageBlockSection columns="1" title="Affiliated Parties Information">
+                        <apex:outputPanel >
+                            <table cellpadding="3" cellspacing="3">
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel id="affiliatedPartiesTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Opinion_Parties_Affiliated__c=='', 'red','')}" value="Are any of the parties to the transaction affiliated with each other?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="affiliatedParties" value="{!Opportunity_Approval__c.Opinion_Parties_Affiliated__c}" styleClass="required">
+                                            <apex:actionSupport event="onchange" reRender="affiliatedPartiesTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:outputLabel id="affiliatedParties_01TXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Opinion_Parties_Affiliated__c=='Yes' && Opportunity_Approval__c.Opinion_Affiliated_Parties_Summary__c=='', 'red','')}" value="Identify the parties and describe the affiliation:"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:inputTextarea id="affiliatedParties_01" value="{!Opportunity_Approval__c.Opinion_Affiliated_Parties_Summary__c}" label="" rows="5" cols="90">
+                                            <apex:actionSupport event="onchange" reRender="affiliatedParties_01TXT"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                </div>
+                <div id="tabs-3">
+                    <apex:pageBlockSection columns="1" title="Form of Opinion">
+                        <apex:outputPanel >
+                            <table style="width:100%" cellpadding="3" cellspacing="3">
+                                <tr>
+                                    <td colspan="2" class="bold" style="padding-bottom: 10px;">
+                                        With respect to which of the following are we being asked to opine?
+                                    </td>    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:inputField value="{!Opportunity_Approval__c.FEIS_Opine_Option_1__c}" label=""></apex:inputField>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel value="The consideration to be received by the Unaffiliated Stockholders in the Transaction is fair to them from a financial point of view."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:inputField value="{!Opportunity_Approval__c.FEIS_Opine_Option_2__c}" label=""></apex:inputField>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel value="The consideration to be received by the Company in the Transaction is fair to the Company from a financial point of view."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:inputField value="{!Opportunity_Approval__c.FEIS_Opine_Option_3__c}" label=""></apex:inputField>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel value="The consideration to be paid by the Company in the Transaction is fair to the Company from a financial point of view."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:inputField value="{!Opportunity_Approval__c.FEIS_Opine_Option_4__c}" label=""></apex:inputField>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel value="The Exchange Ratio provided for in the Transaction is fair to the Company from a financial point of view."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:inputField value="{!Opportunity_Approval__c.FEIS_Opine_Option_5__c}" label=""></apex:inputField>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel value="The Exchange Ratio provided for in the Transaction is fair to the Unaffiliated Stockholders from a financial point of view."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:inputField id="Other" value="{!Opportunity_Approval__c.FEIS_Opine_Option_6__c}" label=""></apex:inputField>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel value="Other"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:outputLabel id="Other01" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.FEIS_Opine_Option_6__c && Opportunity_Approval__c.Form_of_Opinion_Notes__c=='', 'red','')}" value="Other Form of Opinion Description"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:inputTextarea id="Other02" value="{!Opportunity_Approval__c.Form_of_Opinion_Notes__c}" cols="90" rows="5" label="">
+                                            <apex:actionSupport event="onchange" reRender="Other01"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                    </apex:pageBlockSection>
+                </div>
+                <div id="tabs-4">
+                    <apex:pageBlockSection columns="1" title="Legal Review Criteria">
+                        <apex:outputPanel >
+                            <table class="instructionalText">
+                                <tbody><tr>
+                                    <td class="instructionImg"><img src="/img/msg_icons/info32.png" title="Instructions"/></td>
+                                    <td class="instructions">
+                                        <p>
+                                            If you have any doubts as to whether the opinion meets any of these criteria, please contact the Legal Department.  Please consult with the Fairness Opinion Engagement and Issuance Procedures for additional details on the retention of outside counsel and the involvement of the Legal Department in fairness opinion engagements.
+                                        </p>
+                                    </td>
+                                    </tr>
+                                </tbody></table>
+                        </apex:outputPanel>    
+                        <apex:outputPanel >
+                            <table cellpadding="3" cellspacing="3">
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="1."></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel id="isPubliclyDisclosedTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Fairness_Opinion_Publicly_Disclosed__c=='', 'red','')}" value="Do we know or have reason to know that the opinion will be publicly disclosed or referenced, i.e., will it be provided or described to security holders (in the case of either a private or public company)?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="isPubliclyDisclosed" value="{!Opportunity_Approval__c.Fairness_Opinion_Publicly_Disclosed__c}" label="" styleClass="lrc required">
+                                            <apex:actionSupport event="onchange" reRender="isPubliclyDisclosedTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="indent">
+                                        <apex:outputLabel id="isPubliclyDisclosed_01TXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Fairness_Disclosure_Document__c=='' && Opportunity_Approval__c.Fairness_Opinion_Publicly_Disclosed__c=='Yes', 'red','')}" value="If 'Yes', in what disclosure document will the opinion (or reference to the opinion) appear?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="isPubliclyDisclosed_01" value="{!Opportunity_Approval__c.Fairness_Disclosure_Document__c}" label="">
+                                            <apex:actionSupport event="onchange" reRender="isPubliclyDisclosed_01TXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="indent" colspan="2">
+                                        <apex:outputLabel id="otherFairnessDisclosureDocTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Fairness_Disclosure_Document__c=='Other' && Opportunity_Approval__c.Fairness_Opinion_Publicly_Disclosed__c=='Yes' && Opportunity_Approval__c.Fairness_Disclosure_Document_Other__c=='', 'red','')}" value="Please describe the disclosure document."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="indent" colspan="2">
+                                        <apex:inputTextarea id="otherFairnessDisclosureDoc" value="{!Opportunity_Approval__c.Fairness_Disclosure_Document_Other__c}" label="" rows="5" cols="90">
+                                            <apex:actionSupport event="onchange" reRender="otherFairnessDisclosureDocTXT"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="indent">
+                                        <apex:outputLabel id="isPubliclyDisclosed_02TXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Fairness_Disclose_Analyses__c=='' && Opportunity_Approval__c.Fairness_Opinion_Publicly_Disclosed__c=='Yes', 'red','')}" value="If 'Yes', will a description of the opinion and underlying analyses be required to be disclosed with the opinion?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="isPubliclyDisclosed_02" value="{!Opportunity_Approval__c.Fairness_Disclose_Analyses__c}" label="">
+                                            <apex:actionSupport event="onchange" reRender="isPubliclyDisclosed_02TXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="2."></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel value="Does the client, or any other participant in the transaction, have any publicly traded securities?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="publiclyTradedSecurity" value="{!Opportunity_Approval__c.Fairness_Publicly_Traded_Securities__c}" label="" styleClass="lrc"></apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="3."></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel value="Will the opinion be issued in connection with a transaction for which the Firm (or any of its affiliates) is providing any other financial advisory, restructuring, financing or other services, or is providing financing, or participating in financing, for any party to the transaction (for example, rendering another financial opinion, acting as a restructuring advisor, financial advisor in connection with the sale of the company, placement agent or lender)?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="fairnessInAddition" value="{!Opportunity_Approval__c.Fairness_In_Addition__c}" label="" styleClass="lrc02"></apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="indent" colspan="2">
+                                        <apex:outputLabel id="fairnessInAddition_01TXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Fairness_Services_and_Fees__c=='' && Opportunity_Approval__c.Fairness_In_Addition__c=='Yes', 'red','')}" value="If 'Yes', describe services and fees or fee schedule."></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="indent" colspan="2">
+                                        <apex:inputTextarea id="fairnessInAddition_01" value="{!Opportunity_Approval__c.Fairness_Services_and_Fees__c}" label="" rows="5" cols="90">
+                                            <apex:actionSupport event="onchange" reRender="fairnessInAddition_01TXT"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="indent">
+                                        <apex:outputLabel id="fairnessInAddition_02TXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Fairness_In_Addition__c=='Yes' && Opportunity_Approval__c.Fairness_Additional_Officers__c=='', 'red','')}" value="If 'Yes', are there any additional officers providing these services that are not identified in the staff roles list below?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="fairnessInAddition_02" value="{!Opportunity_Approval__c.Fairness_Additional_Officers__c}" label="">
+                                            <apex:actionSupport event="onchange" reRender="fairnessInAddition_02TXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td colspan="2">
+                                        <apex:outputPanel rendered="{!NOT(Opportunity_Approval__c.Locked__c)}">
+                                              <apex:iframe height="auto" scrolling="true" src="/apex/HL_InternalTeamModifyView?id={!OpportunityApproval.Related_Opportunity__c}&showheader=false" />
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!Opportunity_Approval__c.Locked__c}">
+                                             <apex:iframe height="auto" scrolling="true" src="/apex/HL_InternalTeamReadOnlyView?id={!OpportunityApproval.Related_Opportunity__c}&showheader=false" />
+                                        </apex:outputPanel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td colspan="2">
+                                         <apex:outputPanel rendered="{!NOT(Opportunity_Approval__c.Locked__c)}">
+                                            <apex:iframe height="auto" scrolling="true" src="/apex/HL_InternalTeamModifyView?id={!OpportunityApproval.Related_Opportunity__c}&showheader=false&specialRole=Fairness" />
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!Opportunity_Approval__c.Locked__c}">
+                                            <apex:iframe height="auto" scrolling="true" src="/apex/HL_InternalTeamReadOnlyView?id={!OpportunityApproval.Related_Opportunity__c}&showheader=false&specialRole=Fairness" />
+                                        </apex:outputPanel>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="4."></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel id="fairnessRelativeFairnessTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Fairness_Relative_Fairness__c=='', 'red','')}" value="Will the opinion address ''relative fairness'', i.e., the fairness of any portion or aspect of a transaction to any one class or group of security holders vis-a-vis any other class or group of security holders?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="fairnessRelativeFairness" value="{!Opportunity_Approval__c.Fairness_Relative_Fairness__c}" label="" styleClass="lrc02 required">
+                                            <apex:actionSupport event="onchange" reRender="fairnessRelativeFairnessTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="5."></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel id="fairnessFairnessOrTermsTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Fairness_Fairness_or_Terms__c=='', 'red','')}" value="Will the opinion address the fairness of a transaction to, or the terms of a transaction to (as opposed to the fairness of the consideration received or paid in a transaction by, or of the exchange ratio to), any entity or group of security holders?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="fairnessFairnessOrTerms" value="{!Opportunity_Approval__c.Fairness_Fairness_or_Terms__c}" label="" styleClass="lrc02 required">
+                                            <apex:actionSupport event="onchange" reRender="fairnessFairnessOrTermsTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="6."></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel id="fairnessMultipleConclusionsTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Fairness_Multiple_Conclusions__c=='', 'red','')}" value="Will the opinion contain more than one fairness conclusion (for example, fair to buyer and fair to seller, fair to holders of Class A common and fair to holders of Class B common, fair to holders of a common and fair to noteholders)?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="fairnessMultipleConclusions" value="{!Opportunity_Approval__c.Fairness_Multiple_Conclusions__c}" label="" styleClass="lrc02 required">
+                                            <apex:actionSupport event="onchange" reRender="fairnessMultipleConclusionsTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="7."></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel id="fairnessCommitteeOrTrusteeTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Fairness_Committee_or_Trustee__c=='', 'red','')}" value="Is the client a committee, trustee or representative for an employee stock ownership plan or comparable structure?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="fairnessCommitteeOrTrustee" value="{!Opportunity_Approval__c.Fairness_Committee_or_Trustee__c}" label="" styleClass="lrc02 required">
+                                            <apex:actionSupport event="onchange" reRender="fairnessCommitteeOrTrusteeTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="8."></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel id="fairnessUnusualOpinionTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Fairness_Unusual_Opinion__c=='', 'red','')}" value="Is the opinion one with atypical or unusual attributes or purposes (for example, the opinion is being rendered to comply with the provisions of an indenture or loan agreement or the laws or regulations of a foreign jurisdiction or regulatory regime)?"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputField id="fairnessUnusualOpinion" value="{!Opportunity_Approval__c.Fairness_Unusual_Opinion__c}" label="" styleClass="lrc02 required">
+                                            <apex:actionSupport event="onchange" reRender="fairnessUnusualOpinionTXT"/>
+                                        </apex:inputField>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="spacer"/>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" bgcolor="#e3e6ef" style="border-left-style: solid; border-color:#7c8db6">
+                                        <apex:outputLabel style="font-size:1.1em; color:black;" value="Relationship Questions - (the answers to each of these questions must be verified with each member of the deal team)"></apex:outputLabel>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td/>
+                                        <td>
+                                            <apex:outputLabel id="Conflicts3aTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_3a_Related_to_Transaction__c=='','red','')}" value="Have any of the deal team members had, or do any of them currently have, any direct or indirect financial interests in or exposures to, the potential transaction, any related transactions, the potential client or, if known, the likely counterparty(ies) (or any of their respective affiliates)?"> </apex:outputLabel>
+                                        </td>
+                                        <td>
+                                            <apex:inputField id="Conflicts3a" value="{!Opportunity_Approval__c.Conflicts_3a_Related_to_Transaction__c}" styleClass="required">
+                                                <apex:actionsupport event="onchange" rerender="Conflicts3aTXT"/>
+                                            </apex:inputField>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td/>
+                                        <td class="indent">
+                                            <apex:outputLabel id="Conflicts3b00" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_3b_Related_to_Transaction_TXT__c=='','red','')}" value="If yes, please describe:"></apex:outputLabel>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <td/> 
+                                        <td class="indent">
+                                            <apex:inputTextarea id="Conflicts3b01" value="{!Opportunity_Approval__c.Conflicts_3b_Related_to_Transaction_TXT__c}" label="" rows="5" cols="90">
+                                                <apex:actionsupport event="onchange" rerender="Conflicts3b00"/>
+                                            </apex:inputTextarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td/>
+                                        <td>
+                                            <apex:outputLabel id="Conflicts35aTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_35a_Related_to_Client__c=='','red','')}" value="Have any of the deal team members had, or do any of them currently have, any business, employment, family or other similar relationships with the potential client or, if known, the likely counterparty(ies) (or any of their respective affiliates or management teams)?"> </apex:outputLabel>
+                                        </td>
+                                        <td>
+                                            <apex:inputField id="Conflicts35a" value="{!Opportunity_Approval__c.Conflicts_35a_Related_to_Client__c}" styleClass="required">
+                                                <apex:actionsupport event="onchange" rerender="Conflicts35aTXT"/>
+                                            </apex:inputField>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td/>
+                                        <td class="indent">
+                                            <apex:outputLabel id="Conflicts35b00" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_35a_Related_to_Client_TXT__c=='','red','')}" value="If yes, please describe:"></apex:outputLabel>
+                                        </td>
+                                     </tr>
+                                    <tr>   
+                                        <td/>
+                                        <td class="indent">
+                                            <apex:inputTextarea id="Conflicts35b01" value="{!Opportunity_Approval__c.Conflicts_35a_Related_to_Client_TXT__c}" label="" rows="5" cols="90">
+                                                <apex:actionsupport event="onchange" rerender="Conflicts35b00"/>
+                                            </apex:inputTextarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td/>
+                                        <td>
+                                            <apex:outputLabel id="Conflicts4aTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_4a_Conflict_of_Interest__c=='','red','')}" value="Have any of the deal team members (or to their knowledge, any other Houlihan Lokey employees) (a) had any discussions (including, but not limited to, any pitches) with any likely counterparty(ies) (or any of their respective affiliates) regarding a potential transaction with the potential client, or (b) had any discussions with such counterparty(ies) (or any of their respective affiliates) that might create the perception of a conflict of interest?"> </apex:outputLabel>
+                                        </td>
+                                        <td>
+                                            <apex:inputField id="Conflicts4a" value="{!Opportunity_Approval__c.Conflicts_4a_Conflict_of_Interest__c}" styleClass="required">
+                                                <apex:actionsupport event="onchange" rerender="Conflicts4aTXT"/>
+                                            </apex:inputField>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <td/>
+                                        <td class="indent">
+                                            <apex:outputLabel id="Conflicts4b00" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_4b_Conflict_of_Interest_TXT__c=='','red','')}" value="If yes, please describe:"> </apex:outputLabel>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td/>   
+                                        <td class="indent">
+                                            <apex:inputTextarea id="Conflicts4b01" value="{!Opportunity_Approval__c.Conflicts_4b_Conflict_of_Interest_TXT__c}" label="" rows="5" cols="90">
+                                                <apex:actionsupport event="onchange" rerender="Conflicts4b00"/>
+                                            </apex:inputTextarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td/>
+                                        <td>
+                                            <apex:outputLabel id="Conflicts5aTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_5a_Other_Conflicts__c=='','red','')}" value="Are any of the deal team members aware of any relationships or discussions not specified above that might create the perception of a conflict of interest?"></apex:outputLabel>
+                                        </td>
+                                        <td>
+                                            <apex:inputField id="Conflicts5a" value="{!Opportunity_Approval__c.Conflicts_5a_Other_Conflicts__c}" styleClass="required">
+                                                <apex:actionsupport event="onchange" rerender="Conflicts5aTXT"/>
+                                            </apex:inputField>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td/>
+                                        <td class="indent">
+                                            <apex:outputLabel id="Conflicts5b00" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Conflicts_5b_Other_Conflicts_TXT__c=='','red','')}" value="If yes, please describe:"> </apex:outputLabel>
+                                        </td>
+                                     </tr>
+                                    <tr>
+                                        <td/>
+                                        <td class="indent">
+                                            <apex:inputTextarea id="Conflicts5b01" value="{!Opportunity_Approval__c.Conflicts_5b_Other_Conflicts_TXT__c}" label="" rows="5" cols="90">
+                                                <apex:actionsupport event="onchange" rerender="Conflicts5b00"/>
+                                            </apex:inputTextarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <td/>
+                                        <td>
+                                            <apex:outputText style="font-style:italic" value="*Note: Do not address with the client the existence (or lack thereof) of any potential or actual conflicts during pitches, or at any other point during the engagement process, without coordinating any such statements with the Legal Department."> </apex:outputText>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </apex:outputPanel>
+                    </apex:pageBlockSection>
+                </div>
+                <div id="tabs-5">
+                    <apex:pageBlockSection columns="1" title="Other Opinion Information">
+                        <apex:outputLabel id="shareholderVoteTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Shareholder_Vote__c=='','red','')}" value="Will there be a shareholder vote in connection with the transaction?"></apex:outputLabel>
+                        <apex:inputField id="shareholderVote" value="{!Opportunity_Approval__c.Shareholder_Vote__c}" styleClass="required" label="">
+                            <apex:actionSupport event="onchange" reRender="shareholderVoteTXT"/>
+                        </apex:inputField>
+                        <apex:outputPanel >
+                            <apex:outputLabel value="If 'Yes', shareholders of which companies (pick all that apply)"></apex:outputLabel>
+                            <apex:pageBlockTable id="pbtShareholderCompanies" value="{!ShareholderCompanies}" var="sc">
+                                <apex:column width="30px" styleClass="center">
+                                    <apex:inputCheckbox styleClass="shareholderVote_01" value="{!sc.Shareholder_Vote__c}"/>
+                                </apex:column>
+                                <apex:column value="{!sc.Client_Subject__r.Name}" />
+                            </apex:pageBlockTable>
+                            <table cellpadding="5" cellspacing="5">
+                                <tr>
+                                    <td style="padding-left: 5px;">
+                                        <apex:inputField styleClass="shareholderVote_01" value="{!Opportunity_Approval__c.Has_Other_Shareholders__c}"></apex:inputField>
+                                    </td>
+                                    <td>
+                                        <apex:outputLabel id="shareholderVote_01TXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Has_Other_Shareholders__c && Opportunity_Approval__c.Other_Shareholders__c=='','red','')}" value="Other"></apex:outputLabel>
+                                    </td>
+                                    <td>
+                                        <apex:inputTextarea styleClass="shareholderVote_01" value="{!Opportunity_Approval__c.Other_Shareholders__c}" cols="90" rows="5">
+                                            <apex:actionSupport event="onchange" reRender="shareholderVote_01TXT"/>
+                                        </apex:inputTextarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                        <apex:outputLabel value="Will the opinion be a ''second opinion''?"></apex:outputLabel> 
+                        <apex:inputField value="{!Opportunity_Approval__c.Second_Opinion__c}" label=""></apex:inputField>
+                        <apex:outputLabel id="opSpecComTXT" style="color:{!IF(EnableRequirements && Opportunity_Approval__c.Opinion_Special_Committee__c=='','red','')}" value="Will the opinion be addressed to a special committee?"></apex:outputLabel> 
+                        <apex:inputField value="{!Opportunity_Approval__c.Opinion_Special_Committee__c}" label="" styleClass="required">
+                            <apex:actionSupport event="onchange" reRender="opSpecComTXT"/>
+                        </apex:inputField>
+                        <apex:outputLabel value="When is the opinion expected to be delivered?"></apex:outputLabel>  
+                        <apex:inputField value="{!Opportunity_Approval__c.Opinion_Delivery_Date__c}" label=""></apex:inputField>
+                        <apex:outputLabel value="Is the opinion subject to 13e-3 (e.g., a ''going private'')?"></apex:outputLabel>  
+                        <apex:inputField value="{!Opportunity_Approval__c.Opinion_Subject_to_13e_3__c}" label=""></apex:inputField>
+                    </apex:pageBlockSection>                
+                </div>
+                <div id="tabs-6">
+                    <apex:pageBlockSection columns="1" title="Review">
+                        <apex:inputField id="isReviewed" value="{!Opportunity_Approval__c.Reviewed__c}"></apex:inputField>                      
+                        <apex:inputTextarea id="reviewNotes" value="{!Opportunity_Approval__c.Notes__c}" rows="5" cols="90"></apex:inputTextarea>
+                        <apex:inputField id="formType" value="{!Opportunity_Approval__c.Form_Type__c}"> </apex:inputField>
+                        <apex:inputField id="submittedToLegal" value="{!Opportunity_Approval__c.Submitted_to_Legal__c}"></apex:inputField>
+                    </apex:pageBlockSection>
+                </div>     
+            </div>
+        </apex:pageBlock>
+        <apex:pageMessages ></apex:pageMessages>
+    </apex:form>
+    <input id="opportunityId" type="hidden" value="{!OpportunityApproval.Related_Opportunity__c}" />
+    <input id="opportunityClientSubjectModifyUrl" type="hidden" value="{!URLFOR('/apex/HL_OpportunityClientSubjectModify')}" />
+    <input id="profileId" type="hidden" value="{!$Profile.Name}" />
+    <input id="isLocked" type="hidden" value="{!$Profile.Name <> 'System Administrator' && (Opportunity_Approval__c.Locked__c || NOT(OnOIT))}" />
+
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_Shared.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_NBC_FEIS_SCRIPTS, 'HL_FEIS.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <style>
+        .pbTitle {display: none;}
+        label {font-weight: bold; color: #4a4a56;}
+        .bPageBlock .labelCol {text-align: left; color: #4a4a56;}
+        .bPageBlock .detailList .data2Col {padding-left: 0px;}
+        #tipPopupContainer
+        {
+        position:absolute;
+        left:0;
+        top:0;
+        display:none;
+        z-index: 20000;
+        }
+        
+        #tipPopupContent
+        {
+        background-color: #FFF;
+        min-width: 175px;
+        /*min-height: 50px;*/
+        z-index: 20000;
+        }
+        
+        .tipPopupPopup .tipPopupImage
+        {
+        margin: 5px;
+        margin-right: 15px;
+        }
+        
+        .tipPopupPopup .corner
+        {
+        width: 19px;
+        height: 15px;
+        }
+
+        td.spacer{
+            padding-top: 25px;
+        }
+    </style>
+</apex:page>

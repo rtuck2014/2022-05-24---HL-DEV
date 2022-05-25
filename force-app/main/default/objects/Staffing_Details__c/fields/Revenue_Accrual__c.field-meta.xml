@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Revenue_Accrual__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Look up to the corresponding revenue accrual record</description>
+    <externalId>false</externalId>
+    <label>Revenue Accrual</label>
+    <referenceTo>Revenue_Accrual__c</referenceTo>
+    <relationshipLabel>Staffing Details</relationshipLabel>
+    <relationshipName>Staffing_Details</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

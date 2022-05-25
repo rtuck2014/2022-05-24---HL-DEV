@@ -1,0 +1,25 @@
+<apex:page standardController="Eng_Valuation_Period_Allocation__c" extensions="HL_MassEditEngValAllocationsCntrl" sidebar="true" showHeader="true" lightningStylesheets="true">
+
+
+<apex:form >
+    <apex:pageBlock title="New Eng Valuation Period Allocation" mode="edit">
+    <apex:pageMessages />
+      <apex:pageBlockSection columns="2" showHeader="true">
+      <apex:inputField value="{!engVP.Week_Starting__c}" required="true"/>
+      
+          <apex:inputField value="{!engVP.Engagement_Valuation_Period__c}" />
+          <apex:inputField value="{!engVP.Week_Ending__c}" required="true"/>
+         <apex:inputField value="{!engVP.Admin_Allocation__c}"/>
+        <apex:inputField value="{!engVP.CurrencyIsoCode}"  required="true" />
+         <apex:inputField value="{!engVP.Analyst_Allocation__c}"/>
+        
+        <apex:inputField value="{!engVP.Associate_Allocation__c}"/>
+      </apex:pageBlockSection>
+      <!-- Button Section -->
+      <apex:pageBlockButtons location="bottom">
+        <apex:commandButton value="Save" action="{!save}" />
+        <apex:commandButton value="Cancel" action="{!cancel}" />
+      </apex:pageBlockButtons>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

@@ -1,0 +1,23 @@
+<apex:page standardController="Engagement__c" contentType="text/javascript" showHeader="false" sidebar="false" standardStylesheets="false" lightningStylesheets="true">
+    GetActivityTypes = function(){
+        var activityTypesJSON = sforce.apex.execute('HL_TimeRecordController','GetActivityTypes', {});
+        var selectOptions;
+        $j.each(activityTypesJSON, function(key){
+            selectOptions += '<option>' + activityTypesJSON[key] + '</option>';
+        });
+        $j("#activityType").append(selectOptions);
+    }
+    GetCurrentPeriodRecordId = function(){
+        var timePeriodId = sforce.apex.execute('HL_TimeRecordController','GetCurrentPeriodRecordId', {category:'Litigation'});
+        $j("#timePeriodId").val(timePeriodId);
+    }
+    GetPendingRecords = function(userId){
+        return sforce.apex.execute('HL_TimeRecordController','GetPendingRecords',{userId:userId});
+    }
+    CancelRecord = function(timePeriodId, userId, activityType, sObject, sObjectId){
+        return sforce.apex.execute('HL_TimeRecordController','CancelRecordingRecord',{timePeriodId:timePeriodId,userId:userId,activityType:activityType,objectType:sObject,objectId:sObjectId});
+    }
+    RecordTime = function(timePeriodId, userId, activityType, sObject, sObjectId, minutes, totalSeconds, recordingStatus){
+        return sforce.apex.execute('HL_TimeRecordController','RecordTime', {timePeriodId:timePeriodId,userId:userId,activityType:activityType,objectType:sObject,objectId:sObjectId,minutes:minutes,totalSeconds:totalSeconds,recordingStatus:recordingStatus});
+    }
+</apex:page>

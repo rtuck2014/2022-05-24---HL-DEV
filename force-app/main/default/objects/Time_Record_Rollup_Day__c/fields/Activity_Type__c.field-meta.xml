@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activity_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Activity Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Receive/Catalogue/Review Data</fullName>
+                <default>false</default>
+                <label>Receive/Catalogue/Review Data</label>
+            </value>
+            <value>
+                <fullName>Conduct Research</fullName>
+                <default>false</default>
+                <label>Conduct Research</label>
+            </value>
+            <value>
+                <fullName>Conduct Analysis</fullName>
+                <default>false</default>
+                <label>Conduct Analysis</label>
+            </value>
+            <value>
+                <fullName>Develop Work Product</fullName>
+                <default>false</default>
+                <label>Develop Work Product</label>
+            </value>
+            <value>
+                <fullName>Deposition (including preparation for)</fullName>
+                <default>false</default>
+                <label>Deposition (including preparation for)</label>
+            </value>
+            <value>
+                <fullName>Testimony (including preparation for)</fullName>
+                <default>false</default>
+                <label>Testimony (including preparation for)</label>
+            </value>
+            <value>
+                <fullName>Vacation</fullName>
+                <default>false</default>
+                <label>Vacation</label>
+            </value>
+            <value>
+                <fullName>Counsel/Client Communications</fullName>
+                <default>false</default>
+                <label>Counsel/Client Communications</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

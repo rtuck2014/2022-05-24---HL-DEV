@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmsilt__Score</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(ISNULL( lmsilt__Score__c ), false, IF(lmsilt__Score__c&lt;0,true,false))</errorConditionFormula>
+    <errorMessage>Score value is incorrect.</errorMessage>
+</ValidationRule>

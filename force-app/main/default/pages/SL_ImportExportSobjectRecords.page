@@ -1,0 +1,88 @@
+<apex:page controller="SL_ImportExportSobjectRecords">
+     <apex:form >
+        <table width="100%">
+             <tr width="100%">
+                <td style="font-size: 20px; font-weight: bold; width: 100%; border-bottom: 2px #3355CC solid;">
+                    <apex:outputLabel value="Import/Export Sobject Records" style=""/>
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" style="padding-top: 20px;">
+                    <fieldset>
+                        <legend>Import</legend>
+                        <apex:outputpanel id="importPanel">
+                            <apex:messages id="pmsg"/>
+                            <table>
+                                <tr>
+                                    <td style="text-align: right; font-weight: bold;">
+                                        <apex:outputLabel value=" Content Version Title : "/> 
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <apex:inputText value="{!strImportContentVersionName}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:commandButton value="Import" action="{!importRecords}"  status="loading" rerender="importPanel"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputpanel>
+                    </fieldset>  
+                    <fieldset>
+                        <legend>Export</legend>
+                        <apex:outputpanel id="exportPanel">
+                            <apex:messages id="pmsg1"/>
+                            <table>
+                                <tr>
+                                    <td style="text-align: right; font-weight: bold; padding-top: 50px;">
+                                        <apex:outputLabel value="Select Sobject : "/>
+                                    </td>
+                                    <td style="text-align: left;">
+                                       <c:SL_SobjectMultiselectComponent leftLabel="Available" leftOptions="{!sobjectPicklistWrapper.allValues}" 
+                                                                                               rightLabel="Selected" rightOptions="{!sobjectPicklistWrapper.selectedValues}" 
+                                                                                               size="10" width="200px"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right; font-weight: bold;">
+                                        <apex:outputLabel value=" Content Version Title : "/>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <apex:inputText value="{!strExportContentVersionName}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:commandButton value="Export" action="{!exportRecords}"  status="loading" rerender="exportPanel"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputpanel>
+                    </fieldset>
+                </td>
+            </tr>
+        </table>
+        <!-- START OF ACTION STATUS -->
+        
+        <apex:actionstatus id="loading" startText="Requesting...">
+             <apex:facet name="start">
+                  <div id="salesforceSource_blurybackground" style="position:fixed; left:1px; top:1px; width:100%; height:100%; text-align:center; vertical-align: middle; background-color: #dcdcdc; opacity:0.7;filter:alpha(opacity=60)"></div>
+                       <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 100%; display: ''; ">
+                            <div style="width: 144px;vertical-align: middle;" class="waitingHolder">
+                                 <table  style="width: 100%; height: 30%">
+                                      <tr align="center" valign="top" style="width: 100%; height: 30%">
+                                         <td valign="top"><img src="/img/loading.gif"/><span class="waitingDescription"><b>Loading...</b></span></td>
+                                      </tr>
+                                 </table>
+                            </div>
+                        </div>
+                 <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 100%; display:''; "></div>
+                 <script>document.getElementById('ManageMembersViewport_loading').height = window.innerHeight * (3/4);</script>
+             </apex:facet>
+             <apex:facet name="stop"></apex:facet>
+        </apex:actionstatus>
+        
+        <!-- END OF ACTION STATUS --> 
+     </apex:form>
+</apex:page>

@@ -1,0 +1,113 @@
+<apex:page name="HL_ValuationPeriodPositionNew" StandardController="Opp_VP_Position__c" extensions="HL_OppVPPositionNewController" lightningStylesheets="true">
+<apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}"/>
+    <script>
+     j$ = jQuery.noConflict(); 
+
+    function blockme() {
+        j$.blockUI({ css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+            } }); 
+
+      }
+    </script>
+    <a name="skiplink"><img src="/img/s.gif" height='1' width='1' alt="Content Starts Here" class="skiplink skipLinkTargetInner zen-skipLinkTarget" title="Content Starts Here"/></a>
+<div class="bPageTitle">
+   <div class="ptBody">
+      <div class="content">
+         <img src="/img/s.gif" alt="Custom"  class="pageTitleIcon" title="Custom"/>
+         <h1 class="pageType">Opp Valuation Period Position Edit<span  class="titleSeparatingColon">:</span></h1>
+         <h2 class="pageDescription"> New Opp Valuation Period Position</h2>
+         <div class="blank">&nbsp;</div>
+      </div>
+      <div class="links"><a href="javascript:openPopupFocusEscapePounds(%27https://hl--c.na25.visual.force.com/apex/HL_UserGuide?loc=help&amp;target=co_edit.htm&amp;section=CustomObjects&amp;showSplash=true%27, %27Help%27, 1024, 768, %27width=1024,height=768,resizable=yes,toolbar=yes,status=yes,scrollbars=yes,menubar=yes,directories=no,location=yes,dependant=no%27, false, false);" title="Help for this Page (New Window)"><span  class="helpLink">Help for this Page</span><img src="/img/s.gif" alt=""  class="helpIcon"/></a></div>
+   </div>
+   <div class="ptBreadcrumb"></div>
+</div>
+    <apex:pageMessage rendered="{!!isValidPVUser}" summary="You have insufficient privileges to create a Position under this Valuation Period. Please reach out to your System Administrator for any questions regarding access.
+
+" severity="info" strength="3" >
+        <apex:form >
+        <apex:commandButton action="{!Cancel}" Value="Cancel" />
+        </apex:form>
+    </apex:pageMessage>
+    <apex:pageMessage rendered="{!AND(isValidPVUser, isOpportunityConverted)}" summary="{!MessageToShow}" severity="info" strength="3" >
+        <apex:form >
+        <apex:commandButton action="{!Cancel}" Value="Cancel" />
+        </apex:form>
+    </apex:pageMessage>    
+    <apex:form id="frmId" rendered="{!AND(isValidPVUser,!isOpportunityConverted)}">
+    <apex:pageMessages />
+    <apex:PageBlock mode="edit" title="Opp Valuation Period Position Edit" id="pbId">
+    <h2 class="mainTitle"></h2>
+    <apex:pageBlockButtons location="Top">
+    <apex:commandButton action="{!saveData}" Value="Save" onclick="blockme()" rerender="frmId" oncomplete="j$.unblockUI();" />
+             <apex:commandButton action="{!Cancel}" Value="Cancel" />
+    </apex:pageBlockButtons>
+    <apex:pageBlockSection title="Information" > 
+        <apex:outputField value="{!OppList[0].Client__c}"/>
+        <apex:pageBlockSectionItem >
+            <apex:outputPanel layout="block">
+                <apex:outputLabel value="Opportunity Number  "/>
+            </apex:outputPanel>
+            <apex:outputPanel layout="block">
+                <apex:outputLink value="/{!OppList[0].Id}" target="_self" rendered="{!if(OppList.size > 0,true,false)}" >{!OppList[0].Opportunity_Number__c}</apex:outputLink>
+            </apex:outputPanel>
+        </apex:pageBlockSectionItem>
+        <apex:pageBlockSectionItem id="AccountSectionItem"> 
+            <apex:outputLabel value="Company" for="CompanyField"/> 
+            <apex:actionRegion >
+                <apex:inputField value="{!OppVPPositon.Company__c}" id="CompanyField" label="Company"> 
+                    <apex:actionSupport event="onchange" rerender="CompanyIG,CompanyS" action="{!CompanyIGSvalues}" >
+                    </apex:actionSupport>
+                </apex:inputField>
+            </apex:actionRegion>
+        </apex:pageBlockSectionItem>        
+        <apex:outputField value="{!OppVPPositon.Opportunity_VP__c}"/>  
+        <!-- <apex:outputLabel ></apex:outputLabel>  -->
+        <apex:inputField value="{!OppVPPositon.Asset_Classes__c}"/>
+        <apex:outputField value="{!OppVPPositon.Status__c}" /> 
+        <apex:pageBlockSectionItem helpText="Industry Group of the Company." >
+            <apex:outputLabel value="Company Industry Group"/>
+            <apex:outputField id="CompanyIG" value="{!selectedAcc.Industry_Group__c}" label="Company Industry Group"  />
+        </apex:pageBlockSectionItem>
+        <apex:pageBlockSectionItem helpText="Sector of the Company." >
+            <apex:outputLabel value="Company Sector"/>
+            <apex:outputField id="CompanyS" value="{!selectedAcc.Sector__c}" label="Company Sector"/>
+        </apex:pageBlockSectionItem>
+        <apex:inputField id="PositionIG" value="{!OppVPPositon.Industry_Group_Picklist__c}" />
+        <apex:inputField id="PositionS" value="{!OppVPPositon.Sector__c}" />
+        <apex:InputField value="{!OppVPPositon.Report_Fee__c}" rendered="{!IshavingValidRoleForRevAccrual}" />         
+        <apex:inputField value="{!OppVPPositon.Notes__c}"/>     
+        <apex:outputLabel ></apex:outputLabel>
+        <apex:outputLabel ></apex:outputLabel>                     
+    </apex:pageBlockSection>
+    <!--<apex:pageBlockSection title="Information" columns="2" >            
+              <apex:repeat value="{!$ObjectType.Opp_VP_Position__c.FieldSets.OppVPPositionFieldsForNewPage}" var="f">
+                  <apex:inputField value="{!OppVPPositon[f.fieldPath]}" rendered="{!IF((f.fieldPath !='Report_Fee__c'), (If(OR(f.fieldPath ='Opportunity_VP__c',f.fieldPath ='Status__c'), false, true)) , false)}"
+                      required="{!OR(f.required, f.dbrequired)}"/>
+                  <apex:inputField value="{!OppVPPositon[f.fieldPath]}" rendered="{!IF((f.fieldPath =='Report_Fee__c'), if(IshavingValidRoleForRevAccrual,true,false), false)}"/> 
+                  <apex:OutputField value="{!OppVPPositon[f.fieldPath]}" rendered="{!IF(OR(f.fieldPath ='Opportunity_VP__c', f.fieldPath ='Status__c'), true, false)}"/>
+              </apex:repeat>
+    </apex:pageBlockSection> -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            <script>
+            
+                $(document).ready(function(){
+                    $("[id$=CompanyField]").change(function(){
+                        $("[id$=PositionIG]").val("");
+                        $("[id$=PositionS]").val("");
+                    });   
+                    
+                });
+            </script>
+    </apex:PageBlock>
+    </apex:form>
+</apex:page>

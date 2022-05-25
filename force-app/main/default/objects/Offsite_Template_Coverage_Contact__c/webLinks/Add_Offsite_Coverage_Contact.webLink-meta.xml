@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_Offsite_Coverage_Contact</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Add Offsite Coverage Contact</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>/a26/e?CF00Ni000000Fkn9t={!Offsite_Template__c.Coverage_Team_Officer__c}&amp;CF00Ni000000Fkn9t_lkid={!Offsite_Template__c.Coverage_Team_Id__c}&amp;retURL=%2F{!Offsite_Template__c.Id}&amp;saveURL=%2F{!Offsite_Template__c.Id}</url>
+</WebLink>

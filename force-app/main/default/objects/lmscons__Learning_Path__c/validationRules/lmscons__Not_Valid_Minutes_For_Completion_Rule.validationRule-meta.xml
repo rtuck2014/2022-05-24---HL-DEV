@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__Not_Valid_Minutes_For_Completion_Rule</fullName>
+    <active>true</active>
+    <errorConditionFormula>lmscons__Minutes_For_Completion__c &lt; 0</errorConditionFormula>
+    <errorDisplayField>lmscons__Minutes_For_Completion__c</errorDisplayField>
+    <errorMessage>this field cannot have a negative value</errorMessage>
+</ValidationRule>

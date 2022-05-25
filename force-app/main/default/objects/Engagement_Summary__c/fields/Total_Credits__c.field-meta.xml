@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Credits__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Is_Retainer_Fee_Creditable__c,BLANKVALUE(Retainer_Fees__c,0), 0) +
+IF(Is_Completion_of_CIM_Creditable__c,BLANKVALUE(Completion_Of_CIM__c,0), 0) +
+IF(Is_First_Round_Bid_Creditable__c,BLANKVALUE(First_Round_Bid__c,0), 0) + 
+IF(Is_Second_Round_Bid_Creditable__c,BLANKVALUE(Second_Round_Bid__c,0), 0) + 
+IF(Is_LOI_Creditable__c,BLANKVALUE(LOI__c,0), 0) + 
+IF(Is_Signed_Agreement_Creditable__c,BLANKVALUE(Signed_Agreement__c,0), 0) + 
+IF(Is_Other_Fee_01_Creditable__c,BLANKVALUE(Other_Fee_01__c,0), 0) + 
+IF(Is_Other_Fee_02_Creditable__c,BLANKVALUE(Other_Fee_02__c,0), 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Include any retainer, progress and other credits</inlineHelpText>
+    <label>Total Credits</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

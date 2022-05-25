@@ -1,0 +1,159 @@
+<apex:page standardcontroller="Eng_VP_Position__c" name="HL_EngValuationPeriodPositionEdit" extensions="HL_EngValuationPeriodPositionController" id="pgId" lightningStyleSheets="true">   
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <style>
+     .requiredInput .requiredBlock {
+            background-color: #c00;
+            position: absolute;
+            left: -4px;
+            width: 3px;
+            top: 1px;
+            bottom: 1px;
+        }
+        .activityEvent .actionButton {width: 90px;}
+    </style>
+    <script>
+        function saveRcAFJS() { 
+            var currentStatusValue = '';
+            if('{!IshavingValidRoleForRevAccrual}' == 'true'){
+                currentStatusValue = document.getElementById('{!$Component.pgId:frmId:pbid:pbSectionId:PositionStatusID}').value;
+            }
+            if('{!IshavingValidRoleForRevAccrual}' == 'false'){
+                currentStatusValue = document.getElementById('{!$Component.pgId:frmId:pbid:pbSectionId:PositionStatusOutputID}').value;
+            }
+            if(currentStatusValue == 'Completed, Generate Accrual' && currentStatusValue != '{!EngVPPositionStatus}'){
+                var response = confirm("A) Please check Automation status to confirm Automation Tool usage.\nB) Please also confirm that all team members have been entered correctly. If applicable, position should include an Analyst, Associate, Manager, and Principal.\n\nPlease click on 'OK' to accrue position or click on 'Cancel' to get back to position for further review."); 
+                if(response)
+                    saveRcAF();
+                else 
+                    return false;
+            } else {
+                saveRcAF();
+            }            
+        }
+    </script>
+   <div class="bPageTitle"><div class="ptBody"><div class="content"><img src="/img/s.gif" alt="Custom" class="pageTitleIcon" title="Custom"/><h1 class="pageType">Eng Valuation Period Position Edit<span class="titleSeparatingColon">:</span></h1><h2 class="pageDescription">{!Eng_VP_Position__c.Name}</h2><div class="blank">&nbsp;</div></div><div class="links"><a href="javascript:openPopupFocusEscapePounds(%27https://hl--c.na25.visual.force.com/apex/HL_UserGuide?loc=help&amp;target=co_edit.htm&amp;section=CustomObjects&amp;showSplash=true%27, %27Help%27, 1024, 768, %27width=1024,height=768,resizable=yes,toolbar=yes,status=yes,scrollbars=yes,menubar=yes,directories=no,location=yes,dependant=no%27, false, false);" title="Help for this Page (New Window)"><span class="helpLink">Help for this Page</span><img src="/img/s.gif" alt="" class="helpIcon"/></a></div></div><div class="ptBreadcrumb"></div></div>
+           
+
+    <apex:form id="frmId">  
+        <apex:actionFunction action="{!saveRc}" name="saveRcAF" reRender="pbid"/>
+        <apex:pageBlock title="Eng Valuation Period Position Edit" mode="edit" id="pbid" >           
+            <apex:pageMessages />
+            <apex:pageBlockButtons location="Top" id="BtnsId">      
+                <!--<button type="button" onclick="saveRcAFJS();" id="Onsave">Save</button> -->
+                <apex:commandButton value="Save" id="Onsave" onclick="saveRcAFJS();" reRender="pbid"/>
+                <!--<apex:commandButton action="{!saveRc}"value="Save" id="Onsave" rerender="" />-->     
+                <apex:commandButton action="{!Cancel}" value="Cancel" id="Oncancel" reRender="pbid" />    
+            </apex:pageBlockButtons>  
+                <apex:outputpanel id="panelId"/>
+            <apex:pageBlockSection title="Information" id="pbSectionId">           
+                <apex:inputField value="{!EngVPPosition.name}" required="True" />     
+                <apex:outputField value="{!EngVPPosition.Engagement_VP__c}"/> 
+                <!-- <apex:inputField value="{!EngVPPosition.Company__c}"/>  -->
+                <apex:pageBlockSectionItem id="AccountSectionItem"> 
+                    <apex:outputLabel value="Company" for="CompanyField"/> 
+                    <apex:actionRegion >
+                        <apex:inputField value="{!EngVPPosition.Company__c}" id="CompanyField" label="Company"> 
+                            <apex:actionSupport event="onchange" rerender="CompanyIG,CompanyS" action="{!CompanyIGSvalues}" >
+                            </apex:actionSupport>
+                        </apex:inputField>
+                    </apex:actionRegion>
+                </apex:pageBlockSectionItem>
+                <apex:inputField id="PositionStatusID" value="{!EngVPPosition.Status__c}" required="true" rendered="{!IshavingValidRoleForRevAccrual}"/>
+                <apex:outputField id="PositionStatusOutputID" value="{!EngVPPosition.Status__c}" rendered="{!!IshavingValidRoleForRevAccrual }"/>
+                <apex:pageBlockSectionItem helpText="Industry Group of the Company." >
+                    <apex:outputLabel value="Company Industry Group"/>
+                    <apex:outputField id="CompanyIG" value="{!selectedAcc.Industry_Group__c}" label="Company Industry Group"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem helpText="Sector of the Company." >
+                    <apex:outputLabel value="Company Sector"/>
+                    <apex:outputField id="CompanyS" value="{!selectedAcc.Sector__c}" label="Company Sector"/>
+                </apex:pageBlockSectionItem>
+                        
+                <apex:inputField id="PositionIG" value="{!EngVPPosition.Industry_Group_Picklist__c}"/> 
+                <apex:inputField id="PositionS" value="{!EngVPPosition.Sector__c}"/>                
+               <!--   <apex:outputLabel ></apex:outputLabel> -->
+                <apex:inputField value="{!EngVPPosition.Asset_Classes__c}"/>               
+                <apex:inputField value="{!EngVPPosition.Report_Fee__c}" rendered="{!IshavingValidRoleForRevAccrual }">
+                <apex:actionSupport event="onchange" rerender="pbid" action="{!ClearFeeApprovalDate}">
+                            </apex:actionSupport>
+                        </apex:inputField>
+                    
+                <apex:outputLabel rendered="{!!IshavingValidRoleForRevAccrual }"></apex:outputLabel>
+                
+                <apex:inputField id="AutomationToolUtilizedId" value="{!EngVPPosition.Automation_Tool_Utilized__c}" required="true"/>
+                 <apex:inputField value="{!EngVPPosition.Fee_Approval_Date__c}" required="false"/> 
+              
+                <!-- <apex:inputField value="{!EngVPPosition.Automation_Tool_Utilized__c}" />           -->
+                <apex:inputField value="{!EngVPPosition.Comments__c}"/> 
+                 <!-- <apex:inputField value="{!EngVPPosition.Reason__c}"/>  -->
+                 <apex:pageblockSectionItem >
+                    <apex:outputLabel value="Reason"/>   
+                    <apex:outputPanel >                 
+                        <div id="ReasonId"> 
+                            <apex:inputField value="{!EngVPPosition.Reason__c}" id="ReasonFieldId" >
+                            <div class="requiredBlock"></div>
+                            </apex:inputField>
+                        </div>
+                    </apex:outputPanel>
+                </apex:pageblockSectionItem>                
+                <apex:inputField value="{!EngVPPosition.Notes__c}"/>          
+                      
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Revenue">
+                <apex:OutputField value="{!EngVPPosition.Revenue_Month__c}"/> 
+                <apex:OutputField value="{!EngVPPosition.Cancel_Month__c}"/ >                     
+                <apex:OutputField value="{!EngVPPosition.Revenue_Year__c}"/>
+                <apex:OutputField value="{!EngVPPosition.Cancel_Year__c}"/>                    
+                <apex:OutputField value="{!EngVPPosition.Completed_Date__c}"/> 
+                <apex:OutputField value="{!EngVPPosition.Cancel_Date__c}"/>                   
+                <apex:OutputField value="{!EngVPPosition.Fee_Completed__c}" rendered="{!IshavingValidRoleForRevAccrual }"/>
+                <apex:outputLabel ></apex:outputLabel>
+                <apex:outputLabel ></apex:outputLabel> 
+            </apex:pageBlockSection> 
+            <script>
+            
+                $(document).ready(function(){
+                    
+                    $("[id$=AutomationToolUtilizedId]").change(function(){
+                        if(this.value == 'Yes'){
+                            $("[id$=ReasonFieldId]").val("");
+                            $("[id$=ReasonId]").removeClass( "requiredInput" );
+                            $("[id$=ReasonFieldId]").prop("disabled",true);
+                        }
+                        else{
+                            $("[id$=ReasonFieldId]").prop("disabled",false);
+                            $("[id$=ReasonId]").addClass( "requiredInput" );
+                        }               
+                    });
+                    $("[id$=CompanyField]").change(function(){
+                        $("[id$=PositionIG]").val("");
+                        $("[id$=PositionS]").val("");
+                    });
+                    
+                    if('{!EngVPPosition.Automation_Tool_Utilized__c}' == 'Yes'){
+                        $("[id$=ReasonFieldId]").prop("disabled",true);
+                        $("[id$=ReasonId]").removeClass( "requiredInput" );
+                    }
+                    else{
+                        $("[id$=ReasonFieldId]").prop("disabled",false);
+                        $("[id$=ReasonId]").addClass( "requiredInput" );
+                    }
+                    
+                    var AutomationToolUtilizedValue = $("[id$=AutomationToolUtilizedId]").val();
+                    if(AutomationToolUtilizedValue == 'Yes'){
+                        $("[id$=ReasonFieldId]").val("");
+                            $("[id$=ReasonId]").removeClass( "requiredInput" );
+                            $("[id$=ReasonFieldId]").prop("disabled",true);
+                         
+                    }            
+                    else{
+                        $("[id$=ReasonFieldId]").prop("disabled",false);
+                        $("[id$=ReasonId]").addClass( "requiredInput" );
+                    }
+                    
+                });
+            </script>          
+        </apex:pageBlock>   
+    </apex:form>
+</apex:page>

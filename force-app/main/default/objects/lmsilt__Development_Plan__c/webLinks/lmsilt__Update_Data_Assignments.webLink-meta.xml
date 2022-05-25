@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmsilt__Update_Data_Assignments</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Update Assignments</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>if (confirm(&quot;{!$Label.lmsilt__ConfirmForUpdateAssignemtns}&quot;)) {
+UpdateDataAssignments();
+}</url>
+</WebLink>

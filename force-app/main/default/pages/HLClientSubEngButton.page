@@ -1,0 +1,51 @@
+<!-- HLClientSubEngButton
+HLClientSubEngButtonController
+ --->
+<apex:page standardcontroller="Engagement_Client_Subject__c" extensions="HLClientSubEngButtonController" showHeader="false" sidebar="false" action="{!redirect}" lightningStylesheets="true">
+<!--<apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockSection rendered="{!isClientSub}">
+            <apex:pageBlockSectionItem >Select Option:
+                <apex:selectRadio value="{!selectedValue}">
+                    <apex:selectOption itemLabel="Client" itemValue="Client"/>
+                    <apex:selectOption itemLabel="Subject" itemValue="Subject"/> 
+                    <apex:actionSupport event="onchange" 
+                        action="{!checkSelectedValue}" 
+                                        reRender="none"/>
+                </apex:selectRadio>     
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection rendered="{!isOther}">
+            <apex:pageBlockSectionItem >Select Option:
+                <apex:selectRadio value="{!selectedValue}">
+                    <apex:selectOption itemLabel="Counterparty" itemValue="Counterparty"/>
+                    <apex:selectOption itemLabel="Equity Holder" itemValue="Equity Holder"/> 
+                    <apex:selectOption itemLabel="Key Creditor" itemValue="Key Creditor"/>
+                    <apex:selectOption itemLabel="PE Firm" itemValue="PE Firm"/> 
+                    <apex:selectOption itemLabel="Other" itemValue="Other"/>
+                    <apex:selectOption itemLabel="Fee Attribution" itemValue="Fee Attribution"/> 
+                    <apex:selectOption itemLabel="Pitches/Mandate" itemValue="Pitches/Mandate"/>
+                    <apex:actionSupport event="onchange" 
+                        action="{!checkSelectedValue}" 
+                                        reRender="btn"/>
+                </apex:selectRadio>     
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        
+       <!-- <apex:actionFunction action="{!redirect}" name="test" rerender=""></apex:actionFunction> -->
+
+        
+        <!--<apex:pageBlockButtons id="btn">
+            <apex:commandLink action="{!redirect}" target="_top">Next</apex:commandLink>
+            <!--<apex:outputLink value="{!retURL}" target="_top">New</apex:outputLink>-->
+
+           <!-- <apex:outputLink value="javascript:void(0);" onClick="test();" target="_top">
+                Test it:
+            </apex:outputLink>-->
+
+            <!--<apex:commandButton value="Submit" action="{!redirect}"/>-->
+        <!--</apex:pageBlockButtons>
+    </apex:pageBlock>
+</apex:form>-->
+</apex:page>

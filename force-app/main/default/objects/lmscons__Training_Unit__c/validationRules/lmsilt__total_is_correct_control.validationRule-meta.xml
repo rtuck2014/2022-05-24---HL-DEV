@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmsilt__total_is_correct_control</fullName>
+    <active>true</active>
+    <description>&quot;Training Units&quot; value can not be less than &quot;Pending Training Units&quot; + &quot;Used Training Units&quot;</description>
+    <errorConditionFormula>(lmsilt__Pending_Training_Units__c + lmsilt__Used_Training_Units__c) &gt; lmsilt__Training_Units__c</errorConditionFormula>
+    <errorMessage>Entering this value contradicts the total number of Training Units</errorMessage>
+</ValidationRule>

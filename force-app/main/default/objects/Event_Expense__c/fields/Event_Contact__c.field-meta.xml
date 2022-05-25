@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event_Contact__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>Admin or banker in charge of event</inlineHelpText>
+    <label>Event Contact</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>HL_Expense Requests (Event Contact)</relationshipLabel>
+    <relationshipName>Event_Expenses1</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,174 @@
+<apex:page standardController="Engagement__c" extensions="SL_BuyerAccountPDFReport" lightningStylesheets="true">
+<apex:slds />
+    <head>
+        <apex:includeScript value="{!URLFOR($Resource.SL_MultiselectAutocomplete, 'js/jquery.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.SL_MultiselectAutocomplete, 'js/jquery.tokeninput.js')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.SL_MultiselectAutocomplete, 'css/token-input-facebook.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.SL_MultiselectAutocomplete, 'css/token-input-listStyle.css')}"/>
+        
+        <style>
+            table td 
+            { 
+                padding-top:5px; 
+                padding-bottom:5px;  
+            } 
+        </style>
+        <script>
+            function getHLContactIds()
+            {
+                $('[id$=hiddenContactId]').val($('#myAutocomplete').val());
+            }
+
+            $(document).ready(function () 
+            {
+                $("#myAutocomplete").tokenInput({!HLContacts},{preventDuplicates: true});
+            });
+        </script>
+    </head>
+    <apex:form id="formId">
+        <apex:inputHidden value="{!strSelectedContact}" id="hiddenContactId"/>
+        <table width="100%">
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend>Deal Information</legend>      
+                        <table width="100%">
+                            <tr>
+                                <td width="15%"><b>Deal Name:</b></td>
+                                <td width="25%"><apex:outputText value="{!objEngagement.Name}"/></td>
+                                <td width="15%"><b>Company Name:</b></td>
+                                <td width="25%"><apex:outputText value="{!objEngagement.Subject__r.Name}"/></td>
+                            </tr>
+                            <tr>
+                                <td width="15%"><b>Job Type:</b></td>
+                                <td width="25%"><apex:outputText value="{!objEngagement.Job_Type__c}"/></td>
+                                <td width="15%"><b>Engagement Number:</b></td>
+                                <td width="25%"><apex:outputText value="{!objEngagement.Engagement_Number__c}"/></td>
+                            </tr>
+                        </table>
+                    </fieldset>    
+                </td>
+            </tr>
+        </table>
+        
+        <div id="divId" style="font-size:20px;font-weight:bold">List Reports</div>
+        <hr style="margin-bottom:2px; margin-top:1px;"/>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th colspan="2" style="height:20px;background-color:#667561;text-align:center;font-size:12px;font-weight:bold">  
+                        <span style="color:white">Selection Criteria</span> 
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="21%"><b>Buyer Type(s):</b></td> 
+                    <td>
+                        <apex:selectList id="bType" value="{!strBuyerType}" multiselect="false" size="1" >
+                            <apex:selectOptions value="{!lstBuyerType}"/>
+                        </apex:selectList>
+                    </td>
+                </tr>
+                <tr>    
+                    <td width="21%"><b>Phase Status:</b></td>
+                    <td>
+                        <apex:selectList id="pStatus" value="{!strPhaseStatus}" multiselect="false" size="1" >
+                            <apex:selectOptions value="{!lstPhaseStatus}"/>
+                        </apex:selectList>
+                    </td>
+                </tr>
+                <tr>    
+                    <td width="21%"><b>Deals Ranking:</b></td>  
+                    <td>
+                        <apex:selectList id="dRanking" value="{!strDealRanking}" multiselect="false" size="1" >
+                            <apex:selectOptions value="{!lstDealRanking}"/>
+                        </apex:selectList>
+                    </td>  
+                </tr>
+                <tr>    
+                    <td width="21%"><b>HL Contact:</b></td>
+                    <td><input type="text" id="myAutocomplete" style="width:300px;"/></td>
+                </tr>
+            </tbody>    
+        </table>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th colspan="4" style="height:20px;background-color:#667561;text-align:center;font-size:12px;font-weight:bold">  
+                        <span style="color:white">Selection Criteria</span> 
+                    </th>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr>
+                    <td width="20%"><b>Report Versions:</b></td>
+                    <td width="15%"> 
+                        <apex:selectList id="reportName" value="{!strReportName}" multiselect="false" size="1" >
+                            <apex:selectOptions value="{!ReportVersions}"/>
+                        </apex:selectList>                        
+                    </td>
+                    <td width="40%"><b>Report Sort:</b></td>
+                    <td width="20%"> 
+                        <apex:selectList id="sortByColumn" value="{!strSortColumn}" multiselect="false" size="1" >
+                            <apex:selectOptions value="{!SortingColumns}"/>
+                        </apex:selectList>                        
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%" style="vertical-align: middle;"><span style="font-weight:bold">Print External Discussion?</span><br></br>(only applied to appropriate versions)</td>
+                    <td width="15%">
+                        <div style="border: 1px solid #C4C3C3; width:120px">
+                            <apex:selectRadio id="exDiss" value="{!strExDiss}" >
+                                <apex:selectOptions value="{!IsPrintColumn}"/>
+                            </apex:selectRadio>
+                        </div>                           
+                    </td>
+                    <td width="40%" style="vertical-align: middle;"><span style="font-weight:bold">Print Internal Discussion?</span><br></br>(only applied to appropriate versions - shows declined passed reason as well)</td>
+                    <td>
+                        <div style="border: 1px solid #C4C3C3; width:120px">
+                            <apex:selectRadio id="inDiss" value="{!strInDiss}" >
+                                <apex:selectOptions value="{!IsPrintColumn}"/>  
+                            </apex:selectRadio>
+                        </div>        
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%" style="vertical-align: middle;"><b>Print HL Contact?</b></td>
+                    <td width="15%">
+                        <div style="border: 1px solid #C4C3C3; width:120px">
+                            <apex:selectRadio id="hlCon" value="{!strHLCon}" >
+                                <apex:selectOptions value="{!IsPrintColumn}"/>
+                            </apex:selectRadio>
+                        </div>
+                    </td>
+                    <td width="40%" style="vertical-align: middle;"><b>Print Deal Ranking?</b></td>
+                    <td>
+                        <div style="border: 1px solid #C4C3C3; width:120px">
+                            <apex:selectRadio id="dlRank" value="{!strDlRank}" >
+                                <apex:selectOptions value="{!IsPrintColumn}"/>
+                            </apex:selectRadio>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%" style="vertical-align: middle;"><b>Print Phone/Fax?</b></td>
+                    <td width="15%" >
+                        <div style="border: 1px solid #C4C3C3; width:120px">
+                            <apex:selectRadio id="phFax" value="{!strPhFax}" >
+                                <apex:selectOptions value="{!IsPrintColumn}"/>   
+                            </apex:selectRadio>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align:center;">  
+                        <apex:commandLink target="_blank" style="text-decoration:none;" id="GenerateReport"  action="{!generateReport}" onclick="$('[id$=hiddenContactId]').val($('#myAutocomplete').val());">  
+                            <apex:commandButton value="Generate Report"/>
+                        </apex:commandLink>
+                    </td>                       
+                </tr> 
+            </tbody>    
+        </table>
+    </apex:form>    
+</apex:page>

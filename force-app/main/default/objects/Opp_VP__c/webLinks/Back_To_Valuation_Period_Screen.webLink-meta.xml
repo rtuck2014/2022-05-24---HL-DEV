@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Back_To_Valuation_Period_Screen</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Back To Opp Valuation Period List</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>window.open(&apos;/apex/HL_Related_PortfolioValuations?id={!Opp_VP__c.OpportunityId__c}&amp;relatedObjType=OppVP&apos;, &apos;_self&apos;);</url>
+</WebLink>

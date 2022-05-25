@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__validate_percent_complete</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(
+lmscons__Percent_Complete__c &lt; 0,
+lmscons__Percent_Complete__c &gt; 1
+)
+/*ISCHANGED(Percent_Complete__c)*/</errorConditionFormula>
+    <errorDisplayField>lmscons__Percent_Complete__c</errorDisplayField>
+    <errorMessage>Percent complete must be between 0 and 100%.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lockups_on_Future_M_A_Financing_formula__c</fullName>
+    <description>for email template, i know it&apos;s redundant, but this is so that it is passed into cognos without having to change model which i do not have time for right now - ayu 6/12</description>
+    <externalId>false</externalId>
+    <formula>TEXT(Lockups_on_Future_M_A_or_Financing_Work__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Lockups on Future M&amp;A Financing formula</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

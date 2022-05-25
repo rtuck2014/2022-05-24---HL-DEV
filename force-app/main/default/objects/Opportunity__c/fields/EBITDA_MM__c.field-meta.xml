@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EBITDA_MM__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+ RecordType.DeveloperName = &apos;CF&apos; &amp;&amp;   ISPICKVAL(Job_Type__c, &apos;Buyside&apos;),  Subject__r.Recent_EBITDA_MM__c ,
+IF(
+NOT(ISNULL(Client__r.Recent_EBITDA_MM__c )), Client__r.Recent_EBITDA_MM__c , Subject__r.Recent_EBITDA_MM__c ))</formula>
+    <label>EBITDA (MM)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>1</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sector_Banker__c</fullName>
+    <description>Banker responsible for deals of a specific sector</description>
+    <externalId>false</externalId>
+    <label>Sector Banker</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Rob Emmerson</fullName>
+                <default>false</default>
+                <label>Rob Emmerson</label>
+            </value>
+            <value>
+                <fullName>Florian Martinez</fullName>
+                <default>false</default>
+                <label>Florian Martinez</label>
+            </value>
+            <value>
+                <fullName>Antina Morell</fullName>
+                <default>false</default>
+                <label>Antina Morell</label>
+            </value>
+            <value>
+                <fullName>Rachel Schaller</fullName>
+                <default>false</default>
+                <label>Rachel Schaller</label>
+            </value>
+            <value>
+                <fullName>Jon Harrison</fullName>
+                <default>false</default>
+                <label>Jon Harrison</label>
+            </value>
+            <value>
+                <fullName>Laurens van Asselt</fullName>
+                <default>false</default>
+                <label>Laurens van Asselt</label>
+            </value>
+            <value>
+                <fullName>Shaun Browne</fullName>
+                <default>false</default>
+                <label>Shaun Browne</label>
+            </value>
+            <value>
+                <fullName>Simon Croft-Baker</fullName>
+                <default>false</default>
+                <label>Simon Croft-Baker</label>
+            </value>
+            <value>
+                <fullName>James Scallan</fullName>
+                <default>false</default>
+                <label>James Scallan</label>
+            </value>
+            <value>
+                <fullName>Garyth Stone</fullName>
+                <default>false</default>
+                <label>Garyth Stone</label>
+            </value>
+            <value>
+                <fullName>Simon Gluckstein</fullName>
+                <default>false</default>
+                <label>Simon Gluckstein</label>
+            </value>
+            <value>
+                <fullName>James Local</fullName>
+                <default>false</default>
+                <label>James Local</label>
+            </value>
+            <value>
+                <fullName>Lawrence Guthrie</fullName>
+                <default>false</default>
+                <label>Lawrence Guthrie</label>
+            </value>
+            <value>
+                <fullName>Christian Kent</fullName>
+                <default>false</default>
+                <label>Christian Kent</label>
+            </value>
+            <value>
+                <fullName>David Sola</fullName>
+                <default>false</default>
+                <label>David Sola</label>
+            </value>
+            <value>
+                <fullName>Pierre Gaulier</fullName>
+                <default>false</default>
+                <label>Pierre Gaulier</label>
+            </value>
+            <value>
+                <fullName>David Brock</fullName>
+                <default>false</default>
+                <label>David Brock</label>
+            </value>
+            <value>
+                <fullName>Martin Bastian</fullName>
+                <default>false</default>
+                <label>Martin Bastian</label>
+            </value>
+            <value>
+                <fullName>Steffen Leckert</fullName>
+                <default>false</default>
+                <label>Steffen Leckert</label>
+            </value>
+            <value>
+                <fullName>Tobias Rieg</fullName>
+                <default>false</default>
+                <label>Tobias Rieg</label>
+            </value>
+            <value>
+                <fullName>Nicolas Zintl</fullName>
+                <default>false</default>
+                <label>Nicolas Zintl</label>
+            </value>
+            <value>
+                <fullName>Ulrich Graebner</fullName>
+                <default>false</default>
+                <label>Ulrich Graebner</label>
+            </value>
+            <value>
+                <fullName>Matteo Manfredi</fullName>
+                <default>false</default>
+                <label>Matteo Manfredi</label>
+            </value>
+            <value>
+                <fullName>Rob Oudman</fullName>
+                <default>false</default>
+                <label>Rob Oudman</label>
+            </value>
+            <value>
+                <fullName>Rob Hendriks</fullName>
+                <default>false</default>
+                <label>Rob Hendriks</label>
+            </value>
+            <value>
+                <fullName>Andrew Adams</fullName>
+                <default>false</default>
+                <label>Andrew Adams</label>
+            </value>
+            <value>
+                <fullName>Tara Carter</fullName>
+                <default>false</default>
+                <label>Tara Carter</label>
+            </value>
+            <value>
+                <fullName>Mark Fisher</fullName>
+                <default>false</default>
+                <label>Mark Fisher</label>
+            </value>
+            <value>
+                <fullName>Lalit Kasat</fullName>
+                <default>false</default>
+                <label>Lalit Kasat</label>
+            </value>
+            <value>
+                <fullName>Julian Moore</fullName>
+                <default>false</default>
+                <label>Julian Moore</label>
+            </value>
+            <value>
+                <fullName>Tim Shortland</fullName>
+                <default>false</default>
+                <label>Tim Shortland</label>
+            </value>
+            <value>
+                <fullName>Paul Tracey</fullName>
+                <default>false</default>
+                <label>Paul Tracey</label>
+            </value>
+            <value>
+                <fullName>Anita Antenucci</fullName>
+                <default>false</default>
+                <label>Anita Antenucci</label>
+            </value>
+            <value>
+                <fullName>Eric Cartier</fullName>
+                <default>false</default>
+                <label>Eric Cartier</label>
+            </value>
+            <value>
+                <fullName>Nathan Pund</fullName>
+                <default>false</default>
+                <label>Nathan Pund</label>
+            </value>
+            <value>
+                <fullName>Jason Abt</fullName>
+                <default>false</default>
+                <label>Jason Abt</label>
+            </value>
+            <value>
+                <fullName>Zaman Khan</fullName>
+                <default>false</default>
+                <label>Zaman Khan</label>
+            </value>
+            <value>
+                <fullName>Filippo Bruno</fullName>
+                <default>false</default>
+                <label>Filippo Bruno</label>
+            </value>
+            <value>
+                <fullName>Thomas Bailey</fullName>
+                <default>false</default>
+                <label>Thomas Bailey</label>
+            </value>
+            <value>
+                <fullName>Chris Wilson</fullName>
+                <default>false</default>
+                <label>Chris Wilson</label>
+            </value>
+            <value>
+                <fullName>Mark Dufilho</fullName>
+                <default>false</default>
+                <label>Mark Dufilho</label>
+            </value>
+            <value>
+                <fullName>Leeland Harrs</fullName>
+                <default>false</default>
+                <label>Leeland Harrs</label>
+            </value>
+            <value>
+                <fullName>Craig Muir</fullName>
+                <default>false</default>
+                <label>Craig Muir</label>
+            </value>
+            <value>
+                <fullName>Michael Collinson</fullName>
+                <default>false</default>
+                <label>Michael Collinson</label>
+            </value>
+            <value>
+                <fullName>Mike Morabito</fullName>
+                <default>false</default>
+                <label>Mike Morabito</label>
+            </value>
+            <value>
+                <fullName>Andre Pichler</fullName>
+                <default>false</default>
+                <label>Andre Pichler</label>
+            </value>
+            <value>
+                <fullName>Daniel Gossels</fullName>
+                <default>false</default>
+                <label>Daniel Gossels</label>
+            </value>
+            <value>
+                <fullName>Andre Mainetti</fullName>
+                <default>false</default>
+                <label>Andre Mainetti</label>
+            </value>
+            <value>
+                <fullName>Jose Maria Iceta</fullName>
+                <default>false</default>
+                <label>Jose Maria Iceta</label>
+            </value>
+            <value>
+                <fullName>Jim Lavelle</fullName>
+                <default>false</default>
+                <label>Jim Lavelle</label>
+            </value>
+            <value>
+                <fullName>Larry DeAngelo</fullName>
+                <default>false</default>
+                <label>Larry DeAngelo</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

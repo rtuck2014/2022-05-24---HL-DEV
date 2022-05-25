@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parties_Affiliated</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL(Opinion_Parties_Affiliated__c,&apos;Yes&apos;) &amp;&amp;
+ISBLANK( Opinion_Affiliated_Parties_Summary__c)</errorConditionFormula>
+    <errorDisplayField>Opinion_Parties_Affiliated__c</errorDisplayField>
+    <errorMessage>Please enter parties and describe the affiliation.</errorMessage>
+</ValidationRule>

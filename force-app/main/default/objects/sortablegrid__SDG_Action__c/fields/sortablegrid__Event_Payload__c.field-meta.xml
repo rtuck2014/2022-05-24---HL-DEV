@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sortablegrid__Event_Payload__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Payload for the event.  For LIST actions, will automatically replace #parentrecordId# with valid id.  For ROW actions, will automatically replace fieldnames with # at beginning and end with the corresponding values.  example: 
+{
+   &quot;recordId&quot;: &quot;#Id#&quot;
+}</inlineHelpText>
+    <label>Event Payload</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>10</visibleLines>
+</CustomField>

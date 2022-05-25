@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__Register_Cornerstone_Org</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Register CyberU Org</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>var cyberUId = &apos;{!lmscons__LMS_Consumer_Settings__c.lmscons__Cornerstone_ID__c}&apos;;
+
+if (cyberUId == &apos;&apos;) {
+	window.location.href = &apos;/apex/lmscons__director?action=RegisterOrg&amp;id={!lmscons__LMS_Consumer_Settings__c.Id}&apos;;
+} else {
+	alert(&apos;This org as already been registered.&apos;);
+}</url>
+</WebLink>

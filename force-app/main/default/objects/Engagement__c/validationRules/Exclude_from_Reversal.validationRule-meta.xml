@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exclude_from_Reversal</fullName>
+    <active>true</active>
+    <errorConditionFormula>Exclude_From_Reversal__c &amp;&amp; ISBLANK( Exclusion_Comment__c )</errorConditionFormula>
+    <errorDisplayField>Exclusion_Comment__c</errorDisplayField>
+    <errorMessage>Please provide some comments explaining why this Engagement is Excluded from Reversal.</errorMessage>
+</ValidationRule>

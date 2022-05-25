@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BACKEND_Percentage_of_Completion__c</fullName>
+    <description>Formula to store POC, should be HIDDEN from layout, use Percentage of Completion to display the actual % on the engagement layout. - ayu</description>
+    <externalId>false</externalId>
+    <formula>IF( TEXT(Stage__c)=&quot;Hold&quot;,   Percentage_of_Completion__c  ,
+
+/*Other FVA*/ 
+IF( 
+RecordType.Id = &quot;012i0000000tIXB&quot; , 
+CASE( 
+TEXT(Stage__c) , 
+&quot;Bill/File&quot;, 1.00, 
+&quot;Performing Analysis&quot;, 0.75, 
+&quot;Due Diligence&quot;, 0.25, 
+&quot;Opinion Report&quot;, 0.90, 
+&quot;Closed&quot;, 1.00, 
+&quot;Retained&quot;, 0, 0 
+), 
+
+/*Litigation*/ 
+IF( RecordType.Id = &quot;012i0000000tIWc&quot; , 
+CASE( 
+TEXT(Stage__c) , 
+&quot;Opinion Development&quot;, 1.00, 
+&quot;Performing Analysis&quot;, 0.60, 
+&quot;Closed&quot;, 1.00, 
+&quot;Retained&quot;, 0, 0 
+), 
+
+/*Fairness FVA and Solvency and TAS and DUE DILIGENCE and Transaction Opinion*/ 
+IF( (RecordType.Id = &quot;012i0000000tIWN&quot; || RecordType.Id = &quot;012i0000000tR3j&quot; || RecordType.Id = &quot;012i0000000tIX6&quot; || RecordType.Id = &quot;012i0000001NQIr&quot; || RecordType.Id = &quot;012i0000001NDwh&quot; ) , 
+CASE( 
+TEXT(Stage__c) , 
+&quot;Bill/File&quot;, 1.00, 
+&quot;Due Diligence&quot;, 0.25, 
+&quot;Performing Analysis&quot;, 0.50, 
+&quot;Review&quot;, 0.75, 
+&quot;Opinion Report&quot;, 0.90, 
+&quot;Closed&quot;, 1.00, 
+&quot;Retained&quot;, 0, 0 
+), 
+
+/*Portfolio Valuation*/ 
+IF( RecordType.Id = &quot;012i0000000tIWr&quot; , 
+CASE( TEXT(Stage__c) , 
+&quot;Bill/File&quot;, 1.00, 
+&quot;Due Diligence&quot;, 1.00, 
+&quot;Opinion Report&quot;, 1.00, 
+&quot;Performing Analysis&quot;, 1.00, 
+&quot;Closed&quot;, 1.00, 
+&quot;Retained&quot;, 0, 
+&quot;Testimony&quot;, 1.00, 0 
+), 
+
+/*Tech+IP*/ 
+IF( RecordType.DeveloperName = &apos;Tech_IP_Advisory&apos; || RecordType.DeveloperName = &apos;T_IP_Expert_Report&apos; || RecordType.DeveloperName = &apos;T_IP_Patent_Strategy&apos; || RecordType.DeveloperName = &apos;T_IP_Patent_Valuation&apos;, 
+/* 
+// Deactivated the below job type and replaced with &quot;Tech+IP - Strategic Advisory&quot;, commented below code. 
+IF( TEXT(Job_Type__c) = &quot;T+IP - Expert Report&quot;, 
+CASE( 
+TEXT(Stage__c) , 
+&quot;Opinion Development&quot;, 1.00, 
+&quot;Performing Analysis&quot;, 0.60, 
+&quot;Closed&quot;, 1.00, 
+&quot;Retained&quot;, 0, 0 
+), 
+*/ 
+IF( TEXT(Job_Type__c) = &quot;Tech+IP - Strategic Advisory&quot;, 
+CASE( 
+TEXT(Stage__c) , 
+&quot;Bill/File&quot;, 1.00, 
+&quot;Presentation&quot;, 0.90, 
+&quot;Performing Analysis&quot;, 0.50, 
+&quot;Due Diligence&quot;, 0.25, 
+&quot;Closed&quot;, 1.00, 
+&quot;Retained&quot;, 0, 0 
+), 
+IF( TEXT(Job_Type__c) = &quot;Tech+IP - Valuation&quot; || TEXT(Job_Type__c) = &quot;Tech+IP - Patent Acquisition Support&quot;, 
+CASE( 
+TEXT(Stage__c) , 
+&quot;Bill/File&quot;, 1.00, 
+&quot;Opinion Report&quot;, 0.90, 
+&quot;Review&quot;, 0.75, 
+&quot;Performing Analysis&quot;, 0.50, 
+&quot;Due Diligence&quot;, 0.25, 
+&quot;Closed&quot;, 1.00, 
+&quot;Retained&quot;, 0, 0 
+),0)), 
+
+/*All Other Record Types*/ 
+1 
+) 
+) 
+) 
+) 
+))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>BACKEND Percentage of Completion</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

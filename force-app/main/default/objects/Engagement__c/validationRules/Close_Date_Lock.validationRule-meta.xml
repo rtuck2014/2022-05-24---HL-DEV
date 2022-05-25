@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Close_Date_Lock</fullName>
+    <active>true</active>
+    <description>Can&apos;t set closed date if stage is not closed.</description>
+    <errorConditionFormula>ISCHANGED( Close_Date__c ) &amp;&amp;  ISPICKVAL( Stage__c , &quot;closed&quot;) = false</errorConditionFormula>
+    <errorMessage>Cannot change the Close Date when the Stage is not &quot;Closed&quot;.</errorMessage>
+</ValidationRule>

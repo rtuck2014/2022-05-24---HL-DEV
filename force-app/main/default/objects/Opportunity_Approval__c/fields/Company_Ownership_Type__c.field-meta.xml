@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company_Ownership_Type__c</fullName>
+    <externalId>false</externalId>
+    <formula>TEXT(Related_Opportunity__r.Subject_Company_Ownership__c)</formula>
+    <label>Subject Ownership</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

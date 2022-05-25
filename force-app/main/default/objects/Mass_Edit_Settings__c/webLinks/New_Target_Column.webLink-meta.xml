@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Target_Column</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>New Target Column</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>/apex/SL_LIB16_MassEditSettingsEdit?impl_id={!SL_Mass_Implementation__c.Id}&amp;impl_type=target&amp;retURL=/{!SL_Mass_Implementation__c.Id}&amp;sfdc.override=1</url>
+</WebLink>

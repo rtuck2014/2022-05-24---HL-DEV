@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cognos_Domain__c</fullName>
+    <description>Cognos Domain for the Environment - used in formulas/buttons to point to the correct URI</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Cognos Domain for the Environment</inlineHelpText>
+    <label>Cognos Domain</label>
+    <length>80</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

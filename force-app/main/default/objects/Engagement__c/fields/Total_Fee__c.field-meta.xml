@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Fee__c</fullName>
+    <externalId>false</externalId>
+    <formula>/* CF */
+IF(ISPICKVAL(Line_of_Business__c,&apos;CF&apos;),
+Contingent_Fee__c +
+(Retainer__c - (Retainer__c *  Percentage_Retainer_Creditable__c)) +
+(ProgressMonthly_Fee__c - (ProgressMonthly_Fee__c *  Percentage_Progress_Fee_Creditable__c))+Est_Referral_Fee__c ,
+
+/* FR */
+IF(ISPICKVAL(Line_of_Business__c,&apos;FR&apos;),
+Total_Monthly_Fee__c + Contingent_Fee__c + Retainer__c,
+
+/* FVA */
+IF(ISPICKVAL(Line_of_Business__c,&apos;FVA&apos;),
+Total_Estimated_Fee__c,
+0
+)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Fee</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

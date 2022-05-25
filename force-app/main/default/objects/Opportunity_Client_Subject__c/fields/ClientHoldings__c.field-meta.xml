@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ClientHoldings__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>If company-side mandate, input the % shareholding.
+
+Split of clients&apos; total debt holdings as at the point of HL&apos;s engagement (i.e. for each client = client debt holdings across all debt tranches / total holdings of clients across all debt tranches)</inlineHelpText>
+    <label>Client Holdings %</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>1</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

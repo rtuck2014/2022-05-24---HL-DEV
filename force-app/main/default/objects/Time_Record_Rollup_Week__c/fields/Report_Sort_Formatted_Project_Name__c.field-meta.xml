@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Report_Sort_Formatted_Project_Name__c</fullName>
+    <description>Used to control sorting on the report</description>
+    <externalId>false</externalId>
+    <formula>CASE(TEXT(Special_Project__r.Location_Group__c),&apos;Top&apos;, &apos;*&apos; + Project_Name__c, &apos;Bottom&apos;, &apos;zz&apos; + Project_Name__c, Project_Name__c)</formula>
+    <label>Reporting Sort Formatted Project Name</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

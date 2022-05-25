@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EstimatedSigningDateCloseDate</fullName>
+    <active>true</active>
+    <description>The estimated signing date cannot be greater than the estimated close date.</description>
+    <errorConditionFormula>NOT(ISBLANK(Estimated_Signing_Date__c)) &amp;&amp;
+NOT(ISBLANK(Estimated_Close_Date__c)) &amp;&amp;
+Estimated_Signing_Date__c &gt; Estimated_Close_Date__c</errorConditionFormula>
+    <errorMessage>Update Estimated Signing Date and/or Estimated Close Date; Estimated Signing Date should be before or the same as Estimated Close Date</errorMessage>
+</ValidationRule>

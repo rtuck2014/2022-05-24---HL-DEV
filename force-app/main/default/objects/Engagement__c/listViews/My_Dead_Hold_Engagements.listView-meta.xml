@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Dead_Hold_Engagements</fullName>
+    <columns>NAME</columns>
+    <columns>Client__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Stage__c</columns>
+    <columns>Engagement_Number__c</columns>
+    <columns>Job_Type__c</columns>
+    <columns>RECORDTYPE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>My_Engagement__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Dead,Hold</value>
+    </filters>
+    <label>My Dead/Hold Engagements</label>
+</ListView>

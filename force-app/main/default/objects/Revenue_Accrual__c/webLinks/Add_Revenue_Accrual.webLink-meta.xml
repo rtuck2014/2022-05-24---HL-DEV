@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_Revenue_Accrual</fullName>
+    <availability>online</availability>
+    <description>Add Revenue Accrual</description>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Add Revenue Accrual</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>var engagementLOB = &quot;{!Engagement__c.Line_of_Business__c}&quot;; 
+var recordTypeId = engagementLOB === &apos;FVA&apos; ? &apos;012i0000001NDwj&apos; : engagementLOB === &apos;FR&apos; ? &apos;012i0000001NDwk&apos; : engagementLOB === &apos;SC&apos; ? &apos;012i0000001NDwl&apos; : &apos;012i0000001NDwi&apos;; 
+
+navigateToUrl(&apos;/a22/e?CF00Ni000000EhsaB={!JSENCODE(Engagement__c.Name)}&amp;CF00Ni000000EhsaB_lkid={!Engagement__c.Id}&amp;00Ni000000FnLW0={!Engagement__c.Line_of_Business__c}&amp;retURL=/{!Engagement__c.Id}&amp;RecordType=&apos; + recordTypeId + &apos;&amp;ent=01Ii0000001zFtU&amp;saveURL=/{!Engagement__c.Id}&apos;);</url>
+</WebLink>

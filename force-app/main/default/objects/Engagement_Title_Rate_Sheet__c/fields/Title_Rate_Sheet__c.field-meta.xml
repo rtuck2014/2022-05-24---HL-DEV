@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Title_Rate_Sheet__c</fullName>
+    <description>Related Title Rate Sheet Record</description>
+    <externalId>false</externalId>
+    <label>Title Rate Sheet</label>
+    <referenceTo>Title_Rate_Sheet__c</referenceTo>
+    <relationshipLabel>Engagement Title Rate Sheets</relationshipLabel>
+    <relationshipName>Engagement_Title_Rate_Sheets</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

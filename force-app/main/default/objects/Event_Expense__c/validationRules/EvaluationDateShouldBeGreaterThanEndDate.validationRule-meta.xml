@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EvaluationDateShouldBeGreaterThanEndDate</fullName>
+    <active>true</active>
+    <errorConditionFormula>(When_this_event_will_be_evaluated__c &lt;  End_Date__c) &amp;&amp;  NOT( ISNEW() ) &amp;&amp;  ISPICKVAL(Status__c, &apos;Waiting for Approval&apos;) &amp;&amp;  ISCHANGED(Status__c)</errorConditionFormula>
+    <errorMessage>The date when this event will be evaluated, should be greater than or equal to End Date.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,60 @@
+<apex:page standardController="Gift__c" extensions="HL_GiftEditControllerExt" lightningStylesheets="true">
+<apex:pageMessages />
+    <apex:form >
+    <apex:pageBlock title="Gift Request Edit" mode="edit">
+        <apex:pageBlockButtons >
+            <apex:commandButton action="{!save}" value="Save"/>
+            <apex:commandButton action="{!cancel}" value="Cancel"/>
+            <apex:commandButton value="New Gift Request" action="{!AddGift}" />            
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection title="Information" rendered="{! (Gift__c.Approved__c == 'Approved' || Gift__c.Approved__c == 'Denied')}">
+            <apex:outputField value="{!Gift__c.Name}"/>            
+            <apex:outputField value="{!Gift__c.Gift_Type__c}"/>                        
+            <apex:outputField value="{!Gift__c.Recipient__r.Name}"/>
+            <apex:outputField value="{!Gift__c.Recipient_Company_Name__c}"/>            
+            <apex:outputField value="{!Gift__c.Submitted_For__r.Name}"/>
+            <apex:outputField value="{!Gift__c.Vendor__c}"/>            
+            <apex:outputField value="{!Gift__c.Currency__c}"/>
+            <apex:outputField value="{!Gift__c.HL_Relationship__c}"/>
+            <apex:outputField value="{!Gift__c.Reason_For_Gift__c}"/>
+            <apex:outputField value="{!Gift__c.Gift_Value__c}" rendered="{! (Gift__c.Approved__c == 'Denied')}"/>
+            <apex:inputField value="{!Gift__c.Gift_Value__c}" required="true" rendered="{! (Gift__c.Approved__c == 'Approved')}" styleClass="numeric-short"/>
+            <apex:outputField value="{!Gift__c.Desired_Date__c}"/>
+            <apex:inputField value="{!Gift__c.Approved__c}" required="true"/>
+            <apex:inputField value="{!Gift__c.Approval_Comment__c}" required="true"/>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Information" rendered="{! (Gift__c.Approved__c == 'Pending')}">
+            <apex:inputField value="{!Gift__c.Name}" required="true"/>            
+            <apex:inputField value="{!Gift__c.Gift_Type__c}" required="true"/>                        
+            <apex:inputField value="{!Gift__c.Recipient__r.Name}" label="Recipient Name"/>
+            <apex:inputField value="{!Gift__c.Recipient_Company_Name__c}"/>            
+            <apex:inputField value="{!Gift__c.Submitted_For__r.Name}" label="Submitted For"/>
+            <apex:inputField value="{!Gift__c.Vendor__c}" required="true"/>            
+            <apex:inputField value="{!Gift__c.Currency__c}"/>
+            <apex:inputField value="{!Gift__c.HL_Relationship__c}" required="true" />
+            <apex:inputField value="{!Gift__c.Reason_For_Gift__c}" required="true"/>            
+            <apex:inputField value="{!Gift__c.Gift_Value__c}" required="true" styleClass="numeric-short"/>            
+            <apex:inputField value="{!Gift__c.Desired_Date__c}" required="true"/>
+            <apex:outputField value="{!Gift__c.Approved__c}"/>
+            <apex:outputField value="{!Gift__c.Approval_Comment__c}"/>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="System Information">
+            <apex:outputField value="{!Gift__c.Approve_Date__c}"/>
+            <apex:outputField value="{!Gift__c.LastModifiedBy.Name}" label="Last Modified By"/>
+        </apex:pageBlockSection>                    
+    </apex:pageBlock>                            
+    </apex:form>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_Shared.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <script type="text/javascript">
+                $j = jQuery.noConflict();
+                $j(document).ready(function () {
+                    DocumentReady();
+                });
+                
+                function DocumentReady() {
+                    $j("input.numeric-short, input.numeric-medium, input.numeric-long").keydown(function (event) {maskKeys(event);});
+                }
+    </script>
+</apex:page>

@@ -1,0 +1,936 @@
+<apex:page controller="SL_LIB16_MassEdit_CompanyListMember" title="List Member Edit" action="{!loadDefaults}" tabStyle="Engagement_Counterparty__c" sidebar="false" lightningStyleSheets="true">
+<apex:slds />
+    <script>
+        if (!window.console) {var console = {};}
+        if (!console.log) {console.log = function() {};}
+    </script>
+    <apex:outputPanel id="opMsg"><apex:pageMessages /></apex:outputPanel>
+    <apex:outputPanel id="mainPContainer" rendered="{!hasNoError}">
+        <apex:includeScript value="{!$Resource.SL_LIB16_getElementByClassName}"/>
+
+        <apex:includeScript value="{!URLFOR($Resource.SL_LIB16_jQuerySFFiltres, 'js/jquery-1.4.2.min.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.SL_LIB16_jQuerySFFiltres, 'js/jquery-ui-1.8.4.custom.min.js')}" />
+
+        <apex:includeScript value="{!URLFOR($Resource.SL_LIB16_jQuerySFFiltres, 'js/ui.timepicker.js')}" />  
+        <apex:stylesheet value="{!URLFOR($Resource.HL_FixedHeaderTable, 'css/hlStickyTableTheme.css')}" />
+
+        <style>
+            .dateFormat {
+                display: none;
+            }
+        </style>
+
+        <script>
+
+            function onlyNumbers(evt, val)
+            {
+                var e = (typeof(event)!="undefined")?(event):(evt); // for trans-browser compatibility
+                var charCode = e.which || e.keyCode;
+                        
+                if (charCode==13){
+                    if( (val-1) != ({!pageNumber})){ loadPage(val-1);}
+                    return false;
+                }
+
+                if (charCode > 31 && (charCode < 48 || charCode > 57)){ return false;}
+                if (e.shiftkey){ return false;}
+
+                return true;
+            } 
+
+            function clearTable(table)
+            {
+                var row;
+                var i = table.rows.length;
+                while (i--)
+                {
+                    row = table.rows[i];
+                    var j = row.cells.length;
+                    while (j--)
+                    {
+                        if (row.cells[j].style.display == 'none'){row.removeChild(row.cells[j]);}
+                    }
+                }
+                
+                
+            }
+
+            var isBtnDisable = true;
+            function initBtn()
+            {
+                $('.btnSaveAdnBack').each(function (index, elem ){
+                    $(elem).attr("disabled", true);
+                    //btnDisabled
+                    $(elem).attr("class", "btnDisabled btnSaveAdnBack");
+                });
+                isBtnDisable = true;
+            }
+        </script>
+
+        
+        <script type="text/javascript">
+
+            onload = function () {
+                var fcBody = document.querySelector(".fix-column > .tbody"),
+                    rcBody = document.querySelector(".rest-columns > .tbody"),
+                    rcHead = document.querySelector(".rest-columns > .thead");
+
+                rcBody.addEventListener("scroll", function () {
+
+                    rcHead.scrollLeft = this.scrollLeft;
+                    fcBody.scrollTop = this.scrollTop;
+                    this.scrollTop = fcBody.scrollTop;
+                    $('.datePicker').css('display', 'none');
+                    $('.datePicker').css('position', 'inherit');
+                });
+
+                $("#dtable").show();
+            };
+
+        </script>
+
+        <apex:sectionHeader title="Edit {!if(massEditSettings.Name=='Company List', 'Company List', if(massEditSettings.Name=='Opportunity-Party-Company' || massEditSettings.Name=='Engagement-Party-Company', 'Counterparty', ''))} Records" subtitle="{!ParentName}"/>
+        <apex:form id="f0">
+            <apex:outputPanel id="mainPanel2Sub" rendered="{!massEditSettings.Show_Views_on_MassEdit_Page__c}">
+                <table>
+                    <tr>
+                        <!-- Start - updated View Section -->
+                        <td>
+                            <b>View:</b>&nbsp; 
+                            <apex:selectList value="{!strColumnsAndFiltersTemplate}" multiselect="false" size="1" Id="SelectListId">
+                                <apex:selectOptions value="{!lstColumnsAndFiltersTemplate}"/>
+                                <apex:actionSupport event="onchange" action="{!ShowEditDeleteProfile}" reRender="mainPanel2Sub" />
+                            </apex:selectList>
+                            <apex:commandButton value="Go!" rerender="f0" title="Here you can setup columns shown, reorder them or create filters." action="{!btnGo}" status="MCSub"/>
+                            <script> var oViewMainList = document.getElementById("{!$Component.SelectListId}");</script> 
+                        </td>
+                        <td>
+                            <apex:commandLink rendered="{!AND(NOT(isOnlyDefaultView),isShowEditDeleteProfile)}" value="Edit" action="{!fetchTemplateColumnAndFilterConditions}" rerender="f0, sfFiltersPanel" title="Here you can setup columns shown, reorder them or create filters." style="width: 125px;padding-left:10px;color: #015ba7;" status="MCSub">
+                                <apex:param name="inEditColumns" assignTo="{!inEditColumns}" value="true"/>
+                                <apex:param name="isShowDeleted" assignTo="{!isShowDeleteButton}" value="true"/>
+                            </apex:commandLink>
+                        </td>
+                        <td><apex:outputPanel rendered="{!AND(NOT(isOnlyDefaultView),isShowEditDeleteProfile)}"> | </apex:outputPanel></td>
+                        <td>
+                            <apex:commandLink rendered="{!AND(NOT(isOnlyDefaultView),isShowEditDeleteProfile)}" value="Delete" action="{!deleteTemplateByname}" rerender="f0, SelectListId" title="Here you can delete view." style="width: 125px;color: #015ba7;" status="MCSub" />
+                        </td>
+                        <td><apex:outputPanel rendered="{!AND(NOT(isOnlyDefaultView),isShowEditDeleteProfile)}"> | </apex:outputPanel></td>
+                        <td>
+                            <apex:commandLink value="Create New View" action="{!lnkCreateNewView}" rerender="f0" title="Here you can setup columns shown, reorder them or create filters." style="width: 125px;color: #015ba7;" status="MCSub"> 
+                                <apex:param name="inEditColumns" assignTo="{!inEditColumns}" value="true"/>
+                            </apex:commandLink>
+                        </td>
+                      <!-- <td id="errorPl"><apex:pageMessages /></td> -->
+                        <!-- Stop - updated View Section -->
+                    </tr>
+                </table>
+            </apex:outputPanel>
+
+            <apex:pageBlock id="pb0" rendered="{!NOT(inEditColumns)}">
+
+                <apex:actionFunction action="{!voidAction}" name="loadPage" rerender="pb0,opMsg" status="MCSub">
+                    <apex:param name="pageNumber" assignTo="{!pageNumber}" value="{!pageNumber}"/>
+                </apex:actionFunction>
+                
+                <apex:actionFunction action="{!doDelete}" name="fDoDelete" rerender="pb0,opMsg" status="MCSub">
+                </apex:actionFunction>
+                
+                <script>
+                    function fDoDeletePre()
+                    {
+                        var isAnySelect = false;
+                        jQuery('.targetCheck').each(function( index )
+                        {
+                            if($( this ).attr( "checked" )){ isAnySelect = true;} 
+                        });
+                        
+                        if(isAnySelect){ fDoDelete();}
+                        else{ alert('Please, select at least one record.');}
+                    }
+                    initBtn();
+                </script>
+                
+                <apex:pageBlockButtons id="btnPageBlock" location="top">
+                    <table>
+                        <tr>
+                            <td>
+                                <apex:commandButton value="Save" action="{!doCusSave}" rerender="pb0,opMsg" rendered="{!counterparties_permission ||(NOT(IsViewState) && ((OnEIT && massEditSettings.Name=='Engagement-Party-Company') || (OnOIT && massEditSettings.Name=='Opportunity-Party-Company')))}" status="MCSub"/>
+                                <!-- <input type="button" value="Delete" class="btn" rendered="{!OnEIT}" onclick="fDoDeletePre()"/> -->
+                                <apex:commandButton value="Delete" rendered="{!((OnEIT && massEditSettings.Name=='Engagement-Party-Company') || (OnOIT && massEditSettings.Name=='Opportunity-Party-Company'))}" onclick="fDoDeletePre()" rerender="pb0,opMsg" status="MCSub"/>
+                                <apex:commandButton styleClass="btnSaveAdnBack" value="Save & Back" action="{!saveClose}" rendered="{!NOT(IsViewState) && ((OnEIT && massEditSettings.Name=='Engagement-Party-Company') || (OnOIT && massEditSettings.Name=='Opportunity-Party-Company'))}" status="MCSub"/>
+                                <apex:commandButton value="Cancel & Back" action="{!close}" immediate="true" rerender="pb0,opMsg" rendered="{!NOT(IsViewState) || counterparties_permission}" status="MCSub"/>
+                                <apex:commandButton value="Add Counterparties" immediate="true" status="MCSub" rendered="{!counterparties_permission||(NOT(IsViewState) && ((OnEIT && massEditSettings.Name=='Engagement-Party-Company') || (OnOIT && massEditSettings.Name=='Opportunity-Party-Company')))}" action="{!addMultipleItems}"></apex:commandButton>
+                                <!-- <apex:commandButton value="Run Report" action="{!runReport}" rendered="{!isShowReportBtn}"/> -->
+                                <apex:commandButton rendered="{!ExtId=='2'}" value="Bid Tracking Report" action="{!runBidTracking}" />
+                                <apex:commandButton value="Edit Bids" action="{!editBids}" rendered="{!NOT(IsViewState) && ShowEditBids && ((OnEIT && massEditSettings.Name=='Engagement-Party-Company') || (OnOIT && massEditSettings.Name=='Opportunity-Party-Company'))}" immediate="true" />
+                                <apex:commandButton value="Edit" action="{!startEdit}" rerender="pb0,opMsg" immediate="true" rendered="{!IsViewState && ((OnEIT && massEditSettings.Name=='Engagement-Party-Company') || (OnOIT && massEditSettings.Name=='Opportunity-Party-Company'))}" status="MCSub"/>
+                                <!--<apex:commandButton value="Delete" action="{!doDelete}" rerender="pb0,opMsg" rendered="{!IsViewState}" status="MCSub"/>-->
+                                <apex:commandButton value="Cancel" action="{!close}" immediate="true" rendered="{!IsViewState && ((OnEIT && massEditSettings.Name=='Engagement-Party-Company') || (OnOIT && massEditSettings.Name=='Opportunity-Party-Company'))}" status="MCSub"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="saveNoteSpan">Click Save to apply changes</span></td>
+                        </tr>
+                    </table>
+                </apex:pageBlockButtons>
+
+                <apex:outputPanel rendered="{!IF(ConvertedCallLogs.size <= 0, true, false)}">
+                    <div  style="padding-top: 10px;">No records to display</div>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!ConvertedCallLogs.size > 0}">
+                    <apex:outputPanel rendered="{!IF(FiltersString!=null && FiltersString!='', true, false)}">
+                        {!FiltersString}<br/><br/>
+                    </apex:outputPanel>
+
+                    <span style="display: inline; width: 25px;">
+                        <apex:commandLink value="First" action="{!voidAction}" rerender="pb0,opMsg" rendered="{!IF(pageNumber==0, false, true)}" status="MCSub">
+                            <apex:param name="pageNumber" assignTo="{!pageNumber}" value="0"/>
+                        </apex:commandLink>
+                        <apex:outputLabel value="First" rendered="{!IF(pageNumber==0, true, false)}"/>
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                    
+                    <span style="display: inline; width: 25px;">
+                        <apex:commandLink value="Prev" action="{!voidAction}" rerender="pb0,opMsg" rendered="{!IF(pageNumber==0, false, true)}" status="MCSub">
+                            <apex:param name="pageNumber" assignTo="{!pageNumber}" value="{!pageNumber-1}"/>
+                        </apex:commandLink>
+                        <apex:outputLabel value="Prev" rendered="{!IF(pageNumber==0, true, false)}"/>
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span> 
+                    
+                    <span style="display: inline; width: 25px;">
+                        <input type="text" value="{!pageNumber+1}" styleClass="pageInput" size="2" onkeypress="return onlyNumbers(event,this.value);" onblur="if ((this.value-1)!=({!pageNumber})) { loadPage(this.value-1);}"/>
+                        <apex:outputLabel value=" / {!pageCount+1}"/>
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span> 
+                    
+                    <span style="display: inline; width: 25px;">
+                        <apex:commandLink value="Next" action="{!voidAction}" rerender="pb0,opMsg" rendered="{!IF(pageNumber==pageCount, false, true)}" status="MCSub">
+                            <apex:param name="pageNumber" assignTo="{!pageNumber}" value="{!pageNumber+1}"/>
+                        </apex:commandLink>
+                        <apex:outputLabel value="Next" rendered="{!IF(pageNumber==pageCount, true, false)}"/>
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                    
+                    <span style="display: inline; width: 25px;">
+                        <apex:commandLink value="Last" action="{!voidAction}" rerender="pb0,opMsg" rendered="{!IF(pageNumber==pageCount, false, true)}" status="MCSub">
+                            <apex:param name="pageNumber" assignTo="{!pageNumber}" value="{!pageCount}"/>
+                        </apex:commandLink>
+                        <apex:outputLabel value="Last" rendered="{!IF(pageNumber==pageCount, true, false)}"/>
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                    <span style="display: inline; width: 125px;"> Qty: &nbsp; 
+                        <apex:selectList value="{!pageSize}" multiselect="false" size="1" onchange="savePageSize(this.value);">
+                            <apex:selectOptions value="{!pageSizeValues}"/>
+                        </apex:selectList>
+                    </span>
+
+                    <div id="dtable" class="total-wrapper">
+                        <div class="fix-column">
+                            <div class="thead">              
+                                <div style="width:32px">
+                                    <input type="checkbox" style="margin: 0 !important;" id="SelectAllCheckbox" onclick="jQuery('.targetCheck').attr('checked', this.checked);"/>
+                                </div>
+                                <div style="width:48px">
+                                    Action
+                                </div>
+                                <apex:repeat value="{!columnsShown}" var="col" rows="1">
+                                    <div style="width:80px">
+                                        <apex:outputPanel rendered="{!NOT(col.IsEmpty) && col.isSortable}" style="white-space: nowrap;">
+                                        <apex:commandLink value="{!col.Label}" action="{!changeSorting}" rerender="pb0,opMsg" status="MCSub">
+                                            <apex:param name="sortExpression" assignTo="{!sortExpression}" value="{!col.sortExpression}"/>
+                                            <apex:param name="sortDirection" assignTo="{!sortDirection}" value="{!IF(sortExpression==col.sortExpression, sortDirection, 'DESC')}"/>
+                                        </apex:commandLink>
+                                        <apex:outputPanel rendered="{!IF(sortExpression==col.sortExpression,IF(sortDirection='ASC','true','false'),'false')}">&uarr;</apex:outputPanel>
+                                        <apex:outputPanel rendered="{!IF(sortExpression==col.sortExpression,IF(sortDirection='ASC','false','true'),'false')}">&darr;</apex:outputPanel></apex:outputPanel>
+                                        <apex:outputPanel rendered="{!NOT(col.IsEmpty) && NOT(col.isSortable)}" style="white-space: nowrap;">{!col.Label}</apex:outputPanel>
+                                    </div>
+                                </apex:repeat>
+                                <apex:repeat value="{!columnsShown}" var="col" first="1" rows="1">
+                                    <div style="width:220px">
+                                        <apex:outputPanel rendered="{!NOT(col.IsEmpty) && col.isSortable}" style="white-space: nowrap;">
+                                        <apex:commandLink value="{!col.Label}" action="{!changeSorting}" rerender="pb0,opMsg" status="MCSub">
+                                            <apex:param name="sortExpression" assignTo="{!sortExpression}" value="{!col.sortExpression}"/>
+                                            <apex:param name="sortDirection" assignTo="{!sortDirection}" value="{!IF(sortExpression==col.sortExpression, sortDirection, 'DESC')}"/>
+                                        </apex:commandLink>
+                                        <apex:outputPanel rendered="{!IF(sortExpression==col.sortExpression,IF(sortDirection='ASC','true','false'),'false')}">&uarr;</apex:outputPanel>
+                                        <apex:outputPanel rendered="{!IF(sortExpression==col.sortExpression,IF(sortDirection='ASC','false','true'),'false')}">&darr;</apex:outputPanel>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!NOT(col.IsEmpty) && NOT(col.isSortable)}" style="white-space: nowrap;">{!col.Label}</apex:outputPanel>
+                                    </div>
+                                </apex:repeat>
+                            </div>
+                            <div class="tbody">
+                                <apex:repeat value="{!ConvertedCallLogs}" var="item">               
+                                    <div class="trow">
+                                        <div style="display:inline-table;">
+                                            <div class="tritem" style="width:32px">
+                                                <apex:inputCheckbox style="margin: 0px !important;" value="{!item.member.isSelected}" styleClass="targetCheck" onclick="if (!this.checked) jQuery('#SelectAllCheckbox').attr('checked', false);"/>
+                                                <input type="hidden"  value="{!item.CastedSObject.Id}"/>
+                                            </div>
+                                            <div class="tritem" style="width:48px">
+                                                <apex:outputLink value="/{!item.CastedSObject.Id}/e?retURL={!CurrentUrlEncoded}" target="_top">Edit</apex:outputLink>
+                                            </div>
+                                            <apex:repeat value="{!columnsShown}" var="col" rows="1">
+                                                <div class="tritem" style="width:80px">
+                                                    <apex:outputPanel rendered="{!NOT(col.IsEmpty)}" style="white-space: nowrap;">                         
+                                                    <apex:inputField value="{!item.CastedSObject[col.name]}" rendered="{! NOT(IsViewState) && NOT(CONTAINS(col.name,'.')) && col.isEditable}" onkeyup="massChange(this,'{!col.name}');"  onchange="massChange(this,'{!col.name}');" styleClass="{!col.name}"/>
+                                                    <apex:outputField value="{!item.CastedSObject[col.name]}" rendered="{! ((IsViewState) && NOT(CONTAINS(col.name,'.'))) || NOT(col.isEditable) || ((CONTAINS(col.name,'.')) && NOT(item.CastedSObject[col.name]==null)) }" />
+                                                    </apex:outputPanel>
+                                                </div>
+                                            </apex:repeat>
+                                            <apex:repeat value="{!columnsShown}" var="col" first="1" rows="1">
+                                                <div class="tritem" style="width:230px">
+                                                    <apex:outputPanel rendered="{!NOT(col.IsEmpty)}" style="white-space: nowrap;">                         
+                                                    <apex:inputField value="{!item.CastedSObject[col.name]}" rendered="{! NOT(IsViewState) && NOT(CONTAINS(col.name,'.')) && col.isEditable}" onkeyup="massChange(this,'{!col.name}');"  onchange="massChange(this,'{!col.name}');" styleClass="{!col.name}"/>
+                                                    <apex:outputField value="{!item.CastedSObject[col.name]}" rendered="{! ((IsViewState) && NOT(CONTAINS(col.name,'.'))) || NOT(col.isEditable) || ((CONTAINS(col.name,'.')) && NOT(item.CastedSObject[col.name]==null)) }" />
+                                                    </apex:outputPanel>
+                                                </div>
+                                            </apex:repeat>
+                                        </div>
+                                    </div>
+                                </apex:repeat>
+                            </div>
+                        </div>
+                        <div class="rest-columns">
+                            <div class="thead">
+                                <apex:repeat value="{!columnsShown}" var="col" first="2" rows="{!columnsShown.size - 3}">
+                                    <div class="thead-cell">
+                                        
+                                            <apex:outputPanel rendered="{!NOT(col.IsEmpty) && col.isSortable}" style="white-space: nowrap;">
+                                            <apex:commandLink value="{!col.Label}" action="{!changeSorting}" rerender="pb0,opMsg" status="MCSub">
+                                                <apex:param name="sortExpression" assignTo="{!sortExpression}" value="{!col.sortExpression}"/>
+                                                <apex:param name="sortDirection" assignTo="{!sortDirection}" value="{!IF(sortExpression==col.sortExpression, sortDirection, 'DESC')}"/>
+                                            </apex:commandLink>
+                                            <apex:outputPanel rendered="{!IF(sortExpression==col.sortExpression,IF(sortDirection='ASC','true','false'),'false')}">&uarr;</apex:outputPanel>
+                                            <apex:outputPanel rendered="{!IF(sortExpression==col.sortExpression,IF(sortDirection='ASC','false','true'),'false')}">&darr;</apex:outputPanel>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel rendered="{!NOT(col.IsEmpty) && NOT(col.isSortable)}" style="white-space: nowrap;">{!col.Label}</apex:outputPanel>
+
+                                    </div>
+                                </apex:repeat>
+                                <apex:repeat value="{!columnsShown}" var="col" first="{!columnsShown.size - 1}" rows="1">
+                                   
+                                    <div class="thead-cell" style="width: 240px !important;">
+                                        <apex:outputPanel rendered="{!NOT(col.IsEmpty) && col.isSortable}" style="white-space: nowrap;">
+                                        <apex:commandLink value="{!col.Label}" action="{!changeSorting}" rerender="pb0,opMsg" status="MCSub">
+                                            <apex:param name="sortExpression" assignTo="{!sortExpression}" value="{!col.sortExpression}"/>
+                                            <apex:param name="sortDirection" assignTo="{!sortDirection}" value="{!IF(sortExpression==col.sortExpression, sortDirection, 'DESC')}"/>
+                                        </apex:commandLink>
+                                        <apex:outputPanel rendered="{!IF(sortExpression==col.sortExpression,IF(sortDirection='ASC','true','false'),'false')}">&uarr;</apex:outputPanel>
+                                        <apex:outputPanel rendered="{!IF(sortExpression==col.sortExpression,IF(sortDirection='ASC','false','true'),'false')}">&darr;</apex:outputPanel>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!NOT(col.IsEmpty) && NOT(col.isSortable)}" style="white-space: nowrap;">{!col.Label}</apex:outputPanel>
+                                    </div>
+                                </apex:repeat>
+                            </div>
+                            <div class="tbody">
+                                <apex:repeat value="{!ConvertedCallLogs}" var="item">  
+                                    
+                                    <div class="trow" style="display: inline-table;">
+                                        <apex:repeat value="{!columnsShown}" var="col" first="2" rows="{!columnsShown.size - 3}">
+                                            <div class="tritem">
+                                                <div class="input-cell" style="position: aboslute">
+                                                <apex:outputPanel rendered="{!NOT(col.IsEmpty)}" style="white-space: nowrap;">                         
+                                                <apex:inputField style="min-width: 100px;" value="{!item.CastedSObject[col.name]}" rendered="{! NOT(IsViewState) && NOT(CONTAINS(col.name,'.')) && col.isEditable}" onkeyup="massChange(this,'{!col.name}');"  onchange="massChange(this,'{!col.name}');" styleClass="{!col.name}"/>
+                                                <apex:outputField value="{!item.CastedSObject[col.name]}" rendered="{! ((IsViewState) && NOT(CONTAINS(col.name,'.'))) || NOT(col.isEditable) || ((CONTAINS(col.name,'.')) && NOT(item.CastedSObject[col.name]==null)) }" />
+                                                </apex:outputPanel>
+                                                </div>
+                                            </div>
+                                        </apex:repeat>
+                                        <apex:repeat value="{!columnsShown}" var="col" first="{!columnsShown.size - 1}" rows="1">
+                                            <div class="tritem">
+                                                <apex:outputPanel rendered="{!NOT(col.IsEmpty)}" style="white-space: nowrap;">                         
+                                                <apex:inputField style="width: 200px; resize: none;" value="{!item.CastedSObject[col.name]}" rendered="{! NOT(IsViewState) && NOT(CONTAINS(col.name,'.')) && col.isEditable}" onkeyup="massChange(this,'{!col.name}');"  onchange="massChange(this,'{!col.name}');" styleClass="{!col.name}"/>
+                                                <apex:outputField value="{!item.CastedSObject[col.name]}" rendered="{! ((IsViewState) && NOT(CONTAINS(col.name,'.'))) || NOT(col.isEditable) || ((CONTAINS(col.name,'.')) && NOT(item.CastedSObject[col.name]==null)) }" />
+                                                </apex:outputPanel>
+                                            </div>
+                                        </apex:repeat>
+                                    </div>         
+                                </apex:repeat> 
+                            </div>
+                        </div>
+                    </div>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>
+                    <script>
+
+                        window.$j = jQuery.noConflict();
+
+                        $('document').ready(function(){
+                            
+
+                            $('.dateInput > input').each(function(i, e){
+                                $(e).attr('onFocus',null);                        
+                            });
+
+                            $('.dateInput > input').focus(function (e) {
+                                var position = $(e.target).position();
+
+                                DatePicker.pickDate(true, $(e.target).attr('id'), false);
+                                var datePickerTop = parseInt($('.datePicker').css('top'), 10);
+                                var datePickerLeft = parseInt($('.datePicker').css('left'), 10);
+
+                                if(!isNaN(datePickerTop)){
+                                    $('.datePicker').css('top', (position.top + 20) + 'px');
+                                    $('.datePicker').css('left', (position.left) + 'px');
+                                    $('.datePicker').css('position', 'absolute');
+                                    $('.datePicker').css('display', 'block');
+                                }                               
+                            });
+
+                            var fcBody = document.querySelector(".fix-column > .tbody"),
+                            rcBody = document.querySelector(".rest-columns > .tbody"),
+                            rcHead = document.querySelector(".rest-columns > .thead");
+                            rcBody.addEventListener("scroll", function () {
+
+                                rcHead.scrollLeft = this.scrollLeft;
+                                fcBody.scrollTop = this.scrollTop;
+                                this.scrollTop = fcBody.scrollTop;
+                                $('.datePicker').css('display', 'none');
+                                $('.datePicker').css('position', 'inherit');
+                                
+                            });
+
+                            $("#dtable").show();
+
+                        });
+
+                        $('input, select').focus(function() {
+                                this.oldValue = this.value; 
+                            }
+                        );
+                        jQuery.each(jQuery('input, select'), function(i, el) {el.origValue = el.value;});
+                    </script>
+                    
+                    <span style="display: inline; width: 25px;">
+                        <apex:commandLink value="First" action="{!voidAction}" rerender="pb0,opMsg" rendered="{!IF(pageNumber==0, false, true)}" status="MCSub">
+                            <apex:param name="pageNumber" assignTo="{!pageNumber}" value="0"/>
+                        </apex:commandLink>
+                        <apex:outputLabel value="First" rendered="{!IF(pageNumber==0, true, false)}"/>
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                    
+                    <span style="display: inline; width: 25px;">
+                        <apex:commandLink value="Prev" action="{!voidAction}" rerender="pb0,opMsg" rendered="{!IF(pageNumber==0, false, true)}" status="MCSub">
+                            <apex:param name="pageNumber" assignTo="{!pageNumber}" value="{!pageNumber-1}"/>
+                        </apex:commandLink>
+                        <apex:outputLabel value="Prev" rendered="{!IF(pageNumber==0, true, false)}"/>
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span> 
+                    
+                    <span style="display: inline; width: 25px;">
+                        <input type="text" value="{!pageNumber+1}" styleClass="pageInput" size="2" onkeypress="return onlyNumbers(event,this.value);" onblur="if ((this.value-1)!=({!pageNumber})) { loadPage(this.value-1);}"/>
+                        <apex:outputLabel value=" / {!pageCount+1}"/>
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span> 
+                    
+                    <span style="display: inline; width: 25px;">
+                        <apex:commandLink value="Next" action="{!voidAction}" rerender="pb0,opMsg" rendered="{!IF(pageNumber==pageCount, false, true)}" status="MCSub">
+                            <apex:param name="pageNumber" assignTo="{!pageNumber}" value="{!pageNumber+1}"/>
+                        </apex:commandLink>
+                        <apex:outputLabel value="Next" rendered="{!IF(pageNumber==pageCount, true, false)}"/>
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                    
+                    <span style="display: inline; width: 25px;">
+                        <apex:commandLink value="Last" action="{!voidAction}" rerender="pb0,opMsg" rendered="{!IF(pageNumber==pageCount, false, true)}" status="MCSub">
+                            <apex:param name="pageNumber" assignTo="{!pageNumber}" value="{!pageCount}"/>
+                        </apex:commandLink>
+                        <apex:outputLabel value="Last" rendered="{!IF(pageNumber==pageCount, true, false)}"/>
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                    <span style="display: inline; width: 125px;"> Qty: &nbsp; 
+                    <apex:selectList value="{!pageSize}" multiselect="false" size="1" onchange="savePageSize(this.value);">
+                                <apex:selectOptions value="{!pageSizeValues}"/>
+                    </apex:selectList>
+                    </span>
+                    
+                    <apex:actionFunction name="savePageSize" action="{!doSavePageSize}" rerender="pb0,opMsg" status="MCSub">
+                        <apex:param name="pageSize" assignTo="{!pageSize}" value=""/>
+                        <apex:param name="pageNumber" assignTo="{!pageNumber}" value="0"/>
+                    </apex:actionFunction>
+                </apex:outputPanel>
+            </apex:pageBlock>
+            <apex:pageBlock id="pb1" rendered="{!inEditColumns}">
+                <apex:pageBlockButtons >
+                    <input type="button" value="Save" class="btn" onclick="doInitFiltering()"/>
+                    <apex:commandButton value="Cancel" action="{!btnGo}" rerender="f0,SelectListId" status="MCSub">
+                        <apex:param name="inEditColumns" assignTo="{!inEditColumns}" value="false"/>
+                        <apex:param name="backLView" assignTo="{!strColumnsAndFiltersTemplate}" value="{!strView}"/>
+                    </apex:commandButton>
+                </apex:pageBlockButtons>
+                
+                <apex:actionFunction name="saveSelectedColumns" action="{!saveSelectedColumns}" rerender="f0" status="MCSub">
+                    <apex:param name="selCols" assignTo="{!selectedColumnsCallback}" value=""/>
+                    <apex:param name="inEditColumns" assignTo="{!inEditColumns}" value="false"/>
+                </apex:actionFunction>
+                
+
+                <apex:actionFunction name="callsaveColumnsFilters" action="{!saveColumnsFilters}" rerender="f0" status="MCSub">
+                        <apex:param name="selCols" assignTo="{!cb_columns}" value=""/>
+                        <apex:param name="filters" assignTo="{!cb_filters}" value=""/>
+                        <apex:param name="advFilters" assignTo="{!cb_advFilters}" value=""/>
+                        <apex:param name="inEditColumns" assignTo="{!inEditColumns}" value=""/>
+                </apex:actionFunction>
+
+                <!-- Action function to reredner Save as button -->
+                    <apex:actionFunction action="{!dummyFunction}" name="enableSaveAsFcn" rerender="SelectListId">
+                        <apex:param name="enableSaveAsas" assignTo="{!isDisabled}" value="false"/>
+                    </apex:actionFunction>    
+
+                <br/>
+                <table border="0" cellspacing="1" cellpadding="1">
+                <tr>
+                    <td><b>View Name:</b>&nbsp;&nbsp;</td>
+                    <td> 
+                        <div class="requiredInput" id="textbox">
+                            <div class="requiredBlock"></div>
+                            <apex:inputText value="{!strColumnsAndFiltersTemplate}" onkeyup="enableSaveAsFcn();"/> 
+                        </div>
+                    </td> 
+                </tr>
+                <tr><td colspan="2" height="10">&nbsp;</td></tr>
+                <tr>
+                    <td><b>Visibility:</b>&nbsp;&nbsp;</td>
+                    <td>
+                        <div class="requiredInput" id="textbox">
+                        <div class="requiredBlock"></div>
+                        <apex:selectList value="{!fldViewVisibility}" multiselect="false" size="1">
+                            <apex:selectOptions value="{!fldViewVisibilityVals}"/>
+                        </apex:selectList>
+                        </div>
+                    </td>
+                </tr>
+                </table>
+                <br/>
+                <script>
+                        var varIsNewView = '{!isNewView}';
+                        var varStrView = '{!strView}';
+                        if(varIsNewView=='true' && varStrView!='' && varStrView!='null')
+                        {
+                            for(var i = 0; i < oViewMainList.length; i++)
+                            {
+                                if(oViewMainList.options[i].value == varStrView)
+                                oViewMainList.selectedIndex = i;
+                            }
+                        }
+                        //alert(oViewMainList.value);
+                </script>
+                <table class="multiSelectPicklistTable" border="0" cellspacing="1" cellpadding="1">
+                    <tbody>
+                        <tr>
+                            <td><b>Available</b></td>
+                            <td></td>
+                            <td><b>Selected</b></td>
+                            <td></td>
+                        </tr>
+                        <tr class="multiSelectPicklistRow">
+                            <td style="border:none;">
+                                <span>
+                                    <select id="__unselected" size="15" multiple="multiple" ondblclick="doSelect(document.getElementById('__unselected'), document.getElementById('__selected'));" style="width: 200px;height:270px;">
+                                        <apex:repeat value="{!UnselectedColumns}" var="col">
+                                            <option value="{!col.Value}">{!col.Label}</option>
+                                        </apex:repeat>
+                                    </select>
+                                </span>
+                            </td>
+                            <td class="multiSelectPicklistCell" style="border:none;">
+                                <a onclick="doSelect(document.getElementById('__unselected'), document.getElementById('__selected')); return false;" title="Add">
+                                    <img src="/s.gif" alt="Add" class="picklistArrowRight" id="'+id+'_right_arrow" style="cursor:pointer;" title="Add"/>
+                                </a>
+                                <br/><br/>
+                                <a onclick="doSelect(document.getElementById('__selected'), document.getElementById('__unselected')); return false;" title="Remove">
+                                    <img src="/s.gif" alt="Remove" class="picklistArrowLeft" id="'+id+'_left_arrow" style="cursor:pointer;" title="Remove"/>
+                                </a>
+                            </td>
+                            <td style="border:none;">
+                                <span>
+                                    <select id="__selected" size="15" multiple="multiple" ondblclick="doSelect(document.getElementById('__selected'), document.getElementById('__unselected'));" style="width: 200px;height:270px;">
+                                        <apex:repeat value="{!SelectColumnsOrdered}" var="col">
+                                            <option value="{!col.Value}">{!col.Label}</option>
+                                        </apex:repeat>
+                                    </select>
+                                </span>
+                            </td>
+                            <td class="multiSelectPicklistCell" style="border:none;">
+                                <a onclick="moveUp(document.getElementById('__selected')); return false;" title="Up">
+                                    <img src="/s.gif" alt="Add" class="upArrowIcon" id="'+id+'_up_arrow" style="cursor:pointer;" title="Up"/>
+                                </a>
+                                <br/><br/>
+                                <a onclick="moveDown(document.getElementById('__selected')); return false;" title="Down">
+                                    <img src="/s.gif" alt="Remove" class="downArrowIcon" id="'+id+'_down_arrow" style="cursor:pointer;" title="Down"/>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <script>
+                    function getColumnsList(sel){
+                        var res = '';
+                        for (var i=0; i < sel.options.length; i++){
+                            res += ';' + sel.options[i].value;
+                        }
+                        if (res.length > 0) res = res.substring(1);
+                        return res;
+                    }
+
+                    function doSelect(selFrom, selTo){
+                        //var selFrom = document.getElementById('__unselected');
+                        //var selTo = document.getElementById('__selected');
+                        for (var ind = 0; ind < selFrom.options.length; ind++){
+                            if (selFrom.options[ind].selected){
+                                selTo.options[selTo.options.length] = new Option(selFrom.options[ind].innerHTML, selFrom.options[ind].value);
+                            }
+                        }
+                        for (var ind = selFrom.options.length-1; ind >= 0; ind--){
+                            if (selFrom.options[ind].selected){
+                                for (var ind2 = ind; ind2 < selFrom.options.length-1; ind2++){
+                                    selFrom.options[ind2] = new Option(selFrom.options[ind2+1].innerHTML, selFrom.options[ind2+1].value, selFrom.options[ind2+1].selected);
+                                }
+                                selFrom.options.length -= 1;
+                            }
+                        }
+                    }
+
+                    function moveUp(sel){
+                        var index = -1;
+                        for (var i = 0; i < sel.options.length; i++){
+                            if (sel.options[i].selected){
+                                if (index==-1) index = i;
+                                else {
+                                    alert('Select only one field.');
+                                    return false;
+                                }
+                            }
+                        }   
+                        if (index > 0){
+                            var t = sel.options[index-1];
+                            sel.options[index-1] = new Option(sel.options[index].innerHTML, sel.options[index].value, sel.options[index].selected);
+                            sel.options[index] = t;
+                            sel.selectedIndex = index-1;
+                        }
+                    }
+
+                    function moveDown(sel){
+                        var index = -1;
+                        for (var i = 0; i < sel.options.length; i++){
+                            if (sel.options[i].selected){
+                                if (index==-1) index = i;
+                                else {
+                                    alert('Select only one field.');
+                                    return false;
+                                }
+                            }
+                        }   
+                        if (index >= 0 && index < sel.options.length-1){
+                            var t = sel.options[index+1];
+                            sel.options[index+1] = new Option(sel.options[index].innerHTML, sel.options[index].value, sel.options[index].selected);
+                            sel.options[index] = t;
+                            sel.selectedIndex = index+1;
+                        }
+                    }
+                </script>
+                
+                <br/>
+                Filters: 
+                <apex:pageMessage severity="error" summary="Error: invalid search filter values format or filter lookup value not found or invalid Advanced filter." rendered="{!hasQueryErrors}"/>
+                <apex:outputPanel id="sfFiltersPanel" style="border: none; min-height: 30px; display: block" layout="block" rendered="true">
+                    <c:SL_LIB209_SearchBlock params="{!searchCompParams}"/>
+                </apex:outputPanel>
+            </apex:pageBlock>
+        </apex:form>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>
+        <script>
+            $('document').ready(function(){
+
+                $('.dateInput > input').each(function(i, e){
+                    $(e).attr('onFocus',null);                        
+                });
+
+                $('.dateInput > input').focus(function (e) {
+                    var position = $(e.target).position();
+
+                    DatePicker.pickDate(true, $(e.target).attr('id'), false);
+                    var datePickerTop = parseInt($('.datePicker').css('top'), 10);
+                    var datePickerLeft = parseInt($('.datePicker').css('left'), 10);
+
+                    if(!isNaN(datePickerTop)){
+                        $('.datePicker').css('top', (position.top + 20) + 'px');
+                        $('.datePicker').css('left', (position.left) + 'px');
+                        $('.datePicker').css('position', 'absolute');
+                        $('.datePicker').css('display', 'block');
+                    }                               
+                });
+            });
+
+            String.prototype.trim = function() {return (this.replace(/^[\s\xA0]+/, "").replace(/[\s\xA0]+$/, ""))}
+            String.prototype.startsWith = function(str) {return (this.match("^"+str)==str)}
+            String.prototype.endsWith = function(str) {return (this.match(str+"$")==str)}
+
+            function noenter() { return !(window.event && window.event.keyCode == 13);}
+
+            var multieditDialog = document.getElementById('multieditDialog');
+            var overlayDiv = document.createElement('div');
+            overlayDiv.className = "overlayBackground";
+            overlayDiv.style.width = "100%"; 
+            overlayDiv.style.height = "100%"; 
+            overlayDiv.style.display = "none";
+            overlayDiv.style.position = "fixed";
+            //document.body.appendChild(overlayDiv);
+
+            function selectCheckbox(el){
+                while (el.nodeName!='TR') el = el.parentNode;
+                var checks = getElementsByClassName('targetCheck', el);
+                for (var i=0; i < checks.length; i++){
+                    checks[i].checked = true;
+                }
+            }
+
+            function isRowChecked(row){
+                var checks = getElementsByClassName('targetCheck', row);
+                if (checks.length > 0 && checks[0].checked) return true;
+                return false;
+            }
+
+            function getRowId(el){
+                while (el.nodeName!='TR') el = el.parentNode;
+                var checks = getElementsByClassName('selectionId', el);
+                for (var i=0; i < checks.length; i++){
+                    return checks[i].value;
+                }
+            }
+
+            function tryDoMultiedit(action, field, id, allow){
+                if (allow) doMultiEdit(action, field, id);
+            }
+
+            function doChangeRow(row, colName, value, skipSelectLookup){
+                var cells = getElementsByClassName('dataCell', row);
+                for (var i=0; i < cells.length; i++){
+                    if (cells[i].getAttribute('name')==colName){
+                        setValueRec(cells[i], value, skipSelectLookup);
+                    }
+                }
+            }
+
+            function setValueRec(el, value, skipSelectLookup){
+                if (el.nodeName=='SELECT'){
+                    if (!skipSelectLookup){
+                        el.value = value;
+                    }
+                } else 
+                if (el.nodeName=='INPUT'){
+                    var name = el.getAttribute('name');
+                    name = name.substr(name.lastIndexOf(':')+1);
+                    if (   !name.endsWith('_lkid') 
+                        && !name.endsWith('_lkold')
+                        && !name.endsWith('_lktp') 
+                        && !name.endsWith('_lspf') 
+                        && !name.endsWith('_lspfsub') 
+                        && !name.endsWith('_mod')) el.value = value;
+                } else {
+                    var els = el.children;
+                    //alert(el.getAttribute('name') + ' :: ' + colName + ' :: ' + els.length);
+                    for (var j=0; j < els.length; j++){
+                        setValueRec(els[j], value, skipSelectLookup);
+                    }
+                }
+            }
+
+            /*
+                * Function performs mass change for checked items.
+                * @obj: event object
+                * @cl: class of the objects to change
+                * @odd: For some objects there are twice as much objects in html than it is appear to user.
+                *       Set it to 'true' so them, e.g. lookup fields.
+            */
+            function massChange(obj, cl, odd)
+            {
+                if(isBtnDisable)
+                {
+                    isBtnDisable = false;
+                    $('.btnSaveAdnBack').each(function (index, elem ){
+                        $(elem).attr("disabled", false);
+                        $(elem).attr("class", "btn btnSaveAdnBack");
+                    });
+                    
+                }
+                
+                odd = odd ? odd : false;
+                cl = '.' + cl;
+                if($(obj).parent().hasClass("lookupInput")){ odd = true;}
+                var ind = $(cl).index(obj);
+                var indOdd = odd ? ind/2 : ind;
+
+                if($('.targetCheck').eq(indOdd).attr('checked'))
+                {
+                    var value = $(obj).val();
+                    $('.targetCheck').each(function (index, elem)
+                    {
+                        try
+                        {
+                            if($(elem).attr('checked'))
+                            {
+                                var i = odd ? index * 2 : index;
+                                if(obj.type == 'checkbox'){ $(cl).eq(i).attr("checked", obj.checked);}
+                                else{ $(cl).eq(i).val(value);}
+                            }
+                        } catch(err) {}
+                    });
+                }
+            }
+
+            var element;
+            var columnName;
+            function changeSelected(el, colName){
+                return;
+                element = el;
+                columnName = colName;
+                var value = el.value;
+                var table = el;
+                while (table.nodeName!='TR') table = table.parentNode;
+                if (!isRowChecked(table)) return;
+                while (table.nodeName!='TABLE') table = table.parentNode;
+                var rows = getElementsByClassName('dataRow', table);
+                var countChecked = 0;
+                for (var i=0; i < rows.length; i++){
+                    if (isRowChecked(rows[i])){
+                        countChecked++;
+                    }
+                }
+                if (countChecked>1) {
+                    $('#yes').click(function() { 
+                        doChangeOnSelected(element, columnName);
+                        $.unblockUI(); 
+                        return true;
+                    }); 
+                    $('#no').click(function() { 
+                        $.unblockUI(); 
+                        return true; 
+                    }); 
+                    $('#cancel').click(function() { 
+                        doCancelChanges(element, columnName);
+                        $.unblockUI(); 
+                        return true; 
+                    });
+                    
+                    $.blockUI({   message: $('#question')
+                                ,css: {
+                                        'width': '350px',
+                                        'height': '90px',
+                                        'background-color': '#ffffff',
+                                        'border': 'none',
+                                        'padding-left': '25px',
+                                        'padding-right': '25px',
+                                        'padding-top': '20px',
+                                        'padding-bottom': '10px',
+                                        '-webkit-border-radius': '4px',
+                                        '-moz-border-radius': '4px',
+                                        'cursor': 'default'
+                                                                    
+                                    }
+                            });
+                    
+                }
+            }
+
+            function doCancelChanges(el, colName){
+                el.value = el.oldValue;
+                var row = el;
+                while (row.nodeName!='TR') row = row.parentNode;
+                //doUnAstericColumn(el, row, colName);
+            }
+
+            function doChangeOnSelected(el, colName){
+                var value = el.value;
+                var table = el;
+                while (table.nodeName!='TR') table = table.parentNode;
+                if (!isRowChecked(table)) return;
+                while (table.nodeName!='TABLE') table = table.parentNode;
+                var rows = getElementsByClassName('dataRow', table);
+                for (var i=0; i < rows.length; i++){
+                    if (isRowChecked(rows[i])){
+                        doChangeRow(rows[i], colName, value, false);
+                        //doAstericColumn(rows[i], colName);
+                    }
+                }
+                if (el.nodeName=='SELECT' && el.getAttribute('name').endsWith('_lkid')) {
+                    value = el.options[el.selectedIndex].innerText;
+                    var table = el;
+                    while (table.nodeName!='TABLE') table = table.parentNode;
+                    var rows = getElementsByClassName('dataRow', table);
+                    for (var i=0; i < rows.length; i++){
+                        if (isRowChecked(rows[i])){
+                            doChangeRow(rows[i], colName, value, true);
+                        }
+                    }
+                }
+            }
+
+            function doInitFiltering()
+            {
+                if(jQuery('#textbox').children()[1].value == '')
+                {
+                    alert('Please enter a valid name');
+                    jQuery('#textbox').children()[1].focus();
+                    return;
+                }
+                var str = jQuery('#textbox').children()[1].value;
+                
+                if(!str.match(/^[0-9a-zA-Z_ ]+$/))
+                {
+                        alert('Template name can contain only underscores and alphanumeric characters');
+                        jQuery('#textbox').children()[1].focus();
+                        return;
+                }
+                
+                re = /\|/gi;
+                var events = jQuery("#sf_filters").sfFilters("Serialize").replace(re, "___");
+                var advanced = jQuery("#sf_filters").sfFilters("AdvancedFilter");
+                var columns = getColumnsList(document.getElementById('__selected'));
+                callsaveColumnsFilters(columns, events, advanced, false);
+                event.preventDefault();
+                event.stopImmediatePropagation();
+            }
+            
+            
+            (function($) {
+                $(document).ready(function() {
+                    initBtn();
+                })
+            })(jQuery);
+        </script>
+
+        <div id="question" style="display:none; cursor: default; " > 
+            <br/>
+            <h1 style="font-size: 15px;">Apply changes to:</h1> 
+            <br/><br/>
+            <input type="button" id="yes" value="All selected records" class="btn" style="min-width: 50px;"/> 
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" id="no" value="The record clicked" class="btn" style="min-width: 50px;"/>
+            <!-- &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" id="cancel" value="Cancel" class="btn" style="min-width: 50px;"/> -->
+        </div>
+
+        <apex:actionstatus id="MCSub" startText="Processing......">
+            <apex:facet name="start">
+                    <div id="salesforceSource_blurybackground" style="z-index: 100;position:fixed; left:0; top:0; bottom:0; right:0;background-color: #dcdcdc; opacity:0.6;filter:alpha(opacity=60)"></div>
+                    <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 80%; display: ''; ">
+                        <div style="width: 144px;vertical-align: middle;" class="waitingHolder">
+                        <table align="center" valign="top" style="width: 100%; height: 30%">
+                        <tr align="center" valign="top" style="width: 100%; height: 30%">
+                            <td valign="top"><img class="waitingImage" src="/img/loading.gif"/>
+                            <span class="waitingDescription">Processing......</span></td>
+                        </tr>
+                        </table>
+                        </div>
+                    </div>
+                    <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 100%; display: ''; "/>
+            </apex:facet>
+            <apex:facet name="stop"/>
+        </apex:actionstatus>
+    </apex:outputPanel>
+</apex:page>

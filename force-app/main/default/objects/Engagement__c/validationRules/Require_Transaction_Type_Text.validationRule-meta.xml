@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Transaction_Type_Text</fullName>
+    <active>true</active>
+    <errorConditionFormula>INCLUDES(Transaction_Type_FAS__c, &apos;Other&apos;) &amp;&amp;
+ISBLANK( Other_Transaction_Type_Notes__c)</errorConditionFormula>
+    <errorMessage>When &quot;Other&quot; Transaction Type is selected, you must enter a value in &quot;Other Transaction Type Notes.”</errorMessage>
+</ValidationRule>

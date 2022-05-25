@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transaction_Rationale__c</fullName>
+    <externalId>false</externalId>
+    <label>Transaction Rationale</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Public - Activist Shareholder</fullName>
+                <default>false</default>
+                <label>Public - Activist Shareholder</label>
+            </value>
+            <value>
+                <fullName>Public - Hostile</fullName>
+                <default>false</default>
+                <label>Public - Hostile</label>
+            </value>
+            <value>
+                <fullName>Maximizing Current Value / Proceeds</fullName>
+                <default>false</default>
+                <label>Maximizing Current Value / Proceeds</label>
+            </value>
+            <value>
+                <fullName>Estate Planning / Family Transition</fullName>
+                <default>false</default>
+                <label>Estate Planning / Family Transition</label>
+            </value>
+            <value>
+                <fullName>Distressed Sale</fullName>
+                <default>false</default>
+                <label>Distressed Sale</label>
+            </value>
+            <value>
+                <fullName>PE - End of Fund Life</fullName>
+                <default>false</default>
+                <label>PE - End of Fund Life</label>
+            </value>
+            <value>
+                <fullName>PE - Investment Maturity</fullName>
+                <default>false</default>
+                <label>PE - Investment Maturity</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Primary_Cannot_Change_Type_Opp</fullName>
+    <active>true</active>
+    <description>Primary Client/Subject Cannot change Type</description>
+    <errorConditionFormula>ISCHANGED( Type__c ) &amp;&amp;  Primary__c</errorConditionFormula>
+    <errorMessage>Primary Client/Subjects cannot change Type.</errorMessage>
+</ValidationRule>

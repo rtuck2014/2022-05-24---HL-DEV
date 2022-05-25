@@ -1,0 +1,27 @@
+<apex:page controller="HL_SaleTransactionController" showHeader="false" sidebar="false" lightningStylesheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_Shared.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_SalesTransactionModify.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <apex:form >
+    <apex:pageBlock id="pbMain" mode="Edit">
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!Save}" value="Save" oncomplete="ClosePopup();"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1">
+                <apex:inputField id="saleTransactionName" required="true" value="{!SaleTransaction.Name}" />
+                <apex:inputField value="{!SaleTransaction.Date_of_Sale__c}" />
+                <apex:inputField value="{!SaleTransaction.Minimum_Overbid__c}" styleClass="numeric-medium" />
+                <apex:inputField value="{!SaleTransaction.Incremental_Overbid__c}" styleClass="numeric-medium"></apex:inputField>
+                <apex:inputField value="{!SaleTransaction.Break_Up_Fee__c}" styleClass="numeric-medium"></apex:inputField>
+                <apex:inputField value="{!SaleTransaction.Deposit__c}" styleClass="numeric-medium"></apex:inputField>
+                <apex:outputLabel value="Sales Price Build-Up" styleClass="sectionTitle"></apex:outputLabel>
+                <apex:inputField value="{!SaleTransaction.Cash_Component__c}" styleClass="numeric-medium"></apex:inputField>
+                <apex:inputField value="{!SaleTransaction.Stock_Component__c}" styleClass="numeric-medium"></apex:inputField>
+                <apex:inputField value="{!SaleTransaction.Liability_Assumed__c}" styleClass="numeric-medium"></apex:inputField>
+                <apex:inputField value="{!SaleTransaction.Claim_Conversion__c}" styleClass="numeric-medium"></apex:inputField>
+            </apex:pageBlockSection>  
+    </apex:pageBlock>   
+    </apex:form>
+</apex:page>

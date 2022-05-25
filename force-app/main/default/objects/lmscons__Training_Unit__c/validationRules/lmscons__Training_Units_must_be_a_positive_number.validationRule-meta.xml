@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__Training_Units_must_be_a_positive_number</fullName>
+    <active>true</active>
+    <errorConditionFormula>lmscons__Training_Units__c &lt; 0</errorConditionFormula>
+    <errorDisplayField>lmscons__Training_Units__c</errorDisplayField>
+    <errorMessage>Number of available Training Units can not be less than 0</errorMessage>
+</ValidationRule>

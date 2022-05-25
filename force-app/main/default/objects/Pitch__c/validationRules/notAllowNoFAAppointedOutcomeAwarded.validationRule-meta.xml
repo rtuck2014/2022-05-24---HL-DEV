@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>notAllowNoFAAppointedOutcomeAwarded</fullName>
+    <active>true</active>
+    <description>If the Pitch Outcome is option 4,5, or 6 this validation enforces that both FA Awarded is populated AND No FA Appointed is checked.</description>
+    <errorConditionFormula>CONTAINS(TEXT(PitchOutcome__c), &quot;Awarded&quot;) &amp;&amp;
+NoFAAppointed__c = TRUE</errorConditionFormula>
+    <errorMessage>HL Won Pitch Indicated. No FA Appointed must be unchecked.</errorMessage>
+</ValidationRule>

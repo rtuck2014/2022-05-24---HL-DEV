@@ -1,0 +1,3 @@
+<apex:page StandardController="Engagement__c"  showheader="false" sidebar="false" standardStylesheets="false" lightningStylesheets="true">
+    <c:DashboardComponent recordId="{!Engagement__c.Id}" reportType="Engagement Group"></c:DashboardComponent>
+</apex:page>

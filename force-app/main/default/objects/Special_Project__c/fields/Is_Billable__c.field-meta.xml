@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Billable__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether this is a billable special project (used in Time Tracking)</description>
+    <externalId>false</externalId>
+    <label>Is Billable</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

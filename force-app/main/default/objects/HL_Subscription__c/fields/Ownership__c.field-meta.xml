@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ownership__c</fullName>
+    <description>This is the ownership on Opportunity/Engagement or Account.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This is the ownership on Opportunity/Engagement or Account.</inlineHelpText>
+    <label>Ownership</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ESOP</fullName>
+                <default>false</default>
+                <label>ESOP</label>
+            </value>
+            <value>
+                <fullName>Family</fullName>
+                <default>false</default>
+                <label>Family</label>
+            </value>
+            <value>
+                <fullName>Government</fullName>
+                <default>false</default>
+                <label>Government</label>
+            </value>
+            <value>
+                <fullName>Hedge Fund</fullName>
+                <default>false</default>
+                <label>Hedge Fund</label>
+            </value>
+            <value>
+                <fullName>Institutional Debt Holder</fullName>
+                <default>false</default>
+                <label>Institutional Debt Holder</label>
+            </value>
+            <value>
+                <fullName>Management</fullName>
+                <default>false</default>
+                <label>Management</label>
+            </value>
+            <value>
+                <fullName>Not for Profit</fullName>
+                <default>false</default>
+                <label>Not for Profit</label>
+            </value>
+            <value>
+                <fullName>Pension Plan</fullName>
+                <default>false</default>
+                <label>Pension Plan</label>
+            </value>
+            <value>
+                <fullName>Private</fullName>
+                <default>false</default>
+                <label>Private</label>
+            </value>
+            <value>
+                <fullName>Private Equity Group</fullName>
+                <default>false</default>
+                <label>Private Equity Group</label>
+            </value>
+            <value>
+                <fullName>Public Debt</fullName>
+                <default>false</default>
+                <label>Public Debt</label>
+            </value>
+            <value>
+                <fullName>Public Equity</fullName>
+                <default>false</default>
+                <label>Public Equity</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

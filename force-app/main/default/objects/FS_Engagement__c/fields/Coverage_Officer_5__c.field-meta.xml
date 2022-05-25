@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Coverage_Officer_5__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Coverage Officer 5</label>
+    <lookupFilter>
+        <active>false</active>
+        <errorMessage>Coverage Team Officer must be on related CapIQ Company.</errorMessage>
+        <filterItems>
+            <field>Contact.Industry_Group__c</field>
+            <operation>equals</operation>
+            <value>FSCG</value>
+        </filterItems>
+        <filterItems>
+            <field>Contact.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Houlihan Employee</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>FS Engagements (Coverage Officer 5)</relationshipLabel>
+    <relationshipName>FSCG_Engagements_CT5</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

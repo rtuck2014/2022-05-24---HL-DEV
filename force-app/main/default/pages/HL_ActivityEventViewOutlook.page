@@ -1,0 +1,141 @@
+<apex:page showHeader="true"  sidebar="false" standardController="Event" extensions="HL_ActivityControllerOutlook" lightningStylesheets="true">
+    <apex:slds />
+    <apex:form id="frmActivityEvent" rendered="{!Event.Type != 'Internal' || HasViewAccess}">
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:inputHidden value="{!Event.StartDateTime}"/>
+        <apex:inputHidden value="{!Event.EndDateTime}"/>
+        <apex:inputHidden value="{!Event.Primary_External_Contact_Id__c}"></apex:inputHidden>
+        <apex:inputHidden value="{!Event.Primary_Attendee_Id__c}"></apex:inputHidden>
+        <apex:inputHidden value="{!Event.Contact_User_Id__c}"></apex:inputHidden>
+        <apex:inputHidden value="{!Event.CreatedById}"/>  
+        
+        <apex:pageBlock title="Meeting" >
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!EditRecordOutlook}" value="Edit" immediate="true" rendered="{!HasModifyAccess || HasLimitedModifyAccess}"/>
+                <apex:commandButton action="{!goToSendNotification}" value="Send Notification" immediate="true" rendered="{!Event.Type <> 'Internal Mentor Meeting' && HasModifyAccess}"></apex:commandButton>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Meeting Details" columns="1" collapsible="true" rendered="{! (!Event.Private__c && !Event.PFG__c && Event.Type <> 'Internal' && Event.Type <> 'Internal Mentor Meeting') || HasViewAccess}">                
+                <apex:outputText style="font-weight:bold;" value="Meeting Subject:"/>
+                <apex:outputText label="" value="{!Event.Subject}"/>    
+                <apex:outputText style="font-weight:bold;" value="Internal Meeting Notes:"/>
+                <apex:outputText label="" value="{!ActivitySupplement.Internal_Notes__c}"/>
+                <apex:outputText style="font-weight:bold;" value="Purpose:"/>
+                <apex:outputText label="" value="{!Event.Purpose__c}"/>
+                <apex:outputText style="font-weight:bold;" value="Industry Group:"/>
+                <apex:outputText label="" value="{!Event.Industry_Group__c}"/>
+                <apex:outputText style="font-weight:bold;" value="Product Type:"/>
+                <apex:outputText label="" value="{!Event.Product_Type__c}"/>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection title="{!IF(Event.Type == 'Internal', 'Internal Meeting With', IF(Event.Type == 'Internal Mentor Meeting', 'Internal Meeting With - Mentee', 'External Attendees'))}" columns="1" id="pbsExternalContacts" collapsible="true" >
+                <apex:pageBlockTable value="{!RelatedContacts}" var="e" rendered="{!RelatedContacts.size > 0}">
+                    <!-- <apex:column headerValue="Primary" styleClass="center" headerClass="center" style="width: 50px;">
+                        <apex:inputCheckbox value="{!e.Primary}" styleClass="primaryCheckbox" disabled="true"/>
+                    </apex:column> -->              
+                    <apex:column value="{!e.Contact.Name}" headerValue="{!IF(Event.Type == 'Internal', 'Internal Contact', IF(Event.Type == 'Internal Mentor Meeting', 'Internal Contact', 'Name'))}"/>
+                    <apex:column value="{!e.Contact.Account.Name}"/>
+                    <!-- <apex:column value="{!e.Contact.Title}"/> -->
+                    <!-- <apex:column value="{!e.Contact.Email}"/> -->
+                    <!-- <apex:column value="{!e.Contact.Phone}"/>
+                    <apex:column value="{!e.Contact.MobilePhone}"/> -->
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>             
+            <apex:pageBlockSection title="{!IF(Event.Type == 'Internal Mentor Meeting', 'HL Attendees - Mentor', 'HL Attendees')}" columns="1" id="pbsHLEmployees" collapsible="true">
+                <apex:pageBlockTable value="{!HLEmployees}" var="e" rendered="{!HLEmployees.size > 0}">
+                    <!-- <apex:column headerValue="Primary" styleClass="center" headerClass="center" style="width: 50px;">
+                        <apex:inputCheckbox value="{!e.Primary}" styleClass="primaryCheckbox" disabled="true"/>
+                    </apex:column> -->
+                    <apex:column value="{!e.Employee.Name}" headerValue="Employee"/>
+                    <apex:column value="{!e.Employee.Title}"/>
+                    <!-- <apex:column value="{!e.Employee.Email}"/> -->
+                    <!-- <apex:column value="{!e.Employee.Phone}" /> -->
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+           <!-- <apex:pageBlockSection >
+            <apex:pageBlockTable value="{!RelatedContacts}" var="e" rendered="{!RelatedContacts.size > 0}">
+                    <apex:column headerValue="Primary" styleClass="center" headerClass="center" style="width: 50px;">
+                        <apex:inputCheckbox value="{!e.Primary}" styleClass="primaryCheckbox" disabled="true"/>
+                    </apex:column>                    
+                    <apex:column value="{!e.Contact.Name}" headerValue="{!IF(Event.Type == 'Internal', 'Internal Contact', IF(Event.Type == 'Internal Mentor Meeting', 'Internal Contact', 'External Contact'))}"/>
+                    <apex:column value="{!e.Contact.Account.Name}" />
+                    <apex:column value="{!e.Contact.Title}" />
+                    <apex:column value="{!e.Contact.Email}" />
+                    <apex:column value="{!e.Contact.Phone}" />
+                    <apex:column value="{!e.Contact.MobilePhone}" />
+                </apex:pageBlockTable>
+            </apex:pageBlockSection> -->
+            
+           
+
+            <apex:pageBlockSection title="Activity Details" columns="1" collapsible="true" rendered="{!(((Event.Private__c || Event.PFG__c) && !HasViewAccess) && Event.Type <> 'Internal Mentor Meeting') || (Event.Type == 'Internal Mentor Meeting' && !HasViewAccess) }">
+                <apex:outputText value="Private" label="Type"></apex:outputText>
+                
+                <apex:outputText value="Private" label="Description"></apex:outputText>
+                <apex:outputText value="Private" label="Internal Notes"></apex:outputText>
+                <apex:outputText value="{!FormattedStart}" label="Start Date/Time"></apex:outputText>
+                <apex:outputText value="{!FormattedEnd}" label="End Date/Time"></apex:outputText>
+                <apex:outputField value="{!Event.Private__c}" rendered="{!Event.Type <> 'Internal'}" />
+                <apex:outputField value="{!Event.Sync_To_Outlook__c}" />
+                <apex:outputField value="{!Event.Notify_Coverage_Team__c}" rendered="{!Event.Type <> 'Internal'}" />                
+            </apex:pageBlockSection>            
+           
+            <apex:pageBlockSection title="Companies Discussed" columns="1" id="pbsCompaniesDiscussed" collapsible="true"  rendered="{!(Event.Type <> 'Internal Mentor Meeting')}">
+                <apex:pageBlockTable value="{!RelatedCompanies}" var="rc" rendered="{!RelatedCompanies.size > 0}">
+                    <apex:column value="{!rc.Name}" headerValue="Company"/>
+                    <apex:column value="{!rc.BillingCity}"/>
+                    <!-- <apex:column value="{!rc.BillingState}"/>
+                    <apex:column value="{!rc.BillingCountry}"/> -->
+                </apex:pageBlockTable>
+                <apex:outputText value="No records to display" rendered="{!(RelatedCompanies.size == 0)}"></apex:outputText>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection title="Opportunities Discussed" columns="1" id="pbsRelatedOpportunities" collapsible="true" rendered="{!(Event.Type <> 'Internal Mentor Meeting')}">
+                <apex:pageBlockTable value="{!RelatedOpportunities}" var="o" rendered="{!RelatedOpportunities.size > 0}">
+                    <apex:column value="{!o.Name}" headerValue="Opportunity"/>
+                    <!-- <apex:column value="{!o.Client__r.Name}" headerValue="Client Name"/>
+                    <apex:column value="{!o.Subject__r.Name}" headerValue="Subject Name"/>
+                    <apex:column value="{!o.Line_of_Business__c}"/>
+                    <apex:column value="{!o.Job_Type__c}"/>
+                    <apex:column value="{!o.Industry_Group__c}"/>
+                    <apex:column value="{!o.Stage__c}"/> -->
+                </apex:pageBlockTable>
+                <apex:outputText value="No records to display" rendered="{!(RelatedOpportunities.size == 0)}"></apex:outputText>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Engagements Discussed" columns="1" id="pbsRelatedEngagements" collapsible="true" rendered="{!(Event.Type <> 'Internal Mentor Meeting')}">
+                <apex:pageBlockTable value="{!RelatedEngagements}" var="eng" rendered="{!RelatedEngagements.size > 0}">
+                    <apex:column value="{!eng.Name}" headerValue="Engagement"/>
+                    <!-- <apex:column value="{!eng.Client__r.Name}" headerValue="Client Name"/>
+                    <apex:column value="{!eng.Subject__r.Name}" headerValue="Subject Name"/>
+                    <apex:column value="{!eng.Line_of_Business__c}"/>
+                    <apex:column value="{!eng.Job_Type__c}"/>
+                    <apex:column value="{!eng.Industry_Group__c}"/>
+                    <apex:column value="{!eng.Stage__c}"/> -->
+                </apex:pageBlockTable>
+                <apex:outputText value="No records to display" rendered="{!(RelatedEngagements.size == 0)}"></apex:outputText>
+            </apex:pageBlockSection>
+            <!-- <apex:pageBlockSection title="Related Campaigns" columns="1" id="pbsRelatedCampaigns" collapsible="false" rendered="{!(Event.Type <> 'Internal Mentor Meeting')}">
+                <apex:pageBlockTable value="{!RelatedCampaigns}" var="cp" rendered="{!RelatedCampaigns.size > 0}">
+                    <apex:column value="{!cp.Name}" headerValue="Campaign Name"/>
+                    <apex:column value="{!cp.RecordType.name}" headerValue="Campaign Type"/>
+                    <apex:column value="{!cp.Type}" headerValue="Sub-Type"/>
+                    </apex:pageBlockTable>
+                <apex:outputText value="No records to display" rendered="{!(RelatedCampaigns.size == 0)}"></apex:outputText>
+            </apex:pageBlockSection> -->
+            </apex:pageBlock>
+        
+        <apex:inputHidden id="parentId" value="{!Event.ParentId__c}" />
+    </apex:form>
+    <apex:pageBlock title="Activity - Invalid Access" rendered="{!Event.Type == 'Internal' && !HasViewAccess}">
+        <apex:outputText style="color: Red" value="Invalid Access to this Activity"></apex:outputText>
+    </apex:pageBlock>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_ActivityScripts, 'HL_ActivityEvent.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <style>
+        #editPage .pbSubsection, .editPage .pbSubsection {padding-left: 0px;}
+        .bPageBlock .detailList .data2Col {padding-left: 3px;}
+        h3 {color:Black;}
+    </style>
+</apex:page>

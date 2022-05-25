@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__Launch_Course</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Launch Course</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!requireScript(&quot;/soap/ajax/17.0/connection.js&quot;)}
+{!requireScript(&quot;/soap/ajax/17.0/apex.js&quot;)}
+
+var csUserLicenseId = &quot;{!lmscons__Training_User_License__c.lmscons__Cornerstone_ID__c}&quot;;
+var launchCourse = 0;
+
+//alert(&apos;csUserLicenseId &apos; + csUserLicenseId);
+
+if (csUserLicenseId != null &amp;&amp; csUserLicenseId != &apos;&apos;) {
+   launchCourse = 1;
+} else {
+
+
+       var remainingSeats = &apos;0&apos;;
+       var contentLicenseId = &quot;{!lmscons__Training_User_License__c.lmscons__Content_LicenseId__c}&quot; ;
+
+       var qr = sforce.connection.query(&quot;Select lmscons__Remaining_Seats__c From lmscons__Training_Content_License__c  where id=&apos;&quot; + contentLicenseId +&quot;&apos;&quot;);
+
+
+       if ( qr.size &gt;= 1 ) 
+       {
+            remainingSeats = qr.getArray(&quot;records&quot;)[0].lmscons__Remaining_Seats__c;
+       }
+
+      //alert(&apos; remainingSeats &apos;  + remainingSeats);
+
+       if  (remainingSeats == &apos;N/A&apos; || remainingSeats == &apos;Site license&apos;) {
+             remainingSeats = &apos;999999&apos;
+       }
+
+       if (parseFloat(remainingSeats) &gt; 0) {
+
+            launchCourse = 1;
+
+      } else {
+
+       alert (&apos; All available Licenses are used. Please contact your System Administrator.&apos;);
+
+      }
+}
+
+if (launchCourse == 1) {
+
+var pageURL = &quot;/apex/lmscons__ConsumerDirector?action=LaunchContent&amp;tuId={!lmscons__Training_User_License__c.Id}&amp;clid={!lmscons__Training_User_License__c.lmscons__Content_LicenseId__c}&quot;;
+
+window.open(pageURL);
+
+}</url>
+</WebLink>

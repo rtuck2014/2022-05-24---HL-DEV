@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CA_Agreements_Require_Dates</fullName>
+    <active>false</active>
+    <errorConditionFormula>DATEVALUE( CreatedDate )  &gt;=  DATE(2016,05,01)  &amp;&amp;
+(ISPICKVAL( Confidentiality_Agreement__c, &quot;Yes, separate signed agreement&quot;) || ISPICKVAL( Confidentiality_Agreement__c, &quot;Yes, incorporated into Engagement Letter&quot;)) &amp;&amp;  ISNULL( Date_CA_Signed__c ) = TRUE</errorConditionFormula>
+    <errorDisplayField>Date_CA_Signed__c</errorDisplayField>
+    <errorMessage>Date Signed cannot be blank when Confidentiality Agreement is Yes.</errorMessage>
+</ValidationRule>

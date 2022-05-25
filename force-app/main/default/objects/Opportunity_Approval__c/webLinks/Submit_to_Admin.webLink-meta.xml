@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Submit_to_Admin</fullName>
+    <availability>online</availability>
+    <description>Native Value (Original): /email/author/emailauthor.jsp?retURL=/{!Opportunity_Approval__c.Id}&amp;p2_lkid=003i000000jWJ1E&amp;p3_lkid={!Opportunity_Approval__c.Id}&amp;p24=mlee@hl.com&amp;template_id=00Xi0000001FCdl&amp;retURL=/{!Opportunity_Approval__c.Id}</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>true</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>600</height>
+    <isResizable>true</isResizable>
+    <linkType>url</linkType>
+    <masterLabel>Submit to LOB Admin</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <url>/apex/HL_SendEmail?retURL=/apex/HL_NBC?id={!Opportunity_Approval__c.Id}&amp;template=NBC_LOB&amp;ro={!Opportunity_Approval__c.Id}</url>
+</WebLink>

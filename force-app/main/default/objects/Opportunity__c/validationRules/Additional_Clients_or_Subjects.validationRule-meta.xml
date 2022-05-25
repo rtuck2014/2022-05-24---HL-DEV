@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Additional_Clients_or_Subjects</fullName>
+    <active>true</active>
+    <errorConditionFormula>(ISPICKVAL(Additional_Client__c,&apos;Yes&apos;) &amp;&amp;
+ISPICKVAL(Job_Type__c, &apos;Partners&apos;)) ||
+
+(ISPICKVAL(Additional_Subject__c,&apos;Yes&apos;) &amp;&amp;
+(
+ISPICKVAL(Job_Type__c, &apos;Going Private&apos;)||
+ISPICKVAL(Job_Type__c, &apos;FA - Portfolio-Valuation&apos;)||
+ISPICKVAL(Job_Type__c, &apos;FA - Portfolio-Advis/Consultng&apos;)||
+ISPICKVAL(Job_Type__c, &apos;FA - Portfolio-GP interest&apos;)||
+ISPICKVAL(Job_Type__c, &apos;FA - Portfolio-Diligence/Assets&apos;)||
+ISPICKVAL(Job_Type__c, &apos;FA - Portfolio-Auto Struct Prd&apos;)||
+ISPICKVAL(Job_Type__c, &apos;FA - Portfolio-Auto Loans&apos;)||
+ISPICKVAL(Job_Type__c, &apos;FA - Portfolio - SPAC&apos;)||
+ISPICKVAL(Job_Type__c, &apos;FA - Portfolio-Real Estate&apos;)||
+ISPICKVAL(Job_Type__c, &apos;FA - Portfolio-Funds Transfer&apos;)
+))</errorConditionFormula>
+    <errorMessage>Additional Clients/Subjects not available for the job type selected.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,13 @@
+<apex:page standardController="Offsite_Template_Industry__c" extensions="HL_OTIListController"  recordSetVar="ind" action="{!updateMeeting}" lightningStylesheets="true">
+   <apex:form >
+       <apex:pageBlock title="Update Meeting for Industries">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!updateIndustries}" value="Confirm"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!selected}" var="i">
+                <apex:column value="{!i.Industry__c}"/>
+                <apex:column value="{!i.Meeting__c}"/>
+            </apex:pageBlockTable> 
+        </apex:pageBlock>
+    </apex:form>    
+</apex:page>

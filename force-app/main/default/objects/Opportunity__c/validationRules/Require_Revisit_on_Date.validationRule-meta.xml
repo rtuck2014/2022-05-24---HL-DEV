@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Revisit_on_Date</fullName>
+    <active>false</active>
+    <description>if Stage == On Hold, require date</description>
+    <errorConditionFormula>RecordTypeId = &apos;012i0000000tPyK&apos; &amp;&amp;
+ ISPICKVAL(Stage__c, &apos;Hold&apos;) &amp;&amp;
+ ISBLANK(Revisit_on_Date__c)</errorConditionFormula>
+    <errorDisplayField>Revisit_on_Date__c</errorDisplayField>
+    <errorMessage>Revisit Date is required if Stage is &apos;On Hold&apos;</errorMessage>
+</ValidationRule>

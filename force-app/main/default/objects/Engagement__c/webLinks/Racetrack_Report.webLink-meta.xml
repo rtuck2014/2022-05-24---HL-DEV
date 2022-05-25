@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Racetrack_Report</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Racetrack Report</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>/apex/SL_Racetrack_Filter?parentId={!Engagement__c.Id}&amp;cs=default</url>
+</WebLink>

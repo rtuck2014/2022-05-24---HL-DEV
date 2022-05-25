@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmsilt__PendingTU_negative_value_control</fullName>
+    <active>true</active>
+    <description>To prevent a negative value in this field</description>
+    <errorConditionFormula>lmsilt__Pending_Training_Units__c &lt; 0</errorConditionFormula>
+    <errorDisplayField>lmsilt__Pending_Training_Units__c</errorDisplayField>
+    <errorMessage>A negative value is not allowed</errorMessage>
+</ValidationRule>

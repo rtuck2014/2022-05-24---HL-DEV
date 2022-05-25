@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Period_Total_Reversal__c</fullName>
+    <externalId>false</externalId>
+    <formula>If (Period_AR__c + Period_Cured_AR__c + Period_WIP__c + Period_Cured_WIP__c + Period_Deferred_Income__c &lt; 0, 
+Period_AR__c + Period_Cured_AR__c + Period_WIP__c + Period_Cured_WIP__c + Period_Deferred_Income__c, 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>This is the amount that will be reversed at the end of this month.</inlineHelpText>
+    <label>Period Total Reversal</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

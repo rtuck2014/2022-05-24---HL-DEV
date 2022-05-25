@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ASC_Weekly_Notification_Tech</fullName>
+    <columns>Membership_Driven_Filter__c</columns>
+    <columns>NAME</columns>
+    <columns>Subscription_Distribution_List__c</columns>
+    <columns>Subscriber__c</columns>
+    <columns>Industry_Group__c</columns>
+    <columns>Active__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Attach_CSV__c</columns>
+    <columns>Attach_Excel__c</columns>
+    <columns>Attach_PDF__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Subscription_Distribution_List__c</field>
+        <operation>equals</operation>
+        <value>ASC Weekly Coverage Notification</value>
+    </filters>
+    <filters>
+        <field>Industry_Group__c</field>
+        <operation>equals</operation>
+        <value>TECH</value>
+    </filters>
+    <filters>
+        <field>Active__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Membership_Driven_Filter__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>ASC Weekly Notification (Tech)</label>
+    <sharedTo>
+        <group>SFDC_ADMINS</group>
+    </sharedTo>
+</ListView>

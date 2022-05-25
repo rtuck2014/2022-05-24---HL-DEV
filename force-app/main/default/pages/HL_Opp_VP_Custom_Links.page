@@ -1,0 +1,20 @@
+<apex:page standardController="Opp_VP__c" extensions="HL_Opp_VP_Custom_Links" lightningStylesheets="true">
+ 
+      <apex:pageBlock mode="maindetail"   rendered="{!IsValidUser}">
+      <apex:pageBlockSection columns="1">
+              <apex:pageBlockSectionItem >
+              <apex:outputLabel >Custom Links</apex:outputLabel>
+              <apex:outputLink Value="/{!Reportlink1}" target="_blank">All Positions and Team Members</apex:outputLink>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem >
+              <apex:outputLabel >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputLabel>
+              <apex:outputLink Value="/{!Reportlink2}" target="_blank">All Positions by Team Members</apex:outputLink> 
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem >
+              <apex:outputLabel >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputLabel>
+              <apex:outputLink Value="/{!Reportlink3}" target="_blank">Valuation Portfolio Report Fees</apex:outputLink> 
+              </apex:pageBlockSectionItem>
+          </apex:pageBlockSection> 
+      </apex:pageBlock>
+  
+</apex:page>

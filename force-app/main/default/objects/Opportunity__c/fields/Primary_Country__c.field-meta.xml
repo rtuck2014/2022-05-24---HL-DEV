@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Primary_Country__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(TEXT(Primary_Office__c), 
+&apos;AT&apos;, &apos;EMEA Not Required&apos;,
+&apos;BO&apos;, &apos;EMEA Not Required&apos;,
+&apos;CH&apos;, &apos;EMEA Not Required&apos;,
+&apos;DA&apos;,&apos;EMEA Not Required&apos;,
+&apos;DC&apos;,&apos;EMEA Not Required&apos;,
+&apos;HO&apos;,&apos;EMEA Not Required&apos;,
+&apos;LA&apos;,&apos;EMEA Not Required&apos;,
+&apos;MI&apos;,&apos;EMEA Not Required&apos;,
+&apos;MN&apos;,&apos;EMEA Not Required&apos;,
+&apos;NB&apos;,&apos;EMEA Not Required&apos;,
+&apos;NY&apos;,&apos;EMEA Not Required&apos;,
+&apos;SF&apos;,&apos;EMEA Not Required&apos;,
+&apos;SY&apos;,&apos;EMEA Not Required&apos;,
+&apos;EMEA Required&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Primary Country</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

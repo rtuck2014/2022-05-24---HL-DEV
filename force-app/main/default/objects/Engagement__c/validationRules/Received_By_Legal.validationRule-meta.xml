@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Received_By_Legal</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISCHANGED(CA_Received_by_Legal__c) &amp;&amp;
+($User.ProfileId != &apos;00ei0000001XP7O&apos; &amp;&amp;
+$User.ProfileId != &apos;00e31000001FPfe&apos; &amp;&amp;
+$User.ProfileId != &apos;00ei0000001XLG3&apos; &amp;&amp;
+$User.ProfileId != &apos;00ei0000001XQ1u&apos; &amp;&amp;
+$User.ProfileId != &apos;00ei0000001dqaQ&apos; &amp;&amp;
+$User.ProfileId != &apos;00ei00000016T4B&apos;
+)</errorConditionFormula>
+    <errorDisplayField>CA_Received_by_Legal__c</errorDisplayField>
+    <errorMessage>Received By Legal is only editable by Compliance, Legal, and RecordTrax users.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Actual_Date__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>RFC#2547 - created new field as part of CF Expense Request functionality</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Check this box if the date entered is the actual date the event will be held, NOT an estimate.</inlineHelpText>
+    <label>Actual Date?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

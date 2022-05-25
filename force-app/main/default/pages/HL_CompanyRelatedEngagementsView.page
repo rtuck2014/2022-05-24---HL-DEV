@@ -1,0 +1,76 @@
+<apex:page standardController="Account" extensions="HL_CompanyRelatedEngagementsController" tabStyle="Account" showHeader="false" sidebar="false" lightningStylesheets="true">
+    <apex:form >
+        <apex:pageBlock id="pbEngs" title="Engagements">
+    <apex:pageBlockTable id="engs" value="{!EngList}" var="e" rendered="{!EngList.size > 0}">
+        <apex:column styleClass="center" headerClass="center">
+            <apex:outputLink value="{!URLFOR($Action.Engagement__c.Edit,e.Id,[retURL=Account.Id])}" target="_parent">Edit</apex:outputLink>
+        </apex:column>
+        <apex:column headerValue="Engagement Name">
+            <apex:outputLink value="/{!e.Id}" target="_parent">{!e.Name}</apex:outputLink>
+        </apex:column>
+        <apex:column headerValue="Client">
+            <apex:outputLink value="/{!e.Client__c}" target="_parent">{!e.Client__r.Name}</apex:outputLink>
+        </apex:column>
+        <apex:column headerValue="Subject">
+            <apex:outputLink value="/{!e.Subject__c}" target="_parent">{!e.Subject__r.Name}</apex:outputLink>
+        </apex:column>
+        <apex:column value="{!e.Line_of_Business__c}" headerValue="Line of Business">
+        </apex:column>
+        <apex:column value="{!e.Job_Type__c}" headerValue="Job Type">
+        </apex:column>
+        <apex:column value="{!e.Industry_Group__c}" headerValue="Industry Group">
+        </apex:column>
+        <apex:column value="{!e.Stage__c}" headerValue="Stage">
+        </apex:column>
+        <apex:column value="{!e.Engagement_Number__c}" headerValue="Engagement Number"></apex:column>
+        <apex:column value="{!e.Date_Engaged__c}" headerValue="{!$ObjectType.Engagement__c.Fields.Date_Engaged__c.Label}"></apex:column>
+        <apex:column value="{!e.Close_Date__c}" headerValue="{!$ObjectType.Engagement__c.Fields.Close_Date__c.Label}">
+        </apex:column>
+    </apex:pageBlockTable>
+    <!-- StandardSetCon Pagination -->
+        <apex:outputPanel rendered="{!EngList.size > 0}">
+        <table style="width: 100%">
+            <tr>
+                <td class="bold" style="width:180px;">
+                    Page: <apex:outputText value="{!setCon.PageNumber} of {! if(CEILING(setCon.ResultSize/setCon.PageSize) > 0, CEILING(setCon.ResultSize/setCon.PageSize), 1) }"></apex:outputText>
+                </td>
+                <td align="center">
+                    <!-- Previous page -->
+                    <!-- active -->
+                    <apex:commandLink action="{!setCon.Previous}" value="<< Previous" rendered="{! setCon.HasPrevious}" reRender="pbEngs" oncomplete="DocumentReady()"></apex:commandLink>
+                    <!--inactive (no earlier pages) -->
+                    <apex:outputText style="color: #ccc;" value="<< Previous" rendered="{! NOT(setCon.HasPrevious) }"></apex:outputText>
+                    &nbsp;&nbsp;
+                    <!-- Next page -->
+                    <!-- active -->
+                    <apex:CommandLink action="{!setCon.Next}" value="Next >>" rendered="{! setCon.HasNext}" reRender="pbEngs" oncomplete="DocumentReady()"></apex:CommandLink>
+                    <!--inactive (no more pages) -->
+                    <apex:outputText style="color: #ccc;" value="Next >>" rendered="{! NOT(setCon.HasNext)}"></apex:outputText>
+                </td>
+                <td align="right" class="bold" style="width:160px;">
+                    Records per page
+                    <apex:selectList value="{!setCon.PageSize}" size="1" >
+                        <apex:selectOption itemValue="5" itemLabel="5"></apex:selectOption>
+                        <apex:selectOption itemValue="20" itemLabel="20"></apex:selectOption>
+                        <apex:selectOption itemValue="100" itemLabel="100"></apex:selectOption>
+                        <apex:actionSupport event="onchange" reRender="pbEngs" oncomplete="DocumentReady()"></apex:actionSupport>
+                    </apex:selectList>
+                </td>
+                <td align="right" class="bold" style="width:120px;">
+                    Total Records:
+                    <apex:outputLabel value="{!setCon.ResultSize}"></apex:outputLabel>
+                </td>
+            </tr>    
+        </table>
+        </apex:outputPanel>
+        <apex:outputPanel id="noEngagements" rendered="{!EngList.size == 0}">
+            <center>
+                <h2>  
+                    <apex:outputLabel value="No Engagements To Display" rendered="{!EngList.size == 0}"></apex:outputLabel>
+                </h2>
+            </center>       
+        </apex:outputPanel>
+   </apex:pageBlock>
+    <input id="engagementsSize" type='hidden' value='{!setCon.ResultSize}' />
+   </apex:form>
+</apex:page>

@@ -1,0 +1,129 @@
+<apex:page standardController="Filter_Tab__c" extensions="SL_LIB16_ctrl_FilterFieldSetup" id="tabId" tabStyle="SL_Mass_Implementation__c" action="{!loadTabInfo}">
+<script>
+if (!window.console) {var console = {};}
+if (!console.log) {console.log = function() {};}
+</script>
+
+    <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" />
+    <apex:sectionHeader title="Filter Tab Setup" subtitle="{!pageTitle}"/>
+    <apex:pageMessages />
+
+    <apex:form >
+
+        <apex:pageBlock >
+        
+            <apex:pageBlockButtons location="both">
+                <apex:commandButton value="Save" action="{!doTabSave}" />
+                <apex:commandButton value="Cancel" action="{!doTabCancel}" />
+            </apex:pageBlockButtons>
+
+            <apex:pageBlockSection title="Filter Tab Detail" columns="1">
+                
+                    <apex:outputField value="{!curFTabItem.Mass_Implementation__c}" rendered="{!isTabObject}"/>
+            
+                <apex:inputtext value="{!Filter_Tab__c.Name}" />
+                <apex:selectList value="{!Filter_Tab__c.Object_Name__c}" size="1">
+                    <apex:selectOptions value="{!mainObjectOptions}" />
+                    <apex:actionSupport event="onchange" action="{!tabRefresh}" oncomplete="location.reload(true);" />
+                </apex:selectList>
+                <apex:pageBlockSectionItem HelpText="{!$ObjectType.Filter_Tab__c.fields.Field_Name__c.inlineHelpText}">
+                    {!$ObjectType.Filter_Tab__c.fields.Field_Name__c.label}
+                    <apex:selectList value="{!Filter_Tab__c.Field_Name__c}" size="1" id="fieldNamesSelect">
+                        <apex:selectOptions value="{!fieldNames}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            
+            <apex:pageBlockSection columns="1" title="Field list" id="sect1">
+
+
+
+
+
+                <apex:pageBlockTable value="{!filterFieldList}" var="item">
+                    <apex:column style="width: 30px;">
+                        <apex:facet name="header">
+                            <apex:inputCheckbox styleClass="ff_checkbox_main" />
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!item.selected}"
+                            styleClass="ff_checkbox" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Custom Label</apex:facet>
+                        <apex:inputText value="{!item.customLabel}" style="width: 250px;" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">System Label</apex:facet>
+                        <apex:outputText value="{!item.systemLabel}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">System Name</apex:facet>
+                        <apex:outputText value="{!item.systemName}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Field Type</apex:facet>
+                        <apex:outputText value="{!item.fieldType}" />
+                    </apex:column>
+                </apex:pageBlockTable>
+
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection columns="1" title="List of reference fields" id="sect2">
+
+                <apex:pageBlockTable value="{!filterReferencedFieldList}" var="item">
+                    <apex:column >
+                        <a
+                            href="/apex/SL_LIB16_ReferencedFilterFieldSetup?systemFieldName={!item.systemFieldName}&objectName={!item.objectName}&filterId={!Filter_Tab__c.Mass_Implementation__c}&tabId={!Filter_Tab__c.Id}">Setup</a>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">System Field Name</apex:facet>
+                        <apex:outputText value="{!item.systemFieldName}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Object</apex:facet>
+                        <apex:outputText value="{!item.objectName}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">System Fields</apex:facet>
+                        <apex:outputText value="{!item.selectedFieldsCount}" />
+                    </apex:column>
+                </apex:pageBlockTable>
+
+            </apex:pageBlockSection>
+
+
+
+
+
+
+        </apex:pageBlock>
+
+        <apex:actionFunction action="{!onChangeMainObject}"
+            name="onChangeMainObjectInJS" rerender="sect1,sect2">
+        </apex:actionFunction>
+
+    </apex:form>
+
+    <script type="text/javascript">
+    
+        function resetMainCheckbox() {
+            var allChacked = true;
+            $('.ff_checkbox').each(function(){
+                if (!this.checked) {
+                    allChacked = false;
+                }
+            });
+            $('.ff_checkbox_main').attr('checked', allChacked);
+        }
+    
+        $('.ff_checkbox_main').live('click', function (){
+            $('.ff_checkbox').attr('checked', this.checked);
+        });
+        $('.ff_checkbox').live('click', function (){
+            resetMainCheckbox();
+        });
+        
+    </script>
+
+</apex:page>

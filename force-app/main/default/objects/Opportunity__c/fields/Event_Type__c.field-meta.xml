@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event_Type__c</fullName>
+    <description>RFC#2547 - created new field as part of CF Expense Request functionality.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The type of event being created</inlineHelpText>
+    <label>Event Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Classification__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Administrative</fullName>
+                <default>false</default>
+                <label>Administrative</label>
+            </value>
+            <value>
+                <fullName>Branding and Advertising</fullName>
+                <default>false</default>
+                <label>Branding and Advertising</label>
+            </value>
+            <value>
+                <fullName>Client Entertainment</fullName>
+                <default>false</default>
+                <label>Client Entertainment</label>
+            </value>
+            <value>
+                <fullName>Conference/Summit/Seminar</fullName>
+                <default>false</default>
+                <label>Conference/Summit/Seminar</label>
+            </value>
+            <value>
+                <fullName>HL Hosted Client Event</fullName>
+                <default>false</default>
+                <label>HL Hosted Client Event</label>
+            </value>
+            <value>
+                <fullName>HL Hosted Client Event (during 3rd - party events)</fullName>
+                <default>false</default>
+                <label>HL Hosted Client Event (during 3rd - party events)</label>
+            </value>
+            <value>
+                <fullName>Membership Dues</fullName>
+                <default>false</default>
+                <label>Membership Dues</label>
+            </value>
+            <value>
+                <fullName>Sponsorship</fullName>
+                <default>false</default>
+                <label>Sponsorship</label>
+            </value>
+            <value>
+                <fullName>Staff Entertainment</fullName>
+                <default>false</default>
+                <label>Staff Entertainment</label>
+            </value>
+            <value>
+                <fullName>Third Party Conference/Seminar Attendance</fullName>
+                <default>false</default>
+                <label>Third Party Conference/Seminar Attendance</label>
+            </value>
+            <value>
+                <fullName>Charitable Donation Match</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Charitable Donation Match</label>
+            </value>
+            <value>
+                <fullName>Conference/Seminar</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Conference/Seminar</label>
+            </value>
+            <value>
+                <fullName>Marketing Membership</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Marketing Membership</label>
+            </value>
+            <value>
+                <fullName>Marketing Trip</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Marketing Trip</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>N/A</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Business Development</controllingFieldValue>
+            <valueName>Client Entertainment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Development</controllingFieldValue>
+            <valueName>Membership Dues</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Business Development</controllingFieldValue>
+            <valueName>Third Party Conference/Seminar Attendance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Internal</controllingFieldValue>
+            <valueName>Administrative</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Internal</controllingFieldValue>
+            <valueName>Staff Entertainment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Marketing</controllingFieldValue>
+            <valueName>Branding and Advertising</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Marketing</controllingFieldValue>
+            <valueName>Conference/Summit/Seminar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Marketing</controllingFieldValue>
+            <valueName>HL Hosted Client Event</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Marketing</controllingFieldValue>
+            <valueName>HL Hosted Client Event (during 3rd - party events)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Marketing</controllingFieldValue>
+            <valueName>Sponsorship</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

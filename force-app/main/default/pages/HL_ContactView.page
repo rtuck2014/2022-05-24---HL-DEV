@@ -1,0 +1,28 @@
+<apex:page standardController="Contact" extensions="HL_ActivityListController" lightningStyleSheets="true">
+    <apex:detail showChatter="false" inlineEdit="true" oncomplete="DocumentReady();" ></apex:detail>
+    <input id="activityLogUrl" type="hidden" value="{!URLFOR('/apex/HL_ActivityLog')}" />
+    <input id="contactId" type="hidden" value="{!Id}" />
+    <input id="profileId" type="hidden" value="{!$Profile.Name}" />
+    <apex:pageBlock >
+    <apex:pageBlockSection >
+        <apex:pageBlockTable id="pbtActivities" value="{!Activities}" var="a" styleClass="top" columnClasses="top" style="display:none;">
+        </apex:pageBlockTable>
+        <input id="totalActivityRecords" type="hidden" value="{!TotalRecords}" />        
+    </apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_ContactView.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet> 
+      
+     <script type="text/javascript">
+        $j1 = jQuery.noConflict();            
+        $j1(document).ready(function () {                         
+            if('{!isValidToAccessContactComment}'=== 'false'){                  
+                $j1("[name$=new_comment]").hide();              
+               }
+            }); 
+    </script>
+       
+</apex:page>

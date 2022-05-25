@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_Dead__c</fullName>
+    <externalId>false</externalId>
+    <label>Reason Dead</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Stage__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Buyside: Proceeding With Another Buyer</fullName>
+                <default>false</default>
+                <label>Buyside: Proceeding With Another Buyer</label>
+            </value>
+            <value>
+                <fullName>Client No Longer Needs the Project</fullName>
+                <default>false</default>
+                <label>Client No Longer Needs the Project</label>
+            </value>
+            <value>
+                <fullName>Company Taking Mandate In-House</fullName>
+                <default>false</default>
+                <label>Company Taking Mandate In-House</label>
+            </value>
+            <value>
+                <fullName>Conflict of Interest</fullName>
+                <default>false</default>
+                <label>Conflict of Interest</label>
+            </value>
+            <value>
+                <fullName>Filed for IPO</fullName>
+                <default>false</default>
+                <label>Filed for IPO</label>
+            </value>
+            <value>
+                <fullName>HL Declined Mandate</fullName>
+                <default>false</default>
+                <label>HL Declined Mandate</label>
+            </value>
+            <value>
+                <fullName>Lack of Industry Expertise</fullName>
+                <default>false</default>
+                <label>Lack of Industry Expertise</label>
+            </value>
+            <value>
+                <fullName>Lack of Product Expertise</fullName>
+                <default>false</default>
+                <label>Lack of Product Expertise</label>
+            </value>
+            <value>
+                <fullName>Lack of Regional Expertise</fullName>
+                <default>false</default>
+                <label>Lack of Regional Expertise</label>
+            </value>
+            <value>
+                <fullName>Lost to Competitor</fullName>
+                <default>false</default>
+                <label>Lost to Competitor</label>
+            </value>
+            <value>
+                <fullName>Lost to Stronger Relationship</fullName>
+                <default>false</default>
+                <label>Lost to Stronger Relationship</label>
+            </value>
+            <value>
+                <fullName>No Transaction to Occur</fullName>
+                <default>false</default>
+                <label>No Transaction to Occur</label>
+            </value>
+            <value>
+                <fullName>Proposed Fee Structure</fullName>
+                <default>false</default>
+                <label>Proposed Fee Structure</label>
+            </value>
+            <value>
+                <fullName>System Closeout – Stale Opportunity</fullName>
+                <default>false</default>
+                <label>System Closeout – Stale Opportunity</label>
+            </value>
+            <value>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+                <label>Unknown</label>
+            </value>
+            <value>
+                <fullName>Valuation Expectations</fullName>
+                <default>false</default>
+                <label>Valuation Expectations</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>Buyside: Proceeding With Another Buyer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>Client No Longer Needs the Project</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>Company Taking Mandate In-House</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>Conflict of Interest</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>Filed for IPO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>HL Declined Mandate</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>Lack of Industry Expertise</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>Lack of Product Expertise</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>Lack of Regional Expertise</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>Lost to Competitor</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>Lost to Stronger Relationship</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>No Transaction to Occur</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>Proposed Fee Structure</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>System Closeout – Stale Opportunity</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>Unknown</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dead</controllingFieldValue>
+            <valueName>Valuation Expectations</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

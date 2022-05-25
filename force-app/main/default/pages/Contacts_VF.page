@@ -1,0 +1,14 @@
+<apex:page standardController="Contact" readonly="true" extensions="ContactVFController" lightningStylesheets="true">
+    <apex:sectionHeader title="{!$objectType.Contact.LabelPlural}" subtitle="Home"/>
+<apex:form >
+    <apex:pageblock title="Recent Contacts">
+                <apex:pageBlockButtons >
+                <apex:commandButton value="New" action="{!URLFOR($Action.Contact.NewContact)}"/>
+                </apex:pageBlockButtons>
+        <apex:pageBlockTable value="{!RecentList}" var="rl">
+            <apex:column value="{!rl.Name}"/>
+            <apex:column value="{!rl.LastViewedDate}"/>
+        </apex:pageBlockTable>
+    </apex:pageblock>
+ </apex:form>
+</apex:page>

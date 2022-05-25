@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Report_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Report Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Accounting Dashboards</fullName>
+                <default>false</default>
+                <label>Accounting Dashboards</label>
+            </value>
+            <value>
+                <fullName>Accounting Group</fullName>
+                <default>false</default>
+                <label>Accounting Group</label>
+            </value>
+            <value>
+                <fullName>Company Group</fullName>
+                <default>false</default>
+                <label>Company Group</label>
+            </value>
+            <value>
+                <fullName>Company Single</fullName>
+                <default>false</default>
+                <label>Company Single</label>
+            </value>
+            <value>
+                <fullName>Contact Group</fullName>
+                <default>false</default>
+                <label>Contact Group</label>
+            </value>
+            <value>
+                <fullName>Contact Single</fullName>
+                <default>false</default>
+                <label>Contact Single</label>
+            </value>
+            <value>
+                <fullName>Engagement Group</fullName>
+                <default>false</default>
+                <label>Engagement Group</label>
+            </value>
+            <value>
+                <fullName>Engagement Single</fullName>
+                <default>false</default>
+                <label>Engagement Single</label>
+            </value>
+            <value>
+                <fullName>FSC Group</fullName>
+                <default>false</default>
+                <label>FSC Group</label>
+            </value>
+            <value>
+                <fullName>Opportunity Group</fullName>
+                <default>true</default>
+                <label>Opportunity Group</label>
+            </value>
+            <value>
+                <fullName>Opportunity Single</fullName>
+                <default>false</default>
+                <label>Opportunity Single</label>
+            </value>
+            <value>
+                <fullName>My Dashboards</fullName>
+                <default>false</default>
+                <label>My Dashboards</label>
+            </value>
+            <value>
+                <fullName>Line of Business Dashboards</fullName>
+                <default>false</default>
+                <label>Line of Business Dashboards</label>
+            </value>
+            <value>
+                <fullName>Industry Group/Product Line Dashboards</fullName>
+                <default>false</default>
+                <label>Industry Group/Product Line Dashboards</label>
+            </value>
+            <value>
+                <fullName>Revenue Group</fullName>
+                <default>false</default>
+                <label>Revenue Group</label>
+            </value>
+            <value>
+                <fullName>Sector Coverage Dashboards</fullName>
+                <default>false</default>
+                <label>Sector Coverage Dashboards</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

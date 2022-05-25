@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Subscription_Attach_PDF__c</fullName>
+    <description>This indicates if the report is attached to the email as PDF. This can be overridden by the Attach PDF setting on HL Subscription.</description>
+    <externalId>false</externalId>
+    <formula>Subscription_Distribution_List__r.Attach_PDF__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>This indicates if the report is attached to the email as PDF. This can be overridden by the Attach PDF setting on HL Subscription.</inlineHelpText>
+    <label>Subscription Attach PDF</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

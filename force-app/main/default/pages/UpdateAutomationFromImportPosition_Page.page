@@ -1,0 +1,8 @@
+<!-- 
+This page is calling "HL_AutomationToolMassUpdate_Component" to mass update Eng VP Position related to a Period.
+It is called from 'HL_EngAddPositions' page. 
+-->
+
+<apex:page name="UpdateAutomationFromImportPosition_Page" id="pgId" Controller="HL_EngAddPositionsController">
+    <c:HL_AutomationToolMassUpdate_Component PocList="{!EngVPPositionWithoutAFU}" id="compCallId1"></c:HL_AutomationToolMassUpdate_Component>    
+</apex:page>

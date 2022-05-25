@@ -1,0 +1,794 @@
+<apex:page controller="SL_PipelineManager">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:form id="pipelineManagerForm" >
+        <apex:includeScript value="{!URLFOR($Resource.SL_PipelineManager, 'PipelineManager.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_PipelineManager.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'FixedTable.js')}"/>
+        <script>
+        function setFocusOnLoad(){ } //keep here
+        </script>
+        <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+        <script type="text/javascript">
+        j$(document).ready(function(){
+            j$(".OppIndustry").change(function(){
+                j$(".OppProduct").prop("selectedIndex",0);
+            });
+            
+            j$(".OppProduct").change(function(){
+                j$(".OppIndustry").prop("selectedIndex",0);
+            });
+            j$(".EngIndustry").change(function(){
+                j$(".EngProduct").prop("selectedIndex",0);
+            });
+            
+            j$(".EngProduct").change(function(){
+                j$(".EngIndustry").prop("selectedIndex",0);
+            });
+            //Remove all the empty stage status
+            j$(".pipelineInput option[value='']").remove();
+        });
+        function clearDropdown(){
+            j$(".pipelineInput option[value='']").remove();
+        };
+        
+        $('#inputTxtEngNum').keypress(function (e) {
+            alert("Key  pressed");
+            if (e.keyCode == $.ui.keyCode.ENTER) {
+                alert("enter pressed");
+            }
+        });     
+        
+        function handleFieldUpdate(objName,objId,fieldApi,fieldVal){
+            let fieldApi2 = '';
+            let fieldVal2 = '';
+            removeErrorSpans(objId,fieldApi);
+            
+            if(fieldApi == 'Stage__c'){
+                let dataId = objId + '_stageComment';
+                fieldVal2 = j$("[data-id="+dataId+"]").val();
+                fieldApi2 = 'Stage_Comments__c';
+                removeErrorSpans(objId,fieldApi2);
+            }
+            else {
+                let dataId = objId + '_stage';
+                fieldVal2 = j$("[data-id="+dataId+"]").val();
+                fieldApi2 = 'Stage__c';
+                removeErrorSpans(objId,fieldApi2);
+            }
+            
+            if(fieldVal2 == undefined){
+                fieldVal2 = '' ;
+                fieldApi2 = '' ; }
+           
+             Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.SL_PipelineManager.updateSobjectRecordOnValidation}',
+                objName,objId,fieldApi,fieldApi2,fieldVal,fieldVal2, 
+                function(result, event){
+                    if(result != '' && result != null && result != undefined){
+                        addErrorSpan(objId,fieldApi,result);
+                        }
+                }, 
+                {escape: true}
+            );  
+        }
+        
+        function removeErrorSpans(objId,fieldApi){
+            let dataId;
+            if(fieldApi == 'Stage__c'){
+                dataId = objId + '_stage';
+            } 
+            else{
+                dataId = objId + '_stageComment';   
+            }
+            var span =  document.getElementById(dataId);
+            if(span != null){
+                span.parentNode.removeChild(span); 
+            }
+        }
+        
+        function addErrorSpan(objId,fieldApi,errorMessage){
+            let dataId;
+            if(fieldApi == 'Stage__c'){
+                dataId = objId + '_stage';
+            } 
+            else{
+                dataId = objId + '_stageComment';   
+            }
+            var errorSpan = document.createElement('span');
+            errorSpan.id = dataId;
+            errorSpan.innerText = errorMessage;
+            errorSpan.style.display = "block";
+            errorSpan.style.color = "red";
+            errorSpan.className ="ERROR";
+            var parent = j$("[data-id="+dataId+"]").parent();
+            parent.append(errorSpan);
+        }
+        
+        </script>
+        <style>
+            .datePicker {z-index: 9999;}
+            .dateFormat {display: none;}
+            .ui-autocomplete {z-index: 9999!important;}
+            .lookupHoverDetail {z-index: 9999!important;}
+        </style>
+        <div class="pipelineManager" style="display:none;">
+            <input type="hidden" value="{!dtStartDate}" id="idStartDate"/>
+            <input type="hidden" value="{!dtEndDate}" id="idEndDate"/>
+            <apex:actionFunction name="sortOpportunityRecords" action="{!opportunityRecords.sortRecords}" status="loading" reRender="opportunityTableId" oncomplete="DocumentReady();clearDropdown();">
+                <apex:param name="sortByOpp" value="" assignTo="{!opportunityRecords.strOrderByFieldName}" ></apex:param>
+            </apex:actionFunction>
+            <apex:actionFunction name="sortEngagementRecords" action="{!engagementRecords.sortRecords}" status="loading" reRender="engagementTableId" oncomplete="DocumentReady();clearDropdown();">
+                <apex:param name="sortByEng" value="" assignTo="{!engagementRecords.strOrderByFieldName}" ></apex:param>
+            </apex:actionFunction>
+            <apex:actionFunction name="gotoOpportunityPage" action="{!opportunityRecords.gotoPage}" status="loading" reRender="opportunityTableId" />
+            <apex:actionFunction name="goToEngagementPage" action="{!engagementRecords.gotoPage}" status="loading" reRender="engagementTableId" />
+            <apex:actionFunction name="searchRecord" action="{!searchRecords}" status="loading" reRender="engagementTableId,opportunityTableId,lnkBacklogReport" oncomplete="DocumentReady();clearDropdown();" />
+            <table id="headerTable" width="100%" >
+                <tr width="100%">
+                    <td style="font-size: 20px; font-weight: bold; width: 100%; border-bottom: 2px #3355CC solid;">
+                        <apex:outputLabel value="{!PageTitle}" id="PageTitle" style=""/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:commandButton value="Save Filter" action="{!saveChanges}" status="saving" reRender="engagementTableId,opportunityTableId" oncomplete="DocumentReady();clearDropdown();" />
+                        <apex:commandButton id="ApplyFilters" value="Apply Filters" onclick="search(document.getElementById('{!$Component.OpportunityFromId}'),
+                                                                                             document.getElementById('{!$Component.OpportunityToId}'),
+                                                                                             document.getElementById('{!$Component.EngagementFromId}'),
+                                                                                             document.getElementById('{!$Component.EngagementToId}'));return false;" oncomplete="DocumentReady();clearDropdown();" reRender="lnkBacklogReport"/>
+                        <apex:commandButton value="Change Columns" action="{!changeColumns}"/>
+                        <apex:commandButton value="Reset Filters" action="{!clearFilters}" oncomplete="DocumentReady();clearDropdown();" />
+                        <apex:commandLink target="_blank" id="GenerateReport" action="{!GenerateReport}" style="text-decoration:none;">
+                            <apex:commandButton value="View PDF" style="text-decoration:none;"/>
+                        </apex:commandLink>
+                        <div style="{!PageEngStyle} float: right;">
+                            <apex:outputLink id="lnkBacklogReport" target="_blank" value="{!BacklogReport}&p_p_StaffId={!StaffId}&p_p_StaffIndustryGroup={!StaffIndustry}&p_p_IndustryGroup={!IndustryGroup}" rendered="{!OR(IsSysAdmin, IsIndHead && strLOB == 'CF',IsCAO)}" styleClass="link-options btn" style="text-decoration:none; display: inline-block; height: 16px; width: 100px;">CF Backlog Report</apex:outputLink>
+                        </div>
+                        <a id="filters">
+                            <span class="link-options" id="filterLabel" style="text-decoration:underline;">Hide Filters</span>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table width="100%">
+                            <tr>
+                                <td width="100%" style="{!PageOppStyle}">
+                                    <fieldset id="oppFilters">
+                                        <legend>Opportunity Filters:</legend>
+                                        <table cellpadding="1" cellspacing="1">
+                                            <tr>
+                                                <td style="white-space:nowrap; text-align: right; font-weight: bold;">
+                                                    <apex:outputLabel for="opportunityOption" value="Show Records: "/>
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <apex:selectList id="opportunityOption" value="{!strOpportunityOption}" multiselect="false" size="1" >
+                                                        <apex:selectOptions value="{!OpportunityOptions}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                                <td style="white-space: nowrap; text-align: right; font-weight: bold; {!DropDownStyle}">
+                                                    <apex:outputLabel for="industryGroupOptionsOpps" value="Industry Group:"/>
+                                                </td>
+                                                <td style="text-align: left; {!DropDownStyle}">
+                                                    <apex:selectList id="industryGroupOptionsOpps" value="{!strOpportunityIndustryGroup}" multiselect="false" size="1" onchange="onchangePicklist();">
+                                                        <apex:selectOptions value="{!OpportunityIndustryGroupList}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                                <td rowspan="3" style="vertical-align: top; text-align: right; font-weight: bold; {!DropDownStyle}">
+                                                    <table><tr><td><apex:outputLabel for="opportunityoffice" value="Office:"></apex:outputLabel></td><td><c:HL_HelpText helpText="Hold down CTRL to Select Multiple Offices" /></td></tr></table>
+                                                </td>
+                                                <td rowspan="3" style="text-align: left; {!DropDownStyle}">
+                                                    <apex:selectList id="opportunityoffice" value="{!strOpportunityOffice}" multiselect="true"  size="4">
+                                                        <apex:selectOptions value="{!OfficeList}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                                <td style="width:0%; text-align: right; font-weight: bold;display:none;">
+                                                    <apex:outputLabel for="fromdate" value="{!$ObjectType.Opportunity__c.Fields.CreatedDate.Label} From:"/>
+                                                </td>
+                                                <td style="width:0%; text-align: left;display:none;">
+                                                    <span class="dateInput dateOnlyInput">
+                                                        <apex:inputtext value="{!dtOpportunityFromDate}" id="OpportunityFromId"
+                                                                        onKeyPress="return callSearchOnPressOfEnter(event, document.getElementById('{!$Component.OpportunityFromId}'),
+                                                                                    document.getElementById('{!$Component.OpportunityToId}'),
+                                                                                    document.getElementById('{!$Component.EngagementFromId}'),
+                                                                                    document.getElementById('{!$Component.EngagementToId}'));"
+                                                                        onclick="DatePicker.pickDate(true, '{!$Component.OpportunityFromId}', false);" size="12"
+                                                                        onfocus="setFocusOnLoad();"/>
+                                                        <span class="dateFormat">
+                                                            [
+                                                            <a href="javascript:DatePicker.insertDate('{!MONTH(TODAY())}/{!DAY(TODAY())}/{!YEAR(TODAY())}', '{!$Component.OpportunityFromId}', true);">
+                                                                {!MONTH(TODAY())}/{!DAY(TODAY())}/{!YEAR(TODAY())}</a> ]
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space:nowrap; text-align: right; font-weight: bold;">
+                                                    <apex:outputLabel for="closeopen" value="Status: "/>
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <apex:selectList id="opportunitycloseopen" value="{!strOpportunityOpenOrClosed}" multiselect="false"  size="1">
+                                                        <apex:selectOptions value="{!OpenOrClosed}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                                <td style="text-align: right; font-weight: bold; {!DropDownStyle}">
+                                                    <apex:outputLabel for="opportunityStageOptions" value="Stage:"/>
+                                                </td>
+                                                <td style="text-align: left; {!DropDownStyle}">
+                                                    <apex:selectList id="opportunityStageOptions" value="{!strOpportunityStage}" multiselect="false" size="1" onchange="onchangePicklist();">
+                                                        <apex:selectOptions value="{!OpportunityStageList}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                                <td style="text-align: right; font-weight: bold; {!DropDownStyle}"></td>
+                                                <td style="text-align: left; {!DropDownStyle}"></td>
+                                                <td style="width:0%; text-align: right; font-weight: bold;display:none;">
+                                                    <apex:outputLabel for="todate" value="{!$ObjectType.Opportunity__c.Fields.CreatedDate.Label} To:"/>
+                                                </td>
+                                                <td style="width:0%; text-align: left;display:none;">
+                                                    <span class="dateInput dateOnlyInput">
+                                                        <apex:inputtext value="{!dtOpportunityToDate}" id="OpportunityToId"
+                                                                        onKeyPress="return callSearchOnPressOfEnter(event, document.getElementById('{!$Component.OpportunityFromId}'),
+                                                                                    document.getElementById('{!$Component.OpportunityToId}'),
+                                                                                    document.getElementById('{!$Component.EngagementFromId}'),
+                                                                                    document.getElementById('{!$Component.EngagementToId}'));"
+                                                                        onclick="DatePicker.pickDate(true, '{!$Component.OpportunityToId}', false);" size="12"/>
+                                                        <span class="dateFormat">
+                                                            [
+                                                            <a href="javascript:DatePicker.insertDate('{!MONTH(TODAY())}/{!DAY(TODAY())}/{!YEAR(TODAY())}', '{!$Component.OpportunityToId}', true);">
+                                                                {!MONTH(TODAY())}/{!DAY(TODAY())}/{!YEAR(TODAY())}</a> ]
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space:nowrap; text-align: right; font-weight: bold; {!DropDownStyle}">
+                                                    Staff Member:
+                                                </td>
+                                                <td style="text-align: left; {!DropDownStyle}">
+                                                    <apex:inputText id="inputTxtIdOpps" value="{!SelectedStaffNameOpps}" html-placeholder="Begin Typing Name...">
+                                                        <apex:inputHidden value="{!SelectedStaffIdOpps}" id="inputTxtIdOpps_lkid">
+                                                        </apex:inputHidden>
+                                                        <apex:outputPanel id="memberSelection">
+                                                            <c:HL_AutoComplete objectname="Contact" sObjectFieldName="Name" customFilter="{!CustomFilter}"
+                                                                               autocomplete_textbox="{!$Component.inputTxtIdOpps}" autocomplete_actionbutton="{!$Component.resultSelected}" bgColor="white" fontSize="11"/>
+                                                        </apex:outputPanel>
+                                                    </apex:inputText>
+                                                </td>
+                                                <td style="text-align: right; font-weight: bold;">
+                                                    <apex:outputLabel for="opportunityStaffRole" value="Staff Role: "/>
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <apex:selectList id="opportunityStaffRole" value="{!strOpportunityStaffRole}" multiselect="false"  size="1">
+                                                        <apex:selectOptions value="{!StaffRoleOptions}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space:nowrap; text-align: right; font-weight: bold; {!DropDownStyle}">
+                                                    Staff Industry:
+                                                </td>
+                                                <td style="text-align: left; {!DropDownStyle}">
+                                                    <apex:selectList id="opportunityStaffIndustry" value="{!strOpportunityStaffIndustry}" multiselect="false"  size="1" styleClass="OppIndustry">
+                                                        <apex:selectOptions value="{!StaffIndustryList}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space:nowrap; text-align: right; font-weight: bold; {!DropDownStyle}">
+                                                    <apex:outputPanel layout="block" rendered="{!strLOB == 'FVA'}"></apex:outputPanel>
+                                                    Product Specialty:
+                                                </td>
+                                                <td  style="text-align: left; {!DropDownStyle}">
+                                                    <apex:selectList id="opportunityStaffProduct" value="{!strOpportunityStaffProduct}" multiselect="false"  size="1" styleClass="OppProduct">
+                                                        <apex:selectOptions value="{!StaffProductList}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                                <td colspan="2"></td>
+                                            </tr>
+                                            
+                                        </table>
+                                    </fieldset>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="100%" style="{!PageEngStyle}">
+                                    <fieldset id="engFilters">
+                                        <legend>Engagement Filters:</legend>
+                                        <table cellpadding="1" cellspacing="1">
+                                            <tr>
+                                                <td style="white-space:nowrap; text-align: right; font-weight: bold;">
+                                                    <apex:outputLabel for="engagementOptions" value="Show Records: "/>
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <apex:selectList id="engagementOptions" value="{!strEngagementOption}" multiselect="false" size="1" onchange="onchangePicklist();">
+                                                        <apex:selectOptions value="{!EngagementOptions}"/>
+                                                    </apex:selectList>
+                                                    <apex:inputCheckbox value="{!IncludeReviewerRoles}" rendered="{!DropDownStyle != '' && strLOB == 'FVA'}"></apex:inputCheckbox><apex:outputLabel value="Include Reviewer Roles"></apex:outputLabel>
+                                                </td>
+                                                <td style="white-space: nowrap; text-align: right; font-weight: bold; {!DropDownStyle}">
+                                                    <apex:outputLabel for="industryGroupOptionsEng" value="Industry Group:"/>
+                                                </td>
+                                                <td style="text-align: left; {!DropDownStyle}">
+                                                    <apex:selectList id="industryGroupOptionsEng" value="{!strEngagementIndustryGroup}" multiselect="false" size="1" onchange="onchangePicklist();">
+                                                        <apex:selectOptions value="{!EngagementIndustryGroupList}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                                <td rowspan="3" style="vertical-align: top; text-align: right; font-weight: bold; {!DropDownStyle}">
+                                                    <table><tr><td><apex:outputLabel for="engagementoffice" value="Office:"></apex:outputLabel></td><td><c:HL_HelpText helpText="Hold down CTRL to Select Multiple Offices" /></td></tr></table>
+                                                </td>
+                                                <td rowspan="3" style="text-align: left; {!DropDownStyle}">
+                                                    <apex:selectList id="engagementoffice" value="{!strEngagementOffice}" multiselect="true"  size="4">
+                                                        <apex:selectOptions value="{!OfficeList}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                                <td style="width:0%; text-align: right; font-weight: bold; display:none;">
+                                                    <apex:outputLabel for="fromdate" value="{!$ObjectType.Engagement__c.Fields.Close_Date__c.Label} From:"/>
+                                                </td>
+                                                <td style="width:0%; text-align: left; display:none;">
+                                                    <span class="dateInput dateOnlyInput">
+                                                        <apex:inputtext value="{!dtEngagementFromDate}" id="EngagementFromId"
+                                                                        onKeyPress="return callSearchOnPressOfEnter(event, document.getElementById('{!$Component.OpportunityFromId}'),
+                                                                                    document.getElementById('{!$Component.OpportunityToId}'),
+                                                                                    document.getElementById('{!$Component.EngagementFromId}'),
+                                                                                    document.getElementById('{!$Component.EngagementToId}'));"
+                                                                        onclick="DatePicker.pickDate(true, '{!$Component.EngagementFromId}', false);" size="12"/>
+                                                        <span class="dateFormat">
+                                                            [
+                                                            <a href="javascript:DatePicker.insertDate('{!MONTH(TODAY())}/{!DAY(TODAY())}/{!YEAR(TODAY())}', '{!$Component.EngagementFromId}', true);">
+                                                                {!MONTH(TODAY())}/{!DAY(TODAY())}/{!YEAR(TODAY())}</a> ]
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space:nowrap; text-align: right; font-weight: bold;">
+                                                    <apex:outputLabel for="closeopen" value="Status: "/>
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <apex:selectList id="engagementcloseopen" value="{!strEngagementOpenOrClosed}" multiselect="false"  size="1" onchange="onchangePicklist();">
+                                                        <apex:selectOptions value="{!OpenOrClosedEng}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                                <td style="text-align: right; font-weight: bold; {!DropDownStyle}">
+                                                    <apex:outputLabel for="engagementStageOptions" value="Stage:"/>
+                                                </td>
+                                                <td style="text-align: left; {!DropDownStyle}">
+                                                    <apex:selectList id="engagementStageOptions" value="{!strEngagementStage}" multiselect="false" size="1" onchange="onchangePicklist();">
+                                                        <apex:selectOptions value="{!EngagementStageList}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                                <td style="width:0%; text-align: right; font-weight: bold; display:none;">
+                                                    <apex:outputLabel for="todate" value="{!$ObjectType.Engagement__c.Fields.Close_Date__c.Label} To:"/>
+                                                </td>
+                                                <td style="width:0%; text-align: left;display:none;">
+                                                    <span class="dateInput dateOnlyInput">
+                                                        <apex:inputtext value="{!dtEngagementToDate}" id="EngagementToId" onKeyPress="return callSearchOnPressOfEnter(event, document.getElementById('{!$Component.OpportunityFromId}'),
+                                                                                                                                      document.getElementById('{!$Component.OpportunityToId}'),
+                                                                                                                                      document.getElementById('{!$Component.EngagementFromId}'),
+                                                                                                                                      document.getElementById('{!$Component.EngagementToId}'));"
+                                                                        onclick="DatePicker.pickDate(true, '{!$Component.EngagementToId}', false);" size="12"/>
+                                                        <span class="dateFormat">
+                                                            [
+                                                            <a href="javascript:DatePicker.insertDate('{!MONTH(TODAY())}/{!DAY(TODAY())}/{!YEAR(TODAY())}', '{!$Component.EngagementToId}', true);">
+                                                                {!MONTH(TODAY())}/{!DAY(TODAY())}/{!YEAR(TODAY())}</a> ]
+                                                        </span>
+                                                    </span>
+                                                    
+                                                </td>
+                                                <script>
+                                                document.getElementById('{!$Component.EngagementFromId}').disabled = true;
+                                                document.getElementById('{!$Component.EngagementToId}').disabled = true;
+                                                </script>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space:nowrap; text-align: right; font-weight: bold; {!DropDownStyle}">
+                                                    Staff Member:
+                                                </td>
+                                                <td style="text-align: left; {!DropDownStyle}">
+                                                    <apex:inputText id="inputTxtIdEng" value="{!SelectedStaffNameEng}" html-placeholder="Begin Typing Name...">
+                                                        <apex:inputHidden value="{!SelectedStaffIdEng}" id="inputTxtIdEng_lkid">
+                                                        </apex:inputHidden>
+                                                        <apex:outputPanel id="memberSelectionEng">
+                                                            <c:HL_AutoComplete objectname="Contact" sObjectFieldName="Name" customFilter="{!CustomFilter}"
+                                                                               autocomplete_textbox="{!$Component.inputTxtIdEng}" autocomplete_actionbutton="{!$Component.resultSelected}" bgColor="white" fontSize="11"/>
+                                                        </apex:outputPanel>
+                                                    </apex:inputText>
+                                                    <apex:inputCheckbox value="{!IncludeReviewerRoles}" rendered="{!DropDownStyle = '' && OR(IsSysAdmin, strLOB == 'FVA')}"></apex:inputCheckbox><apex:outputLabel value="Include Reviewer Roles"></apex:outputLabel>
+                                                </td>
+                                                <td style="white-space: nowrap; text-align: right; font-weight: bold;">
+                                                    <apex:outputLabel for="engagementStaffRole" value="Staff Role: "/>
+                                                </td>
+                                                <td style="text-align: left;">
+                                                    <apex:selectList id="engagementStaffRole" value="{!strEngagementStaffRole}" multiselect="false"  size="1">
+                                                        <apex:selectOptions value="{!StaffRoleOptions}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space:nowrap; text-align: right; font-weight: bold; {!DropDownStyle}">
+                                                    Staff Industry:
+                                                </td>
+                                                <td style="text-align: left; {!DropDownStyle}">
+                                                    <apex:selectList id="engagementStaffIndustry" value="{!strEngagementStaffIndustry}" multiselect="false"  size="1" styleClass="EngIndustry">
+                                                        <apex:selectOptions value="{!StaffIndustryList}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                                <td style="white-space: nowrap; text-align: right; font-weight: bold; {!DropDownStyle}">
+                                                    <apex:outputLabel for="engagementrecordtype" value="Record Type: "/>
+                                                </td>
+                                                <td style="text-align: left; {!DropDownStyle}">
+                                                    <apex:selectList id="engagementrecordtype" value="{!strEngagementRecordType}" multiselect="false"  size="1">
+                                                        <apex:selectOptions value="{!EngagementRecordTypeList}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space:nowrap; text-align: right; font-weight: bold; {!DropDownStyle}">
+                                                    Product Specialty:
+                                                </td>
+                                                <td  style="text-align: left; {!DropDownStyle}">
+                                                    <apex:selectList id="engagementStaffProduct" value="{!strEngagementStaffProduct}" multiselect="false"  size="1" styleClass="EngProduct">
+                                                        <apex:selectOptions value="{!StaffProductList}"/>
+                                                    </apex:selectList>
+                                                </td>
+                                                <td style="white-space:nowrap; text-align: right; font-weight: bold; {!DropDownStyle}">
+                                                    Engagement Number:
+                                                </td>
+                                                <td style="text-align: left; {!DropDownStyle}">
+                                                    <apex:inputText id="inputTxtEngNum" value="{!SelectedEngagementNumber}" html-placeholder=""></apex:inputText> 
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </fieldset>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <input id="opportunityColumnsJSON" type="hidden" value="{!OpportunityColumnsJSON}" />
+            <input id="engagementColumnsJSON" type="hidden" value="{!EngagementColumnsJSON}" />
+            <table id="mainDisplayTable" style="margin-top:-20px;">
+                <tr >
+                    <td style="{!PageOppStyle}">
+                        <fieldset id="oppFieldSet">
+                            <legend>Opportunities</legend>
+                            <apex:outputPanel rendered="{!enableOpportunity}">
+                                <apex:outputPanel id="opportunityTableId">
+                                    <div id="oppManagerContainer">
+                                        <div>
+                                            <table id="opportunitiesTable" border="0" cellpadding="0" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <apex:repeat value="{!lstColumnWrapperOpportunity}" var="fieldName">
+                                                            <th>
+                                                                <span style="display :{!IF(fieldName.isSortable, '', 'none;')}">
+                                                                    <span style="cursor: pointer;" onclick="sortOpportunityRecords('{!fieldName.strFieldAPI}')" >
+                                                                        {!fieldName.strFieldLabel}
+                                                                    </span>
+                                                                    <span>
+                                                                        {!IF(opportunityRecords.strOrderByFieldName == fieldName.strFieldAPI,
+                                                                        IF(opportunityRecords.strOrderByDirection == 'ASC','▲','▼'),'')}
+                                                                    </span>
+                                                                </span>
+                                                                <span style="display :{!IF(fieldName.isSortable, 'none;', '')}">
+                                                                    {!fieldName.strFieldLabel}
+                                                                </span>
+                                                            </th>
+                                                        </apex:repeat>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <apex:repeat value="{!opportunityRecords.lstSObjectWrappers}" var="opportunityWrapper">
+                                                        <tr class="dataRow">
+                                                            <apex:repeat value="{!lstColumnWrapperOpportunity}" var="fieldName">
+                                                                <td class="noRowsHeader" id="{!fieldName.strFieldAPI}_{!opportunityWrapper.sObjectRecord['Id']}">
+                                                                    <apex:outputPanel rendered="{!If(AND(fieldName.strFieldType != 'reference', fieldName.strFieldType != 'name', fieldName.strFieldAPI != 'Opportunity_Number__c', fieldName.strFieldAPI != 'z_Pipeline_Manager__c', fieldName.strFieldAPI != 'z_Pipeline_Principal__c'), true, false)}">
+                                                                        <apex:inputField styleClass="pipelineInput" rendered="{!NOT(AND(fieldName.strFieldAPI = 'Last_Opportunity_Comment_PIPELINE__c',
+                                                                                                                              ((IsCAO && opportunityWrapper.sObjectRecord['Line_of_Business__c'] = strLOB) || IsSysAdmin)))}" value="{!opportunityWrapper.sObjectRecord[fieldName.strFieldAPI]}" onKeyPress="return disableEnterKey(event);" onchange="updateSobjectRecord('Opportunity__c', '{!opportunityWrapper.sObjectRecord['Id']}', '{!fieldName.strFieldAPI}', this.value);"
+                                                                                         style="{!If(CONTAINS('Capital_Raised__c, Contingent_Fee__c, EBITDA_MM__c, Estimated_Capital_Raised_MM__c, Estimated_Transaction_Size_Equity__c, Estimated_Transaction_Size_MM__c, Est_Transaction_Size_MM__c, Fee__c, Period_Accrued_Fees__c,  ProgressMonthly_Fee__c, Retainer__c, Total_Debt_MM__c, Total_Estimated_Fee__c', fieldName.strFieldAPI), 'width:90px;','')}"/>
+                                                                        
+                                                                        <apex:inputField styleClass="pipelineInput" rendered="{!AND(fieldName.strFieldAPI = 'Last_Opportunity_Comment_PIPELINE__c',
+                                                                                                                              ((IsCAO && opportunityWrapper.sObjectRecord['Line_of_Business__c'] = strLOB) || IsSysAdmin))}" value="{!opportunityWrapper.sObjectRecord['Last_Opportunity_Comment_Any__c']}" onKeyPress="return disableEnterKey(event);" onchange="updateSobjectRecord('Opportunity__c', '{!opportunityWrapper.sObjectRecord['Id']}', '{!fieldName.strFieldAPI}', this.value);"/>
+                                                                    </apex:outputPanel>
+                                                                    <apex:outputPanel rendered="{!fieldName.strFieldAPI == 'z_Pipeline_Manager__c'}">
+                                                                        <apex:variable var="idxOpportunityManager" value="{!0}"/><!--I know using variables in loops like this is not 'supported' but only way to get the comma to work-->
+                                                                        <apex:repeat value="{!opportunityWrapper.sObjectRecord['Opportunity_Internal_Teams__r']}" var="ot">
+                                                                            <apex:outputPanel rendered="{!ot.Role__c == 'Manager'}">
+                                                                                <apex:outputPanel rendered="{!NOT(idxOpportunityManager == 0)}">,<br /></apex:outputPanel>
+                                                                                {!ot.Contact__r.Name}
+                                                                                <apex:variable var="idxOpportunityManager" value="{!IF(ot.Role__c == 'Manager',idxOpportunityManager + 1,idxOpportunityManager)}" />
+                                                                            </apex:outputPanel>
+                                                                        </apex:repeat>
+                                                                    </apex:outputPanel>
+                                                                    <apex:outputPanel rendered="{!fieldName.strFieldAPI == 'z_Pipeline_Principal__c'}">
+                                                                        <apex:variable var="idxOpportunityPrincipal" value="{!0}"/><!--I know using variables in loops like this is not 'supported' but only way to get the comma to work-->
+                                                                        <apex:repeat value="{!opportunityWrapper.sObjectRecord['Opportunity_Internal_Teams__r']}" var="ot">
+                                                                            <apex:outputPanel rendered="{!ot.Role__c == 'Principal'}">
+                                                                                <apex:outputPanel rendered="{!NOT(idxOpportunityPrincipal == 0)}">,<br /></apex:outputPanel>
+                                                                                {!ot.Contact__r.Name}
+                                                                                <apex:variable var="idxOpportunityPrincipal" value="{!IF(ot.Role__c == 'Principal',idxOpportunityPrincipal + 1,idxOpportunityPrincipal)}" />
+                                                                            </apex:outputPanel>
+                                                                        </apex:repeat>
+                                                                    </apex:outputPanel>
+                                                                    <apex:outputField rendered="{!If(AND(fieldName.strFieldType == 'reference', fieldName.strFieldType != 'name') || fieldName.strFieldAPI == 'Opportunity_Number__c'
+                                                                                                , true, false)}" value="{!opportunityWrapper.sObjectRecord[fieldName.strFieldAPI]}"/>
+                                                                    
+                                                                    <apex:outputPanel rendered="{!If(fieldName.strFieldType == 'name', true, false)}" ><a href="/{!opportunityWrapper.sObjectRecord['Id']}">{!opportunityWrapper.sObjectRecord[fieldName.strFieldAPI]}</a></apex:outputPanel>
+                                                                    
+                                                                    <div class="errorMsg" style="display: none; color: red;" id="errorDiv_{!fieldName.strFieldAPI}_{!opportunityWrapper.sObjectRecord['Id']}"/>
+                                                                </td>
+                                                            </apex:repeat>
+                                                        </tr>
+                                                    </apex:repeat>
+                                                    <tr class="dataRow" style="display : {!IF(opportunityRecords.lstSObjectWrappers.size == 0, '','none;')}">
+                                                        <td class="noRowsHeader" colspan="{!lstColumnWrapperOpportunity.size}">
+                                                            No Records.
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div style="position:relative; width:100% ;height:30px; text-align:center;" class="paginator">
+                                                <div style="margin:0 auto; width:auto; text-align:center;">
+                                                    <table width="100%" style="padding-top: 5px;">
+                                                        <tr>
+                                                            <td width="75%" style="padding-left: 25%">
+                                                                <apex:outputText rendered="{!opportunityRecords.isPreviousDisabled}">
+                                                                    <img src="/s.gif" class="firstoff"/>
+                                                                    
+                                                                    <span class="prevNext">
+                                                                        <img src="/s.gif" class="prevoff" />
+                                                                        <font color="#A8A8A8">Previous</font>
+                                                                    </span>
+                                                                    
+                                                                </apex:outputText>
+                                                                <apex:outputText rendered="{!!opportunityRecords.isPreviousDisabled}">
+                                                                    <apex:commandLink style="text-decoration:none;" action="{!opportunityRecords.goToFirstPage}"  status="loading" rerender="opportunityTableId" oncomplete="DocumentReady();clearDropdown();">
+                                                                        <img src="/s.gif" class="first"/>
+                                                                    </apex:commandLink>
+                                                                    
+                                                                    <apex:commandLink action="{!opportunityRecords.gotoPrevPage}" style="text-decoration:none;" status="loading" rerender="opportunityTableId" oncomplete="DocumentReady();clearDropdown();">
+                                                                        <img src="/s.gif" class="prev" />
+                                                                        Previous
+                                                                    </apex:commandLink>
+                                                                    
+                                                                </apex:outputText>
+                                                                <apex:outputText rendered="{!opportunityRecords.isNextDisabled}">
+                                                                    <span>
+                                                                        <font color="#A8A8A8">Next</font>
+                                                                        <img src="/s.gif" class="nextoff"/>
+                                                                    </span>
+                                                                    
+                                                                    <img src="/s.gif" class="lastoff" />
+                                                                </apex:outputText>
+                                                                <apex:outputtext rendered="{!!opportunityRecords.isNextDisabled}" >
+                                                                    <apex:commandLink style="text-decoration:none;" action="{!opportunityRecords.goToNextPage}" status="loading" rerender="opportunityTableId" oncomplete="DocumentReady();clearDropdown();">
+                                                                        Next
+                                                                        <img src="/s.gif" class="next"/>
+                                                                    </apex:commandLink>
+                                                                    
+                                                                    <apex:commandLink style="text-decoration:none;" action="{!opportunityRecords.goToLastPage}" status="loading" rerender="opportunityTableId" oncomplete="DocumentReady();clearDropdown();">
+                                                                        <img src="/s.gif" class="last" />
+                                                                    </apex:commandLink>
+                                                                </apex:outputtext>
+                                                            </td>
+                                                            <td>
+                                                                <span style="float: right;"><i>Page   <apex:outputtext id="opportunityPageId" value="{!opportunityRecords.intPageNumber}"
+                                                                                                                       style="width:25px;height:15px"/> of {!opportunityRecords.intTotalPages}    </i></span>
+                                                                <!--onKeyPress="return opportunityPage(event, document.getElementById('{!$Component.opportunityPageId}'));"-->
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                        </fieldset>
+                    </td>
+                </tr>
+                <tr >
+                    <td  width="100%" style="{!PageEngStyle}">
+                        <fieldset id="engFieldSet">
+                            <legend>Engagements</legend>
+                            <apex:outputPanel rendered="{!enableEngagement}">
+                                <apex:outputPanel id="engagementTableId">
+                                    <div id="engManagerContainer">
+                                        <table id="engagementsTable" border="0" cellpadding="0" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <apex:repeat value="{!lstColumnWrapperEngagement}" var="fieldName">
+                                                        <th class="zen-deemphasize">
+                                                            <span style="display :{!IF(fieldName.isSortable, '', 'none;')}">
+                                                                <span style="cursor: pointer;" onclick="sortEngagementRecords('{!fieldName.strFieldAPI}')" >
+                                                                    {!fieldName.strFieldLabel}
+                                                                </span>
+                                                                <span>
+                                                                    {!IF(engagementRecords.strOrderByFieldName == fieldName.strFieldAPI,
+                                                                    IF(engagementRecords.strOrderByDirection == 'ASC','▲','▼'),'')}
+                                                                </span>
+                                                            </span>
+                                                            <span style="display :{!IF(fieldName.isSortable, 'none;', '')}">
+                                                                {!fieldName.strFieldLabel}
+                                                            </span>
+                                                        </th>
+                                                    </apex:repeat>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <apex:repeat value="{!engagementRecords.lstSObjectWrappers}" var="engagementWrapper">
+                                                    <tr class="dataRow">
+                                                        <apex:repeat value="{!lstColumnWrapperEngagement}" var="fieldName">
+                                                            <td class="noRowsHeader" id="{!fieldName.strFieldAPI}_{!engagementWrapper.sObjectRecord['Id']}">
+                                                                <apex:outputPanel rendered="{!If(AND(fieldName.strFieldType != 'reference', fieldName.strFieldType != 'name', fieldName.strFieldAPI != 'Close_Date__c', fieldName.strFieldAPI != 'Engagement_Number__c', fieldName.strFieldAPI != 'z_Pipeline_Manager__c', fieldName.strFieldAPI != 'z_Pipeline_Principal__c', ((fieldName.strFieldAPI != 'Stage__c' && fieldName.strFieldAPI != 'Total_Estimated_Fee__c') || ((fieldName.strFieldAPI == 'Stage__c' || fieldName.strFieldAPI == 'Total_Estimated_Fee__c') && (engagementWrapper.sObjectRecord['Line_of_Business__c'] != 'FVA' || strLOB == 'FVA' || IsCAO || isSysAdmin || isAdmin)
+                                                                                            )),(fieldName.strFieldAPI != 'Period_Accrued_Fees__c' || (fieldName.strFieldAPI == 'Period_Accrued_Fees__c' && (engagementWrapper.sObjectRecord['Line_of_Business__c'] != 'FR' || (engagementWrapper.sObjectRecord['Line_of_Business__c'] == 'FR' && (IsAcct || IsCAO || IsSysAdmin || (isAdmin && strLOB = 'FR'))))))), true, false)}">
+                                                                    <apex:inputField styleClass="pipelineInput" rendered="{! AND(AND(fieldName.strFieldAPI != 'Stage__c', fieldName.strFieldAPI != 'Stage_Comments__c' ),
+                                                                                                                          NOT(AND (fieldName.strFieldAPI = 'Last_Engagement_Comment_PIPELINE__c',
+                                                                                                 ((IsCAO && engagementWrapper.sObjectRecord['Line_of_Business__c'] = strLOB) || IsSysAdmin))))}"
+                                                                                     value="{!engagementWrapper.sObjectRecord[fieldName.strFieldAPI]}"
+                                                                                     onKeyPress="return disableEnterKey(event);"
+                                                                                     onchange="updateSobjectRecord('Engagement__c', '{!engagementWrapper.sObjectRecord['Id']}', '{!fieldName.strFieldAPI}', this.value);"
+                                                                                     style="{!If(CONTAINS('Capital_Raised__c, Contingent_Fee__c, EBITDA_MM__c, Engagement_Number__c, Estimated_Capital_Raised_MM__c, Estimated_Transaction_Size_Equity__c, Estimated_Transaction_Size_MM__c, Fee__c,
+                                                                                            Est_Transaction_Size_MM__c, Period_Accrued_Fees__c,  ProgressMonthly_Fee__c, Retainer__c, Total_Debt_MM__c, Total_Estimated_Fee__c', fieldName.strFieldAPI), 'width:90px;','')}"/>
+                                                                    
+                                                                   <apex:inputField styleClass="pipelineInput"
+                                                                                     rendered="{!AND(fieldName.strFieldAPI = 'Last_Engagement_Comment_PIPELINE__c',
+                                                                                                                          ((IsCAO && engagementWrapper.sObjectRecord['Line_of_Business__c'] = strLOB) || IsSysAdmin))}"
+                                                                                     value="{!engagementWrapper.sObjectRecord['Last_Engagement_Comment_Any__c']}"
+                                                                                     onKeyPress="return disableEnterKey(event);" 
+                                                                                     onchange="updateSobjectRecord('Engagement__c', '{!engagementWrapper.sObjectRecord['Id']}', '{!fieldName.strFieldAPI}', this.value);"
+                                                                                     />
+
+                                                                   <apex:inputField styleClass="pipelineInput"
+                                                                                     rendered="{! fieldName.strFieldAPI == 'Stage__c'}"
+                                                                                     html-data-id="{!engagementWrapper.sObjectRecord['Id'] + '_stage'}"
+                                                                                     value="{!engagementWrapper.sObjectRecord[fieldName.strFieldAPI]}"
+                                                                                     onKeyPress="return disableEnterKey(event);" 
+                                                                                     onchange="handleFieldUpdate('Engagement__c', '{!engagementWrapper.sObjectRecord['Id']}', '{!fieldName.strFieldAPI}',this.value)" />
+                                                                
+                                                                           
+                                                                    <apex:inputField styleClass="pipelineInput" rendered="{!fieldName.strFieldAPI == 'Stage_Comments__c'}"
+                                                                                     value="{!engagementWrapper.sObjectRecord[fieldName.strFieldAPI]}"
+                                                                                     html-data-id="{!engagementWrapper.sObjectRecord['Id'] + '_stageComment'}"
+                                                                                     onKeyPress="return disableEnterKey(event);" 
+                                                                                     onchange="handleFieldUpdate('Engagement__c', '{!engagementWrapper.sObjectRecord['Id']}', '{!fieldName.strFieldAPI}',this.value)" />
+                                                                    
+                                                                   
+                                                                </apex:outputPanel>
+                                                                <apex:outputPanel rendered="{!fieldName.strFieldAPI == 'z_Pipeline_Manager__c'}">
+                                                                    <apex:variable var="idxEngagementManager" value="{!0}"/><!--I know using variables in loops like this is not 'supported' but only way to get the comma to work-->
+                                                                    <apex:repeat value="{!engagementWrapper.sObjectRecord['Engagement_Teams__r']}" var="et">
+                                                                        <apex:outputPanel rendered="{!et.Role__c == 'Manager'}">
+                                                                            <apex:outputPanel rendered="{!NOT(idxEngagementManager == 0)}">,<br /></apex:outputPanel>
+                                                                            {!et.Contact__r.Name}
+                                                                            <apex:variable var="idxEngagementManager" value="{!IF(et.Role__c == 'Manager',idxEngagementManager + 1,idxEngagementManager)}" />
+                                                                        </apex:outputPanel>
+                                                                    </apex:repeat>
+                                                                </apex:outputPanel>
+                                                                <apex:outputPanel rendered="{!fieldName.strFieldAPI == 'z_Pipeline_Principal__c'}">
+                                                                    <apex:variable var="idxEngagementPrincipal" value="{!0}"/>
+                                                                    <apex:repeat value="{!engagementWrapper.sObjectRecord['Engagement_Teams__r']}" var="et">
+                                                                        <apex:outputPanel rendered="{!et.Role__c == 'Principal'}">
+                                                                            <apex:outputPanel rendered="{!NOT(idxEngagementPrincipal == 0)}">,<br /></apex:outputPanel>
+                                                                            {!et.Contact__r.Name}
+                                                                            <apex:variable var="idxEngagementPrincipal" value="{!IF(et.Role__c == 'Principal',idxEngagementPrincipal + 1,idxEngagementPrincipal)}" />
+                                                                        </apex:outputPanel>
+                                                                    </apex:repeat>
+                                                                </apex:outputPanel>
+                                                                <apex:inputField styleClass="pipelineInput" style="color:#CCCCC7;" rendered="{!If(AND(fieldName.strFieldType != 'reference', fieldName.strFieldType != 'name', fieldName.strFieldAPI == 'Close_Date__c'), true, false)}" value="{!engagementWrapper.sObjectRecord[fieldName.strFieldAPI]}" onKeyPress="return disableEnterKey(event); " onchange="updateSobjectRecord('Engagement__c', '{!engagementWrapper.sObjectRecord['Id']}', '{!fieldName.strFieldAPI}', this.value); "/>
+                                                                <apex:outputField rendered="{!If(AND(fieldName.strFieldType == 'reference', fieldName.strFieldType != 'name1') || fieldName.strFieldAPI == 'Engagement_Number__c' || fieldName.strFieldAPI == 'name' || (
+                                                                                            (fieldName.strFieldAPI == 'Stage__c' || fieldName.strFieldAPI == 'Total_Estimated_Fee__c') && !(engagementWrapper.sObjectRecord['Line_of_Business__c'] != 'FVA' || strLOB == 'FVA' || IsCAO || isSysAdmin || isAdmin)
+                                                                                            ) || (fieldName.strFieldAPI == 'Period_Accrued_Fees__c' && !(
+                                                                                            engagementWrapper.sObjectRecord['Line_of_Business__c'] != 'FR' || (engagementWrapper.sObjectRecord['Line_of_Business__c'] == 'FR' && (IsAcct || IsCAO || IsSysAdmin || (isAdmin && strLOB = 'FR')))
+                                                                                            )), true, false)}" value="{!engagementWrapper.sObjectRecord[fieldName.strFieldAPI]}" />
+                                                                <apex:outputPanel rendered="{!If(fieldName.strFieldType == 'name', true, false)}" ><a href="/{!engagementWrapper.sObjectRecord['Id']}">{!engagementWrapper.sObjectRecord[fieldName.strFieldAPI]}</a></apex:outputPanel>
+                                                                <div class="errorMsg" style="display: none; color: red;" id="errorDiv_{!fieldName.strFieldAPI}_{!engagementWrapper.sObjectRecord['Id']}"/>
+                                                            </td>
+                                                        </apex:repeat>
+                                                    </tr>
+                                                </apex:repeat>
+                                                <tr class="dataRow" style="display : {!IF(engagementRecords.lstSObjectWrappers.size == 0, '','none;')}">
+                                                    <td class="noRowsHeader" colspan="{!lstColumnWrapperEngagement.size}">
+                                                        No Records.
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                        <div style="position:relative; width:100% ;height:30px; text-align:center;" class="paginator">
+                                            <div style="margin:0 auto; width:auto; text-align:center;">
+                                                <table width="100%" style="padding-top: 5px;">
+                                                    <tr>
+                                                        <td width="75%" style="padding-left: 25%">
+                                                            <apex:outputText rendered="{!engagementRecords.isPreviousDisabled}">
+                                                                <img src="/s.gif" class="firstoff"/>
+                                                                
+                                                                <span class="prevNext">
+                                                                    <img src="/s.gif" class="prevoff" />
+                                                                    <font color="#A8A8A8">Previous</font>
+                                                                </span>
+                                                                
+                                                            </apex:outputText>
+                                                            <apex:outputText rendered="{!!engagementRecords.isPreviousDisabled}">
+                                                                <apex:commandLink style="text-decoration:none;" action="{!engagementRecords.goToFirstPage}"  status="loading" rerender="engagementTableId" oncomplete="DocumentReady();clearDropdown();">
+                                                                    <img src="/s.gif" class="first"/>
+                                                                </apex:commandLink>
+                                                                
+                                                                <apex:commandLink action="{!engagementRecords.gotoPrevPage}" style="text-decoration:none;" status="loading" rerender="engagementTableId" oncomplete="DocumentReady();clearDropdown();">
+                                                                    <img src="/s.gif" class="prev" />
+                                                                    Previous
+                                                                </apex:commandLink>
+                                                                
+                                                            </apex:outputText>
+                                                            <apex:outputText rendered="{!engagementRecords.isNextDisabled}">
+                                                                <span>
+                                                                    <font color="#A8A8A8">Next</font>
+                                                                    <img src="/s.gif" class="nextoff"/>
+                                                                </span>
+                                                                
+                                                                <img src="/s.gif" class="lastoff" />
+                                                            </apex:outputText>
+                                                            <apex:outputtext rendered="{!!engagementRecords.isNextDisabled}" >
+                                                                <apex:commandLink style="text-decoration:none;" action="{!engagementRecords.goToNextPage}" status="loading" rerender="engagementTableId" oncomplete="DocumentReady();clearDropdown();">
+                                                                    Next
+                                                                    <img src="/s.gif" class="next"/>
+                                                                </apex:commandLink>
+                                                                
+                                                                <apex:commandLink style="text-decoration:none;" action="{!engagementRecords.goToLastPage}" status="loading" rerender="engagementTableId" oncomplete="DocumentReady();clearDropdown();">
+                                                                    <img src="/s.gif" class="last" />
+                                                                </apex:commandLink>
+                                                            </apex:outputtext>
+                                                        </td>
+                                                        <td>
+                                                            <span style="float: right;"><i>Page   <apex:outputtext id="pageNumberEngagementId" value="{!engagementRecords.intPageNumber}"
+                                                                                                                   style="width:25px;height:15px"/> of {!engagementRecords.intTotalPages}    </i></span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                        </fieldset>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- START OF ACTION STATUS -->
+        <apex:actionstatus id="loading" startText="Requesting...">
+            <apex:facet name="start">
+                <script>$j('.pipelineManager').hide();</script>
+                <div id="salesforceSource_blurybackground" style="position:fixed; left:1px; top:1px; width:100%; height:100%; text-align:center; vertical-align: middle; background-color: #dcdcdc; opacity:0.92;filter:alpha(opacity=60); z-index: 2000;"></div>
+                <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="z-index: 2000; width: 100%; height: 100%; display: ''; ">
+                    <div style="width: 144px;vertical-align: middle;" class="waitingHolder">
+                        <table  style="width: 100%; height: 100%">
+                            <tr align="center" valign="top" style="width: 100%; height: 30%">
+                                <td valign="top"><img src="/img/loading.gif"/><span class="waitingDescription"><b>Loading...</b></span></td>
+                                </tr>
+                                </table>
+                                </div>
+                                </div>
+                                </apex:facet>
+                                <apex:facet name="stop"></apex:facet>
+                                </apex:actionstatus>
+                                <apex:actionstatus id="saving" startText="Saving...">
+                                    <apex:facet name="start">
+                                        <script>$j('.pipelineManager').hide();</script>
+                <div id="salesforceSourceSaving_blurybackground" style="position:fixed; left:1px; top:1px; width:100%; height:100%; text-align:center; vertical-align: middle; background-color: #dcdcdc; opacity:0.92;filter:alpha(opacity=60); z-index: 2000;"></div>
+                <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="z-index: 2000; width: 100%; height: 100%; display: ''; ">
+                    <div style="width: 144px;vertical-align: middle;" class="waitingHolder">
+                        <table  style="width: 100%; height: 100%">
+                            <tr align="center" valign="top" style="width: 100%; height: 30%">
+                                <td valign="top"><img src="/img/loading.gif"/><span class="waitingDescription"><b>Saving...</b></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </apex:facet>
+            <apex:facet name="stop"></apex:facet>
+        </apex:actionstatus>
+        <!-- END OF ACTION STATUS -->
+    </apex:form>
+</apex:page>

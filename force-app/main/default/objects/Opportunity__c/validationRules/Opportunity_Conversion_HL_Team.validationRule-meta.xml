@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Conversion_HL_Team</fullName>
+    <active>false</active>
+    <errorConditionFormula>Converted_to_Engagement__c &amp;&amp;
+ Engagement_Team_Assembled__c = FALSE</errorConditionFormula>
+    <errorMessage>Need HL Team members of the following roles to move to Engaged:
+Principal, Seller, Manager, Associate, Initiator</errorMessage>
+</ValidationRule>

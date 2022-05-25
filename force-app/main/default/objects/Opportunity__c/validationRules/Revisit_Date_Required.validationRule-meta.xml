@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Revisit_Date_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISPICKVAL(Stage__c, &apos;Revisit&apos;) &amp;&amp; ISPICKVAL(Line_of_Business__c, &apos;FR&apos;) &amp;&amp;
+ISBLANK( Revisit_on_Date__c )</errorConditionFormula>
+    <errorDisplayField>Revisit_on_Date__c</errorDisplayField>
+    <errorMessage>Please insert Revisit on Date.</errorMessage>
+</ValidationRule>

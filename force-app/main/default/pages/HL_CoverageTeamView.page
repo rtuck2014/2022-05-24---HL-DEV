@@ -1,0 +1,41 @@
+<apex:page id="coverageTeamView" standardController="Coverage_Team__c" tabStyle="Contact" extensions="HL_CoverageTeamController" action="{!CheckRecordType}" lightningStyleSheets="true">
+    <apex:form >
+        <apex:pageMessages rendered="{!$ObjectType.Offsite_Template__c.accessible}" />
+    </apex:form>
+
+    <!--==========================================================-->
+    <!-- Show/Display the Native Hover Links -->
+    <!--==========================================================-->
+    <div class="RLPanelShadow">
+        <div class="RLPanel" id="RLPanel" onblur="sfdcPage.relatedListPanel.hideRLDelayed(null, 100)" onfocus="sfdcPage.relatedListPanel.showRL()" onmouseout="sfdcPage.relatedListPanel.hideRLDelayed(null, 100)" onmouseover="sfdcPage.relatedListPanel.showRL()">
+            <iframe frameborder="0" id="RLPanelFrame" name="RLPanelFrame" src="/emptyHtmlDoc.html" title="Hidden Frame - Ignore"></iframe>
+        </div>
+    </div><div class="listHoverLinks"><span class="invisibleMinHeight">|</span></div>
+    <script type="text/javascript">
+    try { sfdcPage.registerRelatedListPanel('RLPanel',false);} catch(e) {}
+    </script>
+    <!--==========================================================-->
+
+    <apex:detail subject="{!Coverage_Team__c.Id}" title="true" relatedList="false" relatedListHover="true" />
+    <apex:relatedList id="coverageSectorList" list="CoverageSectors__r" />
+    <apex:relatedList id="coverageTeamComment" list="Coverage_Team_Comments__r" />
+    <apex:relatedList id="coverageContactList" list="Coverage_Contacts__r" />
+    <apex:relatedList id="offsiteTemplateList" list="Offsite_Templates__r" rendered="{!IsCapIQCompanyRelated && $ObjectType.Offsite_Template__c.accessible}"/>
+
+    <!--==========================================================-->
+    <!-- Show/Display the Native Hover Links -->
+    <!--==========================================================-->
+    <apex:outputPanel rendered="true">
+        <script type="text/javascript">
+        try
+        {
+            var capIQCompanyRelated = {!IsCapIQCompanyRelated};
+            sfdcPage.registerRelatedList('coverageTeamView:coverageContactList', '', '', false, '', '', false, false, true, '');
+            if(capIQCompanyRelated)
+                sfdcPage.registerRelatedList('coverageTeamView:offsiteTemplateList', '', '', false, '', '', false, false, true, '');
+        }
+        catch (e){}
+        </script>
+    </apex:outputPanel>
+    <!--==========================================================-->
+</apex:page>

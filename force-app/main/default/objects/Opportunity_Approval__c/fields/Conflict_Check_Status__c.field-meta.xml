@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Conflict_Check_Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+    (ISPICKVAL(Related_Opportunity__r.Conflicts_Check_Outcome__c, &apos;Cleared&apos;) || ISPICKVAL(Related_Opportunity__r.Conflicts_Check_Outcome__c, &apos;Managed&apos;)),
+    (TEXT(Related_Opportunity__r.Conflicts_Check_Outcome__c) + &quot; on: &quot; + TEXT(MONTH(Related_Opportunity__r.Conflicts_Check_Outcome_Date__c)) + &quot;/&quot; + TEXT(DAY(Related_Opportunity__r.Conflicts_Check_Outcome_Date__c)) + &quot;/&quot; + TEXT(YEAR(Related_Opportunity__r.Conflicts_Check_Outcome_Date__c))),
+    IF(
+        (ISPICKVAL(Related_Opportunity__r.Conflicts_Check_Outcome__c, &apos;Withdrawn&apos;) || ISPICKVAL(Related_Opportunity__r.Conflicts_Check_Outcome__c, &apos;Dead&apos;) || ISPICKVAL(Related_Opportunity__r.Conflicts_Check_Outcome__c, &apos;Expired&apos;)),
+        TEXT(Related_Opportunity__r.Conflicts_Check_Outcome__c) + &quot; on: &quot; + TEXT(MONTH(Related_Opportunity__r.Conflicts_Check_Outcome_Date__c)) + &quot;/&quot; + TEXT(DAY(Related_Opportunity__r.Conflicts_Check_Outcome_Date__c)) + &quot;/&quot; + TEXT(YEAR(Related_Opportunity__r.Conflicts_Check_Outcome_Date__c)) + &quot; - Please resubmit the Conflicts Check.&quot;,
+        IF(
+            ISPICKVAL(Related_Opportunity__r.Conflicts_Check_Outcome__c, &apos;True Conflict&apos;),
+            &quot;True Conflict on: &quot; + TEXT(MONTH(Related_Opportunity__r.Conflicts_Check_Outcome_Date__c)) + &quot;/&quot; + TEXT(DAY(Related_Opportunity__r.Conflicts_Check_Outcome_Date__c)) + &quot;/&quot; + TEXT(YEAR(Related_Opportunity__r.Conflicts_Check_Outcome_Date__c)) + &quot; - Please contact the Legal Department.&quot;,
+            IF(
+                ISBLANK( Related_Opportunity__r.Conflicts_Check_Request_Date__c ),
+                &quot;Conflicts Check not requested yet - Please return to the Opportunity and request a Conflicts Check.&quot;,
+                &quot;In Progress, requested on: &quot; + TEXT(MONTH(Related_Opportunity__r.Conflicts_Check_Request_Date__c)) + &quot;/&quot; + TEXT(DAY(Related_Opportunity__r.Conflicts_Check_Request_Date__c)) + &quot;/&quot; + TEXT(YEAR(Related_Opportunity__r.Conflicts_Check_Request_Date__c))
+            )
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Conflict Check Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

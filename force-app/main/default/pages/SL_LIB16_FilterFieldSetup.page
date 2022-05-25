@@ -1,0 +1,129 @@
+<apex:page standardController="SL_Mass_Implementation__c" extensions="SL_LIB16_ctrl_FilterFieldSetup" id="filterId" tabStyle="SL_Mass_Implementation__c">
+<script>
+if (!window.console) {var console = {};}
+if (!console.log) {console.log = function() {};}
+</script>
+    <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" />
+    <apex:sectionHeader title="Filter Field Setup" subtitle="{!pageTitle}"/>
+    <apex:form >
+        <apex:pageBlock id="pageBlockTableOfFields">
+            <apex:pageBlockSection collapsible="true" columns="1" title="Filter Field Detail">
+                <apex:outputField value="{!newFFItem.Mass_Implementation__c}"/>
+                <apex:outputField value="{!newFFItem.Type__c}"/>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection collapsible="true" columns="1" title="Field list">
+
+                <apex:pageBlockTable value="{!filterFieldList}" var="item">
+                    <apex:column style="width: 30px;">
+                        <apex:facet name="header">
+                            <apex:inputCheckbox styleClass="ff_checkbox_main" />
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!item.selected}"
+                            styleClass="ff_checkbox" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Custom Filter Field Label</apex:facet>
+                        <apex:inputText value="{!item.customLabel}" style="width: 250px;" />
+                    </apex:column>
+                    <apex:column style="width: 30px;">
+                        <apex:facet name="header">
+                            <apex:inputCheckbox styleClass="cf_checkbox_main" />
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!item.selectedColumn}"
+                            styleClass="cf_checkbox" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Custom Column Field Label</apex:facet>
+                        <apex:inputText value="{!item.customColumnLabel}" style="width: 250px;" />
+                    </apex:column>
+
+                    <apex:column >
+                        <apex:facet name="header">System Label</apex:facet>
+                        <apex:outputText value="{!item.systemLabel}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">System Name</apex:facet>
+                        <apex:outputText value="{!item.systemName}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Field Type</apex:facet>
+                        <apex:outputText value="{!item.fieldType}" />
+                    </apex:column>
+                </apex:pageBlockTable>
+
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection collapsible="true" columns="1" title="List of reference fields">
+
+                <apex:pageBlockTable value="{!filterReferencedFieldList}" var="item">
+                    <apex:column >
+                        <a href="/apex/SL_LIB16_ReferencedFilterFieldSetup?systemFieldName={!item.systemFieldName}&objectName={!item.objectName}&filterId={!SL_Mass_Implementation__c.Id}&type={!filterType}">Setup</a>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">System Field Name</apex:facet>
+                        <apex:outputText value="{!item.systemFieldName}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Object</apex:facet>
+                        <apex:outputText value="{!item.objectName}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">System Fields</apex:facet>
+                        <apex:outputText value="{!item.selectedFieldsCount}" />
+                    </apex:column>
+                </apex:pageBlockTable>
+
+            </apex:pageBlockSection>
+
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!doSave}" />
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+
+        <apex:actionFunction action="{!onChangeMainObject}"
+            name="onChangeMainObjectInJS" rerender="pageBlockTableOfFields">
+        </apex:actionFunction>
+
+    </apex:form>
+
+    <script type="text/javascript">
+    
+        function resetMainCheckbox() {
+            var allChacked = true;
+            $('.ff_checkbox').each(function(){
+                if (!this.checked) {
+                    allChacked = false;
+                }
+            });
+            $('.ff_checkbox_main').attr('checked', allChacked);
+        }
+    
+        $('.ff_checkbox_main').live('click', function (){
+            $('.ff_checkbox').attr('checked', this.checked);
+        });
+        $('.ff_checkbox').live('click', function (){
+            resetMainCheckbox();
+        });
+        
+        function resetColMainCheckbox() {
+            var allChacked = true;
+            $('.cf_checkbox').each(function(){
+                if (!this.checked) {
+                    allChacked = false;
+                }
+            });
+            $('.cf_checkbox_main').attr('checked', allChacked);
+        }
+    
+        $('.cf_checkbox_main').live('click', function (){
+            $('.cf_checkbox').attr('checked', this.checked);
+        });
+        $('.cf_checkbox').live('click', function (){
+            resetColMainCheckbox();
+        });
+        
+    </script>
+
+</apex:page>

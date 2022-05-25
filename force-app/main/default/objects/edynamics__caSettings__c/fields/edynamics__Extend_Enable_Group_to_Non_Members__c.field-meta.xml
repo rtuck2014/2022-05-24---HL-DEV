@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>edynamics__Extend_Enable_Group_to_Non_Members__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>When set, the comments sent by users not in the Enabled Group, we check if any person in the group has posted to the comment. If we find one, the comment is treated as if it was posted from someone in the group.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>When set, the comments sent by users not in the Enabled Group, we check if any person in the group has posted to the comment. If we find one, the comment is treated as if it was posted from someone in the group.</inlineHelpText>
+    <label>Extend Enable Group to Non-Members</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event_Format__c</fullName>
+    <externalId>false</externalId>
+    <label>Event Format</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Staff Entertainment</fullName>
+                <default>false</default>
+                <label>Staff Entertainment</label>
+            </value>
+            <value>
+                <fullName>Branding and Leadership (IP)</fullName>
+                <default>false</default>
+                <label>Branding and Leadership (IP)</label>
+            </value>
+            <value>
+                <fullName>Conference/Seminar</fullName>
+                <default>false</default>
+                <label>Conference/Seminar</label>
+            </value>
+            <value>
+                <fullName>Networking Events</fullName>
+                <default>false</default>
+                <label>Networking Events</label>
+            </value>
+            <value>
+                <fullName>Professional Memberships</fullName>
+                <default>false</default>
+                <label>Professional Memberships</label>
+            </value>
+            <value>
+                <fullName>Sponsorship / Charity Events</fullName>
+                <default>false</default>
+                <label>Sponsorship / Charity Events</label>
+            </value>
+            <value>
+                <fullName>Talent Development</fullName>
+                <default>false</default>
+                <label>Talent Development</label>
+            </value>
+            <value>
+                <fullName>Other Professional Event</fullName>
+                <default>false</default>
+                <label>Other Professional Event</label>
+            </value>
+            <value>
+                <fullName>Client Entertainment</fullName>
+                <default>false</default>
+                <label>Client Entertainment</label>
+            </value>
+            <value>
+                <fullName>Client Gifts</fullName>
+                <default>false</default>
+                <label>Client Gifts</label>
+            </value>
+            <value>
+                <fullName>Closing Party</fullName>
+                <default>false</default>
+                <label>Closing Party</label>
+            </value>
+            <value>
+                <fullName>External Client Meeting</fullName>
+                <default>false</default>
+                <label>External Client Meeting</label>
+            </value>
+            <value>
+                <fullName>Sporting Events</fullName>
+                <default>false</default>
+                <label>Sporting Events</label>
+            </value>
+            <value>
+                <fullName>Other Client Entertainment</fullName>
+                <default>false</default>
+                <label>Other Client Entertainment</label>
+            </value>
+            <value>
+                <fullName>Marketing Membership</fullName>
+                <default>false</default>
+                <label>Marketing Membership</label>
+            </value>
+            <value>
+                <fullName>Regional Marketing</fullName>
+                <default>false</default>
+                <label>Regional Marketing</label>
+            </value>
+            <value>
+                <fullName>Local Marketing</fullName>
+                <default>false</default>
+                <label>Local Marketing</label>
+            </value>
+            <value>
+                <fullName>Service Line Request</fullName>
+                <default>false</default>
+                <label>Service Line Request</label>
+            </value>
+            <value>
+                <fullName>FVA Management Request</fullName>
+                <default>false</default>
+                <label>FVA Management Request</label>
+            </value>
+            <value>
+                <fullName>FY Annual Meeting</fullName>
+                <default>false</default>
+                <label>FY Annual Meeting</label>
+            </value>
+            <value>
+                <fullName>CF Charitable Contribution Match</fullName>
+                <default>false</default>
+                <label>CF Charitable Contribution Match</label>
+            </value>
+            <value>
+                <fullName>Group Meals</fullName>
+                <default>false</default>
+                <label>Group Meals</label>
+            </value>
+            <value>
+                <fullName>Holiday Party</fullName>
+                <default>false</default>
+                <label>Holiday Party</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+            <value>
+                <fullName>Offsite Meeting</fullName>
+                <default>false</default>
+                <label>Offsite Meeting</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Teambuilding Activity</fullName>
+                <default>false</default>
+                <label>Teambuilding Activity</label>
+            </value>
+            <value>
+                <fullName>Team Drinks</fullName>
+                <default>false</default>
+                <label>Team Drinks</label>
+            </value>
+            <value>
+                <fullName>Training</fullName>
+                <default>false</default>
+                <label>Training</label>
+            </value>
+            <value>
+                <fullName>CF Management Request</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>CF Management Request</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

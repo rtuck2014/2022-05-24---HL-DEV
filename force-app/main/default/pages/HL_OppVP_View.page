@@ -1,0 +1,233 @@
+<apex:page standardcontroller="Opp_VP__c" name="HL_OppVP_View" extensions="HL_OppVP_ViewController,HL_Opp_VP_Custom_Links" lightningStylesheets="true">   
+    
+     <script>
+       function delRec(recid){
+            var respond = confirm('{!$Label.HL_PositionDelete}');
+            if(respond)
+            {
+                blockme();
+                callToDel(recid);
+            }
+        }  
+    </script>
+    <script>
+    //var originalselectedId = '';
+    j$ = jQuery.noConflict();               
+    
+    function blockme() {
+        j$.blockUI({ css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+            } }); 
+
+      }
+    </script>
+    <script>
+        // workaround is necessary since inline editing of VF picklist and/or checkboxes won't commit changes before action if the user doesn't "click out" first.  
+        function focusAndSave() {                
+            document.getElementById('focusMe').click();
+            blockme();
+            saveFields();            
+        }
+    </script>  
+    
+    <div class="bPageTitle"><div class="ptBody"><div class="content"><img alt="Custom" class="pageTitleIcon" src="/img/s.gif" title="Custom"/><h1 class="pageType">Opportunity Valuation Period<span class="titleSeparatingColon">:</span></h1><h2 class="pageDescription">{!Opp_VP__c.Name}</h2><div class="blank">&nbsp;</div></div><div class="links"><a href="javascript:openPopupFocusEscapePounds(%27https://hl--c.na25.visual.force.com/apex/HL_UserGuide?loc=help&amp;#38;target=getstart_help.htm&amp;#38;section=Getting_Started&amp;#38;showSplash=true%27, %27Help%27, 1024, 768, %27width=1024,height=768,resizable=yes,toolbar=yes,status=yes,scrollbars=yes,menubar=yes,directories=no,location=yes,dependant=no%27, false, false);" title="Help for this Page (New Window)"><span class="helpLink">Help for this Page</span><img class="helpIcon" src="/img/s.gif"/></a></div></div><div class="ptBreadcrumb"></div></div>
+     
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    
+    <div id="divCheckbox" style="visibility: hidden">
+
+    </div>
+    <apex:form id="frmId" >   
+        
+        <apex:actionFunction action="{!saveRc}" name="saveFields"  reRender="pgmsgId" oncomplete="j$.unblockUI();"/>    
+        <apex:actionRegion >
+            <apex:actionFunction action="{!DummyReset}" name="DummyReset1" reRender="NameFieldId">
+                <apex:param name="field1" assignTo="{!fieldAPI}" value="" />
+            </apex:actionFunction>
+            
+            <apex:actionFunction action="{!DummyReset}" name="DummyReset2"  reRender="FrequencyId,MonthQuarterId">
+                <apex:param name="field2" assignTo="{!fieldAPI}" value="" />
+            </apex:actionFunction>
+            <apex:actionFunction action="{!DummyReset}" name="DummyReset3"  reRender="SummaryId">
+                <apex:param name="field3" assignTo="{!fieldAPI}" value="" />
+            </apex:actionFunction>
+            <apex:actionFunction action="{!DummyReset}" name="DummyReset4"  reRender="FrequencyId,MonthQuarterId">
+                <apex:param name="field4" assignTo="{!fieldAPI}" value="" />
+            </apex:actionFunction> 
+            
+            <apex:actionFunction action="{!DummyReset}" name="DummyReset5" reRender="ValuationDateId">
+                <apex:param name="field5" assignTo="{!fieldAPI}" value="" />
+            </apex:actionFunction>
+        </apex:actionRegion>
+        <apex:pageBlock title="Opportunity Valuation Period Detail" mode="Maindetail" id="pbid">
+        <apex:pageMessages id="pgmsgId"/>  
+        <apex:pageBlockButtons location="Top"> 
+            <apex:commandButton action="{!Edit}" value="Edit" id="OnEdit" rendered="{!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)'))}"  />
+            <apex:commandButton action="{!DeleteRecord}" reRender="pgmsgId" value="Delete" id="Ondelete" rendered="{!AND(!isOpportunityConverted,IsHavingPVPermissionSetOrIsSysAdmin,(userProfileName != 'System Administrator (Read Only)'))}" />   
+            <apex:commandButton value="Save" onclick="focusAndSave(); return false;"  id="Onsave" style="display: none;" reRender="pgmsgId" rendered="{!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)'))}"  />      
+            <apex:commandButton action="{!Cancel}" value="Cancel" id="Oncancel" reRender="pbid" style="display: none;" />     
+            <apex:commandButton Value="Import Positions" action="{!ImportPosition}" id="OnImportposition"  rendered="{!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)'))}"  />  
+            <apex:commandButton Value="Back To Opp Valuation Period List" action="{!Backtovp}" id="Onbacktovp" /> 
+        </apex:pageBlockButtons>    
+        <input type="text" id="focusMe" style="display:none" />
+            
+          
+     <apex:pageBlockSection title="Opportunity Information" >
+          <apex:outputField value="{!Opp_VP__c.Opportunity__r.Client__c}" />
+         <apex:outputField value="{!Opp_VP__c.Opportunity__c}"/>
+         <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+         <apex:outputField value="{!Opp_VP__c.Opportunity_Number__c}"/>
+     </apex:pageBlockSection>  
+     
+     <apex:pageBlockSection title="Valuation Information" id="pbsId">
+         
+         <apex:outputField value="{!OppVPView.Name}" id="NameFieldId" >
+             <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                            hideOnEdit="OnEdit,Ondelete,Onbacktovp,OnImportposition" event="ondblclick" 
+                            changedStyleClass="inlineEditRequiredDiv" resetFunction="DummyReset1('Name');" disabled="{!!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)'))}"/>           
+         </apex:outputField>
+         <apex:outputField value="{!OppVPView.Frequency__c}" id="FrequencyId">
+         <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                        hideOnEdit="OnEdit,Ondelete,Onbacktovp,OnImportposition" event="ondblclick" 
+                        changedStyleClass="myBoldClass" resetFunction="DummyReset2('Frequency__c');" disabled="{!!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)'))}"/>
+                        </apex:outputField> 
+         <apex:outputField value="{!OppVPView.Summary__c}" id="SummaryId">
+         <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                        hideOnEdit="OnEdit,Ondelete,Onbacktovp,OnImportposition" event="ondblclick" 
+                        changedStyleClass="myBoldClass" resetFunction="DummyReset3('Summary__c');" disabled="{!!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)'))}"/>
+          </apex:outputField> 
+         <apex:outputField value="{!OppVPView.Month_Quarter__c}" id="MonthQuarterId">
+         <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                        hideOnEdit="OnEdit,Ondelete,Onbacktovp,OnImportposition" event="ondblclick" 
+                        changedStyleClass="myBoldClass" resetFunction="DummyReset4('Month_Quarter__c');" disabled="{!!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)'))}"/>
+         </apex:outputField> 
+         <apex:outputField value="{!OppVPView.Valuation_Date__c}" id="ValuationDateId">
+             <apex:inlineEditSupport showOnEdit="Onsave,Oncancel" 
+                            hideOnEdit="OnEdit,Ondelete,Onbacktovp,OnImportposition" event="ondblclick" 
+                            changedStyleClass="inlineEditRequiredDiv" resetFunction="DummyReset5('Valuation_Date__c');" disabled="{!!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)'))}"/>
+         </apex:outputField>
+                 
+         <apex:outputField value="{!Opp_VP__c.Overall_VP_Status__c}"/>
+          <apex:outputField value="{!Opp_VP__c.Job_Type__c}"/>
+         <apex:outputField value="{!OppVPView.Fee_Total__c}" rendered="{!IshavingValidRoleForRevAccrual}"/>         
+            
+                
+     </apex:pageBlockSection>   
+     
+      <apex:pageBlockSection title="Report Section" columns="1"  rendered="{!IsValidUser}">
+              <apex:pageBlockSectionItem >
+              <apex:outputLabel >Custom Links</apex:outputLabel>
+              <apex:outputLink Value="/{!Reportlink1}" target="_blank">All Positions and Team Members</apex:outputLink>
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem >
+              <apex:outputLabel >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputLabel>
+              <apex:outputLink Value="/{!Reportlink2}" target="_blank">All Positions by Team Members</apex:outputLink> 
+              </apex:pageBlockSectionItem>
+              <apex:pageBlockSectionItem >
+              <apex:outputLabel >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</apex:outputLabel>
+              <apex:outputLink Value="/{!Reportlink3}" target="_blank">Valuation Portfolio Report Fees</apex:outputLink> 
+              </apex:pageBlockSectionItem>
+          </apex:pageBlockSection> 
+     
+      <apex:pageBlockSection title="System Information">
+         <apex:pageBlockSectionItem >
+         <apex:outputLabel value="Created By" ></apex:outputLabel>
+         <apex:outputPanel ><apex:outputField value="{!Opp_VP__c.createdByID}"/> &nbsp;         
+         <apex:outputText value="{0,date,MM/dd/yyyy h:mm a}"> <apex:param value="{!Opp_VP__c.CreatedDate+offset}" /> </apex:outputText>
+         </apex:outputPanel>
+         </apex:pageBlockSectionItem>
+         
+         <apex:pageBlockSectionItem >
+         <apex:outputLabel value="Last Modified By" ></apex:outputLabel>
+         <apex:outputPanel ><apex:outputField value="{!Opp_VP__c.LastModifiedByID}" /> &nbsp;        
+         <apex:outputText value="{0,date,MM/dd/yyyy h:mm a}"> <apex:param value="{!Opp_VP__c.LastModifiedDate+offset}" /> </apex:outputText>
+         </apex:outputPanel>
+         </apex:pageBlockSectionItem>
+ 
+     </apex:pageBlockSection>      
+      </apex:pageBlock> 
+         <!-------------------------------------------------------------------------------RELATED LIST -------------------------------------------------------------------------------------------------------------------------->
+          <apex:actionFunction action="{!EditRecord}" name="callToEdit" reRender="RelatedRecordPanelId" >
+            <apex:param value="" assignTo="{!SelectedRecId}" name="recIdToEdit" />
+          </apex:actionFunction>
+          <apex:actionFunction action="{!DeleteSelectedRecord}" name="callToDel" reRender="RelatedRecordPanelId,PBBtnsId,pbsId" oncomplete="j$.unblockUI();" >
+            <apex:param value="" assignTo="{!SelectedRecId}" name="recIdToDel" />
+         </apex:actionFunction>
+         <apex:pageBlock title="Opp Valuation Period Positions" > 
+            <apex:pageBlockButtons location="Top"  >
+                <apex:outputPanel id="PBBtnsId">                    
+                    <apex:commandButton value="New Opp Valuation Period Position" action="{!NewPosition}" rendered="{!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)'))}" />                                        
+                </apex:outputPanel>
+            </apex:pageBlockButtons>
+            <apex:outputPanel id="RelatedRecordPanelId" >                     
+                <apex:outputLabel rendered="{!IF(RelatedPositionList.size>0, false, true )}" >No records to display</apex:outputLabel>
+                <apex:outputPanel rendered="{!IF(RelatedPositionList.size>0, true, false )}">                                        
+                    <apex:pageMessages />
+                    <!----------------------------- Position Record Table --------------------------------------------------------------------------->
+                    <apex:pageBlockTable value="{!RelatedPositionList}" var="RelatedPosData" id="pbtableId2" rows="{!CurPageSize}" >                                                
+                        <apex:column style="width:10px" rendered="{!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)'))}" >
+                            <apex:facet name="header">Action</apex:facet>
+                            <apex:commandLink rendered="{!!isOpportunityConverted}" onclick="callToEdit('{!RelatedPosData.OppVPPositionRecord.Id}')" reRender="RelatedRecordPanelId" ><font color="#065CA6">Edit</font></apex:commandLink>
+                            <apex:outputPanel rendered="{!AND(!isOpportunityConverted,IsSuperVisorOrAdmin, IsHavingPVPermissionSetOrIsSysAdmin)}" >&nbsp;|&nbsp;
+                                    <apex:commandLink onclick="delRec('{!RelatedPosData.OppVPPositionRecord.Id}')" reRender="RelatedRecordPanelId,PBBtnsId" ><font color="#065CA6">Del</font></apex:commandLink>
+                            </apex:outputPanel>
+                        </apex:column>
+                        <apex:column headerValue="Name">
+                            <apex:outputLink value="/{!RelatedPosData.OppVPPositionRecord.Id}" >{!RelatedPosData.OppVPPositionRecord.Name}</apex:outputLink>
+                        </apex:column>
+                        <apex:column value="{!RelatedPosData.OppVPPositionRecord.Company__c}" />     
+                        
+                        <apex:column value="{!RelatedPosData.OppVPPositionRecord.Industry_Group_Picklist__c}" headerValue="Industry Group"
+                                     rendered="{!IF(((RelatedPosData.OppVPPositionRecord.Sector__c == null) && (RelatedPosData.OppVPPositionRecord.Industry_Group_Picklist__c == null)),false,true)}"/>               
+                        <apex:column value="{!RelatedPosData.OppVPPositionRecord.Industry_Group__c}" headerValue="Industry Group"
+                                     rendered="{!IF(((RelatedPosData.OppVPPositionRecord.Sector__c == null) && (RelatedPosData.OppVPPositionRecord.Industry_Group_Picklist__c == null)),true,false)}"/>  
+                        
+                        <apex:column value="{!RelatedPosData.OppVPPositionRecord.Sector__c}" headerValue="Sector" 
+                                     rendered="{!IF(((RelatedPosData.OppVPPositionRecord.Sector__c == null) && (RelatedPosData.OppVPPositionRecord.Industry_Group_Picklist__c == null)),false,true)}"/>                               
+                        <apex:column value="{!RelatedPosData.OppVPPositionRecord.Company_Sector__c}" headerValue="Sector" 
+                                     rendered="{!IF(((RelatedPosData.OppVPPositionRecord.Sector__c == null) && (RelatedPosData.OppVPPositionRecord.Industry_Group_Picklist__c == null)),true,false)}"/>   
+                                     
+                        <apex:column value="{!RelatedPosData.OppVPPositionRecord.Asset_Classes__c}" />
+                        <apex:column value="{!RelatedPosData.OppVPPositionRecord.Report_Fee__c}" rendered="{!IshavingValidRoleForRevAccrual}" />
+                        <apex:column value="{!RelatedPosData.OppVPPositionRecord.Status__c}" />                                               
+                    </apex:pageBlockTable>
+                    <!----------------------------- Navigation links --------------------------------------------------------------------------->
+                    <apex:outputPanel rendered="{!(NoOfPosition >CurPageSize)}">
+                        <apex:commandlink action="{!showMore}" value="Show All" id="theCommandLink" reRender="RelatedRecordPanelId" ></apex:commandLink><apex:outputLabel >&nbsp; | &nbsp;</apex:outputLabel>
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="First" action="{!first}" rerender="RelatedRecordPanelId"
+                                    rendered="{!IF(pageNumber==1, false, true)}" status="MCSub" /> <apex:outputLabel value="First" rendered="{!IF(pageNumber==1, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Prev" action="{!previous}" rerender="RelatedRecordPanelId"
+                                rendered="{!IF(pageNumber==1, false, true)}" status="MCSub" /> <apex:outputLabel value="Prev" rendered="{!IF(pageNumber==1, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>                   
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Next" action="{!next}" rerender="RelatedRecordPanelId"
+                                rendered="{!IF(pageNumber==pageSize, false, true)}"
+                                status="MCSub" />                              
+                                <apex:outputLabel value="Next"
+                                rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                        </span>
+                        <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                        <span style="display: inline; width: 25px;"> <apex:commandLink value="Last" action="{!last}" rerender="RelatedRecordPanelId"
+                                rendered="{!IF(pageNumber==pageSize, false, true)}"
+                                status="MCSub" /> <apex:outputLabel value="Last"
+                                rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                        </span>   
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </apex:outputPanel>   
+        </apex:pageBlock>
+    </apex:form> 
+    <apex:relatedList list="Histories" pageSize="10" rendered="{!OR((IsMemberofAPTeam),(userProfileName == 'System Administrator'))}"/>    
+</apex:page>

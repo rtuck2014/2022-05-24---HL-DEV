@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Confidentiality_Agreement__c</fullName>
+    <externalId>false</externalId>
+    <label>Confidentiality Agreement</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes, separate signed agreement</fullName>
+                <default>false</default>
+                <label>Yes, separate signed agreement</label>
+            </value>
+            <value>
+                <fullName>Yes, incorporated into Engagement Letter</fullName>
+                <default>false</default>
+                <label>Yes, incorporated into Engagement Letter</label>
+            </value>
+            <value>
+                <fullName>No</fullName>
+                <default>false</default>
+                <label>No</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

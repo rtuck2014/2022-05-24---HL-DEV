@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Stores the Tax Classification Code assigned to Opportunity VAT Treatments and Engagement VAT Treatments.
+Tax Classification Code is determined based on specified Legal Entity &apos;Entity Code&apos; and VAT Treatment.</description>
+    <label>Tax Classification Code</label>
+    <pluralLabel>Tax Classification Codes</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

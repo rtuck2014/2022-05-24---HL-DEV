@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ASC_Weekly_Coverage_FIG_Friday</fullName>
+    <booleanFilter>(1 OR 4) AND 2 AND 3</booleanFilter>
+    <columns>Membership_Driven_Filter__c</columns>
+    <columns>NAME</columns>
+    <columns>Subscription_Distribution_List__c</columns>
+    <columns>Distribution_List__c</columns>
+    <columns>Subscriber__c</columns>
+    <columns>Industry_Group__c</columns>
+    <columns>Active__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Attach_CSV__c</columns>
+    <columns>Attach_Excel__c</columns>
+    <columns>Attach_PDF__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Subscription_Distribution_List__c</field>
+        <operation>equals</operation>
+        <value>ASC Friday BiWeekly Coverage Notification</value>
+    </filters>
+    <filters>
+        <field>Industry_Group__c</field>
+        <operation>equals</operation>
+        <value>FIG</value>
+    </filters>
+    <filters>
+        <field>Active__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Subscription_Distribution_List__c</field>
+        <operation>equals</operation>
+        <value>ASC Friday Weekly Coverage Notification</value>
+    </filters>
+    <label>ASC Weekly FIG</label>
+    <sharedTo>
+        <group>SFDC_ADMINS</group>
+    </sharedTo>
+</ListView>

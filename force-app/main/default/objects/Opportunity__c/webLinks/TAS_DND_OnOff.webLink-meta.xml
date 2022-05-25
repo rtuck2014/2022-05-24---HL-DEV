@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TAS_DND_OnOff</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>TAS DND On/Off</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)} 
+   {!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)} 
+
+   try { 
+      var returnMessage = sforce.apex.execute(&quot;TAS_DNDController&quot;,&quot;DnDOnOff&quot;, 
+        {&quot;recordId&quot;:&apos;{!Opportunity__c.Id}&apos;}); 
+        alert(returnMessage); 
+								window.location.reload(); 
+     }catch(e){ 
+        alert(&apos;Exception&apos;+e) 
+    }</url>
+</WebLink>

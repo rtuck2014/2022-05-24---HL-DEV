@@ -1,0 +1,150 @@
+<apex:page lightningStylesheets="true">
+<apex:slds />
+    <apex:form >
+        <apex:pageBlock >
+       <!--  <apex:pageBlockSection columns="1" title="Fees"> -->
+                        <apex:outputLabel style="font-size:1.2em" value="Suggested Fees:"></apex:outputLabel>
+                        <apex:outputPanel >
+                            <table cellpadding="3" frame="box" border="1">
+                                <th colspan="7" align="left">
+                                    <apex:outputText value="Based on Public Comps"></apex:outputText>
+                                </th>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="Transaction Size Ranges ($MM)"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="$50-$100"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="$100-$200"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="$200-$300"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="$300-$400"></apex:outputLabel>                                    
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="Average Fee($MM)"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$1.83"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$2.63"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$4.64"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$5.21"></apex:outputText>                                    
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="Average Percentage"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="2.50%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.83%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.84%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.50%"></apex:outputText>                                    
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="Median Fee($MM)"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$1.75"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$2.56"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$4.50"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="$4.91"></apex:outputText>                                    
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="Median Percentage"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="2.31%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.80%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.67%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.37%"></apex:outputText>                                    
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:outputPanel>
+                        
+                        <apex:outputLabel style="font-size:1.2em"  value="Target European M&A Fees:"></apex:outputLabel>
+                        <apex:outputPanel >
+                            <table cellpadding="3" frame="box" border="1">
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="Transaction Size Ranges (£/€MM)"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="0-50"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="50-100"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="100-200"></apex:outputLabel>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputLabel value="200-300"></apex:outputLabel>                                    
+                                    </td>  
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="Base Fee Percentage*"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.50%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.25%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="1.00%"></apex:outputText>                                    
+                                    </td>
+                                    <td align="center">
+                                        <apex:outputText value="0.75%"></apex:outputText>                                    
+                                    </td>
+                                </tr>
+                            </table>
+                         <apex:outputText style="font-size:1em;font-weight:normal;font-style:italic" value="*In addition to base fees, target sellside ratchets of 3%, 5% and 7%, and buyside discretionary fees whenever possible."/> 
+                       </apex:outputPanel>
+                        
+                            
+                            
+                         <!--   </apex:pageBlockSection> -->
+                    </apex:pageBlock>        
+    </apex:form>
+</apex:page>

@@ -1,0 +1,3 @@
+<apex:page applyBodyTag="false" showHeader="false" standardStylesheets="false" standardController="Account" lightningStyleSheets="true">
+  <c:SL_MeetingNoteMobile activityType="Task" origin="publisher" objectId="{!account.Id}" objectType="Account"/>
+</apex:page>

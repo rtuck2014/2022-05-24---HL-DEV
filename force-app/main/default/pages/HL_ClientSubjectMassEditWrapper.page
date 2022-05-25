@@ -1,0 +1,19 @@
+<apex:page standardController="Opportunity__c" sidebar="true" showHeader="false" standardStylesheets="false" lightningStylesheets="true"> 
+   <apex:includeLightning />
+    <div id="wrapper" />
+    <script>
+     
+    $Lightning.use("c:HL_ClientSubjectEditApp", function() {
+        $Lightning.createComponent("c:hlClientSubjectMassEditRecForm", {
+            //pass parameter values to lwc js controller
+          recordId: "{!Opportunity__c.Id}"
+        },
+        "wrapper",
+            function(component) {
+             console.log("LWC initialize");
+              // extend the functionality as per your requirement
+            }
+       );
+    });
+    </script>
+</apex:page>

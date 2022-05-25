@@ -1,0 +1,12 @@
+<apex:page lightningStylesheets="true">
+
+<style>
+  [Class*='ACTION_COLUMN'] {
+    display:none;
+    visibility:hidden;
+  }
+</style>
+
+<apex:enhancedList type="Activity" height="600"/>
+
+</apex:page>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NBC_Form_C</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>NBC Form L</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>window.open(&quot;/apex/HL_OpportunityReview?id={!Opportunity__c.Id}&amp;JobType={!Opportunity__c.Job_Type__c}&amp;IsNBC={!Opportunity__c.IsNBC_BasedOn_JobType__c}&quot;, &quot;_blank&quot;)</url>
+</WebLink>

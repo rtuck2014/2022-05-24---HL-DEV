@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FAS_Opportunities</fullName>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Client__c</columns>
+    <columns>Line_of_Business__c</columns>
+    <columns>Job_Type__c</columns>
+    <columns>Industry_Group__c</columns>
+    <columns>RECORDTYPE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity__c.FAS</value>
+    </filters>
+    <label>FVA Opportunities</label>
+</ListView>

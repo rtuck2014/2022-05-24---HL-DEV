@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Engaged_Stage_Read_Only</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISPICKVAL(Stage__c, &apos;Engaged&apos;)
+, ISCHANGED(Stage__c)
+, $User.ProfileId  &lt;&gt;&apos;00ei0000001XKVV&apos;
+, $User.ProfileId &lt;&gt; &apos;00ei00000016T4B&apos;)</errorConditionFormula>
+    <errorMessage>You are NOT allowed to mark this opportunity as &quot;Engaged&quot;. Please contact your Salesforce Administrator</errorMessage>
+</ValidationRule>

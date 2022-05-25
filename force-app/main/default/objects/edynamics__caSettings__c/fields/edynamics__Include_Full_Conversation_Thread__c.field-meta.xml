@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>edynamics__Include_Full_Conversation_Thread__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Include the original post and all the comments in the journal email each time someone adds a comments</description>
+    <externalId>false</externalId>
+    <label>Include Full Conversation Thread?</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Fee1__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( OR(Total_Retainer__c!=0, Total_Otherfee__c!=0, TotalFee_Ratchet__c!=0), IF(And(text(Transaction_Fee_Type__c)==&apos;Flat Fee&apos;, Total_Retainer__c&gt;= Estimated_Minimum_Fee__c),  Total_Retainer__c ,  IF(text(Transaction_Fee_Type__c)==&apos;Other Fee Structure&apos;, Total_Otherfee__c, IF(And(text(Transaction_Fee_Type__c)==&apos;Incentive Structure&apos;,TotalFee_Ratchet__c&lt; Estimated_Minimum_Fee__c),Estimated_Minimum_Fee__c ,  IF(And(text(Transaction_Fee_Type__c)==&apos;Incentive Structure&apos;,TotalFee_Ratchet__c&gt; Estimated_Minimum_Fee__c), TotalFee_Ratchet__c,  IF(And(text(Transaction_Fee_Type__c)==&apos;Flat Fee&apos;, Total_Retainer__c&lt; Estimated_Minimum_Fee__c), Estimated_Minimum_Fee__c, 0) ) ) ) ),  IF(Estimated_Minimum_Fee__c!=0, Estimated_Minimum_Fee__c, Estimated_Fee__c) )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Estimated Total Fee (MM)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

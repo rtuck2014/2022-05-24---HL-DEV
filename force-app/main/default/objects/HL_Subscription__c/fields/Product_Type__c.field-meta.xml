@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Type__c</fullName>
+    <description>This is the product line on Opportunity or Engagement.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This is the product line on Opportunity or Engagement.</inlineHelpText>
+    <label>Product Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Advisory</fullName>
+                <default>false</default>
+                <label>Advisory</label>
+            </value>
+            <value>
+                <fullName>All</fullName>
+                <default>false</default>
+                <label>All</label>
+            </value>
+            <value>
+                <fullName>Capital Markets</fullName>
+                <default>false</default>
+                <label>Capital Markets</label>
+            </value>
+            <value>
+                <fullName>Consulting / InSource</fullName>
+                <default>false</default>
+                <label>Consulting / InSource</label>
+            </value>
+            <value>
+                <fullName>CVAS - Consulting / InSource</fullName>
+                <default>false</default>
+                <label>CVAS - Consulting / InSource</label>
+            </value>
+            <value>
+                <fullName>CVAS - Corporate Valuation Advisory Services</fullName>
+                <default>false</default>
+                <label>CVAS - Corporate Valuation Advisory Services</label>
+            </value>
+            <value>
+                <fullName>CVAS - Other</fullName>
+                <default>false</default>
+                <label>CVAS - Other</label>
+            </value>
+            <value>
+                <fullName>Dispute</fullName>
+                <default>false</default>
+                <label>Dispute</label>
+            </value>
+            <value>
+                <fullName>ESOP</fullName>
+                <default>false</default>
+                <label>ESOP</label>
+            </value>
+            <value>
+                <fullName>Estate &amp; Gift Tax</fullName>
+                <default>false</default>
+                <label>Estate &amp; Gift Tax</label>
+            </value>
+            <value>
+                <fullName>Fairness</fullName>
+                <default>false</default>
+                <label>Fairness</label>
+            </value>
+            <value>
+                <fullName>Illiquid Financial Assets</fullName>
+                <default>false</default>
+                <label>Illiquid Financial Assets</label>
+            </value>
+            <value>
+                <fullName>Mergers &amp; Acquisitions</fullName>
+                <default>false</default>
+                <label>Mergers &amp; Acquisitions</label>
+            </value>
+            <value>
+                <fullName>Negotiated Fairness</fullName>
+                <default>false</default>
+                <label>Negotiated Fairness</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Portfolio Valuation &amp; Advisory</fullName>
+                <default>false</default>
+                <label>Portfolio Valuation &amp; Advisory</label>
+            </value>
+            <value>
+                <fullName>Private Funds Advisory</fullName>
+                <default>false</default>
+                <label>Private Funds Advisory</label>
+            </value>
+            <value>
+                <fullName>Solvency</fullName>
+                <default>false</default>
+                <label>Solvency</label>
+            </value>
+            <value>
+                <fullName>TAS - Due Diligence Services</fullName>
+                <default>false</default>
+                <label>TAS - Due Diligence Services</label>
+            </value>
+            <value>
+                <fullName>Tech+IP Advisory</fullName>
+                <default>false</default>
+                <label>Tech+IP Advisory</label>
+            </value>
+            <value>
+                <fullName>Transaction Opinions</fullName>
+                <default>false</default>
+                <label>Transaction Opinions</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__Validate_curriculum_progress</fullName>
+    <active>true</active>
+    <description>Curriculum Progress must be between 0 and 100%.</description>
+    <errorConditionFormula>OR(
+lmscons__Curriculum_Progress__c &lt; 0,
+lmscons__Curriculum_Progress__c &gt; 1
+)</errorConditionFormula>
+    <errorDisplayField>lmscons__Curriculum_Progress__c</errorDisplayField>
+    <errorMessage>Curriculum Progress must be between 0 and 100%.</errorMessage>
+</ValidationRule>

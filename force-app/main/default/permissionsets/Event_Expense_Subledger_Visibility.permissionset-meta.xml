@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allows users to View the Subledger Field within the Event Expense Object.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Event Expense Subledger Visibility</label>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Sub_Ledger_Number__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <tabSettings>
+        <tab>Sub_Ledger_Number__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+</PermissionSet>

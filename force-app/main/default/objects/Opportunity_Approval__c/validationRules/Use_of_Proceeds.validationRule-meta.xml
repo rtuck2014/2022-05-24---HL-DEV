@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Use_of_Proceeds</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL(Form_Type__c, &apos;CNBC&apos;)&amp;&amp;
+INCLUDES(Use_of_Proceeds__c, &apos;Other&apos;) &amp;&amp;
+ISBLANK(Use_of_Proceeds_Detail__c)</errorConditionFormula>
+    <errorDisplayField>Use_of_Proceeds__c</errorDisplayField>
+    <errorMessage>Please enter Other Use of Proceeds.</errorMessage>
+</ValidationRule>

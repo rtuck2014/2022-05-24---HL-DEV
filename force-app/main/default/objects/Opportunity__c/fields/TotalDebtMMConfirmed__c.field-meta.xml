@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TotalDebtMMConfirmed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is used for &quot;FR&quot; and must be checked before requesting an engagement, if not checked and &quot;Request Engagement&quot; is clicked, there will be an error message stating this field must be checked.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Is the Total Debt most up to date?</inlineHelpText>
+    <label>Total Debt (MM) Confirmed</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

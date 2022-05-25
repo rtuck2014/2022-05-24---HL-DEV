@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FAAwardedRecordType__c</fullName>
+    <description>Using this field for the FA Awarded Process Builder and any validation rules where it is required.</description>
+    <externalId>false</externalId>
+    <formula>FAAwarded__r.RecordType.DeveloperName</formula>
+    <label>FA Awarded Record Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

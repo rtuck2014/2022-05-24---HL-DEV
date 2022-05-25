@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disclose_Document__c</fullName>
+    <externalId>false</externalId>
+    <label>Disclose Document</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1.30E-02</fullName>
+                <default>false</default>
+                <label>1.30E-02</label>
+            </value>
+            <value>
+                <fullName>S-4/F-4</fullName>
+                <default>false</default>
+                <label>S-4/F-4</label>
+            </value>
+            <value>
+                <fullName>State Proxy</fullName>
+                <default>false</default>
+                <label>State Proxy</label>
+            </value>
+            <value>
+                <fullName>14A/14C</fullName>
+                <default>false</default>
+                <label>14A/14C</label>
+            </value>
+            <value>
+                <fullName>14D-9</fullName>
+                <default>false</default>
+                <label>14D-9</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

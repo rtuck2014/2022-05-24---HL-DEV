@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Final_Reversal_Being_Processed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates if the final reversal process has been initiated</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates if the final reversal process has been initiated</inlineHelpText>
+    <label>Final Reversal Being Processed</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

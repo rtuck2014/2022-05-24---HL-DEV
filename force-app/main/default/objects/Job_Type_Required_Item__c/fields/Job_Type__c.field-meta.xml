@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Job_Type__c</fullName>
+    <description>Related Job Type Record</description>
+    <externalId>false</externalId>
+    <label>Job Type</label>
+    <referenceTo>Job_Type__c</referenceTo>
+    <relationshipLabel>Job Type Required Items</relationshipLabel>
+    <relationshipName>Job_Type_Required_Documents</relationshipName>
+    <relationshipOrder>1</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

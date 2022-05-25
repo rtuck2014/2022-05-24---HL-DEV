@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Monthly_Revenue_Process_Control__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Related Monthly Revenue Process Control Record</description>
+    <externalId>false</externalId>
+    <label>Monthly Revenue Process Control</label>
+    <referenceTo>Monthly_Revenue_Process_Control__c</referenceTo>
+    <relationshipLabel>Revenue Accruals</relationshipLabel>
+    <relationshipName>Revenue_Accruals</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

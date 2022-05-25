@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Archpoint_Status__c</fullName>
+    <description>IF( Final_Bidder__c = True, &quot;Final Bidder&quot;, 
+IF( Not_Invited_To_Next_Round__c = True, &quot;Not Invited To Next Round&quot;, 
+IF( Offer_Made__c = True, &quot;Offer Made&quot;, 
+IF( Declined__c = True, &quot;Declined&quot;, 
+IF( On_Hold__c = True, &quot;On Hold&quot;, 
+IF( In_Person_Mgmt_Presentation__c = True, &quot;In Person Mgmt Presentation&quot;, 
+IF( In_Person_Mtg_Req__c = True, &quot;In Person Mtg Req&quot;, 
+IF( Web_Presentation_Complete__c = True, &quot;Web Presentation Complete&quot;, 
+IF( Web_Presentation_Req__c = True, &quot;Web Presentation Req&quot;, 
+IF( Exec_Summ_Sent__c = True, &quot;Exec Summ Sent&quot;, 
+IF( Exec_Summ_Req__c = True, &quot;Exec Summ Req&quot;, 
+IF( NDA_Signed__c = True, &quot;NDA Signed&quot;, 
+IF( NDA_Negotiating__c = True, &quot;NDA Negotiating&quot;, 
+IF( NDA_Requested_Sent__c = True, &quot;NDA Requested / Sent&quot;, 
+IF( Teaser_Sent__c = True, &quot;Teaser Sent&quot;, 
+IF( Initial_Contact__c = True, &quot;Initial Contact&quot;, 
+&quot;Preliminary&quot; 
+))))))))))))))))</description>
+    <externalId>false</externalId>
+    <label>Archpoint Status</label>
+    <length>100</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

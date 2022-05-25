@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>lmscons__Question__c.lmscons__Quiz_Statistics__r$lmscons__Learner__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Question__c$lmscons__Question__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Question__c.lmscons__Quiz_Statistics__r$lmscons__Long_Answer__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Question__c.lmscons__Quiz_Statistics__r$lmscons__Answer__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Question__c.lmscons__Quiz_Statistics__r$lmscons__Quiz__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>All responses to the 2016 Insider Trading Knowledge Assessment</description>
+    <filter>
+        <criteriaItems>
+            <column>lmscons__Question__c.lmscons__Quiz_Statistics__r$lmscons__Quiz__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Compliance Knowledge Assessment - Insider Trading/Personal Inv (2016)</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>ITPIPS KNWL - ALL (2016)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Quiz_Statistics_HL_CFS__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>lmscons__Question__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_ClientSubject_Ownership_on_Chang</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISCHANGED( Client__c ) &amp;&amp;  ISPICKVAL(Client__r.Ownership,&quot;&quot;) ||
+ISCHANGED( Subject__c ) &amp;&amp; ISPICKVAL(Subject__r.Ownership,&quot;&quot;)</errorConditionFormula>
+    <errorMessage>Client or Subject Ownership required. Please add an Ownership value before making the edit on the Engagement.</errorMessage>
+</ValidationRule>

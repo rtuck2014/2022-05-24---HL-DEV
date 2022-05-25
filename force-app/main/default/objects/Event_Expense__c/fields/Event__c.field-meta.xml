@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>RFC#2547 - created new field as part of CF Expense Request functionality</description>
+    <externalId>false</externalId>
+    <label>Event</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Opportunity__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>HL Internal Opportunity, HL Internal Opportunity</value>
+        </filterItems>
+        <filterItems>
+            <field>Opportunity__c.Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Opportunity__c</referenceTo>
+    <relationshipLabel>HL Expense Requests</relationshipLabel>
+    <relationshipName>HL_Expense_Requests</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

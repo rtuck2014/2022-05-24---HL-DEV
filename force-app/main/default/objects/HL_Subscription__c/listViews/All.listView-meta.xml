@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Distribution_List__c</columns>
+    <columns>Product_Type__c</columns>
+    <columns>Subscriber__c</columns>
+    <columns>HL_Report_Link__c</columns>
+    <columns>Active__c</columns>
+    <columns>Line_of_Business__c</columns>
+    <columns>Office__c</columns>
+    <columns>Industry_Group__c</columns>
+    <columns>Industry_Umbrella__c</columns>
+    <columns>Subject__c</columns>
+    <columns>Custom_Sort_Order__c</columns>
+    <columns>Subscription_Type__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>OBJECT_ID</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sortablegrid__All_Rows__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Retrieve all rows - including archived and deleted records. Generally leave as false unless there&apos;s a specific need.</inlineHelpText>
+    <label>All Rows</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

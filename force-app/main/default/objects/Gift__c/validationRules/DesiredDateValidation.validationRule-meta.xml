@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DesiredDateValidation</fullName>
+    <active>false</active>
+    <description>Please enter a date that is no more than one year from today. Dates that are more than a year in the future are not valid.</description>
+    <errorConditionFormula>YEAR(Desired_Date__c) &gt;  (YEAR(TODAY()) + 1)</errorConditionFormula>
+    <errorMessage>Please enter a date that is no more than one year from today. Dates that are more than a year in the future are not valid.</errorMessage>
+</ValidationRule>

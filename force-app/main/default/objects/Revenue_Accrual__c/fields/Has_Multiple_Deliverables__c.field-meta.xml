@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_Multiple_Deliverables__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates if this engagement has multiple deliverables. If this is true, the accrual can be made according to the stage.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates if this engagement has multiple deliverables. If this is true, the accrual can be made according to the stage.</inlineHelpText>
+    <label>Has Multiple Deliverables</label>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

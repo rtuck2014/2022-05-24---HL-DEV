@@ -1,0 +1,29 @@
+<apex:page standardController="CoverageSector__c" extensions="HL_CoverageSectorWrapper" showHeader="true" sidebar="true" lightningStyleSheets="true">
+    <apex:includeLightning />    
+    <div id="lightningDiv"/>
+    <apex:form >
+        <apex:actionFunction name="doRedirect" action="{!handleRedirect}" rerender="">
+            <apex:param name="newCoverageTeamId" assignTo="{!newCoverageTeamId}" value=""/>
+        </apex:actionFunction>
+        <apex:actionFunction name="doCancel" action="{!cancel}" rerender="">        
+        </apex:actionFunction>
+        <apex:inputHidden value="{!CoverageSector__c.IsMain__c}"/>
+    </apex:form>
+    <script>        
+        $Lightning.use("c:HL_CoverageTeamApp", function(){
+            $Lightning.createComponent("c:hlCoverageSector",
+            {
+                recordId : '{!CoverageSector__c.CoverageTeam__c}',
+                coverageSectorId : '{!CoverageSector__c}',
+                coverageTeamTypeId : '{!coverageTeamType}',
+                isMain : {!isMain},
+                "doRedirect" : doRedirect,
+                "doCancel" : doCancel
+            },
+            "lightningDiv",
+            function(cmp){
+                
+            });
+        });
+    </script>
+</apex:page>

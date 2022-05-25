@@ -1,0 +1,185 @@
+<apex:page id="thePage" controller="SL_GiftPreApprovalController" lightningStylesheets="true">
+<apex:slds />
+    <apex:form id="theForm">
+        <div id="divDebugInfo" style="display:none;">{!WhichController},{!CloneId},{!IsClone},{!Result}</div>
+        <apex:pageMessages />
+        <apex:pageBlock id="thePageBlock" title="Client Gift Pre-approval" mode="edit">       
+            <apex:pageBlockSection id="thePageBlockSection" collapsible="false" columns="2" showHeader="true" title="Gift Billing Details">   
+                <apex:inputField id="txtGiftType" value="{!Gift.Gift_Type__c}" required="true" />
+                <apex:inputField id="txtSubmittedFor" value="{!Gift.Submitted_For__c}" required="true" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection collapsible="false" columns="2" showHeader="true" title="Gift Details">
+                <apex:inputField id="txtGiftName" value="{!Gift.Name}" required="true" />
+                <apex:inputField id="txtHlRelationship" value="{!Gift.HL_Relationship__c}"  required="true"/>
+                <apex:inputField id="txtGiftValue" value="{!Gift.Gift_Value__c}" required="true" styleClass="numeric-short"/>
+                <apex:inputField id="txtDesiredDate" value="{!Gift.Desired_Date__c}" required="true"/>
+                <apex:inputField id="ddlCurrency" value="{!Gift.Currency__c}" required="true" />
+                <apex:inputField id="txtVendor" value="{!Gift.Vendor__c}" required="true"/>
+                <apex:inputCheckbox id="isDistributed" value="{!Gift.Gift_Value_Distributed__c}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection id="aSection" collapsible="false" columns="1" showHeader="false">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Reason For Gift <br/> (Max-limit : 2000)</apex:outputLabel>
+                    <apex:outputPanel >
+                        <div class="requiredInput">
+                            <div class="requiredBlock"></div>
+                            <apex:inputTextarea id="txtReason" html-maxlength="2000" value="{!Gift.Reason_For_Gift__c}" rows="5" cols="120" required="true"/>                
+                        </div>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>        
+            <apex:pageBlockSection collapsible="false" columns="1" showHeader="true" title="Gift Recipient(s)">
+            </apex:pageBlockSection>    
+            <apex:pageBlockSection collapsible="false" columns="1">   
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Company Name:</apex:outputLabel>
+                    <apex:outputPanel > 
+                        <apex:inputText id="searchTextAccount" value="{!SearchTextAccount}" />
+                        <apex:selectList id="searchOptionsAccount" size="1" value="{!SearchOptionAccount}">
+                            <apex:selectOptions value="{!SearchOptions}" />
+                        </apex:selectList>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Contact Name:</apex:outputLabel>
+                    <apex:outputPanel >
+                        <apex:inputText id="searchTextContact" value="{!SearchTextContact}" />
+                        <apex:selectList id="searchOptionsContact" size="1" value="{!SearchOptionContact}">
+                            <apex:selectOptions value="{!SearchOptions}" />
+                        </apex:selectList> 
+                        <apex:commandButton value="Search" action="{!SearchRecipients}"/>
+                    </apex:outputPanel> 
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >    
+                    <apex:outputLabel id="lblSearchMessage" >{!SearchMessage}</apex:outputLabel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>    
+            <apex:pageBlockSection columns="2">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel />
+                        
+                    <apex:outputLabel style="font-weight: bold; font-size: 14px; width: 100%; text-align: center">Available Recipient(s)</apex:outputLabel>                    
+                </apex:pageBlockSectionItem>                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel />
+                    <apex:outputLabel style="font-weight: bold; font-size: 14px; width: 100%; text-align: center">Selected Recipient(s)</apex:outputLabel>                    
+                </apex:pageBlockSectionItem>                                
+                <apex:outputPanel layout="block" style="width:100%; overflow:auto; height:200px; border: 1px solid #DADADA">
+                    <apex:pageBlockSectionItem dataStyle="width:50%" labelStyle="width:20%">
+                        <apex:pageBlockTable value="{!AllRecipientsList}" var="r" id="table">
+                            <apex:column >
+                                <apex:inputCheckbox value="{!r.selected}"/>
+                            </apex:column>
+                            <apex:column value="{!r.recipient.Name}">
+                                <apex:facet name="header">Recipient</apex:facet>
+                            </apex:column>
+                            <apex:column value="{!r.recipient.Account.Name}">
+                                <apex:facet name="header">Company Name</apex:facet>
+                            </apex:column>
+                            <apex:column style="{!if(r.WasOver,'font-weight: bold; color: #FF0000', 'font-weight: normal; color: #000000')}">
+                                <apex:facet name="header">Current Gift Amt YTD</apex:facet>
+                                <apex:outputText value="{0, number, USD 00.0}">
+                                    <apex:param value="{!r.GiftPrevYTD}" />
+                                </apex:outputText>
+                            </apex:column>
+                            <apex:column style="{!if(r.NextYearWasOver,'font-weight: bold; color: #FF0000', 'font-weight: normal; color: #000000')}">
+                                <apex:facet name="header">Next Year Gift Amt</apex:facet>
+                                <apex:outputText value="{0, number, USD 00.0}">
+                                    <apex:param value="{!r.GiftPrevNextYearYTD}" />
+                                </apex:outputText>
+                            </apex:column>
+                        </apex:pageBlockTable>
+                    </apex:pageBlockSectionItem>  
+                </apex:outputPanel>
+                <apex:outputPanel layout="block" style="width:100%; overflow:auto; height:200px; border: 1px solid #DADADA">
+                    <apex:pageBlockTable value="{!SelRecipientsList}" var="r" id="table2">
+                        <apex:column >
+                            <apex:inputCheckbox value="{!r.selected}"/>
+                        </apex:column>
+                        <apex:column value="{!r.recipient.Name}">
+                            <apex:facet name="header">Recipient</apex:facet>
+                        </apex:column>
+                        <apex:column value="{!r.recipient.Account.Name}">
+                            <apex:facet name="header">Company Name</apex:facet>
+                        </apex:column>
+                        <apex:column style="{!if(r.IsOver,'font-weight: bold; color: #FF0000', 'font-weight: normal; color: #000000')}">
+                            <apex:facet name="header">New Gift Amt YTD</apex:facet>
+                            <apex:outputText value="{0, number, USD 00.0}">
+                                <apex:param value="{!r.GiftYTD}" />
+                            </apex:outputText>
+                        </apex:column>
+                         <apex:column style="{!if(r.NextYearIsOver,'font-weight: bold; color: #FF0000', 'font-weight: normal; color: #000000')}">
+                            <apex:facet name="header">New Gift Total Next Year</apex:facet>
+                            <apex:outputText value="{0, number, USD 00.0}">
+                                <apex:param value="{!r.GiftNextYearYTD}" />
+                            </apex:outputText>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem dataStyle="width:50%" labelStyle="width:20%">
+                    <apex:outputLabel />
+                    <apex:commandButton value="Add Recipients" action="{!AddSelectedRecipients}"/>
+                </apex:pageBlockSectionItem>  
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton value="Remove Recipients" action="{!RemoveSelectedRecipients}"/>
+                </apex:pageBlockSectionItem>  
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Submit Gift Request" action="{!SaveGifts}" />
+                <apex:commandButton value="Cancel" action="{!Cancel}" immediate="true" />
+                <apex:commandButton value="Refresh" action="{!RemoveSelectedRecipients}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_Shared.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <script type="text/javascript">
+        $j = jQuery.noConflict();
+        $j(document).ready(function () {
+            DocumentReady();
+        });
+        
+        function DocumentReady() {
+            $j("input.numeric-short, input.numeric-medium, input.numeric-long").keydown(function(event) {maskKeys2(event);});
+            if($j('.errorM3 ul').children().last())
+            {                    
+               $j('.errorM3 ul').children().last().text('');
+               $j('.errorM3 ul').children().last().text('Reason For Gift : You must enter a value');                    
+            }
+        }  
+        
+        function maskKeys2(event) {
+    var c = event.keyCode
+    var ctrlDown = event.ctrlKey || event.metaKey // Mac support
+    //window.status = event.keyCode + ctrlDown;
+
+    if (
+    // Allow <DEL>, <BACKSPACE>, <TAB>, <ESC>, <ENTER>, etc...
+            (event.keyCode >= 8 && event.keyCode <= 46)
+
+    // Allow <.>, <->, <->, <.> (both keyboard and numpad)
+            || event.keyCode === 190 
+            || event.keyCode === 109 || event.keyCode === 110
+
+    // Allow CTRL+ A, C, X, V
+            || (event.keyCode === 65 && event.ctrlKey === true)
+            || (event.keyCode === 67 && event.ctrlKey === true)
+            || (event.keyCode === 86 && event.ctrlKey === true)
+            || (event.keyCode === 88 && event.ctrlKey === true)
+        ) {
+        return;
+    }
+    else {
+        // Ensure that it is a number and stop the keypress
+        if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
+            event.preventDefault();
+        }
+    }
+}
+       
+    </script> 
+      
+</apex:page>

@@ -1,0 +1,101 @@
+<apex:page standardController="Engagement__c" extensions="HL_RevenueProjectionController" docType="html-5.0" id="page" showHeader="true" sidebar="true" standardStylesheets="true" lightningStylesheets="true">
+    <script type="text/javascript">
+    //Move this to JQuery if you can
+    window.onload = function doLoad() {
+        disable();
+    }
+    
+    function disable() {
+        var year;
+        var month;
+        var currentDate = new Date();
+        var currentYearMonth = currentDate.getFullYear() + '0' + currentDate.getMonth() + 1;
+        for(var i=0;i<24;i++){
+            if(document.getElementById('page:RevenueProjectionForm:revenueTablePageBlock:revenueTable'+':'+i+':year') != null){
+                var year = document.getElementById('page:RevenueProjectionForm:revenueTablePageBlock:revenueTable'+':'+i+':year').innerHTML;
+                var month = document.getElementById('page:RevenueProjectionForm:revenueTablePageBlock:revenueTable'+':'+i+':month').innerHTML;
+                var projectedMonthlyFee = document.getElementById('page:RevenueProjectionForm:revenueTablePageBlock:revenueTable'+':'+i+':pmf')
+                var projectedTransactionFee = document.getElementById('page:RevenueProjectionForm:revenueTablePageBlock:revenueTable'+':'+i+':ptf')
+                var totalProjectedFee = document.getElementById('page:RevenueProjectionForm:revenueTablePageBlock:revenueTable'+':'+i+':tpf')
+                var archive = document.getElementById('page:RevenueProjectionForm:revenueTablePageBlock:revenueTable'+':'+i+':archive')
+                var clear = document.getElementById('page:RevenueProjectionForm:revenueTablePageBlock:revenueTable'+':'+i+':clear')
+                }
+            //Update this logic to disable based on whether Archive is checked or not instead of by date
+            if(year != null && month != null){
+                if(year+month < currentYearMonth){
+                    projectedMonthlyFee.disabled = true;
+                    projectedTransactionFee.disabled = true;
+                    totalProjectedFee.disabled = true;
+                    archive.disabled = true;
+                    clear.setAttribute("class","disabled");
+                }
+            }
+        }
+    }
+    </script>
+    <style>
+        a.disabled {
+        pointer-events: none;
+        cursor: default;
+        }
+    </style>
+    <apex:form id="RevenueProjectionForm">
+        <!-- Change error message so it doesn't move the page -->
+        <apex:pageMessages id="ap" />
+        <apex:actionStatus id="Save-Status" startText="Saving..." />
+        <apex:pageBlock title="Revenue Projection Mass Edit Page" id="RevenueProjectionBlock">
+            <apex:outputLabel value="Starting Month " style="font-weight: bold" for="monthOptions" />&nbsp;&nbsp;
+            <apex:selectList id="monthOptions" value="{!month}" size="1" >
+                <apex:selectOptions value="{!monthList}" />
+            </apex:selectList>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <apex:outputLabel value="Year" style="font-weight: bold" for="yearOptions" />&nbsp;&nbsp;
+            <apex:selectList id="yearOptions" value="{!year}" size="1">
+                <apex:selectOptions value="{!yearList}" />
+            </apex:selectList>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <apex:outputLabel value="Number of Months" style="font-weight:  bold" for="numberInput" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <apex:input id="numberInput" value="{!numberOfMonths}" type="number" html-min="1" html-max="24" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <apex:commandButton action="{!createRows}" value="Submit" rerender="ap,RevenueProjectionForm" onComplete="disable();"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></br><br></br>
+    <apex:outputPanel >
+        <apex:outputText value="All revenue displayed in {!currencyISO}" style="font-weight: bold;" />
+    </apex:outputPanel>
+</apex:pageBlock>
+<apex:pageBlock id="revenueTablePageBlock">
+    <apex:pageBlocktable var="rp" value="{!revenueProjectionList}" id="revenueTable" >
+        <apex:variable value="{!0}" var="cnt" />
+        <apex:column headerValue="Month" >
+            <apex:outputField value="{!rp.Month__c}" id="month" />
+        </apex:column>
+        <apex:column headerValue="Year" >
+            <apex:outputField value="{!rp.Year__c}" id="year" />
+        </apex:column>
+        <apex:column headerValue="Projected Monthly Fee" >
+            <apex:inputField value="{!rp.Projected_Monthly_Fee__c }" label="Projected Monthly Fee" id="pmf" styleClass="disableClass"/>
+        </apex:column>
+        <apex:column headerValue="Projected Transaction Fee" >
+            <apex:inputField value="{!rp.Projected_Transaction_Fee__c }" label="Projected Transaction Fee" id="ptf" styleClass="disableClass"/>
+        </apex:column>
+        <apex:column headerValue="Total Projected Fee" >
+            <apex:inputField value="{!rp.Total__c }" label="Total Projected Fee" id="tpf" styleClass="disableClass"/>
+        </apex:column>
+        <apex:column headerValue="Archive?" >
+            <apex:inputField value="{!rp.Archive__C }" label="Archived?" id="archive" />
+        </apex:column>
+        <apex:column headerValue="Action">
+            <apex:commandLink value="Clear" action="{!clear}" immediate="true" reRender="ap,revenueTable" id="clear" onComplete="disable();">
+                <apex:param name="index" value="{!cnt}"/>
+            </apex:commandLink>
+            <apex:variable var="cnt" value="{!cnt+1}" />
+        </apex:column>
+    </apex:pageBlocktable>
+    <table style="width: 100%">
+        <tr>
+            <td align="center">
+                <apex:commandButton value="Add Row" action="{!addRows}" rerender="ap,revenueTable" onComplete="disable();" />
+                <apex:commandButton value="Save" action="{!save}" rerender="ap,revenueTable" status="Save-Status" onComplete="disable();"/>
+                <apex:commandButton action="{!cancel}" value="Return to Engagement" />
+            </td>
+        </tr>
+    </table>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

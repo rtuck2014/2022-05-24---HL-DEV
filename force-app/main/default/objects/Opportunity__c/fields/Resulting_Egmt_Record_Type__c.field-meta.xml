@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Resulting_Egmt_Record_Type__c</fullName>
+    <description>Used to map, based on the job type of the opportunity, the resulting converted Engagement&apos;s recordtype.  The record type&apos;s ID is stored in this field.</description>
+    <externalId>false</externalId>
+    <formula>Related_Job_Type__r.Engagement_Record_Type__c</formula>
+    <inlineHelpText>Used to map, based on the job type of the opportunity, the resulting converted Engagement&apos;s recordtype.  The record type&apos;s ID is stored in this field.</inlineHelpText>
+    <label>Resulting Egmt Record Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

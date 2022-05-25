@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lock_Fees_and_Percentage_Completion</fullName>
+    <active>false</active>
+    <description>Prevent the update of Total Estimated Fee, Period Accrued Fee and/or Percent Complete on Engagement, if no record in Monthly Revenue Process Control is marked as IsCurrent</description>
+    <errorConditionFormula>$ObjectType.Monthly_Revenue_Process_Control__c.Fields.Current_Month__c = MONTH ( TODAY() ) &amp;&amp;
+
+ $ObjectType.Monthly_Revenue_Process_Control__c.Fields.Current_Year__c  = YEAR ( TODAY() ) &amp;&amp;
+
+ISPICKVAL( Line_of_Business__c, &quot;FVA&quot; )
+&amp;&amp;
+(
+ ISCHANGED( Stage__c ) ||  ISCHANGED( Total_Estimated_Fee__c  ) ||  ISCHANGED(  Period_Accrued_Fees__c ))</errorConditionFormula>
+    <errorMessage>Cannot change Stage, Period Accrued Fees or Total Estimated fees when the current Monthly Revenue Process has not been set.</errorMessage>
+</ValidationRule>

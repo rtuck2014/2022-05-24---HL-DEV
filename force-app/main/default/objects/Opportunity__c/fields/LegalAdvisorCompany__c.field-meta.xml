@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LegalAdvisorCompany__c</fullName>
+    <description>Opportunity Contact with Role = “Legal Advisor to Company/Debtor” is required. However, if the Opportunity does not have a contact to assign that role, then user will need to check the new field “No Legal Advisor to Company/Debtor” on the opportunity page, negating the requirement.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If Yes, add the contacts under opp contacts and select the role Legal Advisor to Company/Debtor.</inlineHelpText>
+    <label>Legal Advisor to Company</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+            <value>
+                <fullName>No</fullName>
+                <default>false</default>
+                <label>No</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

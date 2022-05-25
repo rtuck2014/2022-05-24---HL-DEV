@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Final_Report_Email</fullName>
+    <columns>NAME</columns>
+    <columns>Distribution_List__c</columns>
+    <columns>Active__c</columns>
+    <columns>Subscriber__c</columns>
+    <columns>Industry_Group__c</columns>
+    <columns>Industry_Umbrella__c</columns>
+    <columns>Line_of_Business__c</columns>
+    <columns>Office__c</columns>
+    <columns>Ownership__c</columns>
+    <columns>Product_Type__c</columns>
+    <columns>Custom_Sort_Order__c</columns>
+    <columns>Sender__c</columns>
+    <columns>Subject__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Distribution_List__c</field>
+        <operation>equals</operation>
+        <value>Final Report Email</value>
+    </filters>
+    <label>Final Report Email</label>
+</ListView>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pi__first_search_term__c</fullName>
+    <deprecated>false</deprecated>
+    <description>If a Prospects first touch was the result of a search, the field holds the term that was searched on.</description>
+    <externalId>false</externalId>
+    <label>Pardot First Referrer Query</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

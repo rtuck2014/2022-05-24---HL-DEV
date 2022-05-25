@@ -1,0 +1,333 @@
+<apex:page Controller="HL_AddPositionsController" tabStyle="Opportunity__c" lightningStylesheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}" />
+
+    <apex:pageMessage rendered="{!!isValidPVUser}" summary="You have insufficient privileges to create Position under this Valuation Period" severity="info" strength="3" >
+        <apex:form >
+            <apex:commandButton value="Back To Valuation Period" action="{!Cancel}" />
+        </apex:form>
+    </apex:pageMessage>
+    <apex:form id="frmId" rendered="{!isValidPVUser}">
+        <apex:actionFunction action="{!next}" name="nextAction"
+            reRender="RelatedRecordPanelId">
+            <!-- <apex:param value="" assignTo="{!SelectedPVId}" name="selectedIdonNext" /> -->
+        </apex:actionFunction>
+        <apex:actionFunction action="{!previous}" name="previousAction"
+            reRender="RelatedRecordPanelId">
+            <!-- <apex:param value="" assignTo="{!SelectedPVId}" name="selectedIdonPrev" /> -->
+        </apex:actionFunction>
+        <apex:actionFunction action="{!first}" name="firstAction"
+            reRender="RelatedRecordPanelId">
+            <!-- <apex:param value="" assignTo="{!SelectedPVId}" name="selectedIdonfirst" /> -->
+        </apex:actionFunction>
+        <apex:actionFunction action="{!last}" name="lastAction"
+            reRender="RelatedRecordPanelId">
+            <!-- <apex:param value="" assignTo="{!SelectedPVId}" name="selectedIdonlast" /> -->
+        </apex:actionFunction>
+        <apex:actionFunction action="{!SearchRelatedPositions}"
+            name="SearchPositions" reRender="RelatedRecordPanelId" oncomplete="j$.unblockUI();" >
+            <apex:param value="" assignTo="{!SelectedPVId}"
+                name="selectedIdonSubmit" />
+        </apex:actionFunction>
+        <apex:actionFunction action="{!goCurPageNumber}"
+                        name="goCurPageNumber" rerender="mainPanel2" status="MCSub">
+            <apex:param name="pageNumber" assignTo="{!CurPageNumber}" value="" />
+        </apex:actionFunction>
+        <apex:actionFunction action="{!SavePositions}" name="savePositions" onComplete="j$.unblockUI();ConfirmationJS();"
+            reRender="RelatedRecordPanelId" />
+        <apex:actionFunction action="{!BackToVP}" name="save_BackToVP" onComplete="j$.unblockUI();"
+            reRender="RelatedRecordPanelId" />
+        <apex:actionFunction name="savePageSize" action="{!doSavePageSize}"
+            rerender="RelatedRecordPanelId" status="MCSub">
+            <apex:param name="curPageSize" assignTo="{!CurPageSize}" value="" />
+            <apex:param name="curPageNumber" assignTo="{!CurPageNumber}"
+                value="0" />
+        </apex:actionFunction>
+        <!-- <apex:outputlabel value="Please select clone option:" />
+        <apex:selectList value="{!SelectedOption}"
+            title="Choose a clone Option" size="1">
+            <apex:selectOptions value="{!cloneOptions}" />
+        </apex:selectList>
+        <apex:commandButton value="Search Valuation Periods" action="{!SearchRelatedData}"
+            reRender="frmId" />-->
+        <input type="hidden" name="selectedItemholder"
+            id="selectedItemholderId" />
+         
+        <apex:PageBlock Id="RelatedRecordPanelId">
+           <apex:pageMessage summary="{!$Label.HL_No_VP_Available}" rendered="{!IF(AND(!isOnNextScreen , RelatedDataList.size = 0), true, false )}" severity="Info" strength="3" >
+                <apex:commandButton value="Back" action="{!backToVPScreen}" onclick="blockme();" onComplete="j$.unblockUI();"
+                        rerender="RelatedRecordPanelId" />
+            </apex:pageMessage>         
+            <apex:pageMessage summary="{!$Label.Position_Already_Selected}" rendered="{!IF(AND(isOnNextScreen ,RelatedPositionList.size = 0), true, false )}" severity="Info" strength="3" >
+                <apex:commandButton value="Back" action="{!backToVPScreen}" onclick="blockme();" onComplete="j$.unblockUI();"
+                        rerender="RelatedRecordPanelId" />
+            </apex:pageMessage>
+            <apex:pageMessages />
+            <script>
+                //var originalselectedId = '';
+                j$ = jQuery.noConflict();
+                j$(function(){
+                    j$('input[type="radio"]').each(function(){
+                        //alert('--'+document.getElementById("selectedItemholderId").value);
+                        if(j$(this).val() == document.getElementById("selectedItemholderId").value) {
+                            j$(this).attr('checked', true); 
+                        }   
+                    });
+                });
+                
+                function blockme() {
+                    j$.blockUI({ css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+                        } }); 
+            
+                  }
+            
+                j$(function(){
+                    //alert('--ok---');
+                    j$('input[type="radio"]').click(function(){
+                        //alert('--inside ---');
+                        if (j$(this).is(':checked'))
+                        {
+                            //alert('--inside 2---');
+                            originalselectedId = j$(this).val(); 
+                            if(j$(this).val() != '{!$Label.HL_PositionWithTeamMember}' && j$(this).val() != '{!$Label.HL_PositionWithoutTeamMember}')
+                                document.getElementById("selectedItemholderId").value = j$(this).val();
+                            //alert('--inside after---'+originalselectedId);
+                        }
+                    });
+                });
+            
+                function next() {
+                    //alert('--in next--');
+                    //nextAction(refreshRadioSelection());
+                    nextAction();        
+                }
+                
+                function previous() {
+                    //previousAction(refreshRadioSelection());        
+                    previousAction();
+                }
+                
+                function first() {
+                    //firstAction(refreshRadioSelection());       
+                    firstAction();
+                }
+                
+                function last() {
+                    //lastAction(refreshRadioSelection());        
+                    lastAction();
+                }
+                
+                /*function refreshRadioSelection() {
+                    var mySelectedIdvar = '{!SelectedPVId}';
+                    j$(function(){
+                        j$('input[type="radio"]').each(function(){
+                            if (j$(this).is(':checked')) {
+                                mySelectedIdvar = j$(this).val();
+                            }   
+                        });
+                    }); 
+                    return  mySelectedIdvar;
+                }*/
+                
+                
+                function ValidateAndSearchVPs() {  
+                    var originalselectedId = document.getElementById("selectedItemholderId").value;
+                    //alert(originalselectedId+'--validate---'+'{!SelectedPVId}');
+                    if(originalselectedId == '' && '{!SelectedPVId}' == ''){ 
+                      alert('Please select an Valuation Period');
+                        return false;
+                    }
+                    else { 
+                        blockme();
+                        SearchPositions(originalselectedId);
+                    }
+                }
+               
+                function showMsg(selectedOptionforTM) {
+                    if(selectedOptionforTM == '{!$Label.HL_PositionWithTeamMember}')
+                        alert('{!$Label.Active_Team_Member_Can_be_Imported}');
+                }                               
+                function Save() {
+                    if(j$(".selectionCheckbox:checked").length == 0){
+                          alert('Please select at least one positions.');     
+                          j$.unblockUI();                     
+                       }
+                       else {
+                        savePositions();
+                       }                    
+                }
+                
+                function Save_Back() {
+                    if(j$(".selectionCheckbox:checked").length == 0){
+                          alert('Please select at least one positions.');     
+                          j$.unblockUI();                     
+                       }
+                       else {
+                        save_BackToVP();
+                       }  
+                }
+                
+                function onlyNumbers(evt, val)
+                {
+                    var e = (typeof(event)!="undefined")?(event):(evt); // for trans-browser compatibility
+                    var charCode = e.which || e.keyCode;
+                
+                    if (charCode==13)
+                    {
+                        if ((val)!=({!pageNumber})){goCurPageNumber(val);} 
+                        return false;
+                    }
+                    if (charCode > 31 && (charCode < 48 || charCode > 57)){ return false;}
+                    if (e.shiftkey){ return false;}
+                
+                    return true;
+                } 
+            </script>
+
+            <apex:pageBlockSection rendered="{!IF(RelatedDataList.size>0, true, false )}" title="Related Valuation Portfolios" columns="1" >
+                <apex:outputPanel >
+                    <apex:pageBlockTable value="{!RelatedDataList}" var="RelatedData"
+                        id="pbtableId" rows="{!CurPageSize}" columnswidth="20px,200px">
+                        <apex:column >
+                            <apex:facet name="header">Select Existing Valuation Period</apex:facet>
+                            <!-- <apex:inputCheckbox value="{!RelatedData.isSelected}" /> -->
+                            <input type="radio" name="myselection"
+                                value="{!RelatedData.OppVPRecord.Id}" />
+                        </apex:column>
+                        <!-- This is how we access the contact values within our cContact container/wrapper -->
+                        <apex:column value="{!RelatedData.OppVPRecord.Name}" />
+                    </apex:pageBlockTable>
+
+
+                    <span style="display: inline; width: 25px;"> <apex:commandLink value="First" action="{!first}" rerender="RelatedRecordPanelId"
+                            rendered="{!IF(pageNumber==1, false, true)}" status="MCSub" /> <!-- <apex:outputpanel rendered="{!IF(pageNumber==1, false, true)}" >
+                                    <a id="firstLinkId" href="#" onclick="first()" >First</a>
+                                    </apex:outputpanel> --> <apex:outputLabel value="First" rendered="{!IF(pageNumber==1, true, false)}" />
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                    <span style="display: inline; width: 25px;"> <apex:commandLink value="Prev" action="{!previous}" rerender="RelatedRecordPanelId"
+                            rendered="{!IF(pageNumber==1, false, true)}" status="MCSub" /> <!-- <apex:outputpanel rendered="{!IF(pageNumber==1, false, true)}">
+                                    <a id="prevLinkId" href="#" onclick="previous()" >Prev</a>
+                                    </apex:outputpanel> --> <apex:outputLabel value="Prev" rendered="{!IF(pageNumber==1, true, false)}" />
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                    <!-- <span style="display: inline; width: 25px;"> <input
+                        type="text" value="{!pageNumber}" styleClass="pageInput" size="2"
+                        onkeypress="return onlyNumbers(event, this.value);"
+                        onblur="if ((this.value)!=({!pageNumber})) { goCurPageNumber(this.value);}" />
+                        <apex:outputLabel value=" / {!pageSize}" />
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span> -->
+
+                    <span style="display: inline; width: 25px;"> <apex:commandLink value="Next" action="{!next}" rerender="RelatedRecordPanelId"
+                            rendered="{!IF(pageNumber==pageSize, false, true)}"
+                            status="MCSub" /> <!-- <apex:outputpanel rendered="{!IF(pageNumber==pageSize, false, true)}">
+                                    <a id="nextLikId" href="#" onclick="next()" >Next</a>
+                                    </apex:outputpanel> --> <apex:outputLabel value="Next" rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                    <span style="display: inline; width: 25px;"> <apex:commandLink value="Last" action="{!last}" rerender="RelatedRecordPanelId"
+                            rendered="{!IF(pageNumber==pageSize, false, true)}"
+                            status="MCSub" />
+                        <!--  <apex:outputpanel rendered="{!IF(pageNumber==pageSize, false, true)}">
+                                    <a id="lastLikId" href="#" onclick="last()" >Last</a>
+                                    </apex:outputpanel> --> <apex:outputLabel value="Last" rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                    <span style="display: inline; width: 125px;"> Qty: &nbsp; <apex:selectList value="{!CurPageSize}" multiselect="false" size="1"
+                            onchange="savePageSize(this.value);">
+                            <apex:selectOptions value="{!pageSizeValues}" />
+                        </apex:selectList>
+                    </span>
+                    <apex:commandButton value="Search Valuation Period for Positions"  
+                        onclick="ValidateAndSearchVPs(); return false;" rerender="dummyPanel" />
+                    <apex:commandButton value="Back To Valuation Period" action="{!Cancel}" onclick="blockme();" rerender="dummyPanel" />
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+            <!-- ---------------------------------------------------------------------------------------------------------------------------- -->
+            
+            <apex:pageBlockSection rendered="{!IF(RelatedPositionList.size>0, true, false )}" title="Related Positions" columns="1">
+                <apex:outputPanel >
+                    <apex:selectRadio value="{!SelectedImportOption}" > <!--onclick="showMsg(this.value);">-->
+                        <apex:selectOptions value="{!ImportOptions}"/>
+                    </apex:selectRadio>       
+                    <apex:pageBlockTable value="{!RelatedPositionList}"
+                        var="RelatedPosData" id="pbtableId2" rows="{!CurPageSize}" columnswidth="20px,50px,50px">
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:inputCheckbox id="checkAll"
+                                    onClick="jQuery('.selectionCheckbox').attr('checked', this.checked);" />
+                            </apex:facet>
+                            <apex:inputCheckbox styleClass="selectionCheckbox"
+                                id="myCheckbox" value="{!RelatedPosData.isSelected}" />
+                        </apex:column>
+                        <!-- This is how we access the contact values within our cContact container/wrapper -->
+                        <apex:column value="{!RelatedPosData.OppVPPositionRecord.Name}" />
+                        <apex:column value="{!RelatedPosData.OppVPPositionRecord.Company__r.Name}" />                                                
+                    </apex:pageBlockTable>
+
+                    <span style="display: inline; width: 25px;"> <apex:commandLink value="First" action="{!first}" rerender="RelatedRecordPanelId"
+                            rendered="{!IF(pageNumber==1, false, true)}" status="MCSub" /> <apex:outputLabel value="First" rendered="{!IF(pageNumber==1, true, false)}" />
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                    <span style="display: inline; width: 25px;"> <apex:commandLink value="Prev" action="{!previous}" rerender="RelatedRecordPanelId"
+                            rendered="{!IF(pageNumber==1, false, true)}" status="MCSub" /> <apex:outputLabel value="Prev" rendered="{!IF(pageNumber==1, true, false)}" />
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                    <!-- <span style="display: inline; width: 25px;"> <input
+                        type="text" value="{!pageNumber}" styleClass="pageInput" size="2"
+                        onkeypress="return onlyNumbers(event, this.value);"
+                        onblur="if ((this.value)!=({!pageNumber})) { goCurPageNumber(this.value);}" />
+                        <apex:outputLabel value=" / {!pageSize}" />
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span> -->
+
+                    <span style="display: inline; width: 25px;"> <apex:commandLink value="Next" action="{!next}" rerender="RelatedRecordPanelId"
+                            rendered="{!IF(pageNumber==pageSize, false, true)}"
+                            status="MCSub" />  
+                            <!-- <apex:outputpanel rendered="{!IF(pageNumber==pageSize, false, true)}" >
+                                    <a id="NextLinkId2" href="#" onclick="alert('before next');next()" >Next1</a>
+                            </apex:outputpanel>-->
+                            <apex:outputLabel value="Next"
+                            rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                    <span style="display: inline; width: 25px;"> <apex:commandLink value="Last" action="{!last}" rerender="RelatedRecordPanelId"
+                            rendered="{!IF(pageNumber==pageSize, false, true)}"
+                            status="MCSub" /> <apex:outputLabel value="Last"
+                            rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                    </span>
+                    <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                    <span style="display: inline; width: 125px;"> Qty: &nbsp; <apex:selectList value="{!CurPageSize}" multiselect="false" size="1"
+                            onchange="savePageSize(this.value);">
+                            <apex:selectOptions value="{!pageSizeValues}" />
+                        </apex:selectList>
+                    </span>
+
+                    <apex:commandButton value="Save" onclick="blockme();Save(); return false;"
+                        rerender="RelatedRecordPanelId" />                    
+                    <apex:commandButton value="Save & Back To Valuation Period" onclick="blockme();Save_Back(); return false;"
+                        rerender="dummyPanel" />
+                    <apex:commandButton value="Back" action="{!backToVPScreen}" onclick="blockme();" onComplete="j$.unblockUI();"
+                        rerender="RelatedRecordPanelId" />
+                    <apex:commandButton value="Cancel" action="{!Cancel}" onclick="blockme();" rerender="dummyPanel" />
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+        </apex:PageBlock>
+        <apex:outputpanel id="dummyPanel"></apex:outputpanel>
+    </apex:form>
+</apex:page>

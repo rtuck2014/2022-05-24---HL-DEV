@@ -1,0 +1,81 @@
+<apex:page standardController="Account" extensions="HL_CompanyRelatedOppsController" tabStyle="Account" showHeader="false" sidebar="false" lightningStylesheets="true">
+    <apex:form >
+        <apex:inputHidden value="{!Account.Name}"/>
+        <apex:pageBlock id="pbOpps" title="Opportunities">
+            <apex:pageBlockButtons location="top">
+                <apex:commandLink action="{!URLFOR($Action.Opportunity_Client_Subject__c.New_CF_Opp, Id)}" styleClass="btn" target="_parent" value="Add CF Opportunity" style="text-decoration:none;"/>
+                <apex:commandLink action="{!URLFOR($Action.Opportunity_Client_Subject__c.New_FAS_Opp, Id)}" styleClass="btn" target="_parent" value="Add FVA Opportunity" style="text-decoration:none;"/>
+                <apex:commandLink action="{!URLFOR($Action.Opportunity_Client_Subject__c.New_FR_Opportunity, Id)}" styleClass="btn" target="_parent" value="Add FR Opportunity" style="text-decoration:none;"/>
+</apex:pageBlockButtons>
+    <apex:pageBlockTable id="opps" value="{!OppList}" var="o" rendered="{!OppList.size > 0}">
+        <apex:column styleClass="center" headerClass="center">
+            <apex:outputLink value="{!URLFOR($Action.Opportunity__c.Edit,o.Id,[retURL=Account.Id])}" target="_parent">Edit</apex:outputLink>
+        </apex:column>
+        <apex:column headerValue="Opportunity Name">
+            <apex:outputLink value="/{!o.Id}" target="_parent">{!o.Name}</apex:outputLink>
+        </apex:column>
+        <apex:column headerValue="Client">
+            <apex:outputLink value="/{!o.Client__c}" target="_parent">{!o.Client__r.Name}</apex:outputLink>
+        </apex:column>
+        <apex:column headerValue="Subject">
+            <apex:outputLink value="/{!o.Subject__c}" target="_parent">{!o.Subject__r.Name}</apex:outputLink>
+        </apex:column>
+        <apex:column value="{!o.Line_of_Business__c}" headerValue="Line of Business">
+        </apex:column>
+        <apex:column value="{!o.Job_Type__c}" headerValue="Job Type">
+        </apex:column>
+        <apex:column value="{!o.Industry_Group__c}" headerValue="Industry Group">
+        </apex:column>
+        <apex:column value="{!o.Stage__c}" headerValue="Stage">
+        </apex:column>
+        <apex:column value="{!o.Opportunity_Number__c}" headerValue="Opportunity Number"></apex:column>
+        <apex:column value="{!o.LastModifiedDate}" headerValue="Last Modified Date">
+        </apex:column>
+    </apex:pageBlockTable>
+    <!-- StandardSetCon Pagination -->
+        <apex:outputPanel rendered="{!OppList.size > 0}" >
+        <table style="width: 100%">
+            <tr>
+                <td class="bold" style="width:180px;">
+                    Page: <apex:outputText value="{!setCon.PageNumber} of {! if(CEILING(setCon.ResultSize/setCon.PageSize) > 0, CEILING(setCon.ResultSize/setCon.PageSize), 1) }"></apex:outputText>
+                </td>
+                <td align="center">
+                    <!-- Previous page -->
+                    <!-- active -->
+                    <apex:commandLink action="{!setCon.Previous}" value="<< Previous" rendered="{! setCon.HasPrevious}" reRender="pbOpps" oncomplete="DocumentReady()"></apex:commandLink>
+                    <!--inactive (no earlier pages) -->
+                    <apex:outputText style="color: #ccc;" value="<< Previous" rendered="{! NOT(setCon.HasPrevious) }"></apex:outputText>
+                    &nbsp;&nbsp;
+                    <!-- Next page -->
+                    <!-- active -->
+                    <apex:CommandLink action="{!setCon.Next}" value="Next >>" rendered="{! setCon.HasNext}" reRender="pbOpps" oncomplete="DocumentReady()"></apex:CommandLink>
+                    <!--inactive (no more pages) -->
+                    <apex:outputText style="color: #ccc;" value="Next >>" rendered="{! NOT(setCon.HasNext)}"></apex:outputText>
+                </td>
+                <td align="right" class="bold" style="width:160px;">
+                    Records per page
+                    <apex:selectList value="{!setCon.PageSize}" size="1" >
+                        <apex:selectOption itemValue="5" itemLabel="5"></apex:selectOption>
+                        <apex:selectOption itemValue="20" itemLabel="20"></apex:selectOption>
+                        <apex:selectOption itemValue="100" itemLabel="100"></apex:selectOption>
+                        <apex:actionSupport event="onchange" reRender="pbOpps" oncomplete="DocumentReady()"></apex:actionSupport>
+                    </apex:selectList>
+                </td>
+                <td align="right" class="bold" style="width:120px;">
+                    Total Records:
+                    <apex:outputLabel value="{!setCon.ResultSize}"></apex:outputLabel>
+                </td>
+            </tr>    
+        </table>
+        </apex:outputPanel>
+        <apex:outputPanel id="noOpportunities" rendered="{!OppList.size == 0}">
+            <center>
+                <h2>  
+                    <apex:outputLabel value="No Opportunities To Display" rendered="{!OppList.size == 0}"></apex:outputLabel>
+                </h2>
+            </center>       
+        </apex:outputPanel>
+   </apex:pageBlock>
+   <input id="opportunitiesSize" type='hidden' value='{!setCon.ResultSize}' />
+   </apex:form>
+</apex:page>

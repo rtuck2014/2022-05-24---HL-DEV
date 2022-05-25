@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Advisory</fullName>
+                <default>false</default>
+                <label>Advisory</label>
+            </value>
+            <value>
+                <fullName>Buyside</fullName>
+                <default>false</default>
+                <label>Buyside</label>
+            </value>
+            <value>
+                <fullName>Capital Markets</fullName>
+                <default>false</default>
+                <label>Capital Markets</label>
+            </value>
+            <value>
+                <fullName>Consulting / InSource</fullName>
+                <default>false</default>
+                <label>Consulting / InSource</label>
+            </value>
+            <value>
+                <fullName>CVAS - Consulting / InSource</fullName>
+                <default>false</default>
+                <label>CVAS - Consulting / InSource</label>
+            </value>
+            <value>
+                <fullName>CVAS - Corporate Valuation Advisory Services</fullName>
+                <default>false</default>
+                <label>CVAS - Corporate Valuation Advisory Services</label>
+            </value>
+            <value>
+                <fullName>CVAS - Other</fullName>
+                <default>false</default>
+                <label>CVAS - Other</label>
+            </value>
+            <value>
+                <fullName>Debt Capital Markets</fullName>
+                <default>false</default>
+                <label>Debt Capital Markets</label>
+            </value>
+            <value>
+                <fullName>Dispute</fullName>
+                <default>false</default>
+                <label>Dispute</label>
+            </value>
+            <value>
+                <fullName>Equity Capital Markets</fullName>
+                <default>false</default>
+                <label>Equity Capital Markets</label>
+            </value>
+            <value>
+                <fullName>ESOP</fullName>
+                <default>false</default>
+                <label>ESOP</label>
+            </value>
+            <value>
+                <fullName>Estate &amp; Gift Tax</fullName>
+                <default>false</default>
+                <label>Estate &amp; Gift Tax</label>
+            </value>
+            <value>
+                <fullName>FA - Fund Opinions-Fairness</fullName>
+                <default>false</default>
+                <label>FA - Fund Opinions-Fairness</label>
+            </value>
+            <value>
+                <fullName>FA - Fund Opinions-Non-Fairness</fullName>
+                <default>false</default>
+                <label>FA - Fund Opinions-Non-Fairness</label>
+            </value>
+            <value>
+                <fullName>FA - Fund Opinions-Valuation</fullName>
+                <default>false</default>
+                <label>FA - Fund Opinions-Valuation</label>
+            </value>
+            <value>
+                <fullName>Fairness, Negotiated Fairness, Solvency</fullName>
+                <default>false</default>
+                <label>Fairness, Negotiated Fairness, Solvency</label>
+            </value>
+            <value>
+                <fullName>Fairness, Transaction Opinions</fullName>
+                <default>false</default>
+                <label>Fairness, Transaction Opinions</label>
+            </value>
+            <value>
+                <fullName>Illiquid Financial Assets</fullName>
+                <default>false</default>
+                <label>Illiquid Financial Assets</label>
+            </value>
+            <value>
+                <fullName>Liability Management</fullName>
+                <default>false</default>
+                <label>Liability Management</label>
+            </value>
+            <value>
+                <fullName>Mergers &amp; Acquisitions</fullName>
+                <default>false</default>
+                <label>Mergers &amp; Acquisitions</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Portfolio Valuation &amp; Advisory</fullName>
+                <default>false</default>
+                <label>Portfolio Valuation &amp; Advisory</label>
+            </value>
+            <value>
+                <fullName>Private Funds Advisory</fullName>
+                <default>false</default>
+                <label>Private Funds Advisory</label>
+            </value>
+            <value>
+                <fullName>Sellside</fullName>
+                <default>false</default>
+                <label>Sellside</label>
+            </value>
+            <value>
+                <fullName>Syndicated Finance</fullName>
+                <default>false</default>
+                <label>Syndicated Finance</label>
+            </value>
+            <value>
+                <fullName>TAS - Due Diligence Services</fullName>
+                <default>false</default>
+                <label>TAS - Due Diligence Services</label>
+            </value>
+            <value>
+                <fullName>Tech+IP Advisory</fullName>
+                <default>false</default>
+                <label>Tech+IP Advisory</label>
+            </value>
+            <value>
+                <fullName>Transaction Opinions</fullName>
+                <default>false</default>
+                <label>Transaction Opinions</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>10</visibleLines>
+</CustomField>

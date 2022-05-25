@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Move_Rights__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>allows User to change Company name on Contacts</description>
+    <externalId>false</externalId>
+    <label>Contact Move Rights</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

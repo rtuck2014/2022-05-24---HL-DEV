@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MassEditPercentNegativeNotAllowed</fullName>
+    <active>true</active>
+    <description>This validation rule is used to stop negative numbers being added to the Mass Edit Number/Percent fields.</description>
+    <errorConditionFormula>(NOT(ISBLANK(ClientHoldings__c)) &amp;&amp;
+ClientHoldings__c &lt; 0.0) ||
+(NOT(ISBLANK(KeyCreditorWeighting__c)) &amp;&amp;
+KeyCreditorWeighting__c &lt; 0.0) ||
+(NOT(ISBLANK(RevenueAllocation__c)) &amp;&amp;
+RevenueAllocation__c &lt; 0.0) ||
+(NOT(ISBLANK(DebtHoldingsMM__c)) &amp;&amp;
+DebtHoldingsMM__c &lt; 0)</errorConditionFormula>
+    <errorMessage>Negative values are not permitted.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__Add_to_My_Training</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Add to My Training</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>/*{!REQUIRESCRIPT(&quot;/soap/ajax/23.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/23.0/apex.js&quot;)}
+var response = sforce.apex.execute(&apos;lmscons.LMSUtil&apos;,&apos;addCurriculum&apos;,{Curriculum:&apos;{! lmscons__Curriculum__c.Id }&apos;});*/
+addToMyTraining();</url>
+</WebLink>

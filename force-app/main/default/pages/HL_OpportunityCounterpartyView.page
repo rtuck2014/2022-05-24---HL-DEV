@@ -1,0 +1,4 @@
+<apex:page standardController="Opportunity_Counterparty__c" lightningStylesheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:detail inlineEdit="true" />   
+</apex:page>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Role__c</fullName>
+    <externalId>false</externalId>
+    <label>Role</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Principal</fullName>
+                <default>false</default>
+                <label>Principal</label>
+            </value>
+            <value>
+                <fullName>Initiator</fullName>
+                <default>false</default>
+                <label>Initiator</label>
+            </value>
+            <value>
+                <fullName>Marketing Team</fullName>
+                <default>false</default>
+                <label>Marketing Team</label>
+            </value>
+            <value>
+                <fullName>Seller</fullName>
+                <default>false</default>
+                <label>Seller</label>
+            </value>
+            <value>
+                <fullName>Manager</fullName>
+                <default>false</default>
+                <label>Manager</label>
+            </value>
+            <value>
+                <fullName>Associate</fullName>
+                <default>false</default>
+                <label>Associate</label>
+            </value>
+            <value>
+                <fullName>Analyst</fullName>
+                <default>false</default>
+                <label>Analyst</label>
+            </value>
+            <value>
+                <fullName>Ind/Prod/Geo Person</fullName>
+                <default>false</default>
+                <label>Ind/Prod/Geo Person</label>
+            </value>
+            <value>
+                <fullName>Private Equity/Hedge Fund</fullName>
+                <default>false</default>
+                <label>Private Equity/Hedge Fund</label>
+            </value>
+            <value>
+                <fullName>Public Person</fullName>
+                <default>false</default>
+                <label>Public Person</label>
+            </value>
+            <value>
+                <fullName>Non-Registered</fullName>
+                <default>false</default>
+                <label>Non-Registered</label>
+            </value>
+            <value>
+                <fullName>Pricing Committee Approver</fullName>
+                <default>false</default>
+                <label>Pricing Committee Approver</label>
+            </value>
+            <value>
+                <fullName>Reviewer</fullName>
+                <default>false</default>
+                <label>Reviewer</label>
+            </value>
+            <value>
+                <fullName>Prelim Reviewer</fullName>
+                <default>false</default>
+                <label>Prelim Reviewer</label>
+            </value>
+            <value>
+                <fullName>Final Reviewer</fullName>
+                <default>false</default>
+                <label>Final Reviewer</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

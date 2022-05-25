@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Export_Revenue_Completed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Flag to indicate that the Revenue Events for Oracle have been completed</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Flag to indicate that the Revenue Events for Oracle have been completed</inlineHelpText>
+    <label>Export Revenue Completed</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

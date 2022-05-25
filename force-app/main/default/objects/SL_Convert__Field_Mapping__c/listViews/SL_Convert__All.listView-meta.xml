@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SL_Convert__All</fullName>
+    <columns>SL_Convert__Object_Relationship__c</columns>
+    <columns>SL_Convert__Context_Full_API__c</columns>
+    <columns>SL_Convert__Target_Full_API__c</columns>
+    <columns>SL_Convert__Active__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

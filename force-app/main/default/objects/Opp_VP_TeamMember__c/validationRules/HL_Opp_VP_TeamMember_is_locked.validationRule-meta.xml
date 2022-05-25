@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_Opp_VP_TeamMember_is_locked</fullName>
+    <active>true</active>
+    <description>To stop changes on VP if related Opportunity is converted in to Engagement</description>
+    <errorConditionFormula>IF((AND( NOT(ISNEW()), AND(Opportunity_VP_Position__r.Opportunity_VP__r.Opportunity__r.Converted_to_Engagement__c, NOT(ISCHANGED(Opportunity_VP_Position__c))) )), true, false)</errorConditionFormula>
+    <errorMessage>Valuation Team Member can not be modified once Opportunity is converted into Engagement  so please go to related Engagement Valuation Team Member for further modification.</errorMessage>
+</ValidationRule>

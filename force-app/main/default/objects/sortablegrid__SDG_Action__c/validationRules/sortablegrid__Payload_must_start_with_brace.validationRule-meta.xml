@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sortablegrid__Payload_must_start_with_brace</fullName>
+    <active>true</active>
+    <errorConditionFormula>LEFT( sortablegrid__Event_Payload__c , 1) != &apos;{&apos;</errorConditionFormula>
+    <errorMessage>Payload must start with a {</errorMessage>
+</ValidationRule>

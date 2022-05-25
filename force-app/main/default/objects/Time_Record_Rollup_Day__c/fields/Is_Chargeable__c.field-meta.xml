@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Chargeable__c</fullName>
+    <description>Text Indication of Chargeable vs Non Chargeable</description>
+    <externalId>false</externalId>
+    <formula>IF(Special_Project__c != null, IF(Special_Project__r.Is_Billable__c,&apos;Chargeable&apos;,&apos;Non-Chargeable&apos;), &apos;Chargeable&apos;)</formula>
+    <label>Is Chargeable</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

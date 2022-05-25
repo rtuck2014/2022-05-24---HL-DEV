@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Period_JS_Net__c</fullName>
+    <description>AR Reversal Related Accrued: JDE Doc Type JS</description>
+    <externalId>false</externalId>
+    <formula>IF(Exclude_From_Reversal__c, 0, 
+IF(Uncured_AR__c &lt;= 0 &amp;&amp; Uncured_WIP__c &lt;= 0, Period_AR__c + Period_AR_Adjustment__c + Period_Deferred_Income__c + Period_Cured_AR__c, 
+IF(Period_Accrued_Fees__c &gt; 0 &amp;&amp; (Period_AR__c + Period_Deferred_Income__c) &gt; 0, Period_Cured_AR__c, 
+IF(Period_Accrued_Fees__c &lt; 0, Period_AR__c + Period_AR_Adjustment__c + Period_Deferred_Income__c + Period_Cured_AR__c, 
+   Period_AR__c + Period_AR_Adjustment__c + Period_Deferred_Income__c + Period_Cured_AR__c))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>AR Reversal Related Accrued: JDE Doc Type JS</inlineHelpText>
+    <label>Period JS Net</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

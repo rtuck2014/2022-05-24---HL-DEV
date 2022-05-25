@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__All</fullName>
+    <columns>NAME</columns>
+    <columns>lmscons__Purchase_Date__c</columns>
+    <columns>lmscons__Expiration_Date__c</columns>
+    <columns>lmscons__License_Term__c</columns>
+    <columns>lmscons__Seats__c</columns>
+    <columns>lmscons__Remaining_Seats__c</columns>
+    <columns>lmscons__Used_Seats__c</columns>
+    <columns>lmscons__Training_Content__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

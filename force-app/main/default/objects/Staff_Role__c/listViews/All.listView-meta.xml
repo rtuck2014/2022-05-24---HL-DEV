@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>CF__c</columns>
+    <columns>FAS__c</columns>
+    <columns>Fin_Only__c</columns>
+    <columns>FR__c</columns>
+    <columns>FS__c</columns>
+    <columns>Non_Registered_Only__c</columns>
+    <columns>SC__c</columns>
+    <columns>Registered_Excluded_Job_Codes__c</columns>
+    <columns>Registered_Only__c</columns>
+    <columns>Display_Order__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

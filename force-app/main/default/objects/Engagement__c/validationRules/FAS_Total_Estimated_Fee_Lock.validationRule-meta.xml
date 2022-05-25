@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FAS_Total_Estimated_Fee_Lock</fullName>
+    <active>true</active>
+    <description>Prevent Total Estimated Fees from being updated on a FVA engagement when Stage is Closed.</description>
+    <errorConditionFormula>ISCHANGED( Total_Estimated_Fee__c ) &amp;&amp; ISPICKVAL(Stage__c, &quot;CLOSED&quot;) &amp;&amp; ISPICKVAL( Line_of_Business__c , &quot;FVA&quot; )</errorConditionFormula>
+    <errorMessage>Total Estimated Fees cannot be adjusted for FVA closed deals, please contact a FVA CAO for assistance.</errorMessage>
+</ValidationRule>

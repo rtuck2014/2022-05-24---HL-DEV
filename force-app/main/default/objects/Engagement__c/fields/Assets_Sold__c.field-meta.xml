@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assets_Sold__c</fullName>
+    <externalId>false</externalId>
+    <label>Assets Sold</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Synagro Technologies</fullName>
+                <default>false</default>
+                <label>Synagro Technologies</label>
+            </value>
+            <value>
+                <fullName>All Assets</fullName>
+                <default>false</default>
+                <label>All Assets</label>
+            </value>
+            <value>
+                <fullName>Operating Assets</fullName>
+                <default>false</default>
+                <label>Operating Assets</label>
+            </value>
+            <value>
+                <fullName>Consumer Notes Receivable Assets</fullName>
+                <default>false</default>
+                <label>Consumer Notes Receivable Assets</label>
+            </value>
+            <value>
+                <fullName>Telemark, Clipper, &amp; Other Assets</fullName>
+                <default>false</default>
+                <label>Telemark, Clipper, &amp; Other Assets</label>
+            </value>
+            <value>
+                <fullName>All</fullName>
+                <default>false</default>
+                <label>All</label>
+            </value>
+            <value>
+                <fullName>Promissory Notes</fullName>
+                <default>false</default>
+                <label>Promissory Notes</label>
+            </value>
+            <value>
+                <fullName>Genmar Alexandra</fullName>
+                <default>false</default>
+                <label>Genmar Alexandra</label>
+            </value>
+            <value>
+                <fullName>Genmar Revenge</fullName>
+                <default>false</default>
+                <label>Genmar Revenge</label>
+            </value>
+            <value>
+                <fullName>Substantially All</fullName>
+                <default>false</default>
+                <label>Substantially All</label>
+            </value>
+            <value>
+                <fullName>65,000,000</fullName>
+                <default>false</default>
+                <label>65,000,000</label>
+            </value>
+            <value>
+                <fullName>US Assets</fullName>
+                <default>false</default>
+                <label>US Assets</label>
+            </value>
+            <value>
+                <fullName>Thailand Assets</fullName>
+                <default>false</default>
+                <label>Thailand Assets</label>
+            </value>
+            <value>
+                <fullName>Intellectual Property</fullName>
+                <default>false</default>
+                <label>Intellectual Property</label>
+            </value>
+            <value>
+                <fullName>Procure Chicago Holdings, LLC</fullName>
+                <default>false</default>
+                <label>Procure Chicago Holdings, LLC</label>
+            </value>
+            <value>
+                <fullName>Timeshare Notes Receivable Portfolio</fullName>
+                <default>false</default>
+                <label>Timeshare Notes Receivable Portfolio</label>
+            </value>
+            <value>
+                <fullName>Hydro Assets</fullName>
+                <default>false</default>
+                <label>Hydro Assets</label>
+            </value>
+            <value>
+                <fullName>DOE Loan</fullName>
+                <default>false</default>
+                <label>DOE Loan</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,89 @@
+<apex:page standardController="Opportunity__c" extensions="HL_OpportunityViewController" lightningStylesheets="true">
+    <apex:pageMessage summary="The following fields are required before an Opportunity can be submitted for review. Follow the hyperlinks under Opportunity Detail for any Client/Subject Company related items." severity="INFO" strength="3" rendered="{!displayError}"/>
+    <apex:pageMessage summary="Submission successful! Please wait for the approval" severity="INFO" strength="3" rendered="{!displayLockMessage}"/>
+    <apex:pageMessages />
+    
+    <apex:detail inlineEdit="true" oncomplete="reload(), DocumentReady();" />
+    
+    <input id="opportunityId" type="hidden" value="{!Id}" />
+    <input id="profileId" type="hidden"  value="{!$Profile.Name}" />
+    <input id="userId" type="hidden"  value="{!$User.Id}" />
+    <input id="indicatedAdditionalClient" type="hidden" value="{!Opportunity__c.Additional_Client__c}" />
+    <input id="indicatedAdditionalSubject" type="hidden" value="{!Opportunity__c.Additional_Subject__c}" />
+    <input id="completedAdditionalClient" type="hidden" value="{!Opportunity__c.Completed_Additional_Client__c}" />
+    <input id="completedAdditionalSubject" type="hidden" value="{!Opportunity__c.Completed_Additional_Subject__c}" />
+    <input id="onOIT" type="hidden" value="{!OnOIT}" />
+    <input id="usersInPublicGroup" type="hidden" value="{!usersInPublicGroup['CAO_FVA']}" />
+    <input id="usersInPublicGroupPrincipal" type="hidden" value="{!usersInPublicGroup['TAS_Officers']}" /> 
+    <input id="jobType" type="hidden" value="{!Opportunity__c.Job_Type__c}" />
+    <input id="stage" type="hidden" value="{!Opportunity__c.Stage__c}" />
+    <input id="isPrincipal" type="hidden" value="{!Opportunity__c.z_Principal_Aggregate_CHECK__c}" />
+    <input id="additionalClientSubjectPromptUrl" type="hidden" value="{!URLFOR('/apex/HL_AdditionalClientSubjectPrompt')}" />
+    <input id="internalTeamPrompt" type="hidden" value="{!Opportunity__c.Internal_Team_Prompt__c}" />
+    <input id="internalTeamViewUrl" type="hidden" value="{!URLFOR('/apex/HL_InternalTeamView')}" />
+    <input id="internalTeamUrl" type="hidden" value="{!URLFOR('/apex/HL_InternalTeamModifyView')}" />
+    <input id="jobType" type="hidden" value="{!Opportunity__c.Job_Type__c}" />    
+    <input id="isValidPVUserId" type="hidden" value="{!isValidPVUser}" />
+    
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_OpportunityView.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+   
+
+    <div id="divCheckbox" style="visibility: hidden">
+    <script type="text/javascript">
+        var SysAdminReadOnly = 'System Administrator (Read Only)';
+        var SysAdminProfileId = 'System Administrator';
+        
+		var JobType = 'TAS - ';
+        
+        function PostRequestProcessing() 
+        {
+            RequestEngamentNumberValidation();
+        }
+    	$j1 = jQuery.noConflict();
+        
+        $j1(document).ready(function () {
+            var loggedInuser =  $j1("#userId").val() ;
+            if($j1("#isValidPVUserId").val() === 'false') {           
+                $j1("[name$=portfolio_valuations]").hide();              
+            } 
+            
+            console.log('JOBTYPE',$j1("#jobType").val().indexOf(JobType));
+            console.log('In principal group',$j1("#usersInPublicGroupPrincipal").val());
+            if($j1("#jobType").val() && $j1("#jobType").val().indexOf(JobType) > -1 ){
+                if($j1("#isPrincipal").val() === 'true'){
+            		
+                    if($j1("#usersInPublicGroupPrincipal").val().indexOf(loggedInuser) < 0 ){
+                             $j1("[name$='tas_dnd_onoff']").hide(); 
+                          }
+                    
+                    
+                  }else{
+                      if($j1("#profileId").val() 
+                         && $j1("#profileId").val().indexOf(SysAdminReadOnly) < 0 
+                      		&& $j1("#profileId").val().indexOf(SysAdminProfileId) < 0)
+                      {
+                          if($j1("#usersInPublicGroup").val().indexOf(loggedInuser) < 0 ){
+                             $j1("[name$='tas_dnd_onoff']").hide(); 
+                          }
+                      }
+                }
+            }else{
+                 $j1("[name$='tas_dnd_onoff']").hide(); 
+                }
+        }); 
+    </script>
+        <apex:form id="courseForm">
+            <apex:actionFunction name="RequestEngamentNumberValidation" action="{!RequestEngamentNumberValidation}" rendered="true" />
+                <apex:commandButton value="RequestEngamentNumberValidation" id="RequestEngamentNumberValidation" action="{!RequestEngamentNumberValidation}" oncomplete="PostRequestProcessing();"/><p/>
+            <apex:actionFunction name="reload" action="{!reload}"  rendered="true" />
+        </apex:form>
+     </div>
+
+
+
+</apex:page>

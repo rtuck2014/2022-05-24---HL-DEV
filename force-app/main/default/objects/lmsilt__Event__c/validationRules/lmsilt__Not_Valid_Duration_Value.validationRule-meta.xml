@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmsilt__Not_Valid_Duration_Value</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(REGEX(lmsilt__DurationTime__c , &quot;(((((\\d+?[d]\\b)\\s?){0,1})|\\d{0,4})?((((\\d{1,2}?[h]\\b)\\s?){0,1})|\\d{0,4})?((((\\d{1,2}?[m]\\b)\\s?){0,1})|\\d{0,4})?)&quot;))</errorConditionFormula>
+    <errorDisplayField>lmsilt__DurationTime__c</errorDisplayField>
+    <errorMessage>NOT VALID DURATION</errorMessage>
+</ValidationRule>

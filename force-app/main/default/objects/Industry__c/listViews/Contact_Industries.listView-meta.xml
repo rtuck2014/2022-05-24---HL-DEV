@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Industries</fullName>
+    <columns>NAME</columns>
+    <columns>Industry_Group__c</columns>
+    <columns>Industry_Group_Text_Search__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Contact__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Contact Industries</label>
+</ListView>

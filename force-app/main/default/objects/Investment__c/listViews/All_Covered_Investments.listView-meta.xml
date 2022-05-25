@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Covered_Investments</fullName>
+    <columns>NAME</columns>
+    <columns>Portfolio_CapIQ_Company__c</columns>
+    <columns>Sponsor_CapIQ_Company__c</columns>
+    <columns>Investment_Date__c</columns>
+    <columns>Current_to_Prior_Date__c</columns>
+    <columns>Company_Relationship_Type__c</columns>
+    <columns>Actual_Relationship_Type__c</columns>
+    <columns>Percent_Ownership__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Covered Investments</label>
+</ListView>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>International_Angle</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL(International_Angle__c,&apos;Yes&apos;) &amp;&amp;
+ISBLANK( International_Angle_Notes__c )</errorConditionFormula>
+    <errorDisplayField>International_Angle_Notes__c</errorDisplayField>
+    <errorMessage>Please enter International Angle notes.</errorMessage>
+</ValidationRule>

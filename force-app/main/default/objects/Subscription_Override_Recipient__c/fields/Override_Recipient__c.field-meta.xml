@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Override_Recipient__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>This is an optional override recipient.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This is an optional override recipient.</inlineHelpText>
+    <label>Override Recipient</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Contact.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Houlihan Employee</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Subscription Override Recipients</relationshipLabel>
+    <relationshipName>Subscription_Override_Recipients</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

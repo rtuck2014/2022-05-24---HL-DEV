@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Engagement_Contacts_Buyer_Attorneys__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Roll-up to count if required Engagement Contacts of Role &quot;Attorney&quot; have been entered for Buyer</inlineHelpText>
+    <label>Engagement Contacts Buyer Attorneys</label>
+    <summaryFilterItems>
+        <field>Engagement_External_Team__c.Role__c</field>
+        <operation>equals</operation>
+        <value>Attorney, Attorney (Acquirer)</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Engagement_External_Team__c.Party__c</field>
+        <operation>equals</operation>
+        <value>Buyer</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Engagement_External_Team__c.Engagement__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Speciality__c</fullName>
+    <description>This is the staff product specialty.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This is the staff product specialty.</inlineHelpText>
+    <label>Staff Product Speciality</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>All</fullName>
+                <default>false</default>
+                <label>All</label>
+            </value>
+            <value>
+                <fullName>Dispute Resolution</fullName>
+                <default>false</default>
+                <label>Dispute Resolution</label>
+            </value>
+            <value>
+                <fullName>Generalist/REVS</fullName>
+                <default>false</default>
+                <label>Generalist/REVS</label>
+            </value>
+            <value>
+                <fullName>GEN - General</fullName>
+                <default>false</default>
+                <label>GEN - General</label>
+            </value>
+            <value>
+                <fullName>Portfolio Valuation</fullName>
+                <default>false</default>
+                <label>Portfolio Valuation</label>
+            </value>
+            <value>
+                <fullName>Tax &amp; Financial Reporting</fullName>
+                <default>false</default>
+                <label>Tax &amp; Financial Reporting</label>
+            </value>
+            <value>
+                <fullName>Transaction Advisory Services</fullName>
+                <default>false</default>
+                <label>Transaction Advisory Services</label>
+            </value>
+            <value>
+                <fullName>Transaction Opinions</fullName>
+                <default>false</default>
+                <label>Transaction Opinions</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>External_Disclosure_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>External Disclosure Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Do Not Disclose</fullName>
+                <default>false</default>
+                <label>Do Not Disclose</label>
+            </value>
+            <value>
+                <fullName>Consult Deal Team</fullName>
+                <default>false</default>
+                <label>Consult Deal Team</label>
+            </value>
+            <value>
+                <fullName>Disclose Client Name Only</fullName>
+                <default>false</default>
+                <label>Disclose Client Name Only</label>
+            </value>
+            <value>
+                <fullName>Disclose Client and Deal Description</fullName>
+                <default>false</default>
+                <label>Disclose Client and Deal Description</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,12 @@
+<apex:page standardController="Contact" lightningStyleSheets="true">
+  <h1>Please Wait</h1>
+    Redirecting ....
+  <script>
+    if ( (typeof window.sforce != 'undefined') && (window.sforce!=null) ) {
+      sforce.one.navigateToURL('/apex/HL_Mobile_AddActivityFromContact?id={!Contact.id}&related_id={!Contact.Id}');
+    }
+    else {
+      alert('Not in SF1 :(');
+    }
+ </script>
+</apex:page>

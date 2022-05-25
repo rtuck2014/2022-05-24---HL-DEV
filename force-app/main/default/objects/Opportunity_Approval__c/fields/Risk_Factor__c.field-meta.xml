@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Risk_Factor__c</fullName>
+    <externalId>false</externalId>
+    <label>Risk Factors</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Counterparty Risk</fullName>
+                <default>false</default>
+                <label>Counterparty Risk</label>
+            </value>
+            <value>
+                <fullName>Client Risk</fullName>
+                <default>false</default>
+                <label>Client Risk</label>
+            </value>
+            <value>
+                <fullName>Market Risk</fullName>
+                <default>false</default>
+                <label>Market Risk</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Product risk</fullName>
+                <default>false</default>
+                <label>Product risk</label>
+            </value>
+            <value>
+                <fullName>Timing</fullName>
+                <default>false</default>
+                <label>Timing</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

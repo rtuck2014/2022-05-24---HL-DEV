@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmsilt__Manage_Rosters_Session</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Manage Roster</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>{!URLFOR($Site.prefix&amp;&apos;/apex/lmsilt__ManageSessionRoster&apos;, null, [classId=lmsilt__Class__c.Id, sessionID=lmsilt__Session__c.Id, rosterID=lmsilt__Roster__c.Id] ,true)}</url>
+</WebLink>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Display_Name__c</columns>
+    <columns>Report_Description__c</columns>
+    <columns>Report_Link_URL__c</columns>
+    <columns>Report_Link_Ancillary_URL__c</columns>
+    <columns>Report_Type__c</columns>
+    <columns>Sort_Order__c</columns>
+    <columns>Security_Assignment__c</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Public_Group__c</columns>
+    <columns>Restrict_Delegate_Access__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

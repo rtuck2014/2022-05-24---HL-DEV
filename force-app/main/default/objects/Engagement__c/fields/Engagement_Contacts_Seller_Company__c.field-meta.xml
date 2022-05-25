@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Engagement_Contacts_Seller_Company__c</fullName>
+    <description>Roll-up to count if required Engagement Contacts of Role &quot;Company Contacts, Board of Directors&quot; have been entered for Seller</description>
+    <externalId>false</externalId>
+    <label>Engagement Contacts Seller Company</label>
+    <summaryFilterItems>
+        <field>Engagement_External_Team__c.Role__c</field>
+        <operation>equals</operation>
+        <value>Company Contact, Board of Directors</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Engagement_External_Team__c.Party__c</field>
+        <operation>equals</operation>
+        <value>Seller</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Engagement_External_Team__c.Engagement__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

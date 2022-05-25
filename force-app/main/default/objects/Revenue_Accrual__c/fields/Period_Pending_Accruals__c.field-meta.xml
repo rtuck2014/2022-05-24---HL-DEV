@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Period_Pending_Accruals__c</fullName>
+    <description>This is the amount that will be automatically accrued when the outstanding AR/WIP are cured.</description>
+    <externalId>false</externalId>
+    <formula>If (Period_AR__c + Period_Cured_AR__c + Period_WIP__c + Period_Cured_WIP__c + Period_Deferred_Income__c &lt; 0, 
+-1 * (Period_AR__c + Period_Cured_AR__c + Period_WIP__c + Period_Cured_WIP__c + Period_Deferred_Income__c) +  Period_Subsequent_Accruals__c , 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Period Pending Accruals</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

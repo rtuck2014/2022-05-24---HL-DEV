@@ -1,0 +1,48 @@
+<apex:page controller="HL_Mass_Bid" lightningStyleSheets="true">
+    <style>
+        .DateHeader { color:red !important; }        
+    </style>
+    <apex:sectionHeader title="Edit Bids" subtitle="{!ParentName}"/>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageMessages />
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!Save}"/>
+                <apex:commandButton value="Return to Counterparties" action="{!returnToCounterparties}" immediate="true"/>
+                <span style="color:red; margin-left:10px;">*Required</span>
+            </apex:pageBlockButtons>
+            <div style="height: 40px; margin-left: 20px;">
+                <apex:outputLabel for="lstRound" value="Bid Round: " style="width: 40px; font-weight: bold;"/>
+                <apex:selectList id="lstRound" value="{!strSelectedRound}" size="1" multiselect="false" style="margin: 0 0 0 10px">
+                    <apex:actionSupport event="onchange" action="{!updatePage}" reRender="bidsTable"/>
+                    <apex:selectOptions value="{!RoundOptions}" />  
+                </apex:selectList> 
+            </div>
+            <apex:pageBlockTable value="{!Bids}" var="b" id="bidsTable">
+                <apex:column value="{!b.CompanyName__c}"/>
+                <apex:column value="{!b.Name}" rendered="false"/>
+                <apex:column headerValue="Round Minimum (MM)*" headerClass="DateHeader"  >
+                    <apex:inputField value="{!b.Round_Minimum__c}" />
+                </apex:column>
+                <apex:column headerValue="Round Maximum (MM)*"  headerClass="DateHeader" >
+                    <apex:inputField value="{!b.Round_Maximum__c}" />
+                </apex:column> 
+                <apex:column headerValue="Equity %" >
+                    <apex:inputField value="{!b.Equity__c}" />
+                </apex:column>
+                <apex:column headerValue="Debt %" >
+                    <apex:inputField value="{!b.Debt__c}" />
+                </apex:column> 
+                <apex:column headerValue="Bid Date*" headerClass="DateHeader" >
+                    <apex:inputField value="{!b.Date__c}" />
+                </apex:column>
+                <apex:column headerValue="Comments" >
+                    <apex:inputTextarea id="BidComments" value="{!b.Comments__c}" />
+                </apex:column>                
+                <apex:column value="{!b.Round__c}"/>
+                <apex:column value="{!b.Id}" rendered="false"  />
+                <apex:column value="{!b.Engagement_Counterparty__c}" rendered="false"  />
+            </apex:pageBlockTable>    
+         </apex:pageBlock>
+    </apex:form>
+</apex:page>

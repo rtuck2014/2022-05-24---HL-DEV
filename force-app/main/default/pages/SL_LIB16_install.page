@@ -1,0 +1,119 @@
+<apex:page controller="SL_LIB16_install">
+
+<apex:sectionHeader title="Manual Control" subtitle="Check/Create/Add Implementation" />
+<script>
+if (!window.console) {var console = {};}
+if (!console.log) {console.log = function() {};}
+</script>
+
+
+<apex:form id="Form">
+    
+<apex:outputPanel id="msgPanel"><center>{!msgText}<br/></center></apex:outputPanel>
+
+<apex:pageBlock title="[Check/Create Default Records] and [Add New Implementation]" id="mBlock">
+<apex:pageMessages id="theError"/>
+
+
+    <apex:pageBlockSection title="Check/Create default records" columns="2" id="InfoSection">
+            
+        <apex:pageBlockSectionItem >
+            Click to Check/Create default Mass Implementation Record ('Company List') and relative records.<br/><br/>
+            <apex:commandButton immediate="true" value="Run Checker" action="{!runChecker}" reRender="msgPanel"  status="MCSub"></apex:commandButton>
+        </apex:pageBlockSectionItem>
+
+
+
+
+
+
+    </apex:pageBlockSection>
+
+
+
+    <apex:pageBlockSection title="Add New Implementation" columns="2" id="InfoSection2">
+        
+        <apex:inputField value="{!objNewRecord.name}" required="true" rendered="{!isShowStep2Fld}"/>
+        <apex:inputField value="{!objNewRecord.Search_Page_Title__c}" rendered="{!isShowStep2Fld}"/>
+    
+    
+        <apex:pageBlockSectionItem rendered="{!NOT(isShowStep2Fld)}">
+            <apex:outputLabel value="Target Object" for="inpTargetObject"/>
+            <apex:selectList label="Target Object" value="{!strTargetObject}" multiselect="false" id="inpTargetObject" size="1" required="true">
+                <apex:selectOptions value="{!objectListItems}"/>
+            </apex:selectList>
+        </apex:pageBlockSectionItem>
+        <apex:outputField value="{!objNewRecord.targetObjectName__c}" rendered="{!isShowStep2Fld}"/>
+
+        <apex:pageBlockSectionItem rendered="{!NOT(isShowStep2Fld)}"/>
+        <apex:inputField value="{!objNewRecord.Search_Object_Title__c}" rendered="{!isShowStep2Fld}"/>
+        
+
+        <apex:pageBlockSectionItem rendered="{!NOT(isShowStep2Fld)}">
+            <apex:outputLabel value="Parent Object" for="inpParentObject"/>
+            <apex:selectList label="Parent Object" value="{!strParentObject}" multiselect="false" id="inpParentObject" size="1" required="true">
+                <apex:selectOptions value="{!objectListItems}"/>
+            </apex:selectList>
+        </apex:pageBlockSectionItem>
+        <apex:outputField value="{!objNewRecord.parentObjectName__c}" rendered="{!isShowStep2Fld}"/>        
+        
+        <apex:pageBlockSectionItem rendered="{!NOT(isShowStep2Fld)}"/>
+        <apex:inputField value="{!objNewRecord.Get_Element_from_List_Tab__c}" rendered="{!isShowStep2Fld}"/>
+
+
+        <apex:pageBlockSectionItem rendered="{!NOT(isShowStep2Fld)}">
+            <apex:outputLabel value="Search Object" for="inpSearchObject"/>
+            <apex:selectList label="Search Object" value="{!strSearchObject}" multiselect="false" id="inpSearchObject" size="1" required="true">
+                <apex:selectOptions value="{!objectListItems}"/>
+            </apex:selectList>
+        </apex:pageBlockSectionItem>
+        <apex:outputField value="{!objNewRecord.searchObjectName__c}" rendered="{!isShowStep2Fld}"/>
+        
+        <apex:pageBlockSectionItem rendered="{!NOT(isShowStep2Fld)}"/>
+        <apex:inputField value="{!objNewRecord.Show_Views_on_MassAdd_Page__c}" rendered="{!isShowStep2Fld}"/>
+        
+        <apex:pageBlockSectionItem rendered="{!isShowStep2Fld}">
+            <apex:outputLabel value="Target Object Parent Field Name" for="inpTargetObjectParentFld"/>
+            <apex:selectList label="Target Object Parent Field Name" value="{!strTargetObjectParentFld}" multiselect="false" id="inpTargetObjectParentFld" size="1" required="true">
+                <apex:selectOptions value="{!fieldList4Parent}"/>
+            </apex:selectList>
+        </apex:pageBlockSectionItem>
+        <apex:inputField value="{!objNewRecord.Show_Views_on_MassEdit_Page__c}" rendered="{!isShowStep2Fld}"/>
+        
+        <apex:pageBlockSectionItem rendered="{!isShowStep2Fld}">
+            <apex:outputLabel value="Target Object Search Field Name" for="inpTargetObjectSearchFld"/>
+            <apex:selectList label="Target Object Search Field Name" value="{!strTargetObjectSearchFld}" multiselect="false" id="inpTargetObjectSearchFld" size="1" required="true">
+                <apex:selectOptions value="{!fieldList4Search}"/>
+            </apex:selectList>
+        </apex:pageBlockSectionItem>
+        <apex:inputField value="{!objNewRecord.Use_Step2_Multi_Add_Form__c}" rendered="{!isShowStep2Fld}"/>
+        <apex:inputField value="{!objNewRecord.Row_Qty_Values__c}" rendered="{!isShowStep2Fld}"/>
+        
+        
+    </apex:pageBlockSection>
+    <apex:pageBlockButtons location="bottom">
+        <apex:commandButton value="Create" action="{!runSaveImpl}" reRender="msgPanel,mBlock"  status="MCSub" />
+        <apex:commandButton immediate="true" value="Cancel" action="{!runCancelImpl}" reRender="msgPanel,mBlock"  status="MCSub" rendered="{!isShowStep2Fld}"/> 
+    </apex:pageBlockButtons>
+</apex:pageBlock>
+
+</apex:form>
+
+<apex:actionstatus id="MCSub" startText="Processing...">
+        <apex:facet name="start">
+            <div id="salesforceSource_blurybackground" style="position:absolute; left:1px; top:1px; width:100%; height:100%; text-align:center; vertical-align: middle; background-color: #dcdcdc; opacity:0.6;filter:alpha(opacity=60)"></div>
+            <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 80%; display: ''; ">
+                <div style="width: 144px;vertical-align: middle;" class="waitingHolder">
+                <table align="center" valign="top" style="width: 100%; height: 30%">
+                <tr align="center" valign="top" style="width: 100%; height: 30%">
+                    <td valign="top"><img class="waitingImage" src="/img/loading.gif"/><span class="waitingDescription">Processing......</span></td>
+                </tr>
+                </table>
+                </div>
+            </div>
+            <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 100%; display: ''; "/>
+            <script>document.getElementById('ManageMembersViewport_loading').height = window.innerHeight * (3/4);</script>
+        </apex:facet>
+        <apex:facet name="stop"></apex:facet>
+</apex:actionstatus> 
+</apex:page>

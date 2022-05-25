@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Possible_VAT_Treatment__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF 
+(ISPICKVAL(Client_Location__c , &apos;UK&apos;) &amp;&amp; 
+ISPICKVAL(Underlying_Transaction_excempt__c , &apos;NO&apos;), 
+&apos;VAT to be charged at the standard rate to the client – NB if the underlying transaction become excempt you must complete this Guide again&apos;, 
+
+IF( 
+ISPICKVAL(Client_Location__c , &apos;UK&apos;) &amp;&amp; 
+ISPICKVAL(Underlying_Transaction_excempt__c , &apos;YES&apos;) &amp;&amp; 
+ISPICKVAL(HLHZ_acting_as_an_intermediary__c , &apos;YES&apos;), 
+&apos;Our fee is exempt – VAT at 0% to be charged and this will reduce pour VAT recoverable on purchases and Irrecoverable VAT to be charged to client&apos;, 
+
+IF 
+(ISPICKVAL(Client_Location__c , &apos;UK&apos;) &amp;&amp; 
+ISPICKVAL(Underlying_Transaction_excempt__c , &apos;YES&apos;) &amp;&amp; 
+ISPICKVAL(HLHZ_acting_as_an_intermediary__c , &apos;NO&apos;), 
+&apos;UK VAT at standard rate should be charged to the client&apos;, 
+
+IF 
+(ISPICKVAL(Client_Location__c , &apos;EEC&apos;) &amp;&amp; 
+ISPICKVAL(Underlying_Transaction_excempt__c , &apos;NO&apos;) &amp;&amp; 
+ISPICKVAL(Does_Client_have_a_VAT_number__c , &apos;YES&apos;), 
+&apos;VAT is to be charged at 0% and provides full credit for recovery of VAT on purchases&apos;, 
+
+IF 
+(ISPICKVAL(Client_Location__c , &apos;EEC&apos;) &amp;&amp; 
+ISPICKVAL(Underlying_Transaction_excempt__c , &apos;NO&apos;) &amp;&amp; 
+ISPICKVAL(Does_Client_have_a_VAT_number__c , &apos;NO&apos;), 
+&apos;UK VAT at standard rate should be charged to the client&apos;, 
+
+IF 
+(ISPICKVAL(Client_Location__c , &apos;EEC&apos;) &amp;&amp; 
+ISPICKVAL(Underlying_Transaction_excempt__c , &apos;YES&apos;) &amp;&amp; 
+ISPICKVAL(HLHZ_acting_as_an_intermediary__c , &apos;YES&apos;), 
+&apos;Our fee is exempt – VAT at 0% to be charged and this will reduce pour VAT recoverable on purchases and Irrecoverable VAT to be charged to client&apos;, 
+
+
+IF 
+(ISPICKVAL(Client_Location__c , &apos;EEC&apos;) &amp;&amp; 
+ISPICKVAL(Underlying_Transaction_excempt__c , &apos;YES&apos;) &amp;&amp; 
+ISPICKVAL(HLHZ_acting_as_an_intermediary__c , &apos;NO&apos;) &amp;&amp; 
+ISPICKVAL(Does_Client_have_a_VAT_number__c , &apos;NO&apos;), 
+&apos;UK VAT at standard rate should be charged to the client&apos;, 
+
+IF 
+(ISPICKVAL(Client_Location__c , &apos;EEC&apos;) &amp;&amp; 
+ISPICKVAL(Underlying_Transaction_excempt__c , &apos;YES&apos;) &amp;&amp; 
+ISPICKVAL(HLHZ_acting_as_an_intermediary__c , &apos;NO&apos;) &amp;&amp; 
+ISPICKVAL(Does_Client_have_a_VAT_number__c , &apos;YES&apos;), 
+&apos;VAT is to be charged at 0% and provides full credit for recovery of VAT on purchases&apos;, 
+
+IF 
+(ISPICKVAL(Client_Location__c , &apos;Non EEC&apos;), &apos;The fee is outside the scope of VAT and Vat does not need to be mentioned on our invoices – provides full credit or recovery of VAT on purchases - Exempt with Credit&apos;,&apos;&apos; 
+
+
+)))))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Possible VAT Treatment</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

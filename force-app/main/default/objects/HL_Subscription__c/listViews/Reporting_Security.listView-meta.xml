@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reporting_Security</fullName>
+    <columns>NAME</columns>
+    <columns>Distribution_List__c</columns>
+    <columns>HL_Report_Link__c</columns>
+    <columns>Subscriber__c</columns>
+    <columns>Line_of_Business__c</columns>
+    <columns>Industry_Group__c</columns>
+    <columns>Office__c</columns>
+    <columns>Product_Type__c</columns>
+    <columns>Staff_Department__c</columns>
+    <columns>Staff_Industry_Group__c</columns>
+    <columns>Staff_Office__c</columns>
+    <columns>Product_Speciality__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Distribution_List__c</field>
+        <operation>equals</operation>
+        <value>Report Security Assignment</value>
+    </filters>
+    <label>Reporting Security</label>
+</ListView>

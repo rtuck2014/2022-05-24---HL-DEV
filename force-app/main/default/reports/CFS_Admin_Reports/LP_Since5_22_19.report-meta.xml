@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$lmscons__Learning_Path__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c.lmscons__Assignments_del__r$lmscons__Training_User_License__c.lmscons__User__c.Name</field>
+    </columns>
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$CreatedDate</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>LP_Since5_22_19</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>lmsilt__X050_03_Learning_Path_Assignments_CFS__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>lmscons__Learning_Path_Assignment__c$CreatedDate</dateColumn>
+        <endDate>2019-07-22</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2019-05-22</startDate>
+    </timeFrameFilter>
+</Report>

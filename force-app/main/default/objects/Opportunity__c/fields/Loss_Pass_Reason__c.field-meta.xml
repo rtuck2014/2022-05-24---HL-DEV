@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Loss_Pass_Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Loss/Pass Reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Lost - Other Agent</fullName>
+                <default>false</default>
+                <label>Lost - Other Agent</label>
+            </value>
+            <value>
+                <fullName>Lost - Did not use Agent</fullName>
+                <default>false</default>
+                <label>Lost - Did not use Agent</label>
+            </value>
+            <value>
+                <fullName>PFG Decline - Strategy</fullName>
+                <default>false</default>
+                <label>PFG Decline - Strategy</label>
+            </value>
+            <value>
+                <fullName>PFG Decline - Bandwidth</fullName>
+                <default>false</default>
+                <label>PFG Decline - Bandwidth</label>
+            </value>
+            <value>
+                <fullName>PFG Decline - Performance</fullName>
+                <default>false</default>
+                <label>PFG Decline - Performance</label>
+            </value>
+            <value>
+                <fullName>PFG Decline - No Interest</fullName>
+                <default>false</default>
+                <label>PFG Decline - No Interest</label>
+            </value>
+            <value>
+                <fullName>PFG Decline - Fund Structure</fullName>
+                <default>false</default>
+                <label>PFG Decline - Fund Structure</label>
+            </value>
+            <value>
+                <fullName>PFG Decline - References</fullName>
+                <default>false</default>
+                <label>PFG Decline - References</label>
+            </value>
+            <value>
+                <fullName>PFG Decline - Conflict</fullName>
+                <default>false</default>
+                <label>PFG Decline - Conflict</label>
+            </value>
+            <value>
+                <fullName>PFG Decline - Target for IFA</fullName>
+                <default>false</default>
+                <label>PFG Decline - Target for IFA</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

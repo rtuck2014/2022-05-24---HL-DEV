@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Role__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>FVA TO, FMV, Fairness, Solvency and BAS  roles: 
+-Adverse Party 
+-Attorney 
+-Banker 
+-BoD 
+-CEO 
+-CFO 
+-Company Mgmt 
+-Fin Advisor 
+-Independent Director 
+-Majority Owner 
+-Mgmt Contact
+-Independent Director</inlineHelpText>
+    <label>Role</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Accountant to Company/Debtor</fullName>
+                <default>false</default>
+                <label>Accountant to Company/Debtor</label>
+            </value>
+            <value>
+                <fullName>Accountant to Official Creditors Committee</fullName>
+                <default>false</default>
+                <label>Accountant to Official Creditors Committee</label>
+            </value>
+            <value>
+                <fullName>Ad Hoc Noteholders Committee</fullName>
+                <default>false</default>
+                <label>Ad Hoc Noteholders Committee</label>
+            </value>
+            <value>
+                <fullName>Administrator</fullName>
+                <default>false</default>
+                <label>Administrator</label>
+            </value>
+            <value>
+                <fullName>Adverse Party</fullName>
+                <default>false</default>
+                <label>Adverse Party</label>
+            </value>
+            <value>
+                <fullName>Agent</fullName>
+                <default>false</default>
+                <label>Agent</label>
+            </value>
+            <value>
+                <fullName>Attorney</fullName>
+                <default>false</default>
+                <label>Attorney</label>
+            </value>
+            <value>
+                <fullName>Attorney (Acquirer)</fullName>
+                <default>false</default>
+                <label>Attorney (Acquirer)</label>
+            </value>
+            <value>
+                <fullName>Attorney (Target)</fullName>
+                <default>false</default>
+                <label>Attorney (Target)</label>
+            </value>
+            <value>
+                <fullName>Attorney Advising other Transaction Party</fullName>
+                <default>false</default>
+                <label>Attorney Advising other Transaction Party</label>
+            </value>
+            <value>
+                <fullName>Attorney to Adverse Party Board/Special Committee</fullName>
+                <default>false</default>
+                <label>Attorney to Adverse Party Board/Special Committee</label>
+            </value>
+            <value>
+                <fullName>Attorney to Adverse Party Company</fullName>
+                <default>false</default>
+                <label>Attorney to Adverse Party Company</label>
+            </value>
+            <value>
+                <fullName>Attorney to Board/Special Committee</fullName>
+                <default>false</default>
+                <label>Attorney to Board/Special Committee</label>
+            </value>
+            <value>
+                <fullName>Attorney to Company</fullName>
+                <default>false</default>
+                <label>Attorney to Company</label>
+            </value>
+            <value>
+                <fullName>Attorney to Houlihan Lokey</fullName>
+                <default>false</default>
+                <label>Attorney to Houlihan Lokey</label>
+            </value>
+            <value>
+                <fullName>Audit Partner</fullName>
+                <default>false</default>
+                <label>Audit Partner</label>
+            </value>
+            <value>
+                <fullName>Balloting/Solicitation Agent</fullName>
+                <default>false</default>
+                <label>Balloting/Solicitation Agent</label>
+            </value>
+            <value>
+                <fullName>Banker Advising Acquirer</fullName>
+                <default>false</default>
+                <label>Banker Advising Acquirer</label>
+            </value>
+            <value>
+                <fullName>Banker Advising other Transaction Party</fullName>
+                <default>false</default>
+                <label>Banker Advising other Transaction Party</label>
+            </value>
+            <value>
+                <fullName>Banker Advising Target</fullName>
+                <default>false</default>
+                <label>Banker Advising Target</label>
+            </value>
+            <value>
+                <fullName>Bank Group</fullName>
+                <default>false</default>
+                <label>Bank Group</label>
+            </value>
+            <value>
+                <fullName>Bank Group - First Lien</fullName>
+                <default>false</default>
+                <label>Bank Group - First Lien</label>
+            </value>
+            <value>
+                <fullName>Bank Group - Second Lien</fullName>
+                <default>false</default>
+                <label>Bank Group - Second Lien</label>
+            </value>
+            <value>
+                <fullName>Bank Lender</fullName>
+                <default>false</default>
+                <label>Bank Lender</label>
+            </value>
+            <value>
+                <fullName>Bankruptcy Clerk</fullName>
+                <default>false</default>
+                <label>Bankruptcy Clerk</label>
+            </value>
+            <value>
+                <fullName>Bankruptcy Counsel to Ad Hoc Noteholders Committee</fullName>
+                <default>false</default>
+                <label>Bankruptcy Counsel to Ad Hoc Noteholders Committee</label>
+            </value>
+            <value>
+                <fullName>Bankruptcy Counsel to Bank Group</fullName>
+                <default>false</default>
+                <label>Bankruptcy Counsel to Bank Group</label>
+            </value>
+            <value>
+                <fullName>Bankruptcy Counsel to Board of Directors</fullName>
+                <default>false</default>
+                <label>Bankruptcy Counsel to Board of Directors</label>
+            </value>
+            <value>
+                <fullName>Bankruptcy Counsel to Company/Debtor</fullName>
+                <default>false</default>
+                <label>Bankruptcy Counsel to Company/Debtor</label>
+            </value>
+            <value>
+                <fullName>Bankruptcy Counsel to DIP Lender</fullName>
+                <default>false</default>
+                <label>Bankruptcy Counsel to DIP Lender</label>
+            </value>
+            <value>
+                <fullName>Bankruptcy Counsel to Indenture Trustee</fullName>
+                <default>false</default>
+                <label>Bankruptcy Counsel to Indenture Trustee</label>
+            </value>
+            <value>
+                <fullName>Bankruptcy Counsel to Junior Lenders</fullName>
+                <default>false</default>
+                <label>Bankruptcy Counsel to Junior Lenders</label>
+            </value>
+            <value>
+                <fullName>Bankruptcy Counsel to Noteholder Subcommittee</fullName>
+                <default>false</default>
+                <label>Bankruptcy Counsel to Noteholder Subcommittee</label>
+            </value>
+            <value>
+                <fullName>Bankruptcy Counsel to Official Committee of Noteholders</fullName>
+                <default>false</default>
+                <label>Bankruptcy Counsel to Official Committee of Noteholders</label>
+            </value>
+            <value>
+                <fullName>Bankruptcy Counsel to Official Committee of Trade Creditors</fullName>
+                <default>false</default>
+                <label>Bankruptcy Counsel to Official Committee of Trade Creditors</label>
+            </value>
+            <value>
+                <fullName>Bankruptcy Counsel to Official Creditors Committee</fullName>
+                <default>false</default>
+                <label>Bankruptcy Counsel to Official Creditors Committee</label>
+            </value>
+            <value>
+                <fullName>Bankruptcy Counsel to Senior Lenders</fullName>
+                <default>false</default>
+                <label>Bankruptcy Counsel to Senior Lenders</label>
+            </value>
+            <value>
+                <fullName>Bankruptcy Court</fullName>
+                <default>false</default>
+                <label>Bankruptcy Court</label>
+            </value>
+            <value>
+                <fullName>Billing Contact</fullName>
+                <default>false</default>
+                <label>Billing Contact</label>
+            </value>
+            <value>
+                <fullName>Board of Directors</fullName>
+                <default>false</default>
+                <label>Board of Directors</label>
+            </value>
+            <value>
+                <fullName>Board of Directors - non-management</fullName>
+                <default>false</default>
+                <label>Board of Directors - non-management</label>
+            </value>
+            <value>
+                <fullName>Buyer</fullName>
+                <default>false</default>
+                <label>Buyer</label>
+            </value>
+            <value>
+                <fullName>CEO of Company</fullName>
+                <default>false</default>
+                <label>CEO of Company</label>
+            </value>
+            <value>
+                <fullName>CFO of Company</fullName>
+                <default>false</default>
+                <label>CFO of Company</label>
+            </value>
+            <value>
+                <fullName>Committee Member</fullName>
+                <default>false</default>
+                <label>Committee Member</label>
+            </value>
+            <value>
+                <fullName>Company/Debtor</fullName>
+                <default>false</default>
+                <label>Company/Debtor</label>
+            </value>
+            <value>
+                <fullName>Company Contact</fullName>
+                <default>false</default>
+                <label>Company Contact</label>
+            </value>
+            <value>
+                <fullName>Company Management</fullName>
+                <default>false</default>
+                <label>Company Management</label>
+            </value>
+            <value>
+                <fullName>Conflicts Counsel to Ad Hoc Noteholders Committee</fullName>
+                <default>false</default>
+                <label>Conflicts Counsel to Ad Hoc Noteholders Committee</label>
+            </value>
+            <value>
+                <fullName>Conflicts Counsel to Company/Debtor</fullName>
+                <default>false</default>
+                <label>Conflicts Counsel to Company/Debtor</label>
+            </value>
+            <value>
+                <fullName>Conflicts Counsel to Official Creditors Committee</fullName>
+                <default>false</default>
+                <label>Conflicts Counsel to Official Creditors Committee</label>
+            </value>
+            <value>
+                <fullName>Consultant to Ad Hoc Noteholders Committee</fullName>
+                <default>false</default>
+                <label>Consultant to Ad Hoc Noteholders Committee</label>
+            </value>
+            <value>
+                <fullName>Consultant to Bank Group</fullName>
+                <default>false</default>
+                <label>Consultant to Bank Group</label>
+            </value>
+            <value>
+                <fullName>Consultant to Company/Debtor</fullName>
+                <default>false</default>
+                <label>Consultant to Company/Debtor</label>
+            </value>
+            <value>
+                <fullName>Consultant to Noteholder Subcommittee</fullName>
+                <default>false</default>
+                <label>Consultant to Noteholder Subcommittee</label>
+            </value>
+            <value>
+                <fullName>Consultant to Official Creditors Committee</fullName>
+                <default>false</default>
+                <label>Consultant to Official Creditors Committee</label>
+            </value>
+            <value>
+                <fullName>Consultant to the Bank Group</fullName>
+                <default>false</default>
+                <label>Consultant to the Bank Group</label>
+            </value>
+            <value>
+                <fullName>Consultant to the Company/Debtor</fullName>
+                <default>false</default>
+                <label>Consultant to the Company/Debtor</label>
+            </value>
+            <value>
+                <fullName>Contacts Administrator</fullName>
+                <default>false</default>
+                <label>Contacts Administrator</label>
+            </value>
+            <value>
+                <fullName>Counsel - First Lien</fullName>
+                <default>false</default>
+                <label>Counsel - First Lien</label>
+            </value>
+            <value>
+                <fullName>Counsel - Second Lien</fullName>
+                <default>false</default>
+                <label>Counsel - Second Lien</label>
+            </value>
+            <value>
+                <fullName>DIP Lender</fullName>
+                <default>false</default>
+                <label>DIP Lender</label>
+            </value>
+            <value>
+                <fullName>Equity Sponsor</fullName>
+                <default>false</default>
+                <label>Equity Sponsor</label>
+            </value>
+            <value>
+                <fullName>External Financial Advisor</fullName>
+                <default>false</default>
+                <label>External Financial Advisor</label>
+            </value>
+            <value>
+                <fullName>Financial Advisor</fullName>
+                <default>false</default>
+                <label>Financial Advisor</label>
+            </value>
+            <value>
+                <fullName>Financial Advisors to Noteholders</fullName>
+                <default>false</default>
+                <label>Financial Advisors to Noteholders</label>
+            </value>
+            <value>
+                <fullName>Financial Advisors to the Committee</fullName>
+                <default>false</default>
+                <label>Financial Advisors to the Committee</label>
+            </value>
+            <value>
+                <fullName>Financial Advisor to Ad Hoc Noteholders Committee</fullName>
+                <default>false</default>
+                <label>Financial Advisor to Ad Hoc Noteholders Committee</label>
+            </value>
+            <value>
+                <fullName>Financial Advisor to Bank Group</fullName>
+                <default>false</default>
+                <label>Financial Advisor to Bank Group</label>
+            </value>
+            <value>
+                <fullName>Financial Advisor to Buyer</fullName>
+                <default>false</default>
+                <label>Financial Advisor to Buyer</label>
+            </value>
+            <value>
+                <fullName>Financial Advisor to Company/Debtor</fullName>
+                <default>false</default>
+                <label>Financial Advisor to Company/Debtor</label>
+            </value>
+            <value>
+                <fullName>Financial Advisor to Junior Lenders</fullName>
+                <default>false</default>
+                <label>Financial Advisor to Junior Lenders</label>
+            </value>
+            <value>
+                <fullName>Financial Advisor to Noteholder Subcommittee</fullName>
+                <default>false</default>
+                <label>Financial Advisor to Noteholder Subcommittee</label>
+            </value>
+            <value>
+                <fullName>Financial Advisor to Official Committee of Noteholders</fullName>
+                <default>false</default>
+                <label>Financial Advisor to Official Committee of Noteholders</label>
+            </value>
+            <value>
+                <fullName>Financial Advisor to Official Creditors Committee</fullName>
+                <default>false</default>
+                <label>Financial Advisor to Official Creditors Committee</label>
+            </value>
+            <value>
+                <fullName>Financial Advisor to Potential Buyer</fullName>
+                <default>false</default>
+                <label>Financial Advisor to Potential Buyer</label>
+            </value>
+            <value>
+                <fullName>Financial Advisor to Senior Lenders</fullName>
+                <default>false</default>
+                <label>Financial Advisor to Senior Lenders</label>
+            </value>
+            <value>
+                <fullName>Government Officials</fullName>
+                <default>false</default>
+                <label>Government Officials</label>
+            </value>
+            <value>
+                <fullName>HLHZ-PFG</fullName>
+                <default>false</default>
+                <label>HLHZ-PFG</label>
+            </value>
+            <value>
+                <fullName>Implementation</fullName>
+                <default>false</default>
+                <label>Implementation</label>
+            </value>
+            <value>
+                <fullName>Indenture Trustee</fullName>
+                <default>false</default>
+                <label>Indenture Trustee</label>
+            </value>
+            <value>
+                <fullName>Independent Director</fullName>
+                <default>false</default>
+                <label>Independent Director</label>
+            </value>
+            <value>
+                <fullName>Junior Committee Members</fullName>
+                <default>false</default>
+                <label>Junior Committee Members</label>
+            </value>
+            <value>
+                <fullName>Junior Debt Holders</fullName>
+                <default>false</default>
+                <label>Junior Debt Holders</label>
+            </value>
+            <value>
+                <fullName>Junior Lender</fullName>
+                <default>false</default>
+                <label>Junior Lender</label>
+            </value>
+            <value>
+                <fullName>Legal Advisor</fullName>
+                <default>false</default>
+                <label>Legal Advisor</label>
+            </value>
+            <value>
+                <fullName>Legal Advisor to Company/Debtor</fullName>
+                <default>false</default>
+                <label>Legal Advisor to Company/Debtor</label>
+            </value>
+            <value>
+                <fullName>Legal Advisor to Creditor</fullName>
+                <default>false</default>
+                <label>Legal Advisor to Creditor</label>
+            </value>
+            <value>
+                <fullName>Legal Advisor to Lender</fullName>
+                <default>false</default>
+                <label>Legal Advisor to Lender</label>
+            </value>
+            <value>
+                <fullName>Legal Advisor to Noteholders</fullName>
+                <default>false</default>
+                <label>Legal Advisor to Noteholders</label>
+            </value>
+            <value>
+                <fullName>Legal Advisor to Potential Buyer</fullName>
+                <default>false</default>
+                <label>Legal Advisor to Potential Buyer</label>
+            </value>
+            <value>
+                <fullName>Legal Advisor to Trustee</fullName>
+                <default>false</default>
+                <label>Legal Advisor to Trustee</label>
+            </value>
+            <value>
+                <fullName>Legal Counsel</fullName>
+                <default>false</default>
+                <label>Legal Counsel</label>
+            </value>
+            <value>
+                <fullName>Lender</fullName>
+                <default>false</default>
+                <label>Lender</label>
+            </value>
+            <value>
+                <fullName>Local Counsel to Ad Hoc Noteholders Committee</fullName>
+                <default>false</default>
+                <label>Local Counsel to Ad Hoc Noteholders Committee</label>
+            </value>
+            <value>
+                <fullName>Local Counsel to Bank Group</fullName>
+                <default>false</default>
+                <label>Local Counsel to Bank Group</label>
+            </value>
+            <value>
+                <fullName>Local Counsel to Company/Debtor</fullName>
+                <default>false</default>
+                <label>Local Counsel to Company/Debtor</label>
+            </value>
+            <value>
+                <fullName>Local Counsel to DIP Lender</fullName>
+                <default>false</default>
+                <label>Local Counsel to DIP Lender</label>
+            </value>
+            <value>
+                <fullName>Local Counsel to Indenture Trustee</fullName>
+                <default>false</default>
+                <label>Local Counsel to Indenture Trustee</label>
+            </value>
+            <value>
+                <fullName>Local Counsel to Noteholder Subcommittee</fullName>
+                <default>false</default>
+                <label>Local Counsel to Noteholder Subcommittee</label>
+            </value>
+            <value>
+                <fullName>Local Counsel to Official Committee of Noteholders</fullName>
+                <default>false</default>
+                <label>Local Counsel to Official Committee of Noteholders</label>
+            </value>
+            <value>
+                <fullName>Local Counsel to Official Committee of Trade Creditors</fullName>
+                <default>false</default>
+                <label>Local Counsel to Official Committee of Trade Creditors</label>
+            </value>
+            <value>
+                <fullName>Local Counsel to Official Creditors Committee</fullName>
+                <default>false</default>
+                <label>Local Counsel to Official Creditors Committee</label>
+            </value>
+            <value>
+                <fullName>Majority Owner</fullName>
+                <default>false</default>
+                <label>Majority Owner</label>
+            </value>
+            <value>
+                <fullName>Management Contact</fullName>
+                <default>false</default>
+                <label>Management Contact</label>
+            </value>
+            <value>
+                <fullName>Member of Board of Directors</fullName>
+                <default>false</default>
+                <label>Member of Board of Directors</label>
+            </value>
+            <value>
+                <fullName>Mezzanine Holders</fullName>
+                <default>false</default>
+                <label>Mezzanine Holders</label>
+            </value>
+            <value>
+                <fullName>Mezzanine Investor</fullName>
+                <default>false</default>
+                <label>Mezzanine Investor</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+            <value>
+                <fullName>Noteholder</fullName>
+                <default>false</default>
+                <label>Noteholder</label>
+            </value>
+            <value>
+                <fullName>Noteholder - Steering Committee</fullName>
+                <default>false</default>
+                <label>Noteholder - Steering Committee</label>
+            </value>
+            <value>
+                <fullName>Official Committee of Noteholders</fullName>
+                <default>false</default>
+                <label>Official Committee of Noteholders</label>
+            </value>
+            <value>
+                <fullName>Official Committee of Other Creditors</fullName>
+                <default>false</default>
+                <label>Official Committee of Other Creditors</label>
+            </value>
+            <value>
+                <fullName>Official Committee of Trade Creditors</fullName>
+                <default>false</default>
+                <label>Official Committee of Trade Creditors</label>
+            </value>
+            <value>
+                <fullName>Official Creditors Committee</fullName>
+                <default>false</default>
+                <label>Official Creditors Committee</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Other Consultant</fullName>
+                <default>false</default>
+                <label>Other Consultant</label>
+            </value>
+            <value>
+                <fullName>Other Counsel to Ad Hoc Noteholders Committee</fullName>
+                <default>false</default>
+                <label>Other Counsel to Ad Hoc Noteholders Committee</label>
+            </value>
+            <value>
+                <fullName>Other Counsel to Bank Group</fullName>
+                <default>false</default>
+                <label>Other Counsel to Bank Group</label>
+            </value>
+            <value>
+                <fullName>Other Counsel to Company/Debtor</fullName>
+                <default>false</default>
+                <label>Other Counsel to Company/Debtor</label>
+            </value>
+            <value>
+                <fullName>Other Counsel to Equity Holders</fullName>
+                <default>false</default>
+                <label>Other Counsel to Equity Holders</label>
+            </value>
+            <value>
+                <fullName>Other Counsel to Junior Lenders</fullName>
+                <default>false</default>
+                <label>Other Counsel to Junior Lenders</label>
+            </value>
+            <value>
+                <fullName>Other Counsel to Noteholder Subcommittee</fullName>
+                <default>false</default>
+                <label>Other Counsel to Noteholder Subcommittee</label>
+            </value>
+            <value>
+                <fullName>Other Counsel to Official Creditors Committee</fullName>
+                <default>false</default>
+                <label>Other Counsel to Official Creditors Committee</label>
+            </value>
+            <value>
+                <fullName>Other Counsel to Senior Lenders</fullName>
+                <default>false</default>
+                <label>Other Counsel to Senior Lenders</label>
+            </value>
+            <value>
+                <fullName>Other Creditors</fullName>
+                <default>false</default>
+                <label>Other Creditors</label>
+            </value>
+            <value>
+                <fullName>Other Unsecured Creditor</fullName>
+                <default>false</default>
+                <label>Other Unsecured Creditor</label>
+            </value>
+            <value>
+                <fullName>Post-Transaction Board Member</fullName>
+                <default>false</default>
+                <label>Post-Transaction Board Member</label>
+            </value>
+            <value>
+                <fullName>Potential Buyer</fullName>
+                <default>false</default>
+                <label>Potential Buyer</label>
+            </value>
+            <value>
+                <fullName>Potential Mezzanine Investor</fullName>
+                <default>false</default>
+                <label>Potential Mezzanine Investor</label>
+            </value>
+            <value>
+                <fullName>Potential New Management Team</fullName>
+                <default>false</default>
+                <label>Potential New Management Team</label>
+            </value>
+            <value>
+                <fullName>Preferred Stock Holder</fullName>
+                <default>false</default>
+                <label>Preferred Stock Holder</label>
+            </value>
+            <value>
+                <fullName>Pre-Transaction Board Member</fullName>
+                <default>false</default>
+                <label>Pre-Transaction Board Member</label>
+            </value>
+            <value>
+                <fullName>Primary Contact</fullName>
+                <default>false</default>
+                <label>Primary Contact</label>
+            </value>
+            <value>
+                <fullName>Project Leader</fullName>
+                <default>false</default>
+                <label>Project Leader</label>
+            </value>
+            <value>
+                <fullName>Prospect - 1st Lien Debt</fullName>
+                <default>false</default>
+                <label>Prospect - 1st Lien Debt</label>
+            </value>
+            <value>
+                <fullName>Prospect - 2nd Lien Debt</fullName>
+                <default>false</default>
+                <label>Prospect - 2nd Lien Debt</label>
+            </value>
+            <value>
+                <fullName>Prospect - Bank Agent</fullName>
+                <default>false</default>
+                <label>Prospect - Bank Agent</label>
+            </value>
+            <value>
+                <fullName>Prospect - Company Law Firm</fullName>
+                <default>false</default>
+                <label>Prospect - Company Law Firm</label>
+            </value>
+            <value>
+                <fullName>Prospect - Equity</fullName>
+                <default>false</default>
+                <label>Prospect - Equity</label>
+            </value>
+            <value>
+                <fullName>Prospect - Other</fullName>
+                <default>false</default>
+                <label>Prospect - Other</label>
+            </value>
+            <value>
+                <fullName>Prospect - Unsecured Debt</fullName>
+                <default>false</default>
+                <label>Prospect - Unsecured Debt</label>
+            </value>
+            <value>
+                <fullName>Receiver</fullName>
+                <default>false</default>
+                <label>Receiver</label>
+            </value>
+            <value>
+                <fullName>Referral</fullName>
+                <default>false</default>
+                <label>Referral</label>
+            </value>
+            <value>
+                <fullName>Restricted Committee</fullName>
+                <default>false</default>
+                <label>Restricted Committee</label>
+            </value>
+            <value>
+                <fullName>Restricted Committee Member</fullName>
+                <default>false</default>
+                <label>Restricted Committee Member</label>
+            </value>
+            <value>
+                <fullName>Secured Lender</fullName>
+                <default>false</default>
+                <label>Secured Lender</label>
+            </value>
+            <value>
+                <fullName>Senior Committee Members</fullName>
+                <default>false</default>
+                <label>Senior Committee Members</label>
+            </value>
+            <value>
+                <fullName>Senior Debt Holders</fullName>
+                <default>false</default>
+                <label>Senior Debt Holders</label>
+            </value>
+            <value>
+                <fullName>Senior Holders - CMBS</fullName>
+                <default>false</default>
+                <label>Senior Holders - CMBS</label>
+            </value>
+            <value>
+                <fullName>Senior Lender</fullName>
+                <default>false</default>
+                <label>Senior Lender</label>
+            </value>
+            <value>
+                <fullName>Shareholders</fullName>
+                <default>false</default>
+                <label>Shareholders</label>
+            </value>
+            <value>
+                <fullName>Steering Committee</fullName>
+                <default>false</default>
+                <label>Steering Committee</label>
+            </value>
+            <value>
+                <fullName>Team Member</fullName>
+                <default>false</default>
+                <label>Team Member</label>
+            </value>
+            <value>
+                <fullName>Trade Unions</fullName>
+                <default>false</default>
+                <label>Trade Unions</label>
+            </value>
+            <value>
+                <fullName>Trustee</fullName>
+                <default>false</default>
+                <label>Trustee</label>
+            </value>
+            <value>
+                <fullName>Trustee to the Noteholders</fullName>
+                <default>false</default>
+                <label>Trustee to the Noteholders</label>
+            </value>
+            <value>
+                <fullName>Turnaround Consultant to Company/Debtor</fullName>
+                <default>false</default>
+                <label>Turnaround Consultant to Company/Debtor</label>
+            </value>
+            <value>
+                <fullName>U.S. Trustee</fullName>
+                <default>false</default>
+                <label>U.S. Trustee</label>
+            </value>
+            <value>
+                <fullName>Unrestricted Committee</fullName>
+                <default>false</default>
+                <label>Unrestricted Committee</label>
+            </value>
+            <value>
+                <fullName>Unrestricted Committee Member</fullName>
+                <default>false</default>
+                <label>Unrestricted Committee Member</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

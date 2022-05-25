@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Conflicts_Check_Current_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Current Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Auto-Pending</fullName>
+                <default>false</default>
+                <label>Auto-Pending</label>
+            </value>
+            <value>
+                <fullName>Auto-Postponed</fullName>
+                <default>false</default>
+                <label>Auto-Postponed</label>
+            </value>
+            <value>
+                <fullName>Cleared</fullName>
+                <default>false</default>
+                <label>Cleared</label>
+            </value>
+            <value>
+                <fullName>Dead</fullName>
+                <default>false</default>
+                <label>Dead</label>
+            </value>
+            <value>
+                <fullName>Expired</fullName>
+                <default>false</default>
+                <label>Expired</label>
+            </value>
+            <value>
+                <fullName>Managed</fullName>
+                <default>false</default>
+                <label>Managed</label>
+            </value>
+            <value>
+                <fullName>New Request</fullName>
+                <default>false</default>
+                <label>New Request</label>
+            </value>
+            <value>
+                <fullName>No Resolution Required</fullName>
+                <default>false</default>
+                <label>No Resolution Required</label>
+            </value>
+            <value>
+                <fullName>Pending Business Resolution</fullName>
+                <default>false</default>
+                <label>Pending Business Resolution</label>
+            </value>
+            <value>
+                <fullName>Pending Legal Resolution</fullName>
+                <default>false</default>
+                <label>Pending Legal Resolution</label>
+            </value>
+            <value>
+                <fullName>Returned to Conflicts Admin</fullName>
+                <default>false</default>
+                <label>Returned to Conflicts Admin</label>
+            </value>
+            <value>
+                <fullName>Returned to Requestor</fullName>
+                <default>false</default>
+                <label>Returned to Requestor</label>
+            </value>
+            <value>
+                <fullName>Search Completed</fullName>
+                <default>false</default>
+                <label>Search Completed</label>
+            </value>
+            <value>
+                <fullName>True Conflict</fullName>
+                <default>false</default>
+                <label>True Conflict</label>
+            </value>
+            <value>
+                <fullName>Under Business Review</fullName>
+                <default>false</default>
+                <label>Under Business Review</label>
+            </value>
+            <value>
+                <fullName>Under CA Review</fullName>
+                <default>false</default>
+                <label>Under CA Review</label>
+            </value>
+            <value>
+                <fullName>Under Legal Review</fullName>
+                <default>false</default>
+                <label>Under Legal Review</label>
+            </value>
+            <value>
+                <fullName>Withdrawn</fullName>
+                <default>false</default>
+                <label>Withdrawn</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

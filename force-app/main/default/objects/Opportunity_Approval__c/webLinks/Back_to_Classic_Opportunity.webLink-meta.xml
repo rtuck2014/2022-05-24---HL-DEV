@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Back_to_Classic_Opportunity</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Back to Classic Opportunity</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>https://hl--dev--c.visualforce.com//apex/HL_OpportunityView?id={!Opportunity_Approval__c.Related_OpportunityId__c}&amp;sfdc.override=1</url>
+</WebLink>

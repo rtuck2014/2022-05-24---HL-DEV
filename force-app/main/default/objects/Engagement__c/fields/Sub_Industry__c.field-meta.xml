@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Industry__c</fullName>
+    <externalId>false</externalId>
+    <label>Sub Industry</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Adhesives and sealants</fullName>
+                <default>false</default>
+                <label>Adhesives and sealants</label>
+            </value>
+            <value>
+                <fullName>Aerostructures</fullName>
+                <default>false</default>
+                <label>Aerostructures</label>
+            </value>
+            <value>
+                <fullName>Air and gas compressors</fullName>
+                <default>false</default>
+                <label>Air and gas compressors</label>
+            </value>
+            <value>
+                <fullName>Aircraft Electronics</fullName>
+                <default>false</default>
+                <label>Aircraft Electronics</label>
+            </value>
+            <value>
+                <fullName>Airlines</fullName>
+                <default>false</default>
+                <label>Airlines</label>
+            </value>
+            <value>
+                <fullName>Airport Services</fullName>
+                <default>false</default>
+                <label>Airport Services</label>
+            </value>
+            <value>
+                <fullName>Alkalines</fullName>
+                <default>false</default>
+                <label>Alkalines</label>
+            </value>
+            <value>
+                <fullName>Automotive Tier I and II suppliers</fullName>
+                <default>false</default>
+                <label>Automotive Tier I and II suppliers</label>
+            </value>
+            <value>
+                <fullName>Avionics</fullName>
+                <default>false</default>
+                <label>Avionics</label>
+            </value>
+            <value>
+                <fullName>Basic chemicals and fertilizers</fullName>
+                <default>false</default>
+                <label>Basic chemicals and fertilizers</label>
+            </value>
+            <value>
+                <fullName>Basic plastic and paper</fullName>
+                <default>false</default>
+                <label>Basic plastic and paper</label>
+            </value>
+            <value>
+                <fullName>Blast furnace</fullName>
+                <default>false</default>
+                <label>Blast furnace</label>
+            </value>
+            <value>
+                <fullName>Comm&apos;l Airlines-Cargo</fullName>
+                <default>false</default>
+                <label>Comm&apos;l Airlines-Cargo</label>
+            </value>
+            <value>
+                <fullName>Comm&apos;l Airlines-Other</fullName>
+                <default>false</default>
+                <label>Comm&apos;l Airlines-Other</label>
+            </value>
+            <value>
+                <fullName>Comm&apos;l Airlines-Passenger</fullName>
+                <default>false</default>
+                <label>Comm&apos;l Airlines-Passenger</label>
+            </value>
+            <value>
+                <fullName>Commercial Aircraft</fullName>
+                <default>false</default>
+                <label>Commercial Aircraft</label>
+            </value>
+            <value>
+                <fullName>Communications</fullName>
+                <default>false</default>
+                <label>Communications</label>
+            </value>
+            <value>
+                <fullName>Construction, mining and machinery</fullName>
+                <default>false</default>
+                <label>Construction, mining and machinery</label>
+            </value>
+            <value>
+                <fullName>Corrugated and solid fiber boxes</fullName>
+                <default>false</default>
+                <label>Corrugated and solid fiber boxes</label>
+            </value>
+            <value>
+                <fullName>Defense Electronics</fullName>
+                <default>false</default>
+                <label>Defense Electronics</label>
+            </value>
+            <value>
+                <fullName>Diecut paper</fullName>
+                <default>false</default>
+                <label>Diecut paper</label>
+            </value>
+            <value>
+                <fullName>Diversified Components</fullName>
+                <default>false</default>
+                <label>Diversified Components</label>
+            </value>
+            <value>
+                <fullName>EAF/minimill</fullName>
+                <default>false</default>
+                <label>EAF/minimill</label>
+            </value>
+            <value>
+                <fullName>Electric</fullName>
+                <default>false</default>
+                <label>Electric</label>
+            </value>
+            <value>
+                <fullName>Electrical industrial apparatus</fullName>
+                <default>false</default>
+                <label>Electrical industrial apparatus</label>
+            </value>
+            <value>
+                <fullName>Electrical motor controls</fullName>
+                <default>false</default>
+                <label>Electrical motor controls</label>
+            </value>
+            <value>
+                <fullName>Electronic Warfare</fullName>
+                <default>false</default>
+                <label>Electronic Warfare</label>
+            </value>
+            <value>
+                <fullName>Energy Products &amp; Services</fullName>
+                <default>false</default>
+                <label>Energy Products &amp; Services</label>
+            </value>
+            <value>
+                <fullName>Engineering &amp; Logistics</fullName>
+                <default>false</default>
+                <label>Engineering &amp; Logistics</label>
+            </value>
+            <value>
+                <fullName>Exploration &amp; Extraction</fullName>
+                <default>false</default>
+                <label>Exploration &amp; Extraction</label>
+            </value>
+            <value>
+                <fullName>Fabricated metal products</fullName>
+                <default>false</default>
+                <label>Fabricated metal products</label>
+            </value>
+            <value>
+                <fullName>Fiber, cellulose fiber</fullName>
+                <default>false</default>
+                <label>Fiber, cellulose fiber</label>
+            </value>
+            <value>
+                <fullName>Fiber cans and drums</fullName>
+                <default>false</default>
+                <label>Fiber cans and drums</label>
+            </value>
+            <value>
+                <fullName>Flight Controls</fullName>
+                <default>false</default>
+                <label>Flight Controls</label>
+            </value>
+            <value>
+                <fullName>Gas</fullName>
+                <default>false</default>
+                <label>Gas</label>
+            </value>
+            <value>
+                <fullName>Gray and ductile iron foundry</fullName>
+                <default>false</default>
+                <label>Gray and ductile iron foundry</label>
+            </value>
+            <value>
+                <fullName>Heattreatment</fullName>
+                <default>false</default>
+                <label>Heattreatment</label>
+            </value>
+            <value>
+                <fullName>Hoists and cranes</fullName>
+                <default>false</default>
+                <label>Hoists and cranes</label>
+            </value>
+            <value>
+                <fullName>Hotrolled steel coil rolling</fullName>
+                <default>false</default>
+                <label>Hotrolled steel coil rolling</label>
+            </value>
+            <value>
+                <fullName>Industrial &amp; Environmental Technologies</fullName>
+                <default>false</default>
+                <label>Industrial &amp; Environmental Technologies</label>
+            </value>
+            <value>
+                <fullName>Industrial controls</fullName>
+                <default>false</default>
+                <label>Industrial controls</label>
+            </value>
+            <value>
+                <fullName>Industrial gases</fullName>
+                <default>false</default>
+                <label>Industrial gases</label>
+            </value>
+            <value>
+                <fullName>Industrial truck and tractors</fullName>
+                <default>false</default>
+                <label>Industrial truck and tractors</label>
+            </value>
+            <value>
+                <fullName>Industrial valves</fullName>
+                <default>false</default>
+                <label>Industrial valves</label>
+            </value>
+            <value>
+                <fullName>Information Assurance</fullName>
+                <default>false</default>
+                <label>Information Assurance</label>
+            </value>
+            <value>
+                <fullName>Inorganic chemicals</fullName>
+                <default>false</default>
+                <label>Inorganic chemicals</label>
+            </value>
+            <value>
+                <fullName>Integrated mills</fullName>
+                <default>false</default>
+                <label>Integrated mills</label>
+            </value>
+            <value>
+                <fullName>Iron and steel forgings</fullName>
+                <default>false</default>
+                <label>Iron and steel forgings</label>
+            </value>
+            <value>
+                <fullName>IT Services</fullName>
+                <default>false</default>
+                <label>IT Services</label>
+            </value>
+            <value>
+                <fullName>Land Vehicles</fullName>
+                <default>false</default>
+                <label>Land Vehicles</label>
+            </value>
+            <value>
+                <fullName>Launch Vehicles</fullName>
+                <default>false</default>
+                <label>Launch Vehicles</label>
+            </value>
+            <value>
+                <fullName>Lodging, Leisure and Resorts</fullName>
+                <default>false</default>
+                <label>Lodging, Leisure and Resorts</label>
+            </value>
+            <value>
+                <fullName>Metal and glass containers</fullName>
+                <default>false</default>
+                <label>Metal and glass containers</label>
+            </value>
+            <value>
+                <fullName>Metal distribution</fullName>
+                <default>false</default>
+                <label>Metal distribution</label>
+            </value>
+            <value>
+                <fullName>Metal recycling</fullName>
+                <default>false</default>
+                <label>Metal recycling</label>
+            </value>
+            <value>
+                <fullName>Metal stamping</fullName>
+                <default>false</default>
+                <label>Metal stamping</label>
+            </value>
+            <value>
+                <fullName>Mill and machine tools</fullName>
+                <default>false</default>
+                <label>Mill and machine tools</label>
+            </value>
+            <value>
+                <fullName>Mining</fullName>
+                <default>false</default>
+                <label>Mining</label>
+            </value>
+            <value>
+                <fullName>Missiles &amp; Ordinance</fullName>
+                <default>false</default>
+                <label>Missiles &amp; Ordinance</label>
+            </value>
+            <value>
+                <fullName>Modeling &amp; Simulation</fullName>
+                <default>false</default>
+                <label>Modeling &amp; Simulation</label>
+            </value>
+            <value>
+                <fullName>Nonferrous metals, copper, aluminum, etc.</fullName>
+                <default>false</default>
+                <label>Nonferrous metals, copper, aluminum, etc.</label>
+            </value>
+            <value>
+                <fullName>Nuclear, Biological, Chemical</fullName>
+                <default>false</default>
+                <label>Nuclear, Biological, Chemical</label>
+            </value>
+            <value>
+                <fullName>OEM manufactured plastic products</fullName>
+                <default>false</default>
+                <label>OEM manufactured plastic products</label>
+            </value>
+            <value>
+                <fullName>Other manufacturing equipment</fullName>
+                <default>false</default>
+                <label>Other manufacturing equipment</label>
+            </value>
+            <value>
+                <fullName>Paints</fullName>
+                <default>false</default>
+                <label>Paints</label>
+            </value>
+            <value>
+                <fullName>Paperboard, containers and boxes</fullName>
+                <default>false</default>
+                <label>Paperboard, containers and boxes</label>
+            </value>
+            <value>
+                <fullName>Papercoated and laminated packaging</fullName>
+                <default>false</default>
+                <label>Papercoated and laminated packaging</label>
+            </value>
+            <value>
+                <fullName>Petroleum related</fullName>
+                <default>false</default>
+                <label>Petroleum related</label>
+            </value>
+            <value>
+                <fullName>Phosphates and sulfurs</fullName>
+                <default>false</default>
+                <label>Phosphates and sulfurs</label>
+            </value>
+            <value>
+                <fullName>Pigments</fullName>
+                <default>false</default>
+                <label>Pigments</label>
+            </value>
+            <value>
+                <fullName>Pipe and tubes</fullName>
+                <default>false</default>
+                <label>Pipe and tubes</label>
+            </value>
+            <value>
+                <fullName>Pipelines</fullName>
+                <default>false</default>
+                <label>Pipelines</label>
+            </value>
+            <value>
+                <fullName>Plastic bottles</fullName>
+                <default>false</default>
+                <label>Plastic bottles</label>
+            </value>
+            <value>
+                <fullName>Plastic foam products</fullName>
+                <default>false</default>
+                <label>Plastic foam products</label>
+            </value>
+            <value>
+                <fullName>Plastic materials and resins</fullName>
+                <default>false</default>
+                <label>Plastic materials and resins</label>
+            </value>
+            <value>
+                <fullName>Plastic pipes</fullName>
+                <default>false</default>
+                <label>Plastic pipes</label>
+            </value>
+            <value>
+                <fullName>Printing Services</fullName>
+                <default>false</default>
+                <label>Printing Services</label>
+            </value>
+            <value>
+                <fullName>Products &amp; Services</fullName>
+                <default>false</default>
+                <label>Products &amp; Services</label>
+            </value>
+            <value>
+                <fullName>Program Management</fullName>
+                <default>false</default>
+                <label>Program Management</label>
+            </value>
+            <value>
+                <fullName>Propulsion</fullName>
+                <default>false</default>
+                <label>Propulsion</label>
+            </value>
+            <value>
+                <fullName>Pulp and paper mills</fullName>
+                <default>false</default>
+                <label>Pulp and paper mills</label>
+            </value>
+            <value>
+                <fullName>Pumps and pump equipment</fullName>
+                <default>false</default>
+                <label>Pumps and pump equipment</label>
+            </value>
+            <value>
+                <fullName>Real Estate Finance</fullName>
+                <default>false</default>
+                <label>Real Estate Finance</label>
+            </value>
+            <value>
+                <fullName>Real Estate Operating</fullName>
+                <default>false</default>
+                <label>Real Estate Operating</label>
+            </value>
+            <value>
+                <fullName>Real Estate Service</fullName>
+                <default>false</default>
+                <label>Real Estate Service</label>
+            </value>
+            <value>
+                <fullName>Refining &amp; Storage</fullName>
+                <default>false</default>
+                <label>Refining &amp; Storage</label>
+            </value>
+            <value>
+                <fullName>Research &amp; Development</fullName>
+                <default>false</default>
+                <label>Research &amp; Development</label>
+            </value>
+            <value>
+                <fullName>Restaurants</fullName>
+                <default>false</default>
+                <label>Restaurants</label>
+            </value>
+            <value>
+                <fullName>Retail</fullName>
+                <default>false</default>
+                <label>Retail</label>
+            </value>
+            <value>
+                <fullName>Rubber</fullName>
+                <default>false</default>
+                <label>Rubber</label>
+            </value>
+            <value>
+                <fullName>Sanitary food containers</fullName>
+                <default>false</default>
+                <label>Sanitary food containers</label>
+            </value>
+            <value>
+                <fullName>Screw machine</fullName>
+                <default>false</default>
+                <label>Screw machine</label>
+            </value>
+            <value>
+                <fullName>Sensors</fullName>
+                <default>false</default>
+                <label>Sensors</label>
+            </value>
+            <value>
+                <fullName>Shipboard Systems</fullName>
+                <default>false</default>
+                <label>Shipboard Systems</label>
+            </value>
+            <value>
+                <fullName>Signal Processing</fullName>
+                <default>false</default>
+                <label>Signal Processing</label>
+            </value>
+            <value>
+                <fullName>Simulation &amp; Training</fullName>
+                <default>false</default>
+                <label>Simulation &amp; Training</label>
+            </value>
+            <value>
+                <fullName>Software Development</fullName>
+                <default>false</default>
+                <label>Software Development</label>
+            </value>
+            <value>
+                <fullName>Space Systems</fullName>
+                <default>false</default>
+                <label>Space Systems</label>
+            </value>
+            <value>
+                <fullName>Stamping and fabrication</fullName>
+                <default>false</default>
+                <label>Stamping and fabrication</label>
+            </value>
+            <value>
+                <fullName>Steel investment foundry</fullName>
+                <default>false</default>
+                <label>Steel investment foundry</label>
+            </value>
+            <value>
+                <fullName>Systems Engineering</fullName>
+                <default>false</default>
+                <label>Systems Engineering</label>
+            </value>
+            <value>
+                <fullName>Systems Integration</fullName>
+                <default>false</default>
+                <label>Systems Integration</label>
+            </value>
+            <value>
+                <fullName>Technical Services</fullName>
+                <default>false</default>
+                <label>Technical Services</label>
+            </value>
+            <value>
+                <fullName>Unmanned Vehicles</fullName>
+                <default>false</default>
+                <label>Unmanned Vehicles</label>
+            </value>
+            <value>
+                <fullName>Unsupported plastics fiber, sheet and shapes</fullName>
+                <default>false</default>
+                <label>Unsupported plastics fiber, sheet and shapes</label>
+            </value>
+            <value>
+                <fullName>Utility Product &amp; Services</fullName>
+                <default>false</default>
+                <label>Utility Product &amp; Services</label>
+            </value>
+            <value>
+                <fullName>Water</fullName>
+                <default>false</default>
+                <label>Water</label>
+            </value>
+            <value>
+                <fullName>Wholesale, Risk Management &amp; Trading</fullName>
+                <default>false</default>
+                <label>Wholesale, Risk Management &amp; Trading</label>
+            </value>
+            <value>
+                <fullName>Wire drawing</fullName>
+                <default>false</default>
+                <label>Wire drawing</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

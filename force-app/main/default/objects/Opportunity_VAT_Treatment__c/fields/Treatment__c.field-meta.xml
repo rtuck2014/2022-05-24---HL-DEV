@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Treatment__c</fullName>
+    <externalId>false</externalId>
+    <label>Treatment</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Standard Rated</fullName>
+                <default>false</default>
+                <label>Standard Rated</label>
+            </value>
+            <value>
+                <fullName>Zero Rated</fullName>
+                <default>false</default>
+                <label>Zero Rated</label>
+            </value>
+            <value>
+                <fullName>Exempt with Credit</fullName>
+                <default>false</default>
+                <label>Exempt with Credit</label>
+            </value>
+            <value>
+                <fullName>Exempt without Credit</fullName>
+                <default>false</default>
+                <label>Exempt without Credit</label>
+            </value>
+            <value>
+                <fullName>Exempt</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Exempt</label>
+            </value>
+            <value>
+                <fullName>Exempt without Credit TCC</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Exempt without Credit TCC</label>
+            </value>
+            <value>
+                <fullName>Exempt without Credit UDFC</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Exempt without Credit UDFC</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

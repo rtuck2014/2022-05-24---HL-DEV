@@ -1,0 +1,4 @@
+<apex:page controller="SL_LIB16_ctrl_CompanyListSearch" showHeader="false" standardStylesheets="false" contentType="text/plain" lightningStylesheets="true">
+<apex:slds />
+{!JSONResponseTemp}
+</apex:page>

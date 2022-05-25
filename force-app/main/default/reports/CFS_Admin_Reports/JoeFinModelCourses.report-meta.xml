@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>lmscons__Transcript_Line__c$Name</field>
+    </columns>
+    <columns>
+        <field>lmscons__Transcript_Line__c$lmscons__Training_Path_Name__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Transcript_Line__c$lmscons__Status__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</field>
+    </columns>
+    <columns>
+        <field>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Department</field>
+    </columns>
+    <columns>
+        <field>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Title</field>
+    </columns>
+    <currency>USD</currency>
+    <description>inprogress or completed</description>
+    <filter>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Training_Path_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>(2Q19)</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>In Progress,Completed</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>JoeFinModelCourses</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>lmsilt__X100_02_Course_Completion__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>lmscons__Transcript_Line__c$lmscons__Completed_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

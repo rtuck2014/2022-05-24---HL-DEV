@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Final_Report_Date__c</fullName>
+    <description>Expected date to send the final report</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Expected date to send the final report</inlineHelpText>
+    <label>Final Report Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

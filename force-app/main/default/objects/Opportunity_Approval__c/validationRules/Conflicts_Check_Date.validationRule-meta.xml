@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Conflicts_Check_Date</fullName>
+    <active>false</active>
+    <description>require conflicts check date explanation if no cc date exists and if restricted list is already populated. added the restricted list criteria to prevent the VR from firing by default.</description>
+    <errorConditionFormula>ISBLANK(Conflict_Check_Date__c) &amp;&amp; ISBLANK( Restricted_List_Explanation__c ) &amp;&amp; (ISPICKVAL(Form_Type__c, &apos;NBC&apos;) || ISPICKVAL(Form_Type__c,&apos;CNBC&apos;)) &amp;&amp; NOT(ISNEW()) &amp;&amp;  NOT(ISPICKVAL(Restricted_List__c,&apos;&apos;))</errorConditionFormula>
+    <errorDisplayField>Restricted_List_Explanation__c</errorDisplayField>
+    <errorMessage>No Conflicts Check Requested Date - Please provide an explanation.</errorMessage>
+</ValidationRule>

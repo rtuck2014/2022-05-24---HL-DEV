@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transaction_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Transaction Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Special Project</fullName>
+                <default>false</default>
+                <label>Special Project</label>
+            </value>
+            <value>
+                <fullName>Change of Control</fullName>
+                <default>false</default>
+                <label>Change of Control</label>
+            </value>
+            <value>
+                <fullName>Debt for Cash</fullName>
+                <default>false</default>
+                <label>Debt for Cash</label>
+            </value>
+            <value>
+                <fullName>Debt for Debt</fullName>
+                <default>false</default>
+                <label>Debt for Debt</label>
+            </value>
+            <value>
+                <fullName>Debt for Equity</fullName>
+                <default>false</default>
+                <label>Debt for Equity</label>
+            </value>
+            <value>
+                <fullName>Reinstatement</fullName>
+                <default>false</default>
+                <label>Reinstatement</label>
+            </value>
+            <value>
+                <fullName>Sale</fullName>
+                <default>false</default>
+                <label>Sale</label>
+            </value>
+            <value>
+                <fullName>Buy Side</fullName>
+                <default>false</default>
+                <label>Buy Side</label>
+            </value>
+            <value>
+                <fullName>Concurrent Sale / Rollup</fullName>
+                <default>false</default>
+                <label>Concurrent Sale / Rollup</label>
+            </value>
+            <value>
+                <fullName>ESOP</fullName>
+                <default>false</default>
+                <label>ESOP</label>
+            </value>
+            <value>
+                <fullName>Going Private</fullName>
+                <default>false</default>
+                <label>Going Private</label>
+            </value>
+            <value>
+                <fullName>Joint Venture</fullName>
+                <default>false</default>
+                <label>Joint Venture</label>
+            </value>
+            <value>
+                <fullName>Merger of Equals</fullName>
+                <default>false</default>
+                <label>Merger of Equals</label>
+            </value>
+            <value>
+                <fullName>Minority Investment</fullName>
+                <default>false</default>
+                <label>Minority Investment</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>PIPE</fullName>
+                <default>false</default>
+                <label>PIPE</label>
+            </value>
+            <value>
+                <fullName>Sell Side (Company)</fullName>
+                <default>false</default>
+                <label>Sell Side (Company)</label>
+            </value>
+            <value>
+                <fullName>Sell Side (Divestiture)</fullName>
+                <default>false</default>
+                <label>Sell Side (Divestiture)</label>
+            </value>
+            <value>
+                <fullName>Spin-off</fullName>
+                <default>false</default>
+                <label>Spin-off</label>
+            </value>
+            <value>
+                <fullName>Merger/Acquisition</fullName>
+                <default>false</default>
+                <label>Merger/Acquisition</label>
+            </value>
+            <value>
+                <fullName>Recapitalization/Dividend Recap</fullName>
+                <default>false</default>
+                <label>Recapitalization/Dividend Recap</label>
+            </value>
+            <value>
+                <fullName>Dividend With No Incremental Leverage</fullName>
+                <default>false</default>
+                <label>Dividend With No Incremental Leverage</label>
+            </value>
+            <value>
+                <fullName>Statutory Requirement</fullName>
+                <default>false</default>
+                <label>Statutory Requirement</label>
+            </value>
+            <value>
+                <fullName>Valuation Pursuant To A Shareholder Agmt</fullName>
+                <default>false</default>
+                <label>Valuation Pursuant To A Shareholder Agmt</label>
+            </value>
+            <value>
+                <fullName>Collateral Valuation</fullName>
+                <default>false</default>
+                <label>Collateral Valuation</label>
+            </value>
+            <value>
+                <fullName>Equity Investment</fullName>
+                <default>false</default>
+                <label>Equity Investment</label>
+            </value>
+            <value>
+                <fullName>Commercially Reasonable Opinion</fullName>
+                <default>false</default>
+                <label>Commercially Reasonable Opinion</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

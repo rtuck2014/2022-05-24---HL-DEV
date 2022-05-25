@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gift_Value__c</fullName>
+    <description>The gift&apos;s market value in the specified currency excluding the cost of tax, shipping, and engraving.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The gift&apos;s market value in the specified currency excluding the cost of tax, shipping, and engraving.</inlineHelpText>
+    <label>Gift Value</label>
+    <precision>8</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

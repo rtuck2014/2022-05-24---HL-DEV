@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FAS_Fee_Notes_Description</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISPICKVAL(Line_of_Business__c, &apos;FVA&apos;),  ISCHANGED( Fee_Notes_Description__c ),  NOT($Permission.Fee_Notes_Description) )</errorConditionFormula>
+    <errorMessage>You do not have the level of access to perform the operation you requested. Only FVA CAO&apos;s have access to update &quot;Fee Notes &amp; Description&quot;. Please contact your administrator if access is necessary.</errorMessage>
+</ValidationRule>

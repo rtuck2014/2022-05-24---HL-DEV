@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Closed_Activities_All_Rows__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>If checked, the queries for Activities will include &apos;all rows&apos;. Use with caution, as it will slow the related list down</description>
+    <externalId>false</externalId>
+    <label>Closed Activities All Rows</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

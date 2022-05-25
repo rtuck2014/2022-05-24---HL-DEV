@@ -1,0 +1,860 @@
+<apex:page standardcontroller="Engagement__c" tabStyle="Investment__c" sidebar="false" extensions="HL_FR_DealInformationController" lightningStylesheets="false">
+    <apex:sectionHeader title="{!Engagement__c.Name}" subtitle="FR Engagement Summary"/>
+    <apex:form id="formFRDealInformation" >
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!SaveRecord}"/>
+                <apex:commandButton value="Return to Engagement" action="{!SaveAndReturn}"/>
+                <apex:commandButton value="Submit"  action="{!SubmitForm}"/>
+                <apex:CommandButton action="{!checkEngSendBTPEmail}" value="Send BTP Email"></apex:CommandButton>
+                <apex:outputLabel value="Completed By {!Engagement__c.One_Pager_Completed_By__c} on {!Engagement__c.One_Pager_Completed_Date__c}" rendered="{!Engagement__c.One_Pager_Completed__c}" styleclass="warning" />
+            </apex:pageBlockButtons>
+            <apex:actionStatus id="refreshStatus" startText="Refreshing..." stopText="" startStyle="font-weight: bold; font-size: 1.5em;">
+                <apex:facet name="start" ><apex:outputPanel ><img src="/img/loading.gif" /><span>&nbsp;Refreshing...</span></apex:outputPanel></apex:facet>
+            </apex:actionStatus>
+            <apex:tabPanel switchType="client" id="dealInformationTabPanel">
+                <apex:tab label="Engagement Information" id="tabDealInformation">
+                    <apex:pageBlock title="Engagement Information" mode="edit">
+                        <table cellpadding="5" cellspacing="5">
+                            <tr>
+                                <td class="labelCol" style="text-align: left; font-size: 1.0em;">
+                                    <apex:outputLabel value="{!$ObjectType.Engagement__c.Fields.Transaction_Type__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!Engagement__c.Transaction_Type__c}"></apex:inputField>
+                                </td>
+                                <td class="labelCol"  style="text-align: left; font-size: 1.0em;">
+                                    <apex:outputLabel value="Client Description*"></apex:outputLabel>
+                                </td>
+                                <td rowspan="2">
+                                    <apex:inputTextarea value="{!Engagement__c.FR_Client__c}" cols="50" rows="6"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="labelCol"  style="text-align: left; font-size: 1.0em;">
+                                    <apex:outputLabel value="{!$ObjectType.Engagement__c.Fields.Post_Transaction_Status__c.Label}"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!Engagement__c.Post_Transaction_Status__c}"></apex:inputField>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="td-header">
+                                    <apex:outputLabel value="Company Description"></apex:outputLabel>
+                                </td>
+                                <td colspan="2" class="td-header">
+                                    <apex:outputLabel value="Restructuring Transaction Description"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <apex:inputTextarea value="{!Engagement__c.Business_Description__c}" cols="60" rows="6"></apex:inputTextarea>
+                                </td>
+                                <td colspan="2">
+                                    <apex:inputTextarea id="restructuringTransactionDescription" value="{!Engagement__c.Restructuring_Description__c}" cols="77" rows="6"></apex:inputTextarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <span id="restructuringTransactionDescriptionHelp">
+                                        Enter a thorough but concise, one-paragraph description of the deal in this field, similar to the deal descriptions found in the pitchbook. Three examples are included below. For more examples, refer to the "Selected Restructuring Engagements" and "Selected Distressed M&amp;A Engagments" sections of the FRG boilerplate pitch book.
+                                        Debtor Restructuring Example:
+                                        Houlihan Lokey served as exclusive financial advisor to IMPSAT Fiber Networks, Inc. ("IMPSAT"), an Argentine-based Pan-Latin American telecommunication services provider, in conjunction with its pre-arranged reorganization under Chapter 11 in the United States.  In connection with the restructuring, which was one of the first successful deleveraging transactions involving an Argentine company post-devaluation, IMPSAT reduced its total indebtedness from approximately $1.0 billion to approximately $270 million..
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <apex:outputLabel value="* Include specific information regarding HL's client.  For example: Official Committee of Unsecured Creditors, Special Committee of the Board, Ad Hoc Noteholders Committee, Ad Hoc Committee of Timber Noteholders, Advisor to 1st Lien Agent."></apex:outputLabel>
+                                </td>
+                            </tr>
+                        </table>
+                    </apex:pageBlock>
+                </apex:tab>
+                <apex:tab label="Financials / Projections" id="tabFinancialsProjections">
+                    <apex:pageBlock title="Financials/Projections" mode="edit">
+                        <apex:pageBlockTable value="{!EngagementFinancials}" var="ef">
+                            <apex:column width="50px" styleClass="center" >
+                                <apex:outputPanel rendered="{!ef.FinancialType == 'Revenue'}">
+                                    <a id="editRevenueFinancials" class="link-button">Edit</a>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!ef.FinancialType == 'EBITDA'}">
+                                    <a id="editEBITDAFinancials" class="link-button">Edit</a>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!ef.FinancialType == 'Capex'}">
+                                    <a id="editCapexFinancials" class="link-button">Edit</a>
+                                </apex:outputPanel>
+                            </apex:column>
+                            <apex:column value="{!ef.FinancialType}"></apex:column>
+                            <apex:column value="{!ef.FY_Minus1}" headerClass="right" styleClass="right"><apex:facet name="header">FY-1</apex:facet></apex:column>
+                            <apex:column value="{!ef.FY}" headerClass="right" styleClass="right"><apex:facet name="header">FY</apex:facet></apex:column>
+                            <apex:column value="{!ef.LTM}" headerClass="right" styleClass="right"><apex:facet name="header">LTM</apex:facet></apex:column>
+                            <apex:column value="{!ef.FY_Plus1}" headerClass="right" styleClass="right"><apex:facet name="header">FY+1</apex:facet></apex:column>
+                            <apex:column value="{!ef.FY_Plus2}" headerClass="right" styleClass="right"><apex:facet name="header">FY+2</apex:facet></apex:column>
+                            <apex:column value="{!ef.FY_Plus3}" headerClass="right" styleClass="right"><apex:facet name="header">FY+3</apex:facet></apex:column>
+                            <apex:column value="{!ef.FY_Plus4}" headerClass="right" styleClass="right"><apex:facet name="header">FY+4</apex:facet></apex:column>
+                            <apex:column value="{!ef.FY_Plus5}" headerClass="right" styleClass="right"><apex:facet name="header">FY+5</apex:facet></apex:column>
+                        </apex:pageBlockTable>
+                        <br />
+                        <table>
+                            <tr>
+                                <td colspan="2" class="bold">
+                                    <apex:outputLabel value="Currency Financials are reported in"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!EngagementFinancialsRecord.CurrencyIsoCode}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="bold">
+                                    <apex:outputLabel value="Projections are as of"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField value="{!Engagement__c.Projections_Last_Updated__c}"></apex:inputField>
+                                </td>
+                                <td>
+                                    <apex:outputLabel value="by {!Engagement__c.Projections_Last_Updated_By__c}"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="bold">
+                                    <apex:outputLabel value="LTM Projections are as of"></apex:outputLabel>
+                                </td>
+                                <td colspan="2">
+                                    <apex:inputField value="{!Engagement__c.LTM_Projections_Last_Updated__c}"></apex:inputField>
+                                </td>
+                            </tr>
+                        </table>
+                    </apex:pageBlock>
+                </apex:tab>
+                <apex:tab label="Distressed M&A Information" id="tabDistressedMAInformation">
+                    <apex:pageBlock title="Distressed M&A Information" mode="edit">
+                        <apex:pageBlockButtons location="top">
+                            <input type='button' value='Add Distressed M&A Information' id='newSaleTransaction' class="btn" />
+                            <apex:commandButton id="distressedRefresh" action="{!RefreshSalesTransactions}" reRender="panSalesTransactions" status="refreshStatus" style="display:none;" oncomplete="DocumentReady();"/>
+                        </apex:pageBlockButtons>
+                        <apex:outputPanel id="panSalesTransactions">
+                            <apex:pageBlockTable id="salesTransactions" value="{!SalesTransactions}" var="st">
+                                <apex:column width="20px">
+                                    <a id='editSalesTransaction' class="pointer underline" style="padding-right: 5px;">Edit</a>
+                                    <apex:outputLabel value="{!st.Id}" styleClass="hidden"></apex:outputLabel>
+                                </apex:column>
+                                <apex:column width="20px">
+                                    <apex:commandLink value="Del" action="{!DeleteSalesTransaction}" onclick="return confirmDelete();">
+                                        <apex:param name="p1" assignTo="{!DelId}" value="{!st.Id}"></apex:param>
+                                    </apex:commandLink>
+                                </apex:column>
+                                <apex:column value="{!st.Name}"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Sale_Transaction__c.Fields.Name.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                <apex:column value="{!st.Date_of_Sale__c}"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Sale_Transaction__c.Fields.Date_of_Sale__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                <apex:column value="{!st.Minimum_Overbid__c}"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Sale_Transaction__c.Fields.Minimum_Overbid__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                <apex:column value="{!st.Incremental_Overbid__c}"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Sale_Transaction__c.Fields.Incremental_Overbid__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                <apex:column value="{!st.Break_Up_Fee__c}"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Sale_Transaction__c.Fields.Break_Up_Fee__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                <apex:column value="{!st.Deposit__c}"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Sale_Transaction__c.Fields.Deposit__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                <apex:column value="{!st.Cash_Component__c}"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Sale_Transaction__c.Fields.Cash_Component__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                <apex:column value="{!st.Stock_Component__c}"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Sale_Transaction__c.Fields.Stock_Component__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                <apex:column value="{!st.Liability_Assumed__c}"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Sale_Transaction__c.Fields.Liability_Assumed__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                <apex:column value="{!st.Claim_Conversion__c}"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Sale_Transaction__c.Fields.Claim_Conversion__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                <apex:column value="{!st.Total_Sales_Price__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Sale_Transaction__c.Fields.Total_Sales_Price__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                            </apex:pageBlockTable>
+                            <apex:outputLabel value="No records to display" rendered="{!SalesTransactions.size == 0}"></apex:outputLabel>
+                        </apex:outputPanel>
+                    </apex:pageBlock>
+                </apex:tab>
+                <apex:tab label="HL Financing" id="tabHLFinancing">
+                    <apex:pageBlock title="HL Financing" mode="edit">
+                        <apex:pageBlockButtons >
+                            <input type='button' value='Add HL Financing' id='newFinancing' class="btn" />
+                            <apex:commandButton id="financingRefresh" action="{!RefreshFinancing}" reRender="panFinancing" status="refreshStatus" style="display:none;" oncomplete="DocumentReady();"/>
+                        </apex:pageBlockButtons>
+                        <div class="td-header" style="width: 100%">
+                            <apex:outputLabel value="If HL Financing was used, please fill out this section"></apex:outputLabel>
+                        </div>
+                        <apex:outputPanel id="panFinancing">
+                            <apex:pageBlockTable id="financing" value="{!Financing}" var="f">
+                                <apex:column width="20px">
+                                    <a id='editFinancing' class="pointer underline" style="padding-right: 5px;">Edit</a>
+                                    <apex:outputLabel value="{!f.Id}" styleClass="hidden"></apex:outputLabel>
+                                </apex:column>
+                                <apex:column width="20px">
+                                    <apex:commandLink value="Del" action="{!DeleteFinancing}" onclick="return confirmDelete();">
+                                        <apex:param name="p2" assignTo="{!DelId}" value="{!f.Id}"></apex:param>
+                                    </apex:commandLink>
+                                </apex:column>
+                                <apex:column value="{!f.Financing_Type__c}" width="200px"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Financing__c.Fields.Financing_Type__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                <apex:column value="{!f.Notes__c}"><apex:facet name="header"><apex:outputLabel value="Other"></apex:outputLabel></apex:facet></apex:column>
+                                <apex:column value="{!f.Security_Type__c}"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Financing__c.Fields.Security_Type__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                <apex:column value="{!f.Financing_Amount__c}" styleClass="financingAmount right" headerClass="right" width="70px"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Financing__c.Fields.Financing_Amount__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                            </apex:pageBlockTable>
+                            <apex:outputLabel value="No records to display" rendered="{!Financing.size == 0}"></apex:outputLabel>
+                        </apex:outputPanel>
+                        <br />
+                        <br />
+                        <table cellpadding="5" cellspacing="5">
+                            <tr>
+                                <td style="width: 150px;">
+                                    <apex:outputLabel value="{!$ObjectType.Engagement__c.Fields.Total_Financing_Amount__c.Label}" styleClass="bold"></apex:outputLabel>
+                                </td>
+                                <td>
+                                    <apex:inputField id="totalFinancingAmount" value="{!Engagement__c.Total_Financing_Amount__c}" styleClass="numeric-medium"></apex:inputField>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="bold">
+                                    <apex:outputLabel value="{!$ObjectType.Engagement__c.Fields.Financing_Description__c.Label}"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <apex:inputTextarea value="{!Engagement__c.Financing_Description__c}" cols="120" rows="6"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </apex:pageBlock>
+                </apex:tab>
+                <apex:tab label="Pre-Transaction Information" id="tabPreTransactionInformation">
+                    <apex:pageBlock title="Pre-Transaction Information" mode="edit">
+                        <apex:pageBlockButtons location="top">
+                            <input type='button' value='Add Equity Holder' id="newPreTransactionEquityHolder" class="btn" />
+                            <input type='button' value='Add Board Member' id="newPreTransactionBoardMember" class="btn" />
+                            <input type='button' value='Add Debt Structure' id='newPreTransactionDebtStructure' class="btn" />
+                            <apex:commandButton id="preTransactionEquityHolderRefresh" action="{!RefreshPreTransactionEquityHolders}" reRender="panPreTransactionEquityHolders" style="display:none;" status="refreshStatus" oncomplete="DocumentReady();"/>
+                            <apex:commandButton id="preTransactionBoardMemberRefresh" action="{!RefreshPreTransactionBoardMembers}" reRender="panPreTransactionBoardMembers" style="display:none;" status="refreshStatus" oncomplete="DocumentReady();"/>
+                            <apex:commandButton id="preTransactionDebtStructureRefresh" action="{!RefreshPreTransactionDebtStructures}" reRender="panPreTransactionDebtStructures" style="display:none;" status="refreshStatus" oncomplete="DocumentReady();"/>
+                        </apex:pageBlockButtons>
+                        <table cellpadding="5" cellspacing="5">
+                            <tr>
+                                <td class="td-header">
+                                    <apex:outputLabel value="Pre-Transaction Equity Holders"></apex:outputLabel>
+                                </td>
+                                <td class="td-header">
+                                    <apex:outputLabel value="Pre-Transaction Board Members"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="top">
+                                    <apex:outputPanel id="panPreTransactionEquityHolders">
+                                        <apex:pageBlockTable id="preTransactionEquityHolders" value="{!PreTransactionEquityHolders}" var="eh">
+                                            <apex:column width="20px">
+                                                <a id='editPreTransactionEquityHolder' class="pointer underline" style="padding-right: 5px;">Edit</a>
+                                                <apex:outputLabel value="{!eh.Id}" styleClass="hidden"></apex:outputLabel>
+                                            </apex:column>
+                                            <apex:column width="20px">
+                                                <apex:commandLink value="Copy" action="{!CopyEHToPost}" reRender="panPostTransactionEquityHolders" style="padding-right: 5px;" title="Copy to Post Transaction" oncomplete="alert('Record Copied');">
+                                                    <apex:param id="paramEHId" name="paramEHId" value="{!eh.Id}" assignTo="{!CopyEHToPostID}"/>
+                                                </apex:commandLink>
+                                            </apex:column>
+                                            <apex:column width="20px">
+                                                <apex:commandLink value="Del" action="{!DeletePreEH}" onclick="return confirmDelete();">
+                                                    <apex:param name="p3" assignTo="{!DelId}" value="{!eh.Id}"></apex:param>
+                                                </apex:commandLink>
+                                            </apex:column>
+                                            <apex:column >
+                                                <apex:outputLink value="{!'/' + eh.Client_Subject__r.Id}" target="_blank">{!eh.Client_Subject__r.Name}</apex:outputLink>
+                                                <apex:facet name="header">Equity Holder</apex:facet>
+                                            </apex:column>
+                                            <apex:column value="{!eh.Percent_Ownership__c}" styleClass="right" headerClass="right"><apex:facet name="header">Percent Ownership</apex:facet></apex:column>
+                                        </apex:pageBlockTable>
+                                        <apex:outputLabel value="No records to display" rendered="{!PreTransactionEquityHolders.size == 0}"></apex:outputLabel>
+                                    </apex:outputPanel>
+                                </td>
+                                <td class="top">
+                                    <apex:outputPanel id="panPreTransactionBoardMembers">
+                                        <apex:pageBlockTable id="preTransactionBoardMembers" value="{!PreTransactionBoardMembers}" var="bm">
+                                            <apex:column width="20px">
+                                                <apex:commandLink value="Copy" action="{!CopyBMToPost}" reRender="panPostTransactionBoardMembers" style="padding-right: 5px;" title="Copy to Post Transaction" oncomplete="alert('Record Copied');">
+                                                    <apex:param id="paramBMId" name="paramBMId" value="{!bm.BoardMember.Id}" assignTo="{!CopyBMToPostID}"/>
+                                                </apex:commandLink>
+                                            </apex:column>
+                                            <apex:column width="20px">
+                                                <apex:commandLink value="Del" action="{!DeletePreBM}" onclick="return confirmDelete();">
+                                                    <apex:param name="p4" assignTo="{!DelId}" value="{!bm.BoardMember.Id}"></apex:param>
+                                                </apex:commandLink>
+                                            </apex:column>
+                                            <apex:column >
+                                                <apex:outputLink value="{!'/' + bm.BoardMember.Contact__r.Id}" target="_blank">{!bm.BoardMember.Contact__r.Name}</apex:outputLink>
+                                                <apex:facet name="header">Board Member</apex:facet>
+                                            </apex:column>
+                                            <apex:column >
+                                                <apex:outputLink value="{!'/' + bm.BoardMember.Contact__r.Account.Id}" target="_blank">{!bm.BoardMember.Contact__r.Account.Name}</apex:outputLink>
+                                                <apex:facet name="header">Company</apex:facet>
+                                            </apex:column>
+                                            <apex:column styleClass="center" headerClass="center">
+                                                <apex:facet name="header">Has HL Relationship</apex:facet>
+                                                <apex:inputCheckbox value="{!bm.HasRelationship}" disabled="true"/>
+                                            </apex:column>
+                                        </apex:pageBlockTable>
+                                        <apex:outputLabel value="No records to display" rendered="{!PreTransactionBoardMembers.size == 0}"></apex:outputLabel>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="td-header">
+                                    <apex:outputLabel value="Pre-Transaction Debt (MM)"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <apex:outputPanel id="panPreTransactionDebtStructures">
+                                        <apex:pageBlockTable id="preTransactionDebtStructures" value="{!PreTransactionDebtStructures}" var="ds" width="800px">
+                                            <apex:column width="20px">
+                                                <a id='editPreTransactionDebtStructure' class="pointer underline" style="padding-right: 5px;">Edit</a>
+                                                <apex:outputLabel value="{!ds.DebtStructure.Id}" styleClass="hidden"></apex:outputLabel>
+                                            </apex:column>
+                                            <apex:column width="20px">
+                                                <apex:commandLink value="Del" action="{!DeletePreDS}" onclick="return confirmDelete();">
+                                                    <apex:param name="p5" assignTo="{!DelId}" value="{!ds.DebtStructure.Id}"></apex:param>
+                                                </apex:commandLink>
+                                            </apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Security_Type__c}">
+                                                <apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Security_Type__c.Label}"></apex:outputLabel></apex:facet>
+                                            </apex:column>
+                                            <apex:column style="vertical-align:top;" headerValue="Key Creditors">
+                                                <apex:repeat value="{!ds.Lenders}" var="c">
+                                                    <apex:outputLink value="{!'/' + c.Client_Subject__r.Id}" target="_blank">{!c.Client_Subject__r.Name}</apex:outputLink><br />
+                                                </apex:repeat>
+                                            </apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Constituent_Debt__c}" headerClass="center" styleClass="center"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Constituent_Debt__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Facility_Balance_MM__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Facility_Balance_MM__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Maturity_Date__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Maturity_Date__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Interest__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Interest__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.OID_Percent__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.OID_Percent__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Amoritization__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Amoritization__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Call_Provisions_Prepayment_Premiums__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Call_Provisions_Prepayment_Premiums__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Mandatory_Prepayments_ECF_Sweep__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Mandatory_Prepayments_ECF_Sweep__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Covenants__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Covenants__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Fees_Expenses__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Fees_Expenses__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                        </apex:pageBlockTable>
+                                        <apex:outputLabel value="No records to display" rendered="{!PreTransactionDebtStructures.size == 0}"></apex:outputLabel>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <table cellpadding="5" cellspacing="5">
+                                        <tr>
+                                            <td class="bold">
+                                                <apex:outputLabel value="{!$ObjectType.Engagement__c.Fields.Pre_Reorgnization_Constituent_Debt__c.Label}"></apex:outputLabel>
+                                            </td>
+                                            <td>
+                                                <apex:inputField value="{!Engagement__c.Pre_Reorgnization_Constituent_Debt__c}" styleClass="numeric-medium"></apex:inputField>
+                                            </td>
+                                            <td class="bold">
+                                                <apex:outputLabel value="{!$ObjectType.Engagement__c.Fields.Pre_Reorganized_Total_Debt__c.Label}"></apex:outputLabel>
+                                            </td>
+                                            <td>
+                                                <apex:inputField value="{!Engagement__c.Pre_Reorganized_Total_Debt__c}" styleClass="numeric-medium"></apex:inputField>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </apex:pageBlock>
+                </apex:tab>
+                <apex:tab label="Post-Transaction Information" id="tabPostTransactionInformation">
+                    <apex:pageBlock title="Post-Transaction Information" mode="edit" id="postTransactionInformation">
+                        <apex:pageBlockButtons location="top">
+                            <input type='button' value='Add Equity Holder' id="newPostTransactionEquityHolder" class="btn" />
+                            <input type='button' value='Add Board Member' id="newPostTransactionBoardMember" class="btn" />
+                            <input type='button' value='Add Debt Structure' id='newPostTransactionDebtStructure' class="btn" />
+                            <apex:commandButton id="postTransactionEquityHolderRefresh" action="{!RefreshPostTransactionEquityHolders}" reRender="panPostTransactionEquityHolders" style="display:none;" status="refreshStatus" oncomplete="DocumentReady();"/>
+                            <apex:commandButton id="postTransactionBoardMemberRefresh" action="{!RefreshPostTransactionBoardMembers}" reRender="panPostTransactionBoardMembers" style="display:none;" status="refreshStatus" oncomplete="DocumentReady();"/>
+                            <apex:commandButton id="postTransactionDebtStructureRefresh" action="{!RefreshPostTransactionDebtStructures}" reRender="panPostTransactionDebtStructures" style="display:none;" status="refreshStatus" oncomplete="DocumentReady();"/>
+                        </apex:pageBlockButtons>
+                        <table cellpadding="5" cellspacing="5">
+                            <tr>
+                                <td class="td-header">
+                                    <apex:outputLabel value="Post-Transaction Equity Holders"></apex:outputLabel>
+                                </td>
+                                <td class="td-header">
+                                    <apex:outputLabel value="Post-Transaction Board Members"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <apex:outputPanel id="panPostTransactionEquityHolders">
+                                        <apex:pageBlockTable id="postTransactionEquityHolders" value="{!PostTransactionEquityHolders}" var="eh">
+                                            <apex:column width="20px">
+                                                <a id='editPostTransactionEquityHolder' class="pointer underline" style="padding-right: 5px;">Edit</a>
+                                                <apex:outputLabel value="{!eh.Id}" styleClass="hidden"></apex:outputLabel>
+                                            </apex:column>
+                                            <apex:column width="20px">
+                                                <apex:commandLink value="Del" action="{!DeletePostEH}" onclick="return confirmDelete();">
+                                                    <apex:param name="p6" assignTo="{!DelId}" value="{!eh.Id}"></apex:param>
+                                                </apex:commandLink>
+                                            </apex:column>
+                                            <apex:column >
+                                                <apex:outputLink value="{!'/' + eh.Client_Subject__r.Id}" target="_blank">{!eh.Client_Subject__r.Name}</apex:outputLink>
+                                                <apex:facet name="header">Equity Holder</apex:facet>
+                                            </apex:column>
+                                            <apex:column value="{!eh.Percent_Ownership__c}" styleClass="right" headerClass="right"><apex:facet name="header">Percent Ownership</apex:facet></apex:column>
+                                        </apex:pageBlockTable>
+                                        <apex:outputLabel value="No records to display" rendered="{!PostTransactionEquityHolders.size == 0}"></apex:outputLabel>
+                                    </apex:outputPanel>
+                                </td>
+                                <td class="top">
+                                    <apex:outputPanel id="panPostTransactionBoardMembers">
+                                        <apex:pageBlockTable id="postTransactionBoardMembers" value="{!PostTransactionBoardMembers}" var="bm">
+                                            <apex:column width="20px">
+                                                <apex:commandLink value="Del" action="{!DeletePostBM}" onclick="return confirmDelete();">
+                                                    <apex:param name="p7" assignTo="{!DelId}" value="{!bm.BoardMember.Id}"></apex:param>
+                                                </apex:commandLink>
+                                            </apex:column>
+                                            <apex:column >
+                                                <apex:outputLink value="{!'/' + bm.BoardMember.Contact__r.Id}" target="_blank">{!bm.BoardMember.Contact__r.Name}</apex:outputLink>
+                                                <apex:facet name="header">Board Member</apex:facet>
+                                            </apex:column>
+                                            <apex:column >
+                                                <apex:outputLink value="{!'/' + bm.BoardMember.Contact__r.Account.Id}" target="_blank">{!bm.BoardMember.Contact__r.Account.Name}</apex:outputLink>
+                                                <apex:facet name="header">Company</apex:facet>
+                                            </apex:column>
+                                            <apex:column styleClass="center" headerClass="center">
+                                                <apex:inputCheckbox value="{!bm.HasRelationship}" disabled="true"/>
+                                                <apex:facet name="header">Has HL Relationship</apex:facet>
+                                            </apex:column>
+                                        </apex:pageBlockTable>
+                                        <apex:outputLabel value="No records to display" rendered="{!PostTransactionBoardMembers.size == 0}"></apex:outputLabel>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="td-header">
+                                    <apex:outputLabel value="Post-Transaction Debt (MM)"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="top">
+                                    <apex:outputPanel id="panPostTransactionDebtStructures">
+                                        <apex:pageBlockTable value="{!PostTransactionDebtStructures}" var="ds">
+                                            <apex:column width="20px" >
+                                                <a id='editPostTransactionDebtStructure' class="pointer underline" style="padding-right: 5px;">Edit</a>
+                                                <apex:outputLabel value="{!ds.DebtStructure.Id}" styleClass="hidden"></apex:outputLabel>
+                                            </apex:column>
+                                            <apex:column width="20px">
+                                                <apex:commandLink value="Del" action="{!DeletePostDS}" onclick="return confirmDelete();">
+                                                    <apex:param name="p8" assignTo="{!DelId}" value="{!ds.DebtStructure.Id}"></apex:param>
+                                                </apex:commandLink>
+                                            </apex:column>
+                                            <apex:column style="vertical-align:top;" headerValue="Key Creditors">
+                                                <apex:repeat value="{!ds.Lenders}" var="c">
+                                                    <apex:outputLink value="{!'/' + c.Client_Subject__r.Id}" target="_blank">{!c.Client_Subject__r.Name}</apex:outputLink><br />
+                                                </apex:repeat>
+                                            </apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Security_Type__c}"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Security_Type__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Constituent_Debt__c}" headerClass="center" styleClass="center"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Constituent_Debt__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Facility_Balance_MM__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Facility_Balance_MM__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Maturity_Date__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Maturity_Date__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Interest__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Interest__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.OID_Percent__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.OID_Percent__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Amoritization__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Amoritization__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Call_Provisions_Prepayment_Premiums__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Call_Provisions_Prepayment_Premiums__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Mandatory_Prepayments_ECF_Sweep__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Mandatory_Prepayments_ECF_Sweep__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Covenants__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Covenants__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                            <apex:column value="{!ds.DebtStructure.Fees_Expenses__c}" headerClass="right" styleClass="right"><apex:facet name="header"><apex:outputLabel value="{!$ObjectType.Debt_Structure__c.Fields.Fees_Expenses__c.Label}"></apex:outputLabel></apex:facet></apex:column>
+                                        </apex:pageBlockTable>
+                                        <apex:outputLabel value="No records to display" rendered="{!PostTransactionDebtStructures.size == 0}"></apex:outputLabel>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <table cellpadding="5" cellspacing="5">
+                                        <tr>
+                                            <td class="bold" style="font-size: .9em;">
+                                                <apex:outputLabel value="Post-Restructuring Total Debt (MM)"></apex:outputLabel>
+                                            </td>
+                                            <td>
+                                                <apex:inputField value="{!Engagement__c.Post_Reorg_Total_Debt__c}" styleClass="numeric-medium"></apex:inputField>
+                                            </td>
+                                            <td class="bold" style="font-size: .9em;">
+                                                <apex:outputLabel value="Net Debt of the Restructured Company (MM)"></apex:outputLabel>
+                                            </td>
+                                            <td>
+                                                <apex:inputField value="{!Engagement__c.Post_Reorg_Net_Debt__c}" styleClass="numeric-medium"></apex:inputField>
+                                            </td>
+                                            <td class="bold" style="font-size: .9em;">
+                                                <apex:outputLabel value="Closing Stock Price (first full closing day post-restructuring)"></apex:outputLabel>
+                                            </td>
+                                            <td>
+                                                <apex:inputField value="{!Engagement__c.Post_Reorg_Stock_Price__c}" styleClass="numeric-medium"></apex:inputField>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </apex:pageBlock>
+                </apex:tab>
+                <apex:tab label="HL Post-Transaction Opportunities" id="tabHLPostTransactionOpportunities">
+                    <apex:pageBlock title="HL Post-Transaction Opportunities" mode="edit">
+                        <apex:pageBlockButtons location="top" >
+                            <input type='button' value='Add Staff Role' id="newPostTransactionStaffRole" class="btn" />
+                            <apex:commandButton id="postTransactionStaffRoleRefresh" action="{!RefreshPostTransactionStaffRoles}" reRender="panPostTransactionStaffRoles" style="display:none;" status="refreshStatus" oncomplete="DocumentReady();"/>
+                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                            <input type='button' value='Add Key External Contact' id="newPostTransactionStaffRoleEXT" class="btn" />
+                            <apex:commandButton id="postTransactionStaffRoleRefreshEXT" action="{!RefreshPostTransactionStaffRolesEXT}" reRender="panPostTransactionStaffRolesEXT" style="display:none;" status="refreshStatus" oncomplete="DocumentReady();"/>
+                        </apex:pageBlockButtons>
+                        <table cellpadding="5" cellspacing="5">
+                            <tr>
+                                <td class="top">
+                                    <apex:inputField value="{!Engagement__c.Post_Transaction_Opportunities__c}"></apex:inputField>
+                                </td>
+                                <td class="top">
+                                    <apex:outputLabel value="Post-Transaction Staff Roles" styleClass="bold" style="padding-bottom: 10px;"></apex:outputLabel>
+                                    <apex:outputPanel id="panPostTransactionStaffRoles">
+                                        <apex:pageBlockTable id="postTransactionStaffRoles" value="{!PostTransactionStaffRoles}" var="sr">
+                                            <apex:column width="20px">
+                                                <apex:commandLink value="Del" action="{!DeletePostSR}" onclick="return confirmDelete();">
+                                                    <apex:param name="p9" assignTo="{!DelId}" value="{!sr.Id}"></apex:param>
+                                                </apex:commandLink>
+                                            </apex:column>
+                                            <apex:column value="{!sr.Contact__r.Name}" headerValue="Name"></apex:column>
+                                            <apex:column value="{!sr.Role__c}" headerValue="Relationship"></apex:column>
+                                        </apex:pageBlockTable>
+                                        <apex:outputLabel value="No records to display" rendered="{!PostTransactionStaffRoles.size == 0}"></apex:outputLabel>
+                                    </apex:outputPanel>
+                                </td>
+                                <td class="top">
+                                    <apex:outputLabel value="Post-Transaction Key External Contact" styleClass="bold" style="padding-bottom: 10px;"></apex:outputLabel>
+                                    <apex:outputPanel id="panPostTransactionStaffRolesEXT">
+                                        <apex:pageBlockTable id="postTransactionStaffRolesEXT" value="{!PostTransactionStaffRolesEXT}" var="sr">
+                                            <apex:column width="20px">
+                                                <apex:commandLink value="Del" action="{!DeletePostSREXT}" onclick="return confirmDelete();">
+                                                    <apex:param name="p9" assignTo="{!DelId}" value="{!sr.Id}"></apex:param>
+                                                </apex:commandLink>
+                                            </apex:column>
+                                            <apex:column value="{!sr.Contact__r.Name}" headerValue="Name"></apex:column>
+                                            <apex:column value="{!sr.Role__c}" headerValue="Relationship"></apex:column>
+                                        </apex:pageBlockTable>
+                                        <apex:outputLabel value="No records to display" rendered="{!PostTransactionStaffRoles.size == 0}"></apex:outputLabel>
+                                    </apex:outputPanel>
+                                </td>
+                                <td class="top">
+                                    <apex:outputLabel value="Reports" styleClass="bold"></apex:outputLabel><br /><br />
+                                    <a href="{!Engagement__c.FR_One_Pager_Report__c}" target="_blank" class="btn" style="text-decoration: none; display: inline-block; width: 180px; text-align: center;">Post-Transaction Opportunity</a><br /><br />
+                                    <a href="{!Engagement__c.FR_Engagement_Summary_Report__c}" target="_blank" class="btn" style="text-decoration: none; display: inline-block; width: 180px; text-align: center;">FR Engagement Summary</a><br /><br />
+                                  <!--  <!apex:CommandButton action="{!checkEngSendBTPEmail}" style="text-decoration: none; display: inline-block; width: 180px; text-align: center;" value="FR Send BTP Email"></apex:CommandButton> -->
+                                </td>
+                            </tr> 
+                            <tr>
+                                <td colspan="3" class="td-header">
+                                    <apex:outputLabel value="Notes"></apex:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <apex:inputTextarea value="{!Engagement__c.Post_Transaction_Opportunity_Notes__c}" cols="160" rows="5"></apex:inputTextarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </apex:pageBlock>
+                </apex:tab>
+            </apex:tabPanel>
+        </apex:pageBlock>
+        <div id="editRevenueFinancialsDialog" style="display:none; font-size:0.9em;">
+            <table cellpadding="5" cellspacing="5">
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY-1 Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!RevenueFinancials.FY_Minus1}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!RevenueFinancials.FY}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >LTM Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!RevenueFinancials.LTM}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+1 Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!RevenueFinancials.FY_Plus1}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+2 Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!RevenueFinancials.FY_Plus2}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+3 Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!RevenueFinancials.FY_Plus3}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+4 Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!RevenueFinancials.FY_Plus4}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+5 Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!RevenueFinancials.FY_Plus5}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <apex:commandButton action="{!UpdateRevenueFinancials}" value="Save" styleClass="btn"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="editCapexFinancialsDialog" style="display:none; font-size:0.9em;">
+            <table cellpadding="5" cellspacing="5">
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY-1 Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!CapexFinancials.FY_Minus1}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!CapexFinancials.FY}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >LTM Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!CapexFinancials.LTM}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+1 Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!CapexFinancials.FY_Plus1}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+2 Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!CapexFinancials.FY_Plus2}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+3 Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!CapexFinancials.FY_Plus3}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+4 Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!CapexFinancials.FY_Plus4}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+5 Amount (MM)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!CapexFinancials.FY_Plus5}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <apex:commandButton action="{!UpdateCapexFinancials}" value="Save" styleClass="btn"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="editEBITDAFinancialsDialog" style="display:none; font-size:0.9em;">
+            <table cellpadding="5" cellspacing="5">
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY-1 Amount ($ Millions)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!EBITDAFinancials.FY_Minus1}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY Amount ($ Millions)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!EBITDAFinancials.FY}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >LTM Amount ($ Millions)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!EBITDAFinancials.LTM}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+1 Amount ($ Millions)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!EBITDAFinancials.FY_Plus1}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+2 Amount ($ Millions)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!EBITDAFinancials.FY_Plus2}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+3 Amount ($ Millions)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!EBITDAFinancials.FY_Plus3}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+4 Amount ($ Millions)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!EBITDAFinancials.FY_Plus4}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <apex:outputLabel >FY+5 Amount ($ Millions)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputText value="{!EBITDAFinancials.FY_Plus5}" styleClass="numeric-short"></apex:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <apex:commandButton action="{!UpdateEBITDAFinancials}" value="Save" styleClass="btn"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="addHLFinancingDialog" style="display:none; font-size:0.9em;">
+            <apex:pageBlock tabStyle="Opportunity_Approval__c">
+                <table cellspacing="5" cellpadding="5">
+                    <tr>
+                        <td class="labelCol">
+                            <apex:outputLabel value="{!$ObjectType.Financing__c.Fields.Financing_Type__c.Label}"></apex:outputLabel>
+                        </td>
+                        <td>
+                            <apex:inputField id="addFinancingType" value="{!NewFinancing.Financing_Type__c}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="labelCol" style="vertical-align: top;">
+                            <apex:outputLabel value="Other"></apex:outputLabel>
+                        </td>
+                        <td>
+                            <apex:inputField id="addFinancingOther" value="{!NewFinancing.Notes__c}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="labelCol">
+                            <apex:outputLabel value="{!$ObjectType.Financing__c.Fields.Security_Type__c.Label}"></apex:outputLabel>
+                        </td>
+                        <td>
+                            <apex:inputField value="{!NewFinancing.Security_Type__c}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="labelCol">
+                            <apex:outputLabel value="{!$ObjectType.Financing__c.Fields.Financing_Amount__c.Label}"></apex:outputLabel>
+                        </td>
+                        <td>
+                            <apex:inputField value="{!NewFinancing.Financing_Amount__c}" styleClass="numeric-short"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <apex:commandButton action="{!SaveNewFinancing}" value="Save" styleClass="btn"/>
+                        </td>
+                    </tr>
+                </table>
+            </apex:pageBlock>
+        </div>
+    </apex:form>
+    <apex:outputLabel id="engagementId" value="{!EngagementId}" style="display:none;"></apex:outputLabel>
+    <apex:outputLabel id="engagementName" value="{!$CurrentPage.parameters.name}" style="display:none;"></apex:outputLabel>
+    <apex:outputLabel id="lookupAccountUrl" value="{!URLFOR('/apex/HL_LookupAccount')}" style="display:none;"></apex:outputLabel>
+    <apex:outputLabel id="lookupContactUrl" value="{!URLFOR('/apex/HL_LookupContact')}" style="display:none;"></apex:outputLabel>
+    <apex:outputLabel id="debtStructureModifyUrl" value="{!URLFOR('/apex/HL_DebtStructureModify')}" style="display:none;"></apex:outputLabel>
+    <apex:outputLabel id="engagementClientSubjectEditUrl" value="{!URLFOR('/apex/HL_EngagementClientSubjectEdit')}" style="display:none;"></apex:outputLabel>
+    <apex:outputLabel id="salesTransactionUrl" value="{!URLFOR('/apex/HL_SalesTransactionModify')}" style="display:none;"></apex:outputLabel>
+    <apex:outputLabel id="financingEditUrl" value="{!URLFOR('/apex/HL_FinancingEdit')}" style="display:none;"></apex:outputLabel>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_Shared.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_FR_DealInformation.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <script language="JavaScript">
+    //--------------------------------------------------------------------------------------------------------------
+    // This empty function overrides the SFDC standard function, and enables us to control initial field positioning
+    //--------------------------------------------------------------------------------------------------------------
+    function setFocusOnLoad() {
+    }
+    </script>
+    <style type="text/css">
+        table{font-size: 1.1em; vertical-align:top; }
+        td {vertical-align: top !important; white-space: normal;}
+        th {white-space: normal;}
+        .list .headerRow th {white-space: normal; vertical-align: top;}
+        .td-header{background-color: #3d8d8d; color: white !important; font-weight: bold; font-size: 1.1em; padding: 2px 0px 2px 5px;}
+        .link-button {cursor: pointer; text-decoration: underline;}
+        .subTitle{
+        color:white !important;
+        background:#3d8d8d !important;
+        font-size: 1.2em;
+        font-weight: bold;
+        padding: 2px;
+        }
+        .sectionTitle{
+        font-weight: bold;
+        font-size: 1.1em;
+        padding: 5px;
+        }
+        .ui-widget-header{background-color: #3d8d8d;}
+    </style>
+</apex:page>

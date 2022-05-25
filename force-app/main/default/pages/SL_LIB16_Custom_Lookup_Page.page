@@ -1,0 +1,116 @@
+<!-- Original Author: Privlad
+     Source: https://silverline.jira.com/browse/LIB-151
+     Jira Ticket: LIB-151
+ -->
+<apex:page controller="SL_LIB16_Custom_Lookup_Page" title="Search" showHeader="false" standardStylesheets="true" sideBar="false" id="pg">
+<script type="text/javascript">
+    function CloseAndRefresh(){
+      window.opener.location.href = "/{!targetedList}";
+      window.top.close();
+    }
+</script>
+<script>
+if (!window.console) {var console = {};}
+if (!console.log) {console.log = function() {};}
+</script>
+
+<apex:outputPanel id="mPanelStep2">
+<script type="text/javascript">
+var isLoadStep = '{!saveOK}';
+if(isLoadStep=='1'){ CloseAndRefresh();}
+
+</script>
+</apex:outputPanel>
+
+
+<apex:outputPanel id="mPanel">
+<apex:form >
+<apex:outputPanel id="PageStep1" rendered="{!IF(isShowStep2, false, true)}" layout="block" style="margin:5px;padding:10px;padding-top:2px;">
+<apex:actionRegion >
+    <apex:outputPanel id="top" layout="block" style="margin:5px;padding:10px;padding-top:2px;">
+        <apex:outputLabel value="Search" style="font-weight:Bold;padding-right:10px;" for="txtSearch"/>
+        <apex:inputText id="txtSearch" value="{!searchString}" />
+        <span style="padding-left:5px"><apex:commandButton id="btnGo" value="Go" action="{!Search}" rerender="PanMsg,searchResults"></apex:commandButton></span>
+    </apex:outputPanel>
+
+    <apex:outputPanel style="margin:0px 5px;padding:0px 10px;" id="PanMsg" layout="block">{!searchMsg}</apex:outputPanel>
+
+    <apex:outputPanel id="pnlSearchResults" style="margin:10px;height:350px;overflow-Y:auto;" layout="block">
+        <apex:pageBlock id="searchResults"> 
+        <apex:pageBlockTable value="{!results}" var="a" id="tblResults">
+            <apex:column >
+                <apex:facet name="header"><apex:outputPanel >Name</apex:outputPanel></apex:facet>
+                <apex:commandLink action="{!saveBtn}" oncomplete="javascript:CloseAndRefresh();" rendered="{!NOT(ISNULL(a.Id)) && IF(currMainCusSettings.Use_Step2_Multi_Add_Form__c, false, true)}">
+                    {!a['Name']}
+                    <apex:param name="accID" value="{!a.Id}" assignTo="{!acc}"/>
+                </apex:commandLink>
+                
+                <apex:commandLink action="{!saveStep1Btn}" rerender="mPanel" rendered="{!NOT(ISNULL(a.Id)) && IF(currMainCusSettings.Use_Step2_Multi_Add_Form__c, true, false)}">
+                    {!a['Name']}
+                    <apex:param name="accID" value="{!a.Id}" assignTo="{!acc}"/>
+                </apex:commandLink> 
+                
+            </apex:column>
+        </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:outputPanel>
+</apex:actionRegion>
+</apex:outputPanel>
+
+
+<apex:outputPanel rendered="{!IF(isShowStep2, true, false)}">
+<apex:pageBlock id="pb0">
+
+    <apex:pageBlockButtons location="both" style="align: right;">
+        <apex:commandButton value="Save" action="{!doSaveStep3}" rerender="mPanelStep2, mPanel" status="MCSub"/>
+        <apex:commandButton value="Cancel" immediate="true" rerender="mPanel" action="{!doCancelStep3}" status="MCSub"/>
+    </apex:pageBlockButtons>
+    <table id="dtable" class="list" border="0" cellpadding="0" cellspacing="0">
+    <thead class="rich-table-thead">
+    <tr class="headerRow">
+        <th class="headerRow" colspan="1" width="23"><div style="padding-left:7px">#</div></th>
+        <th class="headerRow" colspan="1">{!currMainCusSettings.Search_Object_Title__c}</th>
+        <apex:repeat value="{!columnsShown}" var="col">
+        <th class="headerRow" colspan="1">
+            <apex:outputPanel style="white-space: nowrap;" rendered="{! NOT(CONTAINS(col.name,'.')) && col.isEditable}">{!col.Label}</apex:outputPanel>
+        </th>
+        </apex:repeat>
+    </tr>
+    </thead>
+    <tbody>
+    <apex:repeat value="{!lstMemberItemsAdd}" var="obj">
+    <tr class="dataRow even" onmouseover="if (window.hiOn){hiOn(this);}" onmouseout="if (window.hiOff){hiOff(this);}" onblur="if (window.hiOff){hiOff(this);}" onfocus="if (window.hiOn){hiOn(this);}">
+        <td style="padding:0px 2px 0px 10px">{!obj.Index}</td>
+        <td><apex:outputField value="{!obj.Item[massEditSettings.targetObjectSearchFieldName__c]}"/></td>
+        <apex:repeat value="{!columnsShown}" var="col">
+        <td class="dataCell" name="{!col.name}"><apex:inputField value="{!obj.Item[col.name]}" rendered="{! NOT(CONTAINS(col.name,'.')) && col.isEditable}"/></td>
+        </apex:repeat>
+
+    </tr>
+    </apex:repeat>
+    </tbody>
+    </table>
+</apex:pageBlock>
+
+</apex:outputPanel>
+
+</apex:form>
+</apex:outputPanel>
+
+
+<apex:actionstatus id="MCSub" startText="Processing......">
+<apex:facet name="start">
+    <div id="salesforceSource_blurybackground" style="z-index: 100; position: fixed; left: 0; top: 0; bottom: 0; right: 0; background-color: #dcdcdc; opacity: 0.6; filter: alpha(opacity=60)"></div>
+    <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 80%; display: '';">
+        <div style="width: 144px; vertical-align: middle;" class="waitingHolder"><table align="center" valign="top" style="width: 100%; height: 30%">
+        <tr align="center" valign="top" style="width: 100%; height: 30%">
+            <td valign="top"><img class="waitingImage" src="/img/loading.gif" /> <span class="waitingDescription">Processing......</span></td>
+        </tr>
+    </table></div>
+    </div>
+    <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 100%; display: '';" />
+</apex:facet>
+<apex:facet name="stop" />
+</apex:actionstatus>
+
+</apex:page>

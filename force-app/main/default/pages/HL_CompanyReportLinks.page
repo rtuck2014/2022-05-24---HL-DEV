@@ -1,0 +1,29 @@
+<apex:page extensions="HL_CompanyReportLinks" standardcontroller="Account">
+    <apex:form >       
+        <apex:pageBlock >        
+            <div width="100%" style="font-size: 20px; font-weight: bold; width: 100%; border-bottom: 0px #3355CC solid;">
+                <apex:outputLabel value="{!PageTitle}" id="PageTitle" style=""/>
+            </div>
+            <div style="{!PageStyle}">
+                <apex:commandButton value="Return to Company" action="{!ReturnToParent}" style="margin-top: 20px;" />                
+            </div>            
+            <div style="margin-top:20px;">
+                <table width="100%">
+                        <tr>
+                            <th>Report</th>
+                            <th>Description</th>
+                        </tr>  
+                        <tr>
+                            <td colspan="2" style="border-top:1pt solid black;" height="10px"></td>
+                        </tr>                    
+                    <apex:repeat value="{!LinkList}" var="Reports">
+                            <tr >
+                                <td width="30%" height="20px"><apex:outputLink value="{!Reports.Report_Link_URL__c}" id="theLink" target="_blank">{!Reports.Display_Name__c}</apex:outputLink></td>
+                                <td width="70%" height="20px">{!Reports.Report_Description__c}</td>
+                            </tr>
+                    </apex:repeat>
+                </table>
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

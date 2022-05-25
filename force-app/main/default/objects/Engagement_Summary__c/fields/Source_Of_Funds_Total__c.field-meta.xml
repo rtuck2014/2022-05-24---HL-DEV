@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Source_Of_Funds_Total__c</fullName>
+    <externalId>false</externalId>
+    <formula>Source_Common_Equity__c + Source_Company_Cash_AR__c + Source_Delayed_Draw_Term_Loan__c +  Source_Junior_Subordinated_Debt__c + Source_Preferred_Equity__c +  Source_Revolving_Credit_Facility__c + Source_Seller_Notes__c +  Source_Senior_Subordinated_Debt__c + Source_Term_Loan_A__c + Source_Term_Loan_B__c + Source_Term_Loan_C__c +  Source_Unitranche_Debt__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Sources</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

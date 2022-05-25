@@ -1,0 +1,20 @@
+<apex:page standardController="Engagement_Client_Subject__c" showHeader="false" sidebar="false" lightningStyleSheets="true">
+    <apex:form >
+    <apex:pageBlock id="pbMainEdit" mode="Edit">
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:pageMessage id="msgSaved" severity="confirm" detail="Record Saved"></apex:pageMessage>
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!QuickSave}" value="Save" reRender="pbMainEdit" oncomplete="ClosePopup();" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1">
+                <apex:outputField value="{!Engagement_Client_Subject__c.Client_Subject__r.Name}" label="{!Engagement_Client_Subject__c.Type__c}"/>
+                <apex:inputField id="ownershipPercent" value="{!Engagement_Client_Subject__c.Percent_Ownership__c}" rendered="{!Engagement_Client_Subject__c.Type__c == 'Equity Holder'}" styleClass="numeric-medium"></apex:inputField>
+                <apex:inputField id="loanAmount" value="{!Engagement_Client_Subject__c.Loan_Amount__c}" rendered="{!Engagement_Client_Subject__c.Type__c == 'Key Creditor'}" styleClass="numeric-medium"></apex:inputField>
+            </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_Shared.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_EngagementClientSubjectEdit.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+</apex:page>

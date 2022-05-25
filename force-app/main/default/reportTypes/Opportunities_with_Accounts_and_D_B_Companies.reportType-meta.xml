@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject></baseObject>
+    <category>opportunities</category>
+    <deployed>false</deployed>
+    <description>Opportunities with Accounts and D&amp;B Companies</description>
+    <label>Opportunities with Accounts and D&amp;B Companies</label>
+    <sections>
+        <masterLabel>D&amp;B Companies</masterLabel>
+    </sections>
+    <sections>
+        <masterLabel>Accounts</masterLabel>
+    </sections>
+    <sections>
+        <masterLabel>Opportunities</masterLabel>
+    </sections>
+</ReportType>

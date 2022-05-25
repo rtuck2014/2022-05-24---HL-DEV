@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HLHZ_acting_as_an_intermediary__c</fullName>
+    <externalId>false</externalId>
+    <label>HLHZ acting as an intermediary</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Underlying_Transaction_excempt__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>YES</fullName>
+                <default>false</default>
+                <label>YES</label>
+            </value>
+            <value>
+                <fullName>NO</fullName>
+                <default>false</default>
+                <label>NO</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>YES</controllingFieldValue>
+            <valueName>YES</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>YES</controllingFieldValue>
+            <valueName>NO</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

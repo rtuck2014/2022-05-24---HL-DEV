@@ -1,0 +1,339 @@
+<apex:page name="HL_EventExpenseViewPage" standardController="Event_Expense__c" sidebar="false" extensions="HL_EventExpenseViewClass" tabStyle="Event_Expense__c" showHeader="false" lightningStyleSheets="true">
+    
+    <head>
+        
+        <style type="text/css">
+            .customPopup {
+            background-color: white;
+            border-radius: 5px;
+            border-color: #0066FF;
+            left: 30%;
+            padding: 10px;
+            position: absolute;
+            z-index: 9999;
+            width: 255px;
+            height: 182px;
+            top: 10%;
+            color: white;
+            }
+            
+            
+            .closeButton {
+            float: right;
+            }
+            
+            .popupBackground{
+            background-color:black;
+            opacity: 0.20;
+            filter: alpha(opacity = 20);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+            }
+            
+            
+            .popupBackgroundClone{
+            background-color:black;
+            opacity: 0.20;
+            filter: alpha(opacity = 20);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+            }
+            .custPopupClone{
+            background-color: white;
+            border-width: 2px;
+            border-style: solid;
+            z-index: 9999;
+            left: 50%;
+            padding:10px;
+            position: absolute;
+            width: 270px;
+            margin-left: -250px;
+            top:40%;
+            }
+        </style>
+    </head>
+    <apex:form id="pageFormForMsg" rendered="{!!validUser}">
+        <apex:pageMessages />
+    </apex:form>
+    <apex:pageBlock >
+        <apex:form rendered="{!validUser}">
+            
+            <apex:actionFunction name="ApproveExpense" action="{!toApprove}" >
+                <script>
+                function ApproveExpenseJS(){
+                    var myresp =  confirm('Do you want to Approve?');
+                    if(myresp)
+                    {
+                        ApproveExpense();
+                    }
+                    else{
+                        return  false;
+                    }
+                    
+                }
+                function ExportPDFJS(){
+                    var x = document.getElementById("buttonPanbleId");
+                    x.style.display = "none";
+                    window.print(); 
+                    window.location.href = '/apex/HL_EventExpenseViewPage?id={!EveExpRecord.Id}';
+                    //location.reload(); 
+                }
+                </script>
+                
+                <apex:actionFunction name="ApproveExpense" action="{!toApprove}"  rerender="pd1"/>      
+            </apex:actionFunction>
+            <apex:pageBlock id="pd1">
+                <apex:pageMessages />
+                
+                <apex:pageBlockButtons location="Top" >
+                    <div id="buttonPanbleId"> 
+                        <apex:commandButton action="{!Edit}" value="Edit" 
+                                            rendered="{!if(OR(AND(EveExpRecord.Status__c != 'Waiting for Approval',EveExpRecord.Status__c != 'Deleted', OR(ShowEditSubmitBtn,AND(EveExpRecord.Is_Clone__c,OR($Profile.Name = 'System Administrator', $Profile.Name = 'CAO')))), ShowEditBtnForPrivilegedUser),true,false)}"/>
+                                                                    
+                        <apex:commandButton action="{!SubmitForApproval}" value="Submit for Approval" rendered="{!if(AND(EveExpRecord.Status__c == 'Saved',ShowEditSubmitBtn),true,false)}" />
+                        
+                        <apex:commandButton action="{!dummyCall}" value="Approve" onclick="return ApproveExpenseJS();"
+                                            rendered="{!showApprovButton}" rerender="pd1"/>
+                        <apex:commandButton action="{!toReject}" value="Reject" 
+                                            rendered="{!showApprovButton}" rerender="popup,pd1"/>
+                        <apex:commandButton action="{!toRequestMoreInformation}" value="Request More Information" 
+                                            rendered="{!showApprovButton}" rerender="popup,pd1"/>
+                        
+                        <apex:commandButton action="{!backToMainPage}" value="Back To Expense Request List"/>
+                        
+                        <apex:commandButton action="{!confirmCloneEE}" value="Clone" reRender="confirmClone,pd1"/>
+                        
+                        <apex:commandButton action="{!toRenderAsPDF}" value="Export PDF" 
+                                            rendered="{!if(AND(EveExpRecord.Status__c == 'Approved', ShowEditSubmitBtn),true,false)}" onclick="ExportPDFJS();" rerender="popup,pd1"/>
+                        
+                        <!--<apex:commandButton action="{!toDelete}" value="Delete" rerender="popup,pd1"
+                                            rendered="{!if(OR(AND(EveExpRecord.Status__c == 'Approved', OR($Profile.Name = 'System Administrator', $Profile.Name = 'CAO',IsMemberofEventExpenseCAOVisibility)),AND(EveExpRecord.Status__c != 'Approved',EveExpRecord.Status__c != 'Deleted', ShowEditSubmitBtn)),true,false)}"/>-->
+                        
+                        <apex:commandButton action="{!toDelete}" value="Delete" rerender="popup,pd1"
+                                            rendered="{!if(OR(AND(EveExpRecord.Status__c != 'Deleted',OR($Profile.Name = 'System Administrator', $Profile.Name = 'CAO',IsMemberofEventExpenseCAOVisibility)),AND(EveExpRecord.Status__c != 'Approved',EveExpRecord.Status__c != 'Deleted', ShowEditSubmitBtn)),true,false)}"/>
+                        
+                    </div>
+                </apex:pageBlockButtons>
+                
+                <apex:pageBlockSection title="Requestor/Host Information" rendered="{!!requiredForCF}">
+                    <apex:outputField value="{!EveExpRecord.Requestor_Name__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Status__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Title__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Name}"/>
+                    <apex:outputField value="{!EveExpRecord.Primary_Email__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Industry_Group__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Event_Contact__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Primary_phone_number__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Product_Type__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Submitted_Date__c}"/>
+                </apex:pageBlockSection>
+                
+                <apex:pageBlockSection title="Requestor/Host Information" rendered="{!requiredForCF}">
+                    <apex:outputField value="{!EveExpRecord.Requestor_Name__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Status__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Title__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Name}"/>
+                    <apex:outputField value="{!EveExpRecord.Primary_Email__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Event_Contact__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Industry_Group__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Primary_phone_number__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Office__c}"/>                     
+                    <apex:outputField value="{!EveExpRecord.Submitted_Date__c}"/>
+                </apex:pageBlockSection>
+      
+                <apex:pageBlockSection title="Event Information" rendered="{!!requiredForCF}">
+                    <apex:outputField value="{!EveExpRecord.Event_Name__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Event_location__c}"/>
+                    <apex:outputField value="{!EveExpRecord.City__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Start_Date__c}"/>
+                    <apex:outputField value="{!EveExpRecord.End_Date__c}"/>
+                    <!--<apex:pageblocksectionItem>
+                        <apex:outputLabel>Created Date</apex:outputLabel>
+                        <apex:outputText value="{0,date,MM/dd/yyyy}"> <apex:param value="{!EveExpRecord.CreatedDate}" /></apex:outputText >
+                        
+                    </apex:pageBlockSectionItem>-->
+                    <apex:outputField value="{!EveExpRecord.CreatedDate}"/>
+                </apex:pageBlockSection>
+                            
+                
+                <apex:pageBlockSection title="Event Specifics" rendered="{!!requiredForCF}">
+                    <apex:outputField value="{!EveExpRecord.LOB__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Event_Type_Format__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Event_Purpose__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Event_Format__c}"/>
+                    <apex:outputField value="{!EveExpRecord.What_is_desired_outcome_of_this_event__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Target_Audience__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Potential_Revenue__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Audience_Industry_if_applicable__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Marketing_support__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Marketing_support_Other__c}" rendered="{!if(EveExpRecord.Marketing_support__c == 'Yes',true,false)}"/>
+                    <apex:outputField value="{!EveExpRecord.Number_of_guests__c}"/>
+                </apex:pageBlockSection>
+
+                <apex:pageBlockSection title="Event Information" rendered="{!requiredForCF}">
+                    <apex:outputField value="{!EveExpRecord.Event__c}"/>                
+                    <apex:outputField value="{!EveExpRecord.Internal_Opportunity_Number__c}"/>
+                    <apex:outputField value="{!EveExpRecord.LOB__c}"/>                    
+                    <apex:outputField value="{!EveExpRecord.Classification__c}"/>                    
+                    <apex:outputField value="{!EveExpRecord.Event_Type_Format__c}"/>
+                    <apex:outputField value="{!EveExpRecord.City__c}"/>                   
+                    <apex:outputField value="{!EveExpRecord.Event_Format__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Event_location__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Start_Date__c}"/>
+                    <apex:outputField value="{!EveExpRecord.End_Date__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Is_Actual_Date__c}"/>
+                    <!--<apex:pageblocksectionItem>
+                        <apex:outputLabel>Created Date</apex:outputLabel>
+                        <apex:outputText value="{0,date,MM/dd/yyyy}"> <apex:param value="{!EveExpRecord.CreatedDate}" /></apex:outputText >
+                        
+                    </apex:pageBlockSectionItem>-->
+                    <apex:outputField value="{!EveExpRecord.CreatedDate}"/>
+                    <apex:outputField value="{!EveExpRecord.Event_Purpose__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Marketing_support__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Marketing_support_Other__c}" rendered="{!if(EveExpRecord.Marketing_support__c == 'Yes',true,false)}"/>
+                    <apex:outputField value="{!EveExpRecord.Number_of_guests__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Onsite_Support_Needed__c}" />      
+                    <apex:outputField value="{!EveExpRecord.Asked_to_Present__c}" />
+                </apex:pageBlockSection>
+
+                <apex:pageBlockSection columns="1" showHeader="false">
+                    <apex:outputLabel rendered="{!PresenterList.size != 0}" style="font-weight: bold;color: #4a4a56;">Presenters :</apex:outputLabel> 
+                    <apex:outputPanel rendered="{!PresenterList.size>0}">
+                        <apex:pageBlockTable value="{!PresenterList}" var="preList" >
+                            <apex:column value="{!preList.Contact__c}" width="40%"/>
+                            <apex:column value="{!preList.Contact__r.Title}" width="40%"/>
+                            <apex:column value="{!preList.Contact__r.Industry_Group__c}" />
+                        </apex:pageBlockTable>
+                    </apex:outputPanel>
+                </apex:pageBlockSection>
+                
+                <apex:pageBlockSection title="Attendees Evaluation" rendered="{!!requiredForCF}">
+                    <apex:pageBlockSectionItem helpText="{!$ObjectType.Event_Expense__c.fields.Related_campaign_if_30_guests__c.InlineHelpText}">
+                        <apex:outputLabel value="Related Campaign (if 30+ guests)"/>
+                        <apex:outputField value="{!EveExpRecord.Related_campaign_if_30_guests__c}"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                
+                <apex:pageBlockSection title="Event Tracking" rendered="{!requiredForCF}">
+                    <apex:pageBlockSectionItem helpText="{!$ObjectType.Event_Expense__c.fields.Related_campaign_if_30_guests__c.InlineHelpText}">
+                        <apex:outputLabel value="Related Campaign (if 30+ guests)"/>
+                        <apex:outputField value="{!EveExpRecord.Related_campaign_if_30_guests__c}"/>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+
+                <apex:pageBlockSection showHeader="false" columns="1">
+                    <apex:outputLabel rendered="{!PotentialConfirmedEGList.size != 0}" style="font-weight: bold;color: #4a4a56;">Potential/Confirmed External Guests :</apex:outputLabel>
+                    <apex:outputPanel rendered="{!PotentialConfirmedEGList.size>0}">
+                        <apex:pageBlockTable value="{!PotentialConfirmedEGList}" var="PCEGList" >
+                            <apex:column value="{!PCEGList.Contact__c}" width="40%"/>
+                            <apex:column value="{!PCEGList.Contact__r.Title}" width="40%"/>
+                            <apex:column value="{!PCEGList.Contact__r.Industry_Group__c}" />
+                        </apex:pageBlockTable>
+                    </apex:outputPanel>
+                </apex:pageBlockSection>
+                
+                <apex:pageBlockSection title="Event Evaluation" rendered="{!!requiredForCF}">
+                    <apex:outputField value="{!EveExpRecord.Who_is_evaluating_the_event__c}"  />
+                    <apex:outputField value="{!EveExpRecord.When_this_event_will_be_evaluated__c}" />
+                    <apex:outputField value="{!EveExpRecord.What_are_KPIs__c}" />
+                </apex:pageBlockSection>
+
+                <apex:pageBlockSection title="Budget" rendered="{!!requiredForCF}"> 
+                    <apex:outputField value="{!EveExpRecord.Expected_Travel_cost__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Expected_F_B_cost__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Any_additional_cost_Specify__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Total_Budget_Requested__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Specify__c}" id="specifyFieldId" />
+                    <apex:outputField value="{!EveExpRecord.SubLedger_Number__c}" rendered="{!!requiredForFVA}"/>
+                    <!-- HL Internal opportunity Number will only rendered for LOb = FVA ------------------------------------>
+                    <apex:outputField value="{!EveExpRecord.HL_Internal_Opportunity_Number__c}" rendered="{!requiredForFVA}"/>
+                </apex:pageBlockSection>
+               
+                <apex:pageBlockSection title="Attendee Budget" rendered="{!requiredForCF}">
+                    <apex:outputField value="{!EveExpRecord.Expected_Airfare_Cost__c}" />
+                    <apex:outputField value="{!EveExpRecord.Expected_Lodging_Cost__c}" />
+                    <apex:outputField value="{!EveExpRecord.Expected_Registration_Fee__c}" />  
+                    <apex:outputField value="{!EveExpRecord.Expected_F_B_cost__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Any_additional_cost_Specify__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Total_Budget_Requested__c}"/>
+                    <apex:outputField value="{!EveExpRecord.Specify__c}" id="specifyFieldId" />
+                    <apex:outputField value="{!EveExpRecord.SubLedger_Number__c}" rendered="{!!requiredForCF}"/>
+                </apex:pageBlockSection>                
+                <apex:pageBlockSection title="Event Management" rendered="{!!requiredForCF}">
+                    <apex:outputField value="{!EveExpRecord.Any_additional_requests__c}"/>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Additional Info" rendered="{!requiredForCF}">
+                    <apex:outputField value="{!EveExpRecord.Notes__c}"/>
+                </apex:pageBlockSection>                
+                <apex:pageBlockSection showHeader="false" columns="1">
+                    <apex:outputLabel rendered="{!ListOfTeamMemberList.size != 0}" style="font-weight: bold;color: #4a4a56;">List of Team Members :</apex:outputLabel>
+                    <apex:outputPanel rendered="{!ListOfTeamMemberList.size>0}">
+                        <apex:pageBlockTable value="{!ListOfTeamMemberList}" var="LoTMList" >
+                            <apex:column value="{!LoTMList.Contact__c}" width="40%"/>
+                            <apex:column value="{!LoTMList.Contact__r.Title}" width="40%"/>
+                            <apex:column value="{!LoTMList.Contact__r.Industry_Group__c}" />
+                        </apex:pageBlockTable>
+                    </apex:outputPanel>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Notes" rendered="{!!requiredForCF}">
+                    <apex:outputField value="{!EveExpRecord.Notes__c}"/>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Approval History" columns="1">
+                    <apex:outputLabel rendered="{!EventExpenseApprovalHistoryList.size == 0}" >No Approver Exist</apex:outputLabel>
+                    <apex:outputPanel rendered="{!EventExpenseApprovalHistoryList.size>0}">
+                        <apex:pageBlockTable value="{!EventExpenseApprovalHistoryList}" var="EveExpApprovalHistory" columnsWidth="20%, 30%,20%, 30%" >
+                            <apex:column value="{!EveExpApprovalHistory.Status_TimeStamp__c}"  headerValue="Date"  />
+                            <apex:column value="{!EveExpApprovalHistory.Approver__c}"  />
+                            <apex:column value="{!EveExpApprovalHistory.Status__c}" />
+                            <apex:column value="{!EveExpApprovalHistory.Notes__c}" />   
+                        </apex:pageBlockTable>
+                    </apex:outputPanel>
+                </apex:pageBlockSection>
+                
+                <apex:outputPanel id="popup">
+                    
+                    <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+                    <apex:outputPanel id="popInnerOutputPnl" styleClass="customPopup" layout="block" rendered="{!displayPopUp}" style="border:0.8px solid Black;">
+                        <div style="background: #8E9DBE;border:0.8px solid Black;">
+                            <div class="row" style="margin: 3px 1px 3px 1px;"> 
+                                <b>{!notesLabel}</b> 
+                            </div>
+                        </div>
+                        <apex:pageblockSection >                         
+                            <apex:pageblockSectionItem > 
+                                <apex:inputTextarea value="{!EventExpenseApprovalHistory.Notes__c}" rows="9" cols="35" style="resize: none;"/>
+                            </apex:pageblockSectionItem> 
+                        </apex:pageblockSection>
+                        <apex:commandButton value="OK" action="{!backToRecord}" styleClass="closeButton" rerender="popup,pd1"/> 
+                        <apex:commandButton value="Cancel" title="Close the popup" action="{!closePopup}" styleClass="closeButton" rerender="popup,pd1"/> 
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                
+                <apex:outputPanel id="confirmClone">
+                    <apex:outputPanel styleClass="popupBackgroundClone" layout="block" rendered="{!displayClonePopUp}"/>
+                    <apex:outputPanel id="popInnerOutputPnlClone" styleClass="custPopupClone" layout="block" rendered="{!displayClonePopUp}" style="border:0.8px solid Black;">
+                        
+                            <apex:pageMessage summary="Please confirm the cloning of this record. To continue, select “Ok” or “Cancel” to go back." severity="warning" strength="3">
+                            <br/>
+                            
+                                <apex:commandButton value="Cancel" title="Close the popup" action="{!closePopup}" styleClass="closeButton" rerender="confirmClone,pd1"/> 
+                                <apex:commandButton value="OK" action="{!cloneEventExpense}" styleClass="closeButton" rerender="confirmClone,pd1"/> 
+                            
+                            </apex:pageMessage>
+                            
+                        
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </apex:pageBlock>
+        </apex:form>
+        <apex:relatedList list="Histories" rendered="{!if(OR(AND(!EveExpRecord.Is_Clone__c,validUser),AND(EveExpRecord.Is_Clone__c,OR($Profile.Name = 'System Administrator', $Profile.Name = 'CAO',IsMemberofEventExpenseCAOVisibility))),true,false)}" title="Expense Request History"/>
+    </apex:pageBlock>
+</apex:page>

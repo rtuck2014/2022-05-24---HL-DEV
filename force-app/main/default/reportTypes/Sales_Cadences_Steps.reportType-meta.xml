@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>ActionCadence</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Report Type for Sales Cadences and the associated steps. Allows reporting on information such as the engagement of each sales cadence.</description>
+    <join>
+        <outerJoin>true</outerJoin>
+        <relationship>ActionCadenceStep</relationship>
+    </join>
+    <label>Sales Cadences &amp; Steps</label>
+    <sections>
+        <masterLabel>Sales Cadences</masterLabel>
+    </sections>
+    <sections>
+        <masterLabel>Sales Cadence Steps</masterLabel>
+    </sections>
+</ReportType>

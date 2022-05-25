@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LP_Archive</fullName>
+    <columns>NAME</columns>
+    <columns>lmscons__Description__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>lmscons__isArchived__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>LP (Archive)</label>
+    <sharedTo>
+        <group>Training</group>
+    </sharedTo>
+</ListView>

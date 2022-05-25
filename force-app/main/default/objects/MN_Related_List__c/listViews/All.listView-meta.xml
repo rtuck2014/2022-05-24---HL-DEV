@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>Order__c</columns>
+    <columns>DisplayName__c</columns>
+    <columns>ObjectName__c</columns>
+    <columns>NAME</columns>
+    <columns>FieldSetName__c</columns>
+    <columns>RecordType__c</columns>
+    <columns>Record_Types_To_Be_Excluded__c</columns>
+    <columns>Rollup_API_Name__c</columns>
+    <columns>SearchResultsCSV__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

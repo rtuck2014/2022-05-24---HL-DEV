@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Real_Estate_Brokerage_Job_Type</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL(Job_Type__c, &apos;Real Estate Brokerage&apos;) &amp;&amp;
+NOT(ISPICKVAL(HL_Entity__c, &apos;Real Estate&apos;))</errorConditionFormula>
+    <errorDisplayField>HL_Entity__c</errorDisplayField>
+    <errorMessage>HL Entity must be Real Estate for all Real Estate Brokerage job types.</errorMessage>
+</ValidationRule>

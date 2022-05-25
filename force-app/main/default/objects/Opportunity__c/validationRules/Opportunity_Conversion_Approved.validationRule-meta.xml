@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Conversion_Approved</fullName>
+    <active>true</active>
+    <errorConditionFormula>Converted_to_Engagement__c &amp;&amp; NOT(Approved__c)</errorConditionFormula>
+    <errorMessage>Opportunity has not been approved for an Engagement number.</errorMessage>
+</ValidationRule>

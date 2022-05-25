@@ -1,0 +1,30 @@
+<apex:page standardController="Monthly_Revenue_Process_Control__c" extensions="SL_MonthlyRevenueProcessController" id="Page" lightningStylesheets="true">
+<apex:slds />
+
+    <apex:outputPanel id="refresh" rendered="true">                  
+        <apex:outputPanel id="refresh1" rendered="{!RefreshPage}">   
+            <script>window.top.location='{!strRedirectUrl}';</script>
+        </apex:outputPanel>                                          
+    </apex:outputPanel>                                                
+
+    <apex:form id="processControl">  
+        <apex:PageBlock id="PageBlock" mode="view">                
+            <apex:pagemessages ></apex:pagemessages>
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!initialReversal}" value="Initial Reversal" disabled="{!!InitialReversalEnabled}"/>
+                <apex:commandButton action="{!lockAll}" value="Lock All" rendered="{!!RevenueAccrualsLocked}" disabled="{!!LockAllEnabled}"/>
+                <apex:commandButton action="{!finalReversal}" value="Final Reversal" disabled="{!!FinalReversalEnabled}"/>
+                <apex:commandButton action="{!earlyLook}" value="Early Look" disabled="{!!EarlyLookEnabled}"/>
+                 <apex:commandButton action="{!finalReport}" value="Final Report" disabled="{!!FinalReportEnabled}"/>
+                <apex:commandButton action="{!exportRevenue}" value="Export Revenue" disabled="{!!ExportRevenueEnabled}"/>
+        <!--        <apex:commandButton action="{!generateRevenue}" value="Generate Revenue" disabled="{!!GenerateRevenueEnabled}"/> -->
+                <apex:commandButton action="{!currencyConversion}" value="Currency Conversion" disabled="{!!CurrencyConversionEnabled}"/>
+                <apex:commandButton action="{!staffSummary}" value="Staff Summary" disabled="{!!StaffSummaryEnabled}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1" id="Status">
+                <apex:outputText label="Status" value="{!status}"/>
+            </apex:pageBlockSection>
+        </apex:PageBlock>
+    </apex:form>
+    
+</apex:page>

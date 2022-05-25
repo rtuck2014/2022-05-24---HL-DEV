@@ -1,0 +1,4 @@
+<apex:page standardController="Engagement_Counterparty__c" lightningStyleSheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:detail inlineEdit="true" />   
+</apex:page>

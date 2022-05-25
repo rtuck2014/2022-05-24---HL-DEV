@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Conflicts_2_through_5</fullName>
+    <active>false</active>
+    <errorConditionFormula>(ISPICKVAL(Conflicts_2a_Not_Listed__c,&apos;Yes&apos;) &amp;&amp;
+ISBLANK(Conflicts_2b_Not_Listed_TXT__c)) ||
+(ISPICKVAL( Conflicts_3a_Related_to_Transaction__c,&apos;Yes&apos;) &amp;&amp;
+ISBLANK( Conflicts_3b_Related_to_Transaction_TXT__c)) ||
+(ISPICKVAL( Conflicts_4a_Conflict_of_Interest__c, &apos;Yes&apos;) &amp;&amp;
+ISBLANK( Conflicts_4b_Conflict_of_Interest_TXT__c )) ||
+(ISPICKVAL( Conflicts_5a_Other_Conflicts__c ,&apos;Yes&apos;) &amp;&amp;
+ISBLANK( Conflicts_5b_Other_Conflicts_TXT__c ))</errorConditionFormula>
+    <errorMessage>If any of Conflict Check questions under Conflicts Check Information are &apos;Yes,&apos; please details in relevant text areas.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject></baseObject>
+    <category>leads</category>
+    <deployed>false</deployed>
+    <description>D&amp;B Companies with leads</description>
+    <label>D&amp;B Companies with Leads</label>
+    <sections>
+        <masterLabel>D&amp;B Companies</masterLabel>
+    </sections>
+    <sections>
+        <masterLabel>Leads</masterLabel>
+    </sections>
+</ReportType>

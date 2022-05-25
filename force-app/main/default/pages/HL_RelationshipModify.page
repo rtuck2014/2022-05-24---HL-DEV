@@ -1,0 +1,28 @@
+<apex:page standardController="Relationship__c" extensions="HL_RelationshipController" lightningStylesheets="true">
+    <style>
+        .personalNote {width: 100%;}
+    </style>
+    <apex:form >
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageBlock mode="edit" title="Relationship">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!SaveAndReturn}" value="Save"/>
+                <apex:commandButton action="{!Cancel}" value="Cancel"></apex:commandButton>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Information" columns="2">
+                <apex:inputField value="{!Relationship__c.HL_Contact__c}"></apex:inputField>
+                <apex:inputField value="{!Relationship__c.Type__c}" required="true"></apex:inputField>
+                <apex:inputField value="{!Relationship__c.External_Contact__c}" rendered="{!Relationship__c.External_Contact__c == null}"></apex:inputField>
+                <apex:outputField value="{!Relationship__c.External_Contact__c}" rendered="{!Relationship__c.External_Contact__c <> null}" />
+                <apex:inputField value="{!Relationship__c.Sync_to_Outlook__c}"></apex:inputField>
+                <apex:inputField value="{!Relationship__c.Strength_Rating__c}"></apex:inputField>
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:inputField value="{!Relationship__c.Contact_Status__c}" rendered="{!Relationship__c.Id <> null}"></apex:inputField>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection showHeader="false" columns="1" rendered="{!Relationship__c.Id == null || HasNoteAccess}">
+                <apex:inputField value="{!Relationship__c.Personal_Note__c}" styleClass="personalNote"></apex:inputField>
+                 <apex:inputField value="{!Relationship__c.Outlook_Categories__c}" styleClass="personalNote"></apex:inputField>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

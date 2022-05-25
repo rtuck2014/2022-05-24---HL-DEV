@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ERP_VAT_Treatment_Entity__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>ERP VAT Treatment Entity - It&apos;s referencing the value from Legal Entity table. If this field is marked as TRUE, Then the opportunity requires VAT Treatment</description>
+    <externalId>false</externalId>
+    <inlineHelpText>ERP VAT Treatment Entity</inlineHelpText>
+    <label>ERP VAT Treatment Entity</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

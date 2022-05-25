@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_Entity__c</fullName>
+    <externalId>false</externalId>
+    <label>HL Entity</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cap Inc.</fullName>
+                <default>false</default>
+                <label>Cap Inc.</label>
+            </value>
+            <value>
+                <fullName>China Ltd.</fullName>
+                <default>false</default>
+                <label>China Ltd.</label>
+            </value>
+            <value>
+                <fullName>Financial Advisory</fullName>
+                <default>false</default>
+                <label>Financial Advisory</label>
+            </value>
+            <value>
+                <fullName>HL (Corporate Finance) S.A.</fullName>
+                <default>false</default>
+                <label>HL (Corporate Finance) S.A.</label>
+            </value>
+            <value>
+                <fullName>HL Australia</fullName>
+                <default>false</default>
+                <label>HL Australia</label>
+            </value>
+            <value>
+                <fullName>HL Consulting, Inc.</fullName>
+                <default>false</default>
+                <label>HL Consulting, Inc.</label>
+            </value>
+            <value>
+                <fullName>HL Deutschland GMBH</fullName>
+                <default>false</default>
+                <label>HL Deutschland GMBH</label>
+            </value>
+            <value>
+                <fullName>HL Dubai</fullName>
+                <default>false</default>
+                <label>HL Dubai</label>
+            </value>
+            <value>
+                <fullName>HL EMEA LLP</fullName>
+                <default>false</default>
+                <label>HL EMEA LLP</label>
+            </value>
+            <value>
+                <fullName>HL Espana S.A.</fullName>
+                <default>false</default>
+                <label>HL Espana S.A.</label>
+            </value>
+            <value>
+                <fullName>HL Finance</fullName>
+                <default>false</default>
+                <label>HL Finance</label>
+            </value>
+            <value>
+                <fullName>HL K.K.</fullName>
+                <default>false</default>
+                <label>HL K.K.</label>
+            </value>
+            <value>
+                <fullName>HL Leonardo (Italy Hldco) Ltd.</fullName>
+                <default>false</default>
+                <label>HL Leonardo (Italy Hldco) Ltd.</label>
+            </value>
+            <value>
+                <fullName>HL Leonardo &amp; Co SpA</fullName>
+                <default>false</default>
+                <label>HL Leonardo &amp; Co SpA</label>
+            </value>
+            <value>
+                <fullName>HL Netherlands B.V.</fullName>
+                <default>false</default>
+                <label>HL Netherlands B.V.</label>
+            </value>
+            <value>
+                <fullName>HL Singapore</fullName>
+                <default>false</default>
+                <label>HL Singapore</label>
+            </value>
+            <value>
+                <fullName>Quayle Munro Limited</fullName>
+                <default>false</default>
+                <label>Quayle Munro Limited</label>
+            </value>
+            <value>
+                <fullName>Real Estate</fullName>
+                <default>false</default>
+                <label>Real Estate</label>
+            </value>
+            <value>
+                <fullName>HL Tech IP, LLC</fullName>
+                <default>false</default>
+                <label>HL Tech IP, LLC</label>
+            </value>
+            <value>
+                <fullName>Milestone Advisors, LLC</fullName>
+                <default>false</default>
+                <label>Milestone Advisors, LLC</label>
+            </value>
+            <value>
+                <fullName>Red Pine Advisors</fullName>
+                <default>false</default>
+                <label>Red Pine Advisors</label>
+            </value>
+            <value>
+                <fullName>ArchPoint Partners, LLC</fullName>
+                <default>false</default>
+                <label>ArchPoint Partners, LLC</label>
+            </value>
+            <value>
+                <fullName>HL (Financial Advisory) Ltd.</fullName>
+                <default>false</default>
+                <label>HL (Financial Advisory) Ltd.</label>
+            </value>
+            <value>
+                <fullName>HL (Europe) Ltd - Frankfurt</fullName>
+                <default>false</default>
+                <label>HL (Europe) Ltd - Frankfurt</label>
+            </value>
+            <value>
+                <fullName>HL (Europe) Ltd.</fullName>
+                <default>false</default>
+                <label>HL (Europe) Ltd.</label>
+            </value>
+            <value>
+                <fullName>McQueen Holdings Ltd.</fullName>
+                <default>false</default>
+                <label>McQueen Holdings Ltd.</label>
+            </value>
+            <value>
+                <fullName>HL UK Holdings, LP (U.S.)</fullName>
+                <default>false</default>
+                <label>HL UK Holdings, LP (U.S.)</label>
+            </value>
+            <value>
+                <fullName>HL Capital (Asia) Ltd.</fullName>
+                <default>false</default>
+                <label>HL Capital (Asia) Ltd.</label>
+            </value>
+            <value>
+                <fullName>HL EMEA, LLP - Croatia</fullName>
+                <default>false</default>
+                <label>HL EMEA, LLP - Croatia</label>
+            </value>
+            <value>
+                <fullName>HL (Australia) Pty Ltd</fullName>
+                <default>false</default>
+                <label>HL (Australia) Pty Ltd</label>
+            </value>
+            <value>
+                <fullName>HL (China) Ltd</fullName>
+                <default>false</default>
+                <label>HL (China) Ltd</label>
+            </value>
+            <value>
+                <fullName>HL (Corporate Finance) Ltd</fullName>
+                <default>false</default>
+                <label>HL (Corporate Finance) Ltd</label>
+            </value>
+            <value>
+                <fullName>HL (Europe) GmbH</fullName>
+                <default>false</default>
+                <label>HL (Europe) GmbH</label>
+            </value>
+            <value>
+                <fullName>HL (MEA Fin Adv) Ltd. (Dubai)</fullName>
+                <default>false</default>
+                <label>HL (MEA Fin Adv) Ltd. (Dubai)</label>
+            </value>
+            <value>
+                <fullName>Houlihan Lokey GmbH</fullName>
+                <default>false</default>
+                <label>Houlihan Lokey GmbH</label>
+            </value>
+            <value>
+                <fullName>HL (Espana) S.A.</fullName>
+                <default>false</default>
+                <label>HL (Espana) S.A.</label>
+            </value>
+            <value>
+                <fullName>HL (Europe) Ltd - Madrid</fullName>
+                <default>false</default>
+                <label>HL (Europe) Ltd - Madrid</label>
+            </value>
+            <value>
+                <fullName>HL (Europe) Ltd - Paris</fullName>
+                <default>false</default>
+                <label>HL (Europe) Ltd - Paris</label>
+            </value>
+            <value>
+                <fullName>HL, Inc.</fullName>
+                <default>false</default>
+                <label>HL, Inc.</label>
+            </value>
+            <value>
+                <fullName>Houlihan Lokey KK</fullName>
+                <default>false</default>
+                <label>Houlihan Lokey KK</label>
+            </value>
+            <value>
+                <fullName>Houlihan Lokey S.p.A.</fullName>
+                <default>false</default>
+                <label>Houlihan Lokey S.p.A.</label>
+            </value>
+            <value>
+                <fullName>Lara (Italy Holdco) Ltd.</fullName>
+                <default>false</default>
+                <label>Lara (Italy Holdco) Ltd.</label>
+            </value>
+            <value>
+                <fullName>M.E.S.A.</fullName>
+                <default>false</default>
+                <label>M.E.S.A.</label>
+            </value>
+            <value>
+                <fullName>HL (Singapore) Private Ltd</fullName>
+                <default>false</default>
+                <label>HL (Singapore) Private Ltd</label>
+            </value>
+            <value>
+                <fullName>HL Capital (Holdings) Ltd.</fullName>
+                <default>false</default>
+                <label>HL Capital (Holdings) Ltd.</label>
+            </value>
+            <value>
+                <fullName>HL Capital, Inc.</fullName>
+                <default>false</default>
+                <label>HL Capital, Inc.</label>
+            </value>
+            <value>
+                <fullName>HL EMEA, LLP</fullName>
+                <default>false</default>
+                <label>HL EMEA, LLP</label>
+            </value>
+            <value>
+                <fullName>HL (Nederlands) B.V.</fullName>
+                <default>false</default>
+                <label>HL (Nederlands) B.V.</label>
+            </value>
+            <value>
+                <fullName>HL EMEA, LLP - Paris</fullName>
+                <default>false</default>
+                <label>HL EMEA, LLP - Paris</label>
+            </value>
+            <value>
+                <fullName>HL EMEA, LLP - Frankfurt</fullName>
+                <default>false</default>
+                <label>HL EMEA, LLP - Frankfurt</label>
+            </value>
+            <value>
+                <fullName>HL EMEA, LLP - Madrid</fullName>
+                <default>false</default>
+                <label>HL EMEA, LLP - Madrid</label>
+            </value>
+            <value>
+                <fullName>HL Finance LLC</fullName>
+                <default>false</default>
+                <label>HL Finance LLC</label>
+            </value>
+            <value>
+                <fullName>HL Financial Advisors, Inc.</fullName>
+                <default>false</default>
+                <label>HL Financial Advisors, Inc.</label>
+            </value>
+            <value>
+                <fullName>HL Inv Cons (Beijing) Ltd (WOFE)</fullName>
+                <default>false</default>
+                <label>HL Inv Cons (Beijing) Ltd (WOFE)</label>
+            </value>
+            <value>
+                <fullName>HL Real Estate Group, Inc.</fullName>
+                <default>false</default>
+                <label>HL Real Estate Group, Inc.</label>
+            </value>
+            <value>
+                <fullName>HL (Europe) GmbH – Paris</fullName>
+                <default>false</default>
+                <label>HL (Europe) GmbH – Paris</label>
+            </value>
+            <value>
+                <fullName>HL (Europe) GmbH – Madrid</fullName>
+                <default>false</default>
+                <label>HL (Europe) GmbH – Madrid</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

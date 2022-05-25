@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NBC_Submission</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>NBC Submission</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>var criteria1 = {!Opportunity_Approval__c.Financial_Objects_Count__c};
+var criteria2 = {!Opportunity_Approval__c.Form_of_Opinion_Completed__c};
+var criteria3 = &quot;{!Opportunity_Approval__c.Fairness_Opinion_Provided__c}&quot;;
+var ErrorMsg = &quot;The NBC form requires the following before it is eligible for submission: \n\n&quot;;
+
+if(criteria1&gt;0 &amp;&amp; (criteria2 || criteria3 == &quot;No&quot; || critiera3 == &quot;&quot;))
+{
+navigateToUrl(&apos;/p/process/Submit?retURL=%2F{!Opportunity_Approval__c.Id}&amp;id={!Opportunity_Approval__c.Id}&apos;,&apos;DETAIL&apos;,&apos;submit&apos;);
+}
+else {
+if(criteria1==0){
+ErrorMsg = ErrorMsg + &quot; -At least one Financial record required. \n\n&quot;;
+}
+if(!criteria2 &amp;&amp; criteria3 == &quot;Yes&quot;){
+ErrorMsg = ErrorMsg + &quot; -Please fill out Form of Opinion.&quot;;
+}
+alert(ErrorMsg);
+}</url>
+</WebLink>

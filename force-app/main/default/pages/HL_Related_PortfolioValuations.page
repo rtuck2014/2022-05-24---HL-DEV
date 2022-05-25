@@ -1,0 +1,108 @@
+<apex:page name="HL_Related_PortfolioValuations" controller="HL_RelatedVPController" id="pgId" action="{!redirectToPVConversion}" lightningStylesheets="true">
+<apex:form >
+    <script src="https://ajax.microsoft.com/ajax/jquery.ui/1.8.5/jquery-ui.js"/>
+    <script src="https://malsup.github.com/jquery.blockUI.js" />
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}"/>
+    <script>
+     j$ = jQuery.noConflict(); 
+    function blockme() {
+        j$.blockUI({ css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+            } }); 
+      }
+    </script>
+    <script>
+        function delRec(recid){
+            var respond = confirm('Are you sure?');
+            if(respond)
+            {
+                blockme();
+                callToDel(recid);
+            }
+        }        
+        
+    </script>
+    <!-- <apex:outputPanel id="ErrMsgPanel" rendered="{!if(RecordList.size = 0, true, false )}">
+        <apex:pageMessage summary="Either portfolio valuation is not available or you may not have access to this screen" severity="warning" strength="3" />        
+    </apex:outputPanel> -->
+    <apex:outputPanel id="opId">
+        <apex:PageMessages />
+        <!-- <apex:pageBlock id="pbId" rendered="{!if(RecordList.size = 0, false,true )}"> -->
+        <apex:pageBlock id="pbId" >
+            <apex:actionFunction action="{!DeleteRecord}" name="callToDel" reRender="opId" oncomplete="j$.unblockUI();" >
+                <apex:param value="" assignTo="{!SelectedRecId}" name="recIdToDel" />
+            </apex:actionFunction>
+            <apex:actionFunction action="{!EditRecord}" name="callToEdit" reRender="opId" >
+                <apex:param value="" assignTo="{!SelectedRecId}" name="recIdToEdit" />
+            </apex:actionFunction>
+            
+            <font size="4" color="black"><b>{!ChildRelationshipName}</b></font>
+            <apex:pageMessage rendered="{!IF(AND(Records.size = 0,isValidPVUser), true, false)}" summary="{!if($CurrentPage.parameters.relatedObjType == 'EngVP',$Label.HL_NO_Eng_VP_ExistMessage,$Label.HL_NOVPExistMessage)}" severity="info" strength="3" />
+            <apex:pageMessage rendered="{!IF(AND(Records.size = 0,!isValidPVUser), true, false)}" summary="{!$Label.No_Permission_To_Create_New_VP}" severity="info" strength="3" />
+            <apex:outputPanel layout="block">
+                <apex:outputLabel value="{!ObjNumber}" style="font-weight: bold"/>
+                <apex:outputLink value="/{!EngOppId}" target="_self" style="color: blue;" rendered="{!if(EngOppNumber != null,true,false)}" >{!EngOppNumber}</apex:outputLink>
+            </apex:outputPanel>
+            <center>
+                <apex:commandButton value="{!ReturnToObj}" action="{!CancelRecord}"/>
+                <apex:commandButton value="{!ButtonName}" action="{!CreateNewRecord}" reRender="opId"  rendered="{!AND(isValidPVUser,!isOpportunityConverted, !IsEngagementStageClosed,(userProfileName != 'System Administrator (Read Only)') )}" />            
+            </center>
+            
+            <apex:pageBlockTable value="{!Records}" var="record" rendered="{!IF(Records.size > 0 , true, false)}" id="table">
+                <apex:column rendered="{!AND(isValidPVUser ,!isOpportunityConverted, (userProfileName != 'System Administrator (Read Only)') )}">
+                        <apex:facet name="header">Action</apex:facet>
+                        <apex:commandLink onclick="callToEdit('{!record['id']}')" reRender="opId" >Edit</apex:commandLink>
+                        &nbsp; <apex:outputPanel rendered="{!OR(AND($ObjectType.Opp_VP__c.deletable,$CurrentPage.parameters.relatedObjType= 'OppVP',IsSupervisorAdmin),AND($ObjectType.Eng_VP__c.deletable,$CurrentPage.parameters.relatedObjType = 'EngVP',IsHavingPVPermissionSetOrIsSysAdmin,IsSupervisorAdmin))}" ><apex:commandLink onclick="delRec('{!record['id']}')" reRender="opId" >Del</apex:commandLink></apex:outputPanel>
+                    </apex:column>
+                <apex:repeat value="{!FieldsList}" var="f">
+                    <apex:column rendered="{!if(f= 'Name', true, false)}">
+                        <apex:facet name="header">Valuation Period&nbsp;{!f.Label}
+                             <apex:commandLink action="{!ViewData}" value="Valuation Period Name{!IF(sortExpression=='name',IF(sortDirection='ASC','▼','▲'),'')}" id="cmdSort" reRender="opId,pbId,table">
+                                 <apex:param value="name" name="column" assignTo="{!sortExpression}" ></apex:param>
+                            </apex:commandLink>
+                        </apex:facet>
+                     <apex:outputLink value="/{!record['id']}" target="_self">{!record[f]}</apex:outputLink>
+                     </apex:column>
+                      <apex:column value="{!record[f]}" rendered="{!if(f= 'Valuation_Date__c', true, false)}">
+                        <apex:facet name="header">{!f.Label}
+                        <apex:commandLink action="{!ViewData}" value="Valuation Date{!IF(sortExpression=='Valuation_Date__c',IF(sortDirection='ASC','▼','▲'),'')}" reRender="opId,pbId,table">
+                             <apex:param value="Valuation_Date__c" name="column" assignTo="{!sortExpression}" ></apex:param>
+                        </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                      <apex:column value="{!record[f]}" rendered="{!if(f= 'Last_Position_Completed_Date__c', true, false)}">
+                        <apex:facet name="header">{!f.Label}
+                        <apex:commandLink action="{!ViewData}" value="Last Position Completed Date{!IF(sortExpression=='Last_Position_Completed_Date__c',IF(sortDirection='ASC','▼','▲'),'')}" reRender="opId,pbId,table">
+                             <apex:param value="Last_Position_Completed_Date__c" name="column" assignTo="{!sortExpression}" ></apex:param>
+                        </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                     <apex:column value="{!record[f]}" rendered="{!if(f= 'Invoices__c', true, false)}">
+                        <apex:facet name="header">{!f.Label}
+                        <apex:commandLink action="{!ViewData}" value="Invoice{!IF(sortExpression=='Invoices__c',IF(sortDirection='ASC','▼','▲'),'')}" reRender="opId,pbId,table">
+                             <apex:param value="Invoices__c" name="column" assignTo="{!sortExpression}" ></apex:param>
+                        </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                     <apex:column value="{!record[f]}" rendered="{!if(f= 'Overall_VP_Status__c', true, false)}">
+                        <apex:facet name="header">{!f.Label}
+                        <apex:commandLink action="{!ViewData}" value="Overall Valuation Period Status{!IF(sortExpression=='Overall_VP_Status__c',IF(sortDirection='ASC','▼','▲'),'')}" reRender="opId,pbId,table">
+                             <apex:param value="Overall_VP_Status__c" name="column" assignTo="{!sortExpression}" ></apex:param>
+                        </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                </apex:repeat>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:outputPanel>
+
+</apex:form>
+</apex:page>

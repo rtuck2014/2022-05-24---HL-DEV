@@ -1,0 +1,36 @@
+<apex:page standardController="Engagement_LOB_Split__c" extensions="HL_EngagementLOBSplitEditController" showHeader="true" sidebar="true" lightningStyleSheets="true">
+    <div class="engagementLOBSplitEdit">
+    <apex:form >
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageBlock title="{!Engagement_LOB_Split__c.Engagement__r.Name} - LOB Splits">
+            <apex:pageBlockTable cellpadding="5" cellspacing="5" value="{!SplitTypeList}" var="stl" rendered="{!SplitTypeList.size > 0}" style="width: 350px">
+                <apex:column style="width: 110px">
+                    <apex:outputText value="{!stl}"></apex:outputText>
+                </apex:column>
+                <apex:repeat var="ls" value="{!LOBSplitList}">
+                    <apex:column styleClass="center" rendered="{!stl == ''}">
+                        <apex:outputText value="{!ls.LOB}"></apex:outputText>
+                    </apex:column>
+                </apex:repeat>
+                <apex:repeat var="ls" value="{!LOBSplitList}">
+                    <apex:column styleClass="center" rendered="{!stl == 'LOB Split'}">
+                        <apex:outputText value="{0, number, 0.00}">
+                            <apex:param value="{!ls.Percent}" />
+                        </apex:outputText>
+                    </apex:column>
+                </apex:repeat>
+                <apex:repeat var="ls" value="{!OverrideLOBSplitList}">
+                    <apex:column styleClass="center" rendered="{!stl == 'LOB Split Override'}">
+                        <apex:inputText value="{!ls.Percent}" styleClass="numeric-short"></apex:inputText>
+                    </apex:column>
+                </apex:repeat>
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+                    <apex:commandButton action="{!SaveRecords}" value="Save" />
+                    <apex:commandButton action="{!CancelAndReturn}" value="Cancel" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>      
+    </div>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+</apex:page>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Target_Business_Description__c</columns>
+    <columns>Acquirer_Capital_IQ_Ticker__c</columns>
+    <columns>Target_Capital_IQ_Ticker__c</columns>
+    <columns>Completed_Record__c</columns>
+    <columns>Confidence_Rating__c</columns>
+    <columns>Target_Company_Country__c</columns>
+    <columns>Data_Source__c</columns>
+    <columns>Date_Closed__c</columns>
+    <columns>Deal_Type__c</columns>
+    <columns>Earnout__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

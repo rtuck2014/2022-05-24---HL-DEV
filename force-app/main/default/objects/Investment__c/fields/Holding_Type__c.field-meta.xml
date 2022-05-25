@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Holding_Type__c</fullName>
+    <description>Type of holding the Sponsor have on the Portfolio Investment</description>
+    <externalId>false</externalId>
+    <label>Holding Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Debt</fullName>
+                <default>false</default>
+                <label>Debt</label>
+            </value>
+            <value>
+                <fullName>Majority</fullName>
+                <default>false</default>
+                <label>Majority</label>
+            </value>
+            <value>
+                <fullName>Minority</fullName>
+                <default>false</default>
+                <label>Minority</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Public Equity</fullName>
+                <default>false</default>
+                <label>Public Equity</label>
+            </value>
+            <value>
+                <fullName>Credit</fullName>
+                <default>false</default>
+                <label>Credit</label>
+            </value>
+            <value>
+                <fullName>Private Equity</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Private Equity</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

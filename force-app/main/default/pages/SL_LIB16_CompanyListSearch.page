@@ -1,0 +1,777 @@
+<apex:page id="thePage" Controller="SL_LIB16_ctrl_CompanyListSearch" contenttype="text/html;charset=UTF-8" tabStyle="Company_List__c" action="{!ShowEditDeleteProfile}" lightningStylesheets="true">
+<apex:slds />
+<script>
+if (!window.console) {var console = {};}
+if (!console.log) {console.log = function() {};}
+</script>
+    <apex:outputpanel id="pmsg"><apex:pageMessages /></apex:outputpanel>
+    
+    <apex:outputPanel id="mainPContainer" rendered="{!hasNoError}">
+        <apex:sectionHeader title="{!currMainCusSettings.Search_Page_Title__c}" subtitle="{!curCompanyListName}" >
+        <input class="btn" onclick="doCancelFun()" type="button" id="back_btn" value="Back" />
+        </apex:sectionHeader>
+        <br/><br/>
+        <apex:includeScript value="{!URLFOR($Resource.SL_LIB16_jQuerySFFiltres, 'js/jquery-1.4.2.min.js')}" />
+
+        <script>
+            function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?SLm+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+        </script>
+<style>
+td.helpinfo img {margin-top:6px !important;}
+</style>
+
+<script>
+
+//console.log('>>>ok!');
+
+jQuery.noConflict();    
+(function($) {
+    $(document).ready(function() {
+        $( "#accordion" ).accordion({ autoHeight: false });
+    });
+    
+})(jQuery);
+
+function viewsTrigger(obj){
+    setViewId(obj);
+}
+
+
+/*global function*/
+function setResetCheckboxes() {
+    var isIE = (navigator.userAgent.indexOf('MSIE') != -1);
+    var elem;
+    var counter = 0;
+    var checkAll = document.getElementById("thePage:theForm:pbResult:tickTable:checkAll");
+    var inputArr = document.getElementsByTagName('input');
+    for (var i=0; i < inputArr.length; i++) {
+        if (inputArr[i].type == "checkbox" && !inputArr[i].disabled && inputArr[i].id.length > 34 && inputArr[i].id.substring(0,34) == "thePage:theForm:pbResult:tickTable")
+                inputArr[i].checked = checkAll.checked;
+    }
+
+}
+
+
+function objOn(obj)
+{
+    try
+    {
+        obj.style.display = "block";
+        obj.style.visibility = "visible";
+    }
+    catch(Exception){}
+}   
+
+function objOff(obj)
+{
+    try
+    {
+        obj.style.visibility = "hidden";
+        obj.style.display = "none";
+    }
+    catch(Exception){}
+}
+
+function setSearchSection(param)
+{
+    try {
+        var oSearchSection = document.getElementById("thePage:theForm:oSearchSection");
+        oSearchSection.value = param;
+    }
+    catch (Exception) {}
+}
+
+
+</script>
+        <apex:form id="theForm2">
+            <apex:inputHidden value="{!strColumnsAndFiltersTemplate}" id="sColTmplFrm2"/>
+            <apex:actionFunction name="doResetFun" action="{!doReset}" />
+            <apex:actionFunction name="doCancelFun" action="{!doCancel}" />
+            <apex:actionFunction name="doClSearchFun" action="{!clSearch}" rerender="mainPanel4" status="MCSub" />
+        </apex:form>
+
+        <apex:outputPanel id="mainPanel4">
+        <script>
+        var objColTmplFrm2 = document.getElementById("{!$Component.sColTmplFrm2}");
+        try
+        {
+            oSearchParamId.value = '{!searchCompParams.SearchParam}';
+            oSearchQId.value = '{!searchCompParams.SearchQ}';
+            oSearchObjId.value = '{!searchCompParams.SearchObj}';
+            //oSearchTargetId.value = '{!searchCompParams.SearchTarget}';
+            doSearchFun();
+        } 
+        catch (e) {}
+        </script>
+        </apex:outputPanel>
+
+        <apex:form id="theForm">
+            <script> var otheFormObject = document.getElementById("{!$Component.theForm}");</script>
+
+            <apex:inputHidden value="{!strColumnsAndFiltersTemplate}" id="sColTmplFrm1"/>
+            <script> var objColTmplFrm1 = document.getElementById("{!$Component.sColTmplFrm1}");</script>
+            <apex:inputHidden id="oSearchParam" value="{!SearchParam}" />
+            <script> var oSearchParamId = document.getElementById("{!$Component.oSearchParam}");</script>
+            <apex:inputHidden id="oSearchQ" value="{!SearchQ}" />
+            <script> var oSearchQId = document.getElementById("{!$Component.oSearchQ}");</script>
+            <apex:inputHidden id="oSearchObj" value="{!SearchObj}" />
+            <script> var oSearchObjId = document.getElementById("{!$Component.oSearchObj}");</script>
+            <apex:inputHidden id="oSearchTarget" value="{!SearchTarget}" />
+            <script> var oSearchTargetId = document.getElementById("{!$Component.oSearchTarget}");</script>
+            
+            <apex:inputHidden id="oSearchSection" value="{!SearchSection}" />
+
+            <!--apex:actionFunction name="doSearchFun" action="{!doSearch}" rerender="mainPanel2" status="MCSub" /-->
+            <apex:actionFunction name="doSearchFun" action="{!doSearch}" rerender="pmsg,mainPanel2" status="MCSub" />
+            <div id="accordion">
+                <h3 onclick="setSearchSection('F');">
+                    <a href="javascript:setSearchSection('F');"
+                        onclick="setSearchSection('F');">Filter</a>
+                </h3>
+                <div><c:SL_LIB209_SearchBlock params="{!searchCompParams}"/></div>
+
+                <apex:repeat value="{!lineGetLists}" var="lineTab">
+
+                <h3 onclick="setSearchSection('{!lineTab.ImplID}');">
+                    <a href="javascript:setSearchSection('{!lineTab.ImplID}');" onclick="setSearchSection('{!lineTab.ImplID}');">{!lineTab.lTitle}</a>
+                </h3>
+                <div>
+                    <div style="margin-left: 20px;">
+                    <table>
+                    <tr>
+                        <td style="padding-top:6px;padding-right:10px"><b>{!lineTab.Lookup_Title}</b></td>
+                        <td style="padding-top:9px;width:210px">
+                            <div style="display: block;">
+                                <apex:inputField required="false" value="{!lineTab.addCLObj[lineTab.targetObjectParentFieldName]}" />
+                            </div>
+                        </td>
+                        <td><input class="btn" type="button" id="search_btn2" onclick="doClSearchFun()" value="Search" /></td>
+                    </tr>
+                    </table>
+                    </div>
+                </div>
+                </apex:repeat>
+            </div>
+        </apex:form>
+
+        
+
+        <apex:outputPanel id="mainPanelForm">
+        
+        <apex:outputPanel rendered="{!IF(isShowStep2, true, false)}">
+            <script>
+            var ccounter = 1;
+            objOff(otheFormObject);
+            function showForm(){ objOn(otheFormObject);}
+            </script>
+
+            <apex:form >
+                <apex:pageBlock id="pb0">
+                
+                    <apex:pageBlockButtons location="both" style="align: right;">
+                        <!-- <apex:commandButton value="Save" action="{!doSaveStep2}" status="MCSub"/>-->
+                        <apex:commandButton oncomplete="showForm()" value="Save" rerender="mainPanelForm,pmsg,mainPanel2" action="{!doSaveAndMoreStep2}" status="MCSub"/>
+                        <apex:commandButton value="Cancel" immediate="true" action="{!doCancelStep2}" status="MCSub"/>
+                    </apex:pageBlockButtons>
+                    <table id="dtable" class="list" border="0" cellpadding="0" cellspacing="0">
+                    <thead class="rich-table-thead">
+                    <tr class="headerRow">
+                        <th class="headerRow" colspan="1" width="23"><div style="padding-left:7px">#</div></th>
+                        <th class="headerRow" colspan="1">{!massEditSettings.Search_Object_Title__c}</th>
+                        <apex:repeat value="{!columnsShown}" var="col">
+                        <th class="headerRow" colspan="1">
+                            <apex:outputPanel style="white-space: nowrap;" rendered="{! NOT(CONTAINS(col.name,'.')) && col.isEditable}">{!col.Label}</apex:outputPanel>
+                        </th>
+                        </apex:repeat>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <apex:repeat value="{!lstMemberItemsAdd}" var="obj">
+                    <tr class="dataRow even" onmouseover="if (window.hiOn){hiOn(this);}" onmouseout="if (window.hiOff){hiOff(this);}" onblur="if (window.hiOff){hiOff(this);}" onfocus="if (window.hiOn){hiOn(this);}">
+                        <td style="padding:0px 2px 0px 10px">{!obj.Index}</td>
+                        <td><apex:outputField value="{!obj.Item[massEditSettings.targetObjectSearchFieldName__c]}"/></td>
+                        <apex:repeat value="{!columnsShown}" var="col">
+                        <td class="dataCell" name="{!col.name}"><apex:inputField value="{!obj.Item[col.name]}" rendered="{! NOT(CONTAINS(col.name,'.')) && col.isEditable}"/></td>
+                        </apex:repeat>
+                
+                    </tr>
+                    </apex:repeat>
+                    </tbody>
+                    
+                    
+                    </table>
+                    
+                
+                
+                </apex:pageBlock>
+            </apex:form>
+        </apex:outputPanel>
+
+<!--
+<apex:messages />
+-->
+
+        <br clear="all" />
+<!--
+        <apex:form id="theForm3" rendered="{!IF(isShowStep2, false, true)}">
+        <apex:form id="theForm3" rendered="{!IF((isShowStep2 && isNoExceptionThrown), false, true)}">
+-->
+        <apex:form id="theForm3" rendered="{!IF(isShowStep2, false, true)}">
+            <apex:inputHidden value="{!isNewView}" />
+            <apex:outputPanel id="mainPanel2">
+                <br clear="all" />
+                <div style="display: none;">
+                    <pre>{!trace}</pre>
+                </div>
+                <apex:outputPanel id="mainPanel2Sub"
+                    rendered="{!IF(HasSearched, true, false)}">
+                    <apex:outputPanel rendered="{!currMainCusSettings.Show_Views_on_MassAdd_Page__c}">
+                        <table>
+                            <tr>
+                                <!-- Start - updated View Section -->
+                                <td><b>View:</b>&nbsp; <apex:selectList value="{!strColumnsAndFiltersTemplate}" multiselect="false"
+                                        size="1" Id="SelectListId">
+                                        <apex:selectOptions value="{!lstColumnsAndFiltersTemplate}" />
+                                        <apex:actionSupport event="onchange" action="{!ShowEditDeleteProfile}" reRender="mainPanel2Sub" />
+                                    </apex:selectList> <apex:commandButton value="Go!" rerender="pnlViewTplReload, theForm3"  
+                                        title="Here you can setup columns shown, reorder them or create filters."
+                                        action="{!btnGo}"  style="width: 30px;height:23px;"
+                                        status="MCSub" />
+                                <script>
+                                var oViewMainList = document.getElementById("{!$Component.SelectListId}");
+                                </script>
+                                </td>
+
+<!--
+<apex:outputPanel id="show_edit_delete_profile_id" rendered="{!IF(isShowEditDeleteProfile==true,true,false)}">
+
+<apex:outputPanel id="show_edit_delete_profile_id" rendered="{!IF(isShowEditDeleteProfile, true, false)}">
+
+                                <td><script>
+                                    alert('111');
+                                </script>
+                                </td>
+
+                                <td><apex:outputPanel rendered="{!NOT(isOnlyDefaultView)}"> | </apex:outputPanel></td>
+
+-->
+
+                                <td><apex:commandLink rendered="{!AND(NOT(isOnlyDefaultView),isShowEditDeleteProfile)}" value="Edit"
+                                        action="{!fetchTemplateColumnAndFilterConditions}"
+                                        rerender="theForm3"
+                                        title="Here you can setup columns shown, reorder them or create filters."
+                                        style="width: 125px;padding-left:10px;color: #015ba7;"
+                                        status="MCSub">
+                                        <apex:param name="inEditColumns" assignTo="{!inEditColumns}"
+                                            value="true" />
+                                        <apex:param name="isShowDeleted"
+                                            assignTo="{!isShowDeleteButton}" value="true" />
+                                    </apex:commandLink></td>
+                                <td><apex:outputPanel rendered="{!AND(NOT(isOnlyDefaultView),isShowEditDeleteProfile)}"> | </apex:outputPanel></td>
+                                <td><apex:commandLink rendered="{!AND(NOT(isOnlyDefaultView),isShowEditDeleteProfile)}" value="Delete"
+                                        action="{!deleteTemplateByname}"
+                                        rerender="theForm3, SelectListId"
+                                        title="Here you can delete view."
+                                        style="width: 125px;color: #015ba7;" status="MCSub">
+                                    </apex:commandLink></td>
+                                <td><apex:outputPanel rendered="{!AND(NOT(isOnlyDefaultView),isShowEditDeleteProfile)}"> | </apex:outputPanel></td>
+
+<!--
+</apex:outputPanel>
+-->
+
+                                <td><apex:commandLink value="Create New View"
+                                        action="{!lnkCreateNewView}" rerender="theForm3"
+                                        title="Here you can setup columns shown, reorder them or create filters."
+                                        style="width: 125px;color: #015ba7;" status="MCSub">
+                                        <apex:param name="inEditColumns" assignTo="{!inEditColumns}"
+                                            value="true" />
+                                    </apex:commandLink></td>
+                                <!-- Stop - updated View Section -->
+                            </tr>
+                        </table>
+                    </apex:outputPanel>
+
+                    <apex:pageBlock id="pbNoResult" title="Search result"
+                        rendered="{!IF(pageSize==0, true, false) && NOT(inEditColumns)}">
+                        <center>
+                            <b>No Matching records found</b>
+                        </center>
+                    </apex:pageBlock>
+
+<script>
+
+
+
+function addSelectedCompanies(){ add_btn1();}
+</script>
+
+                    <apex:actionFunction action="{!doAddContinue}" name="add_btn1"
+                        reRender="mainPanelForm,pmsg,mainPanel2" status="MCSub" />
+                    <apex:actionFunction action="{!doAdd}" name="add_btn2"
+                        reRender="mainPanel2" status="MCSub" />
+
+                    <apex:actionFunction action="{!goCurPageNumber}"
+                        name="goCurPageNumber" rerender="mainPanel2" status="MCSub">
+                        <apex:param name="pageNumber" assignTo="{!curPageNumber}" value="" />
+                    </apex:actionFunction>
+
+                    <apex:pageBlock id="pbResult"
+                        title="Search result - Page {!pageNumber} of {!pageSize}"
+                        rendered="{!IF(pageSize>0, true, false) && NOT(inEditColumns) }">
+
+
+                        <apex:pageBlockButtons location="top">
+                            <input class="btn" type="button" id="add_btn"
+                                onclick="addSelectedCompanies();"
+                                value="Add Selected Records To {!curCompanyListName}" />
+                        </apex:pageBlockButtons>
+
+
+                        <apex:outputPanel >
+                            <span style="display: inline; width: 25px;"> <apex:commandLink value="First" action="{!first}" rerender="mainPanel2"
+                                    rendered="{!IF(pageNumber==1, false, true)}" status="MCSub" />
+                                <apex:outputLabel value="First"
+                                    rendered="{!IF(pageNumber==1, true, false)}" />
+                            </span>
+                            <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                            <span style="display: inline; width: 25px;"> <apex:commandLink value="Prev" action="{!previous}" rerender="mainPanel2"
+                                    rendered="{!IF(pageNumber==1, false, true)}" status="MCSub" />
+                                <apex:outputLabel value="Prev"
+                                    rendered="{!IF(pageNumber==1, true, false)}" />
+                            </span>
+                            <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                            <span style="display: inline; width: 25px;"> <input
+                                type="text" value="{!pageNumber}" styleClass="pageInput"
+                                size="2" onkeypress="return onlyNumbers(event, this.value);"
+                                onblur="if ((this.value)!=({!pageNumber})) { goCurPageNumber(this.value);}" />
+                                <apex:outputLabel value=" / {!pageSize}" />
+                            </span>
+                            <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                            <span style="display: inline; width: 25px;"> <apex:commandLink value="Next" action="{!next}" rerender="mainPanel2"
+                                    rendered="{!IF(pageNumber==pageSize, false, true)}"
+                                    status="MCSub" /> <apex:outputLabel value="Next"
+                                    rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                            </span>
+                            <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                            <span style="display: inline; width: 25px;"> <apex:commandLink value="Last" action="{!last}" rerender="mainPanel2"
+                                    rendered="{!IF(pageNumber==pageSize, false, true)}"
+                                    status="MCSub" /> <apex:outputLabel value="Last"
+                                    rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                            </span>
+
+                            <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                            <span style="display: inline; width: 125px;"> Qty: &nbsp;
+                                <apex:selectList value="{!curPageSize}" multiselect="false"
+                                    size="1" onchange="savePageSize(this.value);">
+                                    <apex:selectOptions value="{!pageSizeValues}" />
+                                </apex:selectList>
+                            </span>
+                        </apex:outputPanel>
+                        <br />
+                        <apex:pageBlockTable id="tickTable" value="{!items}" var="c"
+                            rows="{!curPageSize}">
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:inputCheckbox id="checkAll"
+                                        onClick="jQuery('.selectionCheckbox').attr('checked', this.checked);" />
+                                </apex:facet>
+                                <apex:inputCheckbox styleClass="selectionCheckbox"
+                                    id="myCheckbox" value="{!c.checked}" />
+                            </apex:column>
+
+                            <apex:repeat value="{! aSearchColumns }" var="column">
+                                <apex:column rendered="{! column.IsSortable__c }">
+                                    <apex:facet name="header">
+                                        <apex:commandLink rerender="mainPanel2" status="MCSub"
+                                            action="{!doSearch}"
+                                            value="{! IF ( column.Label__c != null, column.Label__c, column.Field__c ) } {! IF ( sortExpression == column.Field__c, IF ( sortDirection='ASC','▲','▼'), '' ) }">
+                                            <apex:param value="{! column.Field__c }" name="column"
+                                                assignTo="{!sortExpression}"></apex:param>
+                                        </apex:commandLink>
+                                    </apex:facet>
+                                    <apex:outputField value="{! c.Item[ column.Field__c ] }"
+                                        rendered="{! column.Field__c != 'Name' }" />
+                                    <apex:outputLink value="/{!c.Item.ID}"
+                                        rendered="{! column.Field__c == 'Name' }">{! c.Item[ column.Field__c ] }</apex:outputLink>
+                                   &nbsp;
+                                </apex:column>
+                                
+                                <apex:column rendered="{! NOT(column.IsSortable__c) }">
+                                    <apex:facet name="header">
+                                        <apex:outputLabel value="{! column.Label__c }" />
+                                    </apex:facet>
+                                    <apex:outputField value="{! c.Item[ column.Field__c ] }"
+                                        rendered="{! column.Field__c != 'Name' }" />
+                                    <apex:outputLink value="/{!c.Item.ID}"
+                                        rendered="{! column.Field__c == 'Name' }">{! c.Item[ column.Field__c ] }</apex:outputLink>
+                                   &nbsp;
+                                </apex:column>
+                            </apex:repeat>
+
+                        </apex:pageBlockTable>
+                        <br />
+                        <apex:outputPanel >
+                            <span style="display: inline; width: 25px;"> <apex:commandLink value="First" action="{!first}" rerender="mainPanel2"
+                                    rendered="{!IF(pageNumber==1, false, true)}" status="MCSub" />
+                                <apex:outputLabel value="First"
+                                    rendered="{!IF(pageNumber==1, true, false)}" />
+                            </span>
+                            <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                            <span style="display: inline; width: 25px;"> <apex:commandLink value="Prev" action="{!previous}" rerender="mainPanel2"
+                                    rendered="{!IF(pageNumber==1, false, true)}" status="MCSub" />
+                                <apex:outputLabel value="Prev"
+                                    rendered="{!IF(pageNumber==1, true, false)}" />
+                            </span>
+                            <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                            <span style="display: inline; width: 25px;"> <input
+                                type="text" value="{!pageNumber}" styleClass="pageInput"
+                                size="2" onkeypress="return onlyNumbers(event, this.value);"
+                                onblur="if ((this.value)!=({!pageNumber})) { goCurPageNumber(this.value);}" />
+                                <apex:outputLabel value=" / {!pageSize}" />
+                            </span>
+                            <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                            <span style="display: inline; width: 25px;"> <apex:commandLink value="Next" action="{!next}" rerender="mainPanel2"
+                                    rendered="{!IF(pageNumber==pageSize, false, true)}"
+                                    status="MCSub" /> <apex:outputLabel value="Next"
+                                    rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                            </span>
+                            <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                            <span style="display: inline; width: 25px;"> <apex:commandLink value="Last" action="{!last}" rerender="mainPanel2"
+                                    rendered="{!IF(pageNumber==pageSize, false, true)}"
+                                    status="MCSub" /> <apex:outputLabel value="Last"
+                                    rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                            </span>
+
+                            <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                            <span style="display: inline; width: 125px;"> Qty: &nbsp;
+                                <apex:selectList value="{!curPageSize}" multiselect="false"
+                                    size="1" onchange="savePageSize(this.value);">
+                                    <apex:selectOptions value="{!pageSizeValues}" />
+                                </apex:selectList>
+                            </span>
+
+                            <apex:actionFunction name="savePageSize"
+                                action="{!doSavePageSize}" rerender="mainPanel2" status="MCSub">
+                                <apex:param name="curPageSize" assignTo="{!curPageSize}"
+                                    value="" />
+                                <apex:param name="curPageNumber" assignTo="{!curPageNumber}"
+                                    value="0" />
+                            </apex:actionFunction>
+
+                        </apex:outputPanel>
+
+                    </apex:pageBlock>
+<script>
+var checkAll = document.getElementById("thePage:theForm3:pbResult:tickTable:checkAll");
+if(checkAll != null && checkAll) { checkAll.checked = false;}
+function goToTop(){ scroll(0,300);}
+
+function onlyNumbers(evt, val)
+{
+    var e = (typeof(event)!="undefined")?(event):(evt); // for trans-browser compatibility
+    var charCode = e.which || e.keyCode;
+
+    if (charCode==13)
+    {
+        if ((val)!=({!pageNumber})){goCurPageNumber(val);} 
+        return false;
+    }
+    if (charCode > 31 && (charCode < 48 || charCode > 57)){ return false;}
+    if (e.shiftkey){ return false;}
+
+    return true;
+} 
+</script>
+</apex:outputPanel>
+</apex:outputPanel>
+
+
+            <apex:pageBlock id="pb1" rendered="{!inEditColumns}">
+                <apex:pageBlockButtons >
+                    <input type="button" value="Save" class="btn"
+                        onclick="saveColumn()" />
+                    <apex:commandButton value="Cancel" action="{!btnGo}"
+                        rerender="theForm3, SelectListId" status="MCSub">
+                        <apex:param name="inEditColumns" assignTo="{!inEditColumns}"
+                            value="false" />
+                        <apex:param name="backLView"
+                            assignTo="{!strColumnsAndFiltersTemplate}" value="{!strView}" />
+                    </apex:commandButton>
+                </apex:pageBlockButtons>
+
+<!--
+                <apex:message for="Standard_Users_Cannot_Edit_Public_View" styleClass="locationError" />
+
+                <apex:actionFunction name="saveSelectedColumns"
+                    action="{!saveSelectedColumns}" rerender="theForm3, SelectListId"
+                    status="MCSub">
+
+                    rendered="{!IF(isNoExceptionThrown==true,true,false)}"
+
+
+                    rerender="{!IF(isNoExceptionThrown==true,'theForm3, SelectListId','')}"
+                    oncomplete="saveSelectedColumns_after();"
+-->
+
+
+                <apex:actionFunction name="saveSelectedColumns"
+                    action="{!saveSelectedColumns}" rerender="theForm3, SelectListId"
+                    status="MCSub">
+                    <apex:param name="selCols" assignTo="{!selectedColumnsCallback}"
+                        value="" />
+                    <apex:param name="inEditColumns" assignTo="{!inEditColumns}"
+                        value="false" />
+                </apex:actionFunction>
+<!--
+                <apex:actionFunction name="saveSelectedColumns"
+                    action="{!saveSelectedColumns}" 
+                    oncomplete="saveSelectedColumns_after();"
+                    rerender="saveSelectedColumns_after_id"
+                    status="MCSub">
+                    <apex:param name="selCols" assignTo="{!selectedColumnsCallback}"
+                        value="" />
+                    <apex:param name="inEditColumns" assignTo="{!inEditColumns}"
+                        value="false" />
+                </apex:actionFunction>
+
+                
+                <apex:outputPanel id="saveSelectedColumns_after_id" rendered="{!IF(isNoExceptionThrown==true,true,false)}" >
+                    <apex:actionFunction name="saveSelectedColumns_after"
+                        rendered = "{!IF(isNoExceptionThrown==true,true,false)}" 
+                        rerender="theForm3, SelectListId"
+                        status="MCSub">
+                    </apex:actionFunction>
+                </apex:outputPanel>
+-->
+
+                <br />
+<!--
+<apex:messages />
+-->
+                <apex:message for="pb1" />
+
+                <table border="0" cellspacing="1" cellpadding="1">
+                    <tr>
+                        <td><b>View Name:</b>&nbsp;&nbsp;</td>
+                        <td>
+                            <div class="requiredInput" id="textbox">
+                                <div class="requiredBlock"></div>
+                                <apex:inputText value="{!strColumnsAndFiltersTemplate}" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td colspan="2" height="10">&nbsp;</td></tr>
+                    <tr>
+                        <td><b>Visibility:</b>&nbsp;&nbsp;</td>
+                        <td>
+                            <div class="requiredInput" id="textbox">
+                                <div class="requiredBlock"></div>
+                                <apex:selectList value="{!fldViewVisibility}" multiselect="false" size="1">
+                                    <apex:selectOptions value="{!fldViewVisibilityVals}"/>
+                                </apex:selectList>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <script>
+                    var varIsNewView = '{!isNewView}';
+                    var varStrView = '{!strView}';
+                    if(varIsNewView=='true' && varStrView!='' && varStrView!='null')
+                    {
+                        for(var i = 0; i < oViewMainList.length; i++)
+                        {
+                            if(oViewMainList.options[i].value == varStrView)
+                            oViewMainList.selectedIndex = i;
+                        }
+                    }
+                    //alert(oViewMainList.value);
+                </script>
+                <table class="multiSelectPicklistTable" border="0" cellspacing="1" cellpadding="1">
+                    <tbody>
+                    <tr>
+                        <td><b>Available</b></td>
+                        <td></td>
+                        <td><b>Selected</b></td>
+                        <td></td>
+                    </tr>
+                        <tr class="multiSelectPicklistRow">
+                            <td style="border: none;"><span> <select
+                                    id="__unselected" size="15" multiple="multiple"
+                                    ondblclick="doSelect(document.getElementById('__unselected'), document.getElementById('__selected'));"
+                                    style="width: 200px;height:270px;">
+                                        <apex:repeat value="{!UnselectedColumns}" var="col">
+                                            <option value="{!col.Value}">{!col.Label}</option>
+                                        </apex:repeat>
+                                </select>
+                            </span></td>
+                            <td class="multiSelectPicklistCell" style="border: none;"><a
+                                onclick="doSelect(document.getElementById('__unselected'), document.getElementById('__selected')); return false;"
+                                title="Add"> <img src="/s.gif" alt="Add"
+                                    class="picklistArrowRight" id="'+id+'_right_arrow"
+                                    style="cursor: pointer;" title="Add" />
+                            </a> <br /> <br /> <a
+                                onclick="doSelect(document.getElementById('__selected'), document.getElementById('__unselected')); return false;"
+                                title="Remove"> <img src="/s.gif" alt="Remove"
+                                    class="picklistArrowLeft" id="'+id+'_left_arrow"
+                                    style="cursor: pointer;" title="Remove" />
+                            </a></td>
+                            <td style="border: none;"><span> <select
+                                    id="__selected" size="15" multiple="multiple"
+                                    ondblclick="doSelect(document.getElementById('__selected'), document.getElementById('__unselected'));"
+                                    style="width: 200px;height:270px;">
+                                        <apex:repeat value="{!SelectColumnsOrdered}" var="col">
+                                            <option value="{!col.Value}">{!col.Label}</option>
+                                        </apex:repeat>
+                                </select>
+                            </span></td>
+                            <td class="multiSelectPicklistCell" style="border: none;"><a
+                                onclick="moveUp(document.getElementById('__selected')); return false;"
+                                title="Up"> <img src="/s.gif" alt="Add" class="upArrowIcon"
+                                    id="'+id+'_up_arrow" style="cursor: pointer;" title="Up" />
+                            </a> <br /> <br /> <a
+                                onclick="moveDown(document.getElementById('__selected')); return false;"
+                                title="Down"> <img src="/s.gif" alt="Remove"
+                                    class="downArrowIcon" id="'+id+'_down_arrow"
+                                    style="cursor: pointer;" title="Down" />
+                            </a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+                <script>
+
+function getColumnsList(sel){
+    var res = '';
+    for (var i=0; i < sel.options.length; i++){
+        res += ';' + sel.options[i].value;
+    }
+    if (res.length > 0) res = res.substring(1);
+    return res;
+}
+
+function doSelect(selFrom, selTo){
+    //var selFrom = document.getElementById('__unselected');
+    //var selTo = document.getElementById('__selected');
+    for (var ind = 0; ind < selFrom.options.length; ind++){
+        if (selFrom.options[ind].selected){
+            selTo.options[selTo.options.length] = new Option(selFrom.options[ind].innerHTML, selFrom.options[ind].value);
+        }
+    }
+    for (var ind = selFrom.options.length-1; ind >= 0; ind--){
+        if (selFrom.options[ind].selected){
+            for (var ind2 = ind; ind2 < selFrom.options.length-1; ind2++){
+                selFrom.options[ind2] = new Option(selFrom.options[ind2+1].innerHTML, selFrom.options[ind2+1].value, selFrom.options[ind2+1].selected);
+            }
+            selFrom.options.length -= 1;
+        }
+    }
+}
+
+function moveUp(sel){
+    var index = -1;
+    for (var i = 0; i < sel.options.length; i++){
+        if (sel.options[i].selected){
+            if (index==-1) index = i;
+            else {
+                alert('Select only one field.');
+                return false;
+            }
+        }
+    }   
+    if (index > 0){
+        var t = sel.options[index-1];
+        sel.options[index-1] = new Option(sel.options[index].innerHTML, sel.options[index].value, sel.options[index].selected);
+        sel.options[index] = t;
+        sel.selectedIndex = index-1;
+    }
+}
+
+function moveDown(sel){
+    var index = -1;
+    for (var i = 0; i < sel.options.length; i++){
+        if (sel.options[i].selected){
+            if (index==-1) index = i;
+            else {
+                alert('Select only one field.');
+                return false;
+            }
+        }
+    }   
+    if (index >= 0 && index < sel.options.length-1){
+        var t = sel.options[index+1];
+        sel.options[index+1] = new Option(sel.options[index].innerHTML, sel.options[index].value, sel.options[index].selected);
+        sel.options[index] = t;
+        sel.selectedIndex = index+1;
+    }
+}
+</script>
+
+<script>
+function saveColumn()
+{
+    
+    if(jQuery('#textbox').children()[1].value == '')
+    {
+        alert('Please enter a valid name');
+        jQuery('#textbox').children()[1].focus();
+        return;
+    }
+    
+    var str = jQuery('#textbox').children()[1].value;
+      
+    if(!str.match(/^[0-9a-zA-Z_ ]+$/))
+    {
+        alert('Template name can contain only underscores and alphanumeric characters');
+        jQuery('#textbox').children()[1].focus();
+        return;
+    }
+    
+    var columns = getColumnsList(document.getElementById('__selected'));
+    saveSelectedColumns(columns, false);
+
+}
+</script>
+
+            </apex:pageBlock>
+
+        </apex:form>
+</apex:outputPanel>
+
+    <apex:outputpanel id="pnlViewTplReload">
+        <script>
+            var curTplName = '';
+            try{ curTplName = oViewMainList.value;}
+            catch(Exception){}
+            
+            if(curTplName!=''){ objColTmplFrm1.value = curTplName;}
+        </script>
+    </apex:outputpanel>
+
+
+<apex:actionstatus id="MCSub" startText="Processing......">
+<apex:facet name="start">
+    <div id="salesforceSource_blurybackground" style="z-index: 100; position: fixed; left: 0; top: 0; bottom: 0; right: 0; background-color: #dcdcdc; opacity: 0.6; filter: alpha(opacity =60)"></div>
+    <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 80%; display: '';">
+        <div style="width: 144px; vertical-align: middle;" class="waitingHolder"><table align="center" valign="top" style="width: 100%; height: 30%">
+            <tr align="center" valign="top" style="width: 100%; height: 30%"><td valign="top"><img class="waitingImage" src="/img/loading.gif" /> <span class="waitingDescription">Processing......</span></td></tr>
+        </table></div>
+    </div>
+    <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 100%; display: '';" />
+</apex:facet>
+<apex:facet name="stop" />
+</apex:actionstatus>
+
+</apex:outputPanel>
+</apex:page>

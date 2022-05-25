@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ddcAssess__Total__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <label>Total</label>
+    <summarizedField>ddcAssess__Entity_Assessment__c.ddcAssess__Total__c</summarizedField>
+    <summaryForeignKey>ddcAssess__Entity_Assessment__c.ddcAssess__Assessment_Summary__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

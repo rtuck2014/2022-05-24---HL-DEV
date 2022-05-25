@@ -1,0 +1,16 @@
+<apex:page standardController="Account" extensions="HL_CoverageTeamAggregateController" showHeader="false" sidebar="false" lightningStyleSheets="true">
+   <apex:pageBlock >
+        <apex:pageBlockTable value="{!CoverageTeam}" var="ct">
+            <apex:column value="{!ct.Officer__r.Name}" headerValue="Officer" />
+            <apex:column value="{!ct.Company__r.Name}" headerValue="Company" />
+            <apex:column value="{!ct.Company__r.BillingState}" headerValue="State"/>
+            <!-- <apex:column value="{!ct.RecordType.Name}" headerValue="Record Type"/> -->
+            <apex:column value="{!ct.Coverage_Level__c}" headerValue="{!$ObjectType.Coverage_Team__c.Fields.Coverage_Level__c.Label}"/>
+            <apex:column value="{!ct.Coverage_Type__c}" headerValue="{!$ObjectType.Coverage_Team__c.Fields.Coverage_Type__c.Label}"/>
+            <apex:column value="{!ct.Tier__c}" headerValue="{!$ObjectType.Coverage_Team__c.Fields.Tier__c.Label}"/>
+            <apex:column value="{!ct.Industry_Group__c}" headerValue="{!$ObjectType.Coverage_Team__c.Fields.Industry_Group__c.Label}"/>
+        </apex:pageBlockTable>
+        <apex:outputLabel value="No records to display" rendered="{!CoverageTeam.size == 0}"></apex:outputLabel>
+        <span id="totalCoverageTeamCount" style="display:none;">{!CoverageTeam.size}</span>
+   </apex:pageBlock>
+</apex:page>

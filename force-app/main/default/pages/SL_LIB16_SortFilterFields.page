@@ -1,0 +1,78 @@
+<apex:page standardController="SL_Filter_Field__c" extensions="SL_LIB16_ctrl_SortFilterFields" tabStyle="SL_Mass_Implementation__c">
+    <apex:sectionHeader title="Setup Filter Fields" subtitle="Set Field's Order"/>
+<script>
+if (!window.console) {var console = {};}
+if (!console.log) {console.log = function() {};}
+</script>   
+    
+
+    <apex:stylesheet value="{!URLFOR($Resource.SL_LIB16_jQuerySFFiltres, 'css/redmond/jquery-ui-1.8.4.custom.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.SL_LIB16_jQuerySFFiltres, 'js/jquery-1.4.2.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.SL_LIB16_jQuerySFFiltres, 'js/jquery-ui-1.8.4.custom.min.js')}" />
+    <apex:form id="theForm">
+        <apex:pageBlock title="Sort fields" id="mBlock">
+
+        <apex:pageMessages />
+            
+        <apex:pageBlockSection title="" showHeader="false" columns="1">
+        
+        <apex:outputField value="{!curFFObj.Mass_Implementation__c}"/>
+        <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Select Filter Type" for="fldSelType"/>
+                <apex:selectList value="{!currentTab}" size="1" id="fldSelType">
+                    <apex:selectOptions value="{!tabs}" />
+                    <apex:actionSupport event="onchange" rerender="fieldsPageBlock" action="{!refreshFilterFields}" status="MCSub"/>
+                </apex:selectList>
+        </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection id="fieldsPageBlock" title="Drag'n'drop list elements">
+
+            <apex:dataList var="item" value="{!filterFields}" styleClass="sortableList" style="cursor: pointer;">
+                {!item.Name}
+                <apex:inputHidden value="{!item.Order__c}" />
+            </apex:dataList>
+
+                <script>
+                
+                $( ".sortableList" ).sortable({
+                    update: function( event, ui )
+                    {
+                        var idsInOrder = $(".sortableList").sortable("toArray");
+                        $.each($(".sortableList li"), function() {
+                            $(this).children('input').attr('value', $.inArray($(this).attr('id'), idsInOrder));
+                        });
+                    }
+                    });
+                    $( ".sortableList" ).disableSelection();
+                
+                </script>
+
+            </apex:pageBlockSection>
+
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!doSave}" status="MCSub"/>
+                <apex:commandButton value="Cancel" action="{!doCancel}" status="MCSub"/>
+                <apex:commandButton value="Sort Alphabetically" action="{!doAlphabet}" rerender="mBlock" status="MCSub"/>
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+    </apex:form>
+<apex:actionstatus id="MCSub" startText="Processing......">
+        <apex:facet name="start">
+                <div id="salesforceSource_blurybackground" style="z-index: 100;position:fixed; left:0; top:0; bottom:0; right:0;background-color: #dcdcdc; opacity:0.6;filter:alpha(opacity=60)"></div>
+                <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 80%; display: ''; ">
+                    <div style="width: 144px;vertical-align: middle;" class="waitingHolder">
+                    <table align="center" valign="top" style="width: 100%; height: 30%">
+                    <tr align="center" valign="top" style="width: 100%; height: 30%">
+                        <td valign="top"><img class="waitingImage" src="/img/loading.gif"/>
+                        <span class="waitingDescription">Processing......</span></td>
+                    </tr>
+                    </table>
+                    </div>
+                </div>
+                <div id="ManageMembersViewport_loading" class="waitingSearchDiv" style="width: 100%; height: 100%; display: ''; "/>
+        </apex:facet>
+        <apex:facet name="stop"/>
+</apex:actionstatus>
+</apex:page>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fairness_in_Addition</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL(Fairness_In_Addition__c,&apos;Yes&apos;) &amp;&amp;
+ISBLANK( Fairness_Services_and_Fees__c)</errorConditionFormula>
+    <errorDisplayField>Fairness_In_Addition__c</errorDisplayField>
+    <errorMessage>Describe services and fees or fee schedule.</errorMessage>
+</ValidationRule>

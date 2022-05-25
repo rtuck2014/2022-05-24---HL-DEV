@@ -1,0 +1,48 @@
+<apex:page controller="HL_RedirectingToPVController" lightningStylesheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}"/>
+    
+    <script>
+     j$ = jQuery.noConflict(); 
+     function blockme() {
+        j$.blockUI({ css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+            } }); 
+
+      }
+    </script>
+   <apex:form >
+    <apex:pageMessages />
+    <apex:outputPanel id="opPanelId">
+     <script>
+         function firstTime(){
+             blockme();
+             codeAddress();
+         }
+         function codeAddress()
+         {   
+             if('{!IsPVConversionCompeleted}' == 'false')
+                 callMe();        
+             else
+                 j$.unblockUI();     
+         }
+         
+         window.onload = firstTime;
+         
+     </Script>
+     <apex:pageMessage rendered="{!isError}" summary="{!ErrorMessage  }" severity="Error" strength="3">
+         <apex:commandButton value="Back To Engagement" action="{!BackToEnagement}"/>
+     </apex:pageMessage>
+
+     </apex:outputPanel>
+          
+          <apex:actionFunction action="{!calculate}" name="callMe" oncomplete="codeAddress();" reRender="opPanelId" />
+               </apex:form>
+</apex:page>

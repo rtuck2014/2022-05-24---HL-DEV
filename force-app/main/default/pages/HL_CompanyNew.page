@@ -1,0 +1,189 @@
+<apex:page standardController="Account" extensions="HL_PostalCode,HL_CompanyNewController" lightningStyleSheets="true">
+    <apex:form id="formId">
+        <apex:pageBlock title="Duplicate Records" rendered="{!IF(hasDuplicateResult,true,false)}">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save(Ignore Alert)" action="{!saveandignore}"/>
+                <apex:commandButton value="Save and New(Ignore Alert)" action="{!saveAndNew}"/>
+                <apex:commandButton value="Cancel" action="{!Cancel}" />
+            </apex:pageBlockButtons>
+            <div style="text-align:center;font-size: 14px;">
+                <apex:outputText value="{!errorDuplicateText}" id="noof" style="font-weight:bold; color:Red;" escape="false"/>
+            </div>
+            <apex:pageBlockTable value="{!duplicateRecords}" var="item">
+                <apex:column >
+                    <apex:facet name="header">Name</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['Name']}</apex:outputLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Country</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['BillingCountry']}</apex:outputLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Street</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['BillingStreet']}</apex:outputLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">City</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['BillingCity']}</apex:outputLink>
+                </apex:column>                  
+                <apex:column >
+                    <apex:facet name="header">Phone</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}}" target="_blank">{!item['Phone']}</apex:outputLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Website</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['Website']}</apex:outputLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Zip/Postal Code</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['BillingPostalCode']}</apex:outputLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">State/Province</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['BillingState']}</apex:outputLink>
+                </apex:column> 
+                <apex:column >
+                    <apex:facet name="header">Company Owner</apex:facet>                    
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['OwnerId']}</apex:outputLink>
+                </apex:column>  
+                <apex:column >
+                    <apex:facet name="header">Last Modified Date</apex:facet>                    
+                    <apex:outputText value="{0,date,MM/dd/yyyy hh:mm a}">
+                        <apex:param value="{!item['LastModifiedDate']}" />
+                    </apex:outputText>                    
+                </apex:column>                  
+            </apex:pageBlockTable>  
+            
+        </apex:pageBlock>
+        <apex:pageBlock id="pgBlock" mode="edit" title="Company Create">
+            <apex:pageMessages id="msgs" />
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!SaveRecord}"/>
+                <apex:commandButton value="Cancel" action="{!Cancel}" />
+            </apex:pageBlockButtons>
+            
+            <!-- Modified block as part of State/Country Picklist -->
+            <!-- Use BillingStateCode and BillingCountryCode fields and as 'selectList' -->
+            <apex:pageBlockSection id="pgBlockSection" columns="1">
+                <apex:inputField value="{!Account.RecordTypeId}" tabOrderHint="1"></apex:inputField>
+                <apex:inputField id="AccountName" value="{!Account.Name}" tabOrderHint="2"></apex:inputField>
+                <apex:selectList id="AccountCountry" label="Country" value="{!Account.BillingCountryCode}" onchange="updateState(this.value)" tabIndex="30" size="1" style="width:167px;">
+                    <apex:selectOptions value="{!countries}"/>    
+                </apex:selectList>
+                <apex:inputField value="{!Account.BillingStreet}" tabOrderHint="4" style="width:167px;"></apex:inputField>
+                <apex:inputField id="AccountCity" value="{!Account.BillingCity}" tabOrderHint="5"></apex:inputField>                
+                <apex:selectList id="AccountState" label="State/Province" value="{!Account.BillingStateCode}" tabIndex="60" size="1" style="width:167px;"> 
+                    <apex:selectOptions value="{!states}"/> 
+                </apex:selectList> 
+                <apex:inputField id="AccountPostalCode" value="{!Account.BillingPostalCode}" onchange="ZipLookup(this.value)" tabOrderHint="7"></apex:inputField>                
+                <apex:inputField value="{!Account.Phone}" tabOrderHint="8"></apex:inputField>
+                <apex:inputField value="{!Account.Fax}" tabOrderHint="9"></apex:inputField>
+                <apex:inputField value="{!Account.Website}" tabOrderHint="10"></apex:inputField>                 
+            </apex:pageBlockSection> 
+        </apex:pageBlock>
+    </apex:form>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_CompanyNew.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <script src="/soap/ajax/9.0/connection.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        if (location.href.match(/inline=1/)) window.top.location=location.href.replace(/inline=1/, '');
+    </script>
+    <script type="text/javascript">
+    function SetupAutoCompletes(){
+        $j("[id$=AccountCountry]").autocomplete({
+            minLength: 2,
+            source: function(request, response) {
+                var queryTerm;
+                var strQuery;
+                queryTerm = request.term.trim();
+                sforce.connection.sessionId = '{!$Api.Session_ID}';
+                strQuery = "SELECT Id, Text__c FROM Lookup__c WHERE Text__c LIKE '%" + queryTerm + "%' ORDER BY Text__c LIMIT 50 ";
+                var lstSobjectResults = sforce.connection.query(strQuery);
+                var result = [];
+                if(parseInt(lstSobjectResults.size) > 0)
+                {   
+                    if(lstSobjectResults.size == '1')
+                    {
+                        var JSONObject = { "id":lstSobjectResults.records.Id, "label":lstSobjectResults.records.Text__c};
+                        result[0] = JSONObject;
+                    }
+                    else
+                    {
+                        for(var i = 0; i < lstSobjectResults.records.length; i++ ) 
+                        {
+                            var JSONObject;
+                            JSONObject = { "id":lstSobjectResults.records[i].Id, "label":lstSobjectResults.records[i].Text__c};
+                            result[i] = JSONObject;
+                        }
+                    }   
+                }
+                else{}
+                response(result);
+            },
+            select: function( event, ui ) {
+                itemName = ui.item.label;h
+                $j(this).val( itemName );
+            }
+        });
+    } 
+    function ZipLookup(postalCode){
+        //Added as part of State/Country Picklist to control the execution logic based on enabled flag on Trigger Settings
+        if('{!executePostalCodeLookup}' == 'true'){
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.HL_PostalCode.GetByPostalCode}',
+                postalCode, 
+                function(result, event){
+                    HandleZipResults(result,event);
+                }, 
+                {escape: true}
+            );   
+        }
+    }
+    
+    //Added as part of State/Country Picklist
+    function updateState(country){
+        var list = document.getElementById("{!$Component.formId.pgBlock.pgBlockSection.AccountState}");
+        list.length = 0;  
+        console.log('list>>>'+list);
+        list.options.add(new Option('--None--',''));
+        if(country == '' || country == '--None--'){
+            $j("[id$=AccountState]").prop('disabled',true);
+            $j("[id$=AccountState]").val('');       
+        }
+        else{
+            console.log('country>>>'+country);
+            var countryStateList = JSON.parse('{!jsonMap}');
+            var countryStateMap = new Map(Object.entries(countryStateList));
+            var stateList = countryStateMap.get(country);
+            for(var i=0;i<stateList.length;i++){
+                list.options.add(new Option(stateList[i].label, stateList[i].value));
+            }
+            $j("[id$=AccountState]").prop('disabled',false);
+        }
+        
+        if (list.length <= 1){
+            $j("[id$=AccountState]").prop('disabled',true);
+            $j("[id$=AccountState]").val('');       
+        }
+    }
+    
+    window.onload=function() {
+        var selectedState = $j("[id$=AccountState]").val();
+        var selectedCountry = $j("[id$=AccountCountry]").val();
+        if(selectedCountry == '' || selectedCountry == null || selectedCountry == undefined){
+            $j("[id$=AccountState]").prop('disabled',true); 
+        }
+        else{
+            updateState(selectedCountry);
+            $j("[id$=AccountState]").prop('disabled',false); 
+        }
+        if(selectedState != '' && selectedState != null && selectedState != undefined){
+            $j("[id$=AccountState]").val(selectedState);  
+        }
+        document.getElementById('{!$Component.formId.pgBlock.pgBlockSection.AccountName}').focus(); 
+    }
+        //Added as part of State/Country Picklist
+    </script>
+</apex:page>

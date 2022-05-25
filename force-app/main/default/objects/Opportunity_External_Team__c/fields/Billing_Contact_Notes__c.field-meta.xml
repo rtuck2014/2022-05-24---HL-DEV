@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Contact_Notes__c</fullName>
+    <defaultValue>&quot;Please confirm this is the correct contact to receive billing for this engagement.&quot;</defaultValue>
+    <description>Please confirm this is the correct contact to receive billing for this engagement.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Please confirm this is the correct contact to receive billing for this engagement.</inlineHelpText>
+    <label>Billing Contact Notes</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

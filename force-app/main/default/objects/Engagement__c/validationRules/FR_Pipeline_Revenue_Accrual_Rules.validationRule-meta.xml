@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FR_Pipeline_Revenue_Accrual_Rules</fullName>
+    <active>true</active>
+    <description>Only deals that are FR may have their Actual Monthly and Actual Transaction Fees modified.</description>
+    <errorConditionFormula>OR (
+  AND(
+    NOT(TEXT(Line_of_Business__c ) == &apos;FR&apos;),
+    OR( 
+      ISCHANGED( Actual_Monthly_Fee__c ) , 
+      ISCHANGED( Actual_Transaction_Fee__c ) 
+    )
+  ), 
+  AND(  
+    NOT(
+      OR(
+        $User.Department == &apos;FR&apos;,
+        $Profile.Name == &apos;System Administrator&apos;
+      )
+    ), 
+    OR( 
+      ISCHANGED( Actual_Monthly_Fee__c ) , 
+      ISCHANGED( Actual_Transaction_Fee__c ) 
+    ) 
+  )
+)</errorConditionFormula>
+    <errorMessage>FR users can only modify FR related fields/records.</errorMessage>
+</ValidationRule>

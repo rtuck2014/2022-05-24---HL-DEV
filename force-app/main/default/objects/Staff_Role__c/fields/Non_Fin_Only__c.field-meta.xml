@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Non_Fin_Only__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Available Only to Non-Financial Staff</description>
+    <externalId>false</externalId>
+    <label>Non Fin Only</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

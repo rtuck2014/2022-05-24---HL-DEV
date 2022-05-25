@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Toggle_Meeting</fullName>
+    <availability>online</availability>
+    <description>Toggles the Meeting Checkbox Values</description>
+    <displayType>massActionButton</displayType>
+    <height>600</height>
+    <linkType>page</linkType>
+    <masterLabel>Toggle Meeting (For Selected)</masterLabel>
+    <openType>sidebar</openType>
+    <page>HL_OTI_UpdateMeetingList</page>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+</WebLink>

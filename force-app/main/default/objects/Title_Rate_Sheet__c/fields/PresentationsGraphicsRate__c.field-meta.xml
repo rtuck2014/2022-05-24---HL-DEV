@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PresentationsGraphicsRate__c</fullName>
+    <defaultValue>175.00</defaultValue>
+    <description>This field has been added to cover for the Contact Title that contains &quot;P&amp;G&quot;.</description>
+    <externalId>false</externalId>
+    <label>Presentations &amp; Graphics Rate</label>
+    <precision>7</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__Validate_Duration</fullName>
+    <active>true</active>
+    <description>Do not enter a negative value to the &apos;Duration&apos; filed.</description>
+    <errorConditionFormula>lmscons__Duration__c &lt; 0</errorConditionFormula>
+    <errorDisplayField>lmscons__Duration__c</errorDisplayField>
+    <errorMessage>field cannot have a negative value</errorMessage>
+</ValidationRule>

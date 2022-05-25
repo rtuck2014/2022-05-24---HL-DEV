@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NBC_Form</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>NBC Form</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT (&quot;/soap/ajax/33.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&apos;//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&apos;)} 
+{!REQUIRESCRIPT(&apos;//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js&apos;)} 
+
+var JobType=&quot;{!Opportunity__c.Job_Type__c}&quot;;
+var formCheck=sforce.connection.query(&quot;SELECT Id, Form_Type__c FROM Opportunity_Approval__c WHERE Related_Opportunity__c =&apos;{!Opportunity.Id}&apos;&quot;);
+var records=formCheck.getArray(&quot;records&quot;);
+
+//if(records.length&gt;0){
+//var existingFormType=records[0].Form_Type__c;
+//}
+
+//if(records.length===0){
+    if(JobType==&quot;Illiquid Financial Assets&quot; || JobType==&quot;Buyside &amp; Financing Advisory&quot;){
+
+var html = &apos;&lt;div id=&quot;dialog&quot; style=&quot;display: none&quot; title=&quot;Form Type&quot;&gt;&lt;p id=&quot;errortext0&quot;&gt;Please select a form type.&lt;/p&gt;&lt;form&gt;&lt;input type=&quot;radio&quot; id=&quot;formtype0&quot; name=&quot;formtype&quot; value=&quot;NBC&quot;&gt;M&amp;A&lt;br&gt;&lt;input type=&quot;radio&quot; id=&quot;formtype1&quot; name=&quot;formtype&quot; value=&quot;CNBC&quot;&gt;Capital Market&lt;p id=&quot;errortext1&quot; hidden=true&gt;IFA Opportunities may utilize M&amp;A or Capital Market New Business Committee forms. &lt;/p&gt;&lt;/form&gt;&lt;/div&gt;&apos;;
+
+var $g = jQuery.noConflict(); 
+$g(function() { 
+$g(&apos;head&apos;).append(&apos;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css&quot; type=&quot;text/css&quot;/&gt;&apos;); 
+$g(&apos;body&apos;).append(html);
+
+$g(&quot;#dialog&quot;).dialog({
+closeOnEscape: false,
+open: function(event, ui) { $g(&quot;.ui-dialog-titlebar-close&quot;, ui.dialog | ui).hide(); },
+autoOpen: true, 
+modal: true,
+resizable: true, 
+width: 300, 
+height: &quot;auto&quot;, 
+buttons: { 
+&quot;Submit&quot;: function(){
+if(($g(&quot;input:radio[name=&apos;formtype&apos;]:checked&quot;).val()!=&quot;NBC&quot;) &amp;&amp; ($g(&quot;input:radio[name=&apos;formtype&apos;]:checked&quot;).val()!=&quot;CNBC&quot;)){
+$g(&quot;#errortext0&quot;).css(&quot;color&quot;, &quot;red&quot;);
+$g(&quot;#errortext1&quot;).show();
+} 
+if($g(&quot;input:radio[name=&apos;formtype&apos;]:checked&quot;).val()==&quot;NBC&quot;){
+window.location=&apos;/apex/HL_PagePreProcess?opp={!Opportunity__c.Id}&amp;action=nbc&amp;parentcurrency={!Opportunity__c.CurrencyIsoCode}&apos;;
+}
+if($g(&quot;input:radio[name=&apos;formtype&apos;]:checked&quot;).val()==&quot;CNBC&quot;){
+window.location=&apos;/apex/HL_PagePreProcess?opp={!Opportunity__c.Id}&amp;action=cnbc&amp;parentcurrency={!Opportunity__c.CurrencyIsoCode}&apos;;
+}
+},
+
+&quot;Cancel&quot;: function() { 
+$g(this).dialog(&quot;destroy&quot;).remove(); 
+$g(&quot;input[name = &apos;nbc_form&apos;]&quot;).prop(&apos;disabled&apos;, false);
+}
+}
+}); 
+});
+}
+else {
+    if(JobType==&quot;Debt Capital Markets&quot; || JobType==&quot;Equity Capital Markets&quot; || JobType==&quot;Syndicated Finance&quot; || JobType==&quot;Private Funds: GP Advisory&quot; 
+    || JobType==&quot;Private Funds: GP Stake Sale&quot; || JobType==&quot;Private Funds: Primary Advisory&quot; || JobType==&quot;Liability Management&quot; || JobType==&quot;Private Funds: Secondary Advisory&quot;){
+        window.location=&apos;/apex/HL_PagePreProcess?opp={!Opportunity__c.Id}&amp;action=cnbc&amp;parentcurrency={!Opportunity__c.CurrencyIsoCode}&apos;;
+    }
+    else{
+        if(JobType==&quot;Negotiated Fairness&quot;){
+                window.location=&apos;/apex/HL_PagePreProcess?opp={!Opportunity__c.Id}&amp;action=feis&amp;parentcurrency={!Opportunity__c.CurrencyIsoCode}&apos;;
+        }
+        else{
+            window.location=&apos;/apex/HL_PagePreProcess?opp={!Opportunity__c.Id}&amp;action=nbc&amp;parentcurrency={!Opportunity__c.CurrencyIsoCode}&apos;;
+        }
+    }
+}
+    
+//}
+//else{
+//window.location=&apos;/apex/HL_PagePreProcess?opp={!Opportunity__c.Id}&amp;action=&apos;+existingFormType+&apos;&amp;parentcurrency={!Opportunity__c.CurrencyIsoCode}&apos;;
+//}</url>
+</WebLink>

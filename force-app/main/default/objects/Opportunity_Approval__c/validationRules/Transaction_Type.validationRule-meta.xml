@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transaction_Type</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL( Transaction_Type__c ,&apos;Other&apos;) &amp;&amp;
+ISBLANK(  FEIS_Other_Job_Type_Desc__c  )</errorConditionFormula>
+    <errorDisplayField>Transaction_Type__c</errorDisplayField>
+    <errorMessage>Please enter other Transaction Type(s) below.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Escrow_Fee_and_Date</fullName>
+    <active>true</active>
+    <errorConditionFormula>(!ISBLANK( Escrow_Fee__c ) &amp;&amp; ISBLANK( Escrow_Date__c )) ||
+(ISBLANK(Escrow_Fee__c) &amp;&amp; !ISBLANK(Escrow_Date__c))</errorConditionFormula>
+    <errorMessage>Escrow Fee or Date required. If either one is provided, the other is required.</errorMessage>
+</ValidationRule>

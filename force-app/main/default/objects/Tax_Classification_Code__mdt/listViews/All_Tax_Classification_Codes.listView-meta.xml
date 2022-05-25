@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Tax_Classification_Codes</fullName>
+    <columns>MasterLabel</columns>
+    <columns>Legal_Entity_Name__c</columns>
+    <columns>ERP_Entity_Code__c</columns>
+    <columns>Treatment__c</columns>
+    <columns>Tax_Classification_Code__c</columns>
+    <columns>DeveloperName</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Tax Classification Codes</label>
+</ListView>

@@ -1,0 +1,59 @@
+<apex:page controller="SL_ChangeColumns">
+    <apex:form id="formId">
+        <apex:messages id="pmsg"/>
+        <table width="100%">
+            <tr width="100%">
+                <td style="font-size: 20px; font-weight: bold; width: 100%; border-bottom: 2px #3355CC solid;">
+                    <apex:outputLabel value="{!PageTitle}" style=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <center>
+                        <apex:commandButton value="Save" action="{!saveChangeColumn}"/>
+                        <apex:commandButton value="Cancel" action="{!cancelChangeColumn}"/>
+                    </center>
+                </td>  
+            </tr>
+            <tr>    
+                <table width="100%">
+                    <tr>
+                        <center>
+                            <td style="font-size: 17px;font-weight: bold; text-align:center; width:100%; {!PageOppStyle}">
+                                Opportunity Columns
+                            </td>
+                        </center>    
+                    </tr>
+                    <tr>
+                        <td style="width:100%; {!PageOppStyle}">
+                        <c:SL_MultiselectedPicklist leftLabel="Available"
+                                                             leftOption="{!opportunityPicklist.allValues}"
+                                                             rightLabel="Selected"
+                                                             rightOption="{!opportunityPicklist.selectedValues}"
+                                                             sobjectName="Opportunity__c"
+                                                             size="14"
+                                                             width="150px"/>
+                        </td> 
+                    </tr>
+                    <tr>
+                        <td style="font-size: 17px;font-weight: bold; text-align:center; width:50%; {!PageEngStyle}">
+                            Engagement Columns
+                        </td>  
+                    </tr>
+                    <tr>
+                        <td style="width:100%; {!PageEngStyle}">
+                            <c:SL_MultiselectedPicklist leftLabel="Available"
+                                                        leftOption="{!engagementPicklist.allValues}"
+                                                        rightLabel="Selected"
+                                                        rightOption="{!engagementPicklist.selectedValues}"
+                                                        sobjectName="Engagement__c"
+                                                        size="14"    
+                                                        width="150px"/>
+ 
+                        </td>                         
+                    </tr>
+                </table>
+            </tr>
+        </table>  
+    </apex:form>            
+</apex:page>

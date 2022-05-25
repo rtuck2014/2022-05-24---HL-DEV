@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmsilt__Assign_Process</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Assign</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>{!URLFOR($Site.prefix&amp;&apos;/apex/lmsilt__AssignDevelopmentPlanNew&apos;,null,[id=lmsilt__Development_Plan__c.Id,DPId=lmsilt__Development_Plan__c.Id,assign=true,AssignDoSort=true,action=&apos;Insert&apos;] ,true)}</url>
+</WebLink>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>requireFAAwardedOutcome</fullName>
+    <active>true</active>
+    <description>If the Pitch Outcome is option 1, 2 or 3, this validation enforces that either FA Awarded is populated (Can NOT be a Houlihan Company) or No FA Appointed is checked.</description>
+    <errorConditionFormula>(TEXT(PitchOutcome__c) = &quot;HL Lost competitive pitch&quot; ||
+TEXT(PitchOutcome__c) = &quot;HL Did not pitch - conflicted&quot; ||
+TEXT(PitchOutcome__c) = &quot;HL Not invited to pitch&quot;) &amp;&amp;
+(NoFAAppointed__c = FALSE &amp;&amp;
+(ISBLANK(FAAwarded__c) ||
+(NOT(ISBLANK(FAAwarded__c)) &amp;&amp;
+FAAwarded__r.RecordType.DeveloperName = &apos;Houlihan_Company&apos;)))</errorConditionFormula>
+    <errorMessage>HL Lost Pitch Indicated. Update No FA Appointed or FA Awarded Company.</errorMessage>
+</ValidationRule>

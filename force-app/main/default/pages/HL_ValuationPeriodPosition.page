@@ -1,0 +1,224 @@
+<apex:page standardcontroller="Opp_VP_Position__c" name="HL_ValuationPeriodPosition" extensions="HL_ValuationPeriodPositionController" lightningStylesheets="true">    
+    <div class="bPageTitle"><div class="ptBody"><div class="content"><img src="/img/s.gif" alt="Custom" class="pageTitleIcon" title="Custom"/>
+    <h1 class="pageType">Opp Valuation Period Position<span class="titleSeparatingColon">:</span></h1><h2 class="pageDescription"> {!Opp_VP_Position__c.Name}</h2>
+    <div class="blank">&nbsp;</div></div><div class="links">
+    <a href="javascript:openPopupFocusEscapePounds(%27https://hl--c.na25.visual.force.com/apex/HL_UserGuide?loc=help&amp;target=getstart_help.htm&amp;section=Getting_Started&amp;showSplash=true%27,
+     %27Help%27, 1024, 768, %27width=1024,height=768,resizable=yes,toolbar=yes,status=yes,scrollbars=yes,menubar=yes,directories=no,location=yes,dependant=no%27, false, false);" title="Help for this Page
+      (New Window)"><span class="helpLink">Help for this Page</span><img src="/img/s.gif" alt="" class="helpIcon"/></a></div></div><div class="ptBreadcrumb"></div></div>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}"/>
+    <script>
+     j$ = jQuery.noConflict();    
+
+    function blockme() {
+        j$.blockUI({ css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+            } }); 
+
+      }
+    </script>
+     <script>
+        function delRec(srNo){
+            var respond = confirm('Are you sure?');
+            if(respond)
+            {
+                callToDel(srNo);
+                blockme();
+            }
+        } 
+        
+        function onSaveComplete(){
+          j$.unblockUI();   
+          hideSaveMsg();         
+        }                     
+
+        
+        function hideSaveMsg() {
+          j$('#saveMsgDivId').delay(1500).fadeOut('slow');
+          /*setTimeout(function() {
+                j$('#saveMsgDivId').fadeOut('slow');
+            }, 2000);*/
+        }
+    </script>
+    <script>    
+          
+    // workaround is necessary since inline editing of VF picklist and/or checkboxes won't commit changes before action if the user doesn't "click out" first.  
+    function focusAndSave() {                
+        document.getElementById('focusMe').click();
+        blockme();
+        saveFields();            
+    }
+       
+    
+    </script>
+    
+    
+    <apex:form >        
+        <apex:actionFunction action="{!RemoveMember}" name="callToDel" reRender="TeamPanelId" oncomplete="j$.unblockUI();" >
+            <apex:param value="" assignTo="{!selectItemSrNo}" name="recIdToDel" />
+        </apex:actionFunction>
+        <apex:actionFunction action="{!saveRc}" name="saveFields"  reRender="pgmsgId" oncomplete="j$.unblockUI();"/>
+        <apex:actionregion >
+            <apex:actionFunction action="{!DummyReset}" name="DummyReset1"  reRender="NameFieldId">
+                <apex:param name="field1" assignTo="{!fieldAPI}" value="" />
+            </apex:actionFunction>  
+            <apex:actionFunction action="{!DummyReset}" name="DummyReset2"  reRender="AssetClassesFieldId">
+                <apex:param name="field2" assignTo="{!fieldAPI}" value="" />
+            </apex:actionFunction>
+            <apex:actionFunction action="{!DummyReset}" name="DummyReset3"  reRender="NotesId">
+                <apex:param name="field3" assignTo="{!fieldAPI}" value="" />
+            </apex:actionFunction>
+            <apex:actionFunction action="{!DummyReset}" name="DummyReset4"  reRender="ReportFeeId">
+                <apex:param name="field4" assignTo="{!fieldAPI}" value="" />
+            </apex:actionFunction>
+        </apex:actionregion>  
+        <apex:pageBlock title="Opportunity Valuation Position Detail" mode="mainDetail" id="pbid">             
+            <apex:pageMessages id="pgmsgId" />
+            <apex:pageBlockButtons location="Top" id="BtnsId">         
+                <apex:commandButton action="{!Edit}" value="Edit" id="OnEdit" rendered="{!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)') )}" />       
+                <apex:commandButton action="{!DeleteRecord}" value="Delete" id="Ondelete" rendered="{!AND(!isOpportunityConverted,IsSupervisorOrAdmin,IsHavingPVPermissionSetOrIsSysAdmin,(userProfileName != 'System Administrator (Read Only)') )}" />
+                <apex:commandButton value="Save" id="Onsave" style="display: none;" onclick="focusAndSave(); return false;" rendered="{!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)') )}" reRender="pgmsgId"/>
+                <apex:commandButton action="{!Cancel}" value="Cancel" id="Oncancel" reRender="pbid" style="display: none;" rendered="{!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)') )}" />       
+                <apex:commandButton Value="Back To Valuation Period" action="{!Backtovp}" id="Onbacktovp"  />
+            </apex:pageBlockButtons>  
+            <input type="text" id="focusMe" style="display:none" /> 
+            
+            <apex:pageBlockSection title="Opportunity Information">
+                <apex:outputField value="{!OppVPPosition.Opportunity_VP__r.Opportunity__r.Client__c}" />
+                <apex:outputField value="{!OppVPPosition.Opportunity_VP__r.Opportunity__c}" /> 
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:outputField value="{!OppVPPosition.Opportunity_Number__c}"/>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Valuation Information" >
+
+                <apex:outputField value="{!Opp_VP_Position__c.Opportunity_VP__c}" />
+                <apex:outputField value="{!Opp_VP_Position__c.Opportunity_VP__r.Frequency__c}"/> 
+                <apex:outputField value="{!Opp_VP_Position__c.Opportunity_VP__r.Summary__c}"/>
+                <apex:outputField value="{!Opp_VP_Position__c.Opportunity_VP__r.Month_Quarter__c}"/> 
+                <apex:outputField value="{!Opp_VP_Position__c.Opportunity_VP__r.Valuation_Date__c}"/>
+                <apex:outputField value="{!Opp_VP_Position__c.Opportunity_VP__r.Overall_VP_Status__c}"/>
+                <apex:outputField value="{!Opp_VP_Position__c.Opportunity_VP__r.Job_Type__c}"/>
+                <apex:outputField value="{!Opp_VP_Position__c.Opportunity_VP__r.Fee_Total__c}" rendered="{!IshavingValidRoleForRevAccrual}"/>        
+
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Position Information">
+                <apex:outputField value="{!OppVPPosition.name}" id="NameFieldId"  >                  
+                    <apex:inlineEditSupport showOnEdit="Onsave,Oncancel"        
+                    hideOnEdit="OnEdit,Ondelete,Onbacktovp" event="ondblclick"       
+                    changedStyleClass="inlineEditRequiredDiv" resetFunction="DummyReset1('Name');" disabled="{!!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)') )}"  />     
+                </apex:outputField> 
+                
+                
+                <apex:outputField value="{!OppVPPosition.Opportunity_VP__c}"/> 
+                
+                <apex:outputField value="{!OppVPPosition.Company__c}" id="CompanyId" />
+                
+               <apex:outputField value="{!OppVPPosition.Notes__c}" id="NotesId" >      
+                    <apex:inlineEditSupport showOnEdit="Onsave,Oncancel"       
+                    hideOnEdit="OnEdit,Ondelete,Onbacktovp" event="ondblclick"       
+                    changedStyleClass="myBoldClass" resetFunction="DummyReset3('Notes__c');"  disabled="{!!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)') )}"  />     
+                </apex:outputField>
+                
+                <apex:outputField value="{!OppVPPosition.Industry_Group_Picklist__c}" rendered="{!IshavingValidRoleForRevAccrual}" id="IndustryGroupFieldId"/>       
+                
+                 <apex:outputField value="{!OppVPPosition.Sector__c}" rendered="{!IshavingValidRoleForRevAccrual}" id="StatusFieldId"/> 
+                
+
+                <apex:outputField value="{!OppVPPosition.Asset_Classes__c}" id="AssetClassesFieldId" >  
+                    <apex:inlineEditSupport showOnEdit="Onsave,Oncancel"       
+                    hideOnEdit="OnEdit,Ondelete,Onbacktovp" event="ondblclick"       
+                    changedStyleClass="inlineEditRequiredDiv" resetFunction="DummyReset2('Asset_Classes__c');" disabled="{!!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)') )}" />             
+                </apex:outputField> 
+                <apex:outputField value="{!OppVPPosition.Report_Fee__c}" rendered="{!IshavingValidRoleForRevAccrual}" id="ReportFeeId">       
+                    <apex:inlineEditSupport showOnEdit="Onsave,Oncancel"       
+                    hideOnEdit="OnEdit,Ondelete,Onbacktovp" event="ondblclick"       
+                    changedStyleClass="myBoldClass" resetFunction="DummyReset4('Report_Fee__c');" disabled="{!!AND(!isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)') )}" />     
+                </apex:outputField>
+                
+                <apex:outputField value="{!Opp_VP_Position__c.Valuation_Date__c}"/>
+                
+                
+            </apex:pageBlockSection>                
+            <apex:pageBlockSection title="System Information" >        
+            <apex:pageBlockSectionItem >       
+            <apex:outputLabel value="Created By" ></apex:outputLabel>      
+            <apex:outputPanel ><apex:outputField value="{!Opp_VP_Position__c.createdByID}"/> &nbsp;                
+            <apex:outputText value="{0,date,MM/dd/yyyy h:mm a}"> <apex:param value="{!Opp_VP_Position__c.CreatedDate+offset}" /> </apex:outputText>        
+            </apex:outputPanel>        
+            </apex:pageBlockSectionItem>       
+
+            <apex:pageBlockSectionItem >       
+            <apex:outputLabel value="Last Modified By" ></apex:outputLabel>        
+            <apex:outputPanel ><apex:outputField value="{!Opp_VP_Position__c.LastModifiedByID}" /> &nbsp;              
+            <apex:outputText value="{0,date,MM/dd/yyyy h:mm a}"> <apex:param value="{!Opp_VP_Position__c.LastModifiedDate+offset}" /> </apex:outputText>       
+            </apex:outputPanel>        
+            </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>       
+
+        </apex:pageBlock>     
+        <apex:outputPanel id="TeamPanelId" Rendered="{!isValidPosition}">
+            <apex:pageMessages rendered="{!AND(!isChangesSave, isErrorOnSave) }"/>
+            <div id="saveMsgDivId">
+                <apex:pageMessage summary="Your changes have been saved successfully" rendered="{!isChangesSave}" severity="Info" strength="3" />
+            </div>
+            <apex:pageBlock >
+                <font size="2" color="black"><b>Opp Valuation Period Team Members</b></font>
+                <center><apex:commandButton Value="Save Team Members" action="{!SaveTeamMembers}" rendered="{!if(AND(VPTeamMemberList.size > 0,IsSaveRequired,UserCanCreateModifyTM, !isOpportunityConverted), true, false)}"  reRender="TeamPanelId" onclick="blockme()" oncomplete="onSaveComplete();" /></center>   
+                <apex:pageMessage summary="{!$Label.No_Team_Member_Created}" rendered="{!if(AND(VPTeamMemberList.size = 0,VPTeamMemberList.size < AllowedMembers,UserCanCreateModifyTM, !isOpportunityConverted), true, false)}" severity="Info" strength="3" />
+                <apex:pageMessage summary="{!$Label.No_Permission_To_Create_New_Team_Member}" rendered="{!if(AND(VPTeamMemberList.size == 0,(!UserCanCreateModifyTM)),true,false)}" severity="Info" strength="3" />                            
+                <apex:pageMessage summary="{!$Label.HL_No_TeamMember_To_Display}" rendered="{!if(AND(VPTeamMemberList.size == 0,AND(UserCanCreateModifyTM, OR(isOpportunityConverted))),true,false)}" severity="Info" strength="3" />                            
+
+                <apex:pageBlockTable value="{!VPTeamMemberList}" rendered="{!if(VPTeamMemberList.size > 0, true, false)}" var="VPTeamMember" >
+                    <apex:column >
+                        <apex:facet name="header">#</apex:facet>
+                        <apex:outputLabel >{!VPTeamMember.SrNo}</apex:outputLabel>
+                    </apex:column>                    
+                    <apex:column >
+                        <apex:facet name="header">Staff</apex:facet>
+                        <apex:outputText value="{!VPTeamMember.SelectedStaffName}" rendered="{!If(VPTeamMember.SelectedStaffId != null, true, false)}"/> 
+                        <apex:selectList rendered="{!If(VPTeamMember.SelectedStaffId != null, false, true)}" value="{!VPTeamMember.SelectedStaffId}"  title="Choose a Team Member" size="1">
+                            <apex:selectOptions value="{!HLInternalEmployees}"  />
+                        </apex:selectList>
+                    </apex:column>
+                    <apex:column headerValue="Role">
+                        <apex:inputField value="{!VPTeamMember.OppVPTeamMember.Role__c}" rendered="{!AND(!VPTeamMember.OppVPTeamMember.Is_Team_Member_Deactivated_Once__c,UserCanCreateModifyTM, !isOpportunityConverted, !IF(VPTeamMember.OppVPTeamMember.Team_Member_Status__c =='Inactive',true,false))}"/>
+                        <apex:outputfield value="{!VPTeamMember.OppVPTeamMember.Role__c}" rendered="{!OR(VPTeamMember.OppVPTeamMember.Is_Team_Member_Deactivated_Once__c,!UserCanCreateModifyTM, isOpportunityConverted, IF(VPTeamMember.OppVPTeamMember.Team_Member_Status__c =='Inactive',true,false))}"/>
+                    </apex:column>
+                    <apex:column headerValue="Start Date" rendered="{!IF(userProfileName == 'System Administrator', True, IF(userProfileName == 'System Administrator (Read Only)', True, IF(userProfileName == 'CAO', True,False)))}">
+                        <apex:inputField value="{!VPTeamMember.OppVPTeamMember.Start_Date__c}" rendered="{!AND(!VPTeamMember.OppVPTeamMember.Is_Team_Member_Deactivated_Once__c,UserCanCreateModifyTM, !isOpportunityConverted, !IF(VPTeamMember.OppVPTeamMember.Team_Member_Status__c =='Inactive',true,false))}"/>
+                        <apex:outputfield value="{!VPTeamMember.OppVPTeamMember.Start_Date__c}" rendered="{!OR(VPTeamMember.OppVPTeamMember.Is_Team_Member_Deactivated_Once__c,!UserCanCreateModifyTM, isOpportunityConverted, IF(VPTeamMember.OppVPTeamMember.Team_Member_Status__c =='Inactive',true,false))}"/>
+                    </apex:column>  
+                    <apex:column headerValue="End Date" rendered="{!IF(userProfileName == 'System Administrator', True, IF(userProfileName == 'System Administrator (Read Only)', True, IF(userProfileName == 'CAO', True,False)))}">
+                        <apex:inputField value="{!VPTeamMember.OppVPTeamMember.End_Date__c}" rendered="{!AND(!VPTeamMember.OppVPTeamMember.Is_Team_Member_Deactivated_Once__c,UserCanCreateModifyTM, !isOpportunityConverted, !IF(VPTeamMember.OppVPTeamMember.Team_Member_Status__c =='Inactive',true,false))}"/>
+                        <apex:outputField value="{!VPTeamMember.OppVPTeamMember.End_Date__c}" rendered="{!OR(VPTeamMember.OppVPTeamMember.Is_Team_Member_Deactivated_Once__c,!UserCanCreateModifyTM, isOpportunityConverted , IF(VPTeamMember.OppVPTeamMember.Team_Member_Status__c =='Inactive',true,false))}"/>
+                    </apex:column>
+                    <apex:column headerValue="Status"> 
+                        <apex:OutputField value="{!VPTeamMember.OppVPTeamMember.Team_Member_Status__c}"/>                        
+                    </apex:column>
+                    <apex:column rendered="{!AND(!isOpportunityConverted, OR(UserCanDeleteTM,UserCanCreateModifyTM))}">                     
+                        <apex:facet name="header">Action</apex:facet>
+                        <a id="DelLikId" href="#" onclick="delRec('{!VPTeamMember.SrNo}')" >{!If(VPTeamMember.OppVPTeamMember.id != null, IF(AND(UserCanDeleteTM),'Delete',''), IF(AND(UserCanCreateModifyTM), 'Delete',''))}</a>
+                    </apex:column>
+                    
+                    
+                    <apex:column rendered="{!OR((IsMemberofAPTeam),(userProfileName == 'System Administrator'))}">  
+                        <apex:facet name="header">View History</apex:facet>
+                        <a id="HistoryLinkId" href="/apex/HL_PVOppTeamMemberHistoryPage?id={!VPTeamMember.OppVPTeamMember.Id}" target="_blank" >{!If(VPTeamMember.OppVPTeamMember.Id != null, 'History', '')}</a>
+                    </apex:column>
+                    
+                </apex:pageBlockTable>              
+                <apex:commandButton Value="Add New Team Member" action="{!AddMember}" onclick="blockme()" oncomplete="j$.unblockUI();" rendered="{!if(AND(HLInternalEmployees.size > 0,UserCanCreateModifyTM, !isOpportunityConverted,(userProfileName != 'System Administrator (Read Only)')), true, false)}"  reRender="TeamPanelId" />               
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+    <apex:relatedList list="Histories" pageSize="10" rendered="{!OR((IsMemberofAPTeam),(userProfileName == 'System Administrator'))}"/>
+</apex:page>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Engagement__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+(z_Admin_Intern_Aggregate_CHECK__c ||
+z_Analyst_Aggregate_CHECK__c ||
+z_Associate_Aggregate_CHECK__c ||
+z_Final_Rev_Aggregate_CHECK__c ||
+z_Initiator_Aggregate_CHECK__c ||
+z_Manager_Aggregate_CHECK__c ||
+z_Marketing_Aggregate_CHECK__c ||
+z_NonRegistered_Aggregate_CHECK__c ||
+z_PE_HF_Aggregate_CHECK__c ||
+z_Prelim_Rev_Aggregate_CHECK__c ||
+z_Pricing_Aggregate_CHECK__c ||
+z_Principal_Aggregate_CHECK__c ||
+z_Public_Aggregate_CHECK__c ||
+z_Reviewer_Aggregate_CHECK__c ||
+z_Seller_Aggregate_CHECK__c ||
+z_Specialty_Aggregate_CHECK__c), TRUE, FALSE)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>My Engagement</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

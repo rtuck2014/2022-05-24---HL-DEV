@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LP_Active</fullName>
+    <columns>NAME</columns>
+    <columns>lmscons__Description__c</columns>
+    <columns>lmscons__Enable_Certificate__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>lmscons__isArchived__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>NAME</field>
+        <operation>notContain</operation>
+        <value>test</value>
+    </filters>
+    <label>LP (ACTIVE)</label>
+    <sharedTo>
+        <group>Training</group>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,71 @@
+<apex:page controller="HL_OpportunityClientSubjectController" showHeader="false" sidebar="false" tabStyle="Approval_Object__c" lightningStylesheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_OpportunityClientSubjectModify.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <style>
+        .pbTitle {display:none;}
+    </style>
+    <div class="opportunityClientSubjectModify">
+    <apex:form id="mainForm" >
+        <apex:actionStatus id="refreshStatus" startText="Refreshing..." stopText="" startStyle="font-weight: bold; font-size: 1.5em;">
+                         <apex:facet name="start" ><apex:outputPanel ><img src="/img/loading.gif" /><span>&nbsp;Refreshing...</span></apex:outputPanel></apex:facet>
+        </apex:actionStatus>
+        <apex:pageBlock >
+            <apex:pageBlockButtons styleClass="center">
+                <apex:commandButton action="{!Save}" value="Save Record" reRender="mainForm" oncomplete="DocumentReady();" styleClass="actionButton"/>
+                <apex:commandButton id="btnCancel" value="Cancel" styleClass="actionButton"/>
+            </apex:pageBlockButtons>
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:pageBlockSection columns="1">
+                <apex:outputLabel value="{!RecordId}" id="recordId" style="display: none;"></apex:outputLabel>
+                <apex:inputField value="{!ClientSubject.Client_Subject__c}" label="Company"></apex:inputField>
+                <apex:inputField value="{!ClientSubject.Public_Or_Private__c}" label="Public/Private"/>
+                <apex:inputField value="{!ClientSubject.Private_Equity_Ownership__c}" label="Private Equity (%)" styleClass="numeric-short"></apex:inputField>
+                <apex:inputField value="{!ClientSubject.Does_PE_Own_High_Percent__c}" label="Does any PE Firm individually own 10% or more of the equity?">
+                    <apex:actionSupport action="{!PrelimSave}" event="onchange" reRender="mainForm" status="refreshStatus" oncomplete="DocumentReady();">
+                         <apex:param name="peOwnHighPercent" value="{!ClientSubject.Does_PE_Own_High_Percent__c}" />
+                    </apex:actionSupport>
+                </apex:inputField>
+                <apex:outputLabel value="If 'Yes', please list the >= 10% PE Firm(s) and their respective percentage interest(s)." styleClass="labelCol left"></apex:outputLabel>
+                <apex:outputPanel rendered="{!ClientSubject.Does_PE_Own_High_Percent__c == 'Yes'}" id="panAddPE">
+                    <input type='button' value='Add PE Firm' id='newPEFirm' class="btn" />
+                    <apex:commandButton id="peFirmsRefresh" action="{!RefreshPEFirms}" reRender="panPEFirms" style="display:none;" status="refreshStatus" oncomplete="DocumentReady();"/>
+                </apex:outputPanel>
+                <apex:outputPanel id="panPEFirms">
+                    <apex:pageBlockTable value="{!PEFirms}" var="pe">
+                        <apex:column width="50px">
+                            <a id='editPEFirm' class="pointer underline" style="padding-right: 5px;">Edit</a>
+                            <apex:outputLabel value="{!pe.Id}" styleClass="hidden"></apex:outputLabel>
+                            <apex:outputLink value="{!URLFOR($Action.Opportunity_Client_Subject__c.Delete, pe.Id,[retURL='/apex/HL_FEIS?id=' + OpportunityId])}" target="_parent" onClick="return confirmDelete()">Del</apex:outputLink>
+                        </apex:column>
+                        <apex:column value="{!pe.Client_Subject__r.Name}" headerValue="PE Firm" />
+                        <apex:column value="{!pe.Private_Equity_Ownership__c}" headerValue="%"  width="30px" headerClass="right" />
+                    </apex:pageBlockTable>
+                 </apex:outputPanel>
+                <apex:pageBlockSectionItem >
+                    <hr style="border-color:#9e4fa5; margin-top: 15px;" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="2">
+                <apex:inputField value="{!ClientSubject.Market_Cap_MM__c}" styleClass="numeric-short" label="Market Cap (MM)"></apex:inputField>
+                <apex:inputField value="{!ClientSubject.ESOP__c}" styleClass="numeric-short" label="ESOP (%)"></apex:inputField> 
+                <apex:inputField value="{!ClientSubject.NFP__c}" styleClass="numeric-short" label="Not for Profit (%)"></apex:inputField> 
+                <apex:inputField value="{!ClientSubject.Insiders__c}" styleClass="numeric-short" label="Insiders (%)"></apex:inputField> 
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1">
+                <apex:outputLabel value="Outside Counsel - Identify the name(s) of all law firm(s) and attorney(ies)" styleClass="labelCol left"></apex:outputLabel>
+                <apex:inputTextarea rows="4" cols="125" value="{!ClientSubject.Outside_Counsel__c}" label=""></apex:inputTextarea>
+                <apex:outputLabel value="Financial Advisor(s) (other than Houlihan Lokey)" styleClass="labelCol left"></apex:outputLabel>
+                <apex:inputTextarea rows="4" cols="125" value="{!ClientSubject.Financial_Advisors__c}" label=""></apex:inputTextarea>
+                <apex:outputLabel value="Describe services being provided by other Financial Advisor(s)" styleClass="labelCol left"></apex:outputLabel>
+                <apex:inputTextarea rows="4" cols="125" value="{!ClientSubject.Other_Financial_Advisor_Services__c}" label=""></apex:inputTextarea>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:outputLabel id="opportunityId" value="{!OpportunityId}" style="display:none;"></apex:outputLabel>
+    <apex:outputLabel id="lookupAccountUrl" value="{!URLFOR('/apex/HL_LookupAccount')}" style="display:none;"></apex:outputLabel>
+    <apex:outputLabel id="opportunityClientSubjectEditUrl" value="{!URLFOR('/apex/HL_OpportunityClientSubjectEdit')}" style="display:none;"></apex:outputLabel>
+    </div>
+</apex:page>

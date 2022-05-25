@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Converted_to_Engagement__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This is checked when an opportunity is converted into an engagement.  Validation rules on the conversion to Engagement should, in addition to their execution logic, check if this box is checked.</description>
+    <externalId>false</externalId>
+    <label>Converted to Engagement</label>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

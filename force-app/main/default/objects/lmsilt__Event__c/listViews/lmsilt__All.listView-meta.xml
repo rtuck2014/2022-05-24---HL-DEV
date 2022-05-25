@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmsilt__All</fullName>
+    <columns>NAME</columns>
+    <columns>lmsilt__Description__c</columns>
+    <columns>lmsilt__Keywords__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>lmsilt__Classes__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+    <language>en_US</language>
+</ListView>

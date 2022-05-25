@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approval_Number__c</fullName>
+    <description>Approval number for external vendor</description>
+    <displayFormat>AP{0000}</displayFormat>
+    <externalId>false</externalId>
+    <inlineHelpText>This is auto-generated in the format AP0000</inlineHelpText>
+    <label>Approval Number</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>AutoNumber</type>
+</CustomField>

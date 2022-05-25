@@ -1,0 +1,5 @@
+<apex:page controller="HL_PicklistFilterController" contentType="application/xml" showHeader="false" sidebar="false" standardStylesheets="false">
+    <apex:form >
+        <apex:inputField value="{!ObjectRecord[PickListFieldName]}" />
+    </apex:form>
+</apex:page>

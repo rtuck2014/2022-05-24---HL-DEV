@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LOB_Pipeline_Revenue_Accrual_Rules</fullName>
+    <active>true</active>
+    <description>Only the specific lines of business may update this field.</description>
+    <errorConditionFormula>AND(
+  NOT( 
+    OR(
+      AND($User.Department == &apos;FR&apos;, TEXT(Line_of_Business__c ) == &apos;FR&apos;),
+      AND($User.Department == &apos;SHARED&apos;,  CONTAINS($User.Division, &apos;FR&apos;), TEXT(Line_of_Business__c ) == &apos;FR&apos;),
+      AND($User.Department == &apos;CF&apos;, TEXT(Line_of_Business__c ) == &apos;CF&apos;),
+      AND($User.Department == &apos;SHARED&apos;,  CONTAINS($User.Division, &apos;CF&apos;), TEXT(Line_of_Business__c ) == &apos;CF&apos;),
+      AND($User.Department == &apos;FVA&apos;, TEXT(Line_of_Business__c ) == &apos;FVA&apos;),
+      AND($User.Department == &apos;SHARED&apos;,  CONTAINS($User.Division, &apos;FVA&apos;), TEXT(Line_of_Business__c ) == &apos;FVA&apos;),
+      AND($User.Department == &apos;SC&apos;, TEXT(Line_of_Business__c ) == &apos;SC&apos;),
+      AND($User.Department == &apos;SHARED&apos;, CONTAINS($User.Division, &apos;SC&apos;), TEXT(Line_of_Business__c ) == &apos;SC&apos;),
+      $Profile.Name == &apos;System Administrator&apos;
+    )
+  ),
+  OR( 
+    ISCHANGED( Period_Accrued_Fees__c ),
+    ISCHANGED(  Stage__c ),
+    ISCHANGED(  Total_Estimated_Fee__c )  
+  ),
+  TEXT(Line_of_Business__c ) == &apos;FVA&apos;
+)</errorConditionFormula>
+    <errorMessage>Only the respective line of business can modify this record.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Monthly_Revenue_Process_Controls</fullName>
+    <columns>NAME</columns>
+    <columns>Current_Month__c</columns>
+    <columns>Current_Year__c</columns>
+    <columns>IsCurrent__c</columns>
+    <columns>Revenue_Date__c</columns>
+    <columns>Staff_Summary_Report_Sent__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Monthly Revenue Process Controls</label>
+</ListView>

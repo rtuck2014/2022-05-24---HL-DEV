@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__Positive_Recurring_Periods_Number</fullName>
+    <active>true</active>
+    <description>Number of recurring periods MUST be positive</description>
+    <errorConditionFormula>lmscons__Recurring_Training_Periods__c &lt;= 0</errorConditionFormula>
+    <errorMessage>Number of periods should be positive number</errorMessage>
+</ValidationRule>

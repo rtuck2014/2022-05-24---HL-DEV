@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_Opp_VP_TeamMember_Creation_is_locked</fullName>
+    <active>true</active>
+    <description>To stop creating Opp Valuation Period Team Member if Opportunity is converted.</description>
+    <errorConditionFormula>IF(AND(ISNEW(),  Opportunity_VP_Position__r.Opportunity_VP__r.Opportunity__r.Converted_to_Engagement__c), true, false)</errorConditionFormula>
+    <errorMessage>Valuation Team Member can not be created once Opportunity is converted into Engagement so please go to related Engagement Valuation Team Member for further creation.</errorMessage>
+</ValidationRule>

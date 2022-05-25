@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Authorized_Must_Be_HL</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(AND((TEXT(MNPI__c)= &apos;Yes&apos;), 
+ISBLANK(Authorized_By__c ),  ISCHANGED(MNPI__c)),true,false)</errorConditionFormula>
+    <errorDisplayField>Authorized_By__c</errorDisplayField>
+    <errorMessage>You must select Authorized by for Engagements with MNPI</errorMessage>
+</ValidationRule>

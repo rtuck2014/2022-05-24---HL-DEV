@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pi__Is_OCL_Processing_Disabled__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Is OCL Trigger and Batch Job Disabled</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Is OCL Trigger and Batch Job Disabled</inlineHelpText>
+    <label>Disable OCL Trigger and Batch Processing</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

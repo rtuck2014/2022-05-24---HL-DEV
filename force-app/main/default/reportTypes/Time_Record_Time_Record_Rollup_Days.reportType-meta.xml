@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Time_Record_Time_Record_Rollup_Day__c</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Time Record Time Record Rollup Days</description>
+    <label>Time Record Time Record Rollup Days</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Id</field>
+            <table>Time_Record_Time_Record_Rollup_Day__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Name</field>
+            <table>Time_Record_Time_Record_Rollup_Day__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CurrencyIsoCode</field>
+            <table>Time_Record_Time_Record_Rollup_Day__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedDate</field>
+            <table>Time_Record_Time_Record_Rollup_Day__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedBy</field>
+            <table>Time_Record_Time_Record_Rollup_Day__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedDate</field>
+            <table>Time_Record_Time_Record_Rollup_Day__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedBy</field>
+            <table>Time_Record_Time_Record_Rollup_Day__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Time_Record__c</field>
+            <table>Time_Record_Time_Record_Rollup_Day__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Time_Record_Rollup_Day__c</field>
+            <table>Time_Record_Time_Record_Rollup_Day__c</table>
+        </columns>
+        <masterLabel>Time Record Time Record Rollup Days</masterLabel>
+    </sections>
+</ReportType>

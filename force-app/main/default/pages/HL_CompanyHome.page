@@ -1,0 +1,222 @@
+<apex:page readonly="true" controller="HL_CompanyHomeController" tabStyle="Account" extensions="HL_Lookup" lightningStylesheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_CompanyHome.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_Shared.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <style>
+        .objectHome h2 {padding-top: 10px;}
+    </style>
+    <div class="objectHome">
+    <apex:sectionHeader id="sectionHeader" title="" subtitle="Companies"/>
+    <apex:form id="myCompanies" style="display:none;">
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageBlock id="pbMain"> 
+            <apex:pageBlockButtons styleClass="center">
+                <apex:commandButton action="{!URLFOR($Action.Account.Add_Company)}" value="Add Company" styleClass="actionButton"/>   
+                <apex:commandButton action="{!URLFOR($Action.Activity.NewEvent)}" value="Add Activity" styleClass="actionButton"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2">
+                <apex:selectRadio layout="lineDirection" value="{!SearchOption}" label="Search Criteria" styleClass="searchRadio">
+                    <apex:selectOptions value="{!SearchOptions}"/>
+                </apex:selectRadio>
+                <apex:inputText id="nameSearch" label="Name" value="{!SearchName}" />
+                <apex:inputText id="coverageSearch" html-placeholder="Begin Typing Name..." label="Covered By" value="{!CoverageName}">
+                    <apex:inputHidden value="{!CoverageBy}" id="coverageSearch_lkid">
+                    </apex:inputHidden>
+                    <apex:outputPanel id="coverageSelection">
+                        <c:HL_AutoComplete objectname="UserContact" sObjectFieldName="Name" customFilter="{!CustomFilter}"
+                                           autocomplete_textbox="{!$Component.coverageSearch}" autocomplete_actionbutton="{!$Component.resultSelected}" bgColor="white" fontSize="11"/>  
+                    </apex:outputPanel>
+                </apex:inputText>
+                <apex:inputText id="relationshipSearch" html-placeholder="Begin Typing Name..." label="Relationship With" value="{!RelationshipName}">
+                    <apex:inputHidden value="{!RelationshipWith}" id="relationshipSearch_lkid">
+                    </apex:inputHidden>
+                    <apex:outputPanel id="memberSelection">
+                        <c:HL_AutoComplete objectname="Contact" sObjectFieldName="Name" customFilter="{!CustomFilter}"
+                                           autocomplete_textbox="{!$Component.relationshipSearch}" autocomplete_actionbutton="{!$Component.resultSelected}" bgColor="white" fontSize="11"/>  
+                    </apex:outputPanel>
+                </apex:inputText>
+            </apex:pageBlockSection>
+            <center>
+                <apex:outputPanel id="advancedSearchToggle">
+                    <a id="advancedSearch">
+                        <span class="link-options" id="searchLabel">Show Advanced Search</span>         
+                    </a>
+                </apex:outputPanel>
+            </center>
+            <apex:pageBlockSection id="pbAdvancedSearchContent" columns="2">
+                <apex:inputText id="citySearch" label="City" value="{!SearchCity}" />
+                <apex:inputText id="stateSearch" label="State" value="{!SearchState}" />
+                <apex:inputText id="countrySearch" label="Country" value="{!SearchCountry}" />
+                <apex:inputField id="industryGroupSearch" label="Industry Group" value="{!Account.Industry_Group_Abbreviation_All__c}" />
+                <apex:pageBlockSectionItem >
+                    <apex:outputPanel >
+                        <apex:outputLabel value="Phone"><div style="margin-top:-12px;">
+                            <c:HL_HelpText helpText="Searches Company Phone And Fax Fields"/>
+                            </div></apex:outputLabel>
+                    </apex:outputPanel>
+                    <apex:inputText id="phoneSearch" label="Phone" value="{!SearchPhone}"></apex:inputText>
+                </apex:pageBlockSectionItem>   
+            </apex:pageBlockSection>
+            <div class="searchButtonPanel">
+                <center>
+                    <apex:commandButton id="btnSearch" value="Search" styleClass="actionButton" action="{!AdvancedSearch}" onclick="if(!ValidateSearch()){return};" status="loadingStatus" reRender="panMainCompanies" />
+                    <apex:commandButton value="Clear" styleClass="actionButton" action="{!ClearSearch}" reRender="pbMain" status="loadingStatus" oncomplete="DocumentReady()" />
+                </center>
+            </div>
+            <apex:actionStatus id="loadingStatus" startText="Loading..." stopText="" startStyle="font-weight: bold; font-size: 1.5em;">
+                <apex:facet name="start" >
+                    <apex:outputPanel ><br /><img src="/img/loading.gif" /><span>&nbsp;Loading...</span></apex:outputPanel>
+                </apex:facet>
+            </apex:actionStatus>
+            <apex:outputPanel id="panMainCompanies">
+                <apex:pageBlockTable id="pbtCompanies" value="{!MyCompanies}" var="c">
+                    <apex:column >
+                        <apex:outputlink value="/{!c.Id}">{!c.Name}</apex:outputlink>
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!ApplySort}" reRender="myCompanies" status="loadingStatus" oncomplete="DocumentReady()">
+                                <apex:param assignTo="{!NewSort}" value="Name"/>
+                                <apex:outputText value="Name"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Name' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Name' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>  
+                    </apex:column>
+                    <apex:column value="{!c.RecordType.Name}" >
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!ApplySort}" reRender="myCompanies" status="loadingStatus" oncomplete="DocumentReady()">
+                                <apex:param assignTo="{!NewSort}" value="RecordType.Name"/>
+                                <apex:outputText value="Company Type"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'RecordType.Name' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'RecordType.Name' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>  
+                    </apex:column>
+                    <apex:column value="{!c.No_Parent_Company__c}" >
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!ApplySort}" reRender="myCompanies" status="loadingStatus" oncomplete="DocumentReady()">
+                                <apex:param assignTo="{!NewSort}" value="No_Parent_Company__c"/>
+                                <apex:outputText value="HQ"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'No_Parent_Company__c' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'No_Parent_Company__c' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>  
+                    </apex:column>
+                    <apex:column value="{!c.Primary_Coverage_Officer__r.Name}">
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!ApplySort}" reRender="myCompanies" status="loadingStatus" oncomplete="DocumentReady()">
+                                <apex:param assignTo="{!NewSort}" value="Primary_Coverage_Officer__r.Name"/>
+                                <apex:outputText value="Primary Coverage"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Primary_Coverage_Officer__r.Name' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Primary_Coverage_Officer__r.Name' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{!c.Industry_Group__c}">
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!ApplySort}" reRender="myCompanies" status="loadingStatus" oncomplete="DocumentReady()">
+                                <apex:param assignTo="{!NewSort}" value="Industry_Group__c"/>
+                                <apex:outputText value="Industry Group"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Industry_Group__c' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Industry_Group__c' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet> 
+                    </apex:column>
+                    <apex:column value="{!c.BillingStreet}" >
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!ApplySort}" reRender="myCompanies" status="loadingStatus" oncomplete="DocumentReady()">
+                                <apex:param assignTo="{!NewSort}" value="BillingStreet"/>
+                                <apex:outputText value="Street"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'BillingStreet' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'BillingStreet' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>  
+                    </apex:column>
+                    <apex:column value="{!c.BillingCity}" >
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!ApplySort}" reRender="myCompanies" status="loadingStatus" oncomplete="DocumentReady()">
+                                <apex:param assignTo="{!NewSort}" value="BillingCity"/>
+                                <apex:outputText value="City"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'BillingCity' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'BillingCity' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>  
+                    </apex:column>
+                    <apex:column value="{!c.BillingState}" >
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!ApplySort}" reRender="myCompanies" status="loadingStatus" oncomplete="DocumentReady()">
+                                <apex:param assignTo="{!NewSort}" value="BillingState"/>
+                                <apex:outputText value="State"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'BillingState' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'BillingState' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>  
+                    </apex:column>
+                    <apex:column value="{!c.BillingPostalCode}" headerValue="Postal Code"></apex:column>
+                    <apex:column value="{!c.BillingCountry}" >
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!ApplySort}" reRender="myCompanies" status="loadingStatus" oncomplete="DocumentReady()">
+                                <apex:param assignTo="{!NewSort}" value="BillingCountry"/>
+                                <apex:outputText value="Country"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'BillingCountry' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'BillingCountry' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>  
+                    </apex:column>
+                    <apex:column value="{!c.Phone}" headerValue="Phone"></apex:column>
+                    <apex:column value="{!c.LastActivityDate}">
+                        <apex:facet name="header">
+                            <apex:commandLink action="{!ApplySort}" reRender="myCompanies" status="loadingStatus" oncomplete="DocumentReady()">
+                                <apex:param assignTo="{!NewSort}" value="LastActivityDate"/>
+                                <apex:outputText value="Recent Activity Date"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'LastActivityDate' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'LastActivityDate' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                </apex:pageBlockTable>
+                <!-- StandardSetCon Pagination -->
+                <apex:outputPanel >
+                    <table style="width: 100%">
+                        <tr>
+                            <td class="pageDisplay">
+                                Page: <apex:outputText value="{!setCon.PageNumber} of {! if(CEILING(setCon.ResultSize/setCon.PageSize) > 0, CEILING(setCon.ResultSize/setCon.PageSize), 1) }"></apex:outputText>
+                            </td>
+                            <td align="center">
+                                <!-- Previous page -->
+                                <!-- active -->
+                                <apex:commandLink action="{!setCon.Previous}" value="<< Previous" status="loadingStatus" rendered="{! setCon.HasPrevious}" reRender="myCompanies" oncomplete="DocumentReady()"></apex:commandLink>
+                                <!--inactive (no earlier pages) -->
+                                <apex:outputText style="color: #ccc;" value="<< Previous" rendered="{! NOT(setCon.HasPrevious) }"></apex:outputText>
+                                &nbsp;&nbsp;
+                                <!-- Next page -->
+                                <!-- active -->
+                                <apex:CommandLink action="{!setCon.Next}" value="Next >>" status="loadingStatus" rendered="{! setCon.HasNext}" reRender="myCompanies" oncomplete="DocumentReady()"></apex:CommandLink>
+                                <!--inactive (no more pages) -->
+                                <apex:outputText style="color: #ccc;" value="Next >>" rendered="{! NOT(setCon.HasNext)}"></apex:outputText>
+                            </td>
+                            <td align="right" class="recordsPerPage">
+                                Records per page
+                                <apex:selectList value="{!setCon.PageSize}" size="1" >
+                                    <apex:selectOption itemValue="5" itemLabel="5"></apex:selectOption>
+                                    <apex:selectOption itemValue="20" itemLabel="20"></apex:selectOption>
+                                    <apex:selectOption itemValue="100" itemLabel="100"></apex:selectOption>
+                                    <apex:actionSupport event="onchange" reRender="myCompanies" status="loadingStatus" oncomplete="DocumentReady()"></apex:actionSupport>
+                                </apex:selectList>
+                            </td>
+                            <td align="right" class="totalRecords">
+                                Total Records:
+                                <apex:outputLabel value="{!setCon.ResultSize}" rendered="{!ActualCount <= 1000}"></apex:outputLabel>
+                                <apex:outputLabel value="*{!ActualCount}" rendered="{!ActualCount > 1000}"></apex:outputLabel>
+                            </td>
+                        </tr>    
+                    </table>
+                    <apex:outputLabel value="*Note: Only the First 1000 Matching Records are Returned - Use Advanced Search and/or Sort to Find a Particular Record" styleClass="warning" style="font-style:italic;" rendered="{!ActualCount > 1000}"></apex:outputLabel>
+                </apex:outputPanel>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+    </div>
+</apex:page>

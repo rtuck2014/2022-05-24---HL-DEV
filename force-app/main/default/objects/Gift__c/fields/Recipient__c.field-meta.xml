@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recipient__c</fullName>
+    <description>External Contact to receive gift</description>
+    <externalId>false</externalId>
+    <inlineHelpText>External Contact to receive gift</inlineHelpText>
+    <label>Recipient For Gift</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Gift Requests (Recipient For Gift)</relationshipLabel>
+    <relationshipName>Gifts</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

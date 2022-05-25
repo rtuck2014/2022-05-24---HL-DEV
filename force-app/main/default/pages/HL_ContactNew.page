@@ -1,0 +1,294 @@
+<apex:page standardController="Contact" extensions="HL_PostalCode,HL_ContactNewController" showHeader="{!Action <> 1}" id="contactNewPage" lightningStyleSheets="true">
+    <apex:form id="NewContactForm" >
+        <apex:pageBlock title="Duplicate Records" rendered="{!IF(hasDuplicateResult,true,false)}">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save (Ignore Alert)" action="{!saveandignore}"/>
+                <apex:commandButton value="Save and New (Ignore Alert)" action="{!saveAndNew}"/>
+                <apex:commandButton value="Cancel" action="{!Cancel}" rendered="{!Action <> 1}"/>
+            </apex:pageBlockButtons>
+            <div style="text-align:center;font-size: 14px;">
+                <apex:outputText value="{!errorDuplicateText}" id="noof" style="font-weight:bold; color:Red;" escape="false"/>
+            </div>
+            <apex:pageBlockTable value="{!duplicateRecords}" var="item">
+                <apex:column >
+                    <apex:facet name="header">Name</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['Name']}</apex:outputLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Company Name</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank"><apex:outputField value="{!item['AccountId']}"/></apex:outputLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Email</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['Email']}</apex:outputLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Phone</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['Phone']}</apex:outputLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Mailing Zip/Postal Code</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['MailingPostalCode']}</apex:outputLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Title</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['Title']}</apex:outputLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Mailing City</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['MailingCity']}</apex:outputLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Mailing Street</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['MailingStreet']}</apex:outputLink>
+                </apex:column>
+                <apex:column >
+                    <apex:facet name="header">Contact Owner</apex:facet>
+                    <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['OwnerId']}</apex:outputLink>
+                </apex:column>                
+                <apex:column >
+                    <apex:facet name="header">Last Modified Date</apex:facet>                    
+                    <apex:outputText value="{0,date,MM/dd/yyyy hh:mm a}">
+                        <apex:param value="{!item['LastModifiedDate']}" />
+                    </apex:outputText>                 
+                </apex:column>
+            </apex:pageBlockTable> 
+        </apex:pageBlock>
+        <apex:pageBlock id="pgBlock" mode="edit" title="Contact Create">
+            <apex:pageMessages id="msgs"/>
+            <apex:pageBlockButtons location="both">
+                <apex:commandButton value="Save" action="{!SaveAndView}"/>
+                <apex:commandButton value="Cancel" action="{!Cancel}" rendered="{!Action <> 1}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection id="pgBlockSectionAcctInfo" title="Contact Information" collapsible="false" columns="2"  >
+                <apex:inputField id="Account" value="{!contact.AccountId}" required="true" label="Company Name" taborderhint="1"/>
+                <apex:inputField id="Email" value="{!contact.Email}" taborderhint="8" />
+                <apex:inputField id="Salutation" value="{!contact.Salutation}" taborderhint="2"  />
+                <apex:inputField id="Phone" value="{!contact.Phone}" taborderhint="9" /> 
+                <apex:inputField id="FirstName" value="{!contact.FirstName}" taborderhint="3" required="true" />
+                <apex:inputField id="MobilePhone" value="{!contact.MobilePhone}" taborderhint="10" />
+                <apex:inputField id="MiddleName" value="{!contact.MiddleName}" taborderhint="4" />
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:inputField id="LastName" value="{!contact.LastName}" required="true" taborderhint="5" />   
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:inputField id="Suffix" value="{!contact.Suffix__c}" label="Suffix" taborderhint="6" />
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                <apex:inputField id="Title" value="{!contact.Title}" taborderhint="7" />
+                <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem > </apex:pageBlockSectionItem>
+            </apex:pageBlockSection> 
+            
+            <!-- Modified block as part of State/Country Picklist -->
+            <!-- Use MailingCountryCode and MailingStateCode fields and as 'selectList' -->
+            <apex:pageBlockSection id="pgBlockSectionAddressInfo" title="Address Information" collapsible="false" columns="1">
+                <apex:inputField id="InheritCompanyAddress" value="{!contact.Inherit_Company_Address__c}" taborderhint="11"/>
+                <apex:selectList id="MailingCountry" label="Mailing Country" value="{!contact.MailingCountryCode}" onchange="updateContactState(this.value)" tabIndex="120" size="1" style="width:167px;">
+                    <apex:selectOptions value="{!countries}"/>    
+                </apex:selectList> 
+                <apex:inputField id="MailingStreet" value="{!contact.MailingStreet}" taborderhint="13" style="width: 168px;" />        
+                <apex:inputField id="MailingCity" value="{!contact.MailingCity}" taborderhint="14" />
+                
+                <apex:selectList id="MailingState" label="Mailing State/Province" value="{!contact.MailingStateCode}" tabIndex="150" size="1" style="width:167px;"> 
+                    <apex:selectOptions value="{!states}"/>
+                </apex:selectList> 
+                <apex:inputField id="MailingPostalCode" value="{!contact.MailingPostalCode}" taborderhint="16" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection id="pgBlockSectionAdditionalContactInformation" title="Additional Contact Information" collapsible="false" columns="2" rendered="{!Action <> 1}">
+                <apex:inputField id="AlternateEmail" value="{!contact.Alternate_Email__c}" taborderhint="17" />
+                <apex:inputField id="HomePhone" value="{!contact.HomePhone}" taborderhint="19" />
+                <apex:inputField id="Fax" value="{!contact.Fax}" taborderhint="18" />
+                <apex:inputField id="OtherPhone" value="{!contact.OtherPhone}" taborderhint="20" />
+            </apex:pageBlockSection>
+            <!--<apex:pageBlockSection id="pgBlockSectionBackground" title="Background" collapsible="false" columns="1" rendered="{!Action <> 1}">
+            <apex:inputField id="IndustryFocus" value="{!contact.Industry_Focus__c}"  taborderhint="20"  />
+            <apex:inputField id="ExpertiseFocus" value="{!contact.Expertise__c}"  taborderhint="21" />
+            <apex:inputField id="HLAlumni" value="{!contact.HL_Alumni__c}"  taborderhint="22" />
+            <apex:inputField id="Bio" value="{!contact.Description}"  taborderhint="23" style="width: 98%; height:60px;" />
+            <apex:inputField id="FamilyAndPersonalInformation" value="{!contact.Family_and_Personal_Information__c}" taborderhint="24" style="width: 98%; height:60px;" />
+            </apex:pageBlockSection>
+            <apex:pageBlockSection id="pgBlockSectionAssistantInformation" title="Assistant Information" collapsible="false" columns="2" rendered="{!Action <> 1}">
+            <apex:inputField id="Assistant" value="{!contact.AssistantName}" taborderhint="25" />
+            <apex:inputField id="AssistantEmail" value="{!contact.Assistant_Email__c}" taborderhint="27" />
+            <apex:inputField id="AssistantPhone" value="{!contact.AssistantPhone}" taborderhint="26" />
+            </apex:pageBlockSection>-->  
+        </apex:pageBlock>
+    </apex:form>
+    <apex:outputLabel id="newContactFormUrl" value="{!$Component.NewContactForm}" styleClass="hidden"></apex:outputLabel>
+    <apex:outputLabel id="accountStreet" value="{!ExistingAccount.BillingStreet}" styleClass="hidden"></apex:outputLabel>
+    <apex:outputLabel id="accountCity" value="{!ExistingAccount.BillingCity}" styleClass="hidden"></apex:outputLabel>
+    <apex:outputLabel id="accountState" value="{!ExistingAccount.BillingStateCode}" styleClass="hidden"></apex:outputLabel>
+    <apex:outputLabel id="accountPostalCode" value="{!ExistingAccount.BillingPostalCode}" styleClass="hidden"></apex:outputLabel>
+    <apex:outputLabel id="accountCountry" value="{!ExistingAccount.BillingCountryCode}" styleClass="hidden"></apex:outputLabel>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_ContactNew.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <script src="/soap/ajax/9.0/connection.js" type="text/javascript"></script> 
+    <script language="JavaScript">
+        if (location.href.match(/inline=1/)) window.top.location=location.href.replace(/inline=1/, '');
+    //--------------------------------------------------------------------------------------------------------------
+    // This empty function overrides the SFDC standard function, and enables us to control initial field positioning
+    //--------------------------------------------------------------------------------------------------------------
+    function setFocusOnLoad() {
+    }
+    </script>
+    <script type="text/javascript">
+    function SetupAutoCompletes(){
+        $j("[id$=MailingCountry],[id$=AlternateCountry]").autocomplete({
+            minLength: 2,
+            source: function(request, response) {
+                var queryTerm;
+                var strQuery;
+                queryTerm = request.term.trim();
+                sforce.connection.sessionId = '{!$Api.Session_ID}';
+                strQuery = "SELECT Id, Text__c FROM Lookup__c WHERE Text__c LIKE '%" + queryTerm + "%' ORDER BY Text__c LIMIT 50 ";
+                var lstSobjectResults = sforce.connection.query(strQuery);
+                var result = [];
+                if(parseInt(lstSobjectResults.size) > 0)
+                {   
+                    if(lstSobjectResults.size == '1')
+                    {
+                        var JSONObject = { "id":lstSobjectResults.records.Id, "label":lstSobjectResults.records.Text__c};
+                        result[0] = JSONObject;
+                    }
+                    else
+                    {
+                        for(var i = 0; i < lstSobjectResults.records.length; i++ ) 
+                        {
+                            var JSONObject;
+                            JSONObject = { "id":lstSobjectResults.records[i].Id, "label":lstSobjectResults.records[i].Text__c};
+                            result[i] = JSONObject;
+                        }
+                    }   
+                }
+                else{}
+                response(result);
+            },
+            select: function( event, ui ) {
+                itemName = ui.item.label;
+                $j(this).val( itemName );
+            }
+        });
+    }
+    function ZipLookup(postalCode, addressType){
+        if('{!executePostalCodeLookup}' == 'true'){
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.HL_PostalCode.GetByPostalCode}',
+                postalCode, 
+                function(result, event){
+                    HandleZipResults(result,event);
+                }, 
+                {escape: true}
+            );   
+        }
+    }
+    function openLookup(baseURL, width, modified, searchParam){
+        var originalbaseURL = baseURL;
+        var originalwidth = width;
+        var originalmodified = modified;
+        var originalsearchParam = searchParam;
+        var lookupType = getParameterByName('lktp', baseURL);
+        
+        if (modified == '1') baseURL = baseURL + searchParam;
+        
+        var isCustomLookup = false;
+        
+        // Following "001" is the lookup type for Account object so change this as per your standard or custom object
+        if(lookupType == "001"){
+            var urlArr = baseURL.split("&");
+            var txtId = '';
+            if(urlArr.length > 2) {
+                urlArr = urlArr[1].split('=');
+                txtId = urlArr[1];
+            }
+            
+            // Following is the url of Custom Lookup page. 
+            baseURL = "/apex/HL_LookupAccount?action=3&txt=" + txtId;
+            
+            baseURL = baseURL + "&frm=" + escapeUTF("{!$Component.NewContactForm}");
+            if (modified == '1') {
+                baseURL = baseURL + "&lksearch=" + searchParam;
+            }
+            
+            // Following is the ID of inputField that is the lookup to be customized as custom lookup
+            if(txtId.indexOf('Account') > -1 ){
+                isCustomLookup = true;
+            }
+        }
+        
+        if(isCustomLookup == true){
+            openPopup(baseURL, "lookup", 350, 480, "width="+width+",height=480,toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollable=no", true);
+        }
+        else {
+            if (modified == '1') originalbaseURL = originalbaseURL + originalsearchParam;
+            openPopup(originalbaseURL, "lookup", 350, 480, "width="+originalwidth+",height=480,toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollable=no", true);
+        } 
+    }
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+    function HandleParentPopup(){
+        var action = '{!Action}';
+        var contactId = '{!NewContact.Id}';
+        if(action == 1 && contactId != ''){
+            $j("[id$='inputContactId_lkid']", window.parent.document).val(contactId);
+            $j("[id$='addContact']", window.parent.document).trigger('click');
+            window.parent.$j('.ui-dialog-content:visible').dialog('close');
+        }
+    }
+    
+    //Added as part of State/Country Picklist
+    function updateContactState(country){
+        console.log('updateContactState>>'+country);
+        var list = document.getElementById("{!$Component.NewContactForm.pgBlock.pgBlockSectionAddressInfo.MailingState}");
+        list.length = 0;   
+        list.options.add(new Option('--None--',''));
+        if(country == '' || country == '--None--'){
+            $j("[id$=MailingState]").prop('disabled',true);
+            $j("[id$=MailingState]").val('');  
+        }
+        else{
+            var countryStateList = JSON.parse('{!jsonMap}');
+            var countryStateMap = new Map(Object.entries(countryStateList));
+            var stateList = countryStateMap.get(country);
+            for(var i=0;i<stateList.length;i++){
+                list.options.add(new Option(stateList[i].label, stateList[i].value));
+            }
+            $j("[id$=MailingState]").prop('disabled',false);
+        }
+        
+        if (list.length <= 1){
+            $j("[id$=MailingState]").prop('disabled',true);
+            $j("[id$=MailingState]").val('');       
+        }
+    }
+    
+    //Added as part of State/Country Picklist
+    window.onload=function() {
+        // if ($j("[id$=MailingCountry]").val() == '' || $j("[id$=MailingCountry]").val() == '--None--'){
+        //  $j("[id$=MailingState]").prop('disabled',true); 
+        // }
+        var selectedState = $j("[id$=MailingState]").val();
+        var selectedCountry = $j("[id$=MailingCountry]").val();
+        if(selectedCountry == '' || selectedCountry == null || selectedCountry == undefined){
+            $j("[id$=MailingState]").prop('disabled',true); 
+        }
+        else{
+            updateContactState(selectedCountry);
+            $j("[id$=MailingState]").prop('disabled',false); 
+        }
+        if(selectedState != '' && selectedState != null && selectedState != undefined){
+            $j("[id$=MailingState]").val(selectedState);  
+        }       
+    }
+    
+    </script>
+</apex:page>

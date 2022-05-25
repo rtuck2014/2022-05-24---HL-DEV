@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Period_Outstanding_AR_Net__c</fullName>
+    <description>AR over 120 days from the due date that has not been posted to the expense account</description>
+    <externalId>false</externalId>
+    <inlineHelpText>AR over 120 days from the due date that has not been posted to the expense account</inlineHelpText>
+    <label>Period Outstanding AR Net</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

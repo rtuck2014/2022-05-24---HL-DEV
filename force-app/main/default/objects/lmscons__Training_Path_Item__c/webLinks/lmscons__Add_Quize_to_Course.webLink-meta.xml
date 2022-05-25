@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__Add_Quize_to_Course</fullName>
+    <availability>online</availability>
+    <description>Add Quizze to Course</description>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Add Quize to Course</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>top.location.href  = &apos;{!$Site.prefix}/apex/AddItems?objId={!lmscons__Quiz__c.Id}&amp;item=Course&amp;devName=Quiz&apos;;</url>
+</WebLink>

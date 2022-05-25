@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Submitted_For__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>HL Staff member giving gift</description>
+    <externalId>false</externalId>
+    <inlineHelpText>HL Staff member giving gift</inlineHelpText>
+    <label>Submitted For</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Must be submitted for a Houlihan Employee.</errorMessage>
+        <filterItems>
+            <field>Contact.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Houlihan Employee</value>
+        </filterItems>
+        <infoMessage>Shows only Houlihan Employees.</infoMessage>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Contact</referenceTo>
+    <relationshipName>Submitted_For</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

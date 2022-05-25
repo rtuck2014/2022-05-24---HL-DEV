@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__All</fullName>
+    <columns>lmscons__ADDR1__c</columns>
+    <columns>lmscons__STARTED_ON__c</columns>
+    <columns>lmscons__ASSIGNED_ON__c</columns>
+    <columns>lmscons__ADDR2__c</columns>
+    <columns>lmscons__PATH_NAME__c</columns>
+    <columns>lmscons__STATUS_DESC__c</columns>
+    <columns>lmscons__FNAME__c</columns>
+    <columns>lmscons__ADDR3__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+    <language>en_US</language>
+</ListView>

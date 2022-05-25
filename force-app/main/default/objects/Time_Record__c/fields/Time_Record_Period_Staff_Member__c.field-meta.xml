@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Time_Record_Period_Staff_Member__c</fullName>
+    <description>Related time record period staff member record</description>
+    <externalId>false</externalId>
+    <label>Time Record Period Staff Member</label>
+    <referenceTo>Time_Record_Period_Staff_Member__c</referenceTo>
+    <relationshipLabel>Time Records</relationshipLabel>
+    <relationshipName>Time_Records</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

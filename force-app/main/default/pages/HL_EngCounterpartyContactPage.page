@@ -1,0 +1,412 @@
+<apex:page Controller="HL_EngCounterpartyContactCls" name="HL_EngCounterpartyContactPage" tabStyle="Engagement_Counterparty__c" id="mainPageId" lightningStyleSheets="true">
+<apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}" />
+    
+    <apex:form id="pgFrm">
+    
+        <apex:pageBlock id="PBId">
+            <script>
+                function onlyEnterKey(evt) {
+                    if (window.event && window.event.keyCode == 13 || evt.which == 13) {
+                        blockme();
+                        doSearchAF();                        
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }                 
+            </script>
+            <script>
+                function onlyEnterKeyFromSubSection(evt) {
+                    if (window.event && window.event.keyCode == 13 || evt.which == 13) {
+                        blockme();
+                        doSearch();
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }                 
+            </script>
+            <apex:pageMessages />
+            
+                <apex:pageBlockSection title="Engagement Counterparty Contact Search" columns="2" collapsible="false">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputPanel >
+                            <apex:inputText value="{!searchString}" onkeypress="return onlyEnterKey(event);" style="padding-left:5px;margin-left: 3%;" />
+                            <apex:commandButton value="Search" action="{!validateData}" onclick="blockme();" onComplete="setMasterCheckboxOnPagination();ShowClearLink();j$.unblockUI();" reRender="RelatedRecordPanelId,PBId"/>
+                        </apex:outputPanel>
+                        
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                    <apex:outputPanel >
+                        <apex:selectRadio value="{!SelectedOption}" >
+                            <apex:selectOptions value="{!Options}"/>
+                        </apex:selectRadio>
+                    </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                    </apex:pageBlockSectionItem>                    
+                </apex:pageBlockSection>
+                <apex:outputPanel id="showAS" rendered="{!IF(RelatedContactList.size>0,true,false)}">                
+                            <b><a name="Show Filters" style="cursor: pointer;" onclick="showFilterSection();" id="ShowLinkId"><u>Show Filters</u></a></b>
+                        </apex:outputPanel>
+                        <apex:outputPanel id="hideAS" rendered="{!IF(RelatedContactList.size>0,true,false)}">                    
+                        <b><a name="Hide Filters" style="cursor: pointer;" onclick="hideFilterSection();"  id="hideLinkId"><u>Hide Filters</u></a></b>
+                        </apex:outputPanel>
+                 <div id="AdvncfilterSectionId">
+                <apex:pageBlockSection id="pbAdvancedSearchContent" columns="2"  rendered="{!IF(RelatedContactList.size>0,true,false)}">
+                        <apex:pageBlockSectionItem >
+                            Last Name: <apex:inputText id="conLastN" onkeypress="return onlyEnterKeyFromSubSection(event);"  label="Last Name" value="{!conLastName}" />
+                        </apex:pageBlockSectionItem>                       
+                        <apex:pageBlockSectionItem >    
+                        First Name: <apex:inputText id="conFirstN" onkeypress="return onlyEnterKeyFromSubSection(event);"  label="First Name" value="{!conFirstName}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            Title: <apex:inputText id="conTitle" onkeypress="return onlyEnterKeyFromSubSection(event);"  label="Title" value="{!conTitle}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            Company Name: <apex:inputText id="conCompanyN" onkeypress="return onlyEnterKeyFromSubSection(event);"  label="Company Name" value="{!conCompanyName}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            Department: <apex:inputText id="conDep" onkeypress="return onlyEnterKeyFromSubSection(event);"  label="Department" value="{!conDepartment}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                            Industry/Product Focus: <apex:inputText id="conIndustryN" onkeypress="return onlyEnterKeyFromSubSection(event);"  label="Industry Name" value="{!conIndustryName}" />
+                        </apex:pageBlockSectionItem>
+                        <center>
+                            <apex:commandButton value="Apply Filters" action="{!filteredRecords}" onclick="blockme();" 
+                                                onComplete="showFilterSection();setMasterCheckboxOnPagination();ShowClearLink();j$.unblockUI();" reRender="RelatedRecordPanelId,PBId"/>
+                        </center>
+                    </apex:pageBlockSection>
+                    </div>
+                    <script>
+                        var j$ = jQuery.noConflict();
+                        function hideDefault() {
+                         
+                            j$('#AdvncfilterSectionId').hide();
+                            j$('#hideLinkId').hide();
+                            
+                        }
+                        window.onload = hideDefault();
+                        function hideFilterSection() {
+                            
+                            j$('#AdvncfilterSectionId').hide();
+                            j$('#hideLinkId').hide();
+                            j$('#ShowLinkId').show();
+                        }
+                        function showFilterSection() {
+                            j$('#AdvncfilterSectionId').show(); 
+                            j$('#ShowLinkId').hide();
+                            j$('#hideLinkId').show();
+                                       
+                        }
+                    </script>   
+        </apex:pageBlock>
+    
+        <apex:actionFunction name="doSearchAF" action="{!validateData}" reRender="RelatedRecordPanelId,PBId" onComplete="hideDefault();setMasterCheckboxOnPagination();ShowClearLink();j$.unblockUI();"/>
+        <apex:actionFunction name="doSearch" action="{!filteredRecords}" reRender="RelatedRecordPanelId,PBId" onComplete="showFilterSection();setMasterCheckboxOnPagination();ShowClearLink();j$.unblockUI();"/>
+        <apex:actionFunction action="{!next}" name="nextAction"
+            reRender="RelatedRecordPanelId,PBId">
+        </apex:actionFunction>
+        <apex:actionFunction action="{!previous}" name="previousAction"
+            reRender="RelatedRecordPanelId,PBId">
+        </apex:actionFunction>
+        <apex:actionFunction action="{!first}" name="firstAction"
+            reRender="RelatedRecordPanelId,PBId">
+        </apex:actionFunction>
+        <apex:actionFunction action="{!last}" name="lastAction"
+            reRender="RelatedRecordPanelId,PBId">
+        </apex:actionFunction>
+       
+        <apex:actionFunction action="{!goCurPageNumber}"
+                        name="goCurPageNumber" rerender="RelatedRecordPanelId,PBId" onComplete="setMasterCheckboxOnPagination();j$.unblockUI();">
+            <apex:param name="pageNumber" assignTo="{!CurPageNumber}" value="" />
+        </apex:actionFunction>
+        <apex:actionFunction action="{!saveData}" name="saveData" onComplete="hideDefault();setMasterCheckboxOnPagination();ShowClearLink();j$.unblockUI();"
+            reRender="RelatedRecordPanelId,PBId" />
+        
+        <apex:actionFunction name="savePageSize" action="{!doSavePageSize}"
+            rerender="RelatedRecordPanelId,PBId" oncomplete="setMasterCheckboxOnPagination();j$.unblockUI();" status="MCSub">
+            <apex:param name="curPageSize" assignTo="{!CurPageSize}" value="" />
+            <apex:param name="curPageNumber" assignTo="{!CurPageNumber}"
+                value="0" />
+        </apex:actionFunction>
+        <input type="hidden" name="selectedItemholder"
+            id="selectedItemholderId" />
+             
+        <apex:PageBlock Id="RelatedRecordPanelId" title="{!TableTitle}">
+            <div id="clearLinkId">
+                <apex:commandLink action="{!ClearSearchResults}" value="Clear Search Results" onclick="blockme();" reRender="pgFrm" oncomplete="j$.unblockUI();"/><br/><br/>
+            </div>
+            <script>
+                //var originalselectedId = '';
+                j$ = jQuery.noConflict();
+                                
+                function blockme() {
+                    j$.blockUI({ css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+                        } }); 
+            
+                  }
+                
+                function setMasterCheckboxOnPagination () {
+                 
+                 $j1 = jQuery.noConflict(); 
+                     var allinput = 0;
+                     $j1('.selectionCheckbox').each(function(){
+                     //alert($j1(this) + '----' + this.checked);
+                       if(this.checked) {
+                         allinput++;
+                       }
+                     });
+                     if(allinput == $j1('.selectionCheckbox').length) {
+                        $j1('.masterCheckbox').attr( 'checked', true);
+                     }else {
+                       $j1('.masterCheckbox').attr( 'checked', false);
+                     }
+                }
+                
+                function previous() {
+                    //previousAction(refreshRadioSelection());        
+                    previousAction();
+                }
+                
+                function first() {
+                    //firstAction(refreshRadioSelection());       
+                    firstAction();
+                }
+                
+                function last() {
+                    //lastAction(refreshRadioSelection());        
+                    lastAction();
+                }
+                                                               
+                function Save() {
+                                        
+                    /*if(j$(".selectionCheckbox:checked").length == 0){
+                          alert('Please select at least one positions.');     
+                          j$.unblockUI();                    
+                       }
+                       else {*/
+                    
+                           var useResponse = confirm("{!$Label.HL_Confirmation}");
+                           if(useResponse == true){
+                               saveData();                               
+                           }
+                           else
+                           {
+                               j$.unblockUI(); 
+                           }
+                       //}                    
+                }
+                
+                
+                
+                function onlyNumbers(evt, val,pageNumber)
+                {
+                    var e = (typeof(event)!="undefined")?(event):(evt); // for trans-browser compatibility
+                    var charCode = e.which || e.keyCode;
+                    
+                    if(charCode == 13)
+                    {
+                        
+                        
+                        if ((val)!=({!pageNumber})){blockme(); goCurPageNumber(val);} 
+                           return false;
+                    }
+                    if (charCode > 31 && (charCode < 48 || charCode > 57)){ return false;}
+                    if (e.shiftkey){ return false;}
+                    return true;
+                } 
+                
+                
+                function DefaultClearLink() {
+                     j$('#clearLinkId').hide();                    
+                }
+                function ShowClearLink() {
+                     j$('#clearLinkId').show();                    
+                }
+                window.onload = DefaultClearLink();
+                        
+            </script>
+            
+            <apex:outputPanel rendered="{!SearchSection}">
+            <b>Filtered By: </b>{!filterString}
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!SearchSection}">
+            &nbsp;|&nbsp;&nbsp;
+            <apex:commandLink value="Clear Filters" action="{!validateData}" rerender="RelatedRecordPanelId,PBId"
+                                     onclick="blockme();" onComplete="setMasterCheckboxOnPagination();j$.unblockUI();" />
+            </apex:outputPanel><br/>
+            
+            
+            <apex:outputPanel rendered="{!IF(RelatedContactList.size>0, true, false)}">
+            
+                <span style="display: inline; width: 25px;"> <apex:commandLink value="First" action="{!first}" rerender="RelatedRecordPanelId,PBId"
+                                    rendered="{!IF(pageNumber==1, false, true)}" onclick="blockme();" onComplete="setMasterCheckboxOnPagination();j$.unblockUI();" /> <apex:outputLabel value="First" rendered="{!IF(pageNumber==1, true, false)}" />
+                </span>
+                <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                <span style="display: inline; width: 25px;"> <apex:commandLink value="Prev" action="{!previous}" rerender="RelatedRecordPanelId,PBId"
+                        rendered="{!IF(pageNumber==1, false, true)}" onclick="blockme();" onComplete="setMasterCheckboxOnPagination();j$.unblockUI();" /> <apex:outputLabel value="Prev" rendered="{!IF(pageNumber==1, true, false)}" />
+                </span>
+                <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span> 
+            
+                <span style="display: inline; width: 25px;">
+                    <input type="text" value="{!pageNumber}" styleClass="pageInput" size="2" onkeypress="return onlyNumbers(event,this.value,this.pageNumber);" /><!--onblur="if ((this.value-1)!=({!pageNumber})) { loadPage(this.value-1);}"/>-->
+                    <apex:outputLabel value=" / {!pageCount+1}"/>
+                </span>
+                <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span> 
+
+                <span style="display: inline; width: 25px;"> <apex:commandLink value="Next" action="{!next}" rerender="RelatedRecordPanelId,PBId"
+                        rendered="{!IF(pageNumber==pageSize, false, true)}"
+                        onclick="blockme();" onComplete="setMasterCheckboxOnPagination();j$.unblockUI();" /> 
+                        <apex:outputLabel value="Next"
+                        rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                </span>
+                <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+
+                <span style="display: inline; width: 25px;"> <apex:commandLink value="Last" action="{!last}" rerender="RelatedRecordPanelId,PBId"
+                        rendered="{!IF(pageNumber==pageSize, false, true)}"
+                        onclick="blockme();" onComplete="setMasterCheckboxOnPagination();j$.unblockUI();" /> <apex:outputLabel value="Last"
+                        rendered="{!IF(pageNumber==pageSize, true, false)}" />
+                </span>
+                <span style="color: #999999;">&nbsp;|&nbsp;&nbsp;</span>
+                <span style="display: inline; width: 125px;"> Qty: &nbsp; <apex:selectList value="{!CurPageSize}" multiselect="false" size="1"
+                        onchange="blockme();savePageSize(this.value);">
+                        <apex:selectOptions value="{!pageSizeValues}" />
+                    </apex:selectList>
+                </span>
+                <apex:commandButton value="Save" onclick="blockme();Save();return false;" onComplete="j$.unblockUI();"
+                                rerender="RelatedRecordPanelId,PBId,pbtableId2" />
+                <apex:commandButton value="Back" onclick="blockme();" immediate="true" action="{!BackToEngCounterParty}" rerender="RelatedRecordPanelId,PBId" />
+            </apex:outputPanel>
+            
+            <apex:pageMessage summary="No record found." rendered="{!IF(RelatedContactList.size>0, false, true)}" severity="info" strength="3" >
+            <div style="float:top">
+                <apex:commandButton value="Back To Engagement Counterparty" onclick="blockme();" immediate="true" action="{!BackToEngCounterParty}" rerender="RelatedRecordPanelId,PBId" />
+            </div>
+            </apex:pageMessage>
+            <script>
+                function controlMasterCheckbox(x)
+                {
+                    $j1 = jQuery.noConflict(); 
+                        if(x == false){
+                         $j1('.masterCheckbox').attr( 'checked', false );
+                         //jQuery('#checkAll').attr('checked', false);
+                         }
+                         
+                         if(x == true){  
+                           setMasterCheckboxOnPagination();
+                         }
+                }
+            </script>
+            <style>
+                a:hover {
+                    //background:#ffffff; /*BG color is a must for IE6*/
+                    //text-decoration:none;
+                } 
+                div.tooltipcls span {
+                    display:none; 
+                    padding:2px 3px; 
+                    margin-left:-20px; 
+                    width:250px;
+                }
+                div.tooltipcls:hover span{
+                    <!-- display:inline; -->
+                    display:block;
+                    position:absolute;
+                    background:#FFC; 
+                    border:1px solid #cccccc; 
+                    color:#000000;
+                }
+            </style>
+            <apex:pageBlockTable value="{!RelatedContactList}" rendered="{!RelatedContactList.size>0}"
+                            var="item" id="pbtableId2" rows="{!CurPageSize}" columnswidth="1%,15%,10%,15%,15%,10%,20%" >
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:inputCheckbox id="checkAll" styleClass="masterCheckbox"
+                                        onClick="jQuery('.selectionCheckbox').attr('checked', this.checked);" />
+                                </apex:facet>
+                                <apex:inputCheckbox styleClass="selectionCheckbox"
+                                    id="myCheckbox" value="{!item.isSelected}" onClick="controlMasterCheckbox(this.checked);"/>
+                            </apex:column>
+                            <apex:column > 
+                                <apex:outputLink style="cursor: pointer;" value="/{!item.contactRecord.Id}" target="_blank">{!item.contactRecord.Name}</apex:outputLink>
+                    <apex:facet name="header">
+                        <apex:commandLink value="Name" action="{!toggleSort}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="setMasterCheckboxOnPagination();j$.unblockUI();" >
+                            <apex:param name="sortField" value="Name" assignTo="{!sortField}"/>
+                        
+                            <apex:outputPanel rendered="{!IF(sortField=='Name',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                            <apex:outputPanel rendered="{!IF(sortField=='Name',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                        </apex:commandLink>
+                    </apex:facet>
+                </apex:column>
+                <apex:column value="{!item.contactRecord.Title}">
+                    <apex:facet name="header">
+                        <apex:commandLink value="Title" action="{!toggleSort}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="setMasterCheckboxOnPagination();j$.unblockUI();" >
+                            <apex:param name="sortField" value="Title" assignTo="{!sortField}"/>
+                            <apex:outputPanel rendered="{!IF(sortField=='Title',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                            <apex:outputPanel rendered="{!IF(sortField=='Title',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                        </apex:commandLink>
+                    </apex:facet>
+                </apex:column>
+                <apex:column value="{!item.contactRecord.Department}">
+                    <apex:facet name="header">
+                        <apex:commandLink value="Department" action="{!toggleSort}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="setMasterCheckboxOnPagination();j$.unblockUI();" >
+                            <apex:param name="sortField" value="Department" assignTo="{!sortField}"/>
+                            
+                            <apex:outputPanel rendered="{!IF(sortField=='Department',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                            <apex:outputPanel rendered="{!IF(sortField=='Department',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                        </apex:commandLink>
+                    </apex:facet>
+                </apex:column>
+                <apex:column value="{!item.contactRecord.Account.Name}">
+                    <apex:facet name="header">
+                        <apex:commandLink value="Company Name" action="{!toggleSort}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="setMasterCheckboxOnPagination();j$.unblockUI();" >
+                            <apex:param name="sortField" value="Account.Name" assignTo="{!sortField}"/>
+                            <apex:outputPanel rendered="{!IF(sortField=='Account.Name',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                            <apex:outputPanel rendered="{!IF(sortField=='Account.Name',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                        </apex:commandLink>
+                    </apex:facet>
+                </apex:column>
+                <apex:column value="{!item.contactRecord.Status__c}">
+                    <apex:facet name="header">
+                        <apex:commandLink value="Status" action="{!toggleSort}" rerender="RelatedRecordPanelId" onclick="blockme();" onComplete="setMasterCheckboxOnPagination();j$.unblockUI();" >
+                            <apex:param name="sortField" value="Status__c" assignTo="{!sortField}"/>
+                            <apex:outputPanel rendered="{!IF(sortField=='Status__c',IF(sortDirection='ASC','true','false'),'false')}">&nbsp;&uarr;</apex:outputPanel>
+                            <apex:outputPanel rendered="{!IF(sortField=='Status__c',IF(sortDirection='ASC','false','true'),'false')}">&nbsp;&darr;</apex:outputPanel>
+                        </apex:commandLink>
+                    </apex:facet>
+                </apex:column>
+                 <apex:column headerValue="Industry/Product Focus" >
+                    <div class="tooltipcls" target="_blank"> {!item.subsFirst5Lst}
+                      <span>{!item.subsFullLst}</span>
+                    </div>
+                  </apex:column>
+            </apex:pageBlockTable>
+            <br/>
+            <apex:outputPanel rendered="{!if(actualRecords >=1000,true,false)}">
+            <div>
+            <div style="float: left"><b><I><font color="#c00">*Note: Only the First 1000 Matching Records are Returned - Use Advanced Search and/or Sort to Find a particular Record</font></I></b>
+            </div>
+            <!--<div style="float: right"><right><b>Total Records: *{!TotalNoOfRecords}</b></right></div>-->
+            </div>
+            </apex:outputPanel>
+            <apex:pageBlockSection ></apex:pageBlockSection>
+            <apex:actionFunction action="{!voidAction}" name="loadPage" rerender="pb0,opMsg" status="MCSub">
+                <apex:param name="pageNumber" assignTo="{!pageNumber}" value="{!pageNumber}"/>
+            </apex:actionFunction>
+        </apex:pageBlock>
+      
+    </apex:form>
+</apex:page>

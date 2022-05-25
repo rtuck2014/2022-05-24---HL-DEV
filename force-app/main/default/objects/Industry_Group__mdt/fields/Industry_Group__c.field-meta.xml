@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Industry_Group__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Industry Group</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BUS - Business Services</fullName>
+                <default>true</default>
+                <label>BUS - Business Services</label>
+            </value>
+            <value>
+                <fullName>CFR - Consumer Food &amp; Retail</fullName>
+                <default>false</default>
+                <label>CFR - Consumer Food &amp; Retail</label>
+            </value>
+            <value>
+                <fullName>FIG - Financial Institutions</fullName>
+                <default>false</default>
+                <label>FIG - Financial Institutions</label>
+            </value>
+            <value>
+                <fullName>HC - Healthcare</fullName>
+                <default>false</default>
+                <label>HC - Healthcare</label>
+            </value>
+            <value>
+                <fullName>IG - Industrials</fullName>
+                <default>false</default>
+                <label>IG - Industrials</label>
+            </value>
+            <value>
+                <fullName>O&amp;G - Oil &amp; Gas</fullName>
+                <default>false</default>
+                <label>O&amp;G - Oil &amp; Gas</label>
+            </value>
+            <value>
+                <fullName>POW - Power &amp; Utilities</fullName>
+                <default>false</default>
+                <label>POW - Power &amp; Utilities</label>
+            </value>
+            <value>
+                <fullName>RE - Real Estate Lodging and Leisure</fullName>
+                <default>false</default>
+                <label>RE - Real Estate Lodging and Leisure</label>
+            </value>
+            <value>
+                <fullName>SOV - Sovereigns</fullName>
+                <default>false</default>
+                <label>SOV - Sovereigns</label>
+            </value>
+            <value>
+                <fullName>TECH - Technology</fullName>
+                <default>false</default>
+                <label>TECH - Technology</label>
+            </value>
+            <value>
+                <fullName>TRANS - Transportation &amp; Logistics</fullName>
+                <default>false</default>
+                <label>TRANS - Transportation &amp; Logistics</label>
+            </value>
+            <value>
+                <fullName>TMT - Technology Media &amp; Telecommunications</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>TMT - Technology Media &amp; Telecommunications</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

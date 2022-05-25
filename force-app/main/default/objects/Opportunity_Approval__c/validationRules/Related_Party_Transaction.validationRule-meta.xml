@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Party_Transaction</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL(Related_Party_Transaction__c , &apos;Yes&apos;) &amp;&amp;  ISPICKVAL(Fairness_Opinion_Provided__c, &apos;Yes&apos;) &amp;&amp;
+ISBLANK(Related_Party_Affiliation_Notes__c)</errorConditionFormula>
+    <errorDisplayField>Related_Party_Transaction__c</errorDisplayField>
+    <errorMessage>Please provide additional notes.</errorMessage>
+</ValidationRule>

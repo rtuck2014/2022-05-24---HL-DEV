@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CF_Expense_Request_Fields</fullName>
+    <active>true</active>
+    <description>Validation for populating CF Expense Request related fields.</description>
+    <errorConditionFormula>AND(
+RecordType.DeveloperName = &apos;HL_Internal_Opportunity&apos;, 
+ISPICKVAL(Line_of_Business__c, &apos;CF&apos;),
+OR( 
+ISBLANK(TEXT(Event_Type__c)),
+ISBLANK(TEXT(Event_Format__c)),
+ISBLANK(TEXT(Classification__c)),
+ISBLANK(City__c),
+ISBLANK(Event_Location__c)
+)
+)</errorConditionFormula>
+    <errorMessage>Please make sure that the Classification, Event Type, Event Format, Event Location, and City are filled in.</errorMessage>
+</ValidationRule>

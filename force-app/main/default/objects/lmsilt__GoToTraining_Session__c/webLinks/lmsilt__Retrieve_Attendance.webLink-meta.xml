@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmsilt__Retrieve_Attendance</fullName>
+    <availability>online</availability>
+    <description>Retrieving attendance status from GTT/WebEx services</description>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Retrieve Attendance</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>//don`t forget to add prefix &quot;lmsilt__&quot; to jQuery resource name before commit to SVN
+{!REQUIRESCRIPT(&apos;/resource/lmsilt__jquery152min&apos;)}
+{!REQUIRESCRIPT(&apos;/soap/ajax/26.0/connection.js&apos;)}
+{!REQUIRESCRIPT(&apos;/soap/ajax/26.0/apex.js&apos;)}
+
+var overlay;
+if(window.parent.document.getElementById(&apos;overlay&apos;) == null){
+	overlay = window.parent.jQuery(&apos;&lt;div&gt;&lt;/div&gt;&apos;).css({	&quot;position&quot;: &quot;fixed&quot;,
+											&quot;height&quot;:&quot;100%&quot;,
+											&quot;width&quot;:&quot;100%&quot;, 
+											&quot;background&quot;:&quot;#000&quot;,
+											&quot;opacity&quot;:&quot;0.6&quot;,
+											&quot;filter&quot;:&quot;alpha(opacity=80)&quot;,
+											&quot;z-index&quot;:&quot;300&quot;
+										}).prependTo(&apos;body&apos;).attr(&apos;id&apos;, &apos;overlay&apos;);
+
+}else{
+	overlay = window.parent.jQuery(&apos;#overlay&apos;);
+	overlay.show();
+}
+
+
+var currentSessionID = &apos;{!lmsilt__Session__c.Id}&apos;;
+//don`t forget to add prefix &quot;lmsilt.&quot; to webservise class name before commit to SVN
+var result = sforce.apex.execute(
+				&quot;lmsilt.VILTIntegrationWebServices&quot; , 
+				&quot;retrieveAttendanceStatus&quot;, 
+				{sessionID : currentSessionID}
+			);
+
+var isSuccess = false;
+result = result.toString();
+var startIndexOfSuccessFlag = result.indexOf(&apos;XXX_SUCCESS_XXX&apos;);
+if(startIndexOfSuccessFlag != -1){
+	isSuccess = true;
+	result = result.substr(0, startIndexOfSuccessFlag); 
+}
+
+alert(result);
+	
+if(isSuccess){
+	window.parent.document.location.reload(true);
+}
+
+overlay.hide();</url>
+</WebLink>

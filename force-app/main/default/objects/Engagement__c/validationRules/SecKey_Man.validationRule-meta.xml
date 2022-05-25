@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SecKey_Man</fullName>
+    <active>false</active>
+    <errorConditionFormula>((ISPICKVAL(Secondary_Key_Man__r.Status__c, &apos;Inactive&apos;) ||  Secondary_Key_Man__r.RecordType.Name != &apos;Houlihan Employee&apos;)
+&amp;&amp; NOT(ISBLANK( Secondary_Key_Man__c )))</errorConditionFormula>
+    <errorDisplayField>Secondary_Key_Man__c</errorDisplayField>
+    <errorMessage>Please enter active Houlihan Lokey employees.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expected_Airfare_Cost__c</fullName>
+    <description>RFC#2547 - created new field as part of CF Expense Request functionality</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter all flight related costs – airfare, baggage fees, etc. Put 0 if N/A</inlineHelpText>
+    <label>Expected Airfare Cost</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

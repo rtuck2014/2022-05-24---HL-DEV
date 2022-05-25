@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Conversion_FEIS</fullName>
+    <active>false</active>
+    <description>FVA AND FAIRNESS ONLY</description>
+    <errorConditionFormula>ISPICKVAL(Line_of_Business__c,&apos;FVA&apos;) &amp;&amp; 
+NOT(FEIS_Approved__c) &amp;&amp; 
+Converted_to_Engagement__c &amp;&amp;
+(ISPICKVAL(Job_Type__c,&apos;ESOP Fairness&apos;)||
+ISPICKVAL(Job_Type__c,&apos;Fairness&apos;)||
+ISPICKVAL(Job_Type__c,&apos;Negotiated Fairness&apos;)
+)</errorConditionFormula>
+    <errorMessage>Approved FEIS form required for Fairness FVA Opportunities.</errorMessage>
+</ValidationRule>

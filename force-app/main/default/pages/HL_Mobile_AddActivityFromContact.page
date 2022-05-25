@@ -1,0 +1,197 @@
+<apex:page docType="html-5.0" standardController="Contact" standardStylesheets="false" extensions="HL_ActivityController" showHeader="false" sidebar="false" lightningStyleSheets="true">
+<c:importvisualstrap theme="default" />
+<apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-ui-1.8.18.custom.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery.maskedinput.min.js')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+<apex:stylesheet value="{!URLFOR($Resource.HL_MobileCSS)}"></apex:stylesheet>
+<style>
+    .ui-autocomplete-input {width: 100%!important;}
+    .panel-heading {display: none;}
+    .panel-body {background-color: #eee;}
+    .drop-down {
+        height: 35px;
+        width: 100%;
+    }
+    input[type="text"] { width: 100%; height: 35px;}
+</style>   
+ <apex:form id="frmActivityEvent" style="font-family: 'ProximaNovaSoft-Regular'; -webkit-font-smoothing: antialiased; color: #3c3d3e;">
+         <h3 style="margin-left: 15px;">
+             <b>Add Activity</b>
+         </h3>
+
+                        <apex:outputLabel value="Type*"></apex:outputLabel><br/>
+                        <apex:inputField id="eventType" value="{!Activity.Type}" required="true" styleClass="drop-down"></apex:inputField>
+                       <apex:outputLabel value="Subject*"></apex:outputLabel><br/>
+                       <apex:inputText id="eventSubject" value="{!Activity.Subject}" required="true"></apex:inputText>
+
+                        <apex:outputLabel value="Description"></apex:outputLabel><br/>
+                        <apex:inputTextarea value="{!Activity.Description}" style="width:100%;" rows="5"/>
+
+                      <apex:outputLabel value="Date*"></apex:outputLabel><br/>
+                      <apex:inputField id="startDate" value="{!Activity.Start_Date__c}" type="date"></apex:inputField><br/>
+
+                      <apex:outputLabel value="Time*"></apex:outputLabel><br/>
+                      <apex:inputField id="startTime" value="{!Activity.Start_Time__c}"></apex:inputField>
+                      <apex:outputLabel value="to" style="padding: 0px 10px 0px 10px"></apex:outputLabel>
+                      <apex:inputField id="endTime" value="{!Activity.End_Time__c}"></apex:inputField><br/>
+
+                       <apex:inputField value="{!Activity.Private__c}"></apex:inputField>Private<br/>
+                       <apex:inputField value="{!Activity.Sync_To_Outlook__c}"></apex:inputField>Sync To Outlook<br/>
+
+                <c:visualstrapblock >
+              <apex:dataTable id="relatedContacts" value="{!RelatedContacts}" var="e" styleClass="table">
+                    <apex:column headerValue="Remove" styleClass="center" headerClass="center" style="width: 50px;">
+                        <apex:commandLink value="Del" action="{!RemoveExternal}" onclick="return confirmDelete();" styleClass="removeContactCheckbox">
+                                <apex:param name="p1" assignTo="{!DelId}" value="{!e.Contact.Id}"></apex:param>
+                        </apex:commandLink> 
+                    </apex:column>
+                    <apex:column headerValue="Primary" styleClass="center" headerClass="center" style="width: 50px;">
+                        <apex:inputCheckbox value="{!e.Primary}" styleClass="primaryContactCheckbox"/>
+                    </apex:column>
+                    <apex:column headerValue="External Contact" value="{!e.Contact.Name}">
+                    </apex:column>
+                    <apex:column headerValue="Company" value="{!e.Contact.Account.Name}">
+                    </apex:column>
+                </apex:dataTable>
+                  <p>
+                    <apex:inputText id="inputContactId" value="{!SelectedContactName}" html-placeholder="Begin Typing Name - 4 Characters Min..." style="width:250px;">
+                         <apex:inputHidden value="{!SelectedContactId}" id="inputContactId_lkid"></apex:inputHidden>
+                            <apex:outputPanel id="contactSelection">
+                                <c:HL_AutoComplete objectname="ExternalContact" sObjectFieldName="Name" minLength="4" delay="2200"
+                                                   autocomplete_textbox="{!$Component.inputContactId}" autocomplete_actionbutton="{!$Component.addContact}" bgColor="white" fontSize="11"/>  
+                            </apex:outputPanel>
+                        </apex:inputText>
+                     <apex:commandButton id="addContact" action="{!AddContact}" value="Add Contact" reRender="relatedContacts" style="display:none;" oncomplete="DocumentReady()"/>
+                </p>
+              <apex:dataTable id="hlEmployees" value="{!HLEmployees}" var="e" styleClass="table">
+                    <apex:column headerValue="Remove" styleClass="center" headerClass="center" style="width: 50px;">
+                        <apex:commandLink value="Del" action="{!RemoveEmployee}" onclick="return confirmDelete();" styleClass="removeEmployeeCheckbox">
+                                <apex:param name="p2" assignTo="{!DelId}" value="{!e.Employee.Id}"></apex:param>
+                        </apex:commandLink>
+                    </apex:column>
+                    <apex:column headerValue="Primary" styleClass="center" headerClass="center" style="width: 50px;">
+                        <apex:inputCheckbox value="{!e.Primary}" styleClass="primaryCheckbox"/>
+                    </apex:column>
+                    <apex:column value="{!e.Employee.Name}" headerValue="Employee"/>
+                    <apex:column value="{!e.Employee.Title}" />
+                </apex:dataTable>
+              <p>
+                    <apex:inputText id="inputEmployeeId" value="{!SelectedEmployeeName}" html-placeholder="Begin Typing Name - 2 Characters Min..." style="width:250px;">
+                         <apex:inputHidden value="{!SelectedEmployeeId}" id="inputEmployeeId_lkid"></apex:inputHidden>
+                            <apex:outputPanel id="employeeSelection">
+                                <c:HL_AutoComplete objectname="Contact" sObjectFieldName="Name" delay="2200"
+                                                   autocomplete_textbox="{!$Component.inputEmployeeId}" autocomplete_actionbutton="{!$Component.addEmployee}" bgColor="white" fontSize="11"/>  
+                            </apex:outputPanel>
+                     </apex:inputText>
+                     <apex:commandButton id="addEmployee" action="{!AddEmployee}" value="Add Employee" style="display:none;" reRender="hlEmployees" oncomplete="DocumentReady()"  />
+                </p>
+            <c:panel >
+              <apex:dataTable id="relatedOpps" value="{!RelatedOpportunities}" var="o" styleClass="table">
+                        <apex:column headerValue="Remove" styleClass="center" headerClass="center" style="width: 50px;">
+                            <apex:commandLink value="Del" action="{!RemoveOpp}" onclick="return confirmDelete();">
+                                    <apex:param name="p4" assignTo="{!DelId}" value="{!o.Id}"></apex:param>
+                            </apex:commandLink>
+                        </apex:column>
+                        <apex:column headerValue="Opportunity" value="{!o.Name}">                 
+                        </apex:column>
+                        <apex:column value="{!o.Client__r.Name}" headerValue="Client Name"/>
+                        <apex:column value="{!o.Subject__r.Name}" headerValue="Subject Name"/>
+               </apex:dataTable>
+             <p>
+                    <apex:inputText id="inputOpportunityId" value="{!SelectedOpportunityName}" html-placeholder="Begin Typing Name - 4 Characters Min..." style="width:250px;">
+                         <apex:inputHidden value="{!SelectedOpportunityId}" id="inputOpportunityId_lkid"></apex:inputHidden>
+                            <apex:outputPanel id="opportunitySelection">
+                                <c:HL_AutoComplete objectname="Opportunity__c" sObjectFieldName="Name" minLength="4" delay="2200"
+                                                   autocomplete_textbox="{!$Component.inputOpportunityId}" autocomplete_actionbutton="{!$Component.addOpportunity}" bgColor="white" fontSize="11"/>  
+                            </apex:outputPanel>
+                        </apex:inputText>
+                        <apex:commandButton id="addOpportunity" action="{!AddOpportunity}" value="Add Opportunity" style="display:none;" reRender="relatedOpps" oncomplete="DocumentReady()" />
+                </p>
+           </c:panel>
+          </c:visualstrapblock>
+          <c:panel title="Schedule Follow-up" type="info">
+          <c:formgroup >
+                    <apex:inputField id="isFollowup" value="{!Activity.isFollowUp__c}"></apex:inputField>Schedule Follow-up
+                  </c:formgroup>
+                  <div id="followupDetails" style="display: none;">
+                      <c:formgroup >
+                          <apex:outputLabel value="Follow-up Date"></apex:outputLabel><br/>
+                          <apex:inputField id="followupStartDate" value="{!Activity.Followup_Start_Date__c}" type="date"></apex:inputField>
+                      </c:formgroup>
+                      <c:formgroup >
+                          <apex:outputLabel value="Follow-up Time"></apex:outputLabel><br/>
+                           <apex:inputField id="followupStartTime" value="{!Activity.Followup_Start_Time__c}"></apex:inputField>
+                          <apex:outputLabel value="to" style="padding: 0px 10px 0px 10px"></apex:outputLabel>
+                          <apex:inputField id="followupEndTime" value="{!Activity.Followup_End_Time__c}"></apex:inputField>
+                      </c:formgroup>
+                      <c:formgroup >
+                        <apex:inputField value="{!Activity.Followup_Sync_To_Outlook__c}"></apex:inputField>Sync To Outlook
+                      </c:formgroup>
+                      <c:formgroup >
+                          <apex:outputLabel value="Follow-up Comments"></apex:outputLabel><br/>
+                          <apex:inputTextarea value="{!Activity.Followup_Comments__c}" rows="4" style="width:100%;"/>
+                      </c:formgroup>
+                  </div>
+     </c:panel>
+     <p>
+          <apex:commandButton value="Save" action="{!SaveActivity}" style="width: 100%; background: #eee; color:#686c70; font-size: 18px; border-radius: 3px; border: solid 1px #ccc; -webkit-appearance: button; padding: 12px;" oncomplete="Navigate();" reRender="results"/>
+     </p>
+     <apex:outputLabel id="results" value="{!Activity.Primary_External_Contact_Id__c}" style="display:none;"></apex:outputLabel>
+    </apex:form>
+ <script src="/soap/ajax/9.0/connection.js" type="text/javascript"></script>
+ <script>
+    $j = jQuery.noConflict();
+    $j(document).ready(function () {
+        DocumentReady();
+    });  
+    function DocumentReady(){
+        $j(".datePicker").hide();
+        $j("[id$=isFollowup]").change(function() {
+           if($j("[id$=isFollowup]").is(":checked"))
+               $j("#followupDetails").show();
+            else
+               $j("#followupDetails").hide();
+        });
+        $j(".primaryCheckbox").change(function() { 
+            $j(".primaryCheckbox").removeAttr('checked');
+            $j(".removeEmployeeCheckbox").show();
+            $j(this).attr('checked', true);
+            $j(this).parent().parent().find(".removeEmployeeCheckbox").removeAttr('checked');
+            $j(this).parent().parent().find(".removeEmployeeCheckbox").hide();
+        });
+        $j(".primaryContactCheckbox").change(function() { 
+            $j(".primaryContactCheckbox").removeAttr('checked');
+            $j(".removeContactCheckbox").show();
+            $j(this).attr('checked', true);
+            $j(this).parent().parent().find(".removeContactCheckbox").removeAttr('checked');
+            $j(this).parent().parent().find(".removeContactCheckbox").hide();
+        });
+        $j("[id$=startTime]").change(function(){
+            $j("[id$=endTime]").val($j(this).val());
+        });
+        $j("[id$=followupStartTime]").change(function(){
+            $j("[id$=followupEndTime]").val($j(this).val());
+        });
+        HideRemovePrimary();
+        $j(".ui-autocomplete-input").val('');
+    }
+    function Navigate(){
+        //sforce.one.navigateToSObject($j("[id$=results]").html());   
+        alert('Success');
+        sforce.one.back(true);
+    }
+    function HideRemovePrimary(){
+        $j(".primaryCheckbox").each(function() {
+            if($j(this).is(":checked")){
+              $j(this).parent().parent().find(".removeEmployeeCheckbox").hide();
+            }
+        });
+        $j(".primaryContactCheckbox").each(function() {
+            if($j(this).is(":checked")){
+              $j(this).parent().parent().find(".removeContactCheckbox").hide();
+            }
+        }); 
+    }
+</script>
+</apex:page>

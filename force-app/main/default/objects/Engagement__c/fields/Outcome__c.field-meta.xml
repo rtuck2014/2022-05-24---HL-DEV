@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outcome__c</fullName>
+    <externalId>false</externalId>
+    <label>Outcome</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Company performance shortfall</fullName>
+                <default>false</default>
+                <label>Company performance shortfall</label>
+            </value>
+            <value>
+                <fullName>Lost buyside</fullName>
+                <default>false</default>
+                <label>Lost buyside</label>
+            </value>
+            <value>
+                <fullName>No market at seller expectation</fullName>
+                <default>false</default>
+                <label>No market at seller expectation</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

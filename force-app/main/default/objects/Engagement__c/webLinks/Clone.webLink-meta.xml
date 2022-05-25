@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clone</fullName>
+    <availability>online</availability>
+    <description>Clones the Engagement</description>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Create Division</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/30.0/apex.js&quot;)}
+
+    var request = new sforce.SObject(&quot;Engagement__c&quot;);
+    request.Id = &quot;{!Engagement__c.Id}&quot;;
+    var cloneResult = sforce.apex.execute(&quot;SL_Clone_Engagement&quot;, &quot;cloneEngagement&quot;, {engagementId: request.Id});
+    if (cloneResult.toString().substring(0,5)==&quot;ERROR&quot;){
+        alert( cloneResult.toString());
+    }
+    else if (cloneResult==request.Id){
+        window.location.href = window.location.href;
+    }
+    else{
+        window.location.href = &quot;/&quot;+cloneResult;
+    }</url>
+</WebLink>

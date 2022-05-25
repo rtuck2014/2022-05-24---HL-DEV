@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_Other_Shareholders</fullName>
+    <active>false</active>
+    <errorConditionFormula>Has_Other_Shareholders__c==TRUE &amp;&amp;
+ISBLANK( Other_Shareholders__c)</errorConditionFormula>
+    <errorDisplayField>Has_Other_Shareholders__c</errorDisplayField>
+    <errorMessage>Please enter other shareholder(s).</errorMessage>
+</ValidationRule>

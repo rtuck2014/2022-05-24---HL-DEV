@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>Conversion SC</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>CAO_SC</publicGroup>
+        </publicGroups>
+        <users>
+            <user>verifaya.sccaouser@gmail.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Opportunity__c</sobjectType>
+    </queueSobject>
+</Queue>

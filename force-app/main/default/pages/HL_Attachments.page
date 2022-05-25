@@ -1,0 +1,12 @@
+<apex:page standardcontroller="case"  extensions="checkbox" tabstyle="case" lightningStylesheets="true">
+    <apex:pageBlock title="Case Comments" mode="new" >    
+        <apex:form >
+        <apex:commandButton value="Save" action="{!customSave}"/> <!-- This is the Custom Save Button -->
+                <apex:pageBlockTable value="{!Records}" var="index">    <!-- The pageBlockTable iterates through the list of the custom Class -->
+                    <apex:column > <apex:inputCheckbox value="{!index.published}"/> </apex:column>    <!-- Stores the input value from the user -->
+                    <apex:column value="{!index.comment.isPublished}"/>    <!--Display the CaseComments information -->
+                    <apex:column value="{!index.comment.CommentBody}"/>
+                </apex:pageblocktable>
+        </apex:form>
+    </apex:pageBlock>
+</apex:page>

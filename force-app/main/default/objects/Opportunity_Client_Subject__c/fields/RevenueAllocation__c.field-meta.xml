@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RevenueAllocation__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Subjective allocation out of 100% of credit for HL&apos;s having been mandated</inlineHelpText>
+    <label>Revenue Allocation %</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>1</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

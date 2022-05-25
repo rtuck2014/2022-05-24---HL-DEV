@@ -1,0 +1,9 @@
+<apex:page controller="PickListDescController" contentType="application/xml" showHeader="false" sidebar="false" standardStylesheets="false">
+    <apex:form >
+        <apex:repeat value="{!pickListFieldName}" var="picklistName">
+            <span id="{!picklistName}">
+                <apex:inputField value="{!sobj[picklistName]}" />   
+            </span>
+        </apex:repeat>
+    </apex:form>
+</apex:page>

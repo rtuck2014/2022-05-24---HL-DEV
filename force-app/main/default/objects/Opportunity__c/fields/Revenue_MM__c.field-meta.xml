@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Revenue_MM__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+NOT(ISNULL(Subject__c)),    Subject__r.Recent_Revenue_MM__c   ,
+ Client__r.Recent_Revenue_MM__c)</formula>
+    <label>Revenue (MM)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>1</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

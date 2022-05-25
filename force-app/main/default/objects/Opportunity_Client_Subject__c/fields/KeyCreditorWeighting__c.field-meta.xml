@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>KeyCreditorWeighting__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Subjective assessment allocation out of 100% amongst identified key creditors based on their level of influence in the transaction taking into consideration parameters such as committee membership, % holdings and thought leadership</inlineHelpText>
+    <label>Key Creditor Weighting %</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>1</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

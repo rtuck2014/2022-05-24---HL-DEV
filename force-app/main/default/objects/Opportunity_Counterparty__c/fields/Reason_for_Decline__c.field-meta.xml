@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_for_Decline__c</fullName>
+    <description>Passed/Declined reasoning</description>
+    <externalId>false</externalId>
+    <label>Reason for Decline</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not a strategic fit</fullName>
+                <default>false</default>
+                <label>Not a strategic fit</label>
+            </value>
+            <value>
+                <fullName>Timing</fullName>
+                <default>false</default>
+                <label>Timing</label>
+            </value>
+            <value>
+                <fullName>Unattractive financial profile</fullName>
+                <default>false</default>
+                <label>Unattractive financial profile</label>
+            </value>
+            <value>
+                <fullName>No relevant portfolio company</fullName>
+                <default>false</default>
+                <label>No relevant portfolio company</label>
+            </value>
+            <value>
+                <fullName>Size - too small/large</fullName>
+                <default>false</default>
+                <label>Size - too small/large</label>
+            </value>
+            <value>
+                <fullName>Industry dynamics</fullName>
+                <default>false</default>
+                <label>Industry dynamics</label>
+            </value>
+            <value>
+                <fullName>Customer Concentration</fullName>
+                <default>false</default>
+                <label>Customer Concentration</label>
+            </value>
+            <value>
+                <fullName>No angle</fullName>
+                <default>false</default>
+                <label>No angle</label>
+            </value>
+            <value>
+                <fullName>Leverage</fullName>
+                <default>false</default>
+                <label>Leverage</label>
+            </value>
+            <value>
+                <fullName>Pricing</fullName>
+                <default>false</default>
+                <label>Pricing</label>
+            </value>
+            <value>
+                <fullName>Industry</fullName>
+                <default>false</default>
+                <label>Industry</label>
+            </value>
+            <value>
+                <fullName>Size</fullName>
+                <default>false</default>
+                <label>Size</label>
+            </value>
+            <value>
+                <fullName>Other Opportunities in Space</fullName>
+                <default>false</default>
+                <label>Other Opportunities in Space</label>
+            </value>
+            <value>
+                <fullName>Company/Situation Specific</fullName>
+                <default>false</default>
+                <label>Company/Situation Specific</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Return</fullName>
+                <default>false</default>
+                <label>Return</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

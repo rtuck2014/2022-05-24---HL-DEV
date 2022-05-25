@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Year_Month__c</fullName>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&quot;/?sort=&quot; &amp; TEXT(Year__c) + &quot; - &quot; + TEXT(Month__c), &quot;&quot;, &quot;_parent&quot;) &amp; 
+HYPERLINK(&quot;/&quot; &amp; Id, TEXT(Year__c) + &quot; - &quot; + TEXT(Month__c),&quot;_parent&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Year-Month</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

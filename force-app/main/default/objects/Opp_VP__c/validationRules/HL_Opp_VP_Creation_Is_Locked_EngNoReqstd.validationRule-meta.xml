@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_Opp_VP_Creation_Is_Locked_EngNoReqstd</fullName>
+    <active>true</active>
+    <description>Valuation Period can not be created during Engagement Number is requested.</description>
+    <errorConditionFormula>IF(AND(ISNEW(), AND(  ISPICKVAL(Opportunity__r.Approval_Process__c, &apos;CONVERSION&apos;),  ISPICKVAL(Opportunity__r.Engagement_Approval_Status__c, &apos;Pending&apos;) )), true, false)</errorConditionFormula>
+    <errorMessage>Valuation Period can not be created as Opportunity is locked for Engagement Number Approval Process. Please try once the process is completed or Contact to System Administrator.</errorMessage>
+</ValidationRule>

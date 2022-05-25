@@ -1,0 +1,13 @@
+<apex:page lightningStyleSheets="true">
+<apex:slds />
+    <apex:includeLightning />
+    <div id="lightningvf" />
+    <script>
+        $Lightning.use("c:TableauHomePageApplication", function() {
+                 $Lightning.createComponent("c:hlHomePageDashboard",
+              {  },
+              "lightningvf",
+          );
+        });
+    </script>
+</apex:page>

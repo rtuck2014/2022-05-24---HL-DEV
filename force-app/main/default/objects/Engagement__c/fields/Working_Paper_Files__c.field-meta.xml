@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Working_Paper_Files__c</fullName>
+    <externalId>false</externalId>
+    <label>Working Paper Files</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Completed and Archived</fullName>
+                <default>false</default>
+                <label>Completed and Archived</label>
+            </value>
+            <value>
+                <fullName>Exception</fullName>
+                <default>false</default>
+                <label>Exception</label>
+            </value>
+            <value>
+                <fullName>Pending</fullName>
+                <default>false</default>
+                <label>Pending</label>
+            </value>
+            <value>
+                <fullName>Post-Closing Work</fullName>
+                <default>false</default>
+                <label>Post-Closing Work</label>
+            </value>
+            <value>
+                <fullName>Received Awaiting Review</fullName>
+                <default>false</default>
+                <label>Received Awaiting Review</label>
+            </value>
+            <value>
+                <fullName>Shipped</fullName>
+                <default>false</default>
+                <label>Shipped</label>
+            </value>
+            <value>
+                <fullName>Pending Review</fullName>
+                <default>false</default>
+                <label>Pending Review</label>
+            </value>
+            <value>
+                <fullName>Correction Requested by Reviewer</fullName>
+                <default>false</default>
+                <label>Correction Requested by Reviewer</label>
+            </value>
+            <value>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+                <label>Submitted</label>
+            </value>
+            <value>
+                <fullName>Pending Shipment</fullName>
+                <default>false</default>
+                <label>Pending Shipment</label>
+            </value>
+            <value>
+                <fullName>Documents Requested by Records</fullName>
+                <default>false</default>
+                <label>Documents Requested by Records</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>Check out</fullName>
+                <default>false</default>
+                <label>Check out</label>
+            </value>
+            <value>
+                <fullName>Check IN</fullName>
+                <default>false</default>
+                <label>Check IN</label>
+            </value>
+            <value>
+                <fullName>Personal Documents Received by Records</fullName>
+                <default>false</default>
+                <label>Personal Documents Received by Records</label>
+            </value>
+            <value>
+                <fullName>Re-submission to records</fullName>
+                <default>false</default>
+                <label>Re-submission to records</label>
+            </value>
+            <value>
+                <fullName>Box Added</fullName>
+                <default>false</default>
+                <label>Box Added</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

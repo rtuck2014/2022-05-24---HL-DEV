@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__heightPopup</fullName>
+    <active>true</active>
+    <description>Height popup can only be within the permissible limits : min=200, max=800</description>
+    <errorConditionFormula>OR(OR(lmscons__Popup_Height__c  &lt; 200,lmscons__Popup_Height__c  &gt; 800), NULLVALUE(lmscons__Popup_Height__c  , 0) = 0)</errorConditionFormula>
+    <errorDisplayField>lmscons__Popup_Height__c</errorDisplayField>
+    <errorMessage>Height popup can only be within the permissible limits : min=200, max=800</errorMessage>
+</ValidationRule>

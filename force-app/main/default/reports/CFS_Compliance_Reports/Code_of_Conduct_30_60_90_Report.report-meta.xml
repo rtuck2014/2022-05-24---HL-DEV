@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_36690081</developerName>
+        <masterLabel>Outstanding</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>lmscons__Transcript_Line__c$Age__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>25</to>
+            </sourceValues>
+            <value>No Action (less than 25 days)</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>25</from>
+                <to>30</to>
+            </sourceValues>
+            <value>REMINDER (25 - 30 days)</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>30</from>
+                <to>45</to>
+            </sourceValues>
+            <value>OVERDUE (30 - 45 days)</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>45</from>
+            </sourceValues>
+            <value>CRITICAL (over 45 days)</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>lmscons__Transcript_Line__c$Age__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Transcript_Line__c$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>lmscons__Transcript_Line__c$Name</field>
+    </columns>
+    <columns>
+        <field>lmscons__Transcript_Line__c$lmscons__Training_User_License__c.lmscons__User__c.Name</field>
+    </columns>
+    <columns>
+        <field>lmscons__Transcript_Line__c$lmscons__Transcript__c.lmscons__Trainee__c.Title</field>
+    </columns>
+    <columns>
+        <field>lmscons__Transcript_Line__c$lmscons__Percent_Complete__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Transcript_Line__c$lmscons__Content_Title__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>This report shows those who have not completed within 25 days, overdue by 30 days and over 45 days or more overdue.</description>
+    <filter>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Percent_Complete__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>100</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>lmscons__Transcript_Line__c$lmscons__Content_Title__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Compliance - Code Of Conduct</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_36690081</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <name>Code of Conduct - Outstanding</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_CFS_Assignments__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>lmscons__Transcript_Line__c$lmscons__Completed_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

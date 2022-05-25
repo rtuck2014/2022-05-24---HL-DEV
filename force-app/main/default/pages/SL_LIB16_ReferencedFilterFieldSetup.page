@@ -1,0 +1,78 @@
+<apex:page controller="SL_LIB16_ctrl_FilterFieldSetup" id="filterId" tabStyle="SL_Mass_Implementation__c">
+    <apex:sectionHeader title="Referenced Filter Field Setup" subtitle="For Field: {!referenceSystemFieldName}"/>
+<script>
+if (!window.console) {var console = {};}
+if (!console.log) {console.log = function() {};}
+</script>
+
+    <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" />
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageMessages id="error" />
+
+            <apex:pageBlockSection collapsible="true" columns="1" title="Filter Field Detail">
+                <apex:outputField value="{!newFFItem.Mass_Implementation__c}"/>
+                <apex:outputField value="{!newFFItem.Type__c}"/>
+                <apex:outputField value="{!newFFItem.Parent_Ref_Field__c}"/>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection collapsible="true" columns="1" title="Field list for {!referenceObjectName} Object">
+
+                <apex:pageBlockTable value="{!filterFieldList}" var="item">
+                    <apex:column style="width: 30px;">
+                        <apex:facet name="header">
+                            <apex:inputCheckbox styleClass="ff_checkbox_main" />
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!item.selected}"
+                            styleClass="ff_checkbox" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Custom Label</apex:facet>
+                        <apex:inputText value="{!item.customLabel}" style="width: 250px;" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">System Label</apex:facet>
+                        <apex:outputText value="{!item.systemLabel}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">System Name</apex:facet>
+                        <apex:outputText value="{!item.systemName}" />
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Field Type</apex:facet>
+                        <apex:outputText value="{!item.fieldType}" />
+                    </apex:column>
+                </apex:pageBlockTable>
+
+            </apex:pageBlockSection>
+
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!doReferencedSave}" />
+                <apex:commandButton value="Cancel" action="{!doReferencedCancel}" />
+            </apex:pageBlockButtons>
+
+        </apex:pageBlock>
+    </apex:form>
+
+    <script type="text/javascript">
+    
+        function resetMainCheckbox() {
+            var allChacked = true;
+            $('.ff_checkbox').each(function(){
+                if (!this.checked) {
+                    allChacked = false;
+                }
+            });
+            $('.ff_checkbox_main').attr('checked', allChacked);
+        }
+    
+        $('.ff_checkbox_main').live('click', function (){
+            $('.ff_checkbox').attr('checked', this.checked);
+        });
+        $('.ff_checkbox').live('click', function (){
+            resetMainCheckbox();
+        });
+        
+    </script>
+
+</apex:page>

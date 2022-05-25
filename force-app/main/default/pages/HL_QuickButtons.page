@@ -1,0 +1,31 @@
+<apex:page showHeader="false" sidebar="false" tabStyle="Opportunity__c">
+<apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+<script type="text/javascript">
+$j = jQuery.noConflict();
+$j(document).ready(function () {
+    DocumentReady();
+});
+function DocumentReady() {
+    window.parent.document.$j("[id$=feedLinks]").hide();
+}
+function resizeFrames() {
+    if(typeof $j("[title$=HL_ActivityLog]").contentWindow != 'undefined'){
+        $j("[title$=HL_ActivityLog]").css('height',$j("[title$=HL_ActivityLog]").contentWindow.document.body.scrollHeight + 'px');
+    } 
+}  
+</script>
+<style>
+    .pbTitle {display: none;}    
+</style>
+<apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockButtons styleClass="center" >
+            <apex:commandLink action="{!URLFOR($Action.Contact.Add_Contact2)}" value="Add Contact" target="_top" styleClass="btn" style="text-decoration:none;" />
+            <apex:commandLink action="{!URLFOR($Action.Account.Add_Company2)}" value="Add Company" target="_top" styleClass="btn" style="text-decoration:none;"/> 
+            <apex:commandLink action="{!URLFOR($Action.Opportunity__c.New_Opportunity)}" value="Add Opportunity" target="_top" styleClass="btn" style="text-decoration:none;"/>
+            <apex:commandLink action="{!URLFOR($Action.Activity.NewEvent)}" value="Add Activity" target="_top" styleClass="btn" style="text-decoration:none;"/> 
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

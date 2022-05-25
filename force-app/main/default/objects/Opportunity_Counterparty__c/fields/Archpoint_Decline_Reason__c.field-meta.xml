@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Archpoint_Decline_Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Archpoint Decline Reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Financial profile</fullName>
+                <default>false</default>
+                <label>Financial profile</label>
+            </value>
+            <value>
+                <fullName>Management team</fullName>
+                <default>false</default>
+                <label>Management team</label>
+            </value>
+            <value>
+                <fullName>Market size</fullName>
+                <default>false</default>
+                <label>Market size</label>
+            </value>
+            <value>
+                <fullName>Market sector</fullName>
+                <default>false</default>
+                <label>Market sector</label>
+            </value>
+            <value>
+                <fullName>Lack of market traction</fullName>
+                <default>false</default>
+                <label>Lack of market traction</label>
+            </value>
+            <value>
+                <fullName>Not investment focus</fullName>
+                <default>false</default>
+                <label>Not investment focus</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

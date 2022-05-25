@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Client_Billable__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Is the Client Billable?</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Is the Client Billable for this gift?</inlineHelpText>
+    <label>Is Client Billable?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

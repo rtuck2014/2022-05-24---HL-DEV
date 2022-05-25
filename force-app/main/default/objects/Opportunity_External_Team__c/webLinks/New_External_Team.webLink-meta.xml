@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_External_Team</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Add Opportunity Contact</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>var LOB =&quot;{!Opportunity__c.Line_of_Business__c}&quot;
+
+//CF Opp
+if(LOB==&quot;CF&quot;){
+navigateToUrl(&apos;/a06/e?RecordType=012i0000001NIoY&amp;CF00Ni000000D7zBE={!URLENCODE(Opportunity__c.Name)}&amp;CF00Ni000000D7zBE_lkid={!Opportunity__c.Id}&amp;retURL=/{!Opportunity__c.Id}&amp;saveURL=/{!Opportunity__c.Id}&apos;);
+}
+
+//FVA Opp
+else if(LOB==&quot;FVA&quot;){
+navigateToUrl(&apos;/a06/e?RecordType=012i0000001NIoZ&amp;CF00Ni000000D7zBE={!URLENCODE(Opportunity__c.Name)}&amp;CF00Ni000000D7zBE_lkid={!Opportunity__c.Id}&amp;retURL=/{!Opportunity__c.Id}&amp;saveURL=/{!Opportunity__c.Id}&apos;);
+}
+
+//FR Opp
+else if(LOB==&quot;FR&quot;){
+navigateToUrl(&apos;/a06/e?RecordType=012i0000001NIoa&amp;CF00Ni000000D7zBE={!URLENCODE(Opportunity__c.Name)}&amp;CF00Ni000000D7zBE_lkid={!Opportunity__c.Id}&amp;retURL=/{!Opportunity__c.Id}&amp;saveURL=/{!Opportunity__c.Id}&apos;);
+}
+
+//SC Opp
+else if(LOB==&quot;SC&quot;){
+navigateToUrl(&apos;/a06/e?RecordType=012i0000001NIob&amp;CF00Ni000000D7zBE={!URLENCODE(Opportunity__c.Name)}&amp;CF00Ni000000D7zBE_lkid={!Opportunity__c.Id}&amp;retURL=/{!Opportunity__c.Id}&amp;saveURL=/{!Opportunity__c.Id}&apos;);
+}
+
+else{
+navigateToUrl(&apos;/a06/e?RecordType=01231000000xzfv&amp;CF00Ni000000D7Ns3={!URLENCODE(Contact.Name)}&amp;CF00Ni000000D7Ns3_lkid={!Contact.Id}&amp;retURL=/{!Contact.Id}&amp;saveURL=/{!Contact.Id}&apos;);
+}</url>
+</WebLink>

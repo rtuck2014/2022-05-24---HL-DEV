@@ -1,0 +1,39 @@
+<apex:page standardController="Engagement__c" extensions="HL_RevenueProjectionViewController" lightningStylesheets="true">
+<apex:form >
+    <apex:pageBlock id="RevenueProjectionPB" title="Revenue Projection">
+        <apex:pageBlockButtons style="text-align: center;">
+        <apex:outputPanel id="redirectRevenueProjection">
+        <apex:actionRegion id="UpdateRevenueProjection">
+        <apex:outputLink id="btnRevenueProjectionEdit" styleClass="btn" style="btn;" value="{!RedirectToPage}" target="_top">
+        <apex:actionSupport event="onClick" action="{!getRedirectToPage}" status="workstatustwo" />Update Revenue Projection
+        </apex:outputLink>
+        </apex:actionRegion>
+            <apex:actionRegion id="ViewRevenueProjection">
+        <apex:outputLink id="btnRevenueProjectionView" styleClass="btn" style="btn;" value="{!RedirectToPageView}" target="_top">
+        <apex:actionSupport event="onClick" action="{!getRedirectToPageView}" status="workstatustwo" />View All Revenue Projection
+        </apex:outputLink>
+        </apex:actionRegion>
+        </apex:outputPanel>
+        </apex:pageBlockButtons>
+         <apex:outputpanel style="overflow:scroll;height:250px;" layout="block">
+        <apex:pageBlockTable var="rp" value="{!revenueProjectionList}" id="revenueTable">
+            <apex:column headerValue="Year">
+                <apex:outputField value="{!rp.Year__c}" />
+            </apex:column>
+            <apex:column headerValue="Month">
+                <apex:outputField value="{!rp.Month__c}" />
+            </apex:column>
+            <apex:column headerValue="Projected Transaction Fee">
+                <apex:outputField value="{!rp.Projected_Transaction_Fee__c}" />
+            </apex:column>
+            <apex:column headerValue="Projected Monthly Fee">
+                <apex:outputField value="{!rp.Projected_Monthly_Fee__c}" />
+            </apex:column>
+            <apex:column headerValue="Archive">
+                <apex:outputField value="{!rp.Archive__c}" />
+            </apex:column>
+        </apex:pageBlockTable>
+        </apex:outputpanel>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

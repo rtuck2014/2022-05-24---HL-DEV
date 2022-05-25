@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Grant access to view StaffID &amp; HR Employee ID, user may not be able to see based on page layout but can view on reports.</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.HR_EMPLOYEEID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.STAFFID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Staff ID</label>
+    <license>Salesforce</license>
+</PermissionSet>

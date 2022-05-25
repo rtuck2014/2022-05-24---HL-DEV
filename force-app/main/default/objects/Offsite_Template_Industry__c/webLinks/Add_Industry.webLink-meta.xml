@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_Industry</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Add Industry</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>/a3i/e?&amp;CF00NM0000001WjN3={!Offsite_Template__c.Name}&amp;CF00NM0000001WjN3_lkid={!Offsite_Template__c.Id}&amp;saveURL=%2F{!Offsite_Template__c.Id}&amp;retURL=%2F{!Offsite_Template__c.Id}</url>
+</WebLink>

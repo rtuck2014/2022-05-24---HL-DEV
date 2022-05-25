@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Conflict_Check_Date__c</fullName>
+    <description>looks at request date from opp</description>
+    <externalId>false</externalId>
+    <formula>Related_Opportunity__r.Conflicts_Check_Request_Date__c</formula>
+    <label>Conflict Check Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

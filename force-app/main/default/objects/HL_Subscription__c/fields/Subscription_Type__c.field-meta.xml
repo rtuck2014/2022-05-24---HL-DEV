@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Subscription_Type__c</fullName>
+    <description>HL Subscription is used for the email notifications/security or the report access in CRM.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>HL Subscription is used for the email notifications/security or the report access in CRM.</inlineHelpText>
+    <label>Subscription Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Individual Subscriber</fullName>
+                <default>false</default>
+                <label>Individual Subscriber</label>
+            </value>
+            <value>
+                <fullName>Outlook Distribution Group</fullName>
+                <default>false</default>
+                <label>Outlook Distribution Group</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

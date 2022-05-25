@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EstimatedSigningDateSignedTermSheets</fullName>
+    <active>true</active>
+    <description>Estimated Signing Date is required based off key record types and stages.</description>
+    <errorConditionFormula>RecordType.DeveloperName = &quot;Capital_Markets&quot; &amp;&amp;
+TEXT(Stage__c) = &quot;Signed Term Sheets&quot; &amp;&amp;
+ISBLANK(Estimated_Signing_Date__c)</errorConditionFormula>
+    <errorMessage>Enter Estimated Signing Date; Estimated Signing Date is required when stage is Signed Term Sheets</errorMessage>
+</ValidationRule>

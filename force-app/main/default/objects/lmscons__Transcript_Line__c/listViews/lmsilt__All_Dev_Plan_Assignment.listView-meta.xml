@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmsilt__All_Dev_Plan_Assignment</fullName>
+    <columns>NAME</columns>
+    <columns>lmscons__Content_Catalog__c</columns>
+    <columns>lmscons__Trainee__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>lmsilt__Dev_Plan_Assignment__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>All Dev Plan Assignment</label>
+    <language>en_US</language>
+</ListView>

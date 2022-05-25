@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmsilt__Assign_Learning_Path</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Assign Learning Path</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>{!URLFOR($Site.prefix&amp;&apos;/apex/lmsilt__AssignLearningPath&apos;, null, [Id=lmscons__Learning_Path__c.Id, AssignDoSort=true] ,true)}</url>
+</WebLink>

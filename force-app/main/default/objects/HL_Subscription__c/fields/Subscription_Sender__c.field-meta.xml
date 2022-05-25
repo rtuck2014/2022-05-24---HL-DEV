@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Subscription_Sender__c</fullName>
+    <description>This is the default sender for the email. This can be overridden by the sender on the HL Subscription.</description>
+    <externalId>false</externalId>
+    <formula>Sender__r.Email</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>This is the default sender for the email. This can be overridden by the sender on the HL Subscription.</inlineHelpText>
+    <label>Subscription Sender</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

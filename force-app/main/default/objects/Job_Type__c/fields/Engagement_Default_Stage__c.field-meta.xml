@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Engagement_Default_Stage__c</fullName>
+    <description>Default Stage for Conversion</description>
+    <externalId>false</externalId>
+    <label>Engagement Default Stage</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Retained</fullName>
+                <default>false</default>
+                <label>Retained</label>
+            </value>
+            <value>
+                <fullName>Advisory</fullName>
+                <default>false</default>
+                <label>Advisory</label>
+            </value>
+            <value>
+                <fullName>Settlement or Agreement Reached</fullName>
+                <default>false</default>
+                <label>Settlement or Agreement Reached</label>
+            </value>
+            <value>
+                <fullName>Book Prep/Underwriting</fullName>
+                <default>false</default>
+                <label>Book Prep/Underwriting</label>
+            </value>
+            <value>
+                <fullName>In Market</fullName>
+                <default>false</default>
+                <label>In Market</label>
+            </value>
+            <value>
+                <fullName>Received Indications of Interest</fullName>
+                <default>false</default>
+                <label>Received Indications of Interest</label>
+            </value>
+            <value>
+                <fullName>Pre-LOI/Due Diligence</fullName>
+                <default>false</default>
+                <label>Pre-LOI/Due Diligence</label>
+            </value>
+            <value>
+                <fullName>Rec&apos;d Indications/Submitted Bid</fullName>
+                <default>false</default>
+                <label>Rec&apos;d Indications/Submitted Bid</label>
+            </value>
+            <value>
+                <fullName>Due Diligence</fullName>
+                <default>false</default>
+                <label>Due Diligence</label>
+            </value>
+            <value>
+                <fullName>Signed LOI/Due Diligence</fullName>
+                <default>false</default>
+                <label>Signed LOI/Due Diligence</label>
+            </value>
+            <value>
+                <fullName>Signed Term Sheets</fullName>
+                <default>false</default>
+                <label>Signed Term Sheets</label>
+            </value>
+            <value>
+                <fullName>Documentation</fullName>
+                <default>false</default>
+                <label>Documentation</label>
+            </value>
+            <value>
+                <fullName>Pending Regulatory Approval</fullName>
+                <default>false</default>
+                <label>Pending Regulatory Approval</label>
+            </value>
+            <value>
+                <fullName>Verbally Retained</fullName>
+                <default>false</default>
+                <label>Verbally Retained</label>
+            </value>
+            <value>
+                <fullName>Performing Analysis</fullName>
+                <default>false</default>
+                <label>Performing Analysis</label>
+            </value>
+            <value>
+                <fullName>Ongoing Analysis</fullName>
+                <default>false</default>
+                <label>Ongoing Analysis</label>
+            </value>
+            <value>
+                <fullName>Review</fullName>
+                <default>false</default>
+                <label>Review</label>
+            </value>
+            <value>
+                <fullName>Testimony</fullName>
+                <default>false</default>
+                <label>Testimony</label>
+            </value>
+            <value>
+                <fullName>Opinion Report</fullName>
+                <default>false</default>
+                <label>Opinion Report</label>
+            </value>
+            <value>
+                <fullName>Opinion Development</fullName>
+                <default>false</default>
+                <label>Opinion Development</label>
+            </value>
+            <value>
+                <fullName>Presentation</fullName>
+                <default>false</default>
+                <label>Presentation</label>
+            </value>
+            <value>
+                <fullName>Delivered Report</fullName>
+                <default>false</default>
+                <label>Delivered Report</label>
+            </value>
+            <value>
+                <fullName>Bill/File</fullName>
+                <default>false</default>
+                <label>Bill/File</label>
+            </value>
+            <value>
+                <fullName>Active</fullName>
+                <default>false</default>
+                <label>Active</label>
+            </value>
+            <value>
+                <fullName>Hold</fullName>
+                <default>false</default>
+                <label>Hold</label>
+            </value>
+            <value>
+                <fullName>Closed</fullName>
+                <default>false</default>
+                <label>Closed</label>
+            </value>
+            <value>
+                <fullName>Dead</fullName>
+                <default>false</default>
+                <label>Dead</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

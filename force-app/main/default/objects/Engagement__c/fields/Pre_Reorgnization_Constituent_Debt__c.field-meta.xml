@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pre_Reorgnization_Constituent_Debt__c</fullName>
+    <description>This was misspelled so I just changed the label (for now)</description>
+    <externalId>false</externalId>
+    <label>Pre Reorganization Constituent Debt</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

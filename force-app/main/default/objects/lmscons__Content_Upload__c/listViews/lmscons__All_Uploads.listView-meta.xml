@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__All_Uploads</fullName>
+    <columns>CREATED_DATE</columns>
+    <columns>lmscons__Title__c</columns>
+    <columns>NAME</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>lmscons__Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>lmscons__Status__c</field>
+        <operation>equals</operation>
+        <value>Processing,Complete</value>
+    </filters>
+    <label>All</label>
+</ListView>

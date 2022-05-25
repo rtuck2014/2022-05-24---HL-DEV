@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Seconds_Worked_Actual__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>Time (in seconds) without rounding</description>
+    <externalId>false</externalId>
+    <label>Seconds Worked Actual</label>
+    <precision>8</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

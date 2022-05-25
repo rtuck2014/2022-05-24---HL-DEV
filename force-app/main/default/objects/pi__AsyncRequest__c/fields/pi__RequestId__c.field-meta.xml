@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pi__RequestId__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Unique ID of the request</description>
+    <externalId>true</externalId>
+    <label>Request ID</label>
+    <length>45</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

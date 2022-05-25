@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$lmscons__Transcript__c.lmscons__Trainee__c.Name</field>
+    </columns>
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$lmscons__Transcript__c.lmscons__Trainee__c.Title</field>
+    </columns>
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$lmscons__Transcript__c.lmscons__Trainee__c.Department</field>
+    </columns>
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$lmscons__Title__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$lmscons__Status__c</field>
+    </columns>
+    <columns>
+        <field>lmscons__Learning_Path_Assignment__c$lmscons__Learning_Path_Progress__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>New / recent hire report</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>lmscons__Learning_Path_Assignment__c$lmscons__Transcript__c.lmscons__Trainee__c.City</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>JZ&apos;s Recent Hires</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Learning_Path_custom_CFS__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>lmscons__Learning_Path_Assignment__c$CreatedDate</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>lmscons__Learning_Path_Assignment__c$CreatedDate</dateColumn>
+        <endDate>2019-10-25</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2019-08-12</startDate>
+    </timeFrameFilter>
+</Report>

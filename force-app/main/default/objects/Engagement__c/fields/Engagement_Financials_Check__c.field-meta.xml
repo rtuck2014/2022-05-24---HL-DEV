@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Engagement_Financials_Check__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(NOT(CONTAINS(TEXT(Industry_Group__c),&apos;FIG&apos;)),
+ 
+  IF( AND(
+          Engagement_Financials_First_Present__c = 1, 
+          Engagement_Financials_Final_Present__c = 1, 
+          Engagement_Financials_Closing_Present__c = 1
+      ),
+      True, False),
+   
+  IF(CONTAINS(TEXT(Industry_Group__c),&apos;FIG&apos;),
+      
+       IF( AND(
+           Engagement_Financials_FIG_Closing__c = 1, 
+          Engagement_Financials_FIG_First__c = 1, 
+          Engagement_Financials_FIG_Final__c = 1
+      ),
+      True, False),
+
+     False
+     
+  )
+
+)</formula>
+    <inlineHelpText>Indicates if required Engagement Financials are present (First, Final, &amp; Closing with Revenue LTM (MM) and EBITDA LTM (MM). For FIG, First, Final, &amp; Closing with Book Value (Current), Total Assets, Net Income (LTM), or EBITDA (LTM))</inlineHelpText>
+    <label>Engagement Financials Check</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

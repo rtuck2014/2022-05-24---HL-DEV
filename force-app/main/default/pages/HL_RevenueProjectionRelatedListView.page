@@ -1,0 +1,78 @@
+<apex:page standardController="Engagement__c" extensions="HL_RevenueProjectionRLVController" tabStyle="Engagement__c" showHeader="false" sidebar="false" lightningStylesheets="true">
+    <apex:form id="rpFrom">
+        <apex:pageBlock title="Revenue Projections" id="pbRevenueProjection">
+            <apex:pageBlockButtons location="top">
+                <apex:outputPanel id="panFilter">
+                    <apex:actionRegion id="UpdateRevenueProjection">
+                        <apex:outputLink id="btnRevenueProjectionEdit" styleClass="btn" style="text-decoration:none;" value="{!RedirectToPage}" target="_parent">
+                            <apex:actionSupport event="onClick" action="{!getRedirectToPage}" status="workstatustwo" />Update Revenue Projection
+                        </apex:outputLink>
+                    </apex:actionRegion> 
+                    <apex:inputCheckbox value="{!CurrentOnly}">
+                        <apex:actionSupport event="onclick" action="{!Filter}" rerender="pbRevenueProjection" status="loadingStatus"></apex:actionSupport>
+                    </apex:inputCheckbox>
+                    <apex:outputText style="font-style:bold;" value="Current Revenue Projections Only"/>
+                    <apex:actionStatus id="loadingStatus">
+                        <apex:facet name="start" ><apex:outputPanel ><img style="padding-left: 10px;" src="/img/loading.gif" /><span>&nbsp;Loading...</span></apex:outputPanel></apex:facet>
+                    </apex:actionStatus> 
+                </apex:outputPanel> 
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!RevenueProjectionList}" var="rp" rendered="{!RevenueProjectionList.size > 0}">
+                <apex:column headerValue="Year">
+                    <apex:outputField value="{!rp.Year__c}" />
+                </apex:column>
+                <apex:column headerValue="Month">
+                    <apex:outputField value="{!rp.Month__c}" />
+                </apex:column>
+                <apex:column headerValue="Projected Monthly Fee">
+                    <apex:outputField value="{!rp.Projected_Monthly_Fee__c}" />
+                </apex:column>
+                <apex:column headerValue="Projected Transaction Fee">
+                    <apex:outputField value="{!rp.Projected_Transaction_Fee__c}" />
+                </apex:column>
+                <apex:column headerValue="Total Projected Fee">
+                    <apex:outputField value="{!rp.Total__c}" />
+                </apex:column>
+                <!--<apex:column headerValue="Archive">
+                    <apex:outputField value="{!rp.Archive__c}" />
+                </apex:column>-->
+            </apex:pageBlockTable>
+            <apex:outputPanel rendered="{!RevenueProjectionList.size > 0}">
+                <table style="width: 100%">
+                    <tr>
+                        <td class="bold" style="width:180px;">
+                            Page:  <apex:outputText value="{!PageNumber} of {! if(CEILING(setCon.ResultSize/setCon.PageSize) > 0, CEILING(setCon.ResultSize/setCon.PageSize), 1) }" />
+                        </td>
+                        <td align="center">
+                            <apex:commandLink action="{!previous}" rendered="{!hasPrevious}" value="<< Previous" reRender="pbRevenueProjection" oncomplete="DocumentReady()" />
+                            <apex:outputText style="color: #ccc;" value="<< Previous" rendered="{! NOT(HasPrevious) }" />&nbsp;&nbsp;
+                            <apex:commandLink action="{!next}" rendered="{!hasNext}" value="Next >>" reRender="pbRevenueProjection" oncomplete="DocumentReady()" />
+                            <apex:outputText style="color: #ccc;" value="Next >>" rendered="{! NOT(HasNext) }" />
+                        </td>
+                        <td align="right" class="bold" style="width:160px;">
+                            Records per page
+                            <apex:selectList value="{!setCon.PageSize}" size="1" >
+                                <apex:selectOption itemValue="5" itemLabel="5" />
+                                <apex:selectOption itemValue="20" itemLabel="20" />
+                                <apex:selectOption itemValue="100" itemLabel="100" />
+                                <apex:actionSupport event="onchange" reRender="pbRevenueProjection" oncomplete="DocumentReady()" />
+                            </apex:selectList>
+                        </td>
+                        <td align="right" class="bold" style="width:120px;">
+                            Total Records:
+                            <apex:outputLabel value="{!setCon.ResultSize}" />
+                        </td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+            <apex:outputPanel id="noRevenueProjections" rendered="{!RevenueProjectionList.size == 0}">
+                <center>
+                    <h2>
+                        <apex:outputLabel value="No Records To Display" rendered="{!RevenueProjectionList.size == 0}" />
+                    </h2>
+                </center>
+            </apex:outputPanel>
+            <input id="revenueProjectionSize" type='hidden' value='{!setCon.ResultSize}' />
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

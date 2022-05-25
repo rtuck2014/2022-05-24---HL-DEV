@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Opportunity__c$Opportunity_Number__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c.Engagements__r$Engagement_Number__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c.Engagements__r$Date_Engaged__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c.Engagements__r$Name</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c$Job_Type__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity__c$Line_of_Business__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>Opp-Eng Map</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>HL_Opportunities_With_or_Without_Engagements__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity__c$Expense_Available_Until__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

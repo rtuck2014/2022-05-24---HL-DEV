@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LegalAdvisorCreditor__c</fullName>
+    <description>Opportunity Contact with Role = “Legal Advisor to Creditor” and Opportunity Contact with Role as “Legal Advisor to Company/Debtor” are required depending on Job Type of the deal.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If Yes, add the contacts under opp contacts and select the role Legal Advisor to Creditor.</inlineHelpText>
+    <label>Legal Advisor to HL Client Group</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+            <value>
+                <fullName>No</fullName>
+                <default>false</default>
+                <label>No</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

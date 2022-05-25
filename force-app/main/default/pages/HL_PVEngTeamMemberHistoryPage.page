@@ -1,0 +1,3 @@
+<apex:page name="HL_PVEngTeamMemberHistoryPage" standardController="Eng_VP_TeamMember__c" lightningStylesheets="true">
+    <apex:relatedList list="Histories" pageSize="10" />
+</apex:page>

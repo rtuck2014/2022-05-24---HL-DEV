@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Track_Time</fullName>
+    <availability>online</availability>
+    <description>Track Time</description>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Track Time</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>LoadCSSFile(&apos;/resource/JQueryUI/jquery-ui-1.11.2/jquery-ui.min.css&apos;);
+LoadCSSFile(&apos;/resource/HL_TimeTracking/flipclock.css&apos;);
+LoadCSSFile(&apos;/resource/HL_TimeTracking/custom.css&apos;);
+{!REQUIRESCRIPT(&apos;/soap/ajax/33.0/connection.js&apos;)}
+{!REQUIRESCRIPT(&apos;/soap/ajax/30.0/apex.js&apos;)}
+{!REQUIRESCRIPT(&apos;/resource/jsFiles/jquery-1.7.1.min.js&apos;)}
+{!REQUIRESCRIPT(&apos;/resource/JQueryUI/jquery-ui-1.11.2/jquery-ui.min.js&apos;)}
+{!REQUIRESCRIPT(&apos;/resource/HL_TimeTracking/flipclock.min.js&apos;)}
+{!REQUIRESCRIPT(&apos;/resource/HL_Scripts/HL_TimeTracker.js&apos;)}
+{!REQUIRESCRIPT(&apos;/apex/HL_TimeTracker&apos;)}
+LaunchTimeTracker(&quot;{!User.Id}&quot;,&quot;Engagement__c&quot;, &quot;{!Engagement__c.Id}&quot;, &quot;{!Engagement__c.Name} - {!Engagement__c.Engagement_Number__c}&quot;, true);</url>
+</WebLink>

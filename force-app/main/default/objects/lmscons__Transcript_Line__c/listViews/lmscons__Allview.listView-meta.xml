@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__Allview</fullName>
+    <columns>NAME</columns>
+    <columns>lmscons__Content_Title__c</columns>
+    <columns>lmscons__Trainee__c</columns>
+    <columns>lmscons__Status__c</columns>
+    <columns>lmscons__Last_Launched_Date__c</columns>
+    <columns>lmscons__Cornerstone_ID__c</columns>
+    <columns>lmscons__Quiz__c</columns>
+    <columns>lmscons__Training_Content__c</columns>
+    <columns>lmscons__Learning_Path_Item__c</columns>
+    <columns>lmscons__Curriculum_Item__c</columns>
+    <columns>lmscons__Curriculum_Assignment__c</columns>
+    <columns>lmscons__Learning_Path_Assignment__c</columns>
+    <columns>lmscons__Training_Path_Item__c</columns>
+    <columns>lmscons__Content_Catalog__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+    <language>en_US</language>
+</ListView>

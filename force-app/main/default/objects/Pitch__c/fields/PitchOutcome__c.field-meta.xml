@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PitchOutcome__c</fullName>
+    <externalId>false</externalId>
+    <label>Pitch Outcome</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>HL Awarded no pitch</fullName>
+                <default>false</default>
+                <label>HL Awarded no pitch</label>
+            </value>
+            <value>
+                <fullName>HL Awarded w/non-competitive pitch</fullName>
+                <default>false</default>
+                <label>HL Awarded w/non-competitive pitch</label>
+            </value>
+            <value>
+                <fullName>HL Awarded after competitive pitch</fullName>
+                <default>false</default>
+                <label>HL Awarded after competitive pitch</label>
+            </value>
+            <value>
+                <fullName>HL Lost competitive pitch</fullName>
+                <default>false</default>
+                <label>HL Lost competitive pitch</label>
+            </value>
+            <value>
+                <fullName>HL Did not pitch - conflicted</fullName>
+                <default>false</default>
+                <label>HL Did not pitch - conflicted</label>
+            </value>
+            <value>
+                <fullName>HL Not invited to pitch</fullName>
+                <default>false</default>
+                <label>HL Not invited to pitch</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

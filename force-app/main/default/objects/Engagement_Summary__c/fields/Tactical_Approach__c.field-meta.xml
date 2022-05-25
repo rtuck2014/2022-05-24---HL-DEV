@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tactical_Approach__c</fullName>
+    <externalId>false</externalId>
+    <label>Tactical Approach</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Hostile</fullName>
+                <default>false</default>
+                <label>Hostile</label>
+            </value>
+            <value>
+                <fullName>Friendly</fullName>
+                <default>false</default>
+                <label>Friendly</label>
+            </value>
+            <value>
+                <fullName>Proxy Solicitation</fullName>
+                <default>false</default>
+                <label>Proxy Solicitation</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

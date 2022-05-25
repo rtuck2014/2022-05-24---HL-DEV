@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Modules_Archived</fullName>
+    <columns>NAME</columns>
+    <columns>lmscons__Title__c</columns>
+    <columns>lmscons__Description__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>lmscons__Available_For_Mobile__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>lmscons__isArchived__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Modules (Archived)</label>
+    <sharedTo>
+        <group>Training</group>
+    </sharedTo>
+</ListView>

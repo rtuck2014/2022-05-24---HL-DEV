@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Registered_Only__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Indicates if the Role is Available for Only Registered Staff</description>
+    <externalId>false</externalId>
+    <label>Registered Only</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

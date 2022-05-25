@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__My_Unresolved_Items_Agent__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Controls who you authorize too handle your Groove Unresolved Items (i.e. deleting or assigning synced emails to related records).
+
+WARNING: This will expose some of your emails to the Unresolved Items Agent.</inlineHelpText>
+    <label>My Unresolved Items Agent</label>
+    <relationshipName>Unresolved_Items_Clients</relationshipName>
+    <restrictedAdminField>false</restrictedAdminField>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Hierarchy</type>
+</CustomField>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Client_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Client Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Private Equity Fund</fullName>
+                <default>false</default>
+                <label>Private Equity Fund</label>
+            </value>
+            <value>
+                <fullName>Hedge Fund</fullName>
+                <default>false</default>
+                <label>Hedge Fund</label>
+            </value>
+            <value>
+                <fullName>Mutual Fund</fullName>
+                <default>false</default>
+                <label>Mutual Fund</label>
+            </value>
+            <value>
+                <fullName>Bank</fullName>
+                <default>false</default>
+                <label>Bank</label>
+            </value>
+            <value>
+                <fullName>BDC</fullName>
+                <default>false</default>
+                <label>BDC</label>
+            </value>
+            <value>
+                <fullName>Loan Originator</fullName>
+                <default>false</default>
+                <label>Loan Originator</label>
+            </value>
+            <value>
+                <fullName>Mortgage Originator</fullName>
+                <default>false</default>
+                <label>Mortgage Originator</label>
+            </value>
+            <value>
+                <fullName>Real Estate Fund</fullName>
+                <default>false</default>
+                <label>Real Estate Fund</label>
+            </value>
+            <value>
+                <fullName>REIT</fullName>
+                <default>false</default>
+                <label>REIT</label>
+            </value>
+            <value>
+                <fullName>GSE</fullName>
+                <default>false</default>
+                <label>GSE</label>
+            </value>
+            <value>
+                <fullName>Law Firm</fullName>
+                <default>false</default>
+                <label>Law Firm</label>
+            </value>
+            <value>
+                <fullName>Fund of Funds</fullName>
+                <default>false</default>
+                <label>Fund of Funds</label>
+            </value>
+            <value>
+                <fullName>Regulator</fullName>
+                <default>false</default>
+                <label>Regulator</label>
+            </value>
+            <value>
+                <fullName>Insurance Company</fullName>
+                <default>false</default>
+                <label>Insurance Company</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

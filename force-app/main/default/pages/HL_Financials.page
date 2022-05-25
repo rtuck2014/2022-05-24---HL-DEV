@@ -1,0 +1,178 @@
+<apex:page controller="HL_FinancialController" showHeader="false" sidebar="false" lightningStylesheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_Shared.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_NBC.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>    
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet> 
+    <style>
+    .padRight {
+        padding-right: 5px;
+        }        
+    </style>
+    <script type="text/javascript">
+            function ClosePopup(){
+            window.parent.$j("[title$=Close]").trigger('click');
+            }
+            function RefreshPopup(){
+            window.location.reload();
+            }
+        </script>
+    <apex:form >
+    <apex:pageBlock mode="Edit" tabStyle="Approval_Object__c">
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!Save}" value="Save and New" oncomplete="RefreshPopup();"/>
+                <apex:commandButton action="{!Save}" value="Save and Exit" oncomplete="ClosePopup();"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1">
+               <apex:outputPanel >
+                    <table>
+                        <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Related Company"></apex:outputLabel>
+                            </td>
+                            <td>
+                                <apex:inputField value="{!Financial.Related_Account__c}"/> 
+                            </td>               
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Type"></apex:outputLabel>
+                            </td>
+                            <td>
+                                <apex:inputField value="{!Financial.Type__c}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Year"></apex:outputLabel>
+                            </td>
+                            <td>
+                                <apex:inputField value="{!Financial.Year__c}"/>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Revenue (MM)"></apex:outputLabel>
+                             </td>
+                            <td>
+                                <apex:inputField styleClass="numeric-medium" value="{!Financial.Revenue_MM__c}"/>
+                            </td>
+                        </tr>               
+                         <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="EBIT (MM)"></apex:outputLabel>
+                             </td>
+                             <td>
+                                <apex:inputField styleClass="numeric-medium" value="{!Financial.EBIT_MM__c}"/>
+                            </td>
+                        </tr>  
+                         <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="EBITDA (MM)"></apex:outputLabel>
+                             </td>
+                             <td>
+                                <apex:inputField styleClass="numeric-medium" value="{!Financial.EBITDA__c}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Interest & Fee Income*"></apex:outputLabel>
+                             </td>
+                             <td>
+                                <apex:inputField styleClass="numeric-medium" value="{!Financial.Interest_and_Fee_Income__c}"/>
+                            </td>
+                        </tr>  
+                         <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Pre-Tax Income (MM)"></apex:outputLabel>
+                             </td>
+                             <td>
+                                <apex:inputField styleClass="numeric-medium" value="{!Financial.Pre_Tax_Income__c}"/>
+                            </td>
+                        </tr>  
+                         <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Book Value (MM)"></apex:outputLabel>
+                             </td>
+                             <td>
+                                <apex:inputField styleClass="numeric-medium" value="{!Financial.Book_Value_MM__c}"/>
+                            </td>
+                        </tr>                          
+                         <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Assets Under Management (MM)"></apex:outputLabel>
+                             </td>
+                             <td>
+                                <apex:inputField styleClass="numeric-medium" value="{!Financial.Assets_Under_Management__c}"/>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Face Value (MM)"></apex:outputLabel>
+                             </td>
+                             <td>
+                                <apex:inputField styleClass="numeric-medium" value="{!Financial.Face_Value_MM__c}"/>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Net Asset Value (MM)"></apex:outputLabel>
+                             </td>
+                             <td>
+                                <apex:inputField styleClass="numeric-medium" value="{!Financial.Net_Asset_Value_MM__c}"/>
+                            </td>
+                        </tr>  
+                         <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Number of Companies"></apex:outputLabel>
+                             </td>
+                             <td>
+                                <apex:inputField styleClass="numeric-medium" value="{!Financial.Number_of_Companies__c}"/>
+                            </td>
+                        </tr>  
+                         <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Number of Loans"></apex:outputLabel>
+                             </td>
+                             <td>
+                                <apex:inputField styleClass="numeric-medium" value="{!Financial.Number_of_Loans__c}"/>
+                            </td>
+                        </tr>  
+                         <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Number of Interests"></apex:outputLabel>
+                             </td>
+                             <td>
+                                <apex:inputField styleClass="numeric-medium" value="{!Financial.Number_of_Interests__c}"/>
+                            </td>
+                        </tr>  
+                         <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Number of Policies"></apex:outputLabel>
+                             </td>
+                             <td>
+                                <apex:inputField styleClass="numeric-medium" value="{!Financial.Number_of_Policies__c}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <apex:outputLabel styleClass="padRight" value="Currency"></apex:outputLabel>
+                             </td>
+                             <td>
+                                <apex:inputField styleClass="numeric-medium" value="{!Financial.CurrencyIsoCode}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <apex:outputText style="font-size:0.90em;font-weight:normal;font-style:italic" value="*Interest & Fee Income not in millions."></apex:outputText>
+                            </td>
+                        </tr>
+                <apex:inputHidden value="{!Financial.Related_Approval__c}"/>                         
+                    </table>
+                </apex:outputPanel>                       
+            </apex:pageBlockSection>  
+    </apex:pageBlock>   
+    </apex:form>
+</apex:page>

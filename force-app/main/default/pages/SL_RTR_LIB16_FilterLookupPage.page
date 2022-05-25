@@ -1,0 +1,30 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" Controller="SL_RTR_LIB16_ctrl_FilterLookupPage">
+
+<script type="text/javascript" src="{!URLFOR($Resource.SL_RTR_LIB16_SFinternal,'functions.js')}"></script> 
+<script  src="{!URLFOR($Resource.SL_RTR_LIB16_SFinternal,'main.js')}" type="text/javascript"></script>
+<script  src="{!URLFOR($Resource.SL_RTR_LIB16_SFinternal,'en_US.js')}" type="text/javascript"></script>
+<link  href="{!URLFOR($Resource.SL_RTR_LIB16_SFinternal,'elements.css')}" media="handheld,print,projection,screen,tty,tv" rel="stylesheet" type="text/css" />
+<link  href="{!URLFOR($Resource.SL_RTR_LIB16_SFinternal,'common.css')}" media="handheld,print,projection,screen,tty,tv" rel="stylesheet" type="text/css" />
+<link  href="{!URLFOR($Resource.SL_RTR_LIB16_SFinternal,'dStandard.css')}" media="handheld,print,projection,screen,tty,tv" rel="stylesheet" type="text/css" />
+<link  href="{!URLFOR($Resource.SL_RTR_LIB16_SFinternal,'dCustom0.css')}" media="handheld,print,projection,screen,tty,tv" rel="stylesheet" type="text/css" />
+<link  href="{!URLFOR($Resource.SL_RTR_LIB16_SFinternal,'extended.css')}" media="handheld,print,projection,screen,tty,tv" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="{!URLFOR($Resource.SL_RTR_LIB16_SFinternal,'favicon.ico')}" />
+<div class="lookup">
+<div class="pbBody" style="padding:0px 0 10px 0"><h2>Select the Multi-picklist values to add below.</h2></div>
+<div class="topButton"><input value="Insert Selected"  class="btn" name="Done" onclick="FilterLookupPage.prototype.transfer(false);" title="Insert Selected" type="button" /></div>
+<div style="padding:0px 0 10px 0">
+    <a href="javascript:FilterLookupPage.prototype.checkAll%28false%29">Deselect all</a> 
+</div>
+<!-- WrappingClass --> 
+<div class="listRelatedObject lookupBlock"><div class="bPageBlock secondaryPalette"><div class="pbHeader"></div><div class="pbBody"><table class="list" border="0" cellspacing="0" cellpadding="0"><tr class="headerRow"><th class="actionColumn" scope="col">&nbsp;</th><th scope="col" class="">Value</th></tr>
+<apex:repeat value="{!lCPickListValue}" var="item"> 
+<tr class="dataRow odd"><td class="actionColumn"><input  id="chkbox{!item.ID}" name="chkbox{!item.ID}" onclick="FilterLookupPage.prototype.doCheckbox({!item.ID});" type="checkbox" value="{!item.Value}" /></td><td><label for="chkbox{!item.ID}">{!item.Value}</label></td></tr>
+</apex:repeat> 
+</table> 
+</div><div class="pbFooter secondaryPalette"><div class="bg"></div></div></div></div><div class="listElementBottomNav"></div> 
+<!-- End ListElement --> 
+<div class="bottomButton" style="padding: 0 0 10px 0"><input value="Insert Selected"  class="btn" name="Done" onclick="FilterLookupPage.prototype.transfer(false);" title="Insert Selected" type="button" /></div>
+<div class="footer" style="padding: 0 0 10px 0">Copyright &copy; 2000-2014 silverlinecrm.com, inc. All rights reserved.</div>
+</div> 
+
+</apex:page>

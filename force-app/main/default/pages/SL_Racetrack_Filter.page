@@ -1,0 +1,219 @@
+<apex:page id="thePage" controller="SL_RacetrackReport" sidebar="false" showHeader="true" standardStylesheets="true">
+<style> 
+.label {
+    -moz-border-radius:5px 5px 0px 0px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    border-top: solid 1px #A6C9E2;
+    border-left: solid 1px #A6C9E2;
+    border-right: solid 1px #A6C9E2; 
+    color:#222222;
+    padding: 5px;
+    font-weight: bold;
+}
+select {
+    -moz-border-radius:5px 5px 5px 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    border: solid 1px #A6C9E2;
+    color:#222222;
+    padding: 1px;
+}
+.panel {
+    -moz-border-radius: 0px 5px 5px 5px;
+    -webkit-border-top-right-radius: 5px;
+    //-webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    border: solid 1px #A6C9E2;
+    padding: 5px;
+    font-family: Verdana;
+    font-size: 13px;
+    color: #424242;
+    display: inline-block;
+}
+.panelHeader {
+    -moz-border-radius:5px 5px 0px 0px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    border-top: solid 1px #A6C9E2;
+    border-left: solid 1px #A6C9E2;
+    border-right: solid 1px #A6C9E2;
+    background-color: #66CCFF;
+    padding: 2px;
+    font-family: Verdana;
+    font-size: 11px;
+    font-weight: bold;
+    color: whitesmoke;
+    display: inline-block;
+}
+</style>
+<apex:outputpanel id="pmsg"><apex:pageMessages /></apex:outputpanel>
+<apex:outputPanel id="mPanel" rendered="{! isNoError }">  
+<apex:includeScript value="{!URLFOR($Resource.SL_RTR_LIB16_jQuerySFFiltres, 'js/jquery-1.4.2.min.js')}" />
+
+<apex:form >
+<apex:inputHidden value="{!inRecordFiltersCols}" required="false" id="des_fld_Rec_FiltersCols"/>
+<apex:inputHidden value="{!inRecordFiltersAdv}" required="false" id="des_fld_Rec_FiltersAdv"/>
+<script>
+    var obj_des_fld_Rec_FiltersCols = document.getElementById('{!$Component.des_fld_Rec_FiltersCols}');
+    var obj_des_fld_Rec_FiltersAdv = document.getElementById('{!$Component.des_fld_Rec_FiltersAdv}');
+</script>
+
+
+    <apex:inputHidden value="{!strParentID}"/>
+    <style>
+        .requireField
+        {
+            width: 5px; 
+            padding-top : 2px;
+            color: #CC0000;
+            font-size: 19px;
+            font-weight:bold;   
+        }
+    </style>
+    <script>
+    
+jQuery.noConflict();    
+(function($) {
+    $(document).ready(function() {
+        $( "#accordion" ).accordion({ autoHeight: false });
+    });
+    
+})(jQuery); 
+    
+        function checkFundValue(projectId)
+        {          
+            if(document.getElementById(projectId).value == ''){ alert('Please select the Project from lookup');}
+            return false;
+        }
+
+        function enableButton(ButtonId, DummyId, projectId)
+        {
+            if(document.getElementById(projectId).value!=null && document.getElementById(projectId).value!='')
+            {            
+                document.getElementById(ButtonId).style.display = '';
+                document.getElementById(DummyId).style.display = 'none';
+            }
+            else
+            {
+                document.getElementById(ButtonId).style.display = 'none';
+                document.getElementById(DummyId).style.display = '';
+            }
+        }
+
+        function clearPicklistValue(picklistId)
+        {
+            var selectOptions = document.getElementById(picklistId).getElementsByTagName("option");
+            for (i=0; i<selectOptions.length; i++){ selectOptions[i].selected = "";} 
+            return false;
+        }
+
+        function clearAllPicklist()
+        {
+            var selectOptions = document.getElementById("tableId").getElementsByTagName("option");
+            for (i=0; i<selectOptions.length; i++){ selectOptions[i].selected = "";}
+            return false;
+        }
+        
+function beforeSubmit()
+{
+    try
+    {
+        re = /\|/gi;
+        var events = jQuery("#sf_filters").sfFilters("Serialize").replace(re, "___");
+        obj_des_fld_Rec_FiltersCols.value = events;
+    } catch(err) {}
+    
+    try
+    {
+        var advanced = jQuery("#sf_filters").sfFilters("AdvancedFilter").toString();
+        if(advanced.toLowerCase().indexOf("object")==-1){ obj_des_fld_Rec_FiltersAdv.value = advanced;}
+        else{ obj_des_fld_Rec_FiltersAdv.value = '';}
+    } catch(err) {}
+    
+    //alert(obj_des_fld_Rec_FiltersCols.value);
+    //alert(obj_des_fld_Rec_FiltersAdv.value);
+}
+
+
+        
+    </script>
+
+    <apex:sectionHeader title="Racetrack Report" subtitle="Filter page"/>
+    <apex:outputPanel id="panel1">
+    <table border="0" cellpadding="2" cellspacing="2">
+    <tr>
+        <td width="140" style="font-weight: bold;text-align: right;"><apex:outputLabel for="engagementId" value="Parent Element:"/></td>
+        <td style="font-weight: bold;">
+            <apex:outputText value="{!strParentObjectName}" />
+            <apex:inputField rendered="{! IF(strParentObjectName!='','false','true')}" value="{! engagementCounterparty[strParentObjectRelation]}"/>
+        </td>
+    </tr>
+    <tr>
+        <td style=" font-weight: bold;text-align: right;"><apex:outputLabel for="groupOption" value="Group By:"/><br/></td>
+        <td>
+            <apex:selectList id="groupOption" value="{!strGroupBy}" style="width:310px" multiselect="false" size="1" >
+                <apex:selectOptions value="{!GroupByOptions}"/>
+            </apex:selectList></td>
+    </tr>
+    <tr>  
+        <td style=" font-weight: bold;text-align: right;"><apex:outputLabel for="sortOption" value="Sort By:"/><br/></td>
+        <td>
+            <apex:selectList id="sortOption" value="{!strSortBy}"  style="width:169px" multiselect="false" size="1" >
+                <apex:selectOptions value="{!SortingOption}"/>
+            </apex:selectList>  
+            <apex:outputLabel for="orderOption" value="Order By : " style="font-weight: bold;padding-left:8px"/>
+            <apex:selectList id="orderOption" value="{!strOrderBy}" style="width:68px" multiselect="false" size="1" >
+            <apex:selectOption itemValue="ASC" itemLabel="ASC"/>
+                <apex:selectOption itemValue="DESC" itemLabel="DESC"/>
+            </apex:selectList>
+        </td>
+    </tr>
+    <tr>
+        <td style=" font-weight: bold;text-align: right;"><apex:outputLabel for="showDates" value="Report Type:"/></td>
+        <td>
+            <apex:selectList id="showDates" value="{!strReportType}" style="width:169px" multiselect="false" size="1" >
+                <apex:selectOption itemValue="checks" itemLabel="With Checkmarks"/>
+                <apex:selectOption itemValue="dates" itemLabel="With Dates"/>
+            </apex:selectList></td>
+    </tr>
+    <tr>
+        <td valign="top" style=" font-weight: bold;text-align: right;"><apex:outputLabel for="stageOption" value="Columns:"/><br/></td>
+        <td>
+            <apex:selectList id="stageOption" value="{!lstSelectedStage}" style="width:169px" multiselect="true" size="5" >
+                <apex:selectOptions value="{!StageOptions}"/>
+            </apex:selectList></td>
+    </tr>
+    <tr>
+        <td style=" font-weight: bold;text-align: right;"><apex:outputLabel for="fileType" value="File Type:"/><br/></td>
+        <td>
+            <apex:selectList id="fileType" value="{!strFileType}" multiselect="false" size="1" >
+                <apex:selectOption itemValue="pdf" itemLabel="PDF"/>
+                <apex:selectOption itemValue="excel" itemLabel="EXCEL"/>
+            </apex:selectList></td>
+    </tr>
+    </table>
+</apex:outputPanel>
+<apex:outputPanel id="panel2" rendered="{! isShowFilter }" >
+    <div id="accordion">
+        <h3><a>Filter</a></h3>
+    
+        <div><c:SL_RTR_LIB209_SearchBlock params="{!searchCompParams}"/></div>          
+    
+    </div>
+</apex:outputPanel>
+
+    <div style="text-align:center;padding-top:10px">
+    <apex:commandLink onclick="beforeSubmit()" target="_blank" style="text-decoration:none;" id="GenerateReport" action="{!generateReport}" >
+        <apex:commandButton value="Run Report"/>
+    </apex:commandLink>
+        <apex:commandLink style="text-decoration:none;" action="{!PreviousPage}"> <apex:commandButton value="Back to Engagement"/> </apex:commandLink>
+    </div>
+
+
+</apex:form>
+</apex:outputPanel>
+</apex:page>

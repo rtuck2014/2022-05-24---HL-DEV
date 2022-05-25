@@ -1,0 +1,543 @@
+<apex:page name="HL_EventExpenseEditPage" standardController="Event_Expense__c" extensions="HL_EventExpenseClass" sidebar="false" tabStyle="Event_Expense__c" lightningStyleSheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_ActivityScripts, 'HL_ActivityEvent.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}"></apex:includeScript>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <script type="text/javascript">
+    if (location.href.match(/inline=1/)) window.top.location=location.href.replace(/inline=1/, '');
+    </script>    
+    <script>
+    j$ = jQuery.noConflict();    
+    function blockme() {
+        j$.blockUI({ css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+        } }); 
+    }
+    </script>
+    <style>
+        .requiredInput .requiredBlock {
+        background-color: #c00;
+        position: absolute;
+        left: -4px;
+        width: 3px;
+        top: 1px;
+        bottom: 1px;
+        }
+        .activityEvent .actionButton {width: 90px;}
+    </style>
+    <apex:form id="pageFormForMsg" rendered="{!!validUser}">
+        <apex:pageMessages />
+    </apex:form>
+    <apex:form id="form1" rendered="{!validUser}">
+        <apex:pageBlock id="pb1" Mode="Edit"> 
+            <!--<apex:pageBlock id="pb1" mode="maindetail">-->
+            <apex:pageMessages ></apex:pageMessages>
+            
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!Save}" value="Save"  onclick="blockme();" reRender=""/>
+                <apex:commandButton action="{!Cancel}" value="Cancel" onclick="return confirm('Do you want to proceed? All un-saved changes will be lost.');"/>
+            </apex:pageBlockButtons>
+            
+            
+            <apex:pageBlockSection title="Requestor/Host information">
+                
+                <apex:inputField value="{!EveExpRecord.Requestor_Name__c}" styleClass="required" rendered="{!if(!AND(requiredForCF, EveExpRecord.Status__c == 'Approved', $Profile.Name != 'System Administrator'), true, false)}"/>
+                <apex:outputField value="{!EveExpRecord.Requestor_Name__c}" rendered="{!if(AND(requiredForCF, EveExpRecord.Status__c == 'Approved', $Profile.Name != 'System Administrator'), true, false)}"/>
+                
+                <apex:inputField value="{!EveExpRecord.Event_Contact__c}" styleClass="{!if(requiredForMKTGMM,'none','required')}"/>
+                
+                <apex:inputField value="{!EveExpRecord.Product_Type__c}" styleClass="required" rendered="{!!IsPrivilegedUserOnly && !requiredForCF}"/>
+                <apex:outputField value="{!EveExpRecord.Product_Type__c}" rendered="{!IsPrivilegedUserOnly && !requiredForCF}"/>
+                
+                <apex:outputField value="{!EveExpRecord.Name}" rendered="{!EveExpRecord.Name != null}"/>
+                <apex:outputField value="{!EveExpRecord.Submitted_Date__c}" rendered="{!EveExpRecord.Submitted_Date__c != null}"/>
+            </apex:pageBlockSection>
+            
+            
+            <apex:pageBlockSection title="Event Information" rendered="{!!requiredForCF}">
+                
+                <apex:inputField value="{!EveExpRecord.Event_Name__c}" styleClass="required" 
+                                 label="{!if(requiredForMKTGMM,'Credential Name','Event Name')}" rendered="{!!IsPrivilegedUserOnly}"/>
+                <apex:outputField value="{!EveExpRecord.Event_Name__c}" 
+                                  label="{!if(requiredForMKTGMM,'Credential Name','Event Name')}" rendered="{!IsPrivilegedUserOnly}"/>
+                
+                <apex:inputField value="{!EveExpRecord.Event_location__c}"  rendered="{!!IsPrivilegedUserOnly}"/>
+                <apex:outputField value="{!EveExpRecord.Event_location__c}"  rendered="{!IsPrivilegedUserOnly}"/>
+                
+                <apex:inputField value="{!EveExpRecord.City__c}" styleClass="{!if(requiredForMKTGMM,'none','required')}" rendered="{!!IsPrivilegedUserOnly}"/>
+                <apex:outputField value="{!EveExpRecord.City__c}" rendered="{!IsPrivilegedUserOnly}"/>
+                
+                <apex:inputField value="{!EveExpRecord.Start_Date__c}" styleClass="required" rendered="{!!IsPrivilegedUserOnly}"/>
+                <apex:outputField value="{!EveExpRecord.Start_Date__c}" rendered="{!IsPrivilegedUserOnly}"/>
+                
+                <apex:inputField value="{!EveExpRecord.End_Date__c}" rendered="{!!IsPrivilegedUserOnly}"/>
+                <apex:outputField value="{!EveExpRecord.End_Date__c}" rendered="{!IsPrivilegedUserOnly}"/>
+                
+            </apex:pageBlockSection>
+            
+            
+            <apex:outputpanel id="OutputPanelPresenter">
+                <apex:pageBlockSection title="Event Specifics" id="pb3" rendered="{!!requiredForCF}">
+                    
+                    <apex:inputField value="{!EveExpRecord.LOB__c}" html-disabled="true"/>
+                    
+                    <!--<apex:pageblockSectionItem rendered="{!!IsPrivilegedUserOnly}">
+<apex:outputLabel value="Event Type"/>
+<apex:selectList size="1" value="{!selectedEventType}">
+<apex:selectOptions value="{!EventTypeOptions}"/>
+<apex:actionSupport event="onchange" reRender="eventformatid" action="{!getEventFormatValue}"/>
+</apex:selectList>
+</apex:pageblockSectionItem>--> 
+                    
+                    
+                    <apex:inputField value="{!EveExpRecord.Event_Type_Format__c}" rendered="{!!IsPrivilegedUserOnly}">
+                        <apex:actionSupport event="onchange" reRender="eventformatid" action="{!getEventFormatValue}"/>
+                    </apex:inputField>                
+                    <apex:outputField value="{!EveExpRecord.Event_Type_Format__c}" rendered="{!IsPrivilegedUserOnly}"/>
+                    
+                    <apex:pageblockSectionItem >
+                        <apex:outputLabel value="Event Format"/>
+                        <apex:selectList size="1" value="{!selectedEventFormat}" styleClass="{!if(requiredForMKTGMM,'none','required')}" id="eventformatid" rendered="{!!requiredForCF}">
+                            <apex:selectOptions value="{!EventFormatOptions}"/>
+                        </apex:selectList>
+                    </apex:pageblockSectionItem>                
+                    
+                    <apex:inputField value="{!EveExpRecord.Event_Purpose__c}" rendered="{!!IsPrivilegedUserOnly}"/>
+                    <apex:outputField value="{!EveExpRecord.Event_Purpose__c}" rendered="{!IsPrivilegedUserOnly}"/>
+                    
+                    <apex:inputField value="{!EveExpRecord.What_is_desired_outcome_of_this_event__c}" rendered="{!!IsPrivilegedUserOnly}"/>
+                    <apex:outputField value="{!EveExpRecord.What_is_desired_outcome_of_this_event__c}" rendered="{!IsPrivilegedUserOnly}"/>
+                    
+                    <apex:inputField value="{!EveExpRecord.Audience_Industry_if_applicable__c}" rendered="{!!IsPrivilegedUserOnly}"/>
+                    <apex:outputField value="{!EveExpRecord.Audience_Industry_if_applicable__c}" rendered="{!IsPrivilegedUserOnly}"/>
+                    
+                    <apex:inputField rendered="{!!IsPrivilegedUserOnly}" value="{!EveExpRecord.Potential_Revenue__c}" onkeypress="return inputLimiter(event,'Currency',this.value);"/>
+                    <apex:outputField rendered="{!IsPrivilegedUserOnly}" value="{!EveExpRecord.Potential_Revenue__c}"/>
+                    
+                    <apex:inputField value="{!EveExpRecord.Number_of_guests__c}" styleClass="{!if((requiredForADMA || requiredForMKTGMT || requiredForMKTGMM),'none','required')}" rendered="{!!IsPrivilegedUserOnly}"/>
+                    <apex:outputField value="{!EveExpRecord.Number_of_guests__c}" rendered="{!IsPrivilegedUserOnly}"/>
+                    
+                    <apex:inputField rendered="{!!IsPrivilegedUserOnly}" value="{!EveExpRecord.Marketing_support__c}" id="Marketingsupport" styleClass="{!if(requiredForCE,'required','none')}" />
+                    <apex:outputField rendered="{!IsPrivilegedUserOnly}" value="{!EveExpRecord.Marketing_support__c}"/>
+                    
+                    <apex:pageblockSectionItem >
+                        <apex:outputLabel value="Description of Marketing Support"/>    
+                        <apex:outputPanel >
+                            <div id="divforsupportivefieldId"> 
+                                <apex:inputField rendered="{!!IsPrivilegedUserOnly}" value="{!EveExpRecord.Marketing_support_Other__c}" id="MarketingsupportOther">
+                                    <div class="requiredBlock"></div>
+                                </apex:inputField>
+                                <apex:outputField rendered="{!IsPrivilegedUserOnly}" value="{!EveExpRecord.Marketing_support_Other__c}">
+                                </apex:outputField>
+                            </div>
+                        </apex:outputPanel>
+                    </apex:pageblockSectionItem>   
+                    
+                    <apex:inputField rendered="{!!IsPrivilegedUserOnly}" value="{!EveExpRecord.Target_Audience__c}" styleClass="{!if((requiredForCS || requiredForMKTGMT),'required','none')}"/>
+                    <apex:outputField rendered="{!IsPrivilegedUserOnly}" value="{!EveExpRecord.Target_Audience__c}"/> 
+                    <apex:pageBlockSectionItem />
+                    
+                    <!---------------- Presenter ----------------------------->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Presenters"></apex:outputLabel>
+                        <apex:actionRegion >
+                            <apex:outputPanel id="PresenterTextId">
+                                <apex:inputText rendered="{!!IsPrivilegedUserOnly && !requiredForCF}" id="inputContactId1" value="{!SelectedContactNamePresenter}" html-placeholder="Begin Typing Name - 4 Characters Min..." style="width:250px;" >
+                                    <apex:inputHidden value="{!SelectedContactIdPresenter}" id="inputContactId1_lkid"></apex:inputHidden>
+                                    <apex:outputPanel id="contactSelection">
+                                        <c:HL_AutoComplete objectname="AllContact" sObjectFieldName="Name" minLength="4" delay="1200"
+                                                           autocomplete_textbox="{!$Component.inputContactId1}" autocomplete_actionbutton="{!$Component.addContactPresenter}" bgColor="white" fontSize="11"/>
+                                    </apex:outputPanel>
+                                </apex:inputText>
+                                <apex:commandButton id="addContactPresenter" action="{!AddContactForPresenter}" value="Add Contact" reRender="presentertablePanelId,PresenterTextId,jsId" style="display:none;" oncomplete="setFocus('{!$Component.inputContactId1}');OnAttendeeAdded()"/>
+                            </apex:outputPanel>
+                        </apex:actionRegion>
+                        
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                                
+                
+                <apex:outputpanel id="presentertablePanelId">
+                    <apex:pageBlockTable value="{!PresenterWrapperList}" var="PresenterContact" rendered="{!PresenterWrapperList.size > 0 && !requiredForCF}">
+                        <apex:column headerValue="Remove" styleClass="center" headerClass="center" style="width: 50px;">
+                            <apex:commandLink rendered="{!!IsPrivilegedUserOnly}" value="Del" action="{!RemoveContactPresenter}" onclick="return confirmDelete();" styleClass="removeContactCheckbox">
+                                <apex:param name="p1" assignTo="{!DelId}" value="{!PresenterContact.ContactId}"></apex:param>
+                            </apex:commandLink>
+                        </apex:column>
+                        
+                        <apex:column headerValue="Name" styleClass="center" headerClass="center" style="width: 50px;">
+                            <apex:outputText value="{!PresenterContact.ContactName}" />
+                        </apex:column>
+                        <apex:column headerValue="Title" styleClass="center" headerClass="center" style="width: 50px;">
+                            <apex:outputText value="{!PresenterContact.ContactTitle}" />
+                        </apex:column>
+                        <apex:column headerValue="Industry Group" styleClass="center" headerClass="center" style="width: 50px;">
+                            <apex:outputText value="{!PresenterContact.ContactIndustry}" />
+                        </apex:column>
+                    </apex:pageBlockTable>
+                    
+                </apex:outputpanel>
+            </apex:outputpanel>
+            <!-- --------------- Presenter -----------------------------End -->
+            
+            
+            <apex:pageBlockSection title="Event Information" rendered="{!requiredForCF}">
+                
+                <apex:inputField value="{!EveExpRecord.Event__c}"  styleClass="required" rendered="{!!IsPrivilegedUserOnly}"/>
+                <apex:outputField value="{!EveExpRecord.Event__c}"  rendered="{!IsPrivilegedUserOnly}"/>
+                
+                <apex:inputField value="{!EveExpRecord.LOB__c}" html-disabled="true"/>
+                
+                <apex:inputField value="{!EveExpRecord.Start_Date__c}" styleClass="required" rendered="{!!IsPrivilegedUserOnly}"/>
+                <apex:outputField value="{!EveExpRecord.Start_Date__c}" rendered="{!IsPrivilegedUserOnly}"/>
+                
+                <apex:inputField value="{!EveExpRecord.End_Date__c}" rendered="{!!IsPrivilegedUserOnly}"/>
+                <apex:outputField value="{!EveExpRecord.End_Date__c}" rendered="{!IsPrivilegedUserOnly}"/>
+                
+                <apex:inputField value="{!EveExpRecord.Is_Actual_Date__c}" rendered="{!!IsPrivilegedUserOnly}"/>
+                <apex:outputField value="{!EveExpRecord.Is_Actual_Date__c}" rendered="{!IsPrivilegedUserOnly}"/>
+                
+                <apex:inputField value="{!EveExpRecord.Event_Purpose__c}" rendered="{!!IsPrivilegedUserOnly}"/>
+                <apex:outputField value="{!EveExpRecord.Event_Purpose__c}" rendered="{!IsPrivilegedUserOnly}"/>
+                
+                <apex:inputField rendered="{!!IsPrivilegedUserOnly}" value="{!EveExpRecord.Marketing_support__c}" id="Marketingsupport" styleClass="{!if(requiredForCE,'required','none')}" />
+                <apex:outputField rendered="{!IsPrivilegedUserOnly}" value="{!EveExpRecord.Marketing_support__c}"/>
+                
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel value="Description of Marketing Support"/>    
+                    <apex:outputPanel >
+                        <div id="divforsupportivefieldId"> 
+                            <apex:inputField rendered="{!!IsPrivilegedUserOnly}" value="{!EveExpRecord.Marketing_support_Other__c}" id="MarketingsupportOther">
+                                <div class="requiredBlock"></div>
+                            </apex:inputField>
+                            <apex:outputField rendered="{!IsPrivilegedUserOnly}" value="{!EveExpRecord.Marketing_support_Other__c}">
+                            </apex:outputField>
+                        </div>
+                    </apex:outputPanel>
+                </apex:pageblockSectionItem>   
+                
+                <apex:inputField value="{!EveExpRecord.Number_of_guests__c}" styleClass="{!if((requiredForADMA || requiredForMKTGMT || requiredForMKTGMM),'none','required')}" rendered="{!!IsPrivilegedUserOnly}"/>
+                <apex:outputField value="{!EveExpRecord.Number_of_guests__c}" rendered="{!IsPrivilegedUserOnly}"/>
+                
+                <apex:inputField rendered="{!!IsPrivilegedUserOnly && requiredForCF}" value="{!EveExpRecord.Onsite_Support_Needed__c}" id="OnsiteSupport" />
+                <apex:outputField rendered="{!IsPrivilegedUserOnly && requiredForCF}" value="{!EveExpRecord.Onsite_Support_Needed__c}"/>
+                
+                <apex:inputField rendered="{!!IsPrivilegedUserOnly && requiredForCF}" value="{!EveExpRecord.Asked_to_Present__c}" id="AskedToPresent" />
+                <apex:outputField rendered="{!IsPrivilegedUserOnly && requiredForCF}" value="{!EveExpRecord.Asked_to_Present__c}"/>
+                
+            </apex:pageBlockSection>
+            
+            
+            
+            <apex:outputPanel id="OutputPanelPCEG">
+                <apex:pageBlockSection title="Attendees Evaluation" rendered="{!!requiredForCF}">
+                    
+                    <apex:inputField rendered="{!!IsPrivilegedUserOnly}" value="{!EveExpRecord.Related_campaign_if_30_guests__c}" /> 
+                    <apex:outputField rendered="{!IsPrivilegedUserOnly}" value="{!EveExpRecord.Related_campaign_if_30_guests__c}" /> 
+                    
+                    <apex:pageBlockSectionItem />
+                    <apex:pageBlockSectionItem helpText="Related Campaign or External Guest List is Required.">
+                        <apex:outputLabel value="Potential/Confirmed External Guests"></apex:outputLabel>
+                        <apex:actionRegion >
+                            <apex:outputPanel id="PCEGTextId">
+                                <apex:inputText rendered="{!!IsPrivilegedUserOnly}" id="inputContactId2" value="{!SelectedContactNamePCEG}" html-placeholder="Begin Typing Name - 4 Characters Min..." style="width:250px;">
+                                    <apex:inputHidden value="{!SelectedContactIdPCEG}" id="inputContactId2_lkid"></apex:inputHidden>
+                                    <apex:outputPanel id="contactSelection1">
+                                        <c:HL_AutoComplete objectname="ExternalContact" sObjectFieldName="Name" minLength="4" delay="1200"
+                                                           autocomplete_textbox="{!$Component.inputContactId2}" autocomplete_actionbutton="{!$Component.addContactPCEG}" bgColor="white" fontSize="11"/>
+                                    </apex:outputPanel>
+                                </apex:inputText>
+                                <apex:commandButton id="addContactPCEG" action="{!AddContactForPCEG}" value="Add Contact" reRender="PCEGtablePanelId,PCEGTextId,jsId" style="display:none;" oncomplete="setFocus('{!$Component.inputContactId2}');OnAttendeeAdded()"/>
+                            </apex:outputPanel>
+                        </apex:actionRegion>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Event Tracking" rendered="{!requiredForCF}">
+                    
+                    <apex:inputField rendered="{!!IsPrivilegedUserOnly}" value="{!EveExpRecord.Related_campaign_if_30_guests__c}" /> 
+                    <apex:outputField rendered="{!IsPrivilegedUserOnly}" value="{!EveExpRecord.Related_campaign_if_30_guests__c}" /> 
+                    
+                    <apex:pageBlockSectionItem />
+                    <apex:pageBlockSectionItem helpText="Related Campaign or External Guest List is Required.">
+                        <apex:outputLabel value="Potential/Confirmed External Guests"></apex:outputLabel>
+                        <apex:actionRegion >
+                            <apex:outputPanel id="PCEGTextId">
+                                <apex:inputText rendered="{!!IsPrivilegedUserOnly}" id="inputContactId2" value="{!SelectedContactNamePCEG}" html-placeholder="Begin Typing Name - 4 Characters Min..." style="width:250px;">
+                                    <apex:inputHidden value="{!SelectedContactIdPCEG}" id="inputContactId2_lkid"></apex:inputHidden>
+                                    <apex:outputPanel id="contactSelection1">
+                                        <c:HL_AutoComplete objectname="ExternalContact" sObjectFieldName="Name" minLength="4" delay="1200"
+                                                           autocomplete_textbox="{!$Component.inputContactId2}" autocomplete_actionbutton="{!$Component.addContactPCEG}" bgColor="white" fontSize="11"/>
+                                    </apex:outputPanel>
+                                </apex:inputText>
+                                <apex:commandButton id="addContactPCEG" action="{!AddContactForPCEG}" value="Add Contact" reRender="PCEGtablePanelId,PCEGTextId,jsId" style="display:none;" oncomplete="setFocus('{!$Component.inputContactId2}');OnAttendeeAdded()"/>
+                            </apex:outputPanel>
+                        </apex:actionRegion>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>            
+                <apex:outputpanel id="PCEGtablePanelId">
+                    <apex:pageBlockTable value="{!PCEGWrapperList}" var="PCEGContact" rendered="{!PCEGWrapperList.size > 0}">
+                        <apex:column headerValue="Remove" styleClass="center" headerClass="center" style="width: 50px;">
+                            <apex:commandLink rendered="{!!IsPrivilegedUserOnly}" value="Del" action="{!RemoveContactPCEG}" onclick="return confirmDelete();" styleClass="removeContactCheckbox">
+                                <apex:param name="p1" assignTo="{!DelId}" value="{!PCEGContact.ContactId}"></apex:param>
+                            </apex:commandLink>
+                        </apex:column>
+                        
+                        <apex:column headerValue="Name" styleClass="center" headerClass="center" style="width: 50px;">
+                            <apex:outputText value="{!PCEGContact.ContactName}" />
+                        </apex:column>
+                        <apex:column headerValue="Title" styleClass="center" headerClass="center" style="width: 50px;">
+                            <apex:outputText value="{!PCEGContact.ContactTitle}" />
+                        </apex:column>
+                        <apex:column headerValue="Industry Group" styleClass="center" headerClass="center" style="width: 50px;">
+                            <apex:outputText value="{!PCEGContact.ContactIndustry}" />
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:outputPanel>
+            </apex:outputPanel>
+            
+            
+            <!--  Potential Guest End-->
+            <apex:pageBlockSection title="Event Evaluation" rendered="{!!requiredForCF}">
+                
+                <apex:inputField rendered="{!!IsPrivilegedUserOnly}" value="{!EveExpRecord.Who_is_evaluating_the_event__c}"/>
+                <apex:outputField rendered="{!IsPrivilegedUserOnly}" value="{!EveExpRecord.Who_is_evaluating_the_event__c}"/>
+                
+                <apex:inputField rendered="{!!IsPrivilegedUserOnly}" value="{!EveExpRecord.When_this_event_will_be_evaluated__c}"/>
+                <apex:outputField rendered="{!IsPrivilegedUserOnly}" value="{!EveExpRecord.When_this_event_will_be_evaluated__c}"/>
+                
+                <apex:inputField rendered="{!!IsPrivilegedUserOnly}" value="{!EveExpRecord.What_are_KPIs__c}"/>
+                <apex:outputField rendered="{!IsPrivilegedUserOnly}" value="{!EveExpRecord.What_are_KPIs__c}"/>
+                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Budget" rendered="{!!requiredForCF}">
+                <apex:inputField value="{!EveExpRecord.Expected_Travel_cost__c}" id="etc" styleClass="{!if(requiredForMKTGMM,'none','required')}" onkeyup="calculateTotal('{!$Component.etc}', '{!$Component.efbc}', '{!$Component.aacs}', '{!$Component.tbr}')" onkeypress="return inputLimiter(event,'Currency',this.value);"/>
+                <apex:inputField value="{!EveExpRecord.Expected_F_B_cost__c}" id="efbc" styleClass="{!if(requiredForMKTGMM,'none','required')}" onkeyup="calculateTotal('{!$Component.etc}', '{!$Component.efbc}', '{!$Component.aacs}', '{!$Component.tbr}')" onkeypress="return inputLimiter(event,'Currency',this.value);"/>
+                <apex:inputField value="{!EveExpRecord.Any_additional_cost_Specify__c}" id="aacs" styleClass="required" onkeyup="calculateTotal('{!$Component.etc}', '{!$Component.efbc}', '{!$Component.aacs}', '{!$Component.tbr}')" onkeypress="return inputLimiter(event,'Currency',this.value);"/>
+                <apex:outputText id="tbr" style="width:80px" value="{0, number, 0.00}" label="Total Budget Requested" >
+                    <apex:param value="{!EveExpRecord.Expected_Travel_cost__c + EveExpRecord.Expected_F_B_cost__c + EveExpRecord.Any_additional_cost_Specify__c}"/>
+                </apex:outputText>
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel value="Description of Other Cost"/>   
+                    <apex:outputPanel >                 
+                        <div id="divforsupportivefieldId1"> 
+                            <apex:inputField value="{!EveExpRecord.Specify__c}" id="specifyFieldId" >
+                                <div class="requiredBlock"></div>
+                            </apex:inputField>
+                        </div>
+                    </apex:outputPanel>
+                </apex:pageblockSectionItem>
+
+                <apex:inputField value="{!EveExpRecord.SubLedger_Number__c}" styleClass="{!if(requiredForMKTGMM,'none','required')}" rendered="{!!requiredForFVA}"/>
+               <!-- HL Internal opportunity Number will only rendered for LOB = FVA ------------------------------------------------------------->
+                <apex:inputField value="{!EveExpRecord.HL_Internal_Opportunity_Number__c}" styleClass="required" rendered="{!requiredForFVA}"/>
+            </apex:pageBlockSection>
+       
+            <apex:pageBlockSection title="Attendee Budget" rendered="{!requiredForCF}">
+                <apex:inputField value="{!EveExpRecord.Expected_Airfare_Cost__c}" id="ac" styleClass="required" onkeyup="calculateTotalCF('{!$Component.efbc}', '{!$Component.aacs}', '{!$Component.tbr}', '{!$Component.ac}', '{!$Component.lc}', '{!$Component.rf}')" onkeypress="return inputLimiter(event,'Currency',this.value);"/>
+                <apex:inputField value="{!EveExpRecord.Expected_Lodging_Cost__c}" id="lc" styleClass="required" onkeyup="calculateTotalCF('{!$Component.efbc}', '{!$Component.aacs}', '{!$Component.tbr}', '{!$Component.ac}', '{!$Component.lc}', '{!$Component.rf}')" onkeypress="return inputLimiter(event,'Currency',this.value);"/>
+                <apex:inputField value="{!EveExpRecord.Expected_Registration_Fee__c}" id="rf" styleClass="required" onkeyup="calculateTotalCF('{!$Component.efbc}', '{!$Component.aacs}', '{!$Component.tbr}', '{!$Component.ac}', '{!$Component.lc}', '{!$Component.rf}')" onkeypress="return inputLimiter(event,'Currency',this.value);"/>
+                <apex:inputField value="{!EveExpRecord.Expected_F_B_cost__c}" id="efbc" styleClass="{!if(requiredForMKTGMM,'none','required')}" onkeyup="calculateTotalCF('{!$Component.efbc}', '{!$Component.aacs}', '{!$Component.tbr}', '{!$Component.ac}', '{!$Component.lc}', '{!$Component.rf}')" onkeypress="return inputLimiter(event,'Currency',this.value);"/>
+                <apex:inputField value="{!EveExpRecord.Any_additional_cost_Specify__c}" id="aacs" styleClass="required" onkeyup="calculateTotalCF('{!$Component.efbc}', '{!$Component.aacs}', '{!$Component.tbr}', '{!$Component.ac}', '{!$Component.lc}', '{!$Component.rf}')" onkeypress="return inputLimiter(event,'Currency',this.value);"/>
+                <apex:outputText id="tbr" style="width:80px" value="{0, number, 0.00}" label="Total Budget Requested" >
+                    <apex:param value="{! EveExpRecord.Expected_F_B_cost__c + EveExpRecord.Any_additional_cost_Specify__c + EveExpRecord.Expected_Airfare_Cost__c + EveExpRecord.Expected_Lodging_Cost__c + EveExpRecord.Expected_Registration_Fee__c}"/>
+                </apex:outputText>
+                <apex:pageblockSectionItem >
+                    <apex:outputLabel value="Description of Other Cost"/>   
+                    <apex:outputPanel >                 
+                        <div id="divforsupportivefieldId1"> 
+                            <apex:inputField value="{!EveExpRecord.Specify__c}" id="specifyFieldId" >
+                                <div class="requiredBlock"></div>
+                            </apex:inputField>
+                        </div>
+                    </apex:outputPanel>
+                </apex:pageblockSectionItem>
+            </apex:pageBlockSection>            
+            <apex:outputPanel id="PageBlockLoTM">
+                <apex:pageBlockSection title="Event Management" rendered="{!!requiredForCF}">
+                    <apex:inputField rendered="{!!IsPrivilegedUserOnly}" value="{!EveExpRecord.Any_additional_requests__c}"/>
+                    <apex:outputField rendered="{!IsPrivilegedUserOnly}" value="{!EveExpRecord.Any_additional_requests__c}"/>
+                    <apex:pageBlockSectionItem />
+                    <apex:pageBlockSectionItem helpText="Other team members attending event.">
+                        <apex:outputLabel value="List of Team Members"></apex:outputLabel>
+                        <apex:actionRegion >
+                            <apex:outputPanel id="LoTMTextId">
+                                <div class="{!if((requiredForADMA || requiredForMKTGMT || requiredForMKTGMM || requiredForCF),'none','requiredInput')}">
+                                    <apex:inputText rendered="{!!IsPrivilegedUserOnly}" id="inputContactId3" value="{!SelectedContactNameLOTM}" html-placeholder="Begin Typing Name - 4 Characters Min..." style="width:250px;">
+                                        <div class="requiredBlock"></div>
+                                        <apex:inputHidden value="{!SelectedContactIdLOTM}" id="inputContactId3_lkid"></apex:inputHidden>
+                                        <apex:outputPanel id="contactSelection2">
+                                            <c:HL_AutoComplete objectname="InternalContact" sObjectFieldName="Name" minLength="4" delay="1200"
+                                                               autocomplete_textbox="{!$Component.inputContactId3}" autocomplete_actionbutton="{!$Component.addContactLoTM}" bgColor="white" fontSize="11"/>
+                                        </apex:outputPanel>
+                                    </apex:inputText>
+                                </div>
+                                <apex:commandButton id="addContactLoTM" action="{!AddContactForLoTM}" value="Add Contact" reRender="LoTMtablePanelId,LoTMTextId,jsId" style="display:none;" oncomplete="setFocus('{!$Component.inputContactId3}');OnAttendeeAdded()"/> 
+                            </apex:outputPanel>
+                        </apex:actionRegion>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Additional Info" rendered="{!requiredForCF}">
+                    <apex:inputField rendered="{!!IsPrivilegedUserOnly}" value="{!EveExpRecord.Notes__c}"/>
+                    <apex:outputField rendered="{!IsPrivilegedUserOnly}" value="{!EveExpRecord.Notes__c}"/>
+                    <apex:pageBlockSectionItem />
+                    <apex:pageBlockSectionItem helpText="Other team members attending event.">
+                        <apex:outputLabel value="List of Team Members"></apex:outputLabel>
+                        <apex:actionRegion >
+                            <apex:outputPanel id="LoTMTextId">
+                                <div class="{!if((requiredForADMA || requiredForMKTGMT || requiredForMKTGMM || requiredForCF),'none','requiredInput')}">
+                                    <apex:inputText rendered="{!!IsPrivilegedUserOnly}" id="inputContactId3" value="{!SelectedContactNameLOTM}" html-placeholder="Begin Typing Name - 4 Characters Min..." style="width:250px;">
+                                        <div class="requiredBlock"></div>
+                                        <apex:inputHidden value="{!SelectedContactIdLOTM}" id="inputContactId3_lkid"></apex:inputHidden>
+                                        <apex:outputPanel id="contactSelection2">
+                                            <c:HL_AutoComplete objectname="InternalContact" sObjectFieldName="Name" minLength="4" delay="1200"
+                                                               autocomplete_textbox="{!$Component.inputContactId3}" autocomplete_actionbutton="{!$Component.addContactLoTM}" bgColor="white" fontSize="11"/>
+                                        </apex:outputPanel>
+                                    </apex:inputText>
+                                </div>
+                                <apex:commandButton id="addContactLoTM" action="{!AddContactForLoTM}" value="Add Contact" reRender="LoTMtablePanelId,LoTMTextId,jsId" style="display:none;" oncomplete="setFocus('{!$Component.inputContactId3}');OnAttendeeAdded()"/> 
+                            </apex:outputPanel>
+                        </apex:actionRegion>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>            
+                <apex:outputpanel id="LoTMtablePanelId">
+                    <apex:pageBlockTable value="{!LoTMWrapperList}" var="LoTMContact" rendered="{!LoTMWrapperList.size > 0}">
+                        <apex:column headerValue="Remove" styleClass="center" headerClass="center" style="width: 50px;">
+                            <apex:commandLink value="Del" rendered="{!!IsPrivilegedUserOnly}" action="{!RemoveContactLoTM}" onclick="return confirmDelete();" styleClass="removeContactCheckbox">
+                                <apex:param name="p1" assignTo="{!DelId}" value="{!LoTMContact.ContactId}"></apex:param>
+                            </apex:commandLink>
+                        </apex:column>
+                        
+                        <apex:column headerValue="Name" styleClass="center" headerClass="center" style="width: 50px;">
+                            <apex:outputText value="{!LoTMContact.ContactName}" />
+                        </apex:column>
+                        <apex:column headerValue="Title" styleClass="center" headerClass="center" style="width: 50px;">
+                            <apex:outputText value="{!LoTMContact.ContactTitle}" />
+                        </apex:column>
+                        <apex:column headerValue="Industry Group" styleClass="center" headerClass="center" style="width: 50px;">
+                            <apex:outputText value="{!LoTMContact.ContactIndustry}" />
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:outputPanel>
+            </apex:outputPanel>
+            
+            <apex:pageBlockSection title="Notes" rendered="{!!requiredForCF}">
+                <apex:inputField rendered="{!!IsPrivilegedUserOnly}" value="{!EveExpRecord.Notes__c}"/>
+                <apex:outputField rendered="{!IsPrivilegedUserOnly}" value="{!EveExpRecord.Notes__c}"/>
+            </apex:pageBlockSection>
+            
+            <script>
+            function calculateTotal(etcId, efbcId, aacsId, tbrId) {
+                var q = document.getElementById(etcId).value;
+                var d = document.getElementById(efbcId).value; 
+                var p = document.getElementById(aacsId).value;
+                
+                q=q.replace(/\,/g,'');
+                d=d.replace(/\,/g,'');
+                p=p.replace(/\,/g,'');
+                var t = +q + +p + +d;
+                document.getElementById(tbrId).innerHTML = t.toFixed(2);
+            }
+            
+            function calculateTotalCF(efbcId, aacsId, tbrId, acId, lcId, rfId) {
+                
+                var d = document.getElementById(efbcId).value; 
+                var p = document.getElementById(aacsId).value;
+                var x = document.getElementById(acId).value;
+                var y = document.getElementById(lcId).value; 
+                var z = document.getElementById(rfId).value;
+                
+                d=d.replace(/\,/g,'');
+                p=p.replace(/\,/g,'');
+                x=x.replace(/\,/g,'');
+                y=y.replace(/\,/g,'');
+                z=z.replace(/\,/g,'');                                                            
+                var t = +p + +d + +x + +y + +z;
+                document.getElementById(tbrId).innerHTML = t.toFixed(2);
+            }
+            
+            function inputLimiter(e,allow,myValue) {
+                var AllowableCharacters = '';
+                var AllowableCharactersAfterDecimal = '1234567890';
+                var currentValue = myValue;
+                if (allow == 'Currency'){AllowableCharacters='1234567890.';}
+                
+                var itemdecimal = currentValue.split('.');
+                var k = document.all?parseInt(e.keyCode): parseInt(e.which);
+                if (k!=13 && k!=8 && k!=0){
+                    if ((e.ctrlKey==false) && (e.altKey==false)) {
+                        if (AllowableCharacters.indexOf(String.fromCharCode(k))!=-1){
+                            if(itemdecimal.length > 1){
+                                return (AllowableCharactersAfterDecimal.indexOf(String.fromCharCode(k))!=-1);
+                            }
+                        } else{
+                            return false;
+                        }
+                    } else {
+                        return true;
+                    }
+                } else {
+                    return true;
+                }
+            } 
+            </script>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:outputPanel id="jsId">
+        <script>        
+        $ =jQuery.noConflict();
+        $(document).ready(function(){
+            var MarketingsupportValue = $("[id$=Marketingsupport]").val();
+            if(MarketingsupportValue == 'Yes'){
+                $("input[id$=MarketingsupportOther]").prop("disabled",false);
+                $("[id$=divforsupportivefieldId]").addClass( "requiredInput" );
+                
+            }            
+            else{
+                $("[id$=MarketingsupportOther]").prop("disabled",true);
+                $("[id$=divforsupportivefieldId]").removeClass( "requiredInput" );
+            }
+            $("[id$=Marketingsupport]").change(function(){
+                if(this.value!="Yes"){
+                    $("[id$=MarketingsupportOther]").val("");
+                    $("input[id$=MarketingsupportOther]").prop("disabled",true);                       
+                    $("[id$=MarketingsupportOther]").prop("disabled",true);
+                    $("[id$=divforsupportivefieldId]").removeClass( "requiredInput" );
+                }
+                else{
+                    $("[id$=MarketingsupportOther]").prop("disabled",false);
+                    $("[id$=divforsupportivefieldId]").addClass( "requiredInput" );
+                }               
+            });
+            if('{!EveExpRecord.Any_additional_cost_Specify__c}' >0){
+                $("[id$=divforsupportivefieldId1]").addClass( "requiredInput" );
+                
+            }
+            else{
+                $("[id$=divforsupportivefieldId1]").removeClass( "requiredInput" );
+            }
+            $("[id$=aacs]").keyup(function(){
+                if(this.value <= 0){
+                    $("[id$=divforsupportivefieldId1]").removeClass( "requiredInput" );
+                }
+                else{
+                    $("[id$=divforsupportivefieldId1]").addClass( "requiredInput" );
+                }               
+            });
+        });
+        function setFocus(fieldId) {
+            if(fieldId != null)
+                document.getElementById(fieldId).focus();
+        }           
+        </script>
+    </apex:outputPanel>
+</apex:page>

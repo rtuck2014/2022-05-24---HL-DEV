@@ -1,0 +1,19 @@
+<apex:page standardController="Opportunity_Client_Subject__c" showHeader="false" sidebar="false" lightningStylesheets="true">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_Shared.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_OpportunityClientSubjectEdit.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+    <apex:form >  
+    <apex:pageBlock id="pbMainEdit"  mode="Edit">
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:pageMessage id="msgSaved" severity="confirm" detail="Record Saved"></apex:pageMessage>
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!QuickSave}" value="Save" reRender="pbMainEdit" oncomplete="ShowSaveMessage();"  />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1">
+                <apex:outputField value="{!Opportunity_Client_Subject__c.Client_Subject__r.Name}" label="PE Firm"/>
+                <apex:inputField id="ownershipPercent" value="{!Opportunity_Client_Subject__c.Private_Equity_Ownership__c}" rendered="{!Opportunity_Client_Subject__c.Type__c == 'PE Firm'}"></apex:inputField>
+            </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

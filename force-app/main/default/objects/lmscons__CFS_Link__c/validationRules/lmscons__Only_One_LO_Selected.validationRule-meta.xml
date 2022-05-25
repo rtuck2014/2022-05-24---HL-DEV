@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>lmscons__Only_One_LO_Selected</fullName>
+    <active>false</active>
+    <description>Single LO validation rule</description>
+    <errorConditionFormula>OR
+(
+	OR
+	(
+	IF( NOT(ISBLANK(lmscons__Module__c)), IF( ISBLANK(lmscons__Quiz__c), false, true), false),
+	IF( NOT(ISBLANK(lmscons__Module__c)), IF( ISBLANK(lmscons__Course__c), false, true), false),
+	IF( NOT(ISBLANK(lmscons__Module__c)), IF( ISBLANK(lmscons__Learning_Path__c), false, true), false),
+	IF( NOT(ISBLANK(lmscons__Module__c)), IF( ISBLANK(lmscons__Curriculum__c),
+	false, true), false)
+	),
+	OR
+	(
+	IF( NOT(ISBLANK(lmscons__Quiz__c)), IF( ISBLANK(lmscons__Course__c), false, true), false),
+	IF( NOT(ISBLANK(lmscons__Quiz__c)), IF( ISBLANK(lmscons__Learning_Path__c), false, true), false),
+	IF( NOT(ISBLANK(lmscons__Quiz__c)), IF( ISBLANK(lmscons__Curriculum__c),
+	false, true), false)
+	),
+	OR
+	(
+	IF( NOT(ISBLANK(lmscons__Course__c)), IF( ISBLANK(lmscons__Learning_Path__c), false, true), false),
+	IF( NOT(ISBLANK(lmscons__Course__c)), IF( ISBLANK(lmscons__Curriculum__c),
+	false, true), false)
+	),
+	OR
+	(
+	IF( NOT(ISBLANK(lmscons__Learning_Path__c)), IF( ISBLANK(lmscons__Curriculum__c),
+	false, true), false)
+	)
+)</errorConditionFormula>
+    <errorMessage>You must only select one LO for a Deep Link</errorMessage>
+</ValidationRule>

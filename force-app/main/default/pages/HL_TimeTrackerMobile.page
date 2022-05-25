@@ -1,0 +1,66 @@
+<apex:page docType="html-5.0" standardController="Engagement__c" showQuickActionVfHeader="false" extensions="HL_TimeRecordController" lightningStylesheets="true">
+    <div class="mobile-clock">
+        <h2>
+            {!Engagement__c.Name}
+        </h2>
+        <div class="slds">
+            <div class="slds-m-bottom--large">
+                Activity: <select id="activityType" class="slds-input" style="height: 34px!important;"><option></option></select>
+            </div>
+        </div>
+        <div class="clock"></div>
+        <div class="slds">
+            <div class="slds-m-top--large slds-m-bottom--large">
+                <div class="slds-form--horizontal">
+                    <div class="slds-form-element" style="text-align: left;">
+                        <label class="slds-form-element__label" for="inputSample2">Add Minutes:</label>
+                        <div class="slds-form-element__control">
+                          <input id="updateMinutes" type="number" class="slds-input--small" />
+                          <input id="updateTime" type="button" value="Update" class="slds-button slds-button--neutral" />
+                        </div>
+                    </div>
+                </div>     
+            </div>
+            <div class="slds-button-group" role="group">
+                <input class="slds-button slds-button--neutral" type="button" value="Cancel" onclick="OnCancel()" />
+                <input class="slds-button slds-button--neutral" type="button" value="Pause" onclick="OnPause()" />
+                <input class="slds-button slds-button--neutral" type="button" value="Finish" onclick="OnFinish()" />
+            </div>
+        </div>
+    <input id="timePeriodId" type="hidden" value="" />
+   </div>
+<apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.HL_TimeTracking, 'flipclock.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_TimeTracker.js')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+<apex:stylesheet value="{!URLFOR($Resource.HL_TimeTracking, 'flipclock.css')}"></apex:stylesheet>
+<apex:stylesheet value="{!URLFOR($Resource.HL_TimeTracking, 'custom.css')}"></apex:stylesheet>
+ <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+<apex:stylesheet value="{!URLFOR($Resource.SLDS0120,'assets/styles/salesforce-lightning-design-system-ltng.min.css')}" />
+<script type="text/javascript">
+  $j(document).ready(function () {DocumentReady();});
+   DocumentReady = function(){LaunchTimeTracker('{!$User.Id}','Engagement__c', '{!Id}', '{!Engagement__c.Name} - {!Engagement__c.Engagement_Number__c}', false);}
+   GetActivityTypesRemote = function(){HL_TimeRecordController.GetActivityTypesRemote(GetActivityTypesCB);}
+   GetCurrentPeriodRecordIdRemote = function(){HL_TimeRecordController.GetCurrentPeriodRecordId('Litigation',GetCurrentPeriodCB);}
+   RecordTime = function(timePeriodId, userId, activityType, sObject, sObjectId, minutes){HL_TimeRecordController.RecordTimeRemote({timePeriodId:timePeriodId,userId:userId,activityType:activityType,objectType:sObject,objectId:sObjectId,minutes:minutes},RecordTimeCB);}
+   RecordTimeCB = function(result,event){}
+   OnCancel = function(){
+       if(confirm('Are you sure you want to cancel any time tracked?'))
+           sforce.one.back();
+   }
+   OnPause = function(){
+       alert('Click "OK" to resume.');
+   }
+   OnFinish = function(){
+        var valid = Validate();
+        if(valid === 'Success'){
+           var id = RecordTime($j("#timePeriodId").val(), '{!$User.Id}', $j("#activityType").val(), 'Engagement__c', '{!Id}', clock.getTime().getMinutes(false));
+            sforce.one.back();
+            //Don't use, it messes up navigation with arrow - sforce.one.navigateToSObject('{!Id}');
+         }
+         else
+           alert(valid);
+    }
+    </script>
+</apex:page>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Anticipated_Revenue</fullName>
+    <active>true</active>
+    <errorConditionFormula>Total_Estimated_Fee__c &gt; Total_Anticipated_Revenue__c</errorConditionFormula>
+    <errorDisplayField>Total_Anticipated_Revenue__c</errorDisplayField>
+    <errorMessage>&quot;Total Anticipated Revenue&quot; should be Greater Than or Equal to the &quot;Total Estimated Fee&quot;</errorMessage>
+</ValidationRule>

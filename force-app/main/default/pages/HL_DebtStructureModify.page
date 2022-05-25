@@ -1,0 +1,152 @@
+<apex:page controller="HL_DebtStructureController" showHeader="false" sidebar="false" lightningStyleSheets="true">
+     <apex:form >
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageBlock >
+            <apex:outputLabel value="{!RecordId}" id="recordId" style="display: none;"></apex:outputLabel>
+            <table>
+            <tr>
+                <td>
+                    <apex:outputLabel value="Security Type"></apex:outputLabel>
+                </td>
+                <td>
+                    <apex:inputField value="{!DebtStructure.Security_Type__c}"></apex:inputField>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <apex:outputLabel value="Maturity Date"></apex:outputLabel>
+                </td>
+                <td>
+                    <apex:inputField value="{!DebtStructure.Maturity_Date__c}" styleClass="numeric-medium"></apex:inputField>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <apex:outputLabel value="Interest (LIBOR floor, if applicable)"></apex:outputLabel>
+                </td>
+                <td>
+                    <apex:inputField value="{!DebtStructure.Interest__c}" styleClass="numeric-medium"></apex:inputField>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <apex:outputLabel value="OID Percent"></apex:outputLabel>
+                </td>
+                <td>
+                    <apex:inputField value="{!DebtStructure.OID_Percent__c}" styleClass="numeric-medium"></apex:inputField>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <apex:outputLabel value="Amortization"></apex:outputLabel>
+                </td>
+                <td>
+                    <apex:inputField value="{!DebtStructure.Amoritization__c}" styleClass="numeric-medium"></apex:inputField>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <apex:outputLabel value="Call Provisions / Prepayment Premiums"></apex:outputLabel>
+                </td>
+                <td>
+                    <apex:inputField value="{!DebtStructure.Call_Provisions_Prepayment_Premiums__c}" styleClass="numeric-medium"></apex:inputField>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <apex:outputLabel value="Mandatory Prepayments / ECF Sweep"></apex:outputLabel>
+                </td>
+                <td>
+                    <apex:inputField value="{!DebtStructure.Mandatory_Prepayments_ECF_Sweep__c}" styleClass="numeric-medium"></apex:inputField>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <apex:outputLabel value="Covenants"></apex:outputLabel>
+                </td>
+                <td>
+                    <apex:inputTextarea value="{!DebtStructure.Covenants__c}" cols="45"></apex:inputTextarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <apex:outputLabel value="Fees & Expenses"></apex:outputLabel>
+                </td>
+                <td>
+                    <apex:inputField value="{!DebtStructure.Fees_Expenses__c}" styleClass="numeric-medium"></apex:inputField>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <apex:outputLabel value="Facility Balance"></apex:outputLabel>
+                </td>
+                <td>
+                    <apex:inputField value="{!DebtStructure.Facility_Balance_MM__c}" styleClass="numeric-medium"></apex:inputField>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <apex:outputLabel value="Debt Currency"></apex:outputLabel>
+                </td>
+                <td>
+                    <apex:inputField value="{!DebtStructure.CurrencyIsoCode}"></apex:inputField>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="center bold">
+                    <apex:commandButton action="{!Save}"  value="Save" styleClass="btn" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <apex:outputLabel styleClass="bold" value="*Save Record to Add Key Creditors" rendered="{!RecordId == ''}"></apex:outputLabel>
+                    <apex:outputPanel rendered="{!RecordId <> ''}">
+                        <apex:outputLabel value="Key Creditor(s)"></apex:outputLabel>
+                        <input type='button' value='New Key Creditor' id='newLender' class="btn" />
+                        <apex:commandButton id="lendersRefresh" action="{!RefreshLenders}" reRender="panLenders" style="display:none;" oncomplete="DocumentReady();"/>
+                     </apex:outputPanel>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <apex:outputPanel id="panLenders">
+                        <apex:pageBlockTable value="{!Lenders}" var="l">
+                            <apex:column width="80px">
+                                <a id='editLender' class="pointer underline" style="padding-right: 5px;">Edit</a>
+                                <a id='deleteLender' class="pointer underline" style="padding-right: 5px;">Delete</a>
+                                <apex:outputLabel value="{!l.Id}" styleClass="hidden"></apex:outputLabel>
+                            </apex:column>
+                            <apex:column value="{!l.Client_Subject__r.Name}" headerValue="Key Creditor"></apex:column>
+                            <apex:column value="{!l.Loan_Amount__c}" headerValue="Amount"></apex:column>
+                        </apex:pageBlockTable>
+                    </apex:outputPanel>
+                </td>
+            </tr>
+        </table>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:outputLabel id="engagementId" value="{!EngagementId}" style="display:none;"></apex:outputLabel>
+    <apex:outputLabel id="lookupAccountUrl" value="{!URLFOR('/apex/HL_LookupAccount')}" style="display:none;"></apex:outputLabel>
+    <apex:outputLabel id="engagementClientSubjectEditUrl" value="{!URLFOR('/apex/HL_EngagementClientSubjectEdit')}" style="display:none;"></apex:outputLabel>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includescript value="{!URLFOR($Resource.RestAPIToolkit, 'forcetk.js')}"></apex:includescript>
+    <script type="text/javascript">
+         var $ = jQuery.noConflict();
+         var client = new forcetk.Client();
+         client.setSessionToken('{!$Api.Session_ID}');
+    </script>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_DebtStructureModify.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+</apex:page>

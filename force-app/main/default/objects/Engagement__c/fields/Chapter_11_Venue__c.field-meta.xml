@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Chapter_11_Venue__c</fullName>
+    <externalId>false</externalId>
+    <label>Venue</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Alabama - Middle</fullName>
+                <default>false</default>
+                <label>Alabama - Middle</label>
+            </value>
+            <value>
+                <fullName>Alabama - Northern</fullName>
+                <default>false</default>
+                <label>Alabama - Northern</label>
+            </value>
+            <value>
+                <fullName>Alabama - Southern</fullName>
+                <default>false</default>
+                <label>Alabama - Southern</label>
+            </value>
+            <value>
+                <fullName>Alaska</fullName>
+                <default>false</default>
+                <label>Alaska</label>
+            </value>
+            <value>
+                <fullName>Arizona</fullName>
+                <default>false</default>
+                <label>Arizona</label>
+            </value>
+            <value>
+                <fullName>Arkansas - Eastern</fullName>
+                <default>false</default>
+                <label>Arkansas - Eastern</label>
+            </value>
+            <value>
+                <fullName>Arkansas - Western</fullName>
+                <default>false</default>
+                <label>Arkansas - Western</label>
+            </value>
+            <value>
+                <fullName>California - Central</fullName>
+                <default>false</default>
+                <label>California - Central</label>
+            </value>
+            <value>
+                <fullName>California - Northern</fullName>
+                <default>false</default>
+                <label>California - Northern</label>
+            </value>
+            <value>
+                <fullName>California - Southern</fullName>
+                <default>false</default>
+                <label>California - Southern</label>
+            </value>
+            <value>
+                <fullName>Colorado</fullName>
+                <default>false</default>
+                <label>Colorado</label>
+            </value>
+            <value>
+                <fullName>Connecticut</fullName>
+                <default>false</default>
+                <label>Connecticut</label>
+            </value>
+            <value>
+                <fullName>Delaware</fullName>
+                <default>false</default>
+                <label>Delaware</label>
+            </value>
+            <value>
+                <fullName>District of Columbia</fullName>
+                <default>false</default>
+                <label>District of Columbia</label>
+            </value>
+            <value>
+                <fullName>Florida -  Northern</fullName>
+                <default>false</default>
+                <label>Florida -  Northern</label>
+            </value>
+            <value>
+                <fullName>Florida - Southern</fullName>
+                <default>false</default>
+                <label>Florida - Southern</label>
+            </value>
+            <value>
+                <fullName>Georgia - Middle</fullName>
+                <default>false</default>
+                <label>Georgia - Middle</label>
+            </value>
+            <value>
+                <fullName>Georgia - Northern</fullName>
+                <default>false</default>
+                <label>Georgia - Northern</label>
+            </value>
+            <value>
+                <fullName>Georgia - Southern</fullName>
+                <default>false</default>
+                <label>Georgia - Southern</label>
+            </value>
+            <value>
+                <fullName>Guam</fullName>
+                <default>false</default>
+                <label>Guam</label>
+            </value>
+            <value>
+                <fullName>Hawaii</fullName>
+                <default>false</default>
+                <label>Hawaii</label>
+            </value>
+            <value>
+                <fullName>Illinois - Central</fullName>
+                <default>false</default>
+                <label>Illinois - Central</label>
+            </value>
+            <value>
+                <fullName>Illinois - Northern</fullName>
+                <default>false</default>
+                <label>Illinois - Northern</label>
+            </value>
+            <value>
+                <fullName>Illinois - Southern</fullName>
+                <default>false</default>
+                <label>Illinois - Southern</label>
+            </value>
+            <value>
+                <fullName>Indiana - Northern</fullName>
+                <default>false</default>
+                <label>Indiana - Northern</label>
+            </value>
+            <value>
+                <fullName>Indiana - Southern</fullName>
+                <default>false</default>
+                <label>Indiana - Southern</label>
+            </value>
+            <value>
+                <fullName>Iowa - Northern</fullName>
+                <default>false</default>
+                <label>Iowa - Northern</label>
+            </value>
+            <value>
+                <fullName>Iowa - Southern</fullName>
+                <default>false</default>
+                <label>Iowa - Southern</label>
+            </value>
+            <value>
+                <fullName>Kansas</fullName>
+                <default>false</default>
+                <label>Kansas</label>
+            </value>
+            <value>
+                <fullName>Kentucky - Eastern</fullName>
+                <default>false</default>
+                <label>Kentucky - Eastern</label>
+            </value>
+            <value>
+                <fullName>Kentucky - Western</fullName>
+                <default>false</default>
+                <label>Kentucky - Western</label>
+            </value>
+            <value>
+                <fullName>Louisiana - Eastern</fullName>
+                <default>false</default>
+                <label>Louisiana - Eastern</label>
+            </value>
+            <value>
+                <fullName>Louisiana - Middle</fullName>
+                <default>false</default>
+                <label>Louisiana - Middle</label>
+            </value>
+            <value>
+                <fullName>Louisiana - Western</fullName>
+                <default>false</default>
+                <label>Louisiana - Western</label>
+            </value>
+            <value>
+                <fullName>Maine</fullName>
+                <default>false</default>
+                <label>Maine</label>
+            </value>
+            <value>
+                <fullName>Maryland</fullName>
+                <default>false</default>
+                <label>Maryland</label>
+            </value>
+            <value>
+                <fullName>Massachusetts</fullName>
+                <default>false</default>
+                <label>Massachusetts</label>
+            </value>
+            <value>
+                <fullName>Michigan - Eastern</fullName>
+                <default>false</default>
+                <label>Michigan - Eastern</label>
+            </value>
+            <value>
+                <fullName>Michigan - Western</fullName>
+                <default>false</default>
+                <label>Michigan - Western</label>
+            </value>
+            <value>
+                <fullName>Minnesota</fullName>
+                <default>false</default>
+                <label>Minnesota</label>
+            </value>
+            <value>
+                <fullName>Mississippi - Northern</fullName>
+                <default>false</default>
+                <label>Mississippi - Northern</label>
+            </value>
+            <value>
+                <fullName>Mississippi - Southern</fullName>
+                <default>false</default>
+                <label>Mississippi - Southern</label>
+            </value>
+            <value>
+                <fullName>Missouri - Eastern</fullName>
+                <default>false</default>
+                <label>Missouri - Eastern</label>
+            </value>
+            <value>
+                <fullName>Missouri - Western</fullName>
+                <default>false</default>
+                <label>Missouri - Western</label>
+            </value>
+            <value>
+                <fullName>Nebraska</fullName>
+                <default>false</default>
+                <label>Nebraska</label>
+            </value>
+            <value>
+                <fullName>Nevada</fullName>
+                <default>false</default>
+                <label>Nevada</label>
+            </value>
+            <value>
+                <fullName>New Hampshire</fullName>
+                <default>false</default>
+                <label>New Hampshire</label>
+            </value>
+            <value>
+                <fullName>New Jersey</fullName>
+                <default>false</default>
+                <label>New Jersey</label>
+            </value>
+            <value>
+                <fullName>New Mexico</fullName>
+                <default>false</default>
+                <label>New Mexico</label>
+            </value>
+            <value>
+                <fullName>New York - Eastern</fullName>
+                <default>false</default>
+                <label>New York - Eastern</label>
+            </value>
+            <value>
+                <fullName>New York - Northern</fullName>
+                <default>false</default>
+                <label>New York - Northern</label>
+            </value>
+            <value>
+                <fullName>New York - Southern</fullName>
+                <default>false</default>
+                <label>New York - Southern</label>
+            </value>
+            <value>
+                <fullName>New York - Western</fullName>
+                <default>false</default>
+                <label>New York - Western</label>
+            </value>
+            <value>
+                <fullName>Non-US</fullName>
+                <default>false</default>
+                <label>Non-US</label>
+            </value>
+            <value>
+                <fullName>North Carolina - Eastern</fullName>
+                <default>false</default>
+                <label>North Carolina - Eastern</label>
+            </value>
+            <value>
+                <fullName>North Carolina - Middle</fullName>
+                <default>false</default>
+                <label>North Carolina - Middle</label>
+            </value>
+            <value>
+                <fullName>North Carolina - Western</fullName>
+                <default>false</default>
+                <label>North Carolina - Western</label>
+            </value>
+            <value>
+                <fullName>North Dakota</fullName>
+                <default>false</default>
+                <label>North Dakota</label>
+            </value>
+            <value>
+                <fullName>Ohio - Northern</fullName>
+                <default>false</default>
+                <label>Ohio - Northern</label>
+            </value>
+            <value>
+                <fullName>Ohio - Southern</fullName>
+                <default>false</default>
+                <label>Ohio - Southern</label>
+            </value>
+            <value>
+                <fullName>Oklahoma - Eastern</fullName>
+                <default>false</default>
+                <label>Oklahoma - Eastern</label>
+            </value>
+            <value>
+                <fullName>Oklahoma - Northern</fullName>
+                <default>false</default>
+                <label>Oklahoma - Northern</label>
+            </value>
+            <value>
+                <fullName>Oregon</fullName>
+                <default>false</default>
+                <label>Oregon</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Pennsylvania - Eastern</fullName>
+                <default>false</default>
+                <label>Pennsylvania - Eastern</label>
+            </value>
+            <value>
+                <fullName>Pennsylvania - Middle</fullName>
+                <default>false</default>
+                <label>Pennsylvania - Middle</label>
+            </value>
+            <value>
+                <fullName>Pennsylvania - Western</fullName>
+                <default>false</default>
+                <label>Pennsylvania - Western</label>
+            </value>
+            <value>
+                <fullName>Rhode Island</fullName>
+                <default>false</default>
+                <label>Rhode Island</label>
+            </value>
+            <value>
+                <fullName>South Carolina</fullName>
+                <default>false</default>
+                <label>South Carolina</label>
+            </value>
+            <value>
+                <fullName>South Dakota</fullName>
+                <default>false</default>
+                <label>South Dakota</label>
+            </value>
+            <value>
+                <fullName>Tennessee - Eastern</fullName>
+                <default>false</default>
+                <label>Tennessee - Eastern</label>
+            </value>
+            <value>
+                <fullName>Tennessee - Middle</fullName>
+                <default>false</default>
+                <label>Tennessee - Middle</label>
+            </value>
+            <value>
+                <fullName>Tennessee - Western</fullName>
+                <default>false</default>
+                <label>Tennessee - Western</label>
+            </value>
+            <value>
+                <fullName>Texas - Eastern</fullName>
+                <default>false</default>
+                <label>Texas - Eastern</label>
+            </value>
+            <value>
+                <fullName>Texas - Northern</fullName>
+                <default>false</default>
+                <label>Texas - Northern</label>
+            </value>
+            <value>
+                <fullName>Texas - Southern</fullName>
+                <default>false</default>
+                <label>Texas - Southern</label>
+            </value>
+            <value>
+                <fullName>Texas - Western</fullName>
+                <default>false</default>
+                <label>Texas - Western</label>
+            </value>
+            <value>
+                <fullName>Utah</fullName>
+                <default>false</default>
+                <label>Utah</label>
+            </value>
+            <value>
+                <fullName>Vermont</fullName>
+                <default>false</default>
+                <label>Vermont</label>
+            </value>
+            <value>
+                <fullName>Virginia - Eastern</fullName>
+                <default>false</default>
+                <label>Virginia - Eastern</label>
+            </value>
+            <value>
+                <fullName>Virginia - Western</fullName>
+                <default>false</default>
+                <label>Virginia - Western</label>
+            </value>
+            <value>
+                <fullName>Washington - Eastern</fullName>
+                <default>false</default>
+                <label>Washington - Eastern</label>
+            </value>
+            <value>
+                <fullName>Washington - Western</fullName>
+                <default>false</default>
+                <label>Washington - Western</label>
+            </value>
+            <value>
+                <fullName>West Virginia - Northern</fullName>
+                <default>false</default>
+                <label>West Virginia - Northern</label>
+            </value>
+            <value>
+                <fullName>West Virginia - Southern</fullName>
+                <default>false</default>
+                <label>West Virginia - Southern</label>
+            </value>
+            <value>
+                <fullName>Wisconsin - Eastern</fullName>
+                <default>false</default>
+                <label>Wisconsin - Eastern</label>
+            </value>
+            <value>
+                <fullName>Wisconsin - Western</fullName>
+                <default>false</default>
+                <label>Wisconsin - Western</label>
+            </value>
+            <value>
+                <fullName>Wyoming</fullName>
+                <default>false</default>
+                <label>Wyoming</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

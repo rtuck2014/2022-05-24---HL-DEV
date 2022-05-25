@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Time_Record_Period_Staff_Member__c.Time_Record_Rollup_Days__r$Hours_Worked__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>Time_Record_Period_Staff_Member__c$Contact__c.Contact_Full_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>TAG</value>
+        </criteriaItems>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Month</dateGranularity>
+        <field>Time_Record_Period_Staff_Member__c.Time_Record_Rollup_Days__r$Activity_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Time_Record_Period_Staff_Member__c.Time_Record_Rollup_Days__r$Engagement__c.Engagement_Number__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Time_Record_Period_Staff_Member__c.Time_Record_Rollup_Days__r$Project_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>TAG Hours by Project</name>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>HL_Staff_with_Time_Record_Rollup_Days__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Time_Record_Period_Staff_Member__c.Time_Record_Rollup_Days__r$Activity_Date__c</dateColumn>
+        <interval>INTERVAL_CURFY</interval>
+    </timeFrameFilter>
+</Report>

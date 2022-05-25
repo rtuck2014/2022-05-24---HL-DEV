@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PV</fullName>
+    <active>true</active>
+    <label>PV</label>
+    <picklistValues>
+        <picklist>Activity_Type__c</picklist>
+        <values>
+            <fullName>Closing%2FBring Down</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conduct Analysis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conduct Research</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deposition %28including preparation for%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Develop Work Product</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Diligence Discussion with Client</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fieldwork</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internal Admin%2FPlanning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-Engagement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Receive%2FCatalogue%2FReview Data</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Report Writing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Review of Work Product</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Testimony %28including preparation for%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Recording_Status__c</picklist>
+        <values>
+            <fullName>Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Timer_Status__c</picklist>
+        <values>
+            <fullName>Pause</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reset</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resume</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Start</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stop</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

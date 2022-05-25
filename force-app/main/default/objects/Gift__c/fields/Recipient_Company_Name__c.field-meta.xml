@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recipient_Company_Name__c</fullName>
+    <description>Recipient Company (Account) Name</description>
+    <externalId>false</externalId>
+    <formula>Recipient__r.Account.Name</formula>
+    <label>Recipient Company Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
