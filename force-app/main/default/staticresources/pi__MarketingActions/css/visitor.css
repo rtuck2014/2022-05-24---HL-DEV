@@ -1,0 +1,124 @@
+/** Start Flex Functions */
+/** End Flex Functions */
+body {
+  overflow-y: scroll;
+  /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
+}
+.visitor {
+  background: #f5f5f5;
+  padding-bottom: 1px;
+}
+.visitor .top {
+  padding-top: 20px;
+  text-align: center;
+  background: #fff;
+}
+.visitor .top [class*="icon--"] {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+}
+.visitor .top h1 {
+  font-family: "ProximaNovaSoft-Semibold", Arial, sans-serif;
+  color: #2e4b69;
+  margin: 16px 0 5px;
+  font-size: 18px;
+}
+.visitor .top h2 {
+  font-family: "ProximaNovaSoft-Regular", Arial, sans-serif;
+  color: #2e4b69;
+  font-size: 12px;
+}
+.visitor .top .tabs {
+  display: -webkit-flex;
+  display: flex;
+  max-width: 400px;
+  margin: 20px auto;
+}
+.visitor .top .tabs .tab {
+  -webkit-flex: 1;
+  flex: 1;
+  padding: 16px 10px;
+  font-family: "ProximaNovaSoft-Regular", Arial, sans-serif;
+}
+.visitor .top .tabs .tab.active {
+  border-bottom: 3px solid #2591d5;
+}
+.visitor .top .tabs .tab.active,
+.visitor .top .tabs .tab:hover:not(.disabled) {
+  font-family: "ProximaNovaSoft-Semibold", Arial, sans-serif;
+}
+.visitor .top .tabs .tab.disabled {
+  color: #dfe2e5;
+}
+.visitor .pane .card {
+  margin: 20px 14px;
+  border: none;
+  font-family: "ProximaNovaSoft-Regular", Arial, sans-serif;
+  padding: 0;
+}
+.visitor .pane .card a {
+  color: #2b8cd0;
+}
+.visitor .pane .card .header {
+  color: #000;
+  font-size: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f7f7f8;
+  padding: 14px 14px;
+}
+.visitor .pane .card .header .count-wrap {
+  color: #9baaba;
+}
+.visitor .pane .card .header .more {
+  float: right;
+}
+.visitor .pane .card .main {
+  font-size: 14px;
+  padding: 0;
+}
+.visitor .pane .card .main section {
+  padding: 0;
+  border-bottom: 1px solid #f7f7f8;
+}
+.visitor .pane .card .main section > * {
+  padding: 8px 14px;
+}
+.visitor .pane .card .main section.split {
+  display: -webkit-flex;
+  display: flex;
+}
+.visitor .pane .card .main section.split > div {
+  -webkit-flex: 1;
+  flex: 1;
+}
+.visitor .pane .card .main section .desc {
+  color: #605c5f;
+  padding-bottom: 2px;
+}
+.visitor .pane .card .main section .contents {
+  padding-top: 0;
+  color: #2b8cd0;
+}
+.visitor .pane .card .main.actions {
+  background-color: #ffffff;
+}
+.visitor .pane .card .main.actions .action-item {
+  margin-top: 0px;
+  padding: 18px 14px;
+  border-bottom: 1px solid #f7f7f8;
+}
+.visitor .pane .card .main.actions .action-item:last-child {
+  border-bottom: none;
+}
+.visitor .pane .card .main.actions .sub-elements {
+  background-color: #FAFAFA;
+}
+.visitor .pane .card .main.actions .sub-elements .action-item {
+  border: none;
+  padding: 7px 7px 7px 0;
+}
+.visitor .pane .card .main.actions .dots {
+  background-color: #FAFAFA;
+}

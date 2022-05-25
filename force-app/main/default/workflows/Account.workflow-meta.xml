@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Duns_Number_Update</fullName>
+        <description>Update HL Duns Number to D&amp;B optimizer Duns Number</description>
+        <field>DUNS_Number__c</field>
+        <formula>DNBoptimizer__DNB_D_U_N_S_Number__c</formula>
+        <name>Duns Number Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ERP_Submitted_To_Sync_on_Account</fullName>
+        <description>ERP Submitted to Sync field on Account will be updated with current date &amp; time.</description>
+        <field>ERP_Submitted_To_Sync__c</field>
+        <formula>NOW()</formula>
+        <name>ERP Submitted To Sync on Account</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Ownership_Change</fullName>
+        <field>OwnerId</field>
+        <lookupValue>sfadmin@hl.com</lookupValue>
+        <lookupValueType>User</lookupValueType>
+        <name>Ownership Change</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Outlook_Review_Account</fullName>
+        <field>Outlook_Review__c</field>
+        <literalValue>1</literalValue>
+        <name>Update Outlook Review Account</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>ERP_Account</fullName>
+        <apiVersion>47.0</apiVersion>
+        <endpointUrl>https://hlprdoic-houlihanlokey1.integration.ocp.oraclecloud.com/ic/ws/integration/v1/flows/salesforce/SFDC_ORACLEERP_CUSTOMERS/1.0/</endpointUrl>
+        <fields>BillingCity</fields>
+        <fields>BillingCountry</fields>
+        <fields>BillingCountryCode</fields>
+        <fields>BillingPostalCode</fields>
+        <fields>BillingState</fields>
+        <fields>BillingStateCode</fields>
+        <fields>BillingStreet</fields>
+        <fields>Billing_Province__c</fields>
+        <fields>Client_Number__c</fields>
+        <fields>CreatedDate</fields>
+        <fields>DUNS_Number__c</fields>
+        <fields>ERP_Account_ID__c</fields>
+        <fields>ERP_Bill_To_Address_Flag__c</fields>
+        <fields>ERP_Bill_To_Address_ID__c</fields>
+        <fields>ERP_Bill_To_Location_ID__c</fields>
+        <fields>ERP_Bill_To_Site_ID__c</fields>
+        <fields>ERP_Contact_Email__c</fields>
+        <fields>ERP_Contact_First_Name__c</fields>
+        <fields>ERP_Contact_Flag__c</fields>
+        <fields>ERP_Contact_ID__c</fields>
+        <fields>ERP_Contact_Last_Name__c</fields>
+        <fields>ERP_Contact_Phone__c</fields>
+        <fields>ERP_Contact_Point_Email_Flag__c</fields>
+        <fields>ERP_Contact_Point_Email_ID__c</fields>
+        <fields>ERP_Contact_Point_Phone_Flag__c</fields>
+        <fields>ERP_Contact_Point_Phone_ID__c</fields>
+        <fields>ERP_Contact_Point_Relationship_ID__c</fields>
+        <fields>ERP_Customer_Type__c</fields>
+        <fields>ERP_ID__c</fields>
+        <fields>ERP_Last_Integration_Response_Date__c</fields>
+        <fields>ERP_Last_Integration_Status__c</fields>
+        <fields>ERP_Location_ID__c</fields>
+        <fields>ERP_Org_Party_ID__c</fields>
+        <fields>ERP_Parent_Party_ID__c</fields>
+        <fields>ERP_Party_ID__c</fields>
+        <fields>ERP_Person_Party_ID__c</fields>
+        <fields>ERP_Ship_To_Address_Flag__c</fields>
+        <fields>ERP_Ship_To_Address_ID__c</fields>
+        <fields>ERP_Ship_To_Location_ID__c</fields>
+        <fields>ERP_Ship_To_Site_ID__c</fields>
+        <fields>ERP_Site_ID__c</fields>
+        <fields>Id</fields>
+        <fields>Name</fields>
+        <fields>ParentId</fields>
+        <fields>Primary_Billing_Contact__c</fields>
+        <fields>ShippingCity</fields>
+        <fields>ShippingCountry</fields>
+        <fields>ShippingCountryCode</fields>
+        <fields>ShippingPostalCode</fields>
+        <fields>ShippingState</fields>
+        <fields>ShippingStateCode</fields>
+        <fields>ShippingStreet</fields>
+        <fields>Shipping_Province__c</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>svc-erpadmin@hl.com</integrationUser>
+        <name>ERP Account</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>Change Account Owner to HL Admin</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Account.CreatedDate</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>D%26B Duns update</fullName>
+        <actions>
+            <name>Duns_Number_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update Duns Number when D&amp;B Duns Number Updates</description>
+        <formula>ischanged( DNBoptimizer__DNB_D_U_N_S_Number__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>ERP Account</fullName>
+        <actions>
+            <name>ERP_Account</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Triggers the outbound message for Account</description>
+        <formula>AND(OR(ISNEW(),         ISCHANGED(ERP_Submitted_To_Sync__c)),     NOT(ISNULL(Client_Number__c)),     NOT(ISNULL(BillingCountry)),     NOT(ISNULL(ERP_Contact_First_Name__c)),     NOT(ISNULL(ERP_Contact_Last_Name__c)), NOT( ERP_Do_Not_Sync__c))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>ERP Submitted to Sync fields on Account</fullName>
+        <actions>
+            <name>ERP_Submitted_To_Sync_on_Account</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update &apos;ERP Submitted to Sync&apos; field of Account with current date and time.</description>
+        <formula>AND(NOT(ISNULL(Client_Number__c)),     NOT(ISBLANK(Client_Number__c)),          OR(ISNEW(),        ISCHANGED(Name),                 ISCHANGED(Description),                 ISCHANGED(Client_Number__c),            ISCHANGED(Primary_Billing_Contact__c),                AND(ISCHANGED(ERP_Bill_To_Address_Flag__c),                        NOT(ISPICKVAL(ERP_Bill_To_Address_Flag__c, &apos;&apos;))),                AND(ISCHANGED(ERP_Contact_Flag__c),                        NOT(ISPICKVAL(ERP_Contact_Flag__c, &apos;&apos;))),                AND(ISCHANGED(ERP_Contact_Point_Email_Flag__c),                        NOT(ISPICKVAL(ERP_Contact_Point_Email_Flag__c, &apos;&apos;))),                AND(ISCHANGED(ERP_Contact_Point_Phone_Flag__c),                        NOT(ISPICKVAL(ERP_Contact_Point_Phone_Flag__c, &apos;&apos;))),                AND(ISCHANGED(ERP_Ship_To_Address_Flag__c),                        NOT(ISPICKVAL(ERP_Ship_To_Address_Flag__c, &apos;&apos;)))))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Outlook Review - Account</fullName>
+        <actions>
+            <name>Update_Outlook_Review_Account</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.CreatedById</field>
+            <operation>equals</operation>
+            <value>SFAPIUser</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>Houlihan Company</value>
+        </criteriaItems>
+        <description>Check Outlook Review checkbox when Account created from Outlook</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Ownership Change</fullName>
+        <actions>
+            <name>Ownership_Change</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>TRUE</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

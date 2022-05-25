@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Clear_DA</fullName>
+        <field>Deal_Announcements__c</field>
+        <name>Clear DA</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_Events</fullName>
+        <field>Events_Conferences__c</field>
+        <name>Clear Events</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_GA</fullName>
+        <field>General_Announcements__c</field>
+        <name>Clear GA</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_Insights</fullName>
+        <field>InsightsContent__c</field>
+        <name>Clear Insights</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Contact_Default_Owner</fullName>
+        <field>OwnerId</field>
+        <lookupValue>sfadmin@hl.com</lookupValue>
+        <lookupValueType>User</lookupValueType>
+        <name>Contact Default Owner</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Del_Bad_Company</fullName>
+        <field>Badge_Company__c</field>
+        <name>Del Bad Company</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Del_Badge_FName</fullName>
+        <field>Badge_First_Name__c</field>
+        <name>Del Badge FName</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Del_Badge_LName</fullName>
+        <field>Badge_Last_Name__c</field>
+        <name>Del Badge LName</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Do_Not_Email_Changed</fullName>
+        <field>Do_Not_Email_Change_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Do Not Email - Changed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Do_Not_Email_False_to_True</fullName>
+        <field>Do_Not_Email_Change_Date__c</field>
+        <formula>today()</formula>
+        <name>Do Not Email - False to True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Do_Not_Fax_False_to_True</fullName>
+        <field>Do_Not_Fax_Change_Date__c</field>
+        <formula>today()</formula>
+        <name>Do Not Fax - False to True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Do_Not_Fax_True_to_False</fullName>
+        <field>Do_Not_Fax_Change_Date__c</field>
+        <name>Do Not Fax - True to False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Do_Not_Mail_False_to_True</fullName>
+        <field>Do_Not_Mail_Change_Date__c</field>
+        <formula>today()</formula>
+        <name>Do Not Mail - False to True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Do_Not_Mail_True_to_False</fullName>
+        <field>Do_Not_Mail_Change_Date__c</field>
+        <name>Do Not Mail - True to False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Do_Not_Solicit_Changed</fullName>
+        <field>Do_Not_Solicit_Change_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Do Not Solicit - Changed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Do_Not_Solicit_False_to_True</fullName>
+        <field>Do_Not_Solicit_Change_Date__c</field>
+        <formula>today()</formula>
+        <name>Do Not Solicit - False to True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Do_Not_Solicit_Updated_to_False</fullName>
+        <field>Do_Not_Solicit__c</field>
+        <literalValue>0</literalValue>
+        <name>Do Not Solicit Updated to False</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Do_Not_Solicit_Updated_to_True</fullName>
+        <field>Do_Not_Solicit__c</field>
+        <literalValue>1</literalValue>
+        <name>Do Not Solicit Updated to True</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Gender_Female</fullName>
+        <field>Gender__c</field>
+        <literalValue>Female</literalValue>
+        <name>Gender - Female</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Gender_Male</fullName>
+        <field>Gender__c</field>
+        <literalValue>Male</literalValue>
+        <name>Gender - Male</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Opt_Out_DA</fullName>
+        <field>Deal_Announcements__c</field>
+        <literalValue>Opt Out</literalValue>
+        <name>Opt Out DA</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Opt_Out_Event</fullName>
+        <field>Events_Conferences__c</field>
+        <literalValue>Opt Out</literalValue>
+        <name>Opt Out Event</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Opt_Out_GA</fullName>
+        <field>General_Announcements__c</field>
+        <literalValue>Opt Out</literalValue>
+        <name>Opt Out GA</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Opt_Out_Insight</fullName>
+        <field>InsightsContent__c</field>
+        <literalValue>Opt Out</literalValue>
+        <name>Opt Out Insight</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Preparis_Opt_Out_Date</fullName>
+        <field>Preparis_Opt_Out_Date__c</field>
+        <formula>NOW()</formula>
+        <name>Preparis Opt Out Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Preparis_Opt_Out_STAFFID</fullName>
+        <field>Preparis_Opt_Out_STAFFID__c</field>
+        <formula>$User.HL_STAFFID__c</formula>
+        <name>Preparis Opt Out STAFFID</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Preparis_Opt_Out_User</fullName>
+        <field>Preparis_Opt_Out_User__c</field>
+        <formula>$User.FirstName + &quot; &quot; + $User.LastName</formula>
+        <name>Preparis Opt Out User</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Preparis_Opt_Out_User_ID</fullName>
+        <field>Preparis_Opt_Out_User_ID__c</field>
+        <formula>$User.Full_User_ID__c</formula>
+        <name>Preparis Opt Out User ID</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Badge_Company</fullName>
+        <field>Badge_Company__c</field>
+        <formula>Account.Name</formula>
+        <name>Update Badge Company</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Badge_FName</fullName>
+        <field>Badge_First_Name__c</field>
+        <formula>FirstName</formula>
+        <name>Update Badge FName</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Badge_LName</fullName>
+        <field>Badge_Last_Name__c</field>
+        <formula>LastName</formula>
+        <name>Update Badge LName</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_DA_Date</fullName>
+        <field>Deal_Announcements_Change_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Update DA Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Event_Date</fullName>
+        <field>Events_Conference_Change_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Update Event Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_GA_Date</fullName>
+        <field>General_Announcements_Change_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Update GA Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Insights_Date</fullName>
+        <field>Insights_Content_Change_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Update Insights Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Outlook_Review_Contact</fullName>
+        <field>Outlook_Review__c</field>
+        <literalValue>1</literalValue>
+        <name>Update Outlook Review Contact</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_PDC_Last_Modified</fullName>
+        <field>PDC_Last_Modified__c</field>
+        <formula>NOW()</formula>
+        <name>Update PDC Last Modified</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Supervisor_modified_date</fullName>
+        <field>Supervisory_Principal_Last_Modified_Date__c</field>
+        <formula>NOW()</formula>
+        <name>Update Supervisor modified date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_to_Blank</fullName>
+        <field>Most_Recent_Email_Status__c</field>
+        <name>Update to Blank</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>DaScoopComposer__Notify_Groove</fullName>
+        <apiVersion>40.0</apiVersion>
+        <description>Sends an outbound message to Groove with the record ID and owner ID. This is used for real-time auto-import to Groove Flow.</description>
+        <endpointUrl>https://app.grooveapp.com/salesforce/updates</endpointUrl>
+        <fields>Id</fields>
+        <fields>OwnerId</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>rbahrampourian@hl.com</integrationUser>
+        <name>Notify Groove (Managed)</name>
+        <protected>true</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>Badge Contact Copy</fullName>
+        <actions>
+            <name>Update_Badge_Company</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Badge_FName</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Badge_LName</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>Copy_From_Contact_Detail__c = TRUE</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Badge Contact Del</fullName>
+        <actions>
+            <name>Del_Bad_Company</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Del_Badge_FName</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Del_Badge_LName</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>Copy_From_Contact_Detail__c = FALSE</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Contact Default Owner</fullName>
+        <actions>
+            <name>Contact_Default_Owner</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>TRUE</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>DaScoopComposer__Notify Groove on Contact Created %28Managed%29</fullName>
+        <actions>
+            <name>DaScoopComposer__Notify_Groove</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>false</active>
+        <description>This WF rule can be activated if you want to notify Groove that a new contact was created. That way Groove can e.g. instantly import the contact to a Groove Flow that has auto import enabled (and meets the auto-import rules of that Flow).</description>
+        <formula>ISNEW()</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Email - Changed</fullName>
+        <actions>
+            <name>Do_Not_Email_Changed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED(Do_Not_Email__c) &amp;&amp;   $User.Full_User_ID__c  != &apos;005i0000004aM2eAAE&apos;</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Email - False to True</fullName>
+        <actions>
+            <name>Do_Not_Email_False_to_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(
+ISCHANGED(Do_Not_Email__c),
+NOT(PRIORVALUE(Do_Not_Email__c))
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Fax - False to True</fullName>
+        <actions>
+            <name>Do_Not_Fax_False_to_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(
+ISCHANGED(Do_Not_Fax__c),
+NOT(PRIORVALUE(Do_Not_Fax__c))
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Fax - True to False</fullName>
+        <actions>
+            <name>Do_Not_Fax_True_to_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(
+ISCHANGED(Do_Not_Fax__c),
+PRIORVALUE(Do_Not_Fax__c)
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Mail - False to True</fullName>
+        <actions>
+            <name>Do_Not_Mail_False_to_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(
+ISCHANGED(Do_Not_Mail__c),
+NOT(PRIORVALUE(Do_Not_Mail__c))
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Mail - True to False</fullName>
+        <actions>
+            <name>Do_Not_Mail_True_to_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(
+ISCHANGED(Do_Not_Mail__c),
+PRIORVALUE(Do_Not_Mail__c)
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Solicit - Changed</fullName>
+        <actions>
+            <name>Do_Not_Solicit_Changed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED( Do_Not_Solicit__c) &amp;&amp;   $User.Full_User_ID__c  != &apos;005i0000004aM2eAAE&apos;</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Do Not Solicit - False to True</fullName>
+        <actions>
+            <name>Do_Not_Solicit_False_to_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(
+ISCHANGED(Do_Not_Solicit__c),
+NOT(PRIORVALUE(Do_Not_Solicit__c))
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Gender - Female</fullName>
+        <actions>
+            <name>Gender_Female</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISPICKVAL(Salutation,&apos;Mrs.&apos;) || ISPICKVAL(Salutation,&apos;Ms.&apos;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Gender - Male</fullName>
+        <actions>
+            <name>Gender_Male</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISPICKVAL(Salutation,&apos;Mr.&apos;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Outlook Review - Contact</fullName>
+        <actions>
+            <name>Update_Outlook_Review_Contact</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Contact.CreatedById</field>
+            <operation>equals</operation>
+            <value>SFAPIUser</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Contact.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>External Contact</value>
+        </criteriaItems>
+        <description>Check Outlook Review checkbox when Contact created from Outlook</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>PDC Modify Date</fullName>
+        <actions>
+            <name>Update_PDC_Last_Modified</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED( Primary_PDC__c ) ||  ISCHANGED( Secondary_PDC__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Preparis Opt Out</fullName>
+        <actions>
+            <name>Preparis_Opt_Out_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Preparis_Opt_Out_STAFFID</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Preparis_Opt_Out_User</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Preparis_Opt_Out_User_ID</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED( Preparis_Opt_Out__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>SUB DA Change Date</fullName>
+        <actions>
+            <name>Update_DA_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>only update the date changed when field set to Opt In or NULL</description>
+        <formula>ISCHANGED(Deal_Announcements__c) &amp;&amp;   $User.Full_User_ID__c  != &apos;005i0000004aM2eAAE&apos;</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>SUB Event Change Date</fullName>
+        <actions>
+            <name>Update_Event_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>only update the date changed when field set to Opt In or NULL</description>
+        <formula>ISCHANGED(Events_Conferences__c ) &amp;&amp;   $User.Full_User_ID__c  != &apos;005i0000004aM2eAAE&apos;</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>SUB Full Opt Out %28Checkbox%29</fullName>
+        <actions>
+            <name>Opt_Out_DA</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Opt_Out_Event</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Opt_Out_GA</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Opt_Out_Insight</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_DA_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Event_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_GA_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Update_Insights_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>Do_Not_Solicit__c = TRUE</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SUB Full Opt Out %28Manual%29</fullName>
+        <actions>
+            <name>Do_Not_Solicit_False_to_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Do_Not_Solicit_Updated_to_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>ISPICKVAL(Deal_Announcements__c, &apos;Opt Out&apos;) &amp;&amp; ISPICKVAL( Events_Conferences__c , &apos;Opt Out&apos;) &amp;&amp; ISPICKVAL( General_Announcements__c , &apos;Opt Out&apos;) &amp;&amp; ISPICKVAL( InsightsContent__c , &apos;Opt Out&apos;) &amp;&amp;  Do_Not_Solicit__c = FALSE</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SUB GA Change Date</fullName>
+        <actions>
+            <name>Update_GA_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>only update the date changed when field set to Opt In or NULL</description>
+        <formula>ISCHANGED(General_Announcements__c ) &amp;&amp;   $User.Full_User_ID__c  != &apos;005i0000004aM2eAAE&apos;</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>SUB Insights Change Date</fullName>
+        <actions>
+            <name>Update_Insights_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>only update the date changed when field set to Opt In or NULL</description>
+        <formula>ISCHANGED(InsightsContent__c ) &amp;&amp;   $User.Full_User_ID__c  != &apos;005i0000004aM2eAAE&apos;</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>SUB Opt In</fullName>
+        <actions>
+            <name>Do_Not_Solicit_Changed</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Do_Not_Solicit_Updated_to_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>(ISPICKVAL(Deal_Announcements__c, &apos;Opt In&apos;) || ISPICKVAL( Events_Conferences__c , &apos;Opt In&apos;) || ISPICKVAL( General_Announcements__c , &apos;Opt In&apos;) || ISPICKVAL( InsightsContent__c , &apos;Opt In&apos;)) &amp;&amp; (Do_Not_Solicit__c)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Supervisory Principal Last Modified Date</fullName>
+        <actions>
+            <name>Update_Supervisor_modified_date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>Generates last modified date when supervisor principal field populated or changed</description>
+        <formula>ISCHANGED( Supervisor__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

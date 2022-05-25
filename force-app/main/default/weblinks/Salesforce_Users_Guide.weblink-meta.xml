@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPageWebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <availability>online</availability>
+    <description>INJECTION INCLUDED (LINE 1), HIDES HELP AND TRAINING HYPERLINK IN TOP RIGHT BY APP SELECTOR - ASK ALEX YU WHY HE DID THIS.</description>
+    <displayType>link</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Help Guide</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/resource/1409325216000/SL_Sidebar&quot;)}
+window.open(&apos;http://hlnet/corp/LC/Application%20and%20Procedure%20Guides/SalesforceUserGuide/Default.htm&apos;,&apos;name&apos;,&apos;height=1000,width=2000,top=0,left=0,resizable&apos;);</url>
+</CustomPageWebLink>

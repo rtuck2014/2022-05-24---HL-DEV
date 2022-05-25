@@ -1,0 +1,88 @@
+.slds-scope .slds-spinner + [class^="slds-"] {
+  margin-left: 2.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(0, -50%);
+}
+.slds-scope .slds-spinner.slds-spinner--small + [class^="slds-"] {
+  margin-left: 1.25rem;
+}
+.slds-scope .slds-spinner_container {
+  z-index: 410002;
+}
+.slds-scope .slds-grid--frame {
+  min-width: 100%;
+  min-height: initial;
+}
+.slds-scope .slds-backdrop {
+  z-index: 410000;
+}
+.slds-scope .slds-modal {
+  z-index: 410001;
+}
+.slds-scope .slds-notify-container,
+.slds-scope .slds-notify_container {
+  z-index: initial;
+}
+.slds-scope .slds-text-color--weak {
+  color: #54698d;
+}
+.slds-scope .slds-dropdown__item.slds-is-selected .slds-icon_selected {
+  opacity: 1;
+}
+.slds-scope .slds-type-focus:hover,
+.slds-scope .slds-type-focus:focus {
+  color: currentColor;
+  border-bottom: 1px solid currentColor;
+}
+.slds-scope .slds-type-focus:hover {
+  color: currentColor;
+  border-bottom: 1px solid currentColor;
+}
+.slds-scope .slds-text-color--weak {
+  color: #54698d;
+}
+.slds-scope .slds-table td {
+  color: #16325c;
+}
+.slds-scope .slds-input:not(.highlighted) {
+  line-height: normal;
+}
+.slds-scope .slds-input.safari.highlighted {
+  padding-top: 6px;
+}
+.slds-scope .slds-input.safari.highlighted .content-editable {
+  line-height: normal;
+}
+.slds-scope .slds-transition-hide {
+  transition: opacity 1s;
+}
+.slds-scope .slds-popover_feature {
+  border-color: #164a85;
+  background-color: #164a85;
+  background-image: url("../images/popover-action.png");
+  background-repeat: no-repeat;
+  background-size: 100% 2.25rem;
+  background-position: bottom;
+  padding-bottom: 1.5rem;
+  color: white;
+}
+.slds-scope .slds-popover_walkthrough-alt .slds-text-heading_small,
+.slds-scope .slds-popover_feature .slds-text-heading_small {
+  margin-bottom: 0.5rem;
+}
+.slds-scope .slds-popover_walkthrough-alt.slds-nubbin_bottom:before,
+.slds-scope .slds-popover_walkthrough-alt.slds-nubbin--bottom:before,
+.slds-scope .slds-popover_walkthrough-alt.slds-nubbin_bottom-left:before,
+.slds-scope .slds-popover_walkthrough-alt.slds-nubbin--bottom-left:before,
+.slds-scope .slds-popover_walkthrough-alt.slds-nubbin_bottom-right:before,
+.slds-scope .slds-popover_walkthrough-alt.slds-nubbin--bottom-right:before,
+.slds-scope .slds-popover_feature.slds-nubbin_bottom:before,
+.slds-scope .slds-popover_feature.slds-nubbin--bottom:before,
+.slds-scope .slds-popover_feature.slds-nubbin_bottom-left:before,
+.slds-scope .slds-popover_feature.slds-nubbin--bottom-left:before,
+.slds-scope .slds-popover_feature.slds-nubbin_bottom-right:before,
+.slds-scope .slds-popover_feature.slds-nubbin--bottom-right:before {
+  background-color: #215ca0;
+}

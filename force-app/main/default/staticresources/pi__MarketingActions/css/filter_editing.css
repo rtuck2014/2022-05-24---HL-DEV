@@ -1,0 +1,203 @@
+/** Start Flex Functions */
+/** End Flex Functions */
+input,
+select {
+  font-family: 'ProximaNovaSoft-Regular';
+  color: #666;
+}
+#edit_filter {
+  padding: 14px;
+  margin-bottom: 42px;
+}
+#edit_filter label.edit-title {
+  display: -webkit-flex;
+  display: flex;
+}
+label.edit-title {
+  line-height: 38px;
+  padding-bottom: 8px;
+  padding-right: 14px;
+  border-bottom: 1px solid #eceef0;
+}
+label.edit-title input[type="text"] {
+  border-radius: 5px;
+  font-size: 15px;
+  margin-left: 8px;
+}
+.criteria-inputs {
+  background: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.criteria-inputs label {
+  display: -webkit-flex;
+  display: flex;
+  line-height: 34px;
+  border-bottom: 1px solid #eceef0;
+  padding-left: 30.5px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.criteria-inputs label:last-child {
+  border-bottom: none;
+}
+.criteria-inputs label.radio {
+  margin-bottom: 0;
+  font-weight: 400;
+  cursor: pointer;
+  position: relative;
+  line-height: 1.6em;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.criteria-inputs label.radio input[type="radio"] {
+  position: absolute;
+  margin-left: -20px;
+  margin: 4px 0 0;
+  line-height: normal;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  width: 1px;
+  height: 1px;
+}
+.criteria-inputs label.radio:before {
+  border: 1px solid #adadad;
+  border-radius: 16px;
+  content: " ";
+  height: 16px;
+  left: 8px;
+  position: absolute;
+  top: 8px;
+  width: 16px;
+}
+.criteria-inputs label.radio:after {
+  background: 0 0;
+  border-radius: 8px;
+  content: " ";
+  height: 8px;
+  left: 12px;
+  position: absolute;
+  top: 12px;
+  width: 8px;
+}
+.criteria-inputs label.radio:before,
+.criteria-inputs label.radio :after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.criteria-inputs label.radio.checked:before {
+  background: #2a94d6;
+  border: 1px solid transparent;
+}
+.criteria-inputs label.radio.checked:after {
+  background: #fff;
+}
+.criteria-inputs label.hide {
+  display: none;
+}
+.criteria-inputs.geo label {
+  border: none;
+}
+.geo-select-wrap {
+  display: -webkit-flex;
+  display: flex;
+  border-bottom: 1px solid #eceef0;
+  padding-bottom: 12px;
+}
+.geo-select-wrap select {
+  -webkit-flex: 3;
+  flex: 3;
+  height: 28px;
+  border-radius: 2px;
+  -webkit-appearance: none;
+  color: #666;
+  background: #fff;
+  margin: 0 12px;
+  padding: 4px;
+  background-repeat: no-repeat;
+  background-position: right 0px top 8px;
+  background-size: 16px 16px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30px' height='30px'><polyline fill='#d8dce0' points='0,0 20,0 10,20'/></svg>");
+}
+.geo-select-wrap .add-geo-btn {
+  -webkit-flex: 1;
+  flex: 1;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  background-color: #54c473;
+  margin: 0 14px 0 6px;
+  color: #fff;
+}
+.tag-container {
+  min-height: 150px;
+  background-color: #F0F1F2;
+  margin: 12px;
+  padding: 6px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
+  overflow: hidden;
+}
+.tag-container .tag {
+  background: grey;
+  padding: 4px;
+  color: #fff;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px;
+  height: 18px;
+}
+.tag-container .tag.template {
+  display: none;
+}
+.tag-container .tag .x {
+  margin-left: 2px;
+}
+.button-bar {
+  background-color: #2a94d6;
+  height: 42px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.button-bar .btn {
+  display: block;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.14);
+  height: 30px;
+  margin: 7px;
+  padding: 8px 14px 2px;
+  min-width: 0;
+  color: #ffffff;
+  font-size: 13px;
+}
+.button-bar .save {
+  float: right;
+}
+.button-bar .cancel {
+  float: right;
+  background: none;
+  border: none;
+}
+.button-bar .help-link {
+  background: none;
+  border: none;
+  font-weight: bold;
+  float: left;
+}

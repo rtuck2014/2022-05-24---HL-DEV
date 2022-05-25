@@ -1,0 +1,389 @@
+.BorderBox {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.list_picker .search {
+  width: 100%;
+  padding: 0;
+  padding-left: 5px;
+  margin: 0;
+  margin-top: 5px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  display: table;
+}
+.list_picker .search i.fa-search {
+  display: inline;
+  width: 11px;
+  font-size: 14px;
+}
+.list_picker .search input {
+  display: inline;
+  width: 90%;
+  padding: 5px;
+  margin: 0;
+  height: 30px;
+  background: none;
+  border: none;
+}
+.list_picker .search input::-webkit-input-placeholder {
+  font-size: inherit;
+  color: inherit;
+}
+.list_picker .search input:-moz-placeholder {
+  font-size: inherit;
+  color: inherit;
+}
+.list_picker .search input::-moz-placeholder {
+  font-size: inherit;
+  color: inherit;
+}
+.list_picker .search input:-ms-input-placeholder {
+  font-size: inherit;
+  color: inherit;
+}
+.list_picker .search input:focus {
+  outline: 0;
+}
+.list_picker .list_picker_container {
+  margin-top: 5px;
+  overflow-y: auto;
+  cursor: pointer;
+}
+.list_picker .list_picker_container div.noItems {
+  margin: 30px auto;
+  padding: 30px auto;
+  text-align: center;
+  color: #e5e5e5;
+  font-size: 1.2em;
+}
+.list_picker .list_picker_container div.noItems > div:first-child {
+  font-size: 2em;
+  padding-bottom: 10px;
+}
+.list_picker .list_picker_container.multiselect .list_picker_item {
+  display: block;
+}
+.list_picker .list_picker_container label {
+  margin: 0;
+  padding: 0;
+}
+.list_picker_item {
+  padding: 8px;
+  display: table;
+  border-bottom: 1px solid #eee;
+  box-sizing: border-box;
+  padding-bottom: 1px;
+}
+.list_picker_item label {
+  display: block;
+}
+.list_picker_item:hover,
+.list_picker_item:active,
+.list_picker_item.selected {
+  color: #448fba;
+  font-weight: bold;
+}
+.list_picker_item:hover span.icon,
+.list_picker_item:active span.icon,
+.list_picker_item.selected span.icon {
+  color: #888888;
+}
+.list_picker_item div.clickable_icon_area {
+  position: absolute;
+  top: 5px;
+  bottom: 10px;
+  left: 0px;
+  z-index: 1000;
+  width: 35px;
+  display: none;
+}
+.list_picker_item span {
+  display: table-cell;
+  vertical-align: middle;
+}
+.list_picker_item span.icon {
+  padding-right: 6px;
+  font-size: 0.8em;
+  color: #888888;
+  /* These two together make the icon as small as possible while fitting the whole text icon */
+  width: 1%;
+  white-space: nowrap;
+}
+.list_picker_item span.item-right {
+  text-align: right;
+}
+.list_picker_item.list_picker_item_header {
+  display: block;
+  background-color: #448fba;
+  color: white;
+  border: 2px solid #4088b6;
+  font-weight: bold;
+  cursor: default;
+}
+.list_picker_item.list_picker_item_header span {
+  display: inline;
+}
+.list_picker_item:not(.list_picker_item_header):nth-child(odd) {
+  background-color: #FFF;
+}
+.clickable .list_picker_item div.clickable_icon_area {
+  display: block;
+}
+.basic-loader {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: block;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background: #fff;
+  opacity: 0.75;
+}
+.basic-loader .background {
+  display: table;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+.basic-loader .background .spinner-container {
+  display: table-cell;
+  vertical-align: middle;
+}
+.basic-loader .background .spinner-container .spinner {
+  height: 64px;
+  background-image: url('../images/loading-gray.gif');
+  background-size: 64px 64px;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+}
+.basic-loader .background .spinner-container h2 {
+  font-size: 32px;
+  font-family: inherit;
+  color: #646464;
+}
+.action-toolbar {
+  height: 25px;
+  padding: 4px;
+  position: fixed;
+  background: #78A1C5;
+  width: 100%;
+  bottom: 0;
+  z-index: 100;
+  text-align: center;
+}
+.action-toolbar button {
+  margin: 0 8px;
+}
+.action-toolbar-message-container {
+  display: none;
+  position: absolute;
+  top: 40%;
+  text-align: center;
+  width: 100%;
+  opacity: .6;
+}
+.list_picker {
+  font-family: 'ProximaNovaSoft-Regular';
+  font-size: 14px;
+  color: #4a4a4a;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.list_picker .search-header {
+  background-color: #f2f2f2;
+}
+.list_picker .list_picker_container {
+  margin-top: 12px;
+  height: 440px;
+  margin-bottom: 0;
+}
+.list_picker .list_picker_container.desktop {
+  height: 400px;
+}
+.list_picker .list_picker_container div.list_picker_item {
+  padding: 16px;
+  border-bottom: 1px solid #DFDFDF;
+  background-color: #FFFFFF;
+}
+.list_picker .list_picker_container div.list_picker_item.selected {
+  color: #4a4a4a;
+  font-weight: normal;
+}
+.list_picker .list_picker_container div.list_picker_item.selected:hover {
+  color: #4a4a4a;
+  font-weight: normal;
+}
+.list_picker .list_picker_container div.list_picker_item.selected span.icon {
+  color: #888888;
+}
+.list_picker .list_picker_container div.list_picker_item:hover {
+  color: #4a4a4a;
+  font-weight: normal;
+}
+.list_picker .list_picker_container div.list_picker_item:active {
+  color: #4a4a4a;
+  font-weight: normal;
+}
+.list_picker .list_picker_container div.list_picker_item span.icon {
+  padding-right: 10px;
+  font-size: 16px;
+}
+.list_picker .list_picker_container div.list_picker_item.list_picker_item_header {
+  padding: 8px;
+  background-color: #2a94d6;
+  border: none;
+}
+.list_picker .list_picker_container div.list_picker_item.list_picker_item_header:hover {
+  color: #fff;
+}
+.list_picker .list_picker_container div.list_picker_item.no-padding {
+  padding: 0;
+}
+.list_picker .list_picker_container div.list_picker_item.no-padding span {
+  padding: 0px;
+}
+.list_picker .list_picker_container div.list_picker_item.no-padding span.icon {
+  padding-right: 10px;
+}
+.list_picker .list_picker_container div.list_picker_item span {
+  padding: 4px 0;
+}
+.list_picker .list_picker_container div.list_picker_item label {
+  padding: 14px;
+}
+.list_picker .list_picker_container div.list_picker_item .programs {
+  display: none;
+}
+.list_picker .list_picker_container div.list_picker_item.expanded {
+  cursor: default;
+}
+.list_picker .list_picker_container div.list_picker_item.expanded .programs,
+.list_picker .list_picker_container div.list_picker_item.expanded .es_programs {
+  display: block;
+  margin-left: 35px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  color: #999999;
+  font-weight: normal;
+}
+.list_picker .list_picker_container div.list_picker_item.expanded .programs .program,
+.list_picker .list_picker_container div.list_picker_item.expanded .es_programs .program {
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.list_picker .list_picker_container div.list_picker_item.expanded .programs .program .program_icon_container,
+.list_picker .list_picker_container div.list_picker_item.expanded .es_programs .program .program_icon_container {
+  display: inline-block;
+  margin-right: 5px;
+}
+.list_picker .list_picker_container div.list_picker_item.expanded .programs .program .program_icon_container .paused_icon,
+.list_picker .list_picker_container div.list_picker_item.expanded .es_programs .program .program_icon_container .paused_icon {
+  background-image: url("../images/icons/paused.png");
+  margin-top: -1px;
+}
+.list_picker .list_picker_container div.list_picker_item.expanded .programs .program .program_icon_container .pause_icon,
+.list_picker .list_picker_container div.list_picker_item.expanded .es_programs .program .program_icon_container .pause_icon {
+  background-image: url("../images/icons/pause.png");
+  margin-top: -1px;
+}
+.list_picker .list_picker_container div.list_picker_item.expanded .programs .program .program_icon_container .active_icon,
+.list_picker .list_picker_container div.list_picker_item.expanded .es_programs .program .program_icon_container .active_icon {
+  background-image: url("../images/icons/active.png");
+  margin-top: -1px;
+}
+.list_picker .list_picker_container div.list_picker_item.expanded .programs .program .program_icon_container .connected_apps_icon,
+.list_picker .list_picker_container div.list_picker_item.expanded .es_programs .program .program_icon_container .connected_apps_icon {
+  background-image: url("../images/icons/connected_apps.png");
+  margin-top: -1px;
+}
+.list_picker .list_picker_container div.list_picker_item.expanded .programs .program .program_icon_container .date_input_icon,
+.list_picker .list_picker_container div.list_picker_item.expanded .es_programs .program .program_icon_container .date_input_icon {
+  background-image: url("../images/icons/date_input.png");
+  margin-top: -5px;
+}
+.list_picker .list_picker_container div.list_picker_item.expanded .programs .program .program_icon_container .program_icon,
+.list_picker .list_picker_container div.list_picker_item.expanded .es_programs .program .program_icon_container .program_icon {
+  width: 12px;
+  height: 12px;
+  background-size: 12px 12px;
+  margin-right: 5px;
+  display: inline-block;
+}
+.list_picker .list_picker_container div.list_picker_item.expanded .programs .program_name,
+.list_picker .list_picker_container div.list_picker_item.expanded .es_programs .program_name {
+  display: inline-block;
+  margin-left: -10px;
+  text-overflow: ellipsis;
+}
+.list_picker .list_picker_container div.list_picker_item.expanded .programs .loading,
+.list_picker .list_picker_container div.list_picker_item.expanded .es_programs .loading,
+.list_picker .list_picker_container div.list_picker_item.expanded .programs .no_programs,
+.list_picker .list_picker_container div.list_picker_item.expanded .es_programs .no_programs,
+.list_picker .list_picker_container div.list_picker_item.expanded .programs .program_title,
+.list_picker .list_picker_container div.list_picker_item.expanded .es_programs .program_title {
+  margin-left: 0px;
+}
+.success-message {
+  background-color: #5fb760;
+  color: white;
+  padding: 10px 5px;
+  display: none;
+}
+.error-message {
+  background-color: #ff0000;
+  color: white;
+  padding: 10px 5px;
+  display: none;
+}
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  margin: 0 6px 0 0;
+  border: 1px solid #bbc0c4;
+  border-radius: 5px;
+  padding: 0;
+  vertical-align: middle;
+  background: white;
+}
+input[type="checkbox"]:checked {
+  border: 1px solid transparent;
+  background-color: #2a94d6;
+  box-shadow: none;
+}
+input[type="checkbox"]:checked::after {
+  -webkit-transform: rotate(45deg);
+  position: relative;
+  content: '';
+  border: 3px solid white;
+  border-top: none;
+  border-left: none;
+  width: 3px;
+  height: 9px;
+  display: block;
+  top: 0px;
+  left: 4px;
+}
+.slds-scope *,
+.slds-scope :after,
+.slds-scope :before {
+  box-sizing: content-box;
+}

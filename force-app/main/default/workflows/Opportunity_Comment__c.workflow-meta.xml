@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Compliance_Include_Report_False_Opp</fullName>
+        <field>Include_On_Report__c</field>
+        <literalValue>0</literalValue>
+        <name>Compliance Include Report False Opp</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>OppComm_LOB</fullName>
+        <field>Line_of_Business__c</field>
+        <formula>TEXT( Related_Opportunity__r.Line_of_Business__c )</formula>
+        <name>OppComm LOB</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Compliance Comment Created - Opp</fullName>
+        <actions>
+            <name>Compliance_Include_Report_False_Opp</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Set Include Report to FALSE if Compliance type</description>
+        <formula>Include_On_Report__c = TRUE &amp;&amp;  ISPICKVAL(Comment_Type__c, &apos;Compliance&apos;)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>OppComm LOB</fullName>
+        <actions>
+            <name>OppComm_LOB</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>TRUE</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

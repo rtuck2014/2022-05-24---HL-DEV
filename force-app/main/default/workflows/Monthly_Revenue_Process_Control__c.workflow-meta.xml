@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Revenue_Accrual_Locked</fullName>
+        <description>Revenue Accrual Locked</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Monthly_Revenue_Process_Notification</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
+            <recipient>jcunnington@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>Monthly_Revenue_Process/Revenue_Locked</template>
+    </alerts>
+    <alerts>
+        <fullName>Revenue_Accrual_Unlocked</fullName>
+        <description>Revenue Accrual Unlocked</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Monthly_Revenue_Process_Notification</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>Monthly_Revenue_Process/Revenue_Unlocked</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Set_Unique_Month_and_Year</fullName>
+        <field>Current_Month_and_Year__c</field>
+        <formula>TEXT(Current_Month__c) + &quot;|&quot; + TEXT(Current_Year__c)</formula>
+        <name>Set Unique Month and Year</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>ERP_Monthly_Revenue_Process_Control</fullName>
+        <apiVersion>50.0</apiVersion>
+        <description>Interface with SFDC_OracleERP_GenerateRevenue in OIC</description>
+        <endpointUrl>https://hlprdoic-houlihanlokey1.integration.ocp.oraclecloud.com/ic/ws/integration/v1/flows/salesforce/SFDC_ORACLEERP_GENERATERE/2.0/</endpointUrl>
+        <fields>Id</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>svc-erpadmin@hl.com</integrationUser>
+        <name>ERP Monthly Revenue Process Control</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>ERP Monthly Revenue Process Control</fullName>
+        <actions>
+            <name>ERP_Monthly_Revenue_Process_Control</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <formula>AND( ISCHANGED( Generate_Revenue_Submitted__c )  ,Generate_Revenue_Submitted__c=true , Generate_Revenue_Completed__c =false)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Notify Revenue Locked</fullName>
+        <actions>
+            <name>Revenue_Accrual_Locked</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>Revenue_Accruals_Locked__c = true &amp;&amp; $Setup.HL_General__c.Revenue_Accrual_Locked__c = true</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Notify Revenue Unlocked</fullName>
+        <actions>
+            <name>Revenue_Accrual_Unlocked</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>$Setup.HL_General__c.Revenue_Accrual_Locked__c = false</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Set Unique Month and Year</fullName>
+        <actions>
+            <name>Set_Unique_Month_and_Year</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Monthly_Revenue_Process_Control__c.Current_Month__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Monthly_Revenue_Process_Control__c.Current_Year__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

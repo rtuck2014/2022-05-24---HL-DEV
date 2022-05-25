@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Update_Summary_Aggregate</fullName>
+        <description>Update the Report Link Summary</description>
+        <field>Security_Assignment_Aggregate__c</field>
+        <formula>LEFT( 
+IF(INCLUDES(Security_Assignment__c , &quot;All&quot;), &quot;All, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;CF&quot;), &quot;CF, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;FAS&quot;), &quot;FAS, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;FR&quot;), &quot;FR, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;FS&quot;), &quot;FS, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;SC&quot;), &quot;SC, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;Accounting&quot;), &quot;Accounting, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;Compliance&quot;), &quot;Compliance, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;Legal&quot;), &quot;Legal, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;IndustryHead&quot;), &quot;IndustryHead, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;LOBHead&quot;), &quot;LOBHead, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;Team&quot;), &quot;Team, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;Backlog&quot;), &quot;Backlog, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;EU_MKTG&quot;), &quot;EU_MKTG, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;JMC&quot;), &quot;JMC, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;Industry_CFR&quot;), &quot;Industry_CFR, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;Member_CFR&quot;), &quot;Member_CFR, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;MD_CFR&quot;), &quot;MD_CFR, &quot;, &quot;&quot;)
+, 
+LEN(IF(INCLUDES(Security_Assignment__c , &quot;All&quot;), &quot;All, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;CF&quot;), &quot;CF, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;FAS&quot;), &quot;FAS, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;FR&quot;), &quot;FR, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;FS&quot;), &quot;FS, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;SC&quot;), &quot;SC, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;Accounting&quot;), &quot;Accounting, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;Compliance&quot;), &quot;Compliance, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;Legal&quot;), &quot;Legal, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;IndustryHead&quot;), &quot;IndustryHead, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;LOBHead&quot;), &quot;LOBHead, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;Team&quot;), &quot;Team, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;Backlog&quot;), &quot;Backlog, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;EU_MKTG&quot;), &quot;EU_MKTG, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;JMC&quot;), &quot;JMC, &quot;, &quot;&quot;) +
+IF(INCLUDES(Security_Assignment__c , &quot;Industry_CFR&quot;), &quot;Industry_CFR, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;Member_CFR&quot;), &quot;Member_CFR, &quot;, &quot;&quot;) + 
+IF(INCLUDES(Security_Assignment__c , &quot;MD_CFR&quot;), &quot;MD_CFR, &quot;, &quot;&quot;)
+) - 2)</formula>
+        <name>Update Summary Aggregate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>setIsTableauTRUE</fullName>
+        <field>IsTableau__c</field>
+        <literalValue>1</literalValue>
+        <name>setIsTableauTRUE</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>HL Report Link Security Aggregate</fullName>
+        <actions>
+            <name>Update_Summary_Aggregate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Aggregates the Multi-Select Picklist Values</description>
+        <formula>ISNEW() || ISCHANGED( Security_Assignment__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>setIsTableau</fullName>
+        <actions>
+            <name>setIsTableauTRUE</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>HL_Report_Link__c.Report_Link_URL__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>HL_Report_Link__c.Report_Link_URL__c</field>
+            <operation>contains</operation>
+            <value>tabl</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>HL_Report_Link__c.IsTableau__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>If the Report Link record has a URL with &quot;tablab&quot; in it, then mark Is Tableau as TRUE.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

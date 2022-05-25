@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Account_Source_LegacyID</fullName>
+        <description>Update the Source LegacyID field on edit or create</description>
+        <field>Source_Legacy_ID__c</field>
+        <formula>Source__c  &amp;  Legacy_ID__c</formula>
+        <name>Account Source LegacyID</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Account Source LegacyID</fullName>
+        <actions>
+            <name>Account_Source_LegacyID</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account_Source__c.Name</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Update the Account source LegacyID field - this is used to prevent duplicates</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

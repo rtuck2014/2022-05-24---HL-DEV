@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Change_Tier_to_P</fullName>
+        <field>Tier__c</field>
+        <literalValue>P</literalValue>
+        <name>Change Tier to P</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Counterparty_Date_of_Last_Status_Chang</fullName>
+        <field>Date_of_Last_Status_Change__c</field>
+        <formula>TODAY()</formula>
+        <name>Counterparty - Date of Last Status Chang</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Counterparty_LOI_Date</fullName>
+        <description>Update the LOI Date with Closing Bid Date</description>
+        <field>Letter_of_Intent__c</field>
+        <formula>Today()</formula>
+        <name>Counterparty LOI Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>DeclinePass_Tier</fullName>
+        <field>Tier__c</field>
+        <literalValue>P</literalValue>
+        <name>DeclinePass_Tier</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Eng_Counterparty_Name_Update</fullName>
+        <field>Name</field>
+        <formula>&quot;EC - &quot; &amp; Company__r.Name</formula>
+        <name>Eng Counterparty Name Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Record_Type_To_Buyside</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Buy_Side</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update Record Type To Buyside</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Record_Type_To_Capital_Markets</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Capital_Markets</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update Record Type To Capital Markets</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Record_Type_To_FIG_Buyside</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>FIG_Buyside</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update Record Type To FIG Buyside</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Record_Type_To_FIG_Sellside</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>FIG_Sellside</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update Record Type To FIG Sellside</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Record_Type_To_IFA</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>IFA</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Update Record Type To IFA</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Counterparty - Date of Last Status Change</fullName>
+        <actions>
+            <name>Counterparty_Date_of_Last_Status_Chang</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED( Status__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - CA</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Confidentiality Agreement</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Declined%2FPassed</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Declined / Passed</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Executed CA</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Executed Confidentiality Agreement</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Had Due Diligence Call</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Had Due Diligence Call</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Initial Contact</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Initial Contact</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Invited to Dataroom</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Invited to Dataroom</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Letter of Intent</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Letter of Intent</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Markup</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Markup</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Met with Management</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Met with Management</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Phone Discussion</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Phone Discussion</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Process Letter Sent</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Process Letter Sent</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Proposal%2FIndication</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Proposal / Indication</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Received Executed CA</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Received Executed CA</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Schedule Management Meeting</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Schedule Management Meeting</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Sent Book</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Sent Book</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Sent Counter Executed CA</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Sent Counter Executed CA</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Counterparty Status - Sent Teaser</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Status_pl__c</field>
+            <operation>equals</operation>
+            <value>Sent Teaser</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>DeclinePass_Tier</fullName>
+        <actions>
+            <name>DeclinePass_Tier</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Tier == p if decline/pass not blank</description>
+        <formula>NOT(ISBLANK(Declined_Passed__c))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>EC RT Buyside Update</fullName>
+        <actions>
+            <name>Update_Record_Type_To_Buyside</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Updates the RecordType to Buyside on Creation</description>
+        <formula>Default_Record_Type__c == &apos;Buy_Side&apos;</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>EC RT Capital Markets Update</fullName>
+        <actions>
+            <name>Update_Record_Type_To_Capital_Markets</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Updates the RecordType to Capital Markets on Creation</description>
+        <formula>Default_Record_Type__c == &apos;Capital_Markets&apos;</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>EC RT FIG Buyside Update</fullName>
+        <actions>
+            <name>Update_Record_Type_To_FIG_Buyside</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Updates the RecordType to FIG Buyside on Creation</description>
+        <formula>Default_Record_Type__c == &apos;FIG_Buyside&apos;</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>EC RT FIG Sellside Update</fullName>
+        <actions>
+            <name>Update_Record_Type_To_FIG_Sellside</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Updates the RecordType to FIG Sellside on Creation</description>
+        <formula>Default_Record_Type__c == &apos;FIG_Sellside&apos;</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>EC RT IFA Update</fullName>
+        <actions>
+            <name>Update_Record_Type_To_IFA</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Updates the RecordType to IFA on Creation</description>
+        <formula>Default_Record_Type__c == &apos;IFA&apos;</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Eng Counterparty Name Update</fullName>
+        <actions>
+            <name>Eng_Counterparty_Name_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>OR( ISNEW(), ISCHANGED(  LastModifiedDate  ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Engagement CP Change Tier to P</fullName>
+        <actions>
+            <name>Change_Tier_to_P</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Engagement_Counterparty__c.Declined_Passed__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>if decline/passed is not NULL, tier == P</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

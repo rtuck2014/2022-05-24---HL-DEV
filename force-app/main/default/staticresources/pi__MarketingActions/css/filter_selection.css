@@ -1,0 +1,194 @@
+/** Start Flex Functions */
+/** End Flex Functions */
+.filter-selection .filter-header {
+  background-color: none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  position: relative;
+  color: #000;
+}
+.filter-selection .filter-header a {
+  color: inherit;
+}
+.filter-selection .filter-header a:hover {
+  text-decoration: none;
+}
+.filter-selection .filter-header .current-filter {
+  font-family: 'ProximaNovaSoft-Semibold';
+  font-size: 18px;
+  display: block;
+  position: relative;
+  float: left;
+  padding: 14px;
+  padding-bottom: 8px;
+}
+.filter-selection .filter-header .current-filter [class*="icon-utility-"] {
+  font-size: 13px;
+}
+.filter-selection .filter-header .select-filter,
+.filter-selection .filter-header .cancel {
+  float: right;
+  padding: 15px 14px 10px;
+  color: #2a94d6;
+  font-size: 16px;
+}
+.filter-selection .filter-header .filter-selection-title {
+  color: #2a94d6;
+}
+.filter-selection ul.select {
+  border-top: 1px solid #cfd4d9;
+  padding: 0 14px;
+  padding-bottom: 64px;
+}
+.filter-selection ul.select li {
+  border-bottom: 1px solid #cfd4d9;
+  cursor: pointer;
+  color: #4a4a4a;
+}
+.filter-selection ul.select li label {
+  padding: 14px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.filter-selection ul.select li label .checkbox {
+  top: -10px;
+  left: -9px;
+  margin-right: 40px;
+}
+.filter-selection ul.select li label .checkbox .checkbox-mask {
+  width: 20px;
+  height: 20px;
+  top: 7px;
+  border-color: #979797;
+}
+.filter-selection ul.select li label .checkbox input[type="checkbox"]:checked + .checkbox-mask:after {
+  width: 5px;
+  height: 11px;
+  left: 5px;
+}
+.filter-selection .filter-toolbar {
+  height: 0;
+  background: #ffffff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  border-top: 1px solid #dfe0e1;
+}
+.filter-selection .filter-toolbar .buttons {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  padding: 8px 12%;
+}
+.filter-selection .filter-toolbar .buttons .button {
+  background: #33bce7;
+  -webkit-border-radius: 38px;
+  -moz-border-radius: 38px;
+  border-radius: 38px;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+}
+.filter-selection .filter-toolbar .buttons .button.edit {
+  background: #a094ed;
+}
+.filter-selection .filter-toolbar .buttons .button.delete {
+  background: #b5362d;
+}
+.filter-selection .filter-toolbar .buttons .button.disabled {
+  background: #d8dce0;
+}
+.filter-selection .no-filters {
+  text-align: center;
+}
+.filter-selection .no-filters .create-filter:hover {
+  text-decoration: underline;
+}
+.filter-selection .default-filter {
+  display: none;
+  font-style: italic;
+  color: #CCC;
+  font-weight: normal;
+  font-size: 12px;
+}
+.dd-arrow {
+  display: inline-block;
+  margin-left: 6px;
+}
+.dd-arrow.flip-up {
+  -webkit-animation: flip-up 0.2s ease;
+  -moz-animation: flip-up 0.2s ease;
+  animation: flip-up 0.2s ease;
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+.dd-arrow.flip-down {
+  -webkit-animation: flip-down 0.2s ease;
+  -moz-animation: flip-down 0.2s ease;
+  animation: flip-down 0.2s ease;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+@-webkit-keyframes flip-up {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(-180deg);
+  }
+}
+@-moz-keyframes flip-up {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(-180deg);
+  }
+}
+@keyframes flip-up {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-180deg);
+  }
+}
+@-webkit-keyframes flip-down {
+  from {
+    -webkit-transform: rotate(-180deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+  }
+}
+@-moz-keyframes flip-down {
+  from {
+    -moz-transform: rotate(-180deg);
+  }
+  to {
+    -moz-transform: rotate(0deg);
+  }
+}
+@keyframes flip-down {
+  from {
+    transform: rotate(-180deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}

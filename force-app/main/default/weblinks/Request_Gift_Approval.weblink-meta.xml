@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPageWebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <availability>online</availability>
+    <displayType>link</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Request Gift Approval</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>navigateToUrl(&quot;/apex/SL_GiftPreApproval?save_new=1&amp;sfdc.override=1&amp;retURL=/home/home.jsp&quot;);</url>
+</CustomPageWebLink>

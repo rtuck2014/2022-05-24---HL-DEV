@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPageWebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <availability>online</availability>
+    <description>Used to hide the help &amp; training and discover summer 14 links.</description>
+    <displayType>link</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>.</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/resource/1409325216000/SL_Sidebar&quot;)}</url>
+</CustomPageWebLink>

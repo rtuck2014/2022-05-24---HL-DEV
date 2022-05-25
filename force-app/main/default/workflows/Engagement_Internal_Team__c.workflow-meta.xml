@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>ERP_Submitted_To_Sync_On_Eng_Internal</fullName>
+        <description>ERP Submitted to Sync field on Engagement Internal Team will be updated with current date &amp; time.</description>
+        <field>ERP_Submitted_To_Sync__c</field>
+        <formula>Now()</formula>
+        <name>ERP Submitted To Sync On Eng Internal</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Team_Member_LOB_Engagement</fullName>
+        <field>LOB__c</field>
+        <formula>TEXT( Contact__r.Line_of_Business__c )</formula>
+        <name>Team Member LOB Engagement</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Team_Member_Office_Engagement</fullName>
+        <field>Office__c</field>
+        <formula>TEXT( Contact__r.Office__c )</formula>
+        <name>Team Member Office Engagement</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>ERP_Engagement_Internal_Team</fullName>
+        <apiVersion>46.0</apiVersion>
+        <endpointUrl>https://hlprdoic-houlihanlokey1.integration.ocp.oraclecloud.com/ic/ws/integration/v1/flows/salesforce/SFDC_ORCLERP_ADDPRJCT_TEAM/1.0/</endpointUrl>
+        <fields>Contact_Email__c</fields>
+        <fields>ERP_ID__c</fields>
+        <fields>ERP_Project_Id__c</fields>
+        <fields>End_Date__c</fields>
+        <fields>Engagement__c</fields>
+        <fields>Id</fields>
+        <fields>Role_Display_Name__c</fields>
+        <fields>Role__c</fields>
+        <fields>Staff_Role__c</fields>
+        <fields>Start_Date__c</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>svc-erpadmin@hl.com</integrationUser>
+        <name>ERP Engagement Internal Team</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>ERP Engagement Internal Team</fullName>
+        <actions>
+            <name>ERP_Engagement_Internal_Team</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Triggers the outbound message for Engagement Internal Team</description>
+        <formula>AND(OR(ISNEW(),     ISCHANGED(ERP_Submitted_To_Sync__c)),     OR(Role__c = &apos;Manager&apos;,        Role__c = &apos;Principal&apos;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>ERP Submitted to Syn on Engagement Internal Team</fullName>
+        <actions>
+            <name>ERP_Submitted_To_Sync_On_Eng_Internal</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update &apos;ERP Submitted to Sync&apos; field of Engagement Internal Team with current date and time.</description>
+        <formula>OR(AND(ISNEW(),                OR(Role__c = &apos;Manager&apos;,                      Role__c = &apos;Principal&apos;)),     AND(ISCHANGED(End_Date__c),                OR(Role__c = &apos;Manager&apos;,            Role__c = &apos;Principal&apos;)),       AND(ISCHANGED(Role__c),         Role__c = &apos;Manager&apos;,           PRIORVALUE(Role__c) &lt;&gt; &apos;Manager&apos;),     AND(ISCHANGED(Role__c),          Role__c = &apos;Principal&apos;,                PRIORVALUE(Role__c) &lt;&gt; &apos;Principal&apos;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Team Member LOB Engagement</fullName>
+        <actions>
+            <name>Team_Member_LOB_Engagement</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>Contact__c &lt;&gt; NULL</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Team Member Office Engagement</fullName>
+        <actions>
+            <name>Team_Member_Office_Engagement</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>Contact__c &lt;&gt; NULL</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

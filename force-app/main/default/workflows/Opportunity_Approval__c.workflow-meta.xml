@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>CF_CNBC_Notification_to_Group</fullName>
+        <description>CF CNBC Notification to Group</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>CF_NBC_Notification</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>FEIS_NBC/Opportunity_Review_Notification_CF_CNBC</template>
+    </alerts>
+    <alerts>
+        <fullName>CF_CNBC_Notification_to_Group_Head</fullName>
+        <description>CF CNBC Notification to Group Head</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Industry_Group_Head_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>FEIS_NBC/Opportunity_Review_Notification_CF_CNBC</template>
+    </alerts>
+    <alerts>
+        <fullName>CF_NBC_Notification</fullName>
+        <description>CF NBC Notification to Group</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>CF_NBC_Notification</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>FEIS_NBC/Opportunity_Review_Notification_CF_NBC</template>
+    </alerts>
+    <alerts>
+        <fullName>CF_NBC_Notification_Step1</fullName>
+        <description>CF NBC Notification to Group Head</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Industry_Group_Head_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>FEIS_NBC/Opportunity_Review_Notification_CF_NBC</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_NBC_App</fullName>
+        <description>Notify NBC App</description>
+        <protected>false</protected>
+        <recipients>
+            <field>NBC_Submitter_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <recipient>CF_NBC_Approval</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
+            <recipient>CF_NBC_Notification</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>lmsilt__WorkflowNotifications/Opportunity_Notification_CF_NBC_Submitter_App</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_NBC_Rej</fullName>
+        <description>Notify NBC Rej</description>
+        <protected>false</protected>
+        <recipients>
+            <field>NBC_Submitter_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <recipient>CF_NBC_Approval</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>lmsilt__WorkflowNotifications/Opportunity_Notification_CF_NBC_Submitter_Rej</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Opp_Approval_Status_to_App</fullName>
+        <field>Approval_Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Opp Approval Status to App</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Opp_Approval_Status_to_Commity</fullName>
+        <field>Approval_Status__c</field>
+        <literalValue>Submit_To_Committee</literalValue>
+        <name>Opp Approval Status to Commity</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Opp_Approval_Status_to_REJ</fullName>
+        <field>Approval_Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Opp Approval Status to REJ</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Opp_Approval_Status_to_Req</fullName>
+        <field>Approval_Status__c</field>
+        <literalValue>Submit_To_Committee</literalValue>
+        <name>Opp Approval Status to Req</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Opp_Approval_Transaction_Description</fullName>
+        <field>Transaction_Overview__c</field>
+        <formula>Related_Opportunity__r.Opportunity_Description__c</formula>
+        <name>Opp Approval - Transaction Description</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Pass_Company_Description</fullName>
+        <field>Company_Description__c</field>
+        <formula>Related_Opportunity__r.Client__r.Description</formula>
+        <name>Pass Company Description</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Store_NBC_Submitter</fullName>
+        <field>NBC_Submitter_Email__c</field>
+        <formula>$User.Email</formula>
+        <name>Store NBC Submitter</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Date_Graded</fullName>
+        <field>Date_Graded__c</field>
+        <formula>TODAY()</formula>
+        <name>Update Date Graded</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>X1st_Approval_Status_false</fullName>
+        <field>X1st_Step_Approval__c</field>
+        <literalValue>0</literalValue>
+        <name>1st Approval Status false</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>X1st_Approval_Status_update</fullName>
+        <field>X1st_Step_Approval__c</field>
+        <literalValue>1</literalValue>
+        <name>1st Approval Status update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Grade Assigned</fullName>
+        <actions>
+            <name>Update_Date_Graded</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Initial Grade assignment for NBC</description>
+        <formula>(ISPICKVAL(Form_Type__c, &apos;NBC&apos;) || ISPICKVAL(Form_Type__c, &apos;CNBC&apos;)) &amp;&amp; ISPICKVAL(PRIORVALUE(Grade__c),&apos;&apos;)&amp;&amp; NOT(ISPICKVAL(Grade__c, &apos;&apos;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Opp Approval - Transaction Description</fullName>
+        <actions>
+            <name>Opp_Approval_Transaction_Description</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity_Approval__c.CreatedDate</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Pass Company Description</fullName>
+        <actions>
+            <name>Pass_Company_Description</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>TRUE</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

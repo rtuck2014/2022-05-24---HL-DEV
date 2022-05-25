@@ -1,0 +1,9 @@
+/**
+    These changes are meant to fix issues with using SLDS in Aloha. Aloha adds a common.css file when showHeader=true
+    or showSidebar=true. This common.css file adds rules to base elements that SLDS does not override as of version 2.0.3.
+    There is an open issue on github: https://github.com/salesforce-ux/design-system/issues/70
+*/
+ul li,
+ol li {
+  margin-left: 0;
+}

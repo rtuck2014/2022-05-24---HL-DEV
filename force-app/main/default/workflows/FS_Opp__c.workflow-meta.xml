@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Unique_FSCG_OPP</fullName>
+        <field>FS_OPP_UNIQUE__c</field>
+        <formula>Company__r.Id + Opportunity__r.Id</formula>
+        <name>Unique FSCG OPP</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Unique FSCG OPP</fullName>
+        <active>true</active>
+        <formula>NOT(ISBLANK(Company__r.Company_ID__c))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

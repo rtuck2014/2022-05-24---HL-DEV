@@ -1,0 +1,155 @@
+/** Start Flex Functions */
+/** End Flex Functions */
+.card {
+  border: 1px solid #cfd4d9;
+  border-radius: 5px;
+  padding: 14px;
+  font-size: 15px;
+  line-height: 17px;
+  background-color: #ffffff;
+  margin-bottom: 15px;
+  position: relative;
+}
+.card .prospect .title a {
+  font-family: 'ProximaNovaSoft-Medium';
+  /** Replace? */
+  color: #006eb3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.card .prospect .time-ago {
+  font-family: 'ProximaNovaSoft-Regular';
+  /** Replace? */
+  font-size: 13px;
+  line-height: 17px;
+  color: #696e71;
+}
+.card .prospect [class*="icon--"] {
+  width: 45px;
+  height: 45px;
+}
+.card .prospect.media-block > .media-left {
+  width: 45px;
+}
+.card .prospect.media-block > .media-main {
+  padding-left: 11px;
+  width: 100%;
+}
+.card .actions {
+  background-color: #fafafa;
+}
+.card .actions .action-item {
+  font-family: "ProximaNovaSoft-Regular";
+  /** Replace? */
+  margin-top: 14px;
+  padding: 14px;
+}
+.card .actions .action-item.media-block > .media-left {
+  width: 30px;
+}
+.card .actions .action-item.media-block > .media-main {
+  width: 100%;
+  padding-left: 12px;
+  vertical-align: top;
+}
+.card .actions .action-item .action-name {
+  font-size: 10px;
+  line-height: 10px;
+}
+.card .actions .action-item .action-target {
+  font-size: 14px;
+  line-height: 18px;
+}
+.card .actions .action-item .time-ago {
+  font-size: 10px;
+  line-height: 10px;
+  display: none;
+}
+.card .actions .more-actions {
+  padding-bottom: 10px;
+}
+.card .actions .more-actions .action-item {
+  margin-top: 0;
+  padding-top: 4px;
+  padding-bottom: 6px;
+}
+.card .actions .more-actions .action-item .action-icon {
+  display: none;
+}
+.card .actions .more-actions .action-item .time-ago {
+  display: block;
+  font-size: 10px;
+  line-height: 10px;
+}
+.card .dots {
+  position: relative;
+  width: 100%;
+  top: 5px;
+}
+.card .dots.loading li {
+  -webkit-animation: cycle_color 1s infinite;
+  animation: cycle_color 1s infinite;
+  -moz-animation: cycle_color 1s infinite;
+}
+@-webkit-keyframes cycle_color {
+  0% {
+    background-color: #d8dce0;
+  }
+  50% {
+    background-color: #f7fbff;
+  }
+  100% {
+    background-color: #d8dce0;
+  }
+}
+@keyframes cycle_color {
+  0% {
+    background-color: #d8dce0;
+  }
+  50% {
+    background-color: #f7fbff;
+  }
+  100% {
+    background-color: #d8dce0;
+  }
+}
+@-moz-keyframes cycle_color {
+  0% {
+    background-color: #d8dce0;
+  }
+  50% {
+    background-color: #f7fbff;
+  }
+  100% {
+    background-color: #d8dce0;
+  }
+}
+.card .dots.loading li:nth-child(1) {
+  -webkit-animation-delay: 0s;
+  /* Chrome, Safari, Opera */
+  animation-delay: 0s;
+}
+.card .dots.loading li:nth-child(2) {
+  -webkit-animation-delay: 0.2s;
+  /* Chrome, Safari, Opera */
+  animation-delay: 0.2s;
+}
+.card .dots.loading li:nth-child(3) {
+  -webkit-animation-delay: 0.4s;
+  /* Chrome, Safari, Opera */
+  animation-delay: 0.4s;
+}
+.dots > ul {
+  text-align: center;
+}
+.dots > ul > li {
+  background-color: #d8dce0;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 0 1px;
+}

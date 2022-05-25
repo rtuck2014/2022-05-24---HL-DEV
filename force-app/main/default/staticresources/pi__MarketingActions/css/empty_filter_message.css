@@ -1,0 +1,20 @@
+#empty-filter-message-container {
+  position: absolute;
+  display: none;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  width: 100%;
+  opacity: .4;
+}
+#empty-filter-message-container .empty-filter-exclamation {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+#empty-filter-message-container .empty-filter-message {
+  font-size: 18px;
+  color: black;
+}

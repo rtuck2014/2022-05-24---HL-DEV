@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>CF_Closed_Engagements</fullName>
+        <description>CF Closed Engagements</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>hpalmen@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>tturnbull@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>Accounting/CF_Engagements_Closed_60_days</template>
+    </alerts>
+    <alerts>
+        <fullName>DND_Approved_Closed_Dead_CF_Engagement</fullName>
+        <description>DND Approved - Closed/Dead CF Engagement</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>CF_DND_Notification</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
+            <recipient>DND_Approval</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>DND/DND_Approved_Closed_Dead_Engagements</template>
+    </alerts>
+    <alerts>
+        <fullName>DND_Approved_Closed_Dead_FAS_Engagement</fullName>
+        <description>DND Approved - Closed/Dead FVA Engagement</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>CAO_FVA</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
+            <recipient>DND_Approval</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>DND/DND_Approved_Closed_Dead_Engagements</template>
+    </alerts>
+    <alerts>
+        <fullName>DND_Approved_Closed_Dead_FR_Engagement</fullName>
+        <description>DND Approved - Closed/Dead FR Engagement</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>CAO_FR</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
+            <recipient>DND_Approval</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>DND/DND_Approved_Closed_Dead_Engagements</template>
+    </alerts>
+    <alerts>
+        <fullName>Engagement_Changed_from_Closed_FVA</fullName>
+        <description>Engagement Changed from Closed - FVA</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>ehedgcock@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Engagement_Changed_from_Closed</template>
+    </alerts>
+    <alerts>
+        <fullName>Engagement_Notification_VAT_Treatment_Accounting</fullName>
+        <description>Engagement Notification - VAT Treatment Accounting</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>dchavez@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>lho@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>vvislavath0618@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Engagement_VAT_Treatment_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Engagement_Number_Changed_for_Submitter</fullName>
+        <description>Engagement Number Changed - for Submitter</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Submitter__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <recipient>ayu@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Conversion_Templates/Engagement_Number_Changed_for_Submitter</template>
+    </alerts>
+    <alerts>
+        <fullName>Engagement_VAT_Required</fullName>
+        <description>Engagement VAT Required</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Accounting_General_LO</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Conversion_Templates/New_Engagement_EU</template>
+    </alerts>
+    <alerts>
+        <fullName>FR_Engagement_MAR</fullName>
+        <description>FR Engagement -- MAR Compliance</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>cau@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>jcarthane@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/FR_Engagement</template>
+    </alerts>
+    <alerts>
+        <fullName>New_Engagement_to_Accounting</fullName>
+        <description>New Engagement to Accounting</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Accounting_General</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
+            <recipient>dchavez@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>Conversion_Templates/New_Engagement_Accounting</template>
+    </alerts>
+    <alerts>
+        <fullName>New_Engagement_to_Submitter</fullName>
+        <description>New Engagement to Submitter</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <recipients>
+            <field>Submitter__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Conversion_Templates/New_Engagement_Number_Assigned_for_Submitter</template>
+    </alerts>
+    <alerts>
+        <fullName>Notify_Accounting_ClientSubject_Changed</fullName>
+        <description>Notify Accounting ClientSubject Changed</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Accounting_General</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Accounting/Engagement_Change_ClientSubject</template>
+    </alerts>
+    <alerts>
+        <fullName>UK_Regulatory_Eng</fullName>
+        <description>UK Regulatory Eng</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>ayu@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>elinetskiy@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>jcowan@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>twaterhouse@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/UK_Takeover_Panel_Email_Eng</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Close_Date</fullName>
+        <field>Close_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Close Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Close_Date_Clear</fullName>
+        <field>Close_Date__c</field>
+        <name>Close Date Clear</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Close_Deal_Memo_Date</fullName>
+        <field>Closed_Deal_Memo_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Close Deal Memo Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Close_Deal_Memo_Date_Clear</fullName>
+        <field>Closed_Deal_Memo_Date__c</field>
+        <name>Close Deal Memo Date Clear</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Date_off_Hold</fullName>
+        <field>Date_off_Hold__c</field>
+        <formula>Today()</formula>
+        <name>Date off Hold</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Date_on_Hold</fullName>
+        <field>Date_on_Hold__c</field>
+        <formula>Today()</formula>
+        <name>Date on Hold</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Dead_Stage_Date_on_Engagement</fullName>
+        <description>Reporting - Dead Stage Date on Engagement</description>
+        <field>Date_of_Dead_Engagement__c</field>
+        <formula>TODAY()</formula>
+        <name>Dead Stage Date on Engagement</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ERP_Submitted_to_Sync_on_Engagement</fullName>
+        <description>ERP Submitted to Sync field on Engagement will be updated with current date &amp; time.</description>
+        <field>ERP_Submitted_To_Sync__c</field>
+        <formula>NOW()</formula>
+        <name>ERP Submitted to Sync on Engagement</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Eng_Update_Search_Index</fullName>
+        <field>Search_Index__c</field>
+        <formula>Client__r.Name + &quot;, &quot; + Subject__r.Name</formula>
+        <name>Eng Update Search Index</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Engagement_Number_Assigned</fullName>
+        <field>Engagement_Number_Assigned__c</field>
+        <formula>TODAY()</formula>
+        <name>Engagement Number Assigned</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Engagement_Number_Processor</fullName>
+        <field>Engagement_Number_Processor__c</field>
+        <formula>$User.FirstName + &quot; &quot; + $User.LastName</formula>
+        <name>Engagement Number Processor</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Latest_Stage_Change_Date</fullName>
+        <field>Latest_Stage_Change__c</field>
+        <formula>TODAY()</formula>
+        <name>Latest Stage Change Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Prepend_Clone_to_Engagement</fullName>
+        <description>Prepends &quot;CLONE: &quot; to a newly-cloned Engagement&apos;s name.</description>
+        <field>Name</field>
+        <formula>&apos;CLONE: &apos; + Name</formula>
+        <name>Prepend Clone to Engagement</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Push_POC</fullName>
+        <field>Percentage_of_Completion__c</field>
+        <formula>BACKEND_Percentage_of_Completion__c</formula>
+        <name>Push POC</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Put_on_Hold_by</fullName>
+        <field>Put_on_Hold_by__c</field>
+        <formula>$User.FirstName + &quot; &quot; + $User.LastName</formula>
+        <name>Put on Hold by</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Report_On_Hold_Stage_on_Engagements</fullName>
+        <description>Report - On Hold Stage on Engagements</description>
+        <field>Date_of_OnHold_Engagement__c</field>
+        <formula>TODAY()</formula>
+        <name>Report - On Hold Stage on Engagements</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Save_Old_Engagement_Number</fullName>
+        <field>Old_Engagement_Number__c</field>
+        <formula>PRIORVALUE(Engagement_Number__c)</formula>
+        <name>Save Old Engagement Number</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Take_off_Hold_by</fullName>
+        <field>Taken_off_Hold_by__c</field>
+        <formula>$User.FirstName + &quot; &quot; + $User.LastName</formula>
+        <name>Take off Hold by</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Uncheck_Available_in_Expense_Application</fullName>
+        <field>Available_In_Expense_Application__c</field>
+        <literalValue>0</literalValue>
+        <name>Uncheck Available in Expense Application</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>ERP_Engagement</fullName>
+        <apiVersion>47.0</apiVersion>
+        <endpointUrl>https://hldevoic-houlihanlokey1.integration.ocp.oraclecloud.com/ic/ws/integration/v1/flows/salesforce/SFDC_ORCLERP_ENGAGEMENTS/1.0/</endpointUrl>
+        <fields>Client_Ownership__c</fields>
+        <fields>Completed_Date__c</fields>
+        <fields>CreatedDate</fields>
+        <fields>CurrencyIsoCode</fields>
+        <fields>ERP_Business_Unit__c</fields>
+        <fields>ERP_Entity_Code__c</fields>
+        <fields>ERP_ID__c</fields>
+        <fields>ERP_Industry_Group_Reporting__c</fields>
+        <fields>ERP_LOB__c</fields>
+        <fields>ERP_Legal_Entity__c</fields>
+        <fields>ERP_Product_Type_Code__c</fields>
+        <fields>ERP_Product_Type__c</fields>
+        <fields>ERP_Project_Name__c</fields>
+        <fields>ERP_Project_Number__c</fields>
+        <fields>ERP_Project_Status_Code__c</fields>
+        <fields>ERP_Submitted_To_Sync__c</fields>
+        <fields>ERP_Template__c</fields>
+        <fields>ERP_Update_DFF__c</fields>
+        <fields>Estimated_Close_Date__c</fields>
+        <fields>Id</fields>
+        <fields>Industry_Group_REPORTING__c</fields>
+        <fields>Job_Type__c</fields>
+        <fields>Latest_Stage_Change__c</fields>
+        <fields>Name</fields>
+        <fields>Opportunity_Number__c</fields>
+        <fields>Opportunity__c</fields>
+        <fields>Primary_Office__c</fields>
+        <fields>Product_Type__c</fields>
+        <fields>Sector__c</fields>
+        <fields>Stage__c</fields>
+        <fields>Status__c</fields>
+        <fields>Total_CF_Backlog__c</fields>
+        <fields>Total_Fee__c</fields>
+        <fields>Transaction_Description__c</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>svc-erpadmin@hl.com</integrationUser>
+        <name>ERP Engagement</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>CF Closed Engagements</fullName>
+        <actions>
+            <name>CF_Closed_Engagements</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Closed deals = 60 days</description>
+        <formula>AND(ISPICKVAL(Line_of_Business__c, &apos;CF&apos;),Close_Date__c = TODAY() - 60)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>ClientSubject Changed</fullName>
+        <actions>
+            <name>Notify_Accounting_ClientSubject_Changed</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>email to Accounting if Client/Subject on an Engagement changes</description>
+        <formula>(ISCHANGED( Client__c ) || ISCHANGED( Subject__c )) &amp;&amp; NOT(ISBLANK(Engagement_Number__c ))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Cloned Engagement Name Prepend</fullName>
+        <actions>
+            <name>Prepend_Clone_to_Engagement</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>When an engagement is cloned, its name should be prepended with &quot;CLONE: &quot;</description>
+        <formula>Engagement__c  &lt;&gt;  null</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Close Date</fullName>
+        <actions>
+            <name>Close_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISPICKVAL(Stage__c, &apos;Closed&apos;) &amp;&amp; ISBLANK( Close_Date__c )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Close Date Clear</fullName>
+        <actions>
+            <name>Close_Date_Clear</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED(Stage__c)&amp;&amp;ISPICKVAL(PRIORVALUE(Stage__c), &apos;Closed&apos;)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>DND Approved - Closed%2FDead CF Engagement</fullName>
+        <actions>
+            <name>DND_Approved_Closed_Dead_CF_Engagement</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Engagement__c.DND_Status__c</field>
+            <operation>equals</operation>
+            <value>APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Engagement__c.Stage__c</field>
+            <operation>equals</operation>
+            <value>Closed,Dead</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Engagement__c.Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>DND Approved - Closed%2FDead FAS Engagement</fullName>
+        <actions>
+            <name>DND_Approved_Closed_Dead_FAS_Engagement</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Engagement__c.DND_Status__c</field>
+            <operation>equals</operation>
+            <value>APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Engagement__c.Stage__c</field>
+            <operation>equals</operation>
+            <value>Closed,Dead</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Engagement__c.Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FVA</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>DND Approved - Closed%2FDead FR Engagement</fullName>
+        <actions>
+            <name>DND_Approved_Closed_Dead_FR_Engagement</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Engagement__c.DND_Status__c</field>
+            <operation>equals</operation>
+            <value>APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Engagement__c.Stage__c</field>
+            <operation>equals</operation>
+            <value>Closed,Dead</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Engagement__c.Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>ERP Engagement</fullName>
+        <actions>
+            <name>ERP_Engagement</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Triggers the outbound message for Engagement</description>
+        <formula>AND(OR(ISNEW(),        ISCHANGED(ERP_Submitted_To_Sync__c)),     NOT(ISBLANK(ERP_ID__c)),     NOT(ISNULL(ERP_Business_Unit_Id__c)),     NOT(ISNULL(ERP_Legal_Entity_Id__c)), NOT( ERP_Do_Not_Sync__c ))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>ERP Submitted to Sync fields on Engagement</fullName>
+        <actions>
+            <name>ERP_Submitted_to_Sync_on_Engagement</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update &apos;ERP Submitted to Sync&apos; field of Engagement with current date and time.</description>
+        <formula>OR(  ISNEW(),  ISCHANGED(Name), ISCHANGED(Legal_Entity__c),  ISCHANGED(Primary_Office__c ), ISCHANGED(CurrencyIsoCode),  ISCHANGED(Stage__c),  ISCHANGED(Transaction_Description__c), ISCHANGED(Industry_Group__c),  ISCHANGED(Sector__c),  ISCHANGED(Job_Type__c), ISCHANGED(Line_of_Business__c), ISCHANGED(Client_Ownership__c), ISCHANGED(Product_Type__c) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Eng Search Index</fullName>
+        <actions>
+            <name>Eng_Update_Search_Index</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED( Client__c ) || ISCHANGED( Subject__c ) || ISBLANK( Search_Index__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Engagement Changed from Closed - FVA</fullName>
+        <actions>
+            <name>Engagement_Changed_from_Closed_FVA</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Engagement Stage Changed from Closed - FVA</description>
+        <formula>ISPICKVAL(PRIORVALUE(Stage__c), &apos;CLOSED&apos;)
+&amp;&amp;
+NOT(ISPICKVAL(Stage__c, &apos;CLOSED&apos;))
+&amp;&amp;
+ISPICKVAL(Line_of_Business__c , &apos;FVA&apos;)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Engagement Legal Hold Off</fullName>
+        <actions>
+            <name>Date_off_Hold</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Take_off_Hold_by</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(  ISCHANGED(Legal_Hold__c),  NOT(Legal_Hold__c))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Engagement Legal Hold On</fullName>
+        <actions>
+            <name>Date_on_Hold</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Put_on_Hold_by</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(  ISCHANGED(Legal_Hold__c),  Legal_Hold__c)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Engagement Number Change</fullName>
+        <actions>
+            <name>Engagement_Number_Changed_for_Submitter</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Save_Old_Engagement_Number</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED( Engagement_Number__c ) &amp;&amp; NOT(ISNEW()) &amp;&amp; NOT(ISBLANK(PRIORVALUE(Engagement_Number__c)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>FR Engagement -- MAR Compliance</fullName>
+        <actions>
+            <name>FR_Engagement_MAR</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Engagement__c.ERP_HL_Entity__c</field>
+            <operation>equals</operation>
+            <value>HL Capital,Inc.</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Engagement__c.Job_Type__c</field>
+            <operation>notEqual</operation>
+            <value>Creditor Advisors</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Engagement__c.CompanyEUSecurities__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Engagement__c.Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <description>If Company EU Securities = &quot;Yes&quot; and Legal Entity = &quot;HL Capital, Inc.&quot; and Job Type NOT EQUAL to &quot;Credit Advisors&quot; and LOB = &quot;FR&quot;, send email.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Latest Stage Change Date</fullName>
+        <actions>
+            <name>Latest_Stage_Change_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Populates with TODAY() whenever the stage is changed on an opportunity.</description>
+        <formula>ISCHANGED( Stage__c ) || ISNEW()</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Engagement - EU</fullName>
+        <actions>
+            <name>Engagement_VAT_Required</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Engagement__c.HL_Entity__c</field>
+            <operation>equals</operation>
+            <value>HL Europe</value>
+        </criteriaItems>
+        <description>new EU Engagement created</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Engagement Conversion</fullName>
+        <actions>
+            <name>New_Engagement_to_Accounting</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Engagement__c.CreatedDate</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Notification to Accounting that an Engagement has been created with Engagement Number</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>New Engagement Number Assigned</fullName>
+        <actions>
+            <name>New_Engagement_to_Submitter</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Engagement_Number_Assigned</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Engagement_Number_Processor</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>NUMBER ASSIGNED, TELL THE SUBMITTER</description>
+        <formula>NOT(ISBLANK(Engagement_Number__c))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Push POC</fullName>
+        <actions>
+            <name>Push_POC</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Pushes backend POC into the displayed POC (workaround for Dead/Hold stages) -ayu</description>
+        <formula>ISNEW() || (ISCHANGED(Stage__c) &amp;&amp; NOT(ISPICKVAL(Stage__c,&apos;Dead&apos;) || ISPICKVAL(Stage__c,&apos;Hold&apos;)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Report - Dead Stage Date on Engagement</fullName>
+        <actions>
+            <name>Dead_Stage_Date_on_Engagement</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Engagement__c.Stage__c</field>
+            <operation>equals</operation>
+            <value>Dead</value>
+        </criteriaItems>
+        <description>Reporting - Dead Stage Date on Engagement</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Report - On Hold Stage on Engagements</fullName>
+        <actions>
+            <name>Report_On_Hold_Stage_on_Engagements</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Engagement__c.Stage__c</field>
+            <operation>equals</operation>
+            <value>On Hold</value>
+        </criteriaItems>
+        <description>Reporting - On Hold Stage on Engagements</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>UK Takeover Panel - Eng</fullName>
+        <actions>
+            <name>UK_Regulatory_Eng</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Notification to John Cowan, Tom Waterhouse, and Ed Linetskiy when Client = US and Subject = UK</description>
+        <formula>(Client__r.BillingCountry = &apos;US&apos; ||  Client__r.BillingCountry = &apos;USA&apos; ||  Client__r.BillingCountry = &apos;United States&apos;) &amp;&amp;  (Subject__r.BillingCountry = &apos;UK&apos; ||  Subject__r.BillingCountry = &apos;United Kingdom&apos;)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Uncheck Available in Expense Application</fullName>
+        <actions>
+            <name>Uncheck_Available_in_Expense_Application</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Engagement__c.Accounting_Status__c</field>
+            <operation>equals</operation>
+            <value>Closed</value>
+        </criteriaItems>
+        <description>Uncheck &quot;Available in Expense Application&quot; when Accounting Status set to &quot;Closed&quot;.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>VAT Treatment Notification on Engagement</fullName>
+        <actions>
+            <name>Engagement_Notification_VAT_Treatment_Accounting</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Engagement__c.Possible_VAT_Treatment__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Notify Accounting Team when an Engagement is assigned a &apos;Possible VAT Treatment&apos;.</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

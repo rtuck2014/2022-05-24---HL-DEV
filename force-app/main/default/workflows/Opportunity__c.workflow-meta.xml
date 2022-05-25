@@ -1,0 +1,1153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Beneficial_Owner_and_Control_Person_form_Completed</fullName>
+        <description>Beneficial Owner and Control Person form Completed</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Compliance_Notification</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
+            <recipient>rbahrampourian@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Beneficial_Owner_and_Control_Person_form_Completed</template>
+    </alerts>
+    <alerts>
+        <fullName>Beneficial_Owner_and_Control_Person_form_NOT_Completed</fullName>
+        <description>Beneficial Owner and Control Person form NOT Completed</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Compliance_Notification</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
+            <recipient>rbahrampourian@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Beneficial_Owner_and_Control_Person_form_NOT_Completed</template>
+    </alerts>
+    <alerts>
+        <fullName>DND_Approved_Dead_CF_Opportunity</fullName>
+        <description>DND Approved - Dead CF Opportunity</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>CF_DND_Notification</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
+            <recipient>DND_Approval</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>DND/DND_Approved_Dead_Opportunity</template>
+    </alerts>
+    <alerts>
+        <fullName>DND_Approved_Dead_FAS_Opportunity</fullName>
+        <description>DND Approved - Dead FVA Opportunity</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>CAO_FVA</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
+            <recipient>DND_Approval</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>DND/DND_Approved_Dead_Opportunity</template>
+    </alerts>
+    <alerts>
+        <fullName>DND_Approved_Dead_FR_Opportunity</fullName>
+        <description>DND Approved - Dead FR Opportunity</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>CAO_FR</recipient>
+            <type>group</type>
+        </recipients>
+        <recipients>
+            <recipient>DND_Approval</recipient>
+            <type>group</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>DND/DND_Approved_Dead_Opportunity</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_for_Approved_DND</fullName>
+        <description>Email Alert for Approved DND</description>
+        <protected>false</protected>
+        <recipients>
+            <field>DND_Submitter_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>DND/ADD_DND_Approved</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_for_Approved_DND_Removal</fullName>
+        <description>Email Alert for Approved DND Removal</description>
+        <protected>false</protected>
+        <recipients>
+            <field>DND_Submitter_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>DND/Remove_DND_Approved</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_for_Rejected_DND</fullName>
+        <description>Email Alert for Rejected DND</description>
+        <protected>false</protected>
+        <recipients>
+            <field>DND_Submitter_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>DND/Remove_DND_Rejected</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_Alert_for_Rejected_DND_Removal</fullName>
+        <description>Email Alert for Rejected DND Removal</description>
+        <protected>false</protected>
+        <recipients>
+            <field>DND_Submitter_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>DND/Remove_DND_Rejected</template>
+    </alerts>
+    <alerts>
+        <fullName>Eng_Number_Rejection</fullName>
+        <description>Eng Number Rejection</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Submitter__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Conversion_Templates/Rejected_Eng_Number_Req</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_Notification_VAT_Treatment_Reviewers</fullName>
+        <description>Opportunity Notification - VAT Treatment Reviewers</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>bsparks-wright@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>dchavez@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>jcunnington@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Opportunity_VAT_Treatment_Notification</template>
+    </alerts>
+    <alerts>
+        <fullName>Opportunity_status_change</fullName>
+        <description>Opportunity status change</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>bbrunda@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>dmorello@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>jjiang0211@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>lmsilt__WorkflowNotifications/Status_change_notification</template>
+    </alerts>
+    <alerts>
+        <fullName>UK_Regulatory_Opp</fullName>
+        <description>UK Regulatory Opp</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>ayu@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>elinetskiy@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>jcowan@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>twaterhouse@hl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/UK_Takeover_Panel_Email_Opp</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Approval_Approved</fullName>
+        <description>req eng number</description>
+        <field>Engagement_Approval_Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Approval Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Approval_Pending</fullName>
+        <description>req eng number</description>
+        <field>Engagement_Approval_Status__c</field>
+        <literalValue>Pending</literalValue>
+        <name>Approval Pending</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Approval_Rejected</fullName>
+        <description>req eng number</description>
+        <field>Engagement_Approval_Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Approval Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Clear_HL_Entity</fullName>
+        <field>HL_Entity__c</field>
+        <name>Clear HL Entity</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>DND_Opp_Name</fullName>
+        <field>Name</field>
+        <formula>&quot;DND - &quot; &amp;  Id</formula>
+        <name>DND Opp Name</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Date_off_Hold</fullName>
+        <field>Date_off_Hold__c</field>
+        <formula>Today()</formula>
+        <name>Date off Hold</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Date_on_Hold</fullName>
+        <field>Date_on_Hold__c</field>
+        <formula>Today()</formula>
+        <name>Date on Hold</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ERP_Submitted_To_Sync_on_Opportunity</fullName>
+        <description>ERP Submitted to Sync field on Opportunity will be updated with current date &amp; time.</description>
+        <field>ERP_Submitted_To_Sync__c</field>
+        <formula>Now()</formula>
+        <name>ERP Submitted To Sync on Opportunity</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>FR_Default_PROG_Creditable_to_Zero</fullName>
+        <field>Percentage_Progress_Fee_Creditable__c</field>
+        <name>FR-Default PROG Creditable to Zero</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>FR_Default_RETAINER_Creditable_to_Zero</fullName>
+        <field>Percentage_Retainer_Creditable__c</field>
+        <name>FR-Default RETAINER Creditable to Zero</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>HL_Entity_AUS</fullName>
+        <field>HL_Entity__c</field>
+        <literalValue>HL Australia</literalValue>
+        <name>HL Entity AUS</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>HL_Entity_CF_FRG</fullName>
+        <field>HL_Entity__c</field>
+        <literalValue>Cap Inc.</literalValue>
+        <name>HL Entity CF/FRG</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>HL_Entity_China</fullName>
+        <field>HL_Entity__c</field>
+        <literalValue>China Ltd.</literalValue>
+        <name>HL Entity China</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>HL_Entity_Europe</fullName>
+        <field>HL_Entity__c</field>
+        <literalValue>HL Europe</literalValue>
+        <name>HL Entity Europe</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>HL_Entity_FAS</fullName>
+        <field>HL_Entity__c</field>
+        <literalValue>Financial Advisory</literalValue>
+        <name>HL Entity FVA</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>HL_Entity_Real_Estate</fullName>
+        <field>HL_Entity__c</field>
+        <literalValue>Real Estate</literalValue>
+        <name>HL Entity Real Estate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>HL_Entity_Strategic_Consulting</fullName>
+        <field>HL_Entity__c</field>
+        <literalValue>HL Consulting, Inc.</literalValue>
+        <name>HL Entity Strategic Consulting</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Latest_Stage_Change_Date</fullName>
+        <field>Latest_Stage_Change__c</field>
+        <formula>TODAY()</formula>
+        <name>Latest Stage Change Date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>NBC_Exceptions</fullName>
+        <field>NBC_Approved__c</field>
+        <literalValue>1</literalValue>
+        <name>NBC Exceptions</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>NBC_Exceptions_2</fullName>
+        <field>NBC_Approved__c</field>
+        <literalValue>0</literalValue>
+        <name>NBC Exceptions 2</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>NULL_Approval_Process</fullName>
+        <field>Approval_Process__c</field>
+        <name>NULL Approval Process</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Opp_Update_Search_Index</fullName>
+        <field>Search_Index__c</field>
+        <formula>Client__r.Name + &quot;, &quot; + Subject__r.Name</formula>
+        <name>Opp Update Search Index</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Opportunity_Conversion_Approved</fullName>
+        <field>Approved__c</field>
+        <literalValue>1</literalValue>
+        <name>Opportunity Conversion Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Put_on_Hold_by</fullName>
+        <field>Put_on_Hold_by__c</field>
+        <formula>$User.FirstName + &quot; &quot; + $User.LastName</formula>
+        <name>Put on Hold by</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Restore_Opp_Name</fullName>
+        <field>Name</field>
+        <formula>Opp_Name_Store__c</formula>
+        <name>Restore Opp Name</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_DND_Status_to_Blank</fullName>
+        <field>DND_Status__c</field>
+        <name>Set DND Status to Blank</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Stage_to_Engaged</fullName>
+        <field>Stage__c</field>
+        <literalValue>Engaged</literalValue>
+        <name>Stage to Engaged</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Store_DND_Submitter</fullName>
+        <field>DND_Submitter_Email__c</field>
+        <formula>$User.Email</formula>
+        <name>Store DND Submitter</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Store_Opp_Name</fullName>
+        <field>Opp_Name_Store__c</field>
+        <formula>Name</formula>
+        <name>Store Opp Name</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Submitter_Email</fullName>
+        <field>Submitter__c</field>
+        <formula>$User.Email</formula>
+        <name>Submitter Email</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Take_off_Hold_by</fullName>
+        <field>Taken_off_Hold_by__c</field>
+        <formula>$User.FirstName + &quot; &quot; + $User.LastName</formula>
+        <name>Take off Hold by</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_DND_Status_to_APPROVED</fullName>
+        <field>DND_Status__c</field>
+        <literalValue>APPROVED</literalValue>
+        <name>Update DND Status to APPROVED</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_DND_Status_to_RELEASED</fullName>
+        <field>DND_Status__c</field>
+        <literalValue>RELEASED</literalValue>
+        <name>Update DND Status to RELEASED</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_DND_Status_to_Req_Add</fullName>
+        <field>DND_Status__c</field>
+        <literalValue>Add Requested</literalValue>
+        <name>Update DND Status to Req Add</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_DND_Status_to_Req_Removal</fullName>
+        <field>DND_Status__c</field>
+        <literalValue>Removal Requested</literalValue>
+        <name>Update DND Status to Req Removal</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>setERPProductTypeCode</fullName>
+        <field>ERP_Product_Type_Code__c</field>
+        <formula>CASE(ProductLine__c,
+&quot;DRC&quot;, &quot;DR&quot;,
+&quot;FO&quot;, &quot;FO&quot;,
+&quot;HC&quot;, &quot;GEH&quot;,
+&quot;NRG&quot;, &quot;&quot;,
+&quot;REVS&quot;, &quot;GER&quot;,
+&quot;General&quot;, &quot;GNL&quot;,
+&quot;PV&quot;, &quot;PV&quot;,
+&quot;TAS&quot;, &quot;TAS&quot;,
+&quot;CVAS&quot;, &quot;CVAS&quot;,
+&quot;TO&quot;, &quot;TOP&quot;,
+&quot;&quot;)</formula>
+        <name>setERPProductTypeCode</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>ERP_Opportunity</fullName>
+        <apiVersion>47.0</apiVersion>
+        <endpointUrl>https://hlprdoic-houlihanlokey1.integration.ocp.oraclecloud.com/ic/ws/integration/v1/flows/salesforce/SFDC_ORACLEERP_PROJECTS/2.0/</endpointUrl>
+        <fields>Client_Ownership__c</fields>
+        <fields>Client__c</fields>
+        <fields>CreatedDate</fields>
+        <fields>CurrencyIsoCode</fields>
+        <fields>ERP_Business_Unit__c</fields>
+        <fields>ERP_HL_Entity__c</fields>
+        <fields>ERP_ID__c</fields>
+        <fields>ERP_Industry_Group_Reporting__c</fields>
+        <fields>ERP_LOB__c</fields>
+        <fields>ERP_Principal_Manager__c</fields>
+        <fields>ERP_Product_Type_Code__c</fields>
+        <fields>ERP_Project_Manager_ID__c</fields>
+        <fields>ERP_Project_Manager__c</fields>
+        <fields>ERP_Project_Name__c</fields>
+        <fields>ERP_Project_Number__c</fields>
+        <fields>ERP_Project_Principal__c</fields>
+        <fields>ERP_Project_Status_Code__c</fields>
+        <fields>ERP_Revenue_Method__c</fields>
+        <fields>ERP_Status__c</fields>
+        <fields>ERP_Submitted_To_Sync__c</fields>
+        <fields>ERP_Task_Description__c</fields>
+        <fields>ERP_Task_Name__c</fields>
+        <fields>ERP_Task_Number__c</fields>
+        <fields>ERP_Template__c</fields>
+        <fields>ERP_Update_Attributes__c</fields>
+        <fields>ERP_Update_DFF__c</fields>
+        <fields>ERP_Update_Initiator__c</fields>
+        <fields>ERP_Update_Manager__c</fields>
+        <fields>ERP_Update_New_Task__c</fields>
+        <fields>ERP_Update_Opportunity__c</fields>
+        <fields>ERP_Update_Status__c</fields>
+        <fields>Id</fields>
+        <fields>Industry_Group_REPORTING__c</fields>
+        <fields>Job_Type__c</fields>
+        <fields>Legal_Entity__c</fields>
+        <fields>Opportunity_Description__c</fields>
+        <fields>Opportunity_Number__c</fields>
+        <fields>Primary_Office__c</fields>
+        <fields>Product_Type__c</fields>
+        <fields>Sector__c</fields>
+        <fields>Status__c</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>svc-erpadmin@hl.com</integrationUser>
+        <name>ERP Opportunity</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>Beneficial Owner and Control Person form Completed</fullName>
+        <actions>
+            <name>Beneficial_Owner_and_Control_Person_form_Completed</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6) AND 7</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity__c.Beneficial_Owner_Control_Person_form__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.HL_Entity__c</field>
+            <operation>equals</operation>
+            <value>Cap Inc.</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Client_Ownership__c</field>
+            <operation>equals</operation>
+            <value>ESOP,Family Office,Family Owned,Hedge Fund,Institutional Debt Holder,Management,Not for Profit,Pension Plan,Private,Private Equity Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Subject_Company_Ownership__c</field>
+            <operation>equals</operation>
+            <value>ESOP,Family Office,Family Owned,Hedge Fund,Institutional Debt Holder,Management,Not for Profit,Pension Plan,Private,Private Equity Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Client_Ownership__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Subject_Company_Ownership__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.CreatedDate</field>
+            <operation>greaterOrEqual</operation>
+            <value>5/11/2018 2:00 AM</value>
+        </criteriaItems>
+        <description>Notify Compliance that the Beneficial Owner and Control Person form is Completed</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Beneficial Owner and Control Person form Completed - Requesting Eng</fullName>
+        <actions>
+            <name>Beneficial_Owner_and_Control_Person_form_Completed</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity__c.Engagement_Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>Requesting Engagement Number</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.HL_Entity__c</field>
+            <operation>equals</operation>
+            <value>Cap Inc.</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Client_Ownership__c</field>
+            <operation>equals</operation>
+            <value>ESOP,Family Office,Family Owned,Hedge Fund,Institutional Debt Holder,Management,Not for Profit,Pension Plan,Private,Private Equity Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Subject_Company_Ownership__c</field>
+            <operation>equals</operation>
+            <value>ESOP,Family Office,Family Owned,Hedge Fund,Institutional Debt Holder,Management,Not for Profit,Pension Plan,Private,Private Equity Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Beneficial_Owner_Control_Person_form__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.CreatedDate</field>
+            <operation>greaterOrEqual</operation>
+            <value>5/11/2018 2:00 AM</value>
+        </criteriaItems>
+        <description>Notify Compliance on requesting engagement number when Beneficial Owner and Control Person form is completed</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Beneficial Owner and Control Person form NOT Completed</fullName>
+        <actions>
+            <name>Beneficial_Owner_and_Control_Person_form_NOT_Completed</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6) AND 7</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity__c.Beneficial_Owner_Control_Person_form__c</field>
+            <operation>equals</operation>
+            <value>No</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.HL_Entity__c</field>
+            <operation>equals</operation>
+            <value>Cap Inc.</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Client_Ownership__c</field>
+            <operation>equals</operation>
+            <value>ESOP,Family Office,Family Owned,Hedge Fund,Institutional Debt Holder,Management,Not for Profit,Pension Plan,Private,Private Equity Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Subject_Company_Ownership__c</field>
+            <operation>equals</operation>
+            <value>ESOP,Family Office,Family Owned,Hedge Fund,Institutional Debt Holder,Management,Not for Profit,Pension Plan,Private,Private Equity Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Client_Ownership__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Subject_Company_Ownership__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.CreatedDate</field>
+            <operation>greaterOrEqual</operation>
+            <value>5/11/2018 2:00 AM</value>
+        </criteriaItems>
+        <description>Notify Compliance that the Beneficial Owner and Control Person form is NOT Completed</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Beneficial Owner and Control Person form NOT Completed - Requesting Eng</fullName>
+        <actions>
+            <name>Beneficial_Owner_and_Control_Person_form_NOT_Completed</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity__c.Engagement_Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>Requesting Engagement Number</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.HL_Entity__c</field>
+            <operation>equals</operation>
+            <value>Cap Inc.</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Client_Ownership__c</field>
+            <operation>equals</operation>
+            <value>ESOP,Family Office,Family Owned,Hedge Fund,Institutional Debt Holder,Management,Not for Profit,Pension Plan,Private,Private Equity Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Subject_Company_Ownership__c</field>
+            <operation>equals</operation>
+            <value>ESOP,Family Office,Family Owned,Hedge Fund,Institutional Debt Holder,Management,Not for Profit,Pension Plan,Private,Private Equity Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Beneficial_Owner_Control_Person_form__c</field>
+            <operation>equals</operation>
+            <value>No</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.CreatedDate</field>
+            <operation>greaterOrEqual</operation>
+            <value>5/11/2018 2:00 AM</value>
+        </criteriaItems>
+        <description>Notify Compliance on requesting engagement number when Beneficial Owner and Control Person form is NOT completed</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>DND Approved - Dead CF Opportunity</fullName>
+        <actions>
+            <name>DND_Approved_Dead_CF_Opportunity</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity__c.DND_Status__c</field>
+            <operation>equals</operation>
+            <value>APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>CF</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Stage__c</field>
+            <operation>equals</operation>
+            <value>Dead</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>DND Approved - Dead FAS Opportunity</fullName>
+        <actions>
+            <name>DND_Approved_Dead_FAS_Opportunity</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity__c.DND_Status__c</field>
+            <operation>equals</operation>
+            <value>APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FVA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Stage__c</field>
+            <operation>equals</operation>
+            <value>Dead</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>DND Approved - Dead FR Opportunity</fullName>
+        <actions>
+            <name>DND_Approved_Dead_FR_Opportunity</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity__c.DND_Status__c</field>
+            <operation>equals</operation>
+            <value>APPROVED</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Stage__c</field>
+            <operation>equals</operation>
+            <value>Dead</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>ERP Opportunity</fullName>
+        <actions>
+            <name>ERP_Opportunity</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <description>Triggers the outbound message for Opportunity</description>
+        <formula>AND(OR(ISNEW(),        ISCHANGED(ERP_Submitted_To_Sync__c)),     NOT(ISNULL(ERP_Principal_Manager__c)),     NOT(ISBLANK(ERP_Principal_Manager__c)), NOT( ERP_Do_Not_Sync__c ))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>ERP Submitted to Sync fields on Opportunity</fullName>
+        <actions>
+            <name>ERP_Submitted_To_Sync_on_Opportunity</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Update &apos;ERP Submitted to Sync&apos; field of Opportunity with current date and time.</description>
+        <formula>AND(NOT(Converted_to_Engagement__c),       NOT(ISBLANK(ERP_Principal_Manager__c)),     NOT(ISNULL(ERP_Principal_Manager__c)),     OR(ISNEW(),                  ISCHANGED(Name),                ISCHANGED(Legal_Entity__c), ISCHANGED(CurrencyIsoCode),                 ISCHANGED(Primary_Office__c ),                 ISCHANGED(Stage__c),                 ISCHANGED(Opportunity_Description__c),                       ISCHANGED(Industry_Group__c),         ISCHANGED(Sector__c),        ISCHANGED(Job_Type__c),         ISCHANGED(Line_of_Business__c),         ISCHANGED(Client_Ownership__c),           ISCHANGED(Product_Type__c),        ISCHANGED(ERP_Principal_Manager__c)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>FR-Default Creditable to Zero</fullName>
+        <actions>
+            <name>FR_Default_PROG_Creditable_to_Zero</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>FR_Default_RETAINER_Creditable_to_Zero</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>FR</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>HL Entity AUS</fullName>
+        <actions>
+            <name>HL_Entity_AUS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>ISPICKVAL(Primary_Office__c, &apos;SY&apos;)&amp;&amp; ISPICKVAL(HL_Entity__c, &apos;&apos;)&amp;&amp; NOT(ISPICKVAL(Job_Type__c, &apos;Real Estate Brokerage&apos;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>HL Entity CF%2FFRG</fullName>
+        <actions>
+            <name>HL_Entity_CF_FRG</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>on create only</description>
+        <formula>OR(  RecordType.Id = &apos;012i0000000tPyF&apos;,  RecordType.Id = &apos;012i0000000tPyK&apos; ) &amp;&amp;  NOT(OR(   ISPICKVAL(Primary_Office__c, &apos;FF&apos;),  ISPICKVAL(Primary_Office__c, &apos;LO&apos;),  ISPICKVAL(Primary_Office__c, &apos;PA&apos;),  ISPICKVAL(Primary_Office__c, &apos;HK&apos;),  ISPICKVAL(Primary_Office__c, &apos;BE&apos;), ISPICKVAL(Primary_Office__c, &apos;SY&apos;), ISPICKVAL(Primary_Office__c, &apos;SG&apos;), ISPICKVAL(Primary_Office__c, &apos;AM&apos;), ISPICKVAL(Primary_Office__c, &apos;MD&apos;), ISPICKVAL(Primary_Office__c, &apos;ML&apos;), ISPICKVAL(Primary_Office__c, &apos;RO&apos;)  ))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>HL Entity China</fullName>
+        <actions>
+            <name>HL_Entity_China</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>OR( ISPICKVAL(Primary_Office__c, &apos;BE&apos;), ISPICKVAL(Primary_Office__c, &apos;HK&apos;), ISPICKVAL(Primary_Office__c, &apos;SG&apos;) )&amp;&amp; ISPICKVAL(HL_Entity__c, &apos;&apos;)&amp;&amp; NOT(ISPICKVAL(Job_Type__c, &apos;Real Estate Brokerage&apos;)&amp;&amp; NOT(ISPICKVAL(Job_Type__c, &apos;Strategic Consulting&apos;)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>HL Entity Europe</fullName>
+        <actions>
+            <name>HL_Entity_Europe</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>OR( ISPICKVAL(Primary_Office__c, &apos;FF&apos;), ISPICKVAL(Primary_Office__c, &apos;LO&apos;), ISPICKVAL(Primary_Office__c, &apos;PA&apos;), ISPICKVAL(Primary_Office__c, &apos;AM&apos;), ISPICKVAL(Primary_Office__c, &apos;MD&apos;), ISPICKVAL(Primary_Office__c, &apos;ML&apos;), ISPICKVAL(Primary_Office__c, &apos;RO&apos;))&amp;&amp; ISPICKVAL(HL_Entity__c, &apos;&apos;)&amp;&amp; NOT(ISPICKVAL(Job_Type__c, &apos;Real Estate Brokerage&apos;) &amp;&amp; NOT(ISPICKVAL(Job_Type__c, &apos;Strategic Consulting&apos;)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>HL Entity FAS</fullName>
+        <actions>
+            <name>HL_Entity_FAS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>on create only</description>
+        <formula>RecordType.Id = &apos;012i0000000tPy5&apos; &amp;&amp; NOT(OR(  ISPICKVAL(Primary_Office__c, &apos;FF&apos;),  ISPICKVAL(Primary_Office__c, &apos;LO&apos;),  ISPICKVAL(Primary_Office__c, &apos;PA&apos;), ISPICKVAL(Primary_Office__c, &apos;HK&apos;),  ISPICKVAL(Primary_Office__c, &apos;BE&apos;), ISPICKVAL(Primary_Office__c, &apos;SY&apos;), ISPICKVAL(Primary_Office__c, &apos;SG&apos;), ISPICKVAL(Primary_Office__c, &apos;AM&apos;), ISPICKVAL(Primary_Office__c, &apos;MD&apos;), ISPICKVAL(Primary_Office__c, &apos;ML&apos;), ISPICKVAL(Primary_Office__c, &apos;RO&apos;)  ))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>HL Entity Re-Default CF%2FFRG</fullName>
+        <actions>
+            <name>HL_Entity_CF_FRG</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>OR( RecordType.Id = &apos;012i0000000tPyF&apos;, RecordType.Id = &apos;012i0000000tPyK&apos; ) &amp;&amp; AND( NOT(ISPICKVAL(Job_Type__c,&apos;Real Estate Brokerage&apos;)), NOT(OR(  ISPICKVAL(Primary_Office__c, &apos;FF&apos;), ISPICKVAL(Primary_Office__c, &apos;LO&apos;), ISPICKVAL(Primary_Office__c, &apos;PA&apos;), ISPICKVAL(Primary_Office__c, &apos;HK&apos;), ISPICKVAL(Primary_Office__c, &apos;BE&apos;), ISPICKVAL(Primary_Office__c, &apos;SY&apos;), ISPICKVAL(Primary_Office__c, &apos;SG&apos;), ISPICKVAL(Primary_Office__c, &apos;AM&apos;), ISPICKVAL(Primary_Office__c, &apos;MD&apos;), ISPICKVAL(Primary_Office__c, &apos;ML&apos;), ISPICKVAL(Primary_Office__c, &apos;RO&apos;) )) ) &amp;&amp; (ISPICKVAL(HL_Entity__c, &apos;&apos;) || ISPICKVAL(HL_Entity__c,&apos;Real Estate&apos;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>HL Entity Re-Default FAS</fullName>
+        <actions>
+            <name>HL_Entity_FAS</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>RecordType.Id = &apos;012i0000000tPy5&apos;  &amp;&amp; NOT(OR(  ISPICKVAL(Primary_Office__c, &apos;FF&apos;),  ISPICKVAL(Primary_Office__c, &apos;LO&apos;),  ISPICKVAL(Primary_Office__c, &apos;PA&apos;),  ISPICKVAL(Primary_Office__c, &apos;HK&apos;),  ISPICKVAL(Primary_Office__c, &apos;BE&apos;), ISPICKVAL(Primary_Office__c, &apos;SY&apos;), ISPICKVAL(Primary_Office__c, &apos;SG&apos;), ISPICKVAL(Primary_Office__c, &apos;AM&apos;), ISPICKVAL(Primary_Office__c, &apos;MD&apos;), ISPICKVAL(Primary_Office__c, &apos;ML&apos;), ISPICKVAL(Primary_Office__c, &apos;RO&apos;)   )) &amp;&amp; ISPICKVAL(HL_Entity__c, &apos;&apos;)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>HL Entity Real Estate</fullName>
+        <actions>
+            <name>HL_Entity_Real_Estate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>ISPICKVAL(Job_Type__c, &apos;Real Estate Brokerage&apos;)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>HL Entity Strategic Consulting</fullName>
+        <actions>
+            <name>HL_Entity_Strategic_Consulting</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>ISPICKVAL(Job_Type__c, &apos;Strategic Consulting&apos;)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>HL Office and Entity Pairing Restrict</fullName>
+        <actions>
+            <name>Clear_HL_Entity</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>(OR( ISPICKVAL(Primary_Office__c, &apos;AT&apos;), ISPICKVAL(Primary_Office__c, &apos;CH&apos;), ISPICKVAL(Primary_Office__c, &apos;DA&apos;), ISPICKVAL(Primary_Office__c, &apos;DC&apos;), ISPICKVAL(Primary_Office__c, &apos;LA&apos;), ISPICKVAL(Primary_Office__c, &apos;MI&apos;), ISPICKVAL(Primary_Office__c, &apos;MN&apos;), ISPICKVAL(Primary_Office__c, &apos;NB&apos;), ISPICKVAL(Primary_Office__c, &apos;NY&apos;), ISPICKVAL(Primary_Office__c, &apos;SF&apos;)) &amp;&amp; OR( ISPICKVAL(HL_Entity__c, &apos;China Ltd.&apos;), ISPICKVAL(HL_Entity__c, &apos;HL Europe&apos;)))  ||  (OR( ISPICKVAL(Primary_Office__c, &apos;FF&apos;), ISPICKVAL(Primary_Office__c, &apos;LO&apos;), ISPICKVAL(Primary_Office__c, &apos;PA&apos;)) &amp;&amp; NOT(ISPICKVAL(HL_Entity__c, &apos;HL Europe&apos;)))  ||  (OR( ISPICKVAL(Primary_Office__c, &apos;BE&apos;), ISPICKVAL(Primary_Office__c, &apos;HK&apos;), ISPICKVAL(Primary_Office__c, &apos;TK&apos;)) &amp;&amp; NOT(ISPICKVAL(HL_Entity__c, &apos;China Ltd.&apos;)))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Latest Stage Change Date</fullName>
+        <actions>
+            <name>Latest_Stage_Change_Date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Populates with TODAY() whenever the stage is changed on an opportunity.</description>
+        <formula>ISCHANGED( Stage__c ) || ISNEW()</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Legal Hold Off</fullName>
+        <actions>
+            <name>Date_off_Hold</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Take_off_Hold_by</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(  ISCHANGED(Legal_Hold__c),  NOT(Legal_Hold__c))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Legal Hold On</fullName>
+        <actions>
+            <name>Date_on_Hold</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Put_on_Hold_by</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(   ISCHANGED(Legal_Hold__c),   Legal_Hold__c)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NBC Exceptions</fullName>
+        <actions>
+            <name>NBC_Exceptions</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>FOR CF.  Check NBC Approved when job type changes to one listed in workflow rule.</description>
+        <formula>(ISPICKVAL(Job_Type__c, &apos;Activism Advisory&apos;) || ISPICKVAL(Job_Type__c, &apos;Corporate Alliances&apos;) || ISPICKVAL(Job_Type__c, &apos;Debt Advisory&apos;) || ISPICKVAL(Job_Type__c, &apos;Discretionary Advisory&apos;) || ISPICKVAL(Job_Type__c, &apos;ESOP Corporate Finance&apos;) || ISPICKVAL(Job_Type__c, &apos;Financing&apos;) || ISPICKVAL(Job_Type__c, &apos;General Financial Advisory&apos;) || ISPICKVAL(Job_Type__c, &apos;Negotiated Fairness&apos;) || ISPICKVAL(Job_Type__c, &apos;Partners&apos;) || ISPICKVAL(Job_Type__c, &apos;Real Estate Brokerage&apos;) || ISPICKVAL(Job_Type__c, &apos;Special Committee Advisory&apos;) || ISPICKVAL(Job_Type__c, &apos;Special Situations&apos;) || ISPICKVAL(Job_Type__c, &apos;Strategic Alternatives Study&apos;) || ISPICKVAL(Job_Type__c, &apos;Take Over Defense&apos;)) &amp;&amp; ISPICKVAL(Line_of_Business__c, &apos;CF&apos;) &amp;&amp;  ISCHANGED(Job_Type__c)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NBC Exceptions 2</fullName>
+        <actions>
+            <name>NBC_Exceptions_2</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>FOR CF.  Uncheck NBC Approved when job type changes to one listed in workflow rule.</description>
+        <formula>ISPICKVAL(Line_of_Business__c, &apos;CF&apos;) &amp;&amp; 
+(ISPICKVAL(Job_Type__c, &apos;Buyside&apos;) || ISPICKVAL(Job_Type__c, &apos;Debt Capital Markets&apos;) || ISPICKVAL(Job_Type__c, &apos;Equity Capital Markets&apos;) || ISPICKVAL(Job_Type__c, &apos;Going Private&apos;) || ISPICKVAL(Job_Type__c, &apos;Illiquid Financial Assets&apos;) || ISPICKVAL(Job_Type__c, &apos;Liability Management&apos;) || ISPICKVAL(Job_Type__c, &apos;Merger&apos;) || ISPICKVAL(Job_Type__c, &apos;Sellside&apos;)) &amp;&amp; NBC_Approved__c &amp;&amp; ISPICKVAL(Line_of_Business__c, &apos;CF&apos;) &amp;&amp; 
+ISCHANGED(Job_Type__c)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>NBC Exceptions 3</fullName>
+        <actions>
+            <name>NBC_Exceptions</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>FOR CF.  Check NBC Approved when opportunity created with job type listed in workflow rule.</description>
+        <formula>(ISPICKVAL(Job_Type__c, &apos;Activism Advisory&apos;) || ISPICKVAL(Job_Type__c, &apos;Corporate Alliances&apos;) || ISPICKVAL(Job_Type__c, &apos;Debt Advisory&apos;) ||  ISPICKVAL(Job_Type__c, &apos;Discretionary Advisory&apos;) || ISPICKVAL(Job_Type__c, &apos;ESOP Corporate Finance&apos;) || ISPICKVAL(Job_Type__c, &apos;Financing&apos;) || ISPICKVAL(Job_Type__c, &apos;General Financial Advisory&apos;) || ISPICKVAL(Job_Type__c, &apos;Negotiated Fairness&apos;) || ISPICKVAL(Job_Type__c, &apos;Partners&apos;) || ISPICKVAL(Job_Type__c, &apos;Real Estate Brokerage&apos;) || ISPICKVAL(Job_Type__c, &apos;Special Committee Advisory&apos;) || ISPICKVAL(Job_Type__c, &apos;Special Situations&apos;) || ISPICKVAL(Job_Type__c, &apos;Private Funds: GP Advisory&apos;) || ISPICKVAL(Job_Type__c, &apos;Strategic Alternatives Study&apos;) || ISPICKVAL(Job_Type__c, &apos;Take Over Defense&apos;)) &amp;&amp; ISPICKVAL(Line_of_Business__c, &apos;CF&apos;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Opp Search Index</fullName>
+        <actions>
+            <name>Opp_Update_Search_Index</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>ISCHANGED( Client__c )|| ISCHANGED( Subject__c ) || ISBLANK( Search_Index__c )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Opportunity status change</fullName>
+        <actions>
+            <name>Opportunity_status_change</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity__c.Stage__c</field>
+            <operation>equals</operation>
+            <value>Engaged</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.Opportunity_Number__c</field>
+            <operation>equals</operation>
+            <value>109178,109272,109224,109251,109252</value>
+        </criteriaItems>
+        <description>Inform Blaise and Danielle when the given opportunities has been engaged.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>SetERPProductTypeCode</fullName>
+        <actions>
+            <name>setERPProductTypeCode</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity__c.Line_of_Business__c</field>
+            <operation>equals</operation>
+            <value>FVA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.ProductLine__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.ERP_Product_Type_Code__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>HL Internal Opportunity</value>
+        </criteriaItems>
+        <description>This workflow will set the ERP Product Type Code field if the Line of Business is FVA and the Product Line is not NULL for HL Internal Opportunities.  This does not cover if the Product Line value is changed to another value, to be done.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>UK Takeover Panel - Opp</fullName>
+        <actions>
+            <name>UK_Regulatory_Opp</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Notification to John Cowan, Tom Waterhouse, and Ed Linetskiy when Client = US and Subject = UK</description>
+        <formula>(Client__r.BillingCountry = &apos;US&apos; ||  Client__r.BillingCountry = &apos;USA&apos; ||  Client__r.BillingCountry = &apos;United States&apos;) &amp;&amp; (Subject__r.BillingCountry = &apos;UK&apos; ||  Subject__r.BillingCountry = &apos;United Kingdom&apos;)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>VAT Treatment Notification on Opportunity</fullName>
+        <actions>
+            <name>Opportunity_Notification_VAT_Treatment_Reviewers</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>VAT Treatment Notification when Stage changes to &quot;Verbally Engaged&quot; or &quot;Engaged&quot;.</description>
+        <formula>AND(ISBLANK(Possible_VAT_Treatment__c),      Legal_Entity__r.ERP_VAT_Legal_Entity__c = TRUE,      OR(ISNEW(),ISCHANGED(Stage__c)),       OR(ISPICKVAL(Stage__c, &apos;Verbally Engaged&apos;),         AND(ISPICKVAL(Stage__c, &apos;Engaged&apos;),              NOT(ISPICKVAL(PRIORVALUE(Stage__c), &apos;Verbally Engaged&apos;)))))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>
