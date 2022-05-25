@@ -1,0 +1,17 @@
+<html><head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><span style="font-size:12px;"><span style="font-family:Georgia,Times New Roman,Times,serif;"><span lang="EN-GB">Dear {{{Recipient.FirstName}}},</span><br />
+&nbsp;<br />
+<span lang="EN-GB">{{{Recipient.Custom_Field_3__c}}}I am following up on my previous e-mail to see if a brief introductory call is of interest.&nbsp;</span><br />
+<br />
+<span lang="EN-GB">We maintain conversations across the&nbsp;{{{Recipient.Custom_Field_1__c}}} sector and frequently work with businesses which may represent interesting acquisition or partnership opportunities for you. Alongside this, our Financial Sponsors Coverage Group is the largest in investment banking, working closely with over 800 investors. We are well-placed to connect you with alternative sources of funding.</span><br />
+<br />
+<span lang="EN-GB">With this in mind, are you available for a call with our senior team?</span><br />
+&nbsp;<br />
+<span lang="EN-GB">Best Wishes,</span><br />
+<br />
+{{{Sender.FirstName}}}<br />
+<br />
+{{{Sender.Signature}}}</span></span>
+</body></html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>HL_BlankLetterHead</letterhead>
+    <name>Event Expense Submit for 2nd Round Approvers</name>
+    <style>formalLetter</style>
+    <subject>Request for Marketing Expense Approval *Action Required*</subject>
+    <textOnly>This is to notify you that the marketing expense request for {!Event_Expense__c.Event_Type_Format__c} expense {!Event_Expense__c.Name} has been recently reviewed by {!Event_Expense__c.Current_Approver__c}.
+
+Please review using the link below. If you have any questions, please contact the requestor, {!Event_Expense__c.Requestor_Name__c}.
+
+Requestor: {!Event_Expense__c.Requestor_Name__c}
+
+Product Type: {!Event_Expense__c.Product_Type__c}
+
+Event Name: {!Event_Expense__c.Event_Name__c}
+
+Request Type: {!Event_Expense__c.Event_Type_Format__c}
+
+Target Audience: {!Event_Expense__c.Target_Audience__c}
+
+Event Date: {!Event_Expense__c.Formatted_Start_Date__c}.
+
+Event Purpose : {!Event_Expense__c.Event_Purpose__c}
+
+Desired Outcome: {!Event_Expense__c.What_is_desired_outcome_of_this_event__c}
+
+Requested Event Budget (excluding Travel): {!Event_Expense__c.Requested_Event_Budget_excluding_Travel__c}
+
+Expected Travel Cost: {!Event_Expense__c.Expected_Travel_cost__c}
+
+KPIs (Key Performance Indicators): {!Event_Expense__c.What_are_KPIs__c}.
+
+Notes:  {!Event_Expense__c.Notes__c}
+
+Review submission: {!Event_Expense__c.Event_Name__c}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

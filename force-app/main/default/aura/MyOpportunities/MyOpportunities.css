@@ -1,0 +1,28 @@
+.THIS {
+    height: 100%;
+}
+
+.THIS .myOpportunities {
+  height: 100%;
+}
+
+.THIS .button-cancel{
+    width: 100%;
+    margin: 4px;
+}
+.THIS .hidden{
+    display:none;
+}
+
+.THIS p {
+    margin: 0;
+}
+
+.THIS .opportunitylist {
+    height: calc(100% - 50px);
+}
+
+.THIS ul {
+    background-color: white; 
+    border-radius: 5px;
+}

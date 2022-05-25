@@ -1,0 +1,347 @@
+<apex:component controller="HL_LookupAccountController" allowDML="true" extensions="HL_PostalCode">
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_LookupAccount.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <script src="/soap/ajax/9.0/connection.js" type="text/javascript"></script> 
+    <script type="text/javascript">
+    $j = jQuery.noConflict();
+    $j(document).ready(function () {
+        DocumentReady();
+    }); 
+    function DocumentReady(){
+        var newAccount = "{!NewAccount}";
+        var lookupAction = "{!LookupAction}";
+        var selectedState = $j("[id$=AccountState]").val();
+        var selectedCountry = $j("[id$=AccountCountry]").val();
+        if(selectedCountry == '' || selectedCountry == null || selectedCountry == undefined){
+            $j("[id$=AccountState]").prop('disabled',true); 
+        }
+        else{
+            updateState(selectedCountry);
+            $j("[id$=AccountState]").prop('disabled',false); 
+        }
+        if(selectedState != '' && selectedState != null && selectedState != undefined){
+            $j("[id$=AccountState]").val(selectedState);  
+        }
+        
+        $j.unblockUI;
+        $j("[id$=AccountPostalCode]").change(function() {
+            ZipLookup($j(this).val());
+        });
+        
+        $j("[value$='Add Selected']").click(function(){
+            $j.blockUI(); 
+            setTimeout($j.unblockUI, 1500); 
+        });
+        
+        //Remove Enter Functionality
+        $j('input, select').keypress(function(e){
+            if ( e.which == 13 ) {// Enter key = keycode 13
+                if(document.activeElement.id == $j("[name$=txtSearch]").attr("id"))
+                    $j("[name$=btnGo]").trigger('click');
+                return false;
+            }
+        });
+        
+        if(newAccount != "" && lookupAction == '3'){
+            $j("[id$='MailingStreet']",top.window.opener.document).val('{!NewAccount.BillingStreet}');
+            $j("[id$='MailingCity']",top.window.opener.document).val('{!NewAccount.BillingCity}');
+            $j("[id$='MailingPostalCode']",top.window.opener.document).val('{!NewAccount.BillingPostalCode}');
+            $j("[id$='MailingCountry']",top.window.opener.document).val('{!NewAccount.BillingCountryCode}');
+            window.opener.updateContactState('{!NewAccount.BillingCountryCode}');
+            $j("[id$='MailingState']",top.window.opener.document).val('{!NewAccount.BillingStateCode}');
+            $j("[id$=MailingState]").prop('disabled',false);
+            javascript:top.window.opener.lookupPick2('{!FormTag}','{!TextBox}_lkid','{!TextBox}','{!NewAccount.Id}','{!NewAccount.Name}', false); 
+        }
+        
+        if(newAccount != "" && lookupAction === '11'){
+            $j("[id$='inputTxtId_lkid']", window.parent.document).val('{!NewAccount.Id}');
+            $j("[id$='addCompany']", window.parent.document).trigger('click');
+            window.parent.$j('.ui-dialog-content:visible').dialog('close');
+            return true;
+        }
+        	
+        $j("[id$=AccountCountry]").autocomplete({
+            minLength: 2,
+            source: function(request, response) {
+                var queryTerm;
+                var strQuery;
+                queryTerm = request.term.trim();
+                sforce.connection.sessionId = '{!$Api.Session_ID}';
+                strQuery = "SELECT Id, Text__c FROM Lookup__c WHERE Text__c LIKE '%" + queryTerm + "%' ORDER BY Text__c LIMIT 50 ";
+                var lstSobjectResults = sforce.connection.query(strQuery);
+                var result = [];
+                if(parseInt(lstSobjectResults.size) > 0)
+                {   
+                    if(lstSobjectResults.size == '1')
+                    {
+                        var JSONObject = { "id":lstSobjectResults.records.Id, "label":lstSobjectResults.records.Text__c};
+                        result[0] = JSONObject;
+                    }
+                    else
+                    {
+                        for(var i = 0; i < lstSobjectResults.records.length; i++ ) 
+                        {
+                            var JSONObject;
+                            JSONObject = { "id":lstSobjectResults.records[i].Id, "label":lstSobjectResults.records[i].Text__c};
+                            result[i] = JSONObject;
+                        }
+                    }   
+                }
+                else{}
+                response(result);
+            },
+            select: function( event, ui ) {
+                itemName = ui.item.label;
+                $j(this).val( itemName );
+            }
+        });
+        $j("[name$=txtSearch]").focus();
+    } 
+    function ExistingCompanySelected(accountId, accountName, billingStreet, billingCity, billingState, billingPostalCode, billingCountry){
+        $j("[id$='MailingStreet']",top.window.opener.document).val(billingStreet);
+        $j("[id$='MailingCity']",top.window.opener.document).val(billingCity);
+        $j("[id$='MailingPostalCode']",top.window.opener.document).val(billingPostalCode);
+        $j("[id$='MailingCountry']",top.window.opener.document).val(billingCountry);
+        window.opener.updateContactState(billingCountry);
+        $j("[id$=MailingState]").prop('disabled',false);
+        $j("[id$='MailingState']",top.window.opener.document).val(billingState);
+        javascript:top.window.opener.lookupPick2('{!FormTag}','{!TextBox}_lkid','{!TextBox}',accountId,accountName, false);
+    }
+    function ZipLookup(postalCode){
+        
+        if('{!executePostalCodeLookup}' == 'true'){
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.HL_PostalCode.GetByPostalCode}',
+                postalCode, 
+                function(result, event){
+                    HandleZipResults(result,event);
+                }, 
+                {escape: true}
+            );   
+        }
+    } 
+    
+    function setFocusOnLoad() {}
+    
+    //Added as part of State/Country Picklist
+    function updateState(country){
+        var list = document.getElementById("{!$Component.formId.newAccount.newAccountSection.AccountState}");
+        list.length = 0;   
+        list.options.add(new Option('--None--',''));
+        if(country == '' || country == '--None--'){
+            $j("[id$=AccountState]").prop('disabled',true);
+            $j("[id$=AccountState]").val('');       
+        }
+        else{
+            var countryStateList = JSON.parse('{!jsonMap}');
+            var countryStateMap = new Map(Object.entries(countryStateList));
+            var stateList = countryStateMap.get(country);
+            for(var i=0;i<stateList.length;i++){
+                list.options.add(new Option(stateList[i].label, stateList[i].value));
+            }
+            $j("[id$=AccountState]").prop('disabled',false);
+        }
+        
+        if (list.length <= 1){
+            $j("[id$=AccountState]").prop('disabled',true);
+            $j("[id$=AccountState]").val('');       
+        }
+    }
+    
+        //Added as part of State/Country Picklist
+    </script>
+    
+    <apex:form id="formId">
+        <apex:stylesheet value="{!URLFOR($Resource.HL_CSS)}"></apex:stylesheet>
+        <apex:outputPanel id="page" layout="block" style="margin:5px;padding:10px;padding-top:2px;">
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:tabPanel switchType="client" selectedTab="tabSearch" id="tabbedPanel">
+                <apex:tab label="Search" name="tabSearch" id="tabSearch" rendered="{!LookupAction <> 11}">
+                    <apex:actionRegion >  
+                        <apex:outputPanel id="top" layout="block" style="margin:5px;padding:10px;padding-top:2px;">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <apex:outputLabel value="Search" style="font-weight:Bold;padding-right:10px;" for="txtSearch"/> 
+                                    </td>
+                                    <td>
+                                        <apex:inputText id="txtSearch" value="{!searchString}" />
+                                        <span style="padding-left:5px"><apex:commandButton id="btnGo" value="Go" action="{!Search}" rerender="searchResults" status="searchingStatus"></apex:commandButton></span>
+                                        <apex:commandButton action="{!SaveSelected}" value="Add Selected" reRender="page" rendered="{!LookupAction <> 3}"/>
+                                    </td>
+                                    <td>
+                                        <apex:selectRadio layout="lineDirection" value="{!SearchOption}">
+                                            <apex:selectOptions value="{!SearchOptions}"/>
+                                        </apex:selectRadio>
+                                    </td>
+                                </tr> 
+                            </table>
+                        </apex:outputPanel>
+                        <apex:outputPanel id="pnlSearchResults" style="margin:10px;height:280px;overflow-Y:auto;" layout="block">
+                            <apex:pageBlock id="searchResults"> 
+                                <apex:actionStatus id="searchingStatus" startText="Searching..." stopText="" startStyle="font-weight: bold; font-size: 1.5em;">
+                                    <apex:facet name="start" ><apex:outputPanel ><img src="/img/loading.gif" /><span>&nbsp;Searching...</span></apex:outputPanel></apex:facet>
+                                </apex:actionStatus>
+                                <apex:pageBlockTable value="{!SearchResults}" var="a" id="tblResults">
+                                    <apex:column headerValue="Select">
+                                        <apex:inputCheckbox value="{!a.Selected}" rendered="{!LookupAction <> 3}"/>
+                                        <apex:outputLink rendered="{!LookupAction == 3}" value="javascript:ExistingCompanySelected('{!a.Account.Id}','{!JSENCODE(a.Account.Name)}', '{!JSENCODE(a.Account.BillingStreet)}', '{!JSENCODE(a.Account.BillingCity)}', '{!JSENCODE(a.Account.BillingStateCode)}', '{!JSENCODE(a.Account.BillingPostalCode)}', '{!JSENCODE(a.Account.BillingCountryCode)}');">{!a.Account.Name}</apex:outputLink>
+                                    </apex:column>
+                                    <apex:column rendered="{!LookupAction == 1 || LookupAction == 2 || LookupAction == 4 || LookupAction == 5 || LookupAction == 6}">
+                                        <apex:inputText value="{!a.PercentOwnership}" styleClass="numeric-short"/>   
+                                        <apex:facet name="header">
+                                            <apex:outputLabel value="{!if(LookupAction == 5 || LookupAction == 6, 'Amount', 'Ownership %')}"></apex:outputLabel>
+                                        </apex:facet>
+                                    </apex:column>
+                                    <apex:column >
+                                        <apex:outputLink value="/{!a.Account.Id}" target="blank">{!a.Account.Name}</apex:outputLink>
+                                        <apex:facet name="header">
+                                            <apex:commandLink action="{!ApplySort}" reRender="searchResults" status="searchingStatus">
+                                                <apex:param assignTo="{!NewSort}" value="Name"/>
+                                                <apex:outputText value="Name"></apex:outputText>
+                                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Name' && SortDirection == 'ASC'}"/>
+                                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Name' && SortDirection <> 'ASC'}"/>
+                                            </apex:commandLink>
+                                        </apex:facet>    
+                                    </apex:column>
+                                    <apex:column value="{!a.Account.BillingStreet}">
+                                        <apex:facet name="header">
+                                            <apex:commandLink action="{!ApplySort}" reRender="searchResults" status="searchingStatus">
+                                                <apex:param assignTo="{!NewSort}" value="BillingStreet"/>
+                                                <apex:outputText value="Street"></apex:outputText>
+                                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'BillingStreet' && SortDirection == 'ASC'}"/>
+                                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'BillingStreet' && SortDirection <> 'ASC'}"/>
+                                            </apex:commandLink>
+                                        </apex:facet>
+                                    </apex:column>
+                                    <apex:column value="{!a.Account.BillingCity}">
+                                        <apex:facet name="header">
+                                            <apex:commandLink action="{!ApplySort}" reRender="searchResults" status="searchingStatus">
+                                                <apex:param assignTo="{!NewSort}" value="BillingCity"/>
+                                                <apex:outputText value="City"></apex:outputText>
+                                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'BillingCity' && SortDirection == 'ASC'}"/>
+                                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'BillingCity' && SortDirection <> 'ASC'}"/>
+                                            </apex:commandLink>
+                                        </apex:facet>
+                                    </apex:column>
+                                    <apex:column headerValue="State" value="{!a.Account.BillingState}">
+                                        <apex:facet name="header">
+                                            <apex:commandLink action="{!ApplySort}" reRender="searchResults" status="searchingStatus">
+                                                <apex:param assignTo="{!NewSort}" value="BillingState"/>
+                                                <apex:outputText value="State"></apex:outputText>
+                                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'BillingState' && SortDirection == 'ASC'}"/>
+                                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'BillingState' && SortDirection <> 'ASC'}"/>
+                                            </apex:commandLink>
+                                        </apex:facet>  
+                                    </apex:column>
+                                    <apex:column value="{!a.Account.BillingCountry}">
+                                        <apex:facet name="header">
+                                            <apex:commandLink action="{!ApplySort}" reRender="searchResults" status="searchingStatus">
+                                                <apex:param assignTo="{!NewSort}" value="BillingCountry"/>
+                                                <apex:outputText value="Country"></apex:outputText>
+                                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'BillingCountry' && SortDirection == 'ASC'}"/>
+                                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'BillingCountry' && SortDirection <> 'ASC'}"/>
+                                            </apex:commandLink>
+                                        </apex:facet>  
+                                    </apex:column>
+                                    <apex:column value="{!a.Account.Client_Number__c}">
+                                        <apex:facet name="header">
+                                            <apex:commandLink action="{!ApplySort}" reRender="searchResults" status="searchingStatus">
+                                                <apex:param assignTo="{!NewSort}" value="Client_Number__c"/>
+                                                <apex:outputText value="Client No"></apex:outputText>
+                                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Client_Number__c' && SortDirection == 'ASC'}"/>
+                                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Client_Number__c' && SortDirection <> 'ASC'}"/>
+                                            </apex:commandLink>
+                                        </apex:facet> 
+                                    </apex:column>
+                                </apex:pageBlockTable>
+                            </apex:pageBlock> 
+                        </apex:outputPanel>
+                        <apex:commandButton action="{!SaveSelected}" value="Add Selected" reRender="page" rendered="{!LookupAction <> 3}"/>
+                    </apex:actionRegion>
+                </apex:tab>
+                <!-- NEW COMPANY TAB -->
+                <apex:tab label="New Company" name="tab2" id="tabTwo" ontabenter="NewCompanyTabSelected();">
+                    
+                    <apex:pageBlock title="Duplicate Records" id="DupRecords" rendered="{!IF(hasDuplicateResult,true,false)}">
+                        <apex:pageBlockButtons >
+                            <apex:commandButton value="Save(Ignore Alert)" action="{!saveandignore}"/>                                
+                        </apex:pageBlockButtons>
+                        <div style="text-align:center;font-size: 14px;">
+                            <apex:outputText value="{!errorDuplicateText}" id="noof" style="font-weight:bold; color:Red;" escape="false"/>
+                        </div>
+                        <apex:pageBlockTable value="{!duplicateRecords}" var="item">
+                            <apex:column >
+                                <apex:facet name="header">Name</apex:facet>
+                                <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['Name']}</apex:outputLink>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Country</apex:facet>
+                                <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['BillingCountry']}</apex:outputLink>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Street</apex:facet>
+                                <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['BillingStreet']}</apex:outputLink>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">City</apex:facet>
+                                <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['BillingCity']}</apex:outputLink>
+                            </apex:column>                  
+                            <apex:column >
+                                <apex:facet name="header">Phone</apex:facet>
+                                <apex:outputLink value="/{!item['Id']}}" target="_blank">{!item['Phone']}</apex:outputLink>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Website</apex:facet>
+                                <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['Website']}</apex:outputLink>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">Zip/Postal Code</apex:facet>
+                                <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['BillingPostalCode']}</apex:outputLink>
+                            </apex:column>
+                            <apex:column >
+                                <apex:facet name="header">State/Province</apex:facet>
+                                <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['BillingState']}</apex:outputLink>
+                            </apex:column> 
+                            <apex:column >
+                                <apex:facet name="header">Company Owner</apex:facet>                    
+                                <apex:outputLink value="/{!item['Id']}" target="_blank">{!item['OwnerId']}</apex:outputLink>
+                            </apex:column>  
+                            <apex:column >
+                                <apex:facet name="header">Last Modified Date</apex:facet>                    
+                                <apex:outputText value="{0,date,MM/dd/yyyy hh:mm a}">
+                                    <apex:param value="{!item['LastModifiedDate']}" />
+                                </apex:outputText>                    
+                            </apex:column>                  
+                        </apex:pageBlockTable>  
+                        
+                    </apex:pageBlock>
+                    <apex:pageBlock id="newAccount" title="New Company">
+                        <apex:pageBlockButtons >
+                            <apex:commandButton action="{!saveAccount}" value="Save"/>
+                        </apex:pageBlockButtons>
+                        
+                        <!-- Modified block as part of State/Country Picklist -->
+                        <!-- Use BillingStateCode and BillingCountryCode fields and as 'selectList' -->
+                        <apex:pageBlockSection columns="1" id="newAccountSection">
+                            <apex:inputField value="{!Account.RecordTypeId}" taborderhint="1"></apex:inputField>
+                            <apex:inputField value="{!Account.Name}" taborderhint="2"></apex:inputField>
+                            <apex:selectList id="AccountCountry" label="Country" value="{!Account.BillingCountryCode}"  onchange="updateState(this.value)" tabindex="30" size="1" style="width:167px;">
+                                <apex:selectOptions value="{!countries}"/>    
+                            </apex:selectList>
+                            <apex:inputField value="{!Account.BillingStreet}" taborderhint="4" style="width:167px;"></apex:inputField>
+                            <apex:inputField id="AccountCity" value="{!Account.BillingCity}" taborderhint="5"></apex:inputField>
+                            <apex:selectList id="AccountState" label="State/Province" value="{!Account.BillingStateCode}" tabindex="60" size="1" style="width:167px;"> 
+                                <apex:selectOptions value="{!states}"/>
+                            </apex:selectList>  
+                            <apex:inputField id="AccountPostalCode" value="{!Account.BillingPostalCode}" taborderhint="7"></apex:inputField>
+                        </apex:pageBlockSection> 
+                    </apex:pageBlock>
+                </apex:tab>
+            </apex:tabPanel>
+        </apex:outputPanel>
+    </apex:form>
+</apex:component>

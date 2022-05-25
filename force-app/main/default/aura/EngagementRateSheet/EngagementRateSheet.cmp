@@ -1,0 +1,87 @@
+<aura:component controller="HL_EngagementTitleRateSheetController" extends="c:HL_LightningComponent">
+    <aura:attribute name="category" 
+                    type="String" 
+                    default="Litigation"
+                    description="Time Record Tracking Category"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="engagementRateSheets"
+                    type="Engagement_Title_Rate_Sheet__c[]"
+                    description="Array of Engagement Title Rate Sheet Records for Selection"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="engagements"
+                    type="Engagement__c[]"
+                    description="Array of Engagement Records for Rate Sheet Assignment"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="selectedEngagement"
+                    type="Engagement__c"
+                    description="Engagement Selected"
+                    access="PRIVATE"
+                    default="{'sobjectType': 'Engagement__c',
+                             'Id':'',
+                             'Name': ''}"></aura:attribute>
+    <aura:attribute name="detailsClass"
+                    type="String"
+                    description="CSS Class Used to Show/Hide the Details Section"
+                    access="PRIVATE"
+                    default="hidden"></aura:attribute>
+    <aura:attribute name="errorText"
+                    type="String"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="showError" 
+                    type="Boolean" 
+                    default="false"
+                    description="Indicates if an Error Message should be Displayed"
+                    access="PRIVATE"></aura:attribute>
+    <aura:handler name="callbackErrorEvent" action="{!c.handleCallbackError}"></aura:handler>
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"></aura:handler>
+    <div>
+        <ui:inputSelect aura:id="engagementList" label="Engagement " value="{!v.selectedEngagement.Id}" change="{!c.onEngagementChange}" class="engagementPicker">
+            <ui:inputSelectOption text="" label="(Select Engagement)" />
+            <aura:iteration items="{!v.engagements}" var="e">
+                <ui:inputSelectOption text="{!e.Id}" label="{!e.Name + ' - ' + e.Engagement_Number__c}" value="{!e.Id == v.selectedEngagement.Id}"></ui:inputSelectOption>
+            </aura:iteration>
+        </ui:inputSelect>
+        <div aura:id="engagementRateSheetDetails" class="{!v.detailsClass}">
+            <div class="slds-table slds-table--striped slds-m-top--medium">
+                <thead>
+                    <th class="slds-cell-shrink slds-theme--info">Rate Sheet</th>
+                    <th class="slds-cell-shrink slds-theme--info">Start</th>
+                    <th class="slds-cell-shrink slds-theme--info">End</th>
+                    <th class="slds-text-align--center slds-theme--info">Remove</th>
+                </thead>
+                <aura:iteration items="{!v.engagementRateSheets}" var="ers">
+                    <tr>
+                        <td>
+                            {!ers.Title_Rate_Sheet__r.Name}
+                        </td> 
+                        <td>
+                            <div data-key="{!ers.Id}" data-value="{!ers.Start_Date__c}">
+                                <ui:inputDate displayDatePicker="true" value="{!ers.Start_Date__c}" focus="{!c.onStartDateChange}" change="{!c.onStartDateChange}"></ui:inputDate> 
+                            </div>
+                        </td>
+                        <td>
+                            <div data-key="{!ers.Id}" data-value="{!ers.End_Date__c}">
+                                <ui:inputDate displayDatePicker="true" value="{!ers.End_Date__c}" focus="{!c.onEndDateChange}" change="{!c.onEndDateChange}"></ui:inputDate> 
+                            </div>
+                        </td>
+                        <td class="slds-cell-shrink slds-text-align--center">
+                            <ui:button class="slds-button slds-button--icon" accesskey="{!ers.Id}" press="{!c.onDeleteClicked}">
+                                <c:svg ariaHidden="true" class="slds-button__icon" xlinkHref="/resource/SLDS0120/assets/icons/action-sprite/svg/symbols.svg#close"></c:svg>
+                            </ui:button>
+                        </td>
+                    </tr>
+                </aura:iteration>
+                <aura:if isTrue="{!v.showError}">
+                    <ui:message title="Error - " severity="error" closable="true">
+                        <ui:outputText aura:id="errorText" value="{!v.errorText}"></ui:outputText>
+                    </ui:message>
+                </aura:if>
+            </div>
+            <div>
+                <c:AddEngagementTitleRateSheet engagement="{!v.selectedEngagement}" saveSuccessEvent="{!c.onSaveSuccessEvent}"></c:AddEngagementTitleRateSheet>
+            </div>
+        </div>
+    </div>
+</aura:component>

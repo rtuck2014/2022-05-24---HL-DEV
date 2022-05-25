@@ -1,0 +1,111 @@
+<apex:component id="cmpId" controller="HL_AutomationToolMassUpdate_Class" allowDML="true" >
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <head>
+        <style>
+         .requiredInput .requiredBlock {
+                background-color: #c00;
+                position: absolute;
+                left: -4px;
+                width: 3px;
+                top: 1px;
+                bottom: 1px;
+            }
+    
+ 
+        </style>
+    </head>
+    
+    <apex:attribute name="PocList"  description="This is the list of selected Eng VP Position" type="Eng_VP_Position__c[]" required="true" assignTo="{!VPPostionList}" />
+    
+    <apex:form id="frmId">
+    
+        <apex:pageBlock id="pbId">
+            
+            <apex:pageMessages /> 
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!SavePosition}" value="Save"/>
+                <apex:commandButton action="{!CancelPosition}" value="Cancel" immediate="true"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection id="pbsId">
+                <apex:pageBlockTable id="pbtId" value="{!VPPostionList}" var="pos" style="width:150%">
+                    
+                    <apex:column headerValue="Position Name" >
+                        <apex:outputLink value="/{!pos.Id}">{!pos.Name}</apex:outputLink>
+                    </apex:column>
+                    
+                   <apex:column headerValue="Automation Tool Utilized">
+                        <apex:inputField value="{!pos.Automation_Tool_Utilized__c}" required="{!IF(isRequired==false,true,false)}" onchange="CheckRegion(this.id, this.value);"   id="AutomationToolUtilizedId" />
+                    </apex:column>
+
+                    <apex:column headerValue="Reason">   
+                        <apex:outputPanel >                 
+                            <div class = "requiredInput" id="ReasonId"> 
+                                <div class="requiredBlock" id="ReasonBlock"></div>
+                                <apex:inputField value="{!pos.Reason__c}" id="ReasonFieldId" >
+                                </apex:inputField>
+                            </div>
+                        </apex:outputPanel>
+                    </apex:column>                  
+                    
+                    <apex:column headerValue="Comments">
+                        <apex:inputField value="{!pos.Comments__c}"/>
+                    </apex:column>
+                
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <script>
+                window.onload = new function(){
+                    var i;
+                    for ( i = 0 ; i < 100 ; i++ ) {
+                        var initialAutomationToolUtilizedId = 'pgId:compCallId:cmpId:frmId:pbId:pbsId:pbtId:'+i+':AutomationToolUtilizedId'                        
+                        var initialAutomationToolUtilizedValue = document.getElementById(initialAutomationToolUtilizedId).value;
+                        if(initialAutomationToolUtilizedValue  == 'Yes'){
+                            
+                            var initialReasonId = 'pgId:compCallId:cmpId:frmId:pbId:pbsId:pbtId:'+i+':ReasonFieldId';
+                            document.getElementById(initialReasonId).parentElement.classList.remove('requiredInput');
+                            document.getElementById(initialReasonId).disabled = true;
+                            
+                        }
+                        else if(initialAutomationToolUtilizedValue  == '')
+                        {
+                            var initialReasonIdnone = 'pgId:compCallId:cmpId:frmId:pbId:pbsId:pbtId:'+i+':ReasonFieldId';
+                            document.getElementById(initialReasonIdnone).parentElement.classList.remove('requiredInput');
+                        }
+                        
+                    }
+                   
+                    
+                }
+                function  CheckRegion(inputId, InputValue){
+                    var Istrue = {!isRequired};
+                    var AutomationToolId = inputId;
+                    var ReasonCompleteId = AutomationToolId.replace("AutomationToolUtilizedId", "ReasonFieldId");
+                    if(InputValue == 'Yes'){
+                        document.getElementById(ReasonCompleteId).disabled = true;
+                        document.getElementById(ReasonCompleteId).value = "";
+                        document.getElementById(ReasonCompleteId).parentElement.classList.remove('requiredInput');
+                    }
+                    if(InputValue == 'No')
+                    {
+                        document.getElementById(ReasonCompleteId).disabled = false;
+                        document.getElementById(ReasonCompleteId).parentElement.classList.add('requiredInput');
+                    }
+                    if(InputValue == '' && Istrue == true)
+                    {
+                        document.getElementById(ReasonCompleteId).parentElement.classList.remove('requiredInput');
+                    }
+                    
+                    
+                }
+                
+                
+                
+               
+                
+            </script> 
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:component>

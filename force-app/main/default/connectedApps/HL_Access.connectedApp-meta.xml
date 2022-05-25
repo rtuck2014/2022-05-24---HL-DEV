@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>rbarham@hl.com</contactEmail>
+    <iconUrl>https://login.salesforce.com/logos/Apps/Webex/icon.png</iconUrl>
+    <infoUrl>http://www.hl.com</infoUrl>
+    <ipRanges>
+        <end>69.194.135.53</end>
+        <start>69.194.135.53</start>
+    </ipRanges>
+    <label>HL_Access</label>
+    <logoUrl>https://login.salesforce.com/logos/Apps/Webex/logo.png</logoUrl>
+    <oauthConfig>
+        <callbackUrl>myapp:oauth</callbackUrl>
+        <consumerKey>3MVG9ayzKZt5EleEQlp9bb3asaS5ZAcgXueb3YVLaVejSNeGV0yqCK8FFom.h3HoeN4F7kXSH2WVla6QpdtoC</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>CustomApplications</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>BYPASS</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

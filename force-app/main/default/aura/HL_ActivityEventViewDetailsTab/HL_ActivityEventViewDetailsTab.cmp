@@ -1,0 +1,257 @@
+<aura:component controller="HL_ActivityAuraController" extends="c:HL_ComponentBase" access="global">
+	<aura:attribute name="model" type="Object" access="global" />
+	<aura:attribute
+		name="errors"
+		type="String[]"
+		default="[]"
+		access="global"
+	/>
+
+	<aura:attribute name="currentState" type="String" default="viewing" />
+
+	<lightning:overlayLibrary aura:id="overlayLib" />
+
+	<lightning:tab
+		label="Summary"
+		iconName="utility:event"
+		id="details"
+		showErrorIndicator="{!v.errors.length > 0}"
+	>
+		<!--
+    <c:HL_TabContent
+      title="Activity Details"
+      iconName="utility:event"
+      errors="{!v.errors}"
+    >
+-->
+		<c:HL_TabContent
+			errors="{!v.errors}"
+			styleClass="slds-m-horizontal_large"
+		>
+			<!--
+      <aura:set attribute="instructions">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </aura:set>
+-->
+
+			<aura:set attribute="buttons">
+                <!--
+				<aura:if
+					isTrue="{!v.model.HasModifyAccess || v.model.HasLimitedModifyAccess}"
+				>
+					<lightning:button
+						label="Edit"
+						variant="brand"
+						onclick="{!c.handleEdit}"
+					/>
+				</aura:if>
+                -->    
+
+                <c:HL_ButtonWithState variant="brand" label="Edit" onclick="{!c.handleEdit}" defaultIsVisible="false" visibleStates="viewing" state="{!v.currentState}" />
+                <c:HL_ButtonWithState variant="brand" label="Save" onclick="{!c.handleSave}" defaultIsVisible="false" visibleStates="editing" state="{!v.currentState}" />
+                <c:HL_ButtonWithState label="Cancel" onclick="{!c.handleCancel}" defaultIsVisible="false" visibleStates="editing" state="{!v.currentState}" />
+
+				<lightning:button
+					label="Edit Internal Notes"
+					variant="brand"
+					onclick="{!c.handleEditInternalNotes}"
+				/>
+
+				<aura:if isTrue="{!v.model.HasModifyAccess}">
+					<lightning:button
+						label="Delete"
+						variant="destructive"
+						onclick="{!c.handleDelete}"
+					/>
+				</aura:if>
+
+				<aura:if
+					isTrue="{!(v.model.Event.Type != 'Internal Mentor Meeting' &amp;&amp; v.model.HasModifyAccess)}"
+				>
+					<lightning:button
+						label="Send Notification"
+						onclick="{!c.handleSendNotification}"
+					/>
+				</aura:if>
+
+				<aura:if
+					isTrue="{!v.model.HasModifyAccess || v.model.HasLimitedModifyAccess}"
+				>
+					<lightning:button
+						label="View Report"
+						onclick="{!c.handleViewReport}"
+					/>
+				</aura:if>
+
+				<lightning:button
+					label="Return"
+					onclick="{!c.handleCancel}"
+				/>
+
+				<!--  backup
+        <lightning:button
+          label="Edit"
+          variant="brand"
+          onclick="{!c.handleEdit}"
+        />
+        <lightning:button
+          label="Delete"
+          variant="destructive"
+          onclick="{!c.handleDelete}"
+        />
+        <lightning:button
+          label="Send Notification"
+          onclick="{!c.handleSendNotification}"
+        />
+        <lightning:button label="View Report" onclick="{!c.handleViewReport}" />
+        <lightning:button label="Cancel" onclick="{!c.handleCancel}" />
+-->
+			</aura:set>
+
+			<lightning:layout>
+				<lightning:layoutItem size="8">
+					<lightning:layout>
+						<lightning:layoutItem
+							size="6"
+							padding="horizontal-small"
+						>
+							<c:HL_InputTextWithState
+								label="Type"
+								value="{!v.model.Activity.Type}"
+								defaultIsEditing="false"
+								useFormStyling="true"
+								italics="{!v.model.Activity.Private__c}"
+                                state="{!v.currentState}"
+								editingStates="editing"
+							/>
+							<c:HL_InputTextWithState
+								label="Subject"
+								value="{!v.model.Activity.Subject}"
+								defaultIsEditing="false"
+								useFormStyling="true"
+								italics="{!v.model.Activity.Private__c}"
+                                state="{!v.currentState}"
+                                editingStates="editing"
+							/>
+							<c:HL_InputTextWithState
+								label="Industry Group"
+								value="{!v.model.Activity.Industry_Group__c}"
+								defaultIsEditing="false"
+								useFormStyling="true"
+								italics="{!v.model.Activity.Private__c}"
+                                state="{!v.currentState}"
+                                editingStates="editing"
+							/>
+							<c:HL_InputTextWithState
+								label="Product Type"
+								value="{!v.model.Activity.Product_Type__c}"
+								defaultIsEditing="false"
+								useFormStyling="true"
+								italics="{!v.model.Activity.Private__c}"
+                                state="{!v.currentState}"
+                                editingStates="editing"
+							/>
+							<c:HL_InputTextWithState
+								label="Purpose"
+								value="{!v.model.Activity.Purpose__c}"
+								defaultIsEditing="false"
+								useFormStyling="true"
+								italics="{!v.model.Activity.Private__c}"
+                                state="{!v.currentState}"
+                                editingStates="editing"
+							/>
+							
+						</lightning:layoutItem>
+
+						<lightning:layoutItem
+							size="6"
+							padding="horizontal-small"
+						>
+							<c:HL_OutputField
+								label="Start Date/Time"
+								value="{!v.model.FormattedStart}"
+							/>
+							<c:HL_OutputField
+								label="End Date/Time"
+								value="{!v.model.FormattedEnd}"
+							/>
+
+							<c:HL_InputTextWithState
+								label="Private"
+								value="{!v.model.Activity.Private__c}"
+								defaultIsEditing="false"
+								useFormStyling="true"
+								fieldType="Checkbox"
+                                state="{!v.currentState}"
+                                editingStates="editing"
+							/>
+							<c:HL_InputTextWithState
+								label="Sync to Outlook"
+								value="{!v.model.Activity.Sync_To_Outlook__c}"
+								defaultIsEditing="false"
+								useFormStyling="true"
+								fieldType="Checkbox"
+                                state="{!v.currentState}"
+                                editingStates="editing"
+							/>
+							<c:HL_InputTextWithState
+								label="Notify Coverage Team"
+								value="{!v.model.Activity.Notify_Coverage_Team__c}"
+								defaultIsEditing="false"
+								useFormStyling="true"
+								fieldType="Checkbox"
+                                state="{!v.currentState}"
+                                editingStates="editing"
+							/>
+
+							
+						</lightning:layoutItem>
+					</lightning:layout>
+
+					<lightning:layout>
+						<lightning:layoutItem
+							size="12"
+							padding="horizontal-small"
+						>
+							<c:HL_InputTextWithState
+								label="Description"
+								value="{!v.model.Activity.Description}"
+								defaultIsEditing="false"
+								useFormStyling="true"
+								italics="{!v.model.Activity.Private__c}"
+								isTextArea="true"
+                                state="{!v.currentState}"
+								editingStates="editing"
+							/>
+							<c:HL_InputTextWithState
+								label="Internal Notes"
+								value="{!v.model.Activity.Internal_Notes__c}"
+								defaultIsEditing="false"
+								useFormStyling="true"
+								italics="{!v.model.Activity.Private__c}"
+								isTextArea="true"
+                                state="{!v.currentState}"
+								editingStates="editing"
+							/>
+						</lightning:layoutItem>
+					</lightning:layout>
+				</lightning:layoutItem>
+
+				<lightning:layoutItem size="4">
+					<c:HL_RelatedWidget
+						title="External Attendees"
+						iconName="utility:trailblazer_ext"
+						rows="{!v.model.RelatedContactsSidebar}"
+					/>
+
+					<c:HL_RelatedWidget
+						title="HL Attendees"
+						iconName="utility:people"
+						rows="{!v.model.HLEmployeesSidebar}"
+					/>
+				</lightning:layoutItem>
+			</lightning:layout>
+		</c:HL_TabContent>
+	</lightning:tab>
+</aura:component>

@@ -1,0 +1,71 @@
+<aura:component access="global">
+	<aura:attribute
+		name="title"
+		type="String"
+		default="Please resolve the following errors"
+		description="The title of the alert."
+		access="global"
+	/>
+	<aura:attribute
+		name="messages"
+		type="String[]"
+		default="[]"
+		description="A String list of messages to display in the alert."
+		access="global"
+	/>
+
+	<aura:attribute
+		name="isVisible"
+		type="Boolean"
+		default="true"
+		access="private"
+		description="Indicates whether the alert is currently visible."
+	/>
+
+	<aura:handler
+		name="change"
+		value="{!v.messages}"
+		action="{!c.setVisible}"
+	/>
+
+	<aura:if isTrue="{!(v.messages.length > 0) &amp;&amp; v.isVisible}">
+		<div
+			class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error errorHeader"
+			role="alert"
+		>
+			<span class="slds-assistive-text">Error</span>
+
+			<span
+				class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+				title="Description of icon when needed"
+			>
+				<lightning:icon
+					iconName="utility:error"
+					variant="inverse"
+					size="x-small"
+					alternativeText="Error"
+				/>
+			</span>
+
+			<h2>{!v.title}</h2>
+
+			<div class="slds-notify__close">
+				<lightning:buttonIcon
+					iconName="utility:close"
+					variant="bare-inverse"
+					size="medium"
+					alternativeText="Close"
+					onclick="{!c.handleClose}"
+				/>
+			</div>
+		</div>
+
+		<div class="slds-box slds-box_small errorDetail">
+			<ul class="slds-list_dotted">
+				<aura:iteration items="{!v.messages}" var="message">
+					<li>{!message}</li>
+				</aura:iteration>
+			</ul>
+		</div>
+	</aura:if>
+</aura:component>

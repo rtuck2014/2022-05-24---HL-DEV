@@ -1,0 +1,65 @@
+<aura:component
+  implements="flexipage:availableForAllPageTypes,force:hasRecordId,lightning:isUrlAddressable"
+  controller="HL_ActivityAuraController"
+  extends="c:HL_ComponentBase"
+  access="global"
+>
+  <aura:attribute
+    name="model"
+    type="Object"
+    access="global"
+    description="The top level data model for the application."
+  />
+  <aura:attribute
+    name="currentTab"
+    type="String"
+    default="details"
+    access="private"
+    description="Keeps track of the currently active/visible tab."
+  />
+  <aura:attribute
+    name="spinner"
+    type="Boolean"
+    default="false"
+    access="private"
+    description="Should the spinner be shown?"
+  />
+
+  <aura:if isTrue="{!v.spinner}">
+    <div class="spinnerHolder">
+      <lightning:spinner alternativeText="Please Wait" size="large" />
+    </div>
+  </aura:if>
+
+  <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+  <lightning:tabset selectedTabId="{!v.currentTab}">
+    <c:HL_ActivityEventViewDetailsTab aura:id="details" model="{!v.model}" />
+    <c:HL_ActivityEventViewInternalNotesTab
+      aura:id="notes"
+      model="{!v.model}"
+    />
+    <c:HL_ActivityEventViewExternalAttendeesTab
+      aura:id="externalAttendees"
+      model="{!v.model}"
+    />
+    <c:HL_ActivityEventViewInternalAttendeesTab
+      aura:id="internalAttendees"
+      model="{!v.model}"
+    />
+    <c:HL_ActivityEventViewCompaniesTab
+      aura:id="companies"
+      model="{!v.model}"
+    />
+    <c:HL_ActivityEventViewOpportunitiesTab
+      aura:id="opportunities"
+      model="{!v.model}"
+    />
+    <!--
+    <c:HL_ActivityEventViewCampaignsTab
+      aura:id="campaigns"
+      model="{!v.model}"
+    />
+    -->
+  </lightning:tabset>
+</aura:component>

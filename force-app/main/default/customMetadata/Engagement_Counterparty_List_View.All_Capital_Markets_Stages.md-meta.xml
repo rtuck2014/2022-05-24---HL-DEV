@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Capital Markets Stages</label>
+    <protected>false</protected>
+    <values>
+        <field>Column_API_Names__c</field>
+        <value xsi:type="xsd:string">Type__c,Tier__c,Contacted_by_prior_Arranger__c,Initial_Contact__c,Confidentiality_Agreement__c,Negotiate_Confidentiality_Agreement__c,Confidentiality_Agreement_Status__c,Executed_Confidentiality_Agreement__c,Sent_Book__c,Sent_Industry_Report_NRL__c,Industry_Report_NRL_Executed__c,NRL_Status__c,Sent_Industry_Report__c,Had_Diligence_Call__c,Sent_QoE_NRL__c,Executed_QoE_NRL__c,Declined_Passed__c,Max_Hold_MM__c,Engagement_Counterparty_Comment__c</value>
+    </values>
+    <values>
+        <field>Filter__c</field>
+        <value xsi:type="xsd:string">RecordType.DeveloperName IN(&apos;Capital_Markets&apos;)</value>
+    </values>
+</CustomMetadata>

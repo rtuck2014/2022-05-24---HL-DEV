@@ -1,0 +1,75 @@
+<design:component label="HL Related List Widget">
+  <design:attribute
+    name="objectApiName"
+    label="Object API Name"
+    description="API name of the related sObject"
+  />
+  <design:attribute
+    name="relationshipFieldApiName"
+    label="Relationship Field API Name"
+    description="API name of the field that creates a relationship with the parent sObject"
+  />
+  <design:attribute
+    name="titleField"
+    label="Title Field"
+    default="name"
+    description="The API name of the field to use as related item title/link"
+  />
+  <design:attribute
+    name="fields"
+    label="Fields"
+    description="Comma-separated list of API names of fields to display"
+  />
+  <design:attribute
+    name="whereClause"
+    label="Where Clause"
+    description="Allows for filtering of related list results (SOQL syntax, without WHERE included)"
+  />
+  <design:attribute
+    name="orderByClause"
+    label="Order By Clause"
+    description="Allows for sorting of related list results (SOQL syntax, without ORDER BY included)"
+  />
+
+  <design:attribute
+    name="overrideTitle"
+    label="Override Title"
+    description="If present, overrides the default title, which is the related sObject's plural label"
+  />
+  <design:attribute
+    name="overrideIconName"
+    label="Override Icon Name"
+    description="If present, overrides the sObject's default icon"
+  />
+
+  <design:attribute
+    name="maximumDisplayRows"
+    label="Maximum Display Rows"
+    description="Maximum number of rows to display in widget"
+  />
+  <design:attribute
+    name="gridLayout"
+    label="Grid Layout"
+    description="Display rows in a grid layout (false is vertical, sidebar layout)"
+  />
+  <design:attribute
+    name="labelWidth"
+    label="Label Width"
+    description="Label width in pixels"
+  />
+  <design:attribute
+    name="allowNew"
+    label="Allow New"
+    description="Allow the user to create new related items"
+  />
+  <design:attribute
+    name="itemRedirect"
+    label="Item Redirect"
+    description="Open clicked item in same window"
+  />
+  <design:attribute
+    name="hideEmpty"
+    label="Hide Empty Fields"
+    description="Don't display fields that have no value"
+  />
+</design:component>

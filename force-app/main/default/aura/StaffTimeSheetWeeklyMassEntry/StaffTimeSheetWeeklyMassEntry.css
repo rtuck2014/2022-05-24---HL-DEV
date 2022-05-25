@@ -1,0 +1,43 @@
+.THIS .slds-scrollable--y{
+	height: 400px;
+}
+
+.THIS .slds-table,
+.THIS .addTimeRecordCalendarRow{
+	width: 100% !important;
+}
+
+.THIS .cell-project,
+.THIS .input-project-column{
+	width: 23% !important;
+	max-width: 23%;
+}
+
+.THIS .cell-date,
+.THIS .input-day-column{
+    width: 11% !important;
+}
+
+.THIS select, .THIS input {
+    font-size: 0.80em !important;
+}
+
+.THIS .slds .slds-table tr>td:first-child {
+	padding-left: 0px !important;
+}
+
+.THIS th.slds-cell-shrink:last-child {
+	text-align: center !important;
+}
+
+.THIS .slds-table tr>td:last-child{
+	padding-right: 0px !important;
+}
+
+.THIS .slds-table th, .THIS .slds-table td{
+	padding: 0 0.5rem 0 0 !important;
+}
+
+.THIS .slds-table tr>th:first-child, .THIS .slds-table tr>td:first-child {
+	padding-left: .25rem !important;
+}

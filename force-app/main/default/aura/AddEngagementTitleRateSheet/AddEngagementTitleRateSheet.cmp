@@ -1,0 +1,88 @@
+<aura:component controller="HL_EngagementTitleRateSheetController" extends="c:HL_LightningComponent" >
+    <aura:attribute name="engagement"
+                    type="Engagement__c"
+                    access="PUBLIC"
+                    description="Related Engagement Record"
+                    ></aura:attribute>
+    <aura:attribute name="titleRateSheets"
+                    type="Title_Rate_Sheet__c[]"
+                    access="PRIVATE"
+                    description="Selectable Title Rate Sheet Records"></aura:attribute>
+    <aura:attribute name="engagementTitleRateSheet"
+                    type="Engagement_Title_Rate_Sheet__c"
+                    access="PRIVATE"
+                    default="{'sobjectType':'Engagement_Title_Rate_Sheet__c',
+                              'Engagement__c':null,
+                              'Title_Rate_Sheet__c':null,
+                              'Start_Date__c':null,
+                              'End_Date__c':null
+                              }"
+                    description="Engagement Title Rate Sheet Object"></aura:attribute>
+    <aura:attribute name="gridClass"
+                    type="String"
+                    access="PUBLIC"
+                    default="slds-grid"></aura:attribute>
+    <aura:attribute name="errorText"
+                    type="String"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="showError"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if an Error Message should be Displayed"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="showSuccess"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if a Success Message should be Displayed"
+                    access="PRIVATE"></aura:attribute>
+    <aura:handler name="callbackErrorEvent"
+                  action="{!c.handleCallbackError}"></aura:handler>
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"></aura:handler>
+    <aura:registerEvent name="saveSuccessEvent"
+                        type="c:SaveSuccessEvt"/>
+    <aura:registerEvent name="suppressLoadingIndicatorEvent"
+                        type="c:SuppressLoadingIndicatorEvt"></aura:registerEvent>
+    <div>
+        <div class="slds-card slds-m-top--small">
+            <div class="slds-card__header">
+                Add Record
+            </div>
+            <div class="slds-card__body">
+                <div class="{!v.gridClass}">
+                    <div class="slds-col--padded-medium">
+                        <ui:inputSelect aura:id="titleRateSheet" class="slds-input" value="{!v.engagementTitleRateSheet.Title_Rate_Sheet__c}">
+                            <ui:inputSelectOption text="" label="(Select Rate Sheet)" />
+                            <aura:iteration items="{!v.titleRateSheets}" var="trs">
+                                <ui:inputSelectOption text="{!trs.Id}" label="{!trs.Name}" />
+                            </aura:iteration>
+                        </ui:inputSelect>
+                    </div>
+                    <div class="slds-col--padded-medium">
+                        <ui:inputDate aura:id="startDate" displayDatePicker="true" class="slds-input--small date" value="{!v.engagementTitleRateSheet.Start_Date__c}"/>
+                    </div>
+                    <div class="slds-col--padded-medium">
+                        <ui:inputDate aura:id="endDate" displayDatePicker="true" class="slds-input--small date" value="{!v.engagementTitleRateSheet.End_Date__c}"/>
+                    </div>
+                    <div class="slds-col--padded-medium">
+                        <ui:button aura:id="btnAddRecord"
+                                   class="slds-button slds-button--neutral"
+                                   label="Add"
+                                   press="{!c.addRecord}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <aura:if isTrue="{!v.showSuccess}">
+            <ui:message title="Success -" severity="info" closable="true">
+                <ui:outputText aura:id="successText" value=" Rate Sheet Added"></ui:outputText>
+            </ui:message>
+        </aura:if>
+        <aura:if isTrue="{!v.showError}">
+            <ui:message title="Error - " severity="error" closable="true">
+                <ui:outputText aura:id="errorText" value="{!v.errorText}"></ui:outputText>
+            </ui:message>
+        </aura:if>
+    </div>
+</aura:component>

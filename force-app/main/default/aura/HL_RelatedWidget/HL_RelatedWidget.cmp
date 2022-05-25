@@ -1,0 +1,255 @@
+<aura:component
+  controller="HL_RelatedWidgetController"
+  implements="flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName"
+  access="global"
+>
+  <!-- global attributes -->
+  <aura:attribute
+    name="objectApiName"
+    type="String"
+    required="true"
+    access="global"
+    description="API name of the related sObject"
+  />
+  <aura:attribute
+    name="relationshipFieldApiName"
+    type="String"
+    required="true"
+    access="global"
+    description="API name of the field that creates a relationship with the parent sObject"
+  />
+  <aura:attribute
+    name="titleField"
+    type="String"
+    default="name"
+    access="global"
+    description="The API name of the field to use as related item title/link"
+  />
+  <aura:attribute
+    name="fields"
+    type="String"
+    required="true"
+    access="global"
+    description="Comma-separated list of API names of fields to display"
+  />
+  <aura:attribute
+    name="whereClause"
+    type="String"
+    access="global"
+    description="Allows for filtering of related list results (SOQL syntax, without WHERE included)"
+  />
+  <aura:attribute
+    name="orderByClause"
+    type="String"
+    access="global"
+    description="Allows for sorting of related list results (SOQL syntax, without ORDER BY included)"
+  />
+
+  <aura:attribute
+    name="overrideTitle"
+    type="String"
+    access="global"
+    description="If present, overrides the default title, which is the related sObject's plural label"
+  />
+  <aura:attribute
+    name="overrideIconName"
+    type="String"
+    access="global"
+    description="If present, overrides the sObject's default icon"
+  />
+
+  <aura:attribute
+    name="maximumDisplayRows"
+    type="Integer"
+    default="3"
+    access="global"
+    description="Maximum number of rows to display in widget"
+  />
+  <aura:attribute
+    name="gridLayout"
+    type="Boolean"
+    default="false"
+    access="global"
+    description="Display rows in a grid layout (false is vertical, sidebar layout) - not implemented"
+  />
+  <aura:attribute
+    name="labelWidth"
+    type="Integer"
+    default="120"
+    description="Label width in pixels"
+    access="global"
+  />
+  <aura:attribute
+    name="allowNew"
+    type="Boolean"
+    default="false"
+    access="global"
+    description="Allow the user to create new related items"
+  />
+  <aura:attribute
+    name="itemRedirect"
+    type="Boolean"
+    default="false"
+    description="Open clicked item in same window"
+    access="global"
+  />
+  <aura:attribute
+    name="hideEmpty"
+    type="Boolean"
+    default="false"
+    access="global"
+    description="Don't display fields that have no value"
+  />
+
+  <!-- private attributes -->
+  <aura:attribute
+    name="isLoaded"
+    type="Boolean"
+    default="false"
+    access="private"
+  />
+  <aura:attribute
+    name="isExpanded"
+    type="Boolean"
+    default="false"
+    access="private"
+  />
+  <aura:attribute name="title" type="String" access="global" />
+  <aura:attribute name="iconName" type="String" access="global" />
+  <aura:attribute name="footer" type="String" access="private" />
+
+  <aura:attribute name="rows" type="List" default="[]" access="global" />
+  <aura:attribute
+    name="displayRows"
+    type="List"
+    default="[]"
+    access="private"
+  />
+  <aura:attribute
+    name="gridDisplayRows"
+    type="List"
+    default="[]"
+    access="private"
+  />
+  <aura:attribute
+    name="totalRows"
+    type="Integer"
+    default="0"
+    access="private"
+  />
+  <aura:attribute name="columns" type="List" default="[]" access="global" />
+
+  <!-- handlers -->
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <aura:handler
+    name="change"
+    value="{!v.objectApiName}"
+    action="{!c.handleLoadData}"
+  />
+  <aura:handler
+    name="change"
+    value="{!v.relationshipFieldApiName}"
+    action="{!c.handleLoadData}"
+  />
+  <aura:handler
+    name="change"
+    value="{!v.fields}"
+    action="{!c.handleLoadData}"
+  />
+  <aura:handler
+    name="change"
+    value="{!v.whereClause}"
+    action="{!c.handleLoadData}"
+  />
+  <aura:handler
+    name="change"
+    value="{!v.orderByClause}"
+    action="{!c.handleLoadData}"
+  />
+
+  <aura:handler
+    name="change"
+    value="{!v.rows}"
+    action="{!c.handleCalculateDisplayRows}"
+  />
+  <aura:handler
+    name="change"
+    value="{!v.isExpanded}"
+    action="{!c.handleCalculateDisplayRows}"
+  />
+  <aura:handler
+    name="change"
+    value="{!v.maximumDisplayRows}"
+    action="{!c.handleCalculateDisplayRows}"
+  />
+
+  <aura:handler
+    name="change"
+    value="{!v.isExpanded}"
+    action="{!c.handleFooterChange}"
+  />
+  <aura:handler
+    name="change"
+    value="{!v.displayRows}"
+    action="{!c.handleFooterChange}"
+  />
+  <aura:handler
+    name="change"
+    value="{!v.totalRows}"
+    action="{!c.handleFooterChange}"
+  />
+
+  <!-- registered events -->
+  <aura:registerEvent name="createRecordEvent" type="force:createRecord" />
+
+  <lightning:card
+    title="{!v.title + ' (' + v.totalRows + ')'}"
+    iconName="{!v.iconName}"
+  >
+    <aura:set attribute="actions">
+      <aura:if isTrue="{!v.allowNew}">
+        <lightning:button label="New" onclick="{!c.handleNew}" />
+      </aura:if>
+    </aura:set>
+
+    <aura:set attribute="footer">
+      <aura:if isTrue="{!v.footer}">
+        <a href="#" onclick="{!c.handleFooterClick}">{!v.footer}</a>
+      </aura:if>
+    </aura:set>
+
+    <aura:if isTrue="{!v.isLoaded}">
+      <p class="slds-p-horizontal_small">
+        <aura:if isTrue="{!v.gridLayout}">
+          <lightning:datatable
+            aura:id="grid"
+            keyField="recordId"
+            data="{!v.gridDisplayRows}"
+            columns="{!v.columns}"
+            hideCheckboxColumn="true"
+          />
+
+          <aura:set attribute="else">
+            <aura:iteration items="{!v.displayRows}" var="row">
+              <c:HL_RelatedWidgetItem
+                itemData="{!row}"
+                labelWidth="{!v.labelWidth}"
+                isRedirect="{!v.itemRedirect}"
+                hideEmpty="{!v.hideEmpty}"
+              />
+            </aura:iteration>
+          </aura:set>
+        </aura:if>
+      </p>
+
+      <aura:set attribute="else">
+        <lightning:spinner
+          variant="brand"
+          size="small"
+          alternativeText="Loading"
+        />
+      </aura:set>
+    </aura:if>
+  </lightning:card>
+</aura:component>

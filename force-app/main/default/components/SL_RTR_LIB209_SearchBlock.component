@@ -1,0 +1,248 @@
+<apex:component controller="SL_RTR_LIB209_ctrl_SearchBlock">
+<apex:attribute name="params" description="Income params for component." type="SL_RTR_LIB209_ctrl_SearchBlockParams" required="required" assignTo="{!inParams}"/>
+
+<apex:stylesheet value="{!URLFOR($Resource.SL_RTR_LIB16_jQuerySFFiltres, 'css/redmond/jquery-ui-1.8.4.custom.css')}" />
+<apex:includeScript value="{!URLFOR($Resource.SL_RTR_LIB16_jQuerySFFiltres, 'js/jquery-1.4.2.min.js')}" />
+<apex:includeScript value="{!URLFOR($Resource.SL_RTR_LIB16_jQuerySFFiltres, 'js/jquery-ui-1.8.4.custom.min.js')}" />
+<apex:includeScript value="{!URLFOR($Resource.SL_RTR_LIB16_jQuerySFFiltres, 'js/ui.timepicker.js')}" />
+<apex:includeScript value="{!URLFOR($Resource.SL_RTR_LIB16_filtersDebug)}"/>
+<apex:includeScript value="{!URLFOR($Resource.SL_RTR_LIB16_blockUI)}"/>
+
+<script>
+    function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?SLm+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+</script>
+<apex:inputHidden id="oSearchParam" value="{!inParams.SearchParam}" />
+<script> var Lib209_oSearchParamId = document.getElementById("{!$Component.oSearchParam}");</script>
+<apex:inputHidden id="oSearchQ" value="{!inParams.SearchQ}" />
+<script> var Lib209_oSearchQId = document.getElementById("{!$Component.oSearchQ}");</script>
+<apex:inputHidden id="oSearchObj" value="{!inParams.SearchObj}" />
+<script> var Lib209_oSearchObjId = document.getElementById("{!$Component.oSearchObj}");</script>
+<apex:inputHidden id="oSearchTarget" value="{!inParams.SearchTarget}" />
+<script> var Lib209_oSearchTargetId = document.getElementById("{!$Component.oSearchTarget}");</script>
+
+<style>
+.ui-widget {font-size: 1.0em;}
+.ui-widget-content {font-size: 1.0em;padding: 2px;}
+.ui-button {font-size: 0.8em;}
+.ui-advanced {font-size: 0.9em;}
+h3 {
+    display: block !important;
+    font-size: 1.17em !important;
+    font-weight: bold !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 1em !important;
+    text-align: left !important;
+}
+.ie .lookupInput input {top: 9px;}
+.ie8 .lookupInput input {top: -2px;}
+.win.gecko .lookupInput input,.gecko .lookupInput input,.linux.gecko .lookupInput input
+{
+    -moz-border-radius: 5px 5px 5px 5px;
+    top: -11px;
+}
+.lookupInput {position: relative;}
+.lookupInput input {
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    background: url("images/ui-bg_inset-hard_100_fcfdfd_1x100.png") repeat-x scroll 50% bottom #FCFDFD;
+    border: 1px solid #A6C9E2;
+    color: #222222;
+    width: 163px;
+    height: 17px;
+    position: absolute;
+    top: -5px;
+}
+
+.ie .lookupIcon,.ie .lookupIconOn {top: 8px;}
+.ie8 .lookupIcon,.ie8 .lookupIconOn {top: -2px;}
+.win.gecko .lookupIcon,.gecko .lookupIcon,.linux.gecko .lookupIcon,.win.gecko .lookupIconOn,.gecko .lookupIconOn,.linux.gecko .lookupIconOn{top: -11px;}
+.lookupIcon,.lookupIconOn {
+    position: absolute;
+    top: -4px;
+    left: 167px;
+}
+
+td.helpinfo .tooltipcontainer {
+    position: relative;
+    z-index: 999;
+}
+td.helpinfo .tooltip {
+    display: none;
+    position: absolute;
+    z-index: 999;
+    border: 1px solid #A6C9E2;
+    background-color:#FCFDFD;
+    width:320px;
+    padding: 5px 10px;
+    
+    
+    /* More positioning, heigh, width, etc */
+}
+td.helpinfo a:hover .tooltip {
+    display: block;
+}
+
+
+</style>
+
+<script>
+function Lib209_getTargetObjName(inVal)
+{
+    <apex:repeat value="{!inParams.tabsObjName}" var="tabsName">
+    if(inVal == '{!tabsName.value}') return '{!tabsName.label}';
+    </apex:repeat>
+    return '';
+}
+
+var mainSelTarget = '{!inParams.mainSelTarget}';
+
+jQuery.noConflict();    
+(function($) {
+    $(document).ready(function() {
+        
+        var target = '2';
+        var sel_target = mainSelTarget;
+        var event = 'load';
+        
+        function Lib209_initFilterWidget(p_event, p_target, filters, advFilters) {
+        
+            var location = "{!inParams.locationBase}" + p_event + "&target=" + p_target;
+            $('.tabRadioSelector').each(function(index, value) {
+                if ($(value).attr('value') == p_target) {
+                    $(value).attr('checked', 'checked');
+                    if(p_target=='Main'){ sel_target = mainSelTarget;}
+                    else{ sel_target = 'Tab_'+p_target;}
+                }
+            });
+            
+            var pTargetM = '';
+            if (p_target=='Main') { pTargetM = mainSelTarget;}
+            else { pTargetM = 'Tab_'+p_target;}
+            
+            $("#sf_filters").html("Loading. Please wait...");
+            $("#sf_filters").sfFilters({
+                debug : false,
+                sourceFieldData: location,
+                source : location,
+                lookupURL : '/apex/SL_RTR_LIB16_FilterLookupPage',
+                calcMargin : function(width) {
+                    var res = (width == 0)? 390 : width-160;
+                    if ($.browser.msie && $.browser.version=="7.0") res /= 2;
+                    return res;
+                },
+                goalTargetID: pTargetM,
+                goalTargetObjName: Lib209_getTargetObjName(pTargetM),
+                firstFilter : false,
+                safeValue : true,
+                change : function(event, widget) {
+                    
+                },
+                load : function(p_widget) {
+                    p_widget.Load();
+                    //p_widget.options.filterset = [{ name: 'name', operator: 'equal', value: ''}];
+                },
+                afterload : function(p_widget) {
+                    try {
+                        p_widget.AdvancedFilter(advFilters);    
+                        p_widget.options.filterset = filters;           
+                    } catch(err) {}
+                },
+                dateformat: '{!inParams.dateFormat}',
+                search: ('{!inParams.searchBtnClick}'!=''?function(event){
+                    Lib209_searchBtnClick(event);
+                }:null)
+            });
+        }
+         
+        function Lib209_changeSource(p_event, p_target) {
+            jQuery("#sf_filters").html("Loading. Please wait...");
+            var location = "{!inParams.locationBase}" + p_event + "&target=" + p_target;
+            jQuery("#sf_filters").sfFilters("Source", location);
+            //$("#sf_filters").sfFilters("Reinit", undefined,[{ name: 'name', operator: 'equal', value: ''}]);
+            if (p_target=='Main') {
+                $("#sf_filters").sfFilters( "option", "goalTargetID", mainSelTarget);
+                $("#sf_filters").sfFilters( "option", "goalTargetObjName", Lib209_getTargetObjName(mainSelTarget));
+                sel_target = mainSelTarget;
+            } else {
+                $("#sf_filters").sfFilters( "option", "goalTargetID", 'Tab_'+p_target );
+                $("#sf_filters").sfFilters( "option", "goalTargetObjName", Lib209_getTargetObjName('Tab_'+p_target));
+                sel_target = 'Tab_'+p_target;
+            }
+            
+            
+            
+            $("#sf_filters").sfFilters("AdvancedFilter", "");
+            $("#sf_filters").sfFilters("option", "filterset", []);
+            
+            Lib209_initFilterWidget(event, p_target, '', '');
+        }
+        Lib209_initFilterWidget(event, '{!inParams.cb_target}', {!inParams.FiltersJSON}, '{!inParams.cb_advFilters}');
+        
+        $('#search_btn').button();
+        $('#search_btn').bind("click", function(event){
+            var events = $("#sf_filters").sfFilters("Serialize");
+            var advanced = $("#sf_filters").sfFilters("AdvancedFilter");
+            
+            Lib209_oSearchParamId.value = advanced;
+            re = /\|/gi;
+            Lib209_oSearchQId.value = events.replace(re, "___");
+            Lib209_oSearchObjId.value = Lib209_getTargetObjName(sel_target);
+            Lib209_oSearchTargetId.value = sel_target;
+            
+            //alert('ok!');
+            {!inParams.searchBtnClick}
+            
+            event.preventDefault();
+            event.stopImmediatePropagation();
+        });
+        
+        function Lib209_searchBtnClick(event)
+        {
+            var events = $("#sf_filters").sfFilters("Serialize");
+            var advanced = $("#sf_filters").sfFilters("AdvancedFilter");
+            
+            Lib209_oSearchParamId.value = advanced;
+            re = /\|/gi;
+            Lib209_oSearchQId.value = events.replace(re, "___");
+            Lib209_oSearchObjId.value = Lib209_getTargetObjName(sel_target);
+            Lib209_oSearchTargetId.value = sel_target;
+            
+            //alert('ok!');
+            //doClSearchFun();
+            try {
+                eval('{!inParams.searchBtnClick}');
+            } catch(err) {}
+            
+            event.preventDefault();
+            event.stopImmediatePropagation();
+        }
+
+        $('.tabRadioSelector').bind('change', function(){
+            if ($(this).attr('checked')) {
+                target = $(this).attr('value');
+                Lib209_oSearchTargetId.value = target;
+                Lib209_changeSource('load', target);
+            }
+        });
+    })
+})(jQuery);
+</script>
+
+<table border="0" cellpadding="0" cellspacing="0" style="text-align: left;">
+<tr>
+    <td><apex:repeat value="{!inParams.tabs}" var="item">
+        <input class="tabRadioSelector" id="target_{!item.value}" name="target" type="radio" value="{!item.value}" />
+        <label for="target_{!item.value}"><b>{!item.label}</b></label>
+    </apex:repeat></td>
+</tr>
+<tr>
+    <td><div id="sf_filters" style="width: 685px; margin-top: 10px;" class="ui-widget-content ui-corner-all">Component Place</div></td>
+</tr>
+</table>
+
+</apex:component>

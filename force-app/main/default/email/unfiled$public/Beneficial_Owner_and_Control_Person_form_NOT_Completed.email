@@ -1,0 +1,14 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<div style="font-size: 12pt;"><font face="arial">A new opportunity has been created by {!User.Name} for&nbsp;</font></div><div style="font-size: 12pt;"><font face="arial"><br></font></div><div style=""><font face="arial" style="" size="2">Opportunity Name / Number:<span style="white-space: pre;">	</span>{!Opportunity__c.Name} / {!Opportunity__c.Opportunity_Number__c}</font></div><div style=""><font face="arial" size="2">Client / Client Ownership:<span style="white-space:pre">	</span>{!Opportunity__c.Client_MN_Name__c} / {!Opportunity__c.00Ni000000FnLTV}&nbsp;</font></div><div style=""><font face="arial" size="2">Subject / Subject Ownership:<span style="white-space:pre">	</span>{!Opportunity__c.Subject_MN_Name__c} / {!Opportunity__c.00Ni000000DwTd0}&nbsp;</font></div><div style=""><font face="arial" size="2"><br></font></div><div style=""><font face="arial" style="" size="2">HL Entity: {!Opportunity__c.HL_Entity__c}</font></div>]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<div style=""><font face="arial"><br></font></div><div style=""><font face="arial">Please do your due diligence to confirm whether or not the completion of a Beneficial Owner(s) and Control Person form is needed.</font></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="arial"><br></font></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><font face="arial" size="2">Link to Opportunity: {!Opportunity__c.Link}</font></div><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[]]></td>
+</tr>
+</table>

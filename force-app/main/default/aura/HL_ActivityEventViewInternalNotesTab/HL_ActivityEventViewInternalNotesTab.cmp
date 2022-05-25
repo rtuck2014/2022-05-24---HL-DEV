@@ -1,0 +1,40 @@
+<aura:component extends="c:HL_ComponentBase" access="global">
+  <aura:attribute name="model" type="Object" access="global" />
+  <aura:attribute name="errors" type="String[]" default="[]" access="global" />
+
+  <aura:attribute name="columns" type="List" access="private" />
+
+  <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+  <lightning:tab
+    label="Internal Notes"
+    iconName="utility:note"
+    id="internalNotes"
+    showErrorIndicator="{!v.errors.length > 0}"
+  >
+    <c:HL_TabContent errors="{!v.errors}">
+      <!--
+      <aura:set attribute="instructions">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </aura:set>
+-->
+
+      <div class="slds-p-horizontal_medium">
+        <c:HL_OutputField
+          label="Internal Notes"
+          value="{!v.model.ActivitySupplement.Internal_Notes__c}"
+          italics="{!v.model.Activity.Private__c}"
+        />
+        <!--
+        <lightning:textarea
+          label="Internal Notes"
+          value="{!v.model.ActivitySupplement.Internal_Notes__c}"
+          disabled="true"
+          class="internalNotes"
+        />
+-->
+      </div>
+    </c:HL_TabContent>
+  </lightning:tab>
+</aura:component>

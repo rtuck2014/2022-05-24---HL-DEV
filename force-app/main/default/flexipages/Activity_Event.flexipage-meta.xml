@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>HL_ActivityEventAuraView</componentName>
+                <identifier>c_HL_ActivityEventAuraView1</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Activity Event</masterLabel>
+    <sobjectType>Event</sobjectType>
+    <template>
+        <name>flexipage:recordHomeSingleColNoHeaderTemplateDesktop</name>
+        <properties>
+            <name>enablePageActionConfig</name>
+            <value>false</value>
+        </properties>
+    </template>
+    <type>RecordPage</type>
+</FlexiPage>

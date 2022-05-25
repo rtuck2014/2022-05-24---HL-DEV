@@ -1,0 +1,84 @@
+<apex:component >
+    <apex:attribute id="AttachmentsList" name="AttachmentsList" type="NoteAndAttachment[]" description="List of Attachments"></apex:attribute>
+    <apex:attribute id="apexPageName" name="apexPageName" type="String" default="" description="Visualforce pageName"> </apex:attribute>
+    <apex:attribute id="" name="hasUnsavedChanges" type="Boolean" description="Boolean value of onchange event"></apex:attribute>
+    <apex:form >
+        <apex:pageBlock title="Attachments">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton rendered="{!IF(apexPageName=='',true,false)}" value="Attach File" action="{!URLFOR('/p/attach/NoteAttach?pid=' + $CurrentPage.parameters.Id + '&retURL=%2F' + $CurrentPage.parameters.Id)}"/>
+                <button rendered="{!IF(apexPageName!='',true,false)}" type="button" onclick="handleAttachFile();" >Attach File</button>              
+                <!--  <apex:commandButton rendered="{!IF(apexPageName!='' && hasUnsavedChanges,true,false)}"  value="Attach File" onclick="return confirm('Are you sure?)" action="{!URLFOR('/p/attach/NoteAttach?pid=' + $CurrentPage.parameters.Id + '&retURL=%2F' +'apex/'+ apexPageName +'?id=' +$CurrentPage.parameters.Id)}"/> -->              
+            </apex:pageBlockButtons>
+            <apex:variable value="{!0}" var="cnt"/>
+            <apex:repeat value="{!AttachmentsList}" var="item"><apex:variable value="{!cnt+1}" var="cnt"/></apex:repeat>
+            <apex:pageBlockTable value="{!AttachmentsList}" var="item" rendered="{!cnt > 0}">
+                <apex:column headerValue="Action" styleClass="actionColumn">
+                    <apex:outputLink styleClass="actionLink" rendered="{!IF(apexPageName='',true,false)}" value="{!URLFOR('/' + item.id + '/e?retURL=' + $CurrentPage.parameters.Id)}">Edit</apex:outputLink>
+                    <apex:outputLink styleClass="actionLink" type="text/html" rendered="{!IF(apexPageName!='',true,false)}"  onclick="handleEditButton('{!item.Id}');return false;">Edit</apex:outputLink>
+                    <apex:outputPanel > &nbsp;|&nbsp; </apex:outputPanel>  
+                    
+                    <apex:outputLink styleClass="actionLink" rendered="{!IF(apexPageName='',true,false)}" value="{!URLFOR( $Action.Attachment.Delete , item.id,[retURL='/'+ $CurrentPage.parameters.id], TRUE)}" onclick="{return handleDeleteButton();}">Del</apex:outputLink> 
+                    <apex:outputLink styleClass="actionLink" rendered="{!IF(apexPageName!='',true,false)}" value="{!URLFOR( $Action.Attachment.Delete , item.id,[retURL='/apex/' + apexPageName + '?id=' + $CurrentPage.parameters.id], TRUE)}" onclick="{return handleDeleteButton();}">Del</apex:outputLink>       
+                    <!--  <apex:outputLink styleClass="actionLink" value="{!URLFOR( $Action.Attachment.Delete , item.id)}"> Del </apex:outputLink>/> --> <!-- call premiere support and ask why this isn't working....  -->
+                    <!--  <apex:commandLink styleClass="actionLink" action="{!URLFOR('/setup/own/deleteredirect.jsp?id=' + $CurrentPage.parameters.Id + '&sfdc.override=1&delID=' + item.id + '&retURL=' + $CurrentPage.parameters.Id + '&_CONFIRMATIONTOKEN=55454342v2sfdf45') }" onclick="return confirm('Are you Sure?');" value="Del"/> -->
+                    <!--<apex:commandLink styleClass="actionLink" action="" onclick="return confirm('Are you Sure?');">Del</apex:commandlink>                 -->
+                    <!-- '/setup/own/deleteredirect.jsp?id=' + $CurrentPage.parameters.Id + '&sfdc.override=1&delID=' + item.id + '&retURL=' + $CurrentPage.parameters.Id + '&_CONFIRMATIONTOKEN=' + ApexPages.currentPage().getParameters().get('_CONFIRMATIONTOKEN')   disabled="{!hasUnsavedChanges}" --> 
+                </apex:column>
+                <apex:column headerValue="Type">{!if(item.isNote, 'Note', 'Attachment')}</apex:column>
+                <apex:column headerValue="Name">
+                    <apex:outputLink value="{!URLFOR('/' + item.id + '?retURL='+ '/apex/' + apexPageName + '?id=' + $CurrentPage.parameters.Id)}">
+                        {!item.Title}</apex:outputLink>
+                </apex:column>      
+                <apex:column headerValue="Last Modified" value="{!item.LastModifiedDate}"/>
+                <apex:column headerValue="Last Modified By" value="{!item.lastModifiedBy.Name}"/>
+            </apex:pageBlockTable>
+            <apex:outputText value="No records to display" rendered="{!cnt = 0}"/>
+        </apex:pageBlock>
+    </apex:form>  
+    
+    <script type="text/javascript">
+    var paramValue = '{!$CurrentPage.parameters.Id}';
+    var pageName = '{!apexPageName}';
+    
+    function handleAttachFile(){ 
+        if({!hasUnsavedChanges}){
+            var redirect = confirm('Warning!\nThere are unsaved changes on this page, by continuing, you will lose those changes.\nAre you sure you want to continue?');
+            if(redirect){
+                window.location.href = '/p/attach/NoteAttach?pid=' + paramValue + '&retURL=/apex/'+ pageName +'?id=' + paramValue;
+            }
+        }
+        else{
+            window.location.href = '/p/attach/NoteAttach?pid=' + paramValue + '&retURL=/apex/' + pageName + '?id=' + paramValue;    
+        }
+    }
+    
+    function handleEditButton(param){    
+        if({!hasUnsavedChanges}){
+            var redirect = confirm('Warning!\nThere are unsaved changes on this page, by continuing, you will lose those changes.\nAre you sure you want to continue?');
+            if(redirect){
+                window.location.href = '/'+ param + '/e?retURL=' + '/apex/' + pageName + '?id=' + paramValue; 
+            }
+        }
+        else{
+            	window.location.href = '/'+ param + '/e?retURL=' + '/apex/' + pageName + '?id=' + paramValue; 
+        } 
+    }
+    
+    function handleDeleteButton(){
+        var redirectflag;
+         if({!hasUnsavedChanges}){
+            redirectflag = confirm('Warning!!\n By continuing, this attachment will be deleted and unsaved changes on this page will be lost.\nAre you sure you want to continue?');
+            return redirectflag;
+             }
+         else {
+            redirectflag = confirm('Are you sure?');
+             return redirectflag;
+        	}
+        }
+    </script>
+    
+</apex:component>
+
+
+<!-- http://salesforce.stackexchange.com/questions/24797/how-to-specify-an-action-for-an-urlfor-in-apex/
+http://salesforce.stackexchange.com/questions/13212/token-for-url-to-delete-a-record  -->

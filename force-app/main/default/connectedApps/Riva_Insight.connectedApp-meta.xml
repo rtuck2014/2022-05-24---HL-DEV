@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>rbahrampourian@hl.com</contactEmail>
+    <description>This is for Riva Insight</description>
+    <label>Riva Insight</label>
+    <oauthConfig>
+        <callbackUrl>https://slv-rivatest/insight/salesforce-oauth
+https://localhost/nocallback
+https://localhost/insight/salesforce-oauth
+https://slv-rivatest.hlhz.net/insight/salesforce-oauth
+https://slv-rivatest.hlhz.net/insight/oauth2/success
+https://hl--dev.my.salesforce.com/
+https://hl--dev.my.salesforce.com/salesforce-oauth
+https://hl--dev.my.salesforce.com/services/oauth2/success
+https://test.salesforce.com
+https://test.salesforce.com/oauth2/success
+https://test.salesforce.com/services/oauth2/success
+https://hl--dev.my.salesforce.com/services/oauth2</callbackUrl>
+        <consumerKey>3MVG9ayzKZt5EleEQlp9bb3asaQKNpEgfyh_2MLON1cBpYq70_RPQDFcrpyKkno3rpt1hUgjvPopJ9nX5EB7X</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

@@ -1,0 +1,51 @@
+.THIS .hidden {
+    display: none;
+}
+
+.THIS .slds-scrollable--y{
+	height: 300px;
+}
+
+.THIS .cell-project{
+	width: 23% !important;
+	max-width: 23%;
+}
+
+.THIS .slds-table tr>td:last-child{
+    padding-right: 0px !important;
+}
+
+.THIS .slds-table{
+	width: 100%;
+    border-collapse: collapse;
+}
+
+.THIS .cell-date{
+    width: 11% !important;
+}
+
+.THIS th.slds-cell-shrink:last-child {
+	text-align: center !important;
+}
+
+.THIS .slds-cell-shrink:first-child {
+    text-align: left !important;
+}
+
+.THIS .indicator-engagement{
+	color: #0070D2;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.THIS .indicator-specialproject{
+	color: #FF9A3C;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.THIS .indicator-opportunity{
+	color: #9FAAB5;
+	font-weight: bold;
+	font-style: italic;
+}

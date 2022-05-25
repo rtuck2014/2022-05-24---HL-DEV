@@ -1,0 +1,594 @@
+<aura:component implements="force:appHostable,force:lightningQuickAction,force:hasRecordId,force:hasSObjectName" controller="HL_ActivityController" extends="c:HL_LightningComponent">
+    <ltng:require scripts="/resource/jsFiles/jquery-1.7.1.min.js,
+                           /resource/JQueryUI/jquery-ui-1.11.2/jquery-ui.min.js"
+                  styles="/resource/JQueryUI/jquery-ui-1.11.2/jquery-ui.min.css"></ltng:require>
+    <aura:handler name="init" 
+                  value="{!this}" 
+                  action="{!c.doInit}"/>
+    <aura:registerEvent name="saveSuccessEvent" 
+                        type="c:SaveSuccessEvt"/>
+    <aura:attribute name="returnURL" 
+                    type="String"></aura:attribute>
+    <aura:attribute name="today" 
+                    type="Date" 
+                    default=""
+                    description="The Current Date"
+                    access="PUBLIC"/>
+    <aura:attribute name="hasFollowup" 
+                    type="Boolean" 
+                    default="false"
+                    description="Indicates if a Followup is being Entered"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="notifyCoverageTeam" 
+                    type="Boolean" 
+                    default="true"
+                    description="Indicates if the Coverage Team should be Notified"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="primaryAttendee" 
+                    type="String"
+                    description="Primary External Attendee"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="primaryEmployee" 
+                    type="String"
+                    description="Primary Internal Attendee"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="externalAttendees" 
+                    type="Contact[]"
+                    description="Array of External Attendees in the Event/Activity"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="hlEmployees" 
+                    type="Contact[]"
+                    description="Array of HL Attendees in the Event/Activity"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="companies" 
+                    type="Account[]"
+                    description="Array of Companies Discussed at the Event/Activity"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="opportunities" 
+                    type="Opportunity__c[]"
+                    description="Array of Opportunities Discussed at the Event/Activity"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="engagements" 
+                    type="Engagement__c[]"
+                    description="Array of Engagements Discussed at the Event/Activity"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="campaign" 
+                    type="Campaign[]"
+                    description="Array of Campaign Discussed at the Event/Activity"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="activityTypes"
+                    type="String[]"
+                    description="Activity Types from Salesforce Picklist"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="activityType" 
+                    type="String" 
+                    default=""
+                    description="Selected Event/Activity Type"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="hasInternalAccess" 
+                    type="Boolean" 
+                    default="true"
+                    description="Indicates if Internal Activity Type is Selectable"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="followupTypes"
+                    type="String[]"
+                    description="Followup Types from Salesforce Picklist"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="noExternalContact"
+                    type="Boolean"
+                    description="Indicates the value of No External Contact Checkbox"
+                    access="PRIVATE"
+                    default="false"></aura:attribute>
+    <aura:attribute name="whereClauseFilterEmployee" type="String" default=" AND RecordType.Name = 'Houlihan Employee' AND Status__c = 'Active'"/>
+    <aura:attribute name="whereClauseFilterExternal" type="String" default=" AND RecordType.Name = 'External Contact'"/>
+    
+    <div aura:id="addActivity" class="slds-scrollable_y addActivity">
+        <div class="slds-form-element slds-form-element_stacked slds-m-left_small slds-m-right_small">
+            <div class="slds-form-element">
+                <h1 class="slds-text-heading_medium slds-truncate" title="Add Activity">Add Activity</h1>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="type">Type</label>
+                <div class="slds-form-element__control">
+                    <ui:inputSelect aura:id="type" multiple="false" required="true" change="{!c.onTypeChange}">
+                        
+                    </ui:inputSelect>
+                </div>
+            </div>
+            <div class="{!if(v.activityType == 'Internal' || v.activityType == 'Follow-up Internal' || v.activityType == 'Internal Mentor Meeting', 'hidden', 'slds-form-element')}">
+                <label class="slds-checkbox" for="isPrivate" onclick="{!c.onPrivateClick}">
+                    <ui:inputCheckbox aura:id="isPrivate" class="checkbox"></ui:inputCheckbox>
+                    <span class="slds-checkbox--faux"></span>
+                    <span class="slds-form-element__label">Private</span>
+                </label>
+            </div>
+            
+            <div class="slds-form-element">
+                <label class="slds-checkbox" for="syncToOutlook" onclick="{!c.onSyncToOutlookClick}">
+                    <ui:inputCheckbox aura:id="syncToOutlook" class="checkbox"></ui:inputCheckbox>
+                    <span class="slds-checkbox--faux"></span>
+                    <span class="slds-form-element__label">Sync To Outlook</span>
+                </label>
+            </div>
+            <div class="{!if(v.activityType == 'Internal' || v.activityType == 'Follow-up Internal' || v.activityType == 'Internal Mentor Meeting', 'hidden', 'slds-form-element')}">
+                <label aura:id="notifyCoverageTeamLabel" class="slds-checkbox" for="notifyCoverageTeam" onclick="{!c.onNotifyCoverageTeamClick}">
+                    <ui:inputCheckbox aura:id="notifyCoverageTeam" class="checkbox" value="{!v.notifyCoverageTeam}"></ui:inputCheckbox>
+                    <span class="slds-checkbox--faux"></span>
+                    <span class="slds-form-element__label">Notify Coverage Team</span>
+                </label>
+            </div>
+            <div class="slds-form-element">
+                <!--    <label class="slds-form-element__label" for="subject">Subject</label>
+                <div class="slds-form-element__control">
+                    <ui:inputText aura:id="subject" required="true"></ui:inputText>
+                </div> -->
+                <lightning:input aura:id="subject" name="Subject" label="Subject" required="true"/>
+            </div>
+            <div class="slds-form-element">
+                <!--   <label class="slds-form-element__label">Description</label>
+            </div>
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <ui:inputTextArea aura:id="description" rows="5"></ui:inputTextArea>
+                </div> -->
+                <lightning:textarea aura:id="description" name="Description" label="Description" />
+            </div>
+            <div class="slds-form-element">
+                <!--                <label class="slds-form-element__label">Internal Notes</label>
+            </div>
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <ui:inputTextArea aura:id="internalNotes" rows="5"></ui:inputTextArea>
+                </div> -->
+                <lightning:textarea aura:id="internalNotes" name="Internal Notes" label="Internal Notes" />
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="startDate">Date</label>
+                <div class="slds-form-element__control">
+                    <ui:inputDate aura:id="startDate" displayDatePicker="true" format="MM/dd/yyyy" value="{!v.today}" change="{!c.onStartDateChange}"></ui:inputDate>
+                </div>
+            </div>
+            
+            
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="startTime">Start Time</label>
+                <div class="slds-form-element__control">
+                    <ui:inputSelect aura:id="startTime" change="{!c.onStartTimeChange}">
+                        <ui:inputSelectOption text="12:00 AM" label="12:00 AM" />
+                        <ui:inputSelectOption text="12:30 AM" label="12:30 AM" />
+                        <ui:inputSelectOption text="01:00 AM" label="01:00 AM" />
+                        <ui:inputSelectOption text="01:30 AM" label="01:30 AM" />
+                        <ui:inputSelectOption text="02:00 AM" label="02:00 AM" />
+                        <ui:inputSelectOption text="02:30 AM" label="02:30 AM" />
+                        <ui:inputSelectOption text="03:00 AM" label="03:00 AM" />
+                        <ui:inputSelectOption text="03:30 AM" label="03:30 AM" />
+                        <ui:inputSelectOption text="04:00 AM" label="04:00 AM" />
+                        <ui:inputSelectOption text="04:30 AM" label="04:30 AM" />
+                        <ui:inputSelectOption text="05:00 AM" label="05:00 AM" />
+                        <ui:inputSelectOption text="05:30 AM" label="05:30 AM" />
+                        <ui:inputSelectOption text="06:00 AM" label="06:00 AM" />
+                        <ui:inputSelectOption text="06:30 AM" label="06:30 AM" />
+                        <ui:inputSelectOption text="07:00 AM" label="07:00 AM" />
+                        <ui:inputSelectOption text="07:30 AM" label="07:30 AM" />
+                        <ui:inputSelectOption text="08:00 AM" label="08:00 AM" value="true" />
+                        <ui:inputSelectOption text="08:30 AM" label="08:30 AM" />
+                        <ui:inputSelectOption text="09:00 AM" label="09:00 AM" />
+                        <ui:inputSelectOption text="09:30 AM" label="09:30 AM" />
+                        <ui:inputSelectOption text="10:00 AM" label="10:00 AM" />
+                        <ui:inputSelectOption text="10:30 AM" label="10:30 AM" />
+                        <ui:inputSelectOption text="11:00 AM" label="11:00 AM" />
+                        <ui:inputSelectOption text="11:30 AM" label="11:30 AM" />
+                        <ui:inputSelectOption text="12:00 PM" label="12:00 PM"/>
+                        <ui:inputSelectOption text="12:30 PM" label="12:30 PM"/>
+                        <ui:inputSelectOption text="01:00 PM" label="01:00 PM"/>
+                        <ui:inputSelectOption text="01:30 PM" label="01:30 PM"/>
+                        <ui:inputSelectOption text="02:00 PM" label="02:00 PM" />
+                        <ui:inputSelectOption text="02:30 PM" label="02:30 PM" />
+                        <ui:inputSelectOption text="03:00 PM" label="03:00 PM" />
+                        <ui:inputSelectOption text="03:30 PM" label="03:30 PM" />
+                        <ui:inputSelectOption text="04:00 PM" label="04:00 PM" />
+                        <ui:inputSelectOption text="04:30 PM" label="04:30 PM" />
+                        <ui:inputSelectOption text="05:00 PM" label="05:00 PM" />
+                        <ui:inputSelectOption text="05:30 PM" label="05:30 PM" />
+                        <ui:inputSelectOption text="06:00 PM" label="06:00 PM" />
+                        <ui:inputSelectOption text="06:30 PM" label="06:30 PM" />
+                        <ui:inputSelectOption text="07:00 PM" label="07:00 PM" />
+                        <ui:inputSelectOption text="07:30 PM" label="07:30 PM" />
+                        <ui:inputSelectOption text="08:00 PM" label="08:00 PM" />
+                        <ui:inputSelectOption text="08:30 PM" label="08:30 PM" />
+                        <ui:inputSelectOption text="09:00 PM" label="09:00 PM" />
+                        <ui:inputSelectOption text="09:30 PM" label="09:30 PM" />
+                        <ui:inputSelectOption text="10:00 PM" label="10:00 PM" />
+                        <ui:inputSelectOption text="10:30 PM" label="10:30 PM" />
+                        <ui:inputSelectOption text="11:00 PM" label="11:00 PM" />
+                        <ui:inputSelectOption text="11:30 PM" label="11:30 PM" />
+                    </ui:inputSelect>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="endTime">End Time</label>
+                <div class="slds-form-element__control">
+                    <ui:inputSelect aura:id="endTime">
+                        <ui:inputSelectOption text="12:00 AM" label="12:00 AM" />
+                        <ui:inputSelectOption text="12:30 AM" label="12:30 AM" />
+                        <ui:inputSelectOption text="01:00 AM" label="01:00 AM" />
+                        <ui:inputSelectOption text="01:30 AM" label="01:30 AM" />
+                        <ui:inputSelectOption text="02:00 AM" label="02:00 AM" />
+                        <ui:inputSelectOption text="02:30 AM" label="02:30 AM" />
+                        <ui:inputSelectOption text="03:00 AM" label="03:00 AM" />
+                        <ui:inputSelectOption text="03:30 AM" label="03:30 AM" />
+                        <ui:inputSelectOption text="04:00 AM" label="04:00 AM" />
+                        <ui:inputSelectOption text="04:30 AM" label="04:30 AM" />
+                        <ui:inputSelectOption text="05:00 AM" label="05:00 AM" />
+                        <ui:inputSelectOption text="05:30 AM" label="05:30 AM" />
+                        <ui:inputSelectOption text="06:00 AM" label="06:00 AM" />
+                        <ui:inputSelectOption text="06:30 AM" label="06:30 AM" />
+                        <ui:inputSelectOption text="07:00 AM" label="07:00 AM" />
+                        <ui:inputSelectOption text="07:30 AM" label="07:30 AM" />
+                        <ui:inputSelectOption text="08:00 AM" label="08:00 AM" value="true" />
+                        <ui:inputSelectOption text="08:30 AM" label="08:30 AM" />
+                        <ui:inputSelectOption text="09:00 AM" label="09:00 AM" />
+                        <ui:inputSelectOption text="09:30 AM" label="09:30 AM" />
+                        <ui:inputSelectOption text="10:00 AM" label="10:00 AM" />
+                        <ui:inputSelectOption text="10:30 AM" label="10:30 AM" />
+                        <ui:inputSelectOption text="11:00 AM" label="11:00 AM" />
+                        <ui:inputSelectOption text="11:30 AM" label="11:30 AM" />
+                        <ui:inputSelectOption text="12:00 PM" label="12:00 PM"/>
+                        <ui:inputSelectOption text="12:30 PM" label="12:30 PM"/>
+                        <ui:inputSelectOption text="01:00 PM" label="01:00 PM"/>
+                        <ui:inputSelectOption text="01:30 PM" label="01:30 PM"/>
+                        <ui:inputSelectOption text="02:00 PM" label="02:00 PM" />
+                        <ui:inputSelectOption text="02:30 PM" label="02:30 PM" />
+                        <ui:inputSelectOption text="03:00 PM" label="03:00 PM" />
+                        <ui:inputSelectOption text="03:30 PM" label="03:30 PM" />
+                        <ui:inputSelectOption text="04:00 PM" label="04:00 PM" />
+                        <ui:inputSelectOption text="04:30 PM" label="04:30 PM" />
+                        <ui:inputSelectOption text="05:00 PM" label="05:00 PM" />
+                        <ui:inputSelectOption text="05:30 PM" label="05:30 PM" />
+                        <ui:inputSelectOption text="06:00 PM" label="06:00 PM" />
+                        <ui:inputSelectOption text="06:30 PM" label="06:30 PM" />
+                        <ui:inputSelectOption text="07:00 PM" label="07:00 PM" />
+                        <ui:inputSelectOption text="07:30 PM" label="07:30 PM" />
+                        <ui:inputSelectOption text="08:00 PM" label="08:00 PM" />
+                        <ui:inputSelectOption text="08:30 PM" label="08:30 PM" />
+                        <ui:inputSelectOption text="09:00 PM" label="09:00 PM" />
+                        <ui:inputSelectOption text="09:30 PM" label="09:30 PM" />
+                        <ui:inputSelectOption text="10:00 PM" label="10:00 PM" />
+                        <ui:inputSelectOption text="10:30 PM" label="10:30 PM" />
+                        <ui:inputSelectOption text="11:00 PM" label="11:00 PM" />
+                        <ui:inputSelectOption text="11:30 PM" label="11:30 PM" />
+                    </ui:inputSelect>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <hr style="height: 2px; background-color: gray;"></hr>
+                <h4>{!v.activityType == 'Internal' ? 'Internal Meeting With' : 'External Attendees'}</h4>
+                <aura:iteration var="ea" items="{!v.externalAttendees}">
+                    
+                    <aura:if isTrue="{!v.primaryAttendee == ea.Id}">
+                    <span class="relatedItem"><b>{!ea.Name}</b> - {!ea.Account.Name} - {!ea.Title} &nbsp;<i style = "color: blue;">(Primary)</i></span>
+                    <aura:if isTrue="{!v.noExternalContact}">
+                        <div class="slds-button-group" role="group">
+                            <ui:button press="{!c.onRemoveExternalAttendeeClick}" label="Delete" buttonTitle="{!ea.Id}"></ui:button>
+                        </div>
+                        </aura:if>   
+                    </aura:if> 
+                    
+                    <aura:if isTrue="{!v.primaryAttendee != ea.Id}">
+                        <span class="relatedItem"><b>{!ea.Name}</b> - {!ea.Account.Name} - {!ea.Title}</span>
+                         
+                        <div class="slds-button-group" role="group">
+                        <aura:if isTrue="{!v.primaryAttendee != ea.Id}">
+                            <ui:button press="{!c.onPrimaryExternalAttendeeClick}" label="Set As Primary" buttonTitle="{!ea.Id}" class="button-group1"></ui:button>
+                            <ui:button press="{!c.onRemoveExternalAttendeeClick}" label="Delete" buttonTitle="{!ea.Id}" class="button-group2"></ui:button>
+                        </aura:if>
+                        </div>
+                        
+                     </aura:if>
+                </aura:iteration>
+                
+                <div>
+                    <c:lookupComponent iconname="standard:contact" 
+                                       objectname="Contact"
+                                       searchfield="Name"
+                                       subfield ="Account.Name,Title"
+                                       addMultipleRecords = "true"
+                                       onselectedrec="{!c.handleSelectedExternalContact}"
+                                       placeholder="{!v.activityType == 'Internal' ? 'Lookup Employee...' : 'Lookup Contact...'}"
+                                       type="text"
+                                       whereClauseFilters =  "{!v.activityType == 'Internal' ? v.whereClauseFilterEmployee : v.whereClauseFilterExternal}">
+                    </c:lookupComponent>
+                    <!-- <c:AutoComplete inputLabel="{!v.activityType == 'Internal' ? 'Lookup Employee' : 'Lookup Contact'}" sObjectType="Contact" autocompleteEvent="{!c.handleExternalContactSelection}" fields="Title, Account.Name" limit="250" subType="{!v.activityType == 'Internal' ? 'Employee' : 'External'}"></c:AutoComplete> -->
+                </div>		
+            </div>
+            <div class="{!if(v.activityType == 'Internal' || v.activityType == 'Follow-up Internal' || v.activityType == 'Internal Mentor Meeting', 'hidden', 'slds-form-element')}">
+                <lightning:input aura:id="noExternalContact" label="No External Contact" type="checkbox" onchange="{!c.clickNoExternalContact}"/>
+                <lightning:helptext class="popover" content="If No External Contact is marked, then Companies Discussed entry is required" />    
+            </div>
+            <!-- <div class="slds-form-element"> -->
+            <hr style="height: 2px; background-color: gray;"></hr>
+            <h4>HL Attendees</h4>
+            <aura:iteration var="emp" items="{!v.hlEmployees}">
+                <aura:if isTrue="{!v.primaryEmployee == emp.Id}">
+                    <span class="relatedItem">{!emp.Name} - {!emp.Title} &nbsp;<i style = "color: blue;">(Primary)</i></span> 
+                  </aura:if>  
+                <div>
+                   
+                    <aura:if isTrue="{!v.primaryEmployee != emp.Id}">
+                         <span class="relatedItem">{!emp.Name} - {!emp.Title}</span>
+                        <div class="slds-button-group" role="group">
+                        <ui:button press="{!c.onPrimaryEmployeeClick}" label="Set As Primary" buttonTitle="{!emp.Id}" class="button-group1"></ui:button>
+                        <ui:button press="{!c.onRemoveEmployeeClick}" label="Delete" buttonTitle="{!emp.Id}" class="button-group2"></ui:button>
+                        </div>
+                    </aura:if>
+                </div>
+            </aura:iteration>
+            <!--<div> -->
+            <c:lookupComponent iconname="standard:contact" 
+                               objectname="Contact"
+                               searchfield="Name"
+                               subfield ="Title"
+                               addMultipleRecords = "true"
+                               onselectedrec="{!c.handleSelectedContact}"
+                               placeholder="Lookup Employee..."
+                               type="text"
+                               whereClauseFilters = " AND RecordType.Name = 'Houlihan Employee' AND Status__c = 'Active' "
+                               additionalFields="User__c"></c:lookupComponent>
+            <!--          <c:AutoComplete inputLabel="Lookup Employee" sObjectType="Contact" autocompleteEvent="{!c.handleHLEmployeeSelection}" fields="Title,User__c" subType="Employee"></c:AutoComplete>
+            </div> -->
+            <!--  </div> -->
+            <div class="slds-form-element">
+                <hr style="height: 2px; background-color: gray;"></hr>
+                <h4>Companies Discussed</h4>
+                <aura:iteration var="comp" items="{!v.companies}">
+                    <span class="relatedItem">{!comp.Name} - {!comp.Location__c}</span>
+                    <div class="slds-button-group" role="group">
+                        <ui:button press="{!c.onRemoveCompanyClick}" buttonTitle="{!comp.Id}" label="Delete"></ui:button>
+                        
+                    </div>
+                </aura:iteration>
+                <div>
+                    <c:lookupComponent iconname="standard:account" 
+                                       objectname="Account"
+                                       searchfield="Name"
+                                       subfield ="Location__c"
+                                       addMultipleRecords = "true"
+                                       onselectedrec="{!c.handleSelectedCompany}"
+                                       placeholder="Lookup Company..."
+                                       type="text"
+                                       additionalFields="BillingCity,BillingState"></c:lookupComponent>
+                    <!--   <c:AutoComplete inputLabel="Lookup Company" sObjectType="Account" autocompleteEvent="{!c.handleCompanySelection}" fields="BillingCity,BillingState,Location__c" subType="Account"></c:AutoComplete> -->
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <hr style="height: 2px; background-color: gray;"></hr>
+                <h4>Related Opportunities</h4>
+                <aura:iteration var="o" items="{!v.opportunities}">
+                    <span class="relatedItem">{!o.Name} - {!o.Client__r.Name} - {!o.Subject__r.Name}</span>
+                    <div class="slds-button-group" role="group">
+                        <ui:button press="{!c.onRemoveOppClick}" buttonTitle="{!o.Id}" label="Delete"></ui:button>
+                        
+                    </div>
+                </aura:iteration>
+                <div>
+                    <c:lookupComponent iconname="standard:opportunity" 
+                                       objectname="Opportunity__c"
+                                       searchfield="Name"
+                                       subfield ="Client__r.Name"
+                                       addMultipleRecords = "true"
+                                       onselectedrec="{!c.handleSelectedOpportunity}"
+                                       placeholder="Lookup Opportunity..."
+                                       type="text"
+                                       additionalFields = "Subject__r.Name"></c:lookupComponent>
+                    
+                    <!--   <c:AutoComplete inputLabel="Lookup Opportunity" sObjectType="Opportunity__c" autocompleteEvent="{!c.handleOpportunitySelection}" fields="Client__r.Name,Subject__r.Name" subType="Opportunity"></c:AutoComplete> -->
+                </div>
+            </div>
+
+            <div class="slds-form-element">
+                <hr style="height: 2px; background-color: gray;"></hr>
+                <h4>Related Engagements</h4>
+                <aura:iteration var="eng" items="{!v.engagements}">
+                    <span class="relatedItem">{!eng.Name} - {!eng.Client__r.Name} - {!eng.Subject__r.Name}</span>
+                    <div class="slds-button-group" role="group">
+                        <ui:button press="{!c.onRemoveEngClick}" buttonTitle="{!eng.Id}" label="Delete"></ui:button>
+                        
+                    </div>
+                </aura:iteration>
+                <div>
+                    <c:lookupComponent iconname="standard:engagement" 
+                                       objectname="Engagement__c"
+                                       searchfield="Name"
+                                       subfield ="Client__r.Name"
+                                       addMultipleRecords = "true"
+                                       onselectedrec="{!c.handleSelectedEngagement}"
+                                       placeholder="Lookup Engagement..."
+                                       type="text"
+                                       additionalFields = "Subject__r.Name"></c:lookupComponent>
+                    
+                    <!--   <c:AutoComplete inputLabel="Lookup Opportunity" sObjectType="Opportunity__c" autocompleteEvent="{!c.handleOpportunitySelection}" fields="Client__r.Name,Subject__r.Name" subType="Opportunity"></c:AutoComplete> -->
+                </div>
+            </div>
+            
+            <div class="slds-form-element">
+                <hr style="height: 2px; background-color: gray;"></hr>
+                <h4>Related Campaign</h4>
+                <aura:iteration var="cp" items="{!v.campaign}">
+                    <span class="relatedItem">{!cp.Name} - {!cp.RecordType.Name} - {!cp.Type}</span>
+                    <div  class="slds-button-group" role="group">
+                        <ui:button press="{!c.onRemoveCampClick}" buttonTitle="{!cp.Id}" label="Delete"></ui:button>
+                        
+                    </div>
+                </aura:iteration>
+                <div>
+                    <c:lookupComponent iconname="standard:campaign" 
+                                       objectname="Campaign"
+                                       searchfield="Name"
+                                       subfield ="Type"
+                                       addMultipleRecords = "true"
+                                       onselectedrec="{!c.handleSelectedCampaign}"
+                                       placeholder="Lookup Campaign..."
+                                       type="text"
+                                       whereClauseFilters = "AND (RecordType.Name = 'Conference / Event' OR RecordType.Name = 'Insights / Content')"
+                                       additionalFields="RecordType.Name"></c:lookupComponent>
+                    
+                    <!--  <c:AutoComplete inputLabel="Lookup Campaign" sObjectType="Campaign" autocompleteEvent="{!c.handleCampaignSelection}" fields="RecordType.Name,Type" subType="CampaignList"></c:AutoComplete> -->
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <hr style="height: 2px; background-color: gray;"></hr>
+                <h4>Schedule Follow-up</h4>
+            </div>
+            <div class="slds-form-element">
+                <div class="slds-form-element">
+                    <label class="slds-checkbox" for="scheduleFollowup" onclick="{!c.onFollowupClick}">
+                        <ui:inputCheckbox aura:id="scheduleFollowup" change="{!c.onFollowupCheck}" ></ui:inputCheckbox>
+                        <span class="slds-checkbox--faux"></span>
+                        <span class="slds-form-element__label">Schedule Follow-up</span>
+                    </label>
+                </div>
+            </div>
+            <aura:renderIf isTrue="{!v.hasFollowup}">
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" for="followupType">Follow-up Type</label>
+                    <div class="slds-form-element__control">
+                        <ui:inputSelect aura:id="followupType" multiple="false" required="true"></ui:inputSelect>
+                    </div>
+                </div>
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" for="followupStartDate">Follow-up Date</label>
+                    <div class="slds-form-element__control">
+                        <ui:inputDate aura:id="followupStartDate" displayDatePicker="true" format="MM/dd/yyyy" change="{!c.onFollowupDateChange}"></ui:inputDate>
+                    </div>
+                </div>
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" for="followupStartTime">Follow-up Start Time</label>
+                    <div class="slds-form-element__control">
+                        <ui:inputSelect aura:id="followupStartTime" change="{!c.onFollowupTimeChange}">
+                            <ui:inputSelectOption text="12:00 AM" label="12:00 AM"/>
+                            <ui:inputSelectOption text="12:30 AM" label="12:30 AM"/>
+                            <ui:inputSelectOption text="01:00 AM" label="01:00 AM"/>
+                            <ui:inputSelectOption text="01:30 AM" label="01:30 AM"/>
+                            <ui:inputSelectOption text="02:00 AM" label="02:00 AM" />
+                            <ui:inputSelectOption text="02:30 AM" label="02:30 AM" />
+                            <ui:inputSelectOption text="03:00 AM" label="03:00 AM" />
+                            <ui:inputSelectOption text="03:30 AM" label="03:30 AM" />
+                            <ui:inputSelectOption text="04:00 AM" label="04:00 AM" />
+                            <ui:inputSelectOption text="04:30 AM" label="04:30 AM" />
+                            <ui:inputSelectOption text="05:00 AM" label="05:00 AM" />
+                            <ui:inputSelectOption text="05:30 AM" label="05:30 AM" />
+                            <ui:inputSelectOption text="06:00 AM" label="06:00 AM" />
+                            <ui:inputSelectOption text="06:30 AM" label="06:30 AM" />
+                            <ui:inputSelectOption text="07:00 AM" label="07:00 AM" />
+                            <ui:inputSelectOption text="07:30 AM" label="07:30 AM" />
+                            <ui:inputSelectOption text="08:00 AM" label="08:00 AM" value="true" />
+                            <ui:inputSelectOption text="08:30 AM" label="08:30 AM" />
+                            <ui:inputSelectOption text="09:00 AM" label="09:00 AM" />
+                            <ui:inputSelectOption text="09:30 AM" label="09:30 AM" />
+                            <ui:inputSelectOption text="10:00 AM" label="10:00 AM" />
+                            <ui:inputSelectOption text="10:30 AM" label="10:30 AM" />
+                            <ui:inputSelectOption text="11:00 AM" label="11:00 AM" />
+                            <ui:inputSelectOption text="11:30 AM" label="11:30 AM" />
+                            <ui:inputSelectOption text="12:00 PM" label="12:00 PM"/>
+                            <ui:inputSelectOption text="12:30 PM" label="12:30 PM"/>
+                            <ui:inputSelectOption text="01:00 PM" label="01:00 PM"/>
+                            <ui:inputSelectOption text="01:30 PM" label="01:30 PM"/>
+                            <ui:inputSelectOption text="02:00 PM" label="02:00 PM" />
+                            <ui:inputSelectOption text="02:30 PM" label="02:30 PM" />
+                            <ui:inputSelectOption text="03:00 PM" label="03:00 PM" />
+                            <ui:inputSelectOption text="03:30 PM" label="03:30 PM" />
+                            <ui:inputSelectOption text="04:00 PM" label="04:00 PM" />
+                            <ui:inputSelectOption text="04:30 PM" label="04:30 PM" />
+                            <ui:inputSelectOption text="05:00 PM" label="05:00 PM" />
+                            <ui:inputSelectOption text="05:30 PM" label="05:30 PM" />
+                            <ui:inputSelectOption text="06:00 PM" label="06:00 PM" />
+                            <ui:inputSelectOption text="06:30 PM" label="06:30 PM" />
+                            <ui:inputSelectOption text="07:00 PM" label="07:00 PM" />
+                            <ui:inputSelectOption text="07:30 PM" label="07:30 PM" />
+                            <ui:inputSelectOption text="08:00 PM" label="08:00 PM" />
+                            <ui:inputSelectOption text="08:30 PM" label="08:30 PM" />
+                            <ui:inputSelectOption text="09:00 PM" label="09:00 PM" />
+                            <ui:inputSelectOption text="09:30 PM" label="09:30 PM" />
+                            <ui:inputSelectOption text="10:00 PM" label="10:00 PM" />
+                            <ui:inputSelectOption text="10:30 PM" label="10:30 PM" />
+                            <ui:inputSelectOption text="11:00 PM" label="11:00 PM" />
+                            <ui:inputSelectOption text="11:30 PM" label="11:30 PM" />
+                        </ui:inputSelect>
+                    </div>
+                </div>
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" for="followupEndTime">Follow-up End Time</label>
+                    <div class="slds-form-element__control">
+                        <ui:inputSelect aura:id="followupEndTime">
+                            <ui:inputSelectOption text="12:00 AM" label="12:00 AM"/>
+                            <ui:inputSelectOption text="12:30 AM" label="12:30 AM"/>
+                            <ui:inputSelectOption text="01:00 AM" label="01:00 AM"/>
+                            <ui:inputSelectOption text="01:30 AM" label="01:30 AM"/>
+                            <ui:inputSelectOption text="02:00 AM" label="02:00 AM" />
+                            <ui:inputSelectOption text="02:30 AM" label="02:30 AM" />
+                            <ui:inputSelectOption text="03:00 AM" label="03:00 AM" />
+                            <ui:inputSelectOption text="03:30 AM" label="03:30 AM" />
+                            <ui:inputSelectOption text="04:00 AM" label="04:00 AM" />
+                            <ui:inputSelectOption text="04:30 AM" label="04:30 AM" />
+                            <ui:inputSelectOption text="05:00 AM" label="05:00 AM" />
+                            <ui:inputSelectOption text="05:30 AM" label="05:30 AM" />
+                            <ui:inputSelectOption text="06:00 AM" label="06:00 AM" />
+                            <ui:inputSelectOption text="06:30 AM" label="06:30 AM" />
+                            <ui:inputSelectOption text="07:00 AM" label="07:00 AM" />
+                            <ui:inputSelectOption text="07:30 AM" label="07:30 AM" />
+                            <ui:inputSelectOption text="08:00 AM" label="08:00 AM" value="true" />
+                            <ui:inputSelectOption text="08:30 AM" label="08:30 AM" />
+                            <ui:inputSelectOption text="09:00 AM" label="09:00 AM" />
+                            <ui:inputSelectOption text="09:30 AM" label="09:30 AM" />
+                            <ui:inputSelectOption text="10:00 AM" label="10:00 AM" />
+                            <ui:inputSelectOption text="10:30 AM" label="10:30 AM" />
+                            <ui:inputSelectOption text="11:00 AM" label="11:00 AM" />
+                            <ui:inputSelectOption text="11:30 AM" label="11:30 AM" />
+                            <ui:inputSelectOption text="12:00 PM" label="12:00 PM"/>
+                            <ui:inputSelectOption text="12:30 PM" label="12:30 PM"/>
+                            <ui:inputSelectOption text="01:00 PM" label="01:00 PM"/>
+                            <ui:inputSelectOption text="01:30 PM" label="01:30 PM"/>
+                            <ui:inputSelectOption text="02:00 PM" label="02:00 PM" />
+                            <ui:inputSelectOption text="02:30 PM" label="02:30 PM" />
+                            <ui:inputSelectOption text="03:00 PM" label="03:00 PM" />
+                            <ui:inputSelectOption text="03:30 PM" label="03:30 PM" />
+                            <ui:inputSelectOption text="04:00 PM" label="04:00 PM" />
+                            <ui:inputSelectOption text="04:30 PM" label="04:30 PM" />
+                            <ui:inputSelectOption text="05:00 PM" label="05:00 PM" />
+                            <ui:inputSelectOption text="05:30 PM" label="05:30 PM" />
+                            <ui:inputSelectOption text="06:00 PM" label="06:00 PM" />
+                            <ui:inputSelectOption text="06:30 PM" label="06:30 PM" />
+                            <ui:inputSelectOption text="07:00 PM" label="07:00 PM" />
+                            <ui:inputSelectOption text="07:30 PM" label="07:30 PM" />
+                            <ui:inputSelectOption text="08:00 PM" label="08:00 PM" />
+                            <ui:inputSelectOption text="08:30 PM" label="08:30 PM" />
+                            <ui:inputSelectOption text="09:00 PM" label="09:00 PM" />
+                            <ui:inputSelectOption text="09:30 PM" label="09:30 PM" />
+                            <ui:inputSelectOption text="10:00 PM" label="10:00 PM" />
+                            <ui:inputSelectOption text="10:30 PM" label="10:30 PM" />
+                            <ui:inputSelectOption text="11:00 PM" label="11:00 PM" />
+                            <ui:inputSelectOption text="11:30 PM" label="11:30 PM" />
+                        </ui:inputSelect>
+                    </div>
+                </div>
+                <div class="slds-form-element">
+                    <label class="slds-checkbox" for="followupSyncToOutlook" onclick="{!c.onFollowupSyncToOutlookClick}">
+                        <ui:inputCheckbox aura:id="followupSyncToOutlook"></ui:inputCheckbox>
+                        <span class="slds-checkbox--faux"></span>
+                        <span class="slds-form-element__label">Sync To Outlook</span>
+                    </label>
+                </div>
+                <div class="slds-form-element">
+                    <!--    <label class="slds-form-element__label" for="followupEndTime">Follow-up Comments</label>
+                </div>
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <ui:inputTextArea aura:id="followupComments" rows="5"></ui:inputTextArea>
+                    </div> -->
+                    <lightning:textarea aura:id="followupComments" name="Followup Comments" label="Follow-up Comments" />
+                </div>
+            </aura:renderIf>
+            <lightning:button aura:id="btnSave" class="slds-button--neutral" type="button" onclick="{!c.saveActivity}">Save</lightning:button>
+        </div>
+    </div>
+</aura:component>

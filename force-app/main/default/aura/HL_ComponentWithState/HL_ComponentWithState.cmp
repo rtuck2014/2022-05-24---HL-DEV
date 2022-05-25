@@ -1,0 +1,50 @@
+<aura:component extends="c:HL_UIElement" access="global">
+    <aura:attribute name="state" type="String" access="global" description="The current state machine state of the component." />
+
+    <aura:attribute name="defaultIsVisible" type="Boolean" default="true" access="global" description="Indicates whether the component defaults to visible assuming the current state is not listed in visibleStates or hiddenStates." />
+    <aura:attribute name="defaultIsEnabled" type="Boolean" default="true" access="global" description="Indicates whether the component defaults to enabled assuming the current state is not listed in enabledStates or disabledStates." />
+    <aura:attribute name="defaultIsEditing" type="Boolean" default="true" access="global" description="Indicates whether the component defaults to editing assuming the current state is not listed in editingStates or readOnlyStates." />
+
+    <aura:attribute name="visibleStates" type="String" access="global" description="A comma-separated list of state names for which the component should be visible." />
+    <aura:attribute name="hiddenStates" type="String" access="global" description="A comma-separated list of state names for which the component should be hidden." />
+    <aura:attribute name="enabledStates" type="String" access="global" description="A comma-separated list of state names for which the component should be enabled." />
+    <aura:attribute name="disabledStates" type="String" access="global" description="A comma-separated list of state names for which the component should be disabled." />
+    <aura:attribute name="editingStates" type="String" access="global" description="A comma-separated list of state names for which the component should be editing." />
+    <aura:attribute name="readOnlyStates" type="String" access="global" description="A comma-separated list of state names for which the component should be read only." />
+
+    <aura:attribute name="forceVisible" type="Boolean" default="false" access="global" description="Indicates that the component should be forced to visible, regardless of current state.  Use sparingly." />
+    <aura:attribute name="forceHidden" type="Boolean" default="false" access="global" description="Indicates that the component should be forced to hidden, regardless of current state.  Use sparingly." />
+    <aura:attribute name="forceEnabled" type="Boolean" default="false" access="global" description="Indicates that the component should be forced to enabled, regardless of current state.  Use sparingly." />
+    <aura:attribute name="forceDisabled" type="Boolean" default="false" access="global" description="Indicates that the component should be forced to disabled, regardless of current state.  Use sparingly." />
+    <aura:attribute name="forceEditing" type="Boolean" default="false" access="global" description="Indicates that the component should be forced to editing, regardless of current state.  Use sparingly." />
+    <aura:attribute name="forceReadOnly" type="Boolean" default="false" access="global" description="Indicates that the component should be forced to read only, regardless of current state.  Use sparingly." />
+
+    <aura:attribute name="isVisible" type="Boolean" default="true" access="private" description="Indicates whether the component should be visible." />
+    <aura:attribute name="isEnabled" type="Boolean" default="true" access="private" description="Indicates whether the component should be enabled." />
+    <aura:attribute name="isEditing" type="Boolean" default="true" access="private" description="Indicates whether the component should be editing (true) or read only (false)."/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.state}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.defaultIsVisible}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.defaultIsEnabled}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.defaultIsEditing}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.visibleStates}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.hiddenStates}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.enabledStates}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.disabledStates}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.editingStates}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.readOnlyStates}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.forceVisible}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.forceHidden}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.forceEnabled}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.forceDisabled}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.forceEditing}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.forceReadOnly}" action="{!c.calculateState}" />
+
+    <aura:handler name="change" value="{!v.isEnabled}" action="{!c.setEnabled}" />
+    <aura:handler name="change" value="{!v.isEditing}" action="{!c.setEditing}" />
+
+    <aura:if isTrue="{!v.isVisible}">
+        {!v.body}
+    </aura:if>
+</aura:component>

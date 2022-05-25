@@ -1,0 +1,70 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<p class="MsoNoSpacing" style="font-size: 12pt; font-family: arial;"></p><p class="MsoNormal" style=""><font face="Arial, sans-serif" style=""><span style="color: black;">This is to notify you that the
+marketing expense request for&nbsp;</span><font color="#ff0000" style="">{!Event_Expense__c.Event_Type_Format__c}</font><span style="color: black;">&nbsp;</span><i style="color: rgb(0, 0, 0);">&nbsp;</i><span style="color: black;">expense&nbsp;</span><i style=""><font color="#ff0000">{!Event_Expense__c.Name}</font></i><i style="color: rgb(0, 0, 0);">&nbsp;</i><span style="color: black;">been approved by</span><font color="#ff0000" style="">&nbsp;{!Event_Expense__c.Current_Approver__c}</font></font><span style="font-family: Arial, sans-serif; font-size: 12pt;">&nbsp;</span></p>
+
+<div class="MsoNormal" align="center" style="color: rgb(0, 0, 0); text-align: center;"><span class="msodel0"><span style="color: black;"><span class="msoDel"><del cite="mailto:Lin,%20Johnny" datetime="2018-04-17T16:05"><font face="Arial, sans-serif">
+
+<hr size="2" width="100%" align="center">
+
+</font></del></span></span></span></div>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; orphans: 2; text-align: start; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-spacing: 0px;"><font face="Arial, sans-serif"><b><span style="color:black;background:white">Requestor:&nbsp;</span></b><span style="color:black;background:white">{!Event_Expense__c.Requestor_Name__c}</span><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><strong style="font-variant-ligatures: normal;font-variant-caps: normal;
+orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+text-decoration-style: initial;text-decoration-color: initial;word-spacing:
+0px"><span style="color: black;">Product Type:</span></strong><span style="color:black">&nbsp;</span><span style="line-height: 115%; color: black;">{!Event_Expense__c.Product_Type__c}</span><o:p></o:p></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><strong><span style="color: black;">Event Name:</span></strong><span style="color:black">&nbsp;{!Event_Expense__c.Event_Name__c}<o:p></o:p></span></font></p>
+
+<font face="Arial, sans-serif" style=""><u1:p></u1:p>
+
+</font><p class="MsoNormal" style="color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; orphans: 2; text-align: start; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-spacing: 0px;"><font face="Arial, sans-serif"><strong><span style="color: black;">Request
+Type:</span></strong><span style="color:black">&nbsp;<u1:p></u1:p>{!Event_Expense__c.Event_Type_Format__c}<o:p></o:p></span></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; orphans: 2; text-align: start; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-spacing: 0px;"><font face="Arial, sans-serif"><strong><span style="color: black;">Target
+Audience:</span></strong><span style="color:black">&nbsp;{!Event_Expense__c.Target_Audience__c}<o:p></o:p></span></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; orphans: 2; text-align: start; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-spacing: 0px;"><font face="Arial, sans-serif"><strong><span style="color: black;">Event
+Date:&nbsp;</span></strong><span style="color:black">{!Event_Expense__c.Formatted_Start_Date__c}<o:p></o:p></span></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; orphans: 2; text-align: start; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-spacing: 0px;"><font face="Arial, sans-serif"><strong><span style="color: black;">Event
+Purpose:</span></strong><span style="color:black">&nbsp;{!Event_Expense__c.Event_Purpose__c}<o:p></o:p></span></font></p>
+
+<font face="Arial, sans-serif" style=""><u1:p></u1:p>
+
+</font><p class="MsoNormal" style="color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; orphans: 2; text-align: start; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-spacing: 0px;"><font face="Arial, sans-serif"><strong><span style="color: black;">Desired
+Outcome:</span></strong><span style="color:black">&nbsp;{!Event_Expense__c.What_is_desired_outcome_of_this_event__c}<o:p></o:p></span></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; orphans: 2; text-align: start; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-spacing: 0px;"><b style="font-size: 12pt; font-family: Arial, sans-serif;">Total Budget Requested:&nbsp;</b><font face="Arial, sans-serif" style="font-size: medium;">{!Event_Expense__c.Total_Budget_Requested__c}</font></p>
+
+<font face="Arial, sans-serif" style=""><u1:p></u1:p>
+
+</font><p class="MsoNormal" style="color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; orphans: 2; text-align: start; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-spacing: 0px;"><font face="Arial, sans-serif"><strong><span style="color: black;">Requested
+Event Budget (excluding Travel):</span></strong><span style="color:black">&nbsp;&nbsp;{!Event_Expense__c.Requested_Event_Budget_excluding_Travel__c}<o:p></o:p></span></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; orphans: 2; text-align: start; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-spacing: 0px;"><font face="Arial, sans-serif"><strong><span style="color: black;">Expected
+Travel Cost:</span></strong><span style="color:black">&nbsp;{!Event_Expense__c.Expected_Travel_cost__c}<o:p></o:p></span></font></p>
+
+<font face="Arial, sans-serif" style=""><u1:p></u1:p>
+
+</font><p class="MsoNormal" style="color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; orphans: 2; text-align: start; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-spacing: 0px;"><font face="Arial, sans-serif"><strong><span style="color: black;">KPIs (Key
+Performance Indicators):&nbsp;</span></strong><span style="color:black">{!Event_Expense__c.What_are_KPIs__c}<o:p></o:p></span></font></p>
+
+<font face="Arial, sans-serif" style=""><u1:p></u1:p>
+
+</font><p class="MsoNormal" style="color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; orphans: 2; text-align: start; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-spacing: 0px;"><font face="Arial, sans-serif"><strong><span style="color: black;">Notes:</span></strong><span style="color:black">&nbsp;{!Event_Expense__c.Notes__c}<o:p></o:p></span></font></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; orphans: 2; text-align: start; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-spacing: 0px;"><span style="color:black"><font face="Arial, sans-serif"><a href="{!Event_Expense__c.Base_URL__c}"><b>Review submission:</b>&nbsp;{!Event_Expense__c.Event_Name__c}</a><o:p></o:p></font></span></p>
+
+<p class="MsoNormal" style="color: rgb(0, 0, 0);"><o:p><font face="Arial, sans-serif">&nbsp;</font></o:p></p><br><p style="font-size: 12pt; font-family: arial;"></p>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[<div style=""><br><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div></div>]]></td>
+</tr>
+</table>

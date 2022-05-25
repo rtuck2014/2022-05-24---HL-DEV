@@ -1,0 +1,25 @@
+<messaging:emailTemplate subject="DND Closed/Dead Engagement {!relatedTo.Name}"
+recipientType="User" 
+relatedToType="Engagement__c">
+
+    <messaging:htmlEmailBody >
+        <html>
+        <body>
+
+
+<font face="Arial" size="2">
+
+<p>The below Engagement Stage has been set to 'Closed' or 'Dead'.  Please review and remove from DND by clicking on DND On/Off button in Salesforce.  </p>
+ 
+<p>Engagement Name: {!relatedTo.Name}</p>
+<p>Engagement Number: {!relatedTo.Engagement_Number__c}</p>
+
+<p>Opportunity Number: {!relatedTo.Opportunity_Number__c}</p>
+
+<p>Link: <th><apex:outputlink value="{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+relatedTo.Opportunity__c}">{!LEFT($Api.Partner_Server_URL_140,FIND('.com',$Api.Partner_Server_URL_140)+4)+relatedTo.Opportunity__c}</apex:outputlink></th></p>
+</font>
+        </body>
+        </html>
+    </messaging:htmlEmailBody>
+
+</messaging:emailTemplate>

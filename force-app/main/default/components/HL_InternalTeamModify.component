@@ -1,0 +1,211 @@
+<apex:component controller="HL_InternalTeamController" allowDml="true" >
+    <apex:slds />
+    <apex:attribute name="SpecialStaffRole" assignTo="{!SpecialRole}" type="String" description="Used to specify a special/unconventional role to use for special cases (i.e. FAIRNESS)" required="false"></apex:attribute>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.js')}"></apex:includeScript>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.JQueryUI, 'jquery-ui-1.11.2/jquery-ui.min.css')}"></apex:stylesheet>
+    <apex:form Id="pgfrmId">
+        <apex:pageBlock title="{!if(ISBLANK(SpecialRole), EntityName + ' - HL Internal Team',if(SpecialRole=='Fairness', 'Additional Officers',SpecialRole))}" id="internalTeam">
+            <apex:pageMessages ></apex:pageMessages>
+           
+            <apex:outputPanel rendered="{!TeamRecords.size > 0}"  id="team"> 
+                <table style="width:100%" class="slds-table slds-table_cell-buffer slds-table_bordered" >
+                    <thead>
+                        <tr class="slds-line-height_reset"> 
+                            <th class="td-header" scope="col">
+                                Staff Member
+                            </th>
+                            <th class="td-header" scope="col">
+                                Office Allocation
+                            </th>
+                            <th class="td-header" scope="col">
+                                Title
+                            </th>
+                            <th class="td-header" scope="col">
+                                LOB
+                            </th>
+                            <apex:repeat var="header" value="{!StaffRolesCollection}">
+                                <th class="td-header" scope="col">
+                                    {!if(ISBLANK(SpecialRole),header.Display_Name__c,'Included')}
+                                </th>
+                            </apex:repeat>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat var="teamMember" value="{!TeamRecords}">
+                            <tr class="slds-hint-parent">
+                                <td class="slds-truncate">
+                                    {!teamMember.ContactRecord.Name} 
+                                </td>
+                                <td class="slds-truncate">
+                                    {!teamMember.OfficeAllocationText}
+                                </td>
+                                <td class="slds-truncate">
+                                    {!teamMember.ContactRecord.Title}
+                                    
+                                </td>
+                                <td class="slds-truncate">
+                                    {!teamMember.ContactRecord.Line_of_Business__c}
+                                </td>
+                                <apex:repeat var="ra" value="{!teamMember.RoleAssignments}">
+                                    <td class="slds-truncate">
+                                        
+                                        <apex:inputCheckbox title="{!teamMember.ContactRecord.Name +' - '+ teamMember.OfficeAllocationText + ' - ' + teamMember.ContactRecord.Title}" value="{!ra.Assigned}" rendered="{!ra.Assigned || ra.Allowed}" disabled="{!NOT(HasModifyAccess)}"/>
+                                    </td>
+                                </apex:repeat>
+                            </tr>
+                        </apex:repeat>
+                        
+                        <tr>
+                            <td class="td-header slds-truncate" colspan="4">
+                                Add New Team Member
+                            </td>
+                            <apex:repeat var="header" value="{!StaffRolesCollection}"  rendered="{!ISBLANK(SpecialRole)}">
+                                <td class="td-header center column-role slds-truncate" >
+                                    <apex:outputPanel rendered="{!ISBLANK(SpecialRole)}">
+                                        <apex:outputLabel value="{!header.Display_Name__c}"></apex:outputLabel>
+                                    </apex:outputPanel>
+                                </td>
+                            </apex:repeat>
+                        </tr>
+                        <tr >
+                            
+                            
+                            <td style="padding: 10px 0px 0px 5px;" colspan="4" class="slds-truncate">
+                                <div style="display:inline-block; padding-right: 10px; font-weight: bold;">
+                                    <apex:outputLabel rendered="{!HasModifyAccess}" for="inputTxtId">Staff:</apex:outputLabel>
+                                </div>
+                                <div style="display:inline-block">
+                                    <apex:inputText rendered="{!HasModifyAccess}" id="inputTxtId" value="{!SelectedStaffName}" html-placeholder="Begin Typing Name...">
+                                        <apex:inputHidden value="{!SelectedStaffId}" id="inputTxtId_lkid">
+                                        </apex:inputHidden>
+                                        <apex:commandButton id="btnLoadNewRoleSelections" action="{!RefreshNewStaffRoles}" reRender="team" status="loadingStatus" style="display:none;" oncomplete="DocumentReady()" />
+                                        <apex:outputPanel id="memberSelection">
+                                            <c:HL_AutoComplete objectname="Contact" sObjectFieldName="Name" customFilter="{!CustomFilter}"
+                                                               autocomplete_textbox="{!$Component.inputTxtId}" autocomplete_actionbutton="{!$Component.btnLoadNewRoleSelections}" bgColor="white" fontSize="11"/>
+                                        </apex:outputPanel>
+                                    </apex:inputText>
+                                </div>
+                            </td>
+                            
+                            <apex:repeat var="ra" value="{!StaffMemberToAdd.RoleAssignments}"  rendered="{!ISBLANK(SpecialRole)}">
+                                <td class="center column-role slds-truncate">
+                                    <apex:inputCheckbox value="{!ra.Assigned}" rendered="{!ISBLANK(SpecialRole) && ra.Allowed}" disabled="{!NOT(HasModifyAccess)}"/>
+                                </td>
+                            </apex:repeat>
+                            <apex:outputLabel styleClass="warning" value="*Note: An Initiator is Required" style="margin-top: 10px; display: inline-block;" rendered="{!InitiatorRequired}"></apex:outputLabel>
+                            <apex:actionStatus id="loadingStatus" startText="Loading..." stopText="" startStyle="font-weight: bold; font-size: 1.5em;">
+                                <apex:facet name="start" ><apex:outputPanel ><img src="/img/loading.gif" /><span>&nbsp;Loading...</span></apex:outputPanel></apex:facet>
+                            </apex:actionStatus>
+                            
+                            
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </apex:outputPanel>
+            <script>
+            function blockme() {
+                j$.blockUI({ css: {
+                    border: 'none',
+                    padding: '15px',
+                    backgroundColor: '#000',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .5,
+                    color: '#fff'
+                } }); 
+                
+            }
+            </script>
+            <style type="text/css">
+                .popupBackground{
+                background-color:black;
+                opacity: 0.20;
+                filter: alpha(opacity = 20);
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: 9998;
+                }
+                .custPopup{
+                background-color: white;
+                border-width: 2px;
+                border-style: solid;
+                z-index: 9999;
+                left: 60%;
+                padding:10px;
+                position: absolute;
+                width: 500px;
+                margin-left: -250px;
+                top:20%;
+                }
+                
+                
+                
+                
+            </style>
+            <script>
+            function ClosePopup(){
+                document.getElementById("PopupDivId").style.display = "none"; 
+            }
+            
+            </script>
+            <!-------------------------------------------------------Start -------------------------------------------------------------->
+            <div id="PopupDivId">
+                <apex:outputPanel id="tstpopup" rendered="{!showPopup}">
+                    <apex:outputPanel styleClass="popupBackground" layout="block" />
+                    <apex:outputPanel styleClass="custPopup" layout="block" >
+                        <center>
+                            <apex:pageMessage escape="false" severity="Warning" strength="3" summary="{!$Label.HL_InterTeamNewRoleErrorMessage}">
+                                <apex:repeat value="{!ListOfStaffWithError}" var="StaffName">
+                                    <li>{!StaffName}</li>
+                                </apex:repeat>
+                                <br/>
+                                <input class="btn" type="Button" onclick="ClosePopup();" Value="Back" />                             
+                            </apex:pageMessage>
+                        </center>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </div>
+            <!--------------------------------------------------------------------------------------------------------------------->
+            <apex:pageBlockButtons >
+                <apex:outputPanel id="panButtons">
+                    <apex:commandButton action="{!SaveTeamEdits}" value="{!if(ISBLANK(SpecialRole),'Save','Update Officers')}" status="loadingStatusTop" reRender="internalTeam, panButtons" oncomplete="DocumentReady();" rendered="{!HasModifyAccess}"/>
+                    <apex:commandButton action="{!BackToEntity}" value="Return To {!SUBSTITUTE(EntityType,'__c','')}" rendered="{!ShowReturn && NOT(InitiatorRequired)}"/>
+                    <apex:commandButton onclick="window.open('http://hlnet/SiteDirectory/saleslogix/Shared%20Documents/Saleslogix%20Staff%20Roles.htm')" 
+                                        value="Role Definitions"/>
+                    <apex:actionStatus id="loadingStatusTop" startText="Saving..." stopText="" startStyle="font-weight: bold; font-size: 1.5em;">
+                        <apex:facet name="start" ><apex:outputPanel ><img src="/img/loading.gif" /><span>&nbsp;Saving...</span></apex:outputPanel></apex:facet>
+                    </apex:actionStatus>
+                </apex:outputPanel>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    <style>
+        .td-header{background: #f2f3f3;border: 1px solid #ededed;border-width: 0 0 1px 1px;border-color: #e0e3e5;color: #000;font-size: .9em;font-weight: bold;padding: 5px 2px 4px 5px;}
+        .center {text-align:center;}
+        .empty-column-content {display: none;}
+        .column-role {width: 50px; white-space:nowrap;}
+        .highlight { background-color: yellow; }
+        .top {vertical-align: top;}
+    </style>
+    <script type="text/javascript">
+    var j$ = jQuery.noConflict();
+    j$(document).ready(function() {
+        DocumentReady();
+    });
+    function DocumentReady() {
+        j$(":checkbox").change(function(){j$(this).closest('td').toggleClass('highlight');});
+        j$('input, select').keypress(function(e){
+            if ( e.which == 13 ) // Enter key = keycode 13
+                return false;
+        });
+    }
+    </script>
+</apex:component>

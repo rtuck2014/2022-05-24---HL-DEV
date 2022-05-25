@@ -1,0 +1,76 @@
+<aura:component implements="force:appHostable" >
+    <aura:attribute name="selectedDate" type="Date" /> 
+    <aura:attribute name="sunday" type="Date" />
+    <aura:attribute name="monday" type="Date" />
+    <aura:attribute name="tuesday" type="Date" />
+    <aura:attribute name="wednesday" type="Date" />
+    <aura:attribute name="thursday" type="Date" />
+    <aura:attribute name="friday" type="Date" />
+    <aura:attribute name="saturday" type="Date" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:registerEvent name="dateSelectionEvent" type="c:DateSelectEvt"/>
+    <div class="selectedDate">
+        <ui:button label="" press="{!c.onPrevClick}" class="button-nav-left">
+                    	<span>&lt;&lt;</span>
+        </ui:button>
+    	<ui:outputDate value="{!v.selectedDate}"></ui:outputDate>
+        <ui:button label="" press="{!c.onNextClick}" class="button-nav-right">
+                    	<span>>></span>
+        </ui:button>
+    </div>
+    <div class="datePicker">
+        <ol class="weekNameContainer">
+        	<li class="datePickerItem">
+            	<ui:outputText value="SUN" click="{!c.onSundaySelect}" class="weekNameItem"></ui:outputText>
+            </li>
+            <li class="datePickerItem">
+                <ui:outputText value="MON" click="{!c.onMondaySelect}" class="weekNameItem"></ui:outputText>
+            </li>
+            <li class="datePickerItem">
+            	<ui:outputText value="TUE" click="{!c.onTuesdaySelect}" class="weekNameItem"></ui:outputText>
+            </li>
+            <li class="datePickerItem">
+            	<ui:outputText value="WED" click="{!c.onWednesdaySelect}" class="weekNameItem"></ui:outputText>
+            </li>
+            <li class="datePickerItem">
+            	<ui:outputText value="THU" click="{!c.onThursdaySelect}" class="weekNameItem"></ui:outputText>
+            </li>
+            <li class="datePickerItem">
+            	<ui:outputText value="FRI" click="{!c.onFridaySelect}" class="weekNameItem"></ui:outputText>
+            </li>
+            <li class="datePickerItem">       
+            	<ui:outputText value="SAT" click="{!c.onSaturdaySelect}" class="weekNameItem"></ui:outputText>
+            </li>
+        </ol>
+    	<ol class="weekContainer">
+        	<li class="datePickerItem" onclick="{!c.onSundaySelect}">
+                <ui:outputDate value="{!v.sunday}" format="DD" click="{!c.onSundaySelect}" class="weekDayItem"></ui:outputDate>
+                <aura:if isTrue="{!v.selectedDate == v.sunday}"><div class="highlightBar"></div></aura:if>
+            </li>
+            <li class="datePickerItem" onclick="{!c.onMondaySelect}">
+                <ui:outputDate value="{!v.monday}" format="DD" click="{!c.onMondaySelect}" class="weekDayItem"></ui:outputDate>
+                <aura:if isTrue="{!v.selectedDate == v.monday}"><div class="highlightBar"></div></aura:if>
+            </li>
+            <li class="datePickerItem" onclick="{!c.onTuesdaySelect}">
+            	<ui:outputDate value="{!v.tuesday}" format="DD" click="{!c.onTuesdaySelect}" class="weekDayItem"></ui:outputDate>
+                <aura:if isTrue="{!v.selectedDate == v.tuesday}"><div class="highlightBar"></div></aura:if>
+            </li>
+            <li class="datePickerItem" onclick="{!c.onWednesdaySelect}">
+            	<ui:outputDate value="{!v.wednesday}" format="DD" click="{!c.onWednesdaySelect}" class="weekDayItem"></ui:outputDate>
+                <aura:if isTrue="{!v.selectedDate == v.wednesday}"><div class="highlightBar"></div></aura:if>
+            </li>
+            <li class="datePickerItem" onclick="{!c.onThursdaySelect}">
+            	<ui:outputDate value="{!v.thursday}" format="DD" click="{!c.onThursdaySelect}" class="weekDayItem"></ui:outputDate>
+                <aura:if isTrue="{!v.selectedDate == v.thursday}"><div class="highlightBar"></div></aura:if> 
+            </li>
+            <li class="datePickerItem" onclick="{!c.onFridaySelect}">
+            	<ui:outputDate value="{!v.friday}" format="DD" click="{!c.onFridaySelect}" class="weekDayItem"></ui:outputDate>
+                <aura:if isTrue="{!v.selectedDate == v.friday}"><div class="highlightBar"></div></aura:if> 
+            </li>
+            <li class="datePickerItem" onclick="{!c.onSaturdaySelect}">       
+            	<ui:outputDate value="{!v.saturday}" format="DD" click="{!c.onSaturdaySelect}" class="weekDayItem"></ui:outputDate>
+                <aura:if isTrue="{!v.selectedDate == v.saturday}"><div class="highlightBar"></div></aura:if>
+            </li>
+        </ol>
+    </div>
+</aura:component>

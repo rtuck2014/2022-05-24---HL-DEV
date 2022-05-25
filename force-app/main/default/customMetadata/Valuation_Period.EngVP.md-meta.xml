@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>EngVP</label>
+    <protected>false</protected>
+    <values>
+        <field>Create_Record_Button_Name__c</field>
+        <value xsi:type="xsd:string">New Engagement Valuation Period</value>
+    </values>
+    <values>
+        <field>DefaultPageSizeForPositionList__c</field>
+        <value xsi:type="xsd:string">10</value>
+    </values>
+    <values>
+        <field>Default_Eng_CC_Page_Size__c</field>
+        <value xsi:type="xsd:double">10.0</value>
+    </values>
+    <values>
+        <field>Eng_CC_Page_size_Option__c</field>
+        <value xsi:type="xsd:string">10,20,50,100,200</value>
+    </values>
+    <values>
+        <field>Field_Set_Name__c</field>
+        <value xsi:type="xsd:string">VP_Fields</value>
+    </values>
+    <values>
+        <field>Import_Position_Default_Page_Size__c</field>
+        <value xsi:type="xsd:double">10.0</value>
+    </values>
+    <values>
+        <field>Import_Position_Default_VP_Page_Size__c</field>
+        <value xsi:type="xsd:double">20.0</value>
+    </values>
+    <values>
+        <field>JobTypeFieldId__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Main_Object_API_Name__c</field>
+        <value xsi:type="xsd:string">Eng_VP__c</value>
+    </values>
+    <values>
+        <field>Parent_Object_API_Name__c</field>
+        <value xsi:type="xsd:string">Engagement__c</value>
+    </values>
+    <values>
+        <field>Parent_Object_Field_Id__c</field>
+        <value xsi:type="xsd:string">00N63000000gSxA</value>
+    </values>
+    <values>
+        <field>Position_Page_Size_Options__c</field>
+        <value xsi:type="xsd:string">10,20,50,100,200</value>
+    </values>
+    <values>
+        <field>VP_Page_Size_Options__c</field>
+        <value xsi:type="xsd:string">10,20,50,100,200</value>
+    </values>
+</CustomMetadata>

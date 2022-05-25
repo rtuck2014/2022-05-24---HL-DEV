@@ -1,0 +1,67 @@
+<aura:component controller="HL_EmailController" extends="c:HL_LightningComponent">
+    <aura:attribute name="templateId" 
+                    type="String"
+                    description="Email Template Id"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="relatedId" 
+                    type="String"
+                    description="Related Record Id - For Mail Merge"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="emailTo" 
+                    type="String"
+                    description="To Email Address Recipient"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="emailToName" 
+                    type="String"
+                    description="To Email Address Recipient Name"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="emailCCs"
+                    type="Contact[]"
+                    description="Array of CC Contact Recipients"
+                    access="PUBLIC"></aura:attribute>
+    <aura:handler name="init" 
+                  value="{!this}" 
+                  action="{!c.doInit}"/>
+    <aura:registerEvent name="successEvent" 
+                        type="c:SaveSuccessEvt"/>
+    <div class="sendEmail" style="margin-left: 15px; margin-right: 15px;">
+        <div> 
+            <div>
+                <p>
+                    <h3><b>Send Email</b></h3>
+                </p>
+                <div>
+                    <p class="title">Send To <b>{!v.emailToName}</b></p>
+                    <div>
+                       <c:AutoComplete inputLabel="Send To Lookup" sObjectType="Contact" autocompleteEvent="{!c.handleToSelection}" subType="DistributionList"></c:AutoComplete>
+                    </div>
+                </div>
+                <div>
+                <h4>CC List</h4>
+                <aura:iteration var="cc" items="{!v.emailCCs}">
+                    <div>
+                        <ui:button press="{!c.onRemoveCCClick}" label="X" buttonTitle="{!cc.Id}" class="small-button"></ui:button>
+                        <span class="relatedItem">{!cc.Name} - {!cc.Title}</span>
+                    </div>
+                </aura:iteration>
+                </div>
+                <div>
+                    <c:AutoComplete inputLabel="CC Lookup" sObjectType="Contact" autocompleteEvent="{!c.handleCCSelection}" fields="Title, Email" subType="Employee"></c:AutoComplete>
+                </div>
+                <div>
+                    <p class="title">Subject</p>
+                    <ui:inputText aura:id="subject" required="true"></ui:inputText>
+                </div>
+                <div>
+                	<p class="title">Email Body</p>
+                    <ui:inputRichText aura:id="body"></ui:inputRichText>
+                </div>
+                <div>
+                    <p>
+                    	 <ui:button aura:id="btnSend" label="Send Email" press="{!c.sendEmail}" />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

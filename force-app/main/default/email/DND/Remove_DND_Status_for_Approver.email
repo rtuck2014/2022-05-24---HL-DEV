@@ -1,0 +1,7 @@
+To approve DND Status for {!Opportunity__c.Name}, please follow the Approval Page link.
+
+Submitter: {!Approval_Requesting_User.Name} 
+Approval Page: {!ApprovalRequest.Internal_URL} 
+
+Opportunity Name: {!Opportunity__c.Name} 
+Opportunity Direct Link: {!Opportunity__c.Link}

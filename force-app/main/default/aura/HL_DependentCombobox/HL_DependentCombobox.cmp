@@ -1,0 +1,74 @@
+<aura:component access="global" description="A drop-in replacement for lightning:combobox that adjusts its list of available options depending on a parent/related lightning:combobox.">
+    <aura:attribute name="parentOptions" type="Object[]" required="true" access="global" description="The list of options that belongs to the parent lightning:combobox where each entry also contains a key pointing to a sub-list of options for this component." />
+    <aura:attribute name="parentValue" type="String" required="true" access="global" description="Typically a bound attribute that points to the parent lightning:combobox value so this component is updated whenever the parent is updated." />
+    <aura:attribute name="dependentOptionsKey" type="String" default="dependentOptions" access="global" description="The name of the key in each parentOptions entry that points to a sub-list of options for use in this component." />
+    <aura:attribute name="noOptionsPlaceholder" type="String" access="global" description="The placeholder to display when no options are available (meaning the parent hasn't been selected yet)." />
+
+    <!-- these are all standard attributes from lightning:combobox and are passed through -->
+    <aura:attribute name="accessKey" type="String" access="global" description="Specifies a shortcut key to activate or focus an element." />
+    <aura:attribute name="class" type="String" access="global" description="A CSS class for the outer element, in addition to the component's base classes." />
+    <aura:attribute name="disabled" type="Boolean" default="false" access="global" description="Specifies that an input element should be disabled. This value defaults to false." />
+    <aura:attribute name="dropdownAlignment" type="String" default="left" access="global" description="Specifies where the drop-down list is aligned with or anchored to the selection field. By default the list is aligned with the selection field at the top so the list opens down. Use bottom-left to make the selection field display at the bottom so the list opens above it. Use auto to let the component determine where to open the list based on space available." />
+    <aura:attribute name="fieldLevelHelp" type="String" access="global" description="Help text detailing the purpose and function of the combobox." />
+    <aura:attribute name="label" type="String" required="true" access="global" description="Text label for the combobox." />
+    <aura:attribute name="messageWhenValueMissing" type="String" access="global" description="Error message to be displayed when the value is missing and input is required." />
+    <aura:attribute name="name" type="String" access="global" description="Specifies the name of an input element." />
+    <aura:attribute name="onblur" type="Aura.Action" access="global" description="The action triggered when the element releases focus." />
+    <aura:attribute name="onchange" type="Aura.Action" access="global" description="The action triggered when a value attribute changes." />
+    <aura:attribute name="onfocus" type="Aura.Action" access="global" description="The action triggered when the element receives focus." />
+    <aura:attribute name="placeholder" type="String" default="Select an Option" access="global" description="Text that is displayed before an option is selected, to prompt the user to select an option." />
+    <aura:attribute name="readonly" type="Boolean" default="false" access="global" description="Specifies that an input field is read-only. This value defaults to false." />
+    <aura:attribute name="required" type="Boolean" default="false" access="global" description="Specifies that an input field must be filled out before submitting the form. This value defaults to false." />
+    <aura:attribute name="spinnerActive" type="Boolean" access="global" description="Displays a spinner to indicate activity in the dropdown list. This value defaults to false." />
+    <aura:attribute name="tabIndex" type="Integer" access="global" description="Specifies the tab order of an element when the Tab key is used for navigating. The tabindex value can be set to 0 or -1. The default is 0, which means that the component is focusable and participates in sequential keyboard navigation. -1 means that the component is focusable but does not participate in keyboard navigation." />
+    <aura:attribute name="title" type="String" access="global" description="Displays tooltip text when the mouse moves over the element." />
+    <aura:attribute name="validity" type="Object" access="global" description="Represents the validity states that an element can be in, with respect to constraint validation." />
+    <aura:attribute name="value" type="Object" access="global" description="Specifies the value of an input element." />
+    <aura:attribute name="variant" type="String" default="standard" access="global" description="The variant changes the appearance of an input field. Accepted variants include standard, label-inline, label-hidden, and label-stacked. This value defaults to standard, which displays the label above the field. Use label-hidden to hide the label but make it available to assistive technology. Use label-inline to horizontally align the label and input field. Use label-stacked to place the label above the input field." />
+
+    <!-- the options attribute is set to private because you should be setting parentOptions and letting the component handle the rest -->
+    <aura:attribute name="options" type="Object[]" access="private" description="A list of options that are available for selection. Each option has the following attributes: label and value." />
+    <aura:attribute name="displayPlaceholder" type="String" access="private" description="The placeholder that is actually displayed to the user - either placeholder or noOptionsPlaceholder, depending on which is appropriate." />
+
+    <aura:handler name="init" value="{!this}" action="{!c.updateOptions}" />
+    <aura:handler name="change" value="{!v.parentOptions}" action="{!c.updateOptions}" />
+    <aura:handler name="change" value="{!v.parentValue}" action="{!c.updateOptions}" />
+    <aura:handler name="change" value="{!v.noOptionsPlaceholder}" action="{!c.updateOptions}" />
+    <aura:handler name="change" value="{!v.placeholder}" action="{!c.updateOptions}" />
+
+    <aura:method name="checkValidity" access="global" description="Returns the valid property value (Boolean) on the ValidityState object to indicate whether the combobox has any validity errors." />
+    <aura:method name="reportValidity" access="global" description="Display error messages if the combobox is invalid." />
+
+    <aura:method name="setCustomValidity" access="global" description="Sets a custom error message to be displayed when the combobox value is submitted.">
+        <aura:attribute name="message" type="String" />
+    </aura:method>
+
+    <aura:method name="showHelpMessageIfInvalid" access="global" description="Displays error messages. The combobox is invalid if it fails at least one constraint validation and when checkValidity() returns false." />
+
+    <lightning:combobox
+        aura:id="theCombobox"
+        accessKey="{!v.accessKey}"
+        class="{!v.class}"
+        disabled="{!v.disabled}"
+        dropdownAlignment="{!v.dropdownAlignment}"
+        fieldLevelHelp="{!v.fieldLevelHelp}"
+        label="{!v.label}"
+        messageWhenValueMissing="{!v.messageWhenValueMissing}"
+        name="{!v.name}"
+        onblur="{!v.onblur}"
+        onchange="{!v.onchange}"
+        onfocus="{!v.onfocus}"
+        options="{!v.options}"
+        placeholder="{!v.displayPlaceholder}"
+        readonly="{!v.readonly}"
+        required="{!v.required}"
+        spinnerActive="{!v.spinnerActive}"
+        tabIndex="{!v.tabIndex}"
+        title="{!v.title}"
+        validity="{!v.validity}"
+        value="{!v.value}"
+        variant="{!v.variant}">
+
+        {!v.body}
+    </lightning:combobox>
+</aura:component>

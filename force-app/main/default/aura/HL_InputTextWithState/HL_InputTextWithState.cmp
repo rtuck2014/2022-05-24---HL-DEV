@@ -1,0 +1,116 @@
+<aura:component extends="c:HL_UIElement" access="global">
+    <aura:attribute name="label" type="String" description="Text label for the input." />
+    <aura:attribute name="value" type="String" description="Specifies the value of an input element." />
+    <aura:attribute name="required" type="Boolean" default="false" description="Specifies that an input field must be filled out before submitting the form. This value defaults to false." />
+    <aura:attribute name="pattern" type="String" description="Specifies the regular expression that the input's value is checked against. Use this attribute with email, password, search, tel, text, and url input types only." />
+    <aura:attribute name="variant" type="String" description="The variant changes the appearance of an input field. Accepted variants include standard, label-inline, label-hidden, and label-stacked. This value defaults to standard, which displays the label above the field. Use label-hidden to hide the label but make it available to assistive technology. Use label-inline to horizontally align the label and input field. Use label-stacked to place the label above the input field." />
+    <aura:attribute name="fieldLevelHelp" type="String" description="Help text detailing the purpose and function of the input. This attribute isn't supported for file, radio, toggle, and checkbox-button types." />
+
+    <aura:attribute name="isEditable" type="Boolean" description="Indicates whether the text input is editable (true) or read only (false)." />
+    <aura:attribute name="isRecordDetail" type="Boolean" default="true" description="Style as record detail?" />
+    <aura:attribute name="hasLookup" type="Boolean" default="false" description="Style with a lookup?" />
+    <aura:attribute name="lookupAction" type="Aura.Action" description="Action to call on lookup." />
+    <aura:attribute name="lookupTitle" type="String" description="Title of the lookup." />
+    <aura:attribute name="inputClass" type="String" description="A CSS class for the outer element, in addition to the component's base classes.  Used when the component is in editing mode." />
+    <aura:attribute name="outputClass" type="String" description="A CSS class for the outer element, in addition to the component's base classes.  Used when the component is in read-only mode." />
+    <aura:attribute name="validity" type="Object" description="Represents the validity states that an element can be in, with respect to constraint validation."
+        access="global" />
+
+    <aura:attribute name="isTextarea" type="Boolean" default="false" />
+    <aura:attribute name="useFormStyling" type="Boolean" default="false" />
+    <aura:attribute name="italics" type="Boolean" default="false" />
+    <aura:attribute name="fieldType" type="String" default="String" />
+
+    <aura:attribute name="previousValue" type="String" description="The previous value of the text input, before the user's most recent change." />
+
+    <aura:method name="showHelpMessageIfInvalid" action="{!c.showHelpMessageIfInvalid}" description="Displays error messages. The text input is invalid if it fails at least one constraint validation and when checkValidity() returns false." 
+        access="global" />
+
+    <aura:method name="setCustomValidity" action="{!c.setCustomValidity}" description="Sets a custom error message to be displayed when the text input value is submitted." >
+        <aura:attribute name="message" type="String" description="The string that describes the error. If message is an empty string, the error message is reset." />
+    </aura:method>
+
+    <aura:attribute name="state" type="String" access="global" description="The current state machine state of the text input." />
+
+    <aura:attribute name="defaultIsVisible" type="Boolean" default="true" access="global" description="Indicates whether the text input defaults to visible assuming the current state is not listed in visibleStates or hiddenStates." />
+    <aura:attribute name="defaultIsEnabled" type="Boolean" default="true" access="global" description="Indicates whether the text input defaults to enabled assuming the current state is not listed in enabledStates or disabledStates." />
+    <aura:attribute name="defaultIsEditing" type="Boolean" default="true" access="global" description="Indicates whether the text input defaults to editing assuming the current state is not listed in editingStates or readOnlyStates." />
+
+    <aura:attribute name="visibleStates" type="String" access="global" description="A comma-separated list of state names for which the text input should be visible." />
+    <aura:attribute name="hiddenStates" type="String" access="global" description="A comma-separated list of state names for which the text input should be hidden." />
+    <aura:attribute name="enabledStates" type="String" access="global" description="A comma-separated list of state names for which the text input should be enabled." />
+    <aura:attribute name="disabledStates" type="String" access="global" description="A comma-separated list of state names for which the text input should be disabled." />
+    <aura:attribute name="editingStates" type="String" access="global" description="A comma-separated list of state names for which the text input should be editing." />
+    <aura:attribute name="readOnlyStates" type="String" access="global" description="A comma-separated list of state names for which the text input should be read only." />
+
+    <aura:attribute name="forceVisible" type="Boolean" default="false" access="global" description="Indicates that the text input should be forced to visible, regardless of current state.  Use sparingly." />
+    <aura:attribute name="forceHidden" type="Boolean" default="false" access="global" description="Indicates that the text input should be forced to hidden, regardless of current state.  Use sparingly." />
+    <aura:attribute name="forceEnabled" type="Boolean" default="false" access="global" description="Indicates that the text input should be forced to enabled, regardless of current state.  Use sparingly." />
+    <aura:attribute name="forceDisabled" type="Boolean" default="false" access="global" description="Indicates that the text input should be forced to disabled, regardless of current state.  Use sparingly." />
+    <aura:attribute name="forceEditing" type="Boolean" default="false" access="global" description="Indicates that the text input should be forced to editing, regardless of current state.  Use sparingly." />
+    <aura:attribute name="forceReadOnly" type="Boolean" default="false" access="global" description="Indicates that the text input should be forced to read only, regardless of current state.  Use sparingly." />
+
+    <aura:attribute name="isVisible" type="Boolean" default="true" access="private" description="Indicates whether the text input should be visible." />
+    <aura:attribute name="isEnabled" type="Boolean" default="true" access="private" description="Indicates whether the text input should be enabled." />
+    <aura:attribute name="isEditing" type="Boolean" default="true" access="private" description="Indicates whether the text input should be editing (true) or read only (false)."/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.state}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.defaultIsVisible}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.defaultIsEnabled}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.defaultIsEditing}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.visibleStates}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.hiddenStates}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.enabledStates}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.disabledStates}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.editingStates}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.readOnlyStates}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.forceVisible}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.forceHidden}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.forceEnabled}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.forceDisabled}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.forceEditing}" action="{!c.calculateState}" />
+    <aura:handler name="change" value="{!v.forceReadOnly}" action="{!c.calculateState}" />
+
+    <aura:handler name="change" value="{!v.isEnabled}" action="{!c.setEnabled}" />
+    <aura:handler name="change" value="{!v.isEditing}" action="{!c.setEditing}" />
+
+    <aura:registerEvent name="textChangeEvent" type="c:HL_InputTextChangeEvent" description="Event fired onblur, when text has changed." />
+
+    <aura:if isTrue="{!v.isVisible}">
+        <aura:if isTrue="{!v.isEditing}">
+            <div style="display: flex;">
+                <aura:if isTrue="{!!v.isTextarea}">
+                    <lightning:input aura:id="theInput" disabled="{!!v.isEnabled}" type="text" label="{!v.label}" value="{!v.value}" 
+                        required="{!v.required}" pattern="{!v.pattern}" variant="{!v.variant}" fieldLevelHelp="{!v.fieldLevelHelp}"
+                        class="{!v.inputClass}" validity="{!v.validity}" style="flex: 1;" onblur="{!c.checkChanged}" />
+
+                    <aura:set attribute="else">
+                        <lightning:textarea aura:id="theInput" disabled="{!!v.isEnabled}" label="{!v.label}" value="{!v.value}" 
+                        required="{!v.required}" pattern="{!v.pattern}" variant="{!v.variant}" fieldLevelHelp="{!v.fieldLevelHelp}"
+                        class="{!v.inputClass}" validity="{!v.validity}" style="flex: 1;" onblur="{!c.checkChanged}" />
+                    </aura:set>
+                </aura:if>
+
+                <aura:if isTrue="{!v.hasLookup}">
+                    <div style="margin-top: 26px;">
+                        <lightning:buttonIcon iconName="utility:search" size="medium" variant="bare" class="slds-m-left_x-small"
+                            alternativeText="{!v.lookupTitle}" title="{!v.lookupTitle}" onclick="{!v.lookupAction}" />
+                    </div>
+                </aura:if>
+            </div>
+
+            <aura:set attribute="else">
+                <aura:if isTrue="{!v.useFormStyling}">
+                    <c:HL_OutputField label="{!v.label}" value="{!v.value}" italics="{!v.italics}" fieldType="{!v.fieldType}" />
+
+                    <aura:set attribute="else">
+                        <ui:outputText value="{!v.value}" class="{!v.outputClass}" />
+                    </aura:set>
+                </aura:if>
+            </aura:set>
+        </aura:if>
+    </aura:if>
+
+    {!v.body}
+</aura:component>

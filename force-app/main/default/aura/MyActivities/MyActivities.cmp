@@ -1,0 +1,80 @@
+<aura:component implements="force:appHostable" controller="HL_ActivityListController" extends="c:HL_LightningComponent">
+    <aura:attribute name="isAdding" 
+                    type="Boolean" 
+                    default="false"
+                    description="Indicates if the Add Activity Component is Displayed"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="isViewing" 
+                    type="Boolean" 
+                    default="false"
+                    description="Indicates if the View Activity Component is Displayed"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="myActivities" 
+                    type="Event[]"
+                    description="Array of Event Results"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="selectedDate" 
+                    type="Date" 
+                    default="2015-01-01"
+                    description="Currently Selected Date"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectedActivityId" 
+                    type="String" 
+                    default=""
+                    description="Currently Selected Activity Id"
+                    access="PRIVATE"></aura:attribute>
+    <aura:handler name="init" 
+                  value="{!this}" 
+                  action="{!c.doInit}"></aura:handler>  
+    <aura:handler event="aura:waiting" 
+                  action="{!c.showSpinner}"></aura:handler>
+    <aura:handler event="aura:doneWaiting" 
+                  action="{!c.hideSpinner}"></aura:handler>
+    <div aura:id="myActivities" class="myActivities">
+    <aura:if isTrue="{!(!(v.isAdding || v.isViewing))}">
+    <div aura:id="activitiesMain" class="myActivities">
+    <c:FlexDatePicker dateSelectionEvent="{!c.onSelectedDateChanged}"></c:FlexDatePicker>
+    			<div>
+                	<ui:button press="{!c.navigateToAddActivity}" label="Add Activity" class="button-add"></ui:button>
+                </div>
+                <div class="slds-text-heading--medium" style="margin-left: 15px; margin-bottom: 10px;">
+                    <table><tr><td><strong>My Activities</strong></td><td><ui:spinner aura:id="spinner"></ui:spinner></td></tr></table>
+                </div>
+                <div style="margin-left: 15px; margin-right: 15px;" class="slds-scrollable--y activitylist">
+                <ul class="slds-list--vertical slds-has-dividers--bottom-space slds-has-selection" style="background-color: white; border-radius: 5px;">
+                    <aura:iteration items="{!v.myActivities}" var="a">
+                        <li class="slds-list__item">
+                            <div class="slds-tile slds-tile--board">
+                                <div class="slds-grid">
+                                    <div class="slds-col" data-key="{!a.Id}" onclick="{!c.selectActivity}">
+                                		<p class="slds-tile__title">
+                                            <strong><ui:outputDateTime value="{!a.StartDateTime}" format="yyyy-MM-dd hh:mm a" /> - {!a.Type}</strong>
+                                        </p>
+                                      
+                                <p><strong>{!a.Subject}</strong></p>
+                                <p>{!a.Primary_External_Contact__c}</p>
+                                <p>{!a.Primary_External_Contact_Company__c}</p>
+                                <aura:if isTrue="{!a.Type == 'Follow-up'}"><p>{!a.Is_Complete__c ? 'COMPLETE' : 'PENDING'}</p></aura:if>
+                            </div>
+                                </div>
+                            </div>
+                        </li>
+                    </aura:iteration>
+    			</ul>
+             </div>
+        </div>
+        <div>
+            *Limited to Recent 50
+        </div>
+    </aura:if>
+  	<aura:if isTrue="{!v.isAdding}">
+        <div>
+        	<ui:button label="Cancel Adding Activity" press="{!c.cancelAddActivity}" class="button-cancel"></ui:button>
+        </div>
+    	<c:AddActivity today="{!v.selectedDate}" saveSuccessEvent="{!c.activityAdded}"></c:AddActivity>
+    </aura:if>
+    <aura:if isTrue="{!v.isViewing}">
+    	<c:ActivityDetails activityId="{!v.selectedActivityId}"></c:ActivityDetails>
+    </aura:if>
+    </div>
+</aura:component>

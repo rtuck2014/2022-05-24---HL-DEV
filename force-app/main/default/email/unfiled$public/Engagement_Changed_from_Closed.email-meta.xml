@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email template for Engagements when stage changed from Closed</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Engagement Changed from Closed</name>
+    <style>none</style>
+    <subject>Engagement Stage Changed From Closed</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

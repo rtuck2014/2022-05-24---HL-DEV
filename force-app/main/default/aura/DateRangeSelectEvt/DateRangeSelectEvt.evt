@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Fired for Date Range Selection Events">
+    <aura:attribute name="startDate" type="Date"/>
+    <aura:attribute name="endDate" type="Date"/>
+</aura:event>

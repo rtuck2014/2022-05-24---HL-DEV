@@ -1,0 +1,68 @@
+<aura:component controller="HL_TimeRecordController">
+    <ltng:require styles="/resource/SLDS0120/assets/styles/salesforce-lightning-design-system-ltng.min.css" />
+    <aura:attribute name="category" 
+                    type="String" 
+                    default="Litigation"
+                    description="Time Record Category"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordPeriodStaffMember" 
+                    type="Time_Record_Period_Staff_Member__c"
+                    description="Time Record Period Staff Member"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="startDate"
+                    type="Date"
+                    description="Start Date for Records Displayed"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="endDate" 
+                    type="Date"
+                    description="End Date for Records Displayed"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordPeriod" 
+                    type="Time_Record_Period__c"
+                    description="Time Record Period Record"
+                    access="PUBLIC"></aura:attribute>
+	<aura:attribute name="timeRecords" 
+                    type="Time_Record__c[]"
+                    description="Existing Time Record Records to Display"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="activityTypes" 
+                    type="String[]"
+                    description="Activity Type Selections"
+                    access="PUBLIC"></aura:attribute>
+    <aura:handler name="init" 
+                  value="{!this}" 
+                  action="{!c.doInit}"></aura:handler> 
+    <div class="slds">
+        <ul class="slds-list--vertical slds-has-cards">
+            <aura:iteration items="{!v.timeRecords}" var="tr">
+                <div class="slds-tile slds-tile--board">
+                    <p class="slds-tile__title slds-truncate">{!tr.Activity_Date__c} - {!tr.Project_Name__c}</p>
+                    <p>
+                        <ui:inputSelect class="{!tr.Id}" aura:id="activityTypePicker" change="{!c.onActivityTypeChanged}">
+                            <aura:iteration items="{!v.activityTypes}" var="at">
+                                <ui:inputSelectOption text="{!at}" value="{!tr.Activity_Type__c == at}" />
+                            </aura:iteration>
+                        </ui:inputSelect>
+                    </p>   
+                    <p>Hours: 
+                          <ui:inputNumber aura:id="hoursWorked" class="{!tr.Id}" value="{!tr.Hours_Worked__c}" required="true" change="{!c.onHoursWorkedChanged}" size="6"></ui:inputNumber>   
+                    </p> 
+                    <aura:if isTrue="{!not(empty(tr.Comments__c))}">
+                        <p>Comments:
+                           <br /><ui:inputTextArea aura:id="comments" value="{!tr.Comments__c}" required="true" class="{!tr.Id}" rows="3" change="{!c.onCommentsChanged}"></ui:inputTextArea>      
+                        </p>
+                    </aura:if>
+                </div>
+                <hr />
+            </aura:iteration>
+        </ul>
+        <aura:if isTrue="{!v.timeRecords.length == 0}">
+            No Data to Display
+        </aura:if>
+       
+        <div class="slds-form--stacked">
+            <c:AddTimeRecordRow timeRecordPeriodStaffMember="{!v.timeRecordPeriodStaffMember}" saveSuccessEvent="{!c.onTimeRecordAdded}" gridClass="slds-grid--vertical"></c:AddTimeRecordRow>
+        </div>
+       
+    </div>
+</aura:component>

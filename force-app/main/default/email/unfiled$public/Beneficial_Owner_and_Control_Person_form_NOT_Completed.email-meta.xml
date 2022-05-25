@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Compliance email notification that Beneficial Owner and Control Person form is not Filled out</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>HL_BlankLetterHead</letterhead>
+    <name>Beneficial Owner and Control Person form NOT Completed</name>
+    <style>formalLetter</style>
+    <subject>Beneficial Owner and Control Person form - {!Opportunity__c.Opportunity_Number__c}</subject>
+    <textOnly>A new opportunity has been created by {!User.Name} for
+
+Opportunity Name / Number: {!Opportunity__c.Name} / {!Opportunity__c.Opportunity_Number__c}
+Client / Client Ownership: {!Opportunity__c.Client_MN_Name__c} / {!Opportunity__c.00Ni000000FnLTV}
+Subject / Subject Ownership: {!Opportunity__c.Subject_MN_Name__c} / {!Opportunity__c.00Ni000000DwTd0}
+
+HL Entity: {!Opportunity__c.HL_Entity__c}
+
+Please do your due diligence to confirm whether or not the completion of a Beneficial Owner(s) and Control Person form is needed.
+
+Link to Opportunity: {!Opportunity__c.Link}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

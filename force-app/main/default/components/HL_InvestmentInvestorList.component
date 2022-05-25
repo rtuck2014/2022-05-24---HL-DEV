@@ -1,0 +1,181 @@
+<apex:component controller="HL_InvestmentsListController">
+    <apex:attribute id="DisplayType" name="DisplayType" type="String" description="The Display Type: Investments or Investors" assignTo="{!InvestmentType}"></apex:attribute>
+    <apex:form >
+        <apex:pageBlock id="investments_list">
+            <apex:actionStatus id="loadingStatus" startText="Loading..." stopText="" startStyle="font-weight: bold; font-size: 1.5em;"><apex:facet name="start" >
+                <apex:outputPanel ><img src="/img/loading.gif" /><span>&nbsp;Loading...</span></apex:outputPanel>
+                </apex:facet></apex:actionStatus>
+            <apex:pageBlockButtons location="Top">
+                <div style="float: left; width: 110px">
+                    <h2>
+                        <apex:outputText value="{!FilterText} {!DisplayType}" styleClass="mainTitle" style="font-size:1.1em;"></apex:outputText>
+                    </h2>
+                </div>
+                <div style="text-align: center; padding-right: 110px;">
+                    <apex:outputLink value="/a0E/e?retURL={!AccountId}&{!FI.Investment_Sponsor__c}={!CapIQCompanyName}&{!FI.Investment_Sponsor__c}_lkid={!CapIQCompanyID}" styleClass="btn" target="_parent" style="text-decoration:none;padding:4px;" rendered="{!InvestmentType == 'Investments' && !ISBLANK(CapIQCompanyID)}">New Investment</apex:outputLink>
+                    <apex:outputLink value="/a0E/e?retURL={!AccountId}&{!FI.Investment_Portfolio__c}={!CapIQCompanyName}&{!FI.Investment_Portfolio__c}_lkid={!CapIQCompanyID}" styleClass="btn" target="_parent" style="text-decoration:none;padding:4px;" rendered="{!InvestmentType == 'Investors' && !ISBLANK(CapIQCompanyID)}" >New Investor</apex:outputLink>
+                    <apex:commandButton action="{!FilterByCurrentInvestments}" reRender="investments_list" value="Current {!DisplayType}" status="loadingStatus"></apex:commandButton>
+                    <apex:commandButton action="{!FilterByPriorInvestments}" reRender="investments_list" value="Prior {!DisplayType}" status="loadingStatus"></apex:commandButton>
+                    <apex:commandButton action="{!FilterByAllInvestments}" reRender="investments_list" value="All {!DisplayType}" status="loadingStatus"></apex:commandButton>
+
+                </div>
+            </apex:pageBlockButtons>
+            <apex:outputPanel layout="block" style="overflow:auto; width:100%; max-height: 250px;">
+                <apex:pageBlockTable value="{! investments}" var="i" rendered="{!(investments.size != 0)}">
+                    <apex:column style="width: 30px;">
+                        <table>
+                            <tr>
+                                <td>
+                                    <apex:outputLink value="{!URLFOR($Action.Investment__c.View, i.Id,[retURL=AccountId])}" target="_parent">View</apex:outputLink>
+                                </td>
+                                <td>
+                                    <apex:outputLink value="{!URLFOR($Action.Investment__c.Delete, i.Id,[retURL=AccountId])}" target="_parent" onClick="return confirmDelete()">Del</apex:outputLink>
+                                </td>
+                            </tr>
+                        </table>
+                    </apex:column>
+                    <apex:column rendered="{!InvestmentType == 'Investors'}">
+                        <apex:outputLink value="/{!i.Sponsor_CapIQ_Company__r.Id}" target="_blank">{!i.Sponsor_CapIQ_Company__r.Name}</apex:outputLink>
+                        <apex:facet name="header">
+                            <apex:commandLink action="{! SortBySponsor}" reRender="investments_list" status="loadingStatus">
+                                <apex:outputText value="CapIQ Sponsor Company"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Sponsor_CapIQ_Company__r.Name' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Sponsor_CapIQ_Company__r.Name' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{! i.Related_Fund__r.Name }" rendered="{!InvestmentType == 'Investors'}">
+                        <apex:facet name="header">
+                            <apex:commandLink action="{! SortByRelatedFund}" reRender="investments_list" status="loadingStatus">
+                                <apex:outputText value="Minority Investor"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Related_Fund__r.Name' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Related_Fund__r.Name' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column rendered="{!InvestmentType == 'Investments'}">
+                        <apex:outputLink value="/{!i.Portfolio_CapIQ_Company__r.Id}" target="_blank">{!i.Portfolio_CapIQ_Company__r.Name}</apex:outputLink>
+                        <apex:facet name="header">
+                            <apex:commandLink action="{! SortByPortfolioCompany}" reRender="investments_list" status="loadingStatus">
+                                <apex:outputText value="{!$ObjectType.Investment__c.Fields.Portfolio_CapIQ_Company__c.Label}"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Portfolio_CapIQ_Company__r.Name' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Portfolio_CapIQ_Company__r.Name' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{! i.HL_Industry_LK__c}" rendered="{!InvestmentType == 'Investments'}">
+                        <apex:facet name="header">
+                            <apex:commandLink action="{! SortByIndustry}" reRender="investments_list" status="loadingStatus">
+                                <apex:outputText value="Industry Sector"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'HL_Industry_LK__r.Industry_Sector__c' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'HL_Industry_LK__r.Industry_Sector__c' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{!i.Revenue_HL__c}" rendered="{!InvestmentType == 'Investments' && i.Revenue_HL__c <> null}">
+                        <apex:facet name="header">
+                            <apex:outputLabel value="LTM Rev (mm)"></apex:outputLabel>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{!i.Revenue_CapIQ__c}" rendered="{!InvestmentType == 'Investments' && i.Revenue_HL__c == null}">
+                        <apex:facet name="header">
+                            <apex:outputLabel value="LTM Rev (mm)"></apex:outputLabel>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{!i.EBITDA_HL__c}" rendered="{!InvestmentType == 'Investments' && i.EBITDA_HL__c <> null}">
+                        <apex:facet name="header">
+                            <apex:outputLabel value="LTM EBITDA (mm)"></apex:outputLabel>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{!i.EBITDA_CapIQ__c}" rendered="{!InvestmentType == 'Investments' && i.EBITDA_HL__c == null}">
+                        <apex:facet name="header">
+                            <apex:outputLabel value="LTM EBITDA (mm)"></apex:outputLabel>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{! i.Investment_Date__c }">
+                        <apex:facet name="header">
+                            <apex:commandLink action="{! SortByInvestmentDate}" reRender="investments_list" status="loadingStatus">
+                                <apex:outputText value="{!$ObjectType.Investment__c.Fields.Investment_Date__c.Label}"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Investment_Date__c' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Investment_Date__c' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{! i.Date_Sold__c }" rendered="{!InvestmentType == 'Investments' && FilterText == 'Prior'}">
+                        <apex:facet name="header">
+                            <apex:commandLink action="{! SortByDateSold}" reRender="investments_list" status="loadingStatus">
+                                <apex:outputText value="{!$ObjectType.Investment__c.Fields.Date_Sold__c.Label}"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Date_Sold__c' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Date_Sold__c' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{! i.Amount_of_Investment__c }">
+                        <apex:facet name="header">
+                            <apex:commandLink action="{! SortByAmountOfInvestment}" reRender="investments_list" status="loadingStatus">
+                                <apex:outputText value="{!$ObjectType.Investment__c.Fields.Amount_of_Investment__c.Label}"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Amount_of_Investment__c' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Amount_of_Investment__c' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{! i.Related_Fund__r.Name }" rendered="{!InvestmentType == 'Investments'}">
+                        <apex:facet name="header">
+                            <apex:commandLink action="{! SortByRelatedFund}" reRender="investments_list" status="loadingStatus">
+                                <apex:outputText value="{!$ObjectType.Investment__c.Fields.Related_Fund__c.Label}"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Related_Fund__r.Name' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Related_Fund__r.Name' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{! i.Status__c }">
+                        <apex:facet name="header">
+                            <apex:commandLink action="{! SortByStatus}" reRender="investments_list" status="loadingStatus">
+                                <apex:outputText value="{!$ObjectType.Investment__c.Fields.Status__c.Label}"></apex:outputText>
+                                <apex:image alt="Asc" url="{!URLFOR($Resource.HL_Images, 'SortAsc.png')}" height="7px" rendered="{!SortField == 'Status__c' && SortDirection == 'ASC'}"/>
+                                <apex:image alt="Desc" url="{!URLFOR($Resource.HL_Images, 'SortDesc.png')}" height="7px" rendered="{!SortField == 'Status__c' && SortDirection <> 'ASC'}"/>
+                            </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                    <apex:column value="{! i.Description__c }" rendered="{!InvestmentType == 'Investors'}">
+                        <apex:facet name="header">
+                            <apex:outputText value="{!$ObjectType.Investment__c.Fields.Description__c.Label}"></apex:outputText>
+                        </apex:facet>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:outputPanel>
+            <apex:outputText value="No records to display" rendered="{!(investments.size == 0)}"></apex:outputText>
+            <table style="width: 100%" >
+                <tr>
+                    <td style="width: 40%">
+                        Page: <apex:outputText value="{!setCon.PageNumber} of {! if(CEILING(setCon.ResultSize/setCon.PageSize) > 0,CEILING(setCon.ResultSize/setCon.PageSize),1) }"></apex:outputText>
+                    </td>
+                    <td align="center">
+                        <apex:commandLink action="{!setCon.Previous}" value="<< Previous" rendered="{! setCon.HasPrevious}"></apex:commandLink>
+                        <apex:outputText style="color: #ccc;" value="<< Previous" rendered="{! NOT(setCon.HasPrevious) }"></apex:outputText>
+                        &nbsp;&nbsp;
+                        <apex:CommandLink action="{!setCon.Next}" value="Next >>" rendered="{! setCon.HasNext}"></apex:CommandLink>
+                        <apex:outputText style="color: #ccc;" value="Next >>" rendered="{! NOT(setCon.HasNext)}"></apex:outputText>
+                    </td>
+                    <td style="width: 40%" align="right">
+                        <span>Total Records:</span>
+                        <apex:outputLabel id="IDCounter" value="{!setCon.ResultSize}" style="padding-right: 25px;"></apex:outputLabel>
+                        <span>Page Size:</span>
+                        <apex:selectList value="{!setCon.PageSize}" size="1">
+                            <apex:selectOption itemValue="5" itemLabel="5"></apex:selectOption>
+                            <apex:selectOption itemValue="10" itemLabel="10"></apex:selectOption>
+                            <apex:selectOption itemValue="50" itemLabel="50"></apex:selectOption>
+                            <apex:selectOption itemValue="100" itemLabel="100"></apex:selectOption>
+                            <apex:selectOption itemValue="200" itemLabel="200"></apex:selectOption>
+                            <apex:actionSupport event="onchange" reRender="investments_list"></apex:actionSupport>
+                        </apex:selectList>
+                    </td>
+                </tr>
+            </table>
+        </apex:pageBlock>
+        <style>
+            .pbTitle {display:none;}
+            .list td {padding: 1px;}
+        </style>
+    </apex:form>
+</apex:component>

@@ -1,0 +1,234 @@
+<aura:component controller="HL_TimeRecordController" extends="c:HL_LightningComponent">
+    <aura:attribute name="category"
+                    type="String"
+                    description="Time Tracking Category"
+                    access="PUBLIC"
+                    default="Litigation"></aura:attribute>
+    <aura:attribute name="dateValues"
+                    type="Date[]"
+                    description="Date Array to Determine Activity Date Values"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="rowRecord"
+                    type="Object"
+                    description="Calendar Row Values for the Staff Time Sheet Weekly Entry"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectedProjectId"
+                    type="String"
+                    description="Selected Project"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="selectedProject"
+                    type="Object"
+                    description="Selected Project Record"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="selectableOpportunities"
+                    type="Object[]"
+                    description="Selectable opportunities"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableEngagements"
+                    type="Object[]"
+                    description="Selectable engagements"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableSpecialProjects"
+                    type="Object[]"
+                    description="Selectable specialProjects"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="activityTypes"
+                    type="String[]"
+                    description="Array of Activity Types to Classify the Time Tracking Record"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="projectSelections"
+                    type="Object[]"
+                    description="Project Records for the Time Record Period Staff Member"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordPeriodStaffMember"
+                    type="Time_Record_Period_Staff_Member__c"
+                    description="Time Record Period Staff Member"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="showForecastActivityType"
+                    type="Boolean"
+                    description="Boolean to display only Forecast activity type for future weeks if category is Beta"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="showActivityType"
+                    type="Boolean"
+                    description="Boolean to hide/display  activity type field"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="currentOrPriorPeriod"
+                    type="Boolean"
+                    description="Boolean to hide/display (select activity)"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="allowedHourEntry"
+                    type="integer"
+                    description="allows some records to have a greater than 24 hour time entry"
+                    access="PUBLIC"></aura:attribute>
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"></aura:handler>
+    <aura:handler name="change"
+                  value="{!v.projectSelections}"
+                  action="{!c.onProjectSelectionsChanged}"></aura:handler>
+    <aura:registerEvent name="saveSuccessEvent"
+                        type="c:SaveSuccessEvt"></aura:registerEvent>
+    <div class="addTimeRecordCalendarRow">        
+        <table>
+            <tr>
+                <td class="input-project-column">
+                    <c:StaffTimeSheetProjectSelection aura:id="project01"
+                                                      projectSelectionEvent="{!c.onProjectSelection}"
+                                                      projectSelections="{!v.projectSelections}"
+                                                      selectableOpportunities="{!v.selectableOpportunities}"
+                                                      selectableEngagements="{!v.selectableEngagements}"
+                                                      selectableSpecialProjects="{!v.selectableSpecialProjects}"
+                                                      selectedProjectId="{!v.selectedProjectId}"
+                                                      displayPrefix="false"
+                                                      displayShortPrefix="true"
+                                                      isDisabled="{!v.rowRecord.DateRecord[0].ActivityRecord[0].Hours 
+                                                                  || v.rowRecord.DateRecord[1].ActivityRecord[0].Hours
+                                                                  || v.rowRecord.DateRecord[2].ActivityRecord[0].Hours
+                                                                  || v.rowRecord.DateRecord[3].ActivityRecord[0].Hours
+                                                                  || v.rowRecord.DateRecord[4].ActivityRecord[0].Hours
+                                                                  || v.rowRecord.DateRecord[5].ActivityRecord[0].Hours
+                                                                  || v.rowRecord.DateRecord[6].ActivityRecord[0].Hours? true: false}"
+                                                      />
+                </td>
+                <td class="slds-text-align--center input-day-column">
+                    <aura:iteration items="{!v.rowRecord.DateRecord[0].ActivityRecord}" var="ar">
+                        <!--  <aura:if isTrue="{!v.iterationFlag}"> -->
+                        <div class="{!v.selectedProjectId? 'activityRecordEntry' : 'hidden'}">
+                            <c:AddTimeRecordCalendarRowDayInput timeRecordPeriodStaffMember="{!v.timeRecordPeriodStaffMember}"
+                                                                selectedProject="{!v.selectedProject}"
+                                                                rowRecord="{!v.rowRecord}"
+                                                                dateRecord="{!v.rowRecord.DateRecord[0]}"
+                                                                activityRecord="{!ar}"
+                                                                activityTypes="{!v.activityTypes}"
+                                                                saveSuccessEvent="{!c.onSaveSuccessEvent}"
+                                                                category="{!v.category}"
+                                                                showForecastActivityType = "{!v.showForecastActivityType}"
+                                                                showActivityType = "{!v.showActivityType}"
+                                                                currentOrPriorPeriod = "{!v.currentOrPriorPeriod}"
+                                                                allowedHourEntry="{!v.allowedHourEntry}"
+                                                                ></c:AddTimeRecordCalendarRowDayInput>
+                        </div>
+                        <!--  </aura:if> -->
+                    </aura:iteration>
+                </td>
+                <td class="slds-text-align--center input-day-column">
+                    <aura:iteration items="{!v.rowRecord.DateRecord[1].ActivityRecord}" var="ar">
+                        <div class="{!v.selectedProjectId? 'activityRecordEntry' : 'hidden'}">
+                            <c:AddTimeRecordCalendarRowDayInput timeRecordPeriodStaffMember="{!v.timeRecordPeriodStaffMember}"
+                                                                selectedProject="{!v.selectedProject}"
+                                                                rowRecord="{!v.rowRecord}"
+                                                                dateRecord="{!v.rowRecord.DateRecord[1]}"
+                                                                activityRecord="{!ar}"
+                                                                activityTypes="{!v.activityTypes}"
+                                                                saveSuccessEvent="{!c.onSaveSuccessEvent}"
+                                                                category="{!v.category}"
+                                                                showForecastActivityType = "{!v.showForecastActivityType}"
+                                                                showActivityType = "{!v.showActivityType}"
+                                                                currentOrPriorPeriod = "{!v.currentOrPriorPeriod}"
+                                                                allowedHourEntry="{!v.allowedHourEntry}"
+                                                                ></c:AddTimeRecordCalendarRowDayInput>
+                        </div>
+                    </aura:iteration>
+                </td>
+                <td class="slds-text-align--center input-day-column">
+                    <aura:iteration items="{!v.rowRecord.DateRecord[2].ActivityRecord}" var="ar">
+                        <div class="{!v.selectedProjectId? 'activityRecordEntry' : 'hidden'}">
+                            <c:AddTimeRecordCalendarRowDayInput timeRecordPeriodStaffMember="{!v.timeRecordPeriodStaffMember}"
+                                                                selectedProject="{!v.selectedProject}"
+                                                                rowRecord="{!v.rowRecord}"
+                                                                dateRecord="{!v.rowRecord.DateRecord[2]}"
+                                                                activityRecord="{!ar}"
+                                                                activityTypes="{!v.activityTypes}"
+                                                                saveSuccessEvent="{!c.onSaveSuccessEvent}"
+                                                                category="{!v.category}"
+                                                                showForecastActivityType = "{!v.showForecastActivityType}"
+                                                                showActivityType = "{!v.showActivityType}"
+                                                                currentOrPriorPeriod = "{!v.currentOrPriorPeriod}"
+                                                                allowedHourEntry="{!v.allowedHourEntry}"
+                                                                ></c:AddTimeRecordCalendarRowDayInput>
+                        </div>
+                    </aura:iteration>
+                </td>
+                <td class="slds-text-align--center input-day-column">
+                    <aura:iteration items="{!v.rowRecord.DateRecord[3].ActivityRecord}" var="ar">
+                        <div class="{!v.selectedProjectId? 'activityRecordEntry' : 'hidden'}">
+                            <c:AddTimeRecordCalendarRowDayInput timeRecordPeriodStaffMember="{!v.timeRecordPeriodStaffMember}"
+                                                                selectedProject="{!v.selectedProject}"
+                                                                rowRecord="{!v.rowRecord}"
+                                                                dateRecord="{!v.rowRecord.DateRecord[3]}"
+                                                                activityRecord="{!ar}"
+                                                                activityTypes="{!v.activityTypes}"
+                                                                saveSuccessEvent="{!c.onSaveSuccessEvent}"
+                                                                category="{!v.category}"
+                                                                showForecastActivityType = "{!v.showForecastActivityType}"
+                                                                showActivityType = "{!v.showActivityType}"
+                                                                currentOrPriorPeriod = "{!v.currentOrPriorPeriod}"
+                                                                allowedHourEntry="{!v.allowedHourEntry}"
+                                                                ></c:AddTimeRecordCalendarRowDayInput>
+                        </div>
+                    </aura:iteration>
+                </td>
+                <td class="slds-text-align--center input-day-column">
+                    <aura:iteration items="{!v.rowRecord.DateRecord[4].ActivityRecord}" var="ar">
+                        <div class="{!v.selectedProjectId? 'activityRecordEntry' : 'hidden'}">
+                            <c:AddTimeRecordCalendarRowDayInput timeRecordPeriodStaffMember="{!v.timeRecordPeriodStaffMember}"
+                                                                selectedProject="{!v.selectedProject}"
+                                                                rowRecord="{!v.rowRecord}"
+                                                                dateRecord="{!v.rowRecord.DateRecord[4]}"
+                                                                activityRecord="{!ar}"
+                                                                activityTypes="{!v.activityTypes}"
+                                                                saveSuccessEvent="{!c.onSaveSuccessEvent}"
+                                                                category="{!v.category}"
+                                                                showForecastActivityType = "{!v.showForecastActivityType}"
+                                                                showActivityType = "{!v.showActivityType}"  
+                                                                currentOrPriorPeriod = "{!v.currentOrPriorPeriod}"
+                                                                allowedHourEntry="{!v.allowedHourEntry}"
+                                                                ></c:AddTimeRecordCalendarRowDayInput>
+                        </div>
+                    </aura:iteration>
+                </td>
+                <td class="slds-text-align--center input-day-column">
+                    <aura:iteration items="{!v.rowRecord.DateRecord[5].ActivityRecord}" var="ar">
+                        <div class="{!v.selectedProjectId? 'activityRecordEntry' : 'hidden'}">
+                            <c:AddTimeRecordCalendarRowDayInput timeRecordPeriodStaffMember="{!v.timeRecordPeriodStaffMember}"
+                                                                selectedProject="{!v.selectedProject}"
+                                                                rowRecord="{!v.rowRecord}"
+                                                                dateRecord="{!v.rowRecord.DateRecord[5]}"
+                                                                activityRecord="{!ar}"
+                                                                activityTypes="{!v.activityTypes}"
+                                                                saveSuccessEvent="{!c.onSaveSuccessEvent}"
+                                                                category="{!v.category}"
+                                                                showForecastActivityType = "{!v.showForecastActivityType}"
+                                                                showActivityType = "{!v.showActivityType}"
+                                                                currentOrPriorPeriod = "{!v.currentOrPriorPeriod}"
+                                                                allowedHourEntry="{!v.allowedHourEntry}"
+                                                                ></c:AddTimeRecordCalendarRowDayInput>
+                        </div>
+                    </aura:iteration>
+                </td>
+                <td class="slds-text-align--center input-day-column">
+                    <aura:iteration items="{!v.rowRecord.DateRecord[6].ActivityRecord}" var="ar">
+                        <div class="{!v.selectedProjectId? 'activityRecordEntry' : 'hidden'}">
+                            <c:AddTimeRecordCalendarRowDayInput timeRecordPeriodStaffMember="{!v.timeRecordPeriodStaffMember}"
+                                                                selectedProject="{!v.selectedProject}"
+                                                                rowRecord="{!v.rowRecord}"
+                                                                dateRecord="{!v.rowRecord.DateRecord[6]}"
+                                                                activityRecord="{!ar}"
+                                                                activityTypes="{!v.activityTypes}"
+                                                                saveSuccessEvent="{!c.onSaveSuccessEvent}"
+                                                                category="{!v.category}"
+                                                                showForecastActivityType = "{!v.showForecastActivityType}"
+                                                                showActivityType = "{!v.showActivityType}"
+                                                                currentOrPriorPeriod = "{!v.currentOrPriorPeriod}"
+                                                                allowedHourEntry="{!v.allowedHourEntry}"
+                                                                ></c:AddTimeRecordCalendarRowDayInput>
+                        </div>
+                    </aura:iteration>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="8"><hr /></td>
+            </tr>
+        </table>
+    </div>
+</aura:component>

@@ -1,0 +1,169 @@
+<aura:component
+  extends="c:HL_ComponentBase"
+  controller="HL_ActivityAuraController"
+  access="global"
+>
+  <aura:attribute name="model" type="Object" access="global" />
+  <aura:attribute name="errors" type="String[]" default="[]" access="global" />
+
+  <aura:attribute name="columns" type="List" access="private" />
+  <aura:attribute name="selectedRecord" type="String" access="global" />
+
+  <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+  <lightning:tab
+    label="HL Attendees"
+    iconName="utility:people"
+    id="internalAttendees"
+    showErrorIndicator="{!v.errors.length > 0}"
+  >
+    <!--
+    <c:HL_TabContent
+      title="HL Attendees"
+      iconName="utility:people"
+      errors="{!v.errors}"
+    >
+-->
+    <c:HL_TabContent errors="{!v.errors}">
+      <!--
+      <aura:set attribute="instructions">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </aura:set>
+-->
+
+      <div class="slds-p-horizontal_medium">
+        <aura:if isTrue="{!v.model.HLEmployees.length > 0}">
+          <!--
+          <lightning:datatable
+            id="internalAttendeesTable"
+            aura:id="internalAttendeesTable"
+            data="{!v.model.HLEmployees}"
+            columns="{!v.columns}"
+            keyField="id"
+            hideCheckboxColumn="true"
+          />
+-->
+          <table
+            class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped"
+            aria-label="HL Attendees"
+          >
+            <thead>
+              <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="">&nbsp;</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Primary">Primary</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Employee">
+                    Employee
+                  </div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Title">Title</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Email">Email</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Phone">Phone</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <aura:iteration items="{!v.model.HLEmployees}" var="row">
+                <tr class="slds-hint-parent">
+                  <td data-label="Remove">
+                    <div class="slds-truncate" title="Remove">
+                      <a
+                        onclick="{!c.handleRemoveAttendee}"
+                        href="javascript:void(0)"
+                        name="{!row.contactId}"
+                        >Remove</a
+                      >
+                    </div>
+                  </td>
+                  <th data-label="Primary" scope="row">
+                    <div class="slds-truncate" title="{!row.Primary}">
+                      <a href="#" tabindex="-1">
+                        <div class="slds-form-element">
+                          <div class="slds-form-element__control">
+                            <span
+                              class="slds-checkbox slds-checkbox_standalone"
+                            >
+                              <input
+                                type="checkbox"
+                                label=""
+                                name="{!row.contactId}"
+                                checked="{!row.Primary}"
+                                onchange="{!c.handlePrimaryChange}"
+                              />
+                              <span class="slds-checkbox_faux"></span>
+                            </span>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </th>
+                  <td data-label="Employee">
+                    <div class="slds-truncate" title="{!row.employeeName}">
+                      {!row.employeeName}
+                    </div>
+                  </td>
+                  <td data-label="Title">
+                    <div class="slds-truncate" title="{!row.employeeTitle}">
+                      {!row.employeeTitle}
+                    </div>
+                  </td>
+                  <td data-label="Email">
+                    <div class="slds-truncate" title="{!row.employeeEmail}">
+                      {!row.employeeEmail}
+                    </div>
+                  </td>
+                  <td data-label="Phone">
+                    <div class="slds-truncate" title="{!row.employeePhone}">
+                      {!row.employeePhone}
+                    </div>
+                  </td>
+                </tr>
+              </aura:iteration>
+            </tbody>
+          </table>
+
+          <aura:set attribute="else">
+            <i>No records to display.</i>
+          </aura:set>
+        </aura:if>
+
+        <lightning:layout verticalAlign="start">
+          <lightning:layoutItem size="4">
+            <c:lookupComponent
+              iconname="standard:contact"
+              aura:id="contactLookup"
+              objectname="Contact"
+              searchfield="Name"
+              subfield="Account.Name,Title"
+              addMultipleRecords="false"
+              onselectedrec="{!c.handleSelectedInternalContact}"
+              placeholder="Lookup Contact..."
+              type="text"
+              whereClauseFilters="AND RecordType.Name = 'Houlihan Employee'"
+            >
+            </c:lookupComponent>
+          </lightning:layoutItem>
+
+          <lightning:layoutItem size="3">
+            <lightning:button
+              label="Add Attendee"
+              variant="brand"
+              onclick="{!c.handleAddAttendee}"
+              class="slds-m-top_large"
+            />
+          </lightning:layoutItem>
+        </lightning:layout>
+      </div>
+    </c:HL_TabContent>
+  </lightning:tab>
+</aura:component>

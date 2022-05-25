@@ -1,0 +1,80 @@
+<aura:component access="global">
+  <aura:attribute
+    name="title"
+    type="String"
+    access="global"
+    description="The title of the tab."
+  />
+  <aura:attribute
+    name="iconName"
+    type="String"
+    access="global"
+    description="The SLDS icon name, e.g. utility:email."
+  />
+  <aura:attribute
+    name="instructions"
+    type="Aura.Component[]"
+    access="global"
+    description="The HTML content that will display in the upper-left instructions/summary area."
+  />
+  <aura:attribute
+    name="buttons"
+    type="Aura.Component[]"
+    access="global"
+    description="The buttons that will display in the upper-right area above the body."
+  />
+  <aura:attribute
+    name="maxHeight"
+    type="String"
+    access="global"
+    description="If present, the maximum height, e.g. 500px."
+  />
+  <aura:attribute
+    name="errors"
+    type="String[]"
+    default="[]"
+    access="global"
+    description="The string list of errors present on the tab.  Passed through to AlertWithDetails."
+  />
+  <aura:attribute name="styleClass" type="String" default="" access="global" />
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+  <div style="{!(v.maxHeight) ? 'max-height:' + v.maxHeight : ''}">
+    <aura:if isTrue="{!v.title}">
+      <div class="slds-p-bottom_medium slds-border_bottom">
+        <lightning:layout>
+          <lightning:layoutItem>
+            <div class="slds-m-left_medium" style="font-style: italic">
+              {!v.instructions}
+            </div>
+          </lightning:layoutItem>
+
+          <lightning:layoutItem size="7">
+            <div class="slds-text-align_right">
+              <h1 class="slds-text-heading_large titleColor">
+                {!v.title}
+                <lightning:icon
+                  iconName="{!v.iconName}"
+                  class="slds-m-left_medium titleIconColor"
+                />
+              </h1>
+            </div>
+          </lightning:layoutItem>
+        </lightning:layout>
+      </div>
+    </aura:if>
+
+    <div class="slds-m-horizontal_large">
+        <c:HL_AlertWithDetail messages="{!v.errors}" />
+    </div>
+
+    <div class="{!'slds-m-top_medium ' + v.styleClass}">
+      <div class="slds-clearfix">
+        <div class="slds-float_right slds-m-bottom_medium">{!v.buttons}</div>
+      </div>
+
+      {!v.body}
+    </div>
+  </div>
+</aura:component>

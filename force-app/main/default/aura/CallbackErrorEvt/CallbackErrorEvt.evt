@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Fires to handle Server-Side Callback Errors">
+    <aura:attribute name="errorObject" type="Object"></aura:attribute>
+</aura:event>

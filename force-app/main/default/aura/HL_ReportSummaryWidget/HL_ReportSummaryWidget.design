@@ -1,0 +1,57 @@
+<!--
+	@author	Graham MacRobie (graham.macrobie1129@hl.com)
+	@date   February 2022
+-->
+
+<design:component label="Report Summary Widget">
+	<design:attribute name="title" label="Title" description="The title displayed on the widget" required="true" />
+	<design:attribute name="iconName" label="Icon" description="The icon name (i.e. standard:account)" />
+	<design:attribute name="displayRows" label="Display Rows" description="The number of rows to display initially" default="5" />
+    <design:attribute name="noResultsMessage" label="No Results Message" description="The message to be displayed when there are no results" default="There are no records matching the current filter criteria." />
+	<design:attribute name="reportDeveloperName" label="Report Developer Name" description="The underlying report's developer name (API name)" required="true" />
+	<design:attribute name="recordIdField" label="Record ID Field" description="The API name of the field that references the record ID" />
+
+    <design:attribute name="sortedBy" label="Sorted By Field" description="The initial field that the data is sorted by" />
+    <design:attribute name="sortedDirection" label="Sorted Direction" description="The initial direction that the data is sorted by" default="asc" />
+
+	<design:attribute name="columnField0" label="Field 0" description="The API name of the field for column 0" />
+	<design:attribute name="columnTitle0" label="Title 0" description="The title for column 0" />
+	<design:attribute name="columnWidth0" label="Width 0" description="The initial width for column 0" min="10" max="500" />
+	<design:attribute name="columnField1" label="Field 1" description="The API name of the field for column 1" />
+	<design:attribute name="columnTitle1" label="Title 1" description="The title for column 1" />
+	<design:attribute name="columnWidth1" label="Width 1" description="The initial width for column 1" min="10" max="500" />
+	<design:attribute name="columnField2" label="Field 2" description="The API name of the field for column 2" />
+	<design:attribute name="columnTitle2" label="Title 2" description="The title for column 2" />
+	<design:attribute name="columnWidth2" label="Width 2" description="The initial width for column 2" min="10" max="500" />
+	<design:attribute name="columnField3" label="Field 3" description="The API name of the field for column 3" />
+	<design:attribute name="columnTitle3" label="Title 3" description="The title for column 3" />
+	<design:attribute name="columnWidth3" label="Width 3" description="The initial width for column 3" min="10" max="500" />
+	<design:attribute name="columnField4" label="Field 4" description="The API name of the field for column 4" />
+	<design:attribute name="columnTitle4" label="Title 4" description="The title for column 4" />
+	<design:attribute name="columnWidth4" label="Width 4" description="The initial width for column 4" min="10" max="500" />
+	<design:attribute name="columnField5" label="Field 5" description="The API name of the field for column 5" />
+	<design:attribute name="columnTitle5" label="Title 5" description="The title for column 5" />
+	<design:attribute name="columnWidth5" label="Width 5" description="The initial width for column 5" min="10" max="500" />
+	<design:attribute name="columnField6" label="Field 6" description="The API name of the field for column 6" />
+	<design:attribute name="columnTitle6" label="Title 6" description="The title for column 6" />
+	<design:attribute name="columnWidth6" label="Width 6" description="The initial width for column 6" min="10" max="500" />
+	<design:attribute name="columnField7" label="Field 7" description="The API name of the field for column 7" />
+	<design:attribute name="columnTitle7" label="Title 7" description="The title for column 7" />
+	<design:attribute name="columnWidth7" label="Width 7" description="The initial width for column 7" min="10" max="500" />
+	<design:attribute name="columnField8" label="Field 8" description="The API name of the field for column 8" />
+	<design:attribute name="columnTitle8" label="Title 8" description="The title for column 8" />
+	<design:attribute name="columnWidth8" label="Width 8" description="The initial width for column 8" min="10" max="500" />
+	<design:attribute name="columnField9" label="Field 9" description="The API name of the field for column 9" />
+	<design:attribute name="columnTitle9" label="Title 9" description="The title for column 9" />
+	<design:attribute name="columnWidth9" label="Width 9" description="The initial width for column 9" min="10" max="500" />
+
+	<design:attribute name="linkLabel0" label="Link Label 0" description="Link column 0, label" />
+	<design:attribute name="linkURL0" label="Link URL 0" description="Link column 0, URL including ID substition with $ID" />
+	<design:attribute name="linkWidth0" label="Link Width 0" description="The initial width for link column 0" min="10" max="500" />
+	<design:attribute name="linkLabel1" label="Link Label 1" description="Link column 1, label" />
+	<design:attribute name="linkURL1" label="Link URL 1" description="Link column 1, URL including ID substition with $ID" />
+	<design:attribute name="linkWidth1" label="Link Width 1" description="The initial width for link column 1" min="10" max="500" />
+	<design:attribute name="linkLabel2" label="Link Label 2" description="Link column 2, label" />
+	<design:attribute name="linkURL2" label="Link URL 2" description="Link column 2, URL including ID substition with $ID" />
+	<design:attribute name="linkWidth2" label="Link Width 2" description="The initial width for link column 2" min="10" max="500" />
+</design:component>

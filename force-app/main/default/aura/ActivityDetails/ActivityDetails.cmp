@@ -1,0 +1,246 @@
+<aura:component controller="HL_ActivityController" extends="c:HL_LightningComponent" implements="lightning:isUrlAddressable">
+    <aura:attribute name="isEmailing" 
+                    type="Boolean" 
+                    default="false"
+                    
+                    description="Indicates whether the Email Component is Active"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="isEditing" 
+                    type="Boolean" 
+                    default="false"
+                    description="Indicates whether the Edit Component is Active"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="activityId" 
+                    type="String"
+                    description="Activity Record Id"></aura:attribute>
+    <aura:attribute name="primaryActivityId" 
+                    type="String"
+                    description="Parent/Main Activity Record Id"></aura:attribute>
+    <aura:attribute name="activity" 
+                    type="Event" 
+                    description="Activity Record"/>
+    <aura:attribute name="activitySupplement" 
+                    type="Activity_Supplement__c" 
+                    default="{'sobjectType': 'Activity_Supplement__c'}"
+                    description="Activity Supplement Record"/>
+    <aura:attribute name="deleteEnabled" 
+                    type="Boolean" 
+                    default="false"
+                    description="Indicates whether User can Delete the Activity"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="relatedAttendees" 
+                    type="Contact[]"
+                    description="External Contacts Attending/Associated with the Activity"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="relatedEmployees" 
+                    type="Contact[]"
+                    description="Internal Staff Attending/Associated with the Activity"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="relatedCompanies" 
+                    type="Account[]"
+                    description="Companies Discussed"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="relatedOpps" 
+                    type="Opportunity__c[]"
+                    description="Opportunities Related to the Activity"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="relatedEngs" 
+                    type="Engagement__c[]"
+                    description="Engagements Related to the Activity"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="relatedCamp" 
+                    type="Campaign[]"
+                    description="Campaign Related to the Activity"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="activityType" 
+                    type="String" 
+                    default=""></aura:attribute>
+    <aura:attribute name= "relatedRecordId" 
+                    type="string" default=""></aura:attribute>
+    <aura:attribute name= "relatedParentAPI" 
+                    type="string" default=""></aura:attribute>
+    <aura:handler name="init" 
+                  value="{!this}" 
+                  action="{!c.doInit}"></aura:handler> 
+    <div aura:id="activityDetails" class="activityDetails">
+        <div class="slds-scrollable_y activityDetails">
+            <aura:if isTrue="{!(!(v.isEmailing || v.isEditing))}">
+                <div>
+                    <aura:if isTrue="{!v.relatedParentAPI == 'Account'}">
+                         <ui:button label="Return to Account" press="{!c.navigateToMyActivities}"></ui:button>
+                    </aura:if>
+                    <aura:if isTrue="{!v.relatedParentAPI == 'Contact'}">
+                         <ui:button label="Return to Contact" press="{!c.navigateToMyActivities}"></ui:button>
+                    </aura:if>
+                    <aura:if isTrue="{!v.relatedParentAPI == ''}">
+                         <ui:button label="Return to My Activities"  press="{!c.navigateToMyActivities}"></ui:button>
+                    </aura:if>
+                </div>
+                <div class="slds-text-heading_medium" style="margin-left: 15px; margin-bottom: 10px;">
+                    <strong>Activity Details</strong>
+                </div>
+                    <div class="slds-grid slds-gutters">
+                          <div class="slds-col slds-size_1-of-3">
+                            <span><strong>Subject</strong></span>
+                          </div>
+                          <div class="slds-col slds-size_2-of-3">
+                            <span>{!v.activity.Subject}</span>
+                          </div>
+                    </div>
+                                    <div class="slds-grid slds-gutters">
+                          <div class="slds-col slds-size_1-of-3">
+                            <span><strong>Type</strong></span>
+                          </div>
+                          <div class="slds-col slds-size_2-of-3">
+                            <span>{!v.activity.Type}</span>
+                          </div>
+                    </div>
+                <div class="slds-grid slds-gutters">
+                          <div class="slds-col slds-size_1-of-3">
+                            <span><strong>Date/Time</strong></span>
+                          </div>
+                          <div class="slds-col slds-size_2-of-3">
+                            <span><ui:outputDateTime value="{!v.activity.StartDateTime}" format="yyyy-MM-dd hh:mm a" /></span>
+                          </div>
+                    </div>
+                 <div class="slds-grid slds-gutters">
+                          <div class="slds-col slds-size_1-of-3">
+                            <span><strong>Description</strong></span>
+                          </div>
+                          <div class="slds-col slds-size_2-of-3">
+                            <span>{!v.activity.Description}</span>
+                          </div>
+                    </div>
+                <div class="slds-grid slds-gutters">
+                          <div class="slds-col slds-size_1-of-3">
+                            <span><strong>Internal Notes</strong></span>
+                          </div>
+                          <div class="slds-col slds-size_2-of-3">
+                            <span>{!v.activitySupplement.Internal_Notes__c}</span>
+                          </div>
+                    </div>
+                      <div style="margin-left: 15px; margin-right: 15px;">
+                    
+                    <br/>
+                        <div class="slds-grid ">
+                          <div class="slds-col slds-size_1-of-3">
+                            <span><strong>Private</strong></span>
+                          </div>
+                          <div class="slds-col slds-size_2-of-3">
+                            <span><ui:outputCheckbox value="{!v.activity.Private__c}"/></span>
+                          </div>
+                    </div>
+                    
+                        <div class="slds-grid ">
+                          <div class="slds-col slds-size_1-of-3">
+                            <span><strong>Sync To Outlook</strong></span>
+                          </div>
+                          <div class="slds-col slds-size_2-of-3">
+                            <span><ui:outputCheckbox value="{!v.activity.Sync_To_Outlook__c}"/></span>
+                          </div>
+                    </div>
+                        <div class="slds-grid ">
+                          <div class="slds-col slds-size_1-of-3">
+                            <span><strong>Notify Coverage Team</strong></span>
+                          </div>
+                          <div class="slds-col slds-size_2-of-3">
+                            <span><ui:outputCheckbox value="{!v.activity.Notify_Coverage_Team__c}"/></span>
+                          </div>
+                    </div>
+                    <br/>
+                                                  
+                    <p>{!v.activityType == 'Internal' ? 'Internal Meeting With' : 'External Attendees'}</p>
+                    <ul class="slds-list--vertical slds-has-dividers--bottom-space" style="background-color: white; border-radius: 5px;">
+                        <aura:iteration items="{!v.relatedAttendees}" var="contact">
+                            <li class="slds-list__item">
+                                <p><strong>{!contact.Name}</strong></p>
+                                <p>{!contact.Title}</p>
+                                <p>{!contact.Account.Name}</p>
+                                
+                            </li>
+                        </aura:iteration>
+                    </ul>
+                    <h4>HL Attendees</h4>
+                    <ul class="slds-list--vertical slds-has-dividers--bottom-space" style="background-color: white; border-radius: 5px;">
+                        <aura:iteration items="{!v.relatedEmployees}" var="employee">
+                            <li class="slds-list__item">
+                                <p><strong>{!employee.Name}</strong></p>
+                                <p>{!employee.Title}</p>
+                            </li>
+                        </aura:iteration>
+                    </ul>
+                    <h4>Companies Discussed</h4>
+                    <ul class="slds-list--vertical slds-has-dividers--bottom-space" style="background-color: white; border-radius: 5px;">
+                        <aura:iteration items="{!v.relatedCompanies}" var="comp">
+                            <li class="slds-list__item">
+                                <p><strong>{!comp.Name}</strong></p>
+                                <p>{!comp.Location__c}</p>
+                            </li>
+                        </aura:iteration>
+                    </ul>
+                    <h4>Related Opportunities</h4>
+                    <ul class="slds-list_vertical-space slds-has-dividers_bottom-space" style="background-color: white; border-radius: 5px;">
+                        <aura:iteration items="{!v.relatedOpps}" var="opp">
+                            <li class="slds-list__item">
+                                <p><strong>{!opp.Name}</strong></p>
+                                <p>Client: {!opp.Client__r.Name}</p>
+                                <p>Subject: {!opp.Subject__r.Name}</p>
+                            </li>
+                        </aura:iteration>
+                    </ul>
+                    <h4>Related Engagements</h4>
+                    <ul class="slds-list_vertical-space slds-has-dividers_bottom-space" style="background-color: white; border-radius: 5px;">
+                        <aura:iteration items="{!v.relatedEngs}" var="eng">
+                            <li class="slds-list__item">
+                                <p><strong>{!eng.Name}</strong></p>
+                                <p>Client: {!eng.Client__r.Name}</p>
+                                <p>Subject: {!eng.Subject__r.Name}</p>
+                            </li>
+                        </aura:iteration>
+                    </ul>
+            
+                          <h4>Related Campaign</h4>
+                    <ul class="slds-list_vertical-space slds-has-dividers_bottom-space" style="background-color: white; border-radius: 5px;">
+                        <aura:iteration items="{!v.relatedCamp}" var="camp">
+                            <li class="slds-list__item">
+                                <p><strong>{!camp.Name}</strong></p>
+                                <p>{!camp.RecordType.Name}</p>
+                                <p>{!camp.Type}</p>
+                            </li>
+                        </aura:iteration>
+                    </ul>
+                  </div>
+                
+                <div>
+                    <center>
+                        <div class="slds-button-group" role="group">
+                            <ui:button label="Edit" press="{!c.navigateToEdit}" class="slds-button slds-button_neutral">
+                               
+                            </ui:button>
+                            <aura:if isTrue="{!v.deleteEnabled}">
+                                <ui:button label="Delete" press="{!c.confirmDelete}" class="slds-button slds-button_neutral">
+                                     
+                                </ui:button> 
+                            </aura:if>
+                            <ui:button label="Email" press="{!c.navigateToEmail}" class="slds-button slds-button_neutral"> 
+                                
+                            </ui:button>
+                        </div>
+                    </center>
+                </div>
+            </aura:if>
+            <aura:if isTrue="{!v.isEmailing}">
+                <div>
+                    <ui:button label="Cancel" press="{!c.cancelSendEmail}" class="button-cancel"></ui:button>
+                </div>
+                <c:SendEmail successEvent="{!c.emailSent}" templateId="Event" relatedId="{!v.primaryActivityId}"></c:SendEmail>
+            </aura:if>
+            <aura:if isTrue="{!v.isEditing}">
+                <div>
+                    <ui:button label="Cancel" press="{!c.cancelEditActivity}" class="button-cancel"></ui:button>
+                </div>
+                <c:EditActivity activity="{!v.activity}" activityId="{!v.primaryActivityId}" relatedRecordId="{!v.relatedRecordId}"></c:EditActivity>
+            </aura:if>
+        </div>
+    </div>
+</aura:component>

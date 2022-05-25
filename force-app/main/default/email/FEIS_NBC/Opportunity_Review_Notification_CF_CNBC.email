@@ -1,0 +1,72 @@
+This message is from an external sender.
+
+_______________________________________________________________________________
+
+Hello! The following NBC has been submitted for review. Please click the link below to see more details about the memo.  If approved, the submission will be circulated to the committee.
+
+To approve via email, simply reply to this message with APPROVE or YES in the first line of the email. To reject via email, simply reply with REJECT or NO. All comments included in the second line of the email will be tagged and tracked in Salesforce for the deal team to review.
+
+The following Opportunity has been submitted to the Capital Markets NBC Committee for review. 
+
+LINK TO NBC FORM: {!Opportunity_Approval__c.Link}
+
+Submitted By: {!Approval_Requesting_User.Name}
+Office: {!Approval_Requesting_User.Office__c}
+Date: {!Approval_Properties__c.CreatedDate}
+
+Opportunity Name: {!Opportunity_Approval__c.Related_Opportunity__c}
+Opportunity Client: {!Opportunity_Approval__c.Client_Company__c}
+Opportunity Subject: {!Opportunity_Approval__c.Subject_Company__c}
+Job Type: {!Opportunity_Approval__c.Job_Type__c}
+
+Houlihan Lokey Competition: 
+{!Opportunity_Approval__c.Houlihan_Lokey_Competition__c}
+
+Use of Proceeds: 
+{!Opportunity_Approval__c.Use_of_Proceeds__c}
+
+Other Use(s) of Proceeds: 
+{!Opportunity_Approval__c.Use_of_Proceeds_Detail__c}
+
+Have you checked Salesforce for existing relationships? 
+{!Opportunity_Approval__c.Existing_Relationships__c}
+
+Referral Type: 
+{!Opportunity_Approval__c.Referral_Type__c}
+
+Referral Source: 
+{!Opportunity_Approval__c.Referral_Source__c}
+
+Overview and Financials
+Transaction Overview: {!Opportunity_Approval__c.Transaction_Overview__c}
+
+Current Status:
+{!Opportunity_Approval__c.Current_Status__c}
+
+Company Description:
+{!Opportunity_Approval__c.Company_Description__c}
+
+Ownership Structure and Capital Structure (includes Debt Summary):
+{!Opportunity_Approval__c.Ownership_and_Capital_Structure__c}
+
+Total Debt (MM):
+{!Opportunity_Approval__c.Total_Debt_MM__c}
+
+Have the above financials been subject to an audit?
+{!Opportunity_Approval__c.Financials_Subject_to_Audit__c}
+
+Structure and Pricing Expectations:
+{!Opportunity_Approval__c.Structure_and_Pricing_Expectations__c}
+
+Risk Factors:
+{!Opportunity_Approval__c.Risk_Factors__c}
+
+Fee Structure: {!Opportunity_Approval__c.Fee_Structure__c}          
+
+Lockups on Future M&A or Financing Work:
+{!Opportunity_Approval__c.Lockups_on_Future_M_A_or_Financing_Work__c}
+Referral Fee owed: {!Opportunity_Approval__c.Referral_Fee_Owed__c}
+
+Administrative 
+Restricted List: {!Opportunity_Approval__c.Restricted_List__c}
+Conflicts Check Status: {!Opportunity_Approval__c.Conflict_Check_Status__c}

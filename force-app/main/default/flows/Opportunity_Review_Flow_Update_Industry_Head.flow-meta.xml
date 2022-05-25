@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <assignments>
+        <name>Industry_Group_Name</name>
+        <label>Industry Group Name</label>
+        <locationX>169</locationX>
+        <locationY>296</locationY>
+        <assignmentItems>
+            <assignToReference>IndustryGroupName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Related_Opportunity__r.Industry_Group__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Store_Group_Head_Details</targetReference>
+        </connector>
+    </assignments>
+    <description>To fetch and update group head details for the Opportunity Review Approval Process.</description>
+    <interviewLabel>Opportunity Review Flow_Update Industry Head {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity Review Flow_Update Industry Head</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>fetch the group head user id based on email.</description>
+        <name>Get_userID</name>
+        <label>Get userID</label>
+        <locationX>357</locationX>
+        <locationY>320</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Group_Head_Email_ID</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>GroupHeadEmail</elementReference>
+            </value>
+        </filters>
+        <object>User</object>
+        <outputAssignments>
+            <assignToReference>UserID</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <description>To store group head email and user id.</description>
+        <name>Store_Group_Head_Details</name>
+        <label>Store Group Head Details</label>
+        <locationX>160</locationX>
+        <locationY>480</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_userID</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Label</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>IndustryGroupName</elementReference>
+            </value>
+        </filters>
+        <object>Industry_Group__mdt</object>
+        <outputAssignments>
+            <assignToReference>GroupHeadEmail</assignToReference>
+            <field>Industry_Group_Head_Email__c</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update Group Head Email &amp; ID on Opportunity Review</description>
+        <name>Update_Group_Head_Email_ID</name>
+        <label>Update Group Head Email &amp; ID</label>
+        <locationX>511</locationX>
+        <locationY>324</locationY>
+        <inputAssignments>
+            <field>Industry_Group_Head_Email__c</field>
+            <value>
+                <elementReference>GroupHeadEmail</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Industry_Group_Head__c</field>
+            <value>
+                <elementReference>UserID</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>51</locationY>
+        <connector>
+            <targetReference>Industry_Group_Name</targetReference>
+        </connector>
+        <object>Opportunity_Approval__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>GroupHeadEmail</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>IndustryGroupName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>Store group head UserID</description>
+        <name>UserID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

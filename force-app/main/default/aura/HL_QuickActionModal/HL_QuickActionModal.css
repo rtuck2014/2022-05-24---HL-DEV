@@ -1,0 +1,11 @@
+.THIS.mainContainer {
+    position: relative;
+    height: calc(85vh);
+  }
+  
+  .THIS .attach-to-bottom {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+  }

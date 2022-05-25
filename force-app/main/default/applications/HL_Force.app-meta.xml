@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>standard-home</defaultLandingTab>
+    <description>Custom app for the business and operations team at Houlihan Lokey.</description>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>HL Force</label>
+    <logo>SharedDocuments/Houlihan_Lokey_logo.png</logo>
+    <tabs>ActivitiesList</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>Opportunity__c</tabs>
+    <tabs>Engagement__c</tabs>
+    <tabs>standard-Campaign</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>Event_Expense</tabs>
+    <tabs>Time_Record_Manager</tabs>
+    <tabs>Engagement_Counterparty__c</tabs>
+    <tabs>Engagement_Counterparty_Contact__c</tabs>
+    <tabs>Company_List__c</tabs>
+    <tabs>Company_List_Member__c</tabs>
+    <tabs>SIC_Code__c</tabs>
+    <tabs>Coverage_Team_Comment__c</tabs>
+    <tabs>Investment_Comment__c</tabs>
+    <tabs>SL_Convert__Object_Relationship__c</tabs>
+</CustomApplication>

@@ -1,0 +1,7 @@
+<aura:component extends="c:HL_LightningComponent">
+    <aura:registerEvent name="searchEvent" 
+                        type="c:SearchEvt"/>
+    <div class="searchBar">
+		<input type="text" class="slds-input" onkeyup="{!c.searchKeyChange}" placeholder="Search"></input>
+    </div>
+</aura:component>

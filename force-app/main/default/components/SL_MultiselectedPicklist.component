@@ -1,0 +1,77 @@
+<apex:component controller="SL_MultiselectedPicklist">
+	<apex:includeScript value="{!URLFOR($Resource.SL_PipelineManager, 'MultiselectPicklist.js')}"/>
+	
+  	<apex:attribute name="leftLabel" description="Label on left listbox." type="String" required="true" />
+  	<apex:attribute name="rightLabel" description="Label on right listbox." type="String" required="true" />
+  	<apex:attribute name="size" description="Size of listboxes." type="Integer" required="true" />
+  	<apex:attribute name="width" description="Width of listboxes."  type="String" required="true" />
+  	<apex:attribute name="leftOption" description="Options list for left listbox." type="SelectOption[]" required="true" assignTo="{!leftOptions}" />
+  	<apex:attribute name="rightOption" description="Options list for right listbox." type="SelectOption[]" required="true" assignTo="{!rightOptions}" />
+    <apex:attribute name="sobjectName" description="To set the Sobject Name"  type="String" required="true" assignTo="{!strSobjectName}"/>
+
+  	<apex:outputPanel id="multiselectPanel" layout="block" styleClass="duelingListBox">
+	    <table class="layout">
+			<tbody>
+				<tr>
+					<td class="selectCell">
+					  	<apex:outputPanel layout="block" styleClass="selectTitle">
+					    	<!--  Visualforce prepends the correct prefix to the outputLabel's 'for' attribute  -->   
+					    	<apex:outputLabel value="{!leftLabel}" for="multiselectPanel:leftList" />
+					  	</apex:outputPanel>
+						<select id="{!$Component.multiselectPanel}:leftList" class="multilist" multiple="multiple" size="{!size}">
+							<apex:repeat value="{!leftOptions}" var="option">
+						    	<option value="{!option.value}">{!option.label}</option>
+						  	</apex:repeat>
+						</select>
+					</td>
+				  	<td class="buttonCell">
+				    	<apex:outputPanel layout="block" styleClass="text">Add</apex:outputPanel>
+				    	<apex:outputPanel layout="block" styleClass="text">
+				      		<apex:outputLink value="javascript:moveSelectedOptions('{!$Component.multiselectPanel}:leftList', '{!$Component.multiselectPanel}:rightList', 
+				      														   	   '{!$Component.leftHidden}','{!$Component.rightHidden}', true, '{!sobjectName}');" id="btnRight">
+				        		<apex:image value="/s.gif" alt="Add" styleClass="rightArrowIcon" title="Add" />
+				      		</apex:outputLink>
+				    	</apex:outputPanel>
+				    	<apex:outputPanel layout="block" styleClass="text">
+				    		<apex:outputLink value="javascript:moveSelectedOptions('{!$Component.multiselectPanel}:rightList', '{!$Component.multiselectPanel}:leftList', 
+				    														       '{!$Component.rightHidden}','{!$Component.leftHidden}', false, '{!sobjectName}');" id="btnLeft">
+				        		<apex:image value="/s.gif" alt="Remove" styleClass="leftArrowIcon" title="Remove" />
+				      		</apex:outputLink>
+				    	</apex:outputPanel>
+				    	<apex:outputPanel layout="block" styleClass="duelingText">Remove</apex:outputPanel>
+					</td>
+					<td class="selectCell">
+						<apex:outputPanel layout="block" styleClass="selectTitle">
+					      <apex:outputLabel value="{!rightLabel}" for="multiselectPanel:rightList" />
+					    </apex:outputPanel>
+					    <select id="{!$Component.multiselectPanel}:rightList" class="multilist" multiple="multiple" size="{!size}">
+					    	<apex:repeat value="{!rightOptions}" var="option">
+					        	<option value="{!option.value}">{!option.label}</option>
+					      	</apex:repeat>
+					    </select>
+					</td>
+					<td class="buttonCell"><apex:outputPanel layout="block" styleClass="text">Up</apex:outputPanel>
+						<apex:outputPanel layout="block" styleClass="text">
+					    	<apex:outputLink value="javascript:slideSelectedOptionsUp('{!$Component.multiselectPanel}:rightList','{!$Component.rightHidden}');" id="upBtn">
+					        	<apex:image value="/s.gif" alt="Up" styleClass="upArrowIcon" title="Up" />
+					      	</apex:outputLink>
+					    </apex:outputPanel>
+					    <apex:outputPanel layout="block" styleClass="text">
+					    	<apex:outputLink value="javascript:slideSelectedOptionsDown('{!$Component.multiselectPanel}:rightList','{!$Component.rightHidden}');" id="downBtn">
+					        	<apex:image value="/s.gif" alt="Down" styleClass="downArrowIcon" title="Down" />
+					      	</apex:outputLink>
+					    </apex:outputPanel>
+					    <apex:outputPanel layout="block" styleClass="text">Down</apex:outputPanel>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	    <apex:inputHidden value="{!leftOptionsHidden}" id="leftHidden" />
+	    <apex:inputHidden value="{!rightOptionsHidden}" id="rightHidden" />
+	</apex:outputPanel>
+	<script type="text/javascript">
+		// initialize the string representations
+		buildOutputString(document.getElementById('{!$Component.multiselectPanel}:leftList'), document.getElementById('{!$Component.leftHidden}'));
+		buildOutputString(document.getElementById('{!$Component.multiselectPanel}:rightList'),document.getElementById('{!$Component.rightHidden}'));
+	</script>
+</apex:component>

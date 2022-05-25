@@ -1,0 +1,25 @@
+<html><head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><span style="font-size:12px;"><span style="font-family:Georgia,Times New Roman,Times,serif;"><span lang="EN-GB">Dear {{{Recipient.FirstName}}},<br />
+<br />
+Congratulations on{{{Recipient.Custom_Field_2__c}}} the continued success of your business.</span><br />
+&nbsp;<br />
+<span lang="EN-GB">I am writing from <a href="https://hl.com/" style="color:#0563c1; text-decoration:underline">Houlihan Lokey</a>, No. 1 M&amp;A advisor in the U.S. As part of a live engagement we have been further researching the X sector and were impressed by the business you’ve built, so I wanted to reach out to propose a 30 minute introductory call.</span><br />
+<br />
+<span lang="EN-GB">I recently read a X PUBLICATION article about {{{Recipient.Company_Name__c}}}’s recent fundraise and your positioning in the wider&nbsp;{{{Recipient.Custom_Field_1__c}}} sector, so I wanted to reach out to propose a 30 minute introductory call.</span><br />
+<br />
+<span lang="EN-GB">Industry Group/We help clients by building long-term relationships and giving advice that maximizes&nbsp;their future growth and valuation. Recent examples include advising:</span><br />
+&nbsp;<br />
+<br />
+&nbsp;</span></span><br />
+<span style="font-size:9px;"><span style="font-family:Georgia,Times New Roman,Times,serif;"><i><span lang="EN-GB">* Selected transactions were executed by Houlihan Lokey professionals while at other firms.</span></i></span></span><br />
+<span style="font-size:12px;"><span style="font-family:Georgia,Times New Roman,Times,serif;">&nbsp;<br />
+<span lang="EN-GB">We would love to hear the&nbsp;{{{Recipient.Company_Name__c}}} story, share our knowledge of the market and explore how we can be helpful. Would a conversation with our senior team be of interest? </span><br />
+&nbsp;<br />
+<span lang="EN-GB">Kind regards,</span><br />
+<br />
+{{{Sender.FirstName}}}<br />
+<br />
+{{{Sender.Signature}}}</span></span>
+</body></html>

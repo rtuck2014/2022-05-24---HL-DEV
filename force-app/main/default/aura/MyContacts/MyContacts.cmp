@@ -1,0 +1,74 @@
+<aura:component implements="force:appHostable" extends="c:MyObjectComponent">
+    <aura:attribute name="contacts"
+                    type="Contact[]"
+                    description="Array of Contact Result Records"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="contactId"
+                    type="String"
+                    description="Selected Contact Id"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="contactName"
+                    type="String"
+                    description="Selected Contact Name"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="isAddingActivity"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if the Add Activity View is Displayed"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="isAddingRelationship"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if the Add Relationship View is Displayed"
+                    access="PRIVATE"></aura:attribute>
+    <aura:handler name="afterSearchEvent"
+                  action="{!c.onSearchPerformed}"></aura:handler>
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"></aura:handler>
+    <div aura:id="myContacts" class="myContacts">
+    <aura:if isTrue="{!(!(v.isAddingActivity || v.isAddingRelationship))}">
+        <div aura:id="contactsMain" class="myContacts">
+            <div class="slds-scrollable--y contactlist">
+                <ul class="slds-list--vertical slds-has-dividers--bottom-space slds-has-selection">
+                    <aura:iteration items="{!v.contacts}" var="contact">
+                        <li class="slds-list__item">
+                            <div class="slds-tile slds-tile--board">
+                                <div class="slds-grid">
+                                    <div class="slds-col" data-key="{!contact.Id}" onclick="{!c.onContactSelection}">
+                                        <p class="slds-tile__title">
+                                            <strong>{!contact.Name}</strong>
+                                        </p>
+                                        <p>{!contact.Title}</p>
+                                        <p>{!contact.Account.Name}</p>
+                                    </div>
+                                    <div class="slds-col slds-no-flex">
+                                        <ui:button label="" press="{!c.addActivity}" buttonTitle="{!'Add Activity|' + contact.Id}">
+                                            <img class="icon bLeft" style="width: 25px; background-color: #008ED6" alt="Add Activity" src="/resource/Icon_Event"/>
+                                        </ui:button>
+                                        <ui:button label="" press="{!c.addRelationship}" buttonTitle="{!'Add Relationship|' + contact.Name + '|' + contact.Id}">
+                                            <img class="icon bLeft" style="width: 25px; background-color: green" alt="Add Relationship" src="/resource/Icon_Handshake"/>
+                                        </ui:button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </aura:iteration>
+                </ul>
+            </div>
+        </div>
+    </aura:if>
+    <aura:if isTrue="{!v.isAddingActivity}">
+        <div>
+            <ui:button label="Cancel" press="{!c.cancelAddActivity}" class="button-cancel"></ui:button>
+        </div>
+        <c:AddActivity saveSuccessEvent="{!c.activityAdded}" primaryAttendee="{!v.contactId}"></c:AddActivity>
+    </aura:if>
+    <aura:if isTrue="{!v.isAddingRelationship}">
+        <div>
+            <ui:button label="Cancel" press="{!c.cancelAddRelationship}" class="button-cancel"></ui:button>
+        </div>
+        <c:AddHLRelationship saveSuccessEvent="{!c.relationshipAdded}" contactId="{!v.contactId}"></c:AddHLRelationship>
+    </aura:if>
+    </div>
+</aura:component>

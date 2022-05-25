@@ -1,0 +1,48 @@
+<aura:component extends="c:HL_ComponentBase" access="global">
+  <aura:attribute name="model" type="Object" access="global" />
+  <aura:attribute name="errors" type="String[]" default="[]" access="global" />
+
+  <aura:attribute name="columns" type="List" access="private" />
+
+  <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+  <lightning:tab
+    label="Opportunities"
+    iconName="utility:moneybag"
+    id="opportunities"
+    showErrorIndicator="{!v.errors.length > 0}"
+  >
+    <!--
+    <c:HL_TabContent
+      title="Related Opportunities"
+      iconName="utility:moneybag"
+      errors="{!v.errors}"
+    >
+-->
+    <c:HL_TabContent errors="{!v.errors}">
+      <!--
+      <aura:set attribute="instructions">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </aura:set>
+-->
+
+      <div class="slds-p-horizontal_medium">
+        <aura:if isTrue="{!v.model.RelatedOpportunities.length > 0}">
+          <lightning:datatable
+            id="relatedOpportunitiesTable"
+            aura:id="relatedOpportunitiesTable"
+            data="{!v.model.RelatedOpportunities}"
+            columns="{!v.columns}"
+            keyField="id"
+            hideCheckboxColumn="true"
+          />
+
+          <aura:set attribute="else">
+            <i>No records to display.</i>
+          </aura:set>
+        </aura:if>
+      </div>
+    </c:HL_TabContent>
+  </lightning:tab>
+</aura:component>

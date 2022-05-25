@@ -1,0 +1,58 @@
+<aura:component controller="HL_TimeRecordController" extends="c:HL_LightningComponent">
+	<aura:attribute name="projectSelections"
+                    type="Object[]"
+                    description="Array of Selectable Projects to Track Time Against"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="filteredProjectSelections"
+                    type="Object[]"
+                    description="Array of Selectable Projects to Track Time Against"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableOpportunities"
+                    type="Object[]"
+                    description="Selectable opportunities"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableEngagements"
+                    type="Object[]"
+                    description="Selectable engagements"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableSpecialProjects"
+                    type="Object[]"
+                    description="Selectable specialProjects"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="displayPrefix"
+                    type="Boolean"
+                    description="Indicates if the Prefix Should be Displayed"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="displayShortPrefix"
+                    type="Boolean"
+                    description="Indicates if the Short Prefix Should be Displayed"
+                    access="PUBLIC"></aura:attribute>
+	<aura:attribute name="selectedProjectId"
+                    type="String"
+                    description="Selected Project Id"
+                    access="PUBLIC"></aura:attribute>
+	<aura:attribute name="isDisabled"
+                    type="Boolean"
+                    description="Indicates if the Control should be Disabled"
+                    access="PUBLIC"
+                    default="false"></aura:attribute>
+	<aura:registerEvent name="projectSelectionEvent"
+                        type="c:SelectionEvt"></aura:registerEvent>
+    <aura:handler name="init" 
+                  value="{!this}" 
+                  action="{!c.doInit}"></aura:handler>
+	<div class="staffTimeSheetProjectSelection">
+	<!--	<ui:inputSelect aura:id="project" multiple="false" class="slds-input" change="{!c.onProjectChanged}" disabled="{!v.isDisabled}">
+	        <ui:inputSelectOption text="" label="(Select Project)"></ui:inputSelectOption>
+	        <aura:iteration items="{!v.filteredProjectSelections}" var="p">
+	            <ui:inputSelectOption text="{!p.Id}" label="{!(v.displayPrefix ? p.DisplayType + ' ' : v.displayShortPrefix ? p.DisplayTypeShort + ' ' : '') + p.Name}" value="{!p.Id == v.selectedProjectId}" />
+	        </aura:iteration>
+	  </ui:inputSelect> -->
+        <lightning:select aura:id="project" class="slds-input" value="{!v.selectedProjectId}" onchange="{!c.onProjectChanged}" disabled="{!v.isDisabled}">
+	        <option value="">(Select Project)</option>
+	        <aura:iteration items="{!v.filteredProjectSelections}" var="p">
+	            <option value="{!p.Id}" >{!(v.displayPrefix ? p.DisplayType + ' ' : v.displayShortPrefix ? p.DisplayTypeShort + ' ' : '') + p.Name}</option>
+            </aura:iteration>
+        </lightning:select>
+	</div>
+</aura:component>

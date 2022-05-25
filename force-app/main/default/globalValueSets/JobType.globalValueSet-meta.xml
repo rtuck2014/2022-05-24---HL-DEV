@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Activism Advisory</fullName>
+        <default>false</default>
+        <label>Activism Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>Board Advisory Services (BAS)</fullName>
+        <default>false</default>
+        <label>Board Advisory Services (BAS)</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyside</fullName>
+        <default>false</default>
+        <label>Buyside</label>
+    </customValue>
+    <customValue>
+        <fullName>Buyside &amp; Financing Advisory</fullName>
+        <default>false</default>
+        <label>Buyside &amp; Financing Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>Collateral Valuation</fullName>
+        <default>false</default>
+        <label>Collateral Valuation</label>
+    </customValue>
+    <customValue>
+        <fullName>Compensation/Formula Analysis</fullName>
+        <default>false</default>
+        <label>Compensation/Formula Analysis</label>
+    </customValue>
+    <customValue>
+        <fullName>Consulting</fullName>
+        <default>false</default>
+        <label>Consulting</label>
+    </customValue>
+    <customValue>
+        <fullName>Corporate Alliances</fullName>
+        <default>false</default>
+        <label>Corporate Alliances</label>
+    </customValue>
+    <customValue>
+        <fullName>Creditor Advisors</fullName>
+        <default>false</default>
+        <label>Creditor Advisors</label>
+    </customValue>
+    <customValue>
+        <fullName>Debt Advisory</fullName>
+        <default>false</default>
+        <label>Debt Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>Debt Capital Markets</fullName>
+        <default>false</default>
+        <label>Debt Capital Markets</label>
+    </customValue>
+    <customValue>
+        <fullName>Debtor Advisors</fullName>
+        <default>false</default>
+        <label>Debtor Advisors</label>
+    </customValue>
+    <customValue>
+        <fullName>Discretionary Advisory</fullName>
+        <default>false</default>
+        <label>Discretionary Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>DM&amp;A Buyside</fullName>
+        <default>false</default>
+        <label>DM&amp;A Buyside</label>
+    </customValue>
+    <customValue>
+        <fullName>DM&amp;A Sellside</fullName>
+        <default>false</default>
+        <label>DM&amp;A Sellside</label>
+    </customValue>
+    <customValue>
+        <fullName>DRC - Ad Valorem Services</fullName>
+        <default>false</default>
+        <label>DRC - Ad Valorem Services</label>
+    </customValue>
+    <customValue>
+        <fullName>DRC - Appointed Arbitrator/Mediator</fullName>
+        <default>false</default>
+        <label>DRC - Appointed Arbitrator/Mediator</label>
+    </customValue>
+    <customValue>
+        <fullName>DRC - Contract Compliance</fullName>
+        <default>false</default>
+        <label>DRC - Contract Compliance</label>
+    </customValue>
+    <customValue>
+        <fullName>DRC - Exp Cons-Arbitrat&apos;n</fullName>
+        <default>false</default>
+        <label>DRC - Exp Cons-Arbitrat&apos;n</label>
+    </customValue>
+    <customValue>
+        <fullName>DRC - Exp Cons-Bankruptcy</fullName>
+        <default>false</default>
+        <label>DRC - Exp Cons-Bankruptcy</label>
+    </customValue>
+    <customValue>
+        <fullName>DRC - Exp Cons-Litigation</fullName>
+        <default>false</default>
+        <label>DRC - Exp Cons-Litigation</label>
+    </customValue>
+    <customValue>
+        <fullName>DRC - Exp Cons-Mediation</fullName>
+        <default>false</default>
+        <label>DRC - Exp Cons-Mediation</label>
+    </customValue>
+    <customValue>
+        <fullName>DRC - Exp Cons-Pre-Complt</fullName>
+        <default>false</default>
+        <label>DRC - Exp Cons-Pre-Complt</label>
+    </customValue>
+    <customValue>
+        <fullName>DRC - Exp Wit-Arbitration</fullName>
+        <default>false</default>
+        <label>DRC - Exp Wit-Arbitration</label>
+    </customValue>
+    <customValue>
+        <fullName>DRC - Exp Wit-Bankruptcy</fullName>
+        <default>false</default>
+        <label>DRC - Exp Wit-Bankruptcy</label>
+    </customValue>
+    <customValue>
+        <fullName>DRC - Exp Wit-Litigation</fullName>
+        <default>false</default>
+        <label>DRC - Exp Wit-Litigation</label>
+    </customValue>
+    <customValue>
+        <fullName>DRC - Exp Wit-Mediation</fullName>
+        <default>false</default>
+        <label>DRC - Exp Wit-Mediation</label>
+    </customValue>
+    <customValue>
+        <fullName>DRC - Exp Wit-Pre-Complnt</fullName>
+        <default>false</default>
+        <label>DRC - Exp Wit-Pre-Complnt</label>
+    </customValue>
+    <customValue>
+        <fullName>DRC - Post Transaction Dispute</fullName>
+        <default>false</default>
+        <label>DRC - Post Transaction Dispute</label>
+    </customValue>
+    <customValue>
+        <fullName>Equity Advisors</fullName>
+        <default>false</default>
+        <label>Equity Advisors</label>
+    </customValue>
+    <customValue>
+        <fullName>Equity Capital Markets</fullName>
+        <default>false</default>
+        <label>Equity Capital Markets</label>
+    </customValue>
+    <customValue>
+        <fullName>ESOP Advisory</fullName>
+        <default>false</default>
+        <label>ESOP Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>ESOP Capital Partnership</fullName>
+        <default>false</default>
+        <label>ESOP Capital Partnership</label>
+    </customValue>
+    <customValue>
+        <fullName>ESOP Corporate Finance</fullName>
+        <default>false</default>
+        <label>ESOP Corporate Finance</label>
+    </customValue>
+    <customValue>
+        <fullName>ESOP Fairness</fullName>
+        <default>false</default>
+        <label>ESOP Fairness</label>
+    </customValue>
+    <customValue>
+        <fullName>ESOP Update</fullName>
+        <default>false</default>
+        <label>ESOP Update</label>
+    </customValue>
+    <customValue>
+        <fullName>Estate &amp; Gift Tax</fullName>
+        <default>false</default>
+        <label>Estate &amp; Gift Tax</label>
+    </customValue>
+    <customValue>
+        <fullName>FA - Fund Opinions-Fairness</fullName>
+        <default>false</default>
+        <label>FA - Fund Opinions-Fairness</label>
+    </customValue>
+    <customValue>
+        <fullName>FA - Fund Opinions-Non-Fairness</fullName>
+        <default>false</default>
+        <label>FA - Fund Opinions-Non-Fairness</label>
+    </customValue>
+    <customValue>
+        <fullName>Fairness</fullName>
+        <default>false</default>
+        <label>Fairness</label>
+    </customValue>
+    <customValue>
+        <fullName>FA - Portfolio-Advis/Consulting</fullName>
+        <default>false</default>
+        <label>FA - Portfolio-Advis/Consulting</label>
+    </customValue>
+    <customValue>
+        <fullName>FA - Portfolio-Auto Loans</fullName>
+        <default>false</default>
+        <label>FA - Portfolio-Auto Loans</label>
+    </customValue>
+    <customValue>
+        <fullName>FA - Portfolio-Auto Struct Prd</fullName>
+        <default>false</default>
+        <label>FA - Portfolio-Auto Struct Prd</label>
+    </customValue>
+    <customValue>
+        <fullName>FA - Portfolio-BDC/Direct Lending</fullName>
+        <default>false</default>
+        <label>FA - Portfolio-BDC/Direct Lending</label>
+    </customValue>
+    <customValue>
+        <fullName>FA - Portfolio-Deriv/Risk Mgmt</fullName>
+        <default>false</default>
+        <label>FA - Portfolio-Deriv/Risk Mgmt</label>
+    </customValue>
+    <customValue>
+        <fullName>FA - Portfolio-Diligence/Assets</fullName>
+        <default>false</default>
+        <label>FA - Portfolio-Diligence/Assets</label>
+    </customValue>
+    <customValue>
+        <fullName>FA - Portfolio-Funds Transfer</fullName>
+        <default>false</default>
+        <label>FA - Portfolio-Funds Transfer</label>
+    </customValue>
+    <customValue>
+        <fullName>FA - Portfolio-GP interest</fullName>
+        <default>false</default>
+        <label>FA - Portfolio-GP interest</label>
+    </customValue>
+    <customValue>
+        <fullName>FA - Portfolio LIBOR Advisory</fullName>
+        <default>false</default>
+        <label>FA - Portfolio LIBOR Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>FA - Portfolio-Real Estate</fullName>
+        <default>false</default>
+        <label>FA - Portfolio-Real Estate</label>
+    </customValue>
+    <customValue>
+        <fullName>FA - Portfolio - SPAC</fullName>
+        <default>false</default>
+        <label>FA - Portfolio - SPAC</label>
+    </customValue>
+    <customValue>
+        <fullName>FA - Portfolio-Valuation</fullName>
+        <default>false</default>
+        <label>FA - Portfolio-Valuation</label>
+    </customValue>
+    <customValue>
+        <fullName>FAS - Administrative</fullName>
+        <default>false</default>
+        <label>FAS - Administrative</label>
+    </customValue>
+    <customValue>
+        <fullName>FMV Non-Transaction Based Opinion</fullName>
+        <default>false</default>
+        <label>FMV Non-Transaction Based Opinion</label>
+    </customValue>
+    <customValue>
+        <fullName>FMV Transaction Based Opinion</fullName>
+        <default>false</default>
+        <label>FMV Transaction Based Opinion</label>
+    </customValue>
+    <customValue>
+        <fullName>General Financial Advisory</fullName>
+        <default>false</default>
+        <label>General Financial Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>Going Private</fullName>
+        <default>false</default>
+        <label>Going Private</label>
+    </customValue>
+    <customValue>
+        <fullName>Illiquid Financial Assets</fullName>
+        <default>false</default>
+        <label>Illiquid Financial Assets</label>
+    </customValue>
+    <customValue>
+        <fullName>Income Deposit Securities</fullName>
+        <default>false</default>
+        <label>Income Deposit Securities</label>
+    </customValue>
+    <customValue>
+        <fullName>InSource</fullName>
+        <default>false</default>
+        <label>InSource</label>
+    </customValue>
+    <customValue>
+        <fullName>Liability Management</fullName>
+        <default>false</default>
+        <label>Liability Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Liability Mgmt</fullName>
+        <default>false</default>
+        <label>Liability Mgmt</label>
+    </customValue>
+    <customValue>
+        <fullName>Litigation</fullName>
+        <default>false</default>
+        <label>Litigation</label>
+    </customValue>
+    <customValue>
+        <fullName>Merger</fullName>
+        <default>false</default>
+        <label>Merger</label>
+    </customValue>
+    <customValue>
+        <fullName>Negotiated Fairness</fullName>
+        <default>false</default>
+        <label>Negotiated Fairness</label>
+    </customValue>
+    <customValue>
+        <fullName>PBAS</fullName>
+        <default>false</default>
+        <label>PBAS</label>
+    </customValue>
+    <customValue>
+        <fullName>Private Funds: GP Advisory</fullName>
+        <default>false</default>
+        <label>Private Funds: GP Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>Private Funds: GP Stake Sale</fullName>
+        <default>false</default>
+        <label>Private Funds: GP Stake Sale</label>
+    </customValue>
+    <customValue>
+        <fullName>Private Funds: Primary Advisory</fullName>
+        <default>false</default>
+        <label>Private Funds: Primary Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>Private Funds: Secondary Advisory</fullName>
+        <default>false</default>
+        <label>Private Funds: Secondary Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>Real Estate Brokerage</fullName>
+        <default>false</default>
+        <label>Real Estate Brokerage</label>
+    </customValue>
+    <customValue>
+        <fullName>Regulator/Other</fullName>
+        <default>false</default>
+        <label>Regulator/Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Securities Design</fullName>
+        <default>false</default>
+        <label>Securities Design</label>
+    </customValue>
+    <customValue>
+        <fullName>Sellside</fullName>
+        <default>false</default>
+        <label>Sellside</label>
+    </customValue>
+    <customValue>
+        <fullName>Solvency</fullName>
+        <default>false</default>
+        <label>Solvency</label>
+    </customValue>
+    <customValue>
+        <fullName>Sovereign Advisory</fullName>
+        <default>false</default>
+        <label>Sovereign Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>Special Committee Advisory</fullName>
+        <default>false</default>
+        <label>Special Committee Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>Special Situations</fullName>
+        <default>false</default>
+        <label>Special Situations</label>
+    </customValue>
+    <customValue>
+        <fullName>Special Situations Buyside</fullName>
+        <default>false</default>
+        <label>Special Situations Buyside</label>
+    </customValue>
+    <customValue>
+        <fullName>Special Situations Sellside</fullName>
+        <default>false</default>
+        <label>Special Situations Sellside</label>
+    </customValue>
+    <customValue>
+        <fullName>Strategic Alternatives Study</fullName>
+        <default>false</default>
+        <label>Strategic Alternatives Study</label>
+    </customValue>
+    <customValue>
+        <fullName>Strategic Consulting</fullName>
+        <default>false</default>
+        <label>Strategic Consulting</label>
+    </customValue>
+    <customValue>
+        <fullName>Syndicated Finance</fullName>
+        <default>false</default>
+        <label>Syndicated Finance</label>
+    </customValue>
+    <customValue>
+        <fullName>Take Over Defense</fullName>
+        <default>false</default>
+        <label>Take Over Defense</label>
+    </customValue>
+    <customValue>
+        <fullName>TAS - Accounting and Financial Reporting Advisory</fullName>
+        <default>false</default>
+        <label>TAS - Accounting and Financial Reporting Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>TAS - Due Diligence-Buyside</fullName>
+        <default>false</default>
+        <label>TAS - Due Diligence-Buyside</label>
+    </customValue>
+    <customValue>
+        <fullName>TAS - Due Diligence-Sellside</fullName>
+        <default>false</default>
+        <label>TAS - Due Diligence-Sellside</label>
+    </customValue>
+    <customValue>
+        <fullName>TAS - Lender Services</fullName>
+        <default>false</default>
+        <label>TAS - Lender Services</label>
+    </customValue>
+    <customValue>
+        <fullName>TAS - Tax</fullName>
+        <default>false</default>
+        <label>TAS - Tax</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech+IP - Buyside</fullName>
+        <default>false</default>
+        <label>Tech+IP - Buyside</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech+IP - Patent Acquisition Support</fullName>
+        <default>false</default>
+        <label>Tech+IP - Patent Acquisition Support</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech+IP - Patent Sales</fullName>
+        <default>false</default>
+        <label>Tech+IP - Patent Sales</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech+IP - Strategic Advisory</fullName>
+        <default>false</default>
+        <label>Tech+IP - Strategic Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech+IP - Tech+IP Sales</fullName>
+        <default>false</default>
+        <label>Tech+IP - Tech+IP Sales</label>
+    </customValue>
+    <customValue>
+        <fullName>Tech+IP - Valuation</fullName>
+        <default>false</default>
+        <label>Tech+IP - Valuation</label>
+    </customValue>
+    <customValue>
+        <fullName>TFR - Forensic Services</fullName>
+        <default>false</default>
+        <label>TFR - Forensic Services</label>
+    </customValue>
+    <customValue>
+        <fullName>TFR - FV Opinion</fullName>
+        <default>false</default>
+        <label>TFR - FV Opinion</label>
+    </customValue>
+    <customValue>
+        <fullName>TFR - Goodwill or Asset Impairment</fullName>
+        <default>false</default>
+        <label>TFR - Goodwill or Asset Impairment</label>
+    </customValue>
+    <customValue>
+        <fullName>TFR - Pre-Acq Val&apos;n Cons</fullName>
+        <default>false</default>
+        <label>TFR - Pre-Acq Val&apos;n Cons</label>
+    </customValue>
+    <customValue>
+        <fullName>TFR - Purchase Price Allocation</fullName>
+        <default>false</default>
+        <label>TFR - Purchase Price Allocation</label>
+    </customValue>
+    <customValue>
+        <fullName>TFR - SFAS 123R/409A Stock, Option Valuation</fullName>
+        <default>false</default>
+        <label>TFR - SFAS 123R/409A Stock, Option Valuation</label>
+    </customValue>
+    <customValue>
+        <fullName>TFR - SFAS 133 Derivatives, Liabilities Valuation</fullName>
+        <default>false</default>
+        <label>TFR - SFAS 133 Derivatives, Liabilities Valuation</label>
+    </customValue>
+    <customValue>
+        <fullName>TFR - Sovereign Advisory</fullName>
+        <default>false</default>
+        <label>TFR - Sovereign Advisory</label>
+    </customValue>
+    <customValue>
+        <fullName>TFR - Tangible Asset Valuation</fullName>
+        <default>false</default>
+        <label>TFR - Tangible Asset Valuation</label>
+    </customValue>
+    <customValue>
+        <fullName>TFR - Tax Valuation</fullName>
+        <default>false</default>
+        <label>TFR - Tax Valuation</label>
+    </customValue>
+    <customValue>
+        <fullName>TFR - Transfer Pricing</fullName>
+        <default>false</default>
+        <label>TFR - Transfer Pricing</label>
+    </customValue>
+    <masterLabel>Job Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

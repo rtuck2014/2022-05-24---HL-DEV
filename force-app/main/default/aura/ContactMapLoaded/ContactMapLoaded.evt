@@ -1,0 +1,6 @@
+<aura:event type="COMPONENT" > 
+    <aura:attribute name="NElng" Type="Decimal"/>
+    <aura:attribute name="NElat" Type="Decimal"/>
+    <aura:attribute name="SWlng" Type="Decimal"/>
+    <aura:attribute name="SWlat" Type="Decimal"/>
+</aura:event>

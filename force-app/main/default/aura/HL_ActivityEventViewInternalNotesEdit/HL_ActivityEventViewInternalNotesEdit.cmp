@@ -1,0 +1,38 @@
+<aura:component
+  extends="c:HL_ComponentBase"
+  implements="force:lightningQuickActionWithoutHeader"
+  access="global"
+>
+  <aura:attribute name="model" type="Object" access="global" />
+
+  <aura:attribute
+    name="isLoading"
+    type="Boolean"
+    default="false"
+    access="global"
+  />
+
+  <lightning:overlayLibrary aura:id="overlayLib" />
+
+  <c:HL_QuickActionModal title="Edit Internal Notes" width="40">
+    <aura:set attribute="footer">
+      <lightning:button onclick="{!c.handleCancel}">Cancel</lightning:button>
+      <lightning:button onclick="{!c.handleSave}" variant="brand"
+        >Save</lightning:button
+      >
+    </aura:set>
+
+    <aura:if isTrue="{!v.isLoading}">
+      <lightning:spinner alternativeText="Loading" size="medium" />
+    </aura:if>
+
+    <div class="slds-p-around_medium">
+      <lightning:textarea
+        name="internalNotesField"
+        label="Internal Notes"
+        value="{!v.model.ActivitySupplement.Internal_Notes__c}"
+        class="internalNotesField"
+      />
+    </div>
+  </c:HL_QuickActionModal>
+</aura:component>

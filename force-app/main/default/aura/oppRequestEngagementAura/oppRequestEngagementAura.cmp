@@ -1,0 +1,51 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="OppRequestEngagement">
+    <aura:attribute name="recordId" type="String" default=""/>
+    <aura:attribute name="validationMessage" type="String" default=""/>
+    <aura:attribute name="hasLoaded" type="Boolean" default="false"/>
+    <aura:attribute name="isSuccess" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+   <aura:html tag="style">
+        .cuf-content {
+            padding: 0 0rem !important;
+        }
+        .slds-p-around--medium {
+            padding: 0rem !important;
+        }       
+        .slds-modal__content{
+            overflow-y:hidden !important;
+            height:unset !important;
+            max-height:unset !important;
+        }
+    </aura:html>
+    <aura:if isTrue="{!v.isSuccess}">
+       <!-- <p>{!$Label.c.HL_request_engagement_submitted_for_approval}</p>
+         <p>
+            <lightning:button variant="brand" label="Ok" onclick="{!c.refresh}"/>
+        </p>-->
+        <div class="modal-header slds-modal__header slds-size_1-of-1">
+            <h4 class="title slds-text-heading--medium" ></h4>
+        </div>
+        
+        <!-- MODAL BODY / INPUT FORM -->    
+        <div class="slds-modal__content slds-p-around--x-small slds-align_absolute-center slds-size_1-of-1 slds-is-relative" aura:id="modalbody" id="modalbody">
+            {!$Label.c.HL_request_engagement_submitted_for_approval}
+            
+        </div>   <!-- End of Modal Content -->  
+        
+        <!-- MODAL FOOTER -->
+        <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+            <div class="forceChangeRecordTypeFooter">
+                <lightning:button class="slds-button slds-button_neutral" variant="brand" label="OK" onclick="{! c.refresh}" /> 
+
+            </div>
+        </div>
+        
+    </aura:if>
+    
+    <aura:if isTrue="{!v.hasLoaded}">
+       
+        <div class="slds-p-around_large" > 
+            <lightning:icon iconName="utility:warning" size="medium"/> &nbsp;&nbsp; <span style="color:red;font-weight:bold;">Error</span><br/><br/> 
+            <lightning:formattedText value="{!v.validationMessage}"/></div>
+    </aura:if>
+</aura:component>

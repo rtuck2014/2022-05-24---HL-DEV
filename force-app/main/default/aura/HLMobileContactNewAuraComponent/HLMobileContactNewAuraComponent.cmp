@@ -1,0 +1,16 @@
+<aura:component implements="force:appHostable,force:hasRecordId,force:lightningQuickAction" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name ="showLookupField" type="Boolean" default="false"/>
+    <aura:if isTrue="{!v.showLookupField}">
+        <div aura:id="mainContainer" class="mainContainer">
+            <div class="childContainer">
+                <c:hlMobileContactNewComponent  accountId = "{!v.recordId}" showLookupField="{!v.showLookupField}"/>
+                <br/>
+                <br/>
+            </div>
+        </div>
+        <aura:set attribute="else">
+            <c:hlMobileContactNewComponent  accountId = "{!v.recordId}" showLookupField="{!v.showLookupField}"/>
+        </aura:set>
+    </aura:if>
+</aura:component>

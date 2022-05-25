@@ -1,0 +1,9 @@
+The following Opportunity has a US based Client and a UK based Subject:
+
+{!Opportunity__c.Name}: {!Opportunity__c.Opportunity_Number__c}
+Line of Business: {!Opportunity__c.Line_of_Business__c}
+Job Type: {!Opportunity__c.Job_Type__c}
+Created Date: {!Opportunity__c.CreatedDate}
+Created By: {!Opportunity__c.CreatedBy}
+
+Direct Link: {!Opportunity__c.Link}

@@ -1,0 +1,60 @@
+.THIS {
+    height: 100%;
+}
+
+.THIS .myActivities {
+  height: 100%;
+}
+
+.THIS .button-more{
+    width: 100%;
+    margin: 10px;
+}
+.THIS .button-cancel{
+    width: 100%;
+    margin: 4px;
+}
+.THIS .hidden{
+    display:none;
+}
+
+.THIS p {
+    margin: 0;
+}
+
+.THIS .activitylist {
+    height: calc(100% - 50px);
+}
+
+.THIS .button-record{
+    border: none!important;
+    padding: 0px!important;
+    text-align: left;
+    width: 100%;
+}
+
+.THIS .button-add{
+    width: 100%;
+}
+
+.THIS html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+.THIS body {
+  margin: 0;
+}
+.THIS .cFlexDatePicker .button-nav-left,
+.THIS .cFlexDatePicker .button-nav-right
+{
+	margin-top: -10px!important;    
+}
+
+.THIS .myActivities > .navbar-header,
+.THIS .myActivities-fluid > .navbar-header,
+.THIS .myActivities > .navbar-collapse,
+.THIS .myActivities-fluid > .navbar-collapse {
+  margin-right: -15px;
+  margin-left: -15px;
+}

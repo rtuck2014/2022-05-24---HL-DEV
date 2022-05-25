@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>HL_BlankLetterHead</letterhead>
+    <name>Event Expense - HL Internal Opportunity Email Template</name>
+    <style>freeForm</style>
+    <subject>Expense Request: {!Event_Expense__c.Event_Name__c} Notification</subject>
+    <textOnly>The following Expense Request has been created without a related HL Internal Opportunity created for the event: {!Event_Expense__c.Name}
+
+
+
+If you are the Requesting Officer or submitter of the Expense Request, please email lward@hl.com with the five details below for the event:
+
+
+
+1. Event Name:
+
+
+2. Classification, Event Type and Format (if applicable):
+
+Classification = Business Development
+
+Event Types:
+
+· Third Party Conference/Seminar attendance
+
+· Membership Dues
+
+· Client Entertainment
+
+
+
+Classification = Internal
+
+Event Type: Staff Entertainment
+
+Event Format:
+
+· Event Format:
+
+· Offsite Meeting
+
+· Training
+
+· CF Charitable Contribution Match
+
+· Other
+
+
+Event Type: Administrative
+
+Event Format:
+
+· Offsite Meeting
+
+· Training
+
+· CF Charitable Contribution Match
+
+· Other
+
+
+Classification = Marketing
+
+Event Types:
+
+· Branding and Advertising
+
+· HL Hosted Client Event (during 3rd - party events)
+
+· HL Hosted Client Event
+
+· Conference/Summit/Seminar
+
+· Sponsorship
+
+
+
+3. City:
+
+
+
+4. Event Location:</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

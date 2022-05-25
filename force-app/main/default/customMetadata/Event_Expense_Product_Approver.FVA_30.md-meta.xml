@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>FVA-30</label>
+    <protected>false</protected>
+    <values>
+        <field>Approver_User_Id__c</field>
+        <value xsi:type="xsd:string">005i0000004bko6AAA</value>
+    </values>
+    <values>
+        <field>Approver_User_Name__c</field>
+        <value xsi:type="xsd:string">Jeffrey Tarbell</value>
+    </values>
+    <values>
+        <field>Is_Active__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>LOB__c</field>
+        <value xsi:type="xsd:string">FVA</value>
+    </values>
+    <values>
+        <field>Level__c</field>
+        <value xsi:type="xsd:string">1</value>
+    </values>
+    <values>
+        <field>Product_Type__c</field>
+        <value xsi:type="xsd:string">REVS</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,37 @@
+<apex:component controller="HL_InternalTeamController" allowDml="true">   
+    <apex:attribute name="SpecialStaffRole" assignTo="{!SpecialRole}" type="String" description="Used to specify a special/unconventional role to use for special cases (i.e. FAIRNESS)" required="false"></apex:attribute>
+    <apex:pageBlock title="{!if(ISBLANK(SpecialRole), EntityName + ' - HL Internal Team',if(SpecialRole=='Fairness', 'Additional Officers',SpecialRole))}">
+            <apex:pageBlockTable value="{!TeamRecords}" var="teamMember" id="team">
+               <apex:column >
+                    <apex:outputPanel layout="block">
+                    	<apex:outputLabel value="{!teamMember.ContactRecord.Name}"/>
+                    </apex:outputPanel>
+                	<apex:facet name="header">Staff Member</apex:facet>
+                </apex:column>
+                <apex:column value="{!teamMember.ContactRecord.Office__c}">
+                	<apex:facet name="header">Office</apex:facet>
+                </apex:column>
+                <apex:column value="{!teamMember.ContactRecord.Title}">
+                	<apex:facet name="header">Title</apex:facet>
+                </apex:column>
+                <apex:column value="{!teamMember.ContactRecord.Line_of_Business__c}">
+                	<apex:facet name="header">LOB</apex:facet>
+                </apex:column>
+                <apex:repeat var="sr" value="{!StaffRolesCollection}">
+                    <apex:column headerValue="{!if(ISBLANK(SpecialRole),sr.Display_Name__c,'Included')}" styleClass="center" headerClass="center">
+                        <apex:outputPanel rendered="{!Contains(teamMember.ActiveRolesString,sr.Name)}"  layout="block">
+                            <input type="checkbox" disabled="disabled" checked="checked" />
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!NOT(Contains(teamMember.ActiveRolesString,sr.Name))}" layout="block">
+                            <input type="checkbox" disabled="disabled" />
+                        </apex:outputPanel>
+                    </apex:column>
+                </apex:repeat>
+            </apex:pageBlockTable>
+            <apex:outputLabel value="No records to display" rendered="{!TeamRecords.size == 0}"></apex:outputLabel>
+    </apex:pageBlock>
+    <style>
+        .pbTitle {display:none;}
+        .center {text-align:center;}
+    </style>
+</apex:component>

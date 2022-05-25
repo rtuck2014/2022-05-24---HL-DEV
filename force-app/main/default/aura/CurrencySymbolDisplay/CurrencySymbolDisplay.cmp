@@ -1,0 +1,10 @@
+<aura:component >
+    <aura:attribute name="currencyIsoCode" type="String" default="USD"></aura:attribute>
+	<ui:outputText value="{!if(v.currencyIsoCode == 'AUD', 'AU$',
+                          	if(v.currencyIsoCode == 'GBP', '£',
+                          	if(v.currencyIsoCode == 'CNY', '¥',
+                          	if(v.currencyIsoCode == 'EUR', '€',
+                            if(v.currencyIsoCode == 'HKD', 'HK$',
+                            if(v.currencyIsoCode == 'JPY', '¥',
+                            '$'))))))}"  />
+</aura:component>

@@ -1,0 +1,60 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><font face="Arial, sans-serif" style="">This is to notify you
+that the marketing expense request for&nbsp;<span style="color: red;">{!Event_Expense__c.Event_Type_Format__c}</span>&nbsp; expense <span style="color: red;">{!Event_Expense__c.Name}</span>&nbsp;has been recently reviewed by&nbsp;<span style="color: red;">{!Event_Expense__c.Current_Approver__c}</span>.</font><span style="font-family: Arial, sans-serif; font-size: 12pt;">&nbsp;</span></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><font face="Arial, sans-serif">Please review using the
+link below. If you have any questions, please contact the requestor,&nbsp;<b><span style="color: red;">{!Event_Expense__c.Requestor_Name__c}</span></b>.</font><span style="font-family: Arial, sans-serif; font-size: 12pt;">&nbsp;</span></p><div class="MsoNormal" align="center" style="margin-bottom: 0.0001pt; text-align: center; line-height: normal;"><b><span class="msoDel"><del cite="mailto:Lin,%20Johnny" datetime="2018-04-17T16:05"><font face="Arial, sans-serif">
+
+<hr size="2" width="100%" align="center">
+
+</font></del></span></b></div><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><b style="font-family: Arial, sans-serif; font-size: 12pt;">Requestor:</b><span style="font-family: Arial, sans-serif; font-size: 12pt;">&nbsp;{!Event_Expense__c.Requestor_Name__c}</span></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: 18pt;"><font face="Arial, sans-serif"><b>Product Type:</b>&nbsp;{!Event_Expense__c.Product_Type__c}<o:p></o:p></font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: 18pt;"><font face="Arial, sans-serif"><b>Event Name:</b>&nbsp;{!Event_Expense__c.Event_Name__c}<o:p></o:p></font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><font face="Arial, sans-serif"><b>Request Type:</b>&nbsp;{!Event_Expense__c.Event_Type_Format__c}<o:p></o:p></font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><font face="Arial, sans-serif"><b>Target Audience:</b>&nbsp;{!Event_Expense__c.Target_Audience__c}<o:p></o:p></font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><font face="Arial, sans-serif"><b>Event Date:</b>&nbsp;{!Event_Expense__c.Formatted_Start_Date__c}<o:p></o:p></font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><font face="Arial, sans-serif"><b>Event Purpose :</b>&nbsp;{!Event_Expense__c.Event_Purpose__c}<o:p></o:p></font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><font face="Arial, sans-serif"><b>Desired Outcome:</b>&nbsp;{!Event_Expense__c.What_is_desired_outcome_of_this_event__c}<o:p></o:p></font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><b style="font-size: 12pt; font-family: Arial, sans-serif;">Total Budget Requested:&nbsp;</b><font face="Arial, sans-serif" style="font-size: medium;">{!Event_Expense__c.Total_Budget_Requested__c}</font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><font face="Arial, sans-serif"><b>Requested Event Budget
+(excluding Travel):</b>&nbsp;{!Event_Expense__c.Requested_Event_Budget_excluding_Travel__c}<o:p></o:p></font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><font face="Arial, sans-serif"><b>Expected Travel Cost:</b>&nbsp;{!Event_Expense__c.Expected_Travel_cost__c}<o:p></o:p></font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><font face="Arial, sans-serif"><b>KPIs (Key Performance
+Indicators):</b>&nbsp;{!Event_Expense__c.What_are_KPIs__c}<o:p></o:p></font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><font face="Arial, sans-serif"><b>Notes</b>:&nbsp; {!Event_Expense__c.Notes__c}<o:p></o:p></font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;"><font face="Arial, sans-serif"><a href="{!Event_Expense__c.Base_URL__c}"><b>Review submission:</b>&nbsp;{!Event_Expense__c.Event_Name__c}</a><o:p></o:p></font></p><p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p class="MsoNormal" style=""><span style="line-height: 115%;"><font face="Arial, sans-serif" style="">&nbsp;</font></span></p><div style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0);"><div style="font-family: arial;"><div style=""><p class="MsoNoSpacing" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0); line-height: 150%;"><span style="font-family: Calibri, sans-serif; font-size: 11pt;"></span></p></div></div></div>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[<div style=""><br><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div></div>]]></td>
+</tr>
+</table>

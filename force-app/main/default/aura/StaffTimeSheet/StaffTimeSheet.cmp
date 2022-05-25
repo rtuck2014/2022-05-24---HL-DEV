@@ -1,0 +1,452 @@
+<aura:component controller="HL_TimeRecordController" extends="c:HL_LightningComponent">
+    <aura:attribute name="category"
+                    type="String"
+                    default="Litigation"
+                    description="Time Record Tracking Category: Litigation is only option at moment"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="userId"
+                    type="String"
+                    description="Running User Id"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="isSupervisor"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates whether the current user has Supervisor Access"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordPeriodStaffMember"
+                    type="Time_Record_Period_Staff_Member__c"
+                    description="Time Record Period Staff Member"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="startDate"
+                    type="Date"
+                    description="Time Record Period Start Date"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="endDate"
+                    type="Date"
+                    description="Time Record Period End Date"
+                    access="PUBLIC"></aura:attribute>
+    <!--Used to handle changes to date so we aren't firing for both start and end-->
+    <aura:attribute name="dateRange"
+                    type="String"
+                    description="Time Record Period Date Range"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="projectSelections"
+                    type="Object[]"
+                    description="Selectable Projects"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableOpportunities"
+                    type="Object[]"
+                    description="Selectable opportunities"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableEngagements"
+                    type="Object[]"
+                    description="Selectable engagements"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableSpecialProjects"
+                    type="Object[]"
+                    description="Selectable specialProjects"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordPeriod"
+                    type="Time_Record_Period__c"
+                    description="Time Record Period"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecords"
+                    type="Time_Record__c[]"
+                    description="Time Records for the Selected Time Record Period Staff Member"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="timeRecordsSummary"
+                    type="Time_Record_Rollup_Day__c[]"
+                    description="Time Record Summary Records for the Selected Time Record Period Staff Member"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="timeRecordsWeekly"
+                    type="AggregateResult[]"
+                    description="Time Records - Grouped by Day and Project for the Staff Member"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="timeRecordWeeklyTotals"
+                    type="AggregateResult[]"
+                    description="Time Record Totals - Grouped by Day for the Staff Member"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="activityTypes"
+                    type="String[]"
+                    description="Selectable Activity Types"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="currencyCodes"
+                    type="String[]"
+                    description="Selectable Currency Code"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="sortField"
+                    type="String"
+                    default="Activity_Date__c"
+                    description="Current Sorted Field Applied to the Grid"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="sortDirection"
+                    type="String"
+                    default="DESC"
+                    description="Current Sort Direction Applied to the Grid"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="sortSummaryField"
+                    type="String"
+                    default="Activity_Date__c"
+                    description="Current Sort Field Applied to the Summary Grid"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="sortSummaryDirection"
+                    type="String"
+                    default="DESC"
+                    description="Current Sort Field Direction Applied to the Summmary Grid"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="activeTab"
+                    type="String"
+                    default="tab-mass"
+                    description="Active Tab Selected"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="areTimeRecordsLoaded"
+                    type="Boolean"
+                    description="Indicates if the Time Records have finished Loading"
+                    default="false"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="isMassEntryLoaded"
+                    type="Boolean"
+                    description="Indicates if the Mass Entry Component has finished Loading"
+                    default="false"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="isFutureWeek"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if the selected week is in future" />
+    <aura:attribute name="allowedHourEntry"
+                    type="integer"
+                    description="allows some records to have a greater than 24 hour time entry"
+                    default="24"
+                    access="PUBLIC"></aura:attribute>
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"></aura:handler>
+    <aura:handler name="change"
+                  value="{!v.timeRecordPeriodStaffMember}"
+                  action="{!c.handleStaffMemberChangedEvent}"></aura:handler>
+    <aura:handler name="change"
+                  value="{!v.dateRange}"
+                  action="{!c.handleDateRangeSelectionEvent}"></aura:handler>
+    <aura:registerEvent name="suppressLoadingIndicatorEvent"
+                        type="c:SuppressLoadingIndicatorEvt"></aura:registerEvent>
+    <aura:registerEvent name="tabSelectedEvent"
+                        type="c:SelectionEvt"/>
+    <aura:registerEvent name="staffTimeSheetLoadedEvent"
+                        type="c:ComponentLoadedEvt"></aura:registerEvent>
+    <div class="timeSheet" style="height:100%;">
+        <div class="{!v.activeTab != 'tab-recorder' ? 'slds-text-heading--medium slds-p-left--xx-small' : 'hidden'}">
+            {!v.timeRecordPeriodStaffMember.Contact__r.Name ? v.timeRecordPeriodStaffMember.Contact__r.Name : '(Select Staff Member)'}
+        </div>
+        <div class="{!v.timeRecordPeriodStaffMember.Contact__r.Name ? 'slds-tabs--default' : 'hidden'}" style="height:100%;">
+            <ul class="slds-tabs--default__nav" role="tablist">
+                <li id="tab-heading-mass" class="slds-tabs__item slds-text-heading--label slds-active" title="Weekly Entry Matrix" role="presentation"><a href="#" role="tab" tabindex="0" aria-selected="false" aria-controls="tab-mass"><ui:outputText value="Weekly Entry Matrix" click="{!c.onTabMassClick}"></ui:outputText></a></li>
+                <li id="tab-heading-recorder" class="slds-tabs__item slds-text-heading--label" title="Time Clock Recorder" role="presentation"><a href="#" role="tab" tabindex="0" aria-selected="false" aria-controls="tab-recorder"><ui:outputText value="Time Clock Recorder" click="{!c.onTabRecorderClick}"></ui:outputText></a></li>
+                <li id="tab-heading-summary" class="slds-tabs__item slds-text-heading--label" title="Summary" role="presentation"><a href="#" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-summary"><ui:outputText value="Summary Logs" click="{!c.onTabSummaryClick}"></ui:outputText></a></li>
+                <li id="tab-heading-view" class="slds-tabs__item slds-text-heading--label" title="Details" role="presentation"><a href="#" role="tab" tabindex="0" aria-selected="false" aria-controls="tab-view"><ui:outputText value="Detail Logs" click="{!c.onTabViewClick}"></ui:outputText></a></li>
+                <li id="tab-heading-weekly" class="slds-tabs__item slds-text-heading--label" title="Weekly Overview" role="presentation"><a href="#" role="tab" tabindex="0" aria-selected="false" aria-controls="tab-weekly"><ui:outputText value="Weekly Overview" click="{!c.onTabWeeklyClick}"></ui:outputText></a></li>
+            </ul>
+            <div id="tab-summary" class="slds-tabs__content slds-hide" role="tabpanel" style="height:100%;">
+                <aura:if isTrue="{!v.activeTab == 'tab-summary'}">
+                    <div class="slds-p-left--small">
+                        <aura:if isTrue="{!v.timeRecordsSummary.length > 0}">
+                            <table class="slds-table">
+                                <thead>
+                                    <th class="slds-is-sortable slds-theme--info slds-p-left--xx-small" scope="col">
+                                        <ui:outputText value="Date" click="{!c.sortSummaryByActivityDate}"></ui:outputText>
+                                        <aura:if isTrue="{!v.sortSummaryField== 'Activity_Date__c' &amp;&amp; v.sortSummaryDirection == 'DESC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowdown" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                        <aura:if isTrue="{!v.sortSummaryField == 'Activity_Date__c' &amp;&amp; v.sortSummaryDirection == 'ASC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowup" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                    </th>
+                                    <th class="slds-is-sortable slds-theme--info" scope="col">
+                                        <ui:outputText value="Project/Engagement" click="{!c.sortSummaryByProjectName}"></ui:outputText>
+                                        <aura:if isTrue="{!v.sortSummaryField == 'Project_Name__c' &amp;&amp; v.sortSummaryDirection == 'DESC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowdown" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                        <aura:if isTrue="{!v.sortSummaryField == 'Project_Name__c' &amp;&amp; v.sortSummaryDirection == 'ASC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowup" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                    </th>
+                                    <th class="slds-is-sortable slds-theme--info" scope="col">
+                                        <ui:outputText value="Activity" click="{!c.sortSummaryByActivityType}"></ui:outputText>
+                                        <aura:if isTrue="{!v.sortSummaryField == 'Activity_Type__c' &amp;&amp; v.sortSummaryDirection == 'DESC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowdown" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                        <aura:if isTrue="{!v.sortSummaryField == 'Activity_Type__c' &amp;&amp; v.sortSummaryDirection == 'ASC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowup" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                    </th>
+                                    <th class="slds-is-sortable align-right slds-theme--info" scope="col">
+                                        <ui:outputText value="Hours" click="{!c.sortSummaryByHoursWorked}"></ui:outputText>
+                                        <aura:if isTrue="{!(v.sortSummaryField == 'Hours_Worked__c' &amp;&amp; v.sortSummaryDirection == 'DESC')}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowdown" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                        <aura:if isTrue="{!v.sortSummaryField == 'Hours_Worked__c' &amp;&amp; v.sortSummaryDirection == 'ASC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowup" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                    </th>
+                                    <aura:if isTrue="{!v.isSupervisor}">
+                                        <th class="slds-is-sortable align-right slds-theme--info" scope="col">
+                                            <ui:outputText value="Rate" click="{!c.sortSummaryByRate}"></ui:outputText>
+                                            <aura:if isTrue="{!(v.sortSummaryField == 'Hourly_Rate__c' &amp;&amp; v.sortSummaryDirection == 'DESC')}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowdown" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                            <aura:if isTrue="{!v.sortSummaryField == 'Hourly_Rate__c' &amp;&amp; v.sortSummaryDirection == 'ASC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowup" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                        </th>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.isSupervisor}">
+                                        <th class="align-right slds-theme--info" scope="col">
+                                            Amount
+                                        </th>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.isSupervisor}">
+                                        <th class="slds-theme--info" scope="col">
+                                            Currency
+                                        </th>
+                                    </aura:if>
+                                </thead>
+                                <tbody>
+                                    <aura:iteration items="{!v.timeRecordsSummary}" var="tr">
+                                        <tr class="slds-hint-parent">
+                                            <td class="slds-cell-shrink">
+                                                {!tr.Activity_Date__c}
+                                            </td>
+                                            <td class="slds-cell-shrink">
+                                                {!tr.Project_Name__c}
+                                                <aura:if isTrue="{!not(empty(tr.Comments__c))}">
+                                                    <br />{!tr.Comments__c}
+                                                </aura:if>
+                                            </td>
+                                            <td class="slds-cell-shrink">
+                                                {!if(!empty(tr.Activity_Type__c), tr.Activity_Type__c, 'N/A')}
+                                            </td>
+                                            <td class="slds-cell-shrink align-right">
+                                                <ui:outputNumber value="{!tr.Hours_Worked__c}" format="0.0"></ui:outputNumber>
+                                            </td>
+                                            <aura:if isTrue="{!v.isSupervisor}">
+                                                <td class="slds-cell-shrink align-right">
+                                                    <c:CurrencySymbolDisplay currencyIsoCode="{!tr.CurrencyIsoCode}"></c:CurrencySymbolDisplay>
+                                                    <ui:outputNumber value="{!tr.Hourly_Rate__c}" format=".00" />
+                                                </td>
+                                            </aura:if>
+                                            <aura:if isTrue="{!v.isSupervisor}">
+                                                <td class="slds-cell-shrink align-right">
+                                                    <c:CurrencySymbolDisplay currencyIsoCode="{!tr.CurrencyIsoCode}"></c:CurrencySymbolDisplay>
+                                                    <ui:outputCurrency value="{!tr.Amount__c}" format="#,###,###.00#" />
+                                                </td>
+                                            </aura:if>
+                                            <aura:if isTrue="{!v.isSupervisor}">
+                                                <td class="slds-cell-shrink" >
+                                                    {!tr.CurrencyIsoCode}
+                                                </td>
+                                            </aura:if>
+                                        </tr>
+                                    </aura:iteration>
+                                </tbody>
+                            </table>
+                        </aura:if>
+                        <aura:if isTrue="{!v.timeRecords.length == 0}">
+                            No Data to Display
+                        </aura:if>
+                    </div>
+                </aura:if>
+            </div>
+            <div id="tab-view" class="slds-tabs__content slds-hide" role="tabpanel" style="height:100%;">
+                <aura:if isTrue="{!v.activeTab == 'tab-view'}">
+                    <div class="slds-p-left--small">
+                        <aura:if isTrue="{!v.timeRecords.length > 0}">
+                            <table class="slds-table">
+                                <thead>
+                                    <th class="slds-is-sortable slds-theme--info slds-p-left--xx-small" scope="col">
+                                        <ui:outputText value="Date" click="{!c.sortByActivityDate}"></ui:outputText>
+                                        <aura:if isTrue="{!v.sortField == 'Activity_Date__c' &amp;&amp; v.sortDirection == 'DESC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowdown" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                        <aura:if isTrue="{!v.sortField == 'Activity_Date__c' &amp;&amp; v.sortDirection == 'ASC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowup" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                    </th>
+                                    <th class="slds-is-sortable slds-theme--info" scope="col">
+                                        <ui:outputText value="Project/Engagement" click="{!c.sortByProjectName}"></ui:outputText>
+                                        <aura:if isTrue="{!v.sortField == 'Project_Name__c' &amp;&amp; v.sortDirection == 'DESC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowdown" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                        <aura:if isTrue="{!v.sortField == 'Project_Name__c' &amp;&amp; v.sortDirection == 'ASC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowup" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                    </th>
+                                    <th class="slds-is-sortable slds-theme--info" scope="col">
+                                        <ui:outputText value="Activity" click="{!c.sortByActivityType}"></ui:outputText>
+                                        <aura:if isTrue="{!v.sortField == 'Activity_Type__c' &amp;&amp; v.sortDirection == 'DESC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowdown" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                        <aura:if isTrue="{!v.sortField == 'Activity_Type__c' &amp;&amp; v.sortDirection == 'ASC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowup" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                    </th>
+                                    <th class="slds-is-sortable slds-text-align--right slds-theme--info" scope="col">
+                                        <ui:outputText value="Hours" click="{!c.sortByHoursWorked}"></ui:outputText>
+                                        <aura:if isTrue="{!(v.sortField == 'Hours_Worked__c' &amp;&amp; v.sortDirection == 'DESC')}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowdown" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                        <aura:if isTrue="{!v.sortField == 'Hours_Worked__c' &amp;&amp; v.sortDirection == 'ASC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowup" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                    </th>
+                                    
+                                    <aura:if isTrue="{!v.isSupervisor}">
+                                        <th class="slds-is-sortable slds-text-align--right slds-theme--info" scope="col">
+                                            <ui:outputText value="Rate" click="{!c.sortByRate}"></ui:outputText>
+                                            <aura:if isTrue="{!(v.sortField == 'Hourly_Rate__c' &amp;&amp; v.sortDirection == 'DESC')}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowdown" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                            <aura:if isTrue="{!v.sortField == 'Hourly_Rate__c' &amp;&amp; v.sortDirection == 'ASC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowup" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                                        </th>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.isSupervisor}">
+                                        <th class="slds-text-align--right slds-theme--info" scope="col">
+                                            Amount
+                                        </th>
+                                    </aura:if>
+                                    <th class="slds-theme--info" scope="col">
+                                        Currency
+                                    </th>
+                                    <th class="slds-text-align--center slds-theme--info">
+                                        Remove
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <aura:iteration items="{!v.timeRecords}" var="tr">
+                                        <tr class="slds-hint-parent">
+                                            <td class="slds-cell-shrink">
+                                                {!tr.Activity_Date__c}
+                                            </td>
+                                            <td class="slds-cell-shrink">
+                                                {!tr.Project_Name__c}
+                                                <aura:if isTrue="{!and(tr.Is_Locked__c,not(v.isSupervisor))}">
+                                                    <br />{!tr.Comments__c}
+                                                    <aura:set attribute="else">
+                                                        <br /><ui:inputTextArea aura:id="comments" value="{!tr.Comments__c}" required="true" labelClass="{!tr.Id}" class="{!if(not(empty(tr.Comments__c)), '', 'hidden')}" rows="3" change="{!c.onCommentsChanged}"></ui:inputTextArea>
+                                                    </aura:set>
+                                                </aura:if>
+                                                
+                                            </td>
+                                            <td class="slds-cell-shrink">
+                                                <aura:if isTrue="{! !empty(tr.Activity_Type__c)}">
+                                                    <aura:if isTrue="{!and(tr.Is_Locked__c,not(v.isSupervisor))}">
+                                                        {!tr.Activity_Type__c}
+                                                        <aura:set attribute="else">
+                                                            <ui:inputSelect class="{!tr.Id}" aura:id="activityTypePicker" change="{!c.onActivityTypeChanged}">
+                                                                <aura:if isTrue="{!v.isFutureWeek}">
+                                                                    <ui:inputSelectOption text="Forecast" value="Forecast" />
+                                                                  <aura:Set attribute="else">  
+                                                                <aura:iteration items="{!v.activityTypes}" var="at">
+                                                                    <ui:inputSelectOption text="{!at}" value="{!tr.Activity_Type__c == at}" />
+                                                                </aura:iteration>
+                                                                </aura:Set>
+                                                                </aura:if>
+                                                            </ui:inputSelect>
+                                                        </aura:set>
+                                                    </aura:if>
+                                                    <aura:set attribute="else">
+                                                        N/A
+                                                    </aura:set>
+                                                </aura:if>
+                                            </td>
+                                            <td class="slds-cell-shrink slds-text-align--right">
+                                                <aura:if isTrue="{!and(tr.Is_Locked__c,not(v.isSupervisor))}">
+                                                    {!tr.Hours_Worked__c}
+                                                    <aura:set attribute="else">
+                                                        <div data-key="{!tr.Id}">
+                                                        	<ui:inputNumber value="{!tr.Hours_Worked__c}" required="true" change="{!c.onHoursWorkedChanged}" onError="{!c.handleError}"  size="4"></ui:inputNumber>
+                                                    	</div>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </td>
+                                            <aura:if isTrue="{!v.isSupervisor}">
+                                                <td class="slds-cell-shrink slds-text-align--right">
+                                                    <c:CurrencySymbolDisplay currencyIsoCode="{!tr.CurrencyIsoCode}"></c:CurrencySymbolDisplay>
+                                                    <aura:if isTrue="{!v.timeRecordPeriod.Is_Locked__c}">
+                                                        <ui:outputNumber value="{!tr.Hourly_Rate__c}" format=".00" />
+                                                        <aura:set attribute="else">
+                                                            <div data-key="{!tr.Id}" style="display: inline-block">
+                                                            	<ui:inputNumber value="{!tr.Hourly_Rate__c}" required="true" change="{!c.onHourlyRateChanged}" size="4"></ui:inputNumber>
+                                                            </div>
+                                                         </aura:set>
+                                                    </aura:if>
+                                                </td>
+                                            </aura:if>
+                                            <aura:if isTrue="{!v.isSupervisor}">
+                                                <td class="slds-cell-shrink slds-text-align--right">
+                                                    <c:CurrencySymbolDisplay currencyIsoCode="{!tr.CurrencyIsoCode}"></c:CurrencySymbolDisplay>
+                                                    <ui:outputCurrency value="{!tr.Amount__c}" format="#,###,###.00#" />
+                                                </td>
+                                            </aura:if>
+                                            <td class="slds-cell-shrink">
+                                                <aura:if isTrue="{!and(tr.Is_Locked__c,not(v.isSupervisor))}">
+                                                    {!tr.CurrencyIsoCode}
+                                                    <aura:set attribute="else">
+                                                        <ui:inputSelect class="{!tr.Id}" aura:id="currencyPicker" change="{!c.onCurrencyChanged}">
+                                                            <aura:iteration items="{!v.currencyCodes}" var="cc">
+                                                                <ui:inputSelectOption text="{!cc}" value="{!tr.CurrencyIsoCode == cc}" />
+                                                            </aura:iteration>
+                                                        </ui:inputSelect>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </td>
+                                            <td class="slds-cell-shrink slds-text-align--center">
+                                                <ui:button class="slds-button slds-button--icon" accesskey="{!tr.Id}" press="{!c.onDeleteClicked}" disabled="{!and(tr.Is_Locked__c,not(v.isSupervisor))}">
+                                                    <c:svg ariaHidden="true" class="slds-button__icon" xlinkHref="/resource/SLDS0120/assets/icons/action-sprite/svg/symbols.svg#close">
+                                                    </c:svg>
+                                                </ui:button>
+                                            </td>
+                                        </tr>
+                                    </aura:iteration>
+                                </tbody>
+                            </table>
+                        </aura:if>
+                        <aura:if isTrue="{!v.timeRecords.length == 0}">
+                            No Data to Display
+                        </aura:if>
+                    </div>
+                </aura:if>
+            </div>
+            <div id="tab-weekly" class="slds-tabs__content slds-hide" role="tabpanel" style="height:100%;">
+                <aura:if isTrue="{!v.activeTab == 'tab-weekly'}">
+                    <div class="slds-p-left--small">
+                        <c:StaffTimeSheetWeeklyProjectView category="{!v.category}"
+                                                           timeRecordsExternal="{!v.timeRecordsWeekly}"
+                                                           timeRecordsTotalExternal="{!v.timeRecordWeeklyTotals}"
+                                                           timeRecordPeriodStaffMember="{!v.timeRecordPeriodStaffMember}"
+                                                           startDate="{!v.startDate}"
+                                                           endDate="{!v.endDate}"
+                                                           allowedHourEntry="{!v.allowedHourEntry}">
+                        </c:StaffTimeSheetWeeklyProjectView>
+                    </div>
+                </aura:if>
+            </div>
+            <div id="tab-mass" class="slds-tabs__content slds-show" role="tabpanel" style="height:100%;">
+                <aura:if isTrue="{!v.activeTab == 'tab-mass'}">
+                    <div class="slds-p-left--small">
+                        <c:StaffTimeSheetWeeklyMassEntry category="{!v.category}"
+                                                         activityTypes="{!v.activityTypes}"
+                                                         timeRecordTotals="{!v.timeRecordWeeklyTotals}"
+                                                         timeRecordDetails="{!v.timeRecords}"
+                                                         timeRecordPeriod="{!v.timeRecordPeriod}"
+                                                         timeRecordPeriodStaffMember="{!v.timeRecordPeriodStaffMember}"
+                                                         startDate="{!v.startDate}"
+                                                         endDate="{!v.endDate}"
+                                                         projectSelections="{!v.projectSelections}"
+                                                         calendarRowSaveSuccess="{!c.onTimeRecordUpdated}"
+                                                         calendarNewRowSaveSuccess="{!c.onTimeRecordAdded}"
+                                                         calendarDeleteRowSuccess="{!c.onTimeRecordDeleted}"
+                                                         selectableOpportunities="{!v.selectableOpportunities}"
+                                                         selectableEngagements="{!v.selectableEngagements}"
+                                                         selectableSpecialProjects="{!v.selectableSpecialProjects}"
+                                                         componentLoadedEvent="{!c.onMassEntryLoaded}"
+                                                         allowedHourEntry="{!v.allowedHourEntry}"></c:StaffTimeSheetWeeklyMassEntry>
+                    </div>
+                </aura:if>
+            </div>
+            <div id="tab-recorder" class="slds-tabs__content slds-hide" role="tabpanel" style="height:100%;">
+                <aura:if isTrue="{!v.activeTab == 'tab-recorder'}">
+                    <div class="slds-p-left--small">
+                        <aura:if isTrue="{!v.userId == v.timeRecordPeriodStaffMember.User__c}">
+                            <c:TimeClockRecorder category="{!v.category}"
+                                                 activityTypes="{!v.activityTypes}"
+                                                 selectableOpportunities="{!v.selectableOpportunities}"
+                                                 selectableEngagements="{!v.selectableEngagements}"
+                                                 selectableSpecialProjects="{!v.selectableSpecialProjects}"
+                                                 projectSelections="{!v.projectSelections}"
+                                                 allowedHourEntry="{!v.allowedHourEntry}"></c:TimeClockRecorder>
+                            <aura:set attribute="else">
+                                Only Available for Your Own Staff Record
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                </aura:if>
+            </div>
+            <aura:if isTrue="{! v.activeTab != 'tab-mass' &amp;&amp; v.activeTab != 'tab-recorder'}">
+                <div class="slds-p-left--small" style="height:100%;">
+                    <c:AddTimeRecordRow category="{!v.category}"
+                                        timeRecordPeriodStaffMember="{!v.timeRecordPeriodStaffMember}"
+                                        saveSuccessEvent="{!c.onTimeRecordAdded}"
+                                        suppressLoadingIndicatorEvent="{!c.onSuppressLoadingIndicatorFired}"
+                                        isSupervisor="{!v.isSupervisor}"
+                                        activityTypes="{!v.activityTypes}"
+                                        projectSelections="{!v.projectSelections}"
+                                        selectableOpportunities="{!v.selectableOpportunities}"
+                                        selectableEngagements="{!v.selectableEngagements}"
+                                        selectableSpecialProjects="{!v.selectableSpecialProjects}"
+                                        allowedHourEntry="{!v.allowedHourEntry}"></c:AddTimeRecordRow>
+                </div>
+            </aura:if>
+        </div>
+    </div>
+</aura:component>

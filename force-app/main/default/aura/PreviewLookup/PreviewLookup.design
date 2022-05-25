@@ -1,0 +1,8 @@
+<design:component>
+    <design:attribute name="eventFieldApi" label="API Name of Event Field" description="Add the name of field which will store Event record Id in junction object"/>
+    <design:attribute name="junctionObjectApiName" label="API Name of Junction Object" description="Add the name of junction object which will store Event and custom object data"/>
+    <design:attribute name="lookupFieldApiName" label="API Name of Object Field" description="Add the name of field which will store object(other than Event) record Id in junction object"/>
+    <design:attribute name="buttonName" label="Button Label" description="Add the name of the button"/>
+    <design:attribute name="lookupObjectApiName" label="API Name of object" description="Add the API Name of object to search through lookup"/>
+    <design:attribute name="lookupObjectFieldLabel" label="Label of Lookup" description="Add the label of MultiSelect lookup"/>
+</design:component>

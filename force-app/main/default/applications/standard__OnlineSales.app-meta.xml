@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>Online Sales</label>
+    <navType>Standard</navType>
+    <tabs>standard-OnlineSalesHome</tabs>
+    <tabs>Engagement_Counterparty_Contact__c</tabs>
+    <tabs>Company_List__c</tabs>
+    <tabs>Company_List_Member__c</tabs>
+    <tabs>SIC_Code__c</tabs>
+    <tabs>Coverage_Team_Comment__c</tabs>
+    <tabs>Investment_Comment__c</tabs>
+    <tabs>SL_Convert__Object_Relationship__c</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

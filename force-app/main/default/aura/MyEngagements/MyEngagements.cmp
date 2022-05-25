@@ -1,0 +1,40 @@
+<aura:component implements="force:appHostable" extends="c:MyObjectComponent">
+    <aura:attribute name="engagements" 
+                    type="Engagement__c[]"
+                    description="Array of Engagement Result Records"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="engagementId" 
+                    type="String"
+                    description="Selected Engagement Id"
+                    access="PRIVATE"></aura:attribute>
+    <aura:handler name="afterSearchEvent"
+                  action="{!c.onSearchPerformed}"></aura:handler>
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"></aura:handler>
+    <div aura:id="myEngagements" class="myEngagements">
+        <div class="slds-scrollable--y engagementlist">
+            <ul class="slds-list--vertical slds-has-dividers--bottom-space slds-has-selection">
+                <aura:iteration items="{!v.engagements}" var="eng">
+                    <li class="slds-list__item">
+                        <div class="slds-tile slds-tile--board">
+                            <div class="slds-grid">
+                                <div class="slds-col" data-key="{!eng.Id}" onclick="{!c.onEngagementSelection}">
+                                    <p class="slds-tile__title">
+                                        <strong>{!eng.Name}</strong>
+                                    </p>
+                                    <p>
+                                        Client: {!eng.Client__r.Name}
+                                    </p>
+                                    <p>
+                                        Subject: {!eng.Subject__r.Name}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </aura:iteration>
+            </ul>
+        </div>
+    </div>
+</aura:component>

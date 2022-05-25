@@ -1,0 +1,50 @@
+<aura:component controller="HL_TimeRecordPeriodStaffMemberController" extends="c:HL_LightningComponent">
+    <aura:attribute name="timeRecordPeriod" 
+                    type="Time_Record_Period__c" 
+                    default="{'sobjectType': 'Time_Record_Period__c'}"></aura:attribute>
+    <aura:attribute name="timeRecordPeriodDefault" 
+                    type="Time_Record_Period__c" 
+                    default="{'sobjectType': 'Time_Record_Period__c'}"></aura:attribute>
+    <aura:attribute name="category" 
+                    type="String"
+                    access="PUBLIC"
+                    description="Time Record Category"></aura:attribute>
+    <aura:attribute name="selectedTimeRecordPeriodStaffMember" 
+                    type="Time_Record_Period_Staff_Member__c"
+                    access="PUBLIC"
+                    description="Selected Time Record Period Staff Member"></aura:attribute>
+	<aura:attribute name="staff" 
+                    type="Time_Record_Period_Staff_Member__c[]"
+                    access="PUBLIC"
+                    description="Time Record Period Staff Members"></aura:attribute>
+    <aura:handler name="init" 
+                  value="{!this}" 
+                  action="{!c.doInit}"></aura:handler> 
+    <aura:handler event="aura:locationChange" 
+                  action="{!c.locationChange}"/>
+    <aura:handler name="change"
+                  value="{!v.category}"
+                  action="{!c.onCategoryChanged}"></aura:handler>
+    <aura:handler name="change" 
+                  value="{!v.timeRecordPeriod}" 
+                  action="{!c.onTimeRecordPeriodChanged}"></aura:handler>
+    <aura:registerEvent name="selectionEvent" 
+                        type="c:TimeRecordPeriodStaffMemberSelectionEvt"/>
+    <aura:registerEvent name="componentLoadedEvent" 
+                        type="c:ComponentLoadedEvt"/>
+    <ul class="slds-list--vertical slds-has-dividers" style="border: 3px solid #d8dde6">
+    <aura:iteration items="{!v.staff}" var="s">
+        <li class="slds-list__item" style="{!s.Id == v.selectedTimeRecordPeriodStaffMember.Id ? 'background-color: #EEF1F6;' : ''}">
+    	<div class="slds-media slda-tile" data-key="{!s.Id}" onclick="{!c.onStaffMemberSelection}">
+            <div class="slds-media_body">
+                <p class="slds-tile__title slds-truncate"><a>{!s.Contact__r.Name}</a></p>
+            	<ul class="slds-tile__detail slds-text-body--small">
+                  <li class="slds-truncate slds-list__item">{!s.Title__c}</li>
+                  <li class="slds-truncate slds-list__item">{!s.Phone__c}</li>
+                </ul>
+            </div>
+        </div>
+        </li>
+    </aura:iteration>
+    </ul>
+</aura:component>

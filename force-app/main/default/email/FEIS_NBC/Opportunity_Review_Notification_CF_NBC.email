@@ -1,0 +1,101 @@
+This message is from an external sender.
+_______________________________________________________________________________
+_______________________________________________________________________________
+
+Hello! The following NBC has been submitted for review. Please click the link below to see more details about the memo.  If approved, the submission will be circulated to the committee.
+circulated to the committee.
+
+To approve via email, simply reply to this message with APPROVE or YES in the first line of the email. To reject via email, simply reply with REJECT or NO. All comments included in the second line of the email will be tagged and tracked in Salesforce for the deal team to review.
+
+The following Opportunity has been submitted to the M&A NBC Committee for review. Please click the link below to see more details about the record.
+
+
+LINK TO NBC FORM: {!Opportunity_Approval__c.Link}
+
+Submitted By: {!Approval_Requesting_User.Name}
+Office: {!Approval_Requesting_User.Office__c}
+Date: {!Approval_Properties__c.CreatedDate}
+
+
+Opportunity Name: {!Opportunity_Approval__c.Related_Opportunity__c}
+Opportunity Client: {!Opportunity_Approval__c.Client_Company__c}
+Opportunity Subject: {!Opportunity_Approval__c.Subject_Company__c}
+Job Type: {!Opportunity_Approval__c.Job_Type__c}
+
+
+FOR NBC FORMS ONLY:
+A. Is this an engagement by a company with publicly held securities, where the scope of the engagement may cover a transaction involving the sale, merger or other disposition of all or a substantial part of the company's equity, assets or business? {!Opportunity_Approval__c.A__c}
+
+B. Is this an engagement by a company with publicly held securities, where the scope of the engagement may cover an acquisition of another company or asset representing a material portion (approximately 10% or more)? {!Opportunity_Approval__c.B__c}
+
+C. Is this engagement by a company (whether privately or publicly held), where the scope of the engagement may cover an acquisition of all or a substantial part of the equity, assets or business of another company with publicly held securities? {!Opportunity_Approval__c.C__c}
+
+D. Or is this engagement by a company in connection with which we may be requested to provide a fairness or other financial opinion? {!Opportunity_Approval__c.D__c}
+
+
+
+Overview and Financials
+- Transaction Overview: {!Opportunity_Approval__c.Transaction_Overview__c}
+- Current Status: {!Opportunity_Approval__c.Approval_Status__c}
+
+
+Company Description:
+{!Opportunity_Approval__c.Company_Description__c}
+
+
+Ownership Structure and Capital Structure:
+{!Opportunity_Approval__c.Ownership_and_Capital_Structure__c}
+
+
+Total Debt (MM): {!Opportunity_Approval__c.Total_Debt_MM__c}
+Have the Financials been subject to Audit?: {!Opportunity_Approval__c.Financials_Subject_to_Audit__c}
+Valuation Expectations: {!Opportunity_Approval__c.Valuation_Expectations__c}
+Risk Factors: {!Opportunity_Approval__c.Risk_Factors__c}
+Fee Structure: {!Opportunity_Approval__c.Fee_Structure__c}
+Retainer: {!Opportunity_Approval__c.Retainer__c}
+Lockups on Future M&A or Financing Work: {!Opportunity_Approval__c.Lockups_on_Future_M_A_Financing_formula__c}
+Referral Fee Owed?: {!Opportunity_Approval__c.Referral_Fee_Owed__c}
+
+
+Pre-Pitch
+- Will there be a pitch?: {!Opportunity_Approval__c.Will_there_be_a_pitch__c}
+- Pitch Date:  {!Opportunity_Approval__c.Pitch_Date__c}
+- Existing Relationships: {!Opportunity_Approval__c.Existing_Relationships__c}
+
+
+Houlihan Lokey Competition: {!Opportunity_Approval__c.Houlihan_Lokey_Competition__c}
+
+
+Who is/are the key decision maker(s)/influencer(s) regarding this opportunity? 
+{!Opportunity_Approval__c.Key_Decision_Makers_and_Influencers__c}
+
+
+Would the Opportunity benefit from TAS Assistance? {!Opportunity_Approval__c.TAS_Assistance_Benefit__c}
+Who from TAS/Bridge has been contacted?  {!Opportunity_Approval__c.TAS_Bridge_Contact__c}
+Would the Opportunity benefit from SC Assistance?  {!Opportunity_Approval__c.SC_Assistance_Benefit__c}
+Who from SC has been contacted?  {!Opportunity_Approval__c.SC_Contact__c}
+
+
+Referral Type: {!Opportunity_Approval__c.Referral_Type__c}
+Referral Source: {!Opportunity_Approval__c.Referral_Source__c}
+
+
+Client’s Outside Counsel and/or Other Advisors: {!Opportunity_Approval__c.OutsideCouncil__c}
+
+
+Financing Checklist
+- Has the Capital Markets Group been consulted regarding financing or capital structure? {!Opportunity_Approval__c.Capital_Markets_Consulted__c}
+- Existing Financial Arrangement Summary: {!Opportunity_Approval__c.Existing_Financial_Arrangement_Notes__c}
+
+
+Fairness 
+- Will the Opinion be Publicly Disclosed?  {!Opportunity_Approval__c.Fairness_Opinion_Publicly_Disclosed__c}
+- Fairness Opinion Notes: {!Opportunity_Approval__c.Fairness_Opinion_Explanation__c}
+- Fairness Opinion Fee: {!Opportunity_Approval__c.Fairness_Opinion_Fee__c}
+- Fairness Services and Fees: {!Opportunity_Approval__c.Fairness_Services_and_Fees__c}
+- Fairness Additional Officers: {!Opportunity_Approval__c.Fairness_Additional_Officers__c}
+
+
+Administrative
+- Restricted List?: {!Opportunity_Approval__c.Restricted_List__c}
+- Conflict Check Status: {!Opportunity_Approval__c.Conflict_Check_Status__c}

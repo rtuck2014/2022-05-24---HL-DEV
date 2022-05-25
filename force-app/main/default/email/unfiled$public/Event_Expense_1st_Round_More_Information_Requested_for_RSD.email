@@ -1,0 +1,36 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<p class="MsoNormal" style=""><font face="Arial, sans-serif" style="">Your request for&nbsp;<font color="#ff0000" style="">{!Event_Expense__c.Event_Type_Format__c}</font>&nbsp;<i style="color: rgb(0, 0, 0);">&nbsp;</i>expense&nbsp;<i style=""><font color="#ff0000">{!Event_Expense__c.Name}</font>&nbsp;</i>has been
+returned&nbsp;by<i style="color: rgb(0, 0, 0);">&nbsp;</i><font color="#ff0000" style="">{!Event_Expense__c.Current_Approver__c}</font>&nbsp;for more information.<span style="color: rgb(0, 0, 0);"><o:p></o:p></span></font></p><div class="MsoNormal" align="center" style="color: rgb(0, 0, 0); text-align: center;"><span class="msodel0"><span class="msoDel"><del cite="mailto:Lin,%20Johnny" datetime="2018-04-17T16:05"><font face="Arial, sans-serif">
+
+<hr size="2" width="100%" align="center">
+
+</font></del></span></span></div><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><b><span style="background: white;">Requestor:&nbsp;</span></b><span style="background: white;">{!Event_Expense__c.Requestor_Name__c}</span><o:p></o:p></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><strong>Product Type:</strong>&nbsp;<span style="line-height: 115%;">{!Event_Expense__c.Product_Type__c}</span><o:p></o:p></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><strong>Event Name:</strong>&nbsp;{!Event_Expense__c.Event_Name__c}<o:p></o:p></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><strong>Please
+provide additional information about your expense request</strong><b>:&nbsp;</b>{!Event_Expense__c.Approver_s_Notes__c}<o:p></o:p></font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><o:p><b style="font-size: 12pt; font-family: Arial, sans-serif;">Total Budget Requested:&nbsp;</b><font face="Arial, sans-serif" style="font-size: medium;">{!Event_Expense__c.Total_Budget_Requested__c}</font><font face="Arial, sans-serif">&nbsp;</font></o:p></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><o:p><font face="Arial, sans-serif"><br></font></o:p></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><font face="Arial, sans-serif"><a href="{!Event_Expense__c.Base_URL__c}"><b>Review submission:</b>&nbsp;&nbsp;{!Event_Expense__c.Event_Name__c}</a><o:p></o:p></font></p><p class="MsoNoSpacing" style="color: rgb(0, 0, 0);">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><o:p style=""><font face="Arial, sans-serif" style="">&nbsp;</font></o:p></p><p class="MsoNoSpacing" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0); line-height: 150%;"><span style="font-family: Calibri, sans-serif; font-size: 11pt;"></span></p>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[<div style=""><br><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div></div>]]></td>
+</tr>
+</table>

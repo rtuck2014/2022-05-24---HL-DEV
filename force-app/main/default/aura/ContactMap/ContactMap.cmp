@@ -1,0 +1,11 @@
+<aura:component controller='HL_ContactController' >    
+    <aura:attribute name="map" type="Object"/>  
+    <aura:attribute name="SWlat" type="Decimal" default="0.0"/>      
+    
+    <ltng:require styles="/resource/leaflet/leaflet.css" />
+    <ltng:require scripts="/resource/leaflet/leaflet.js" afterScriptsLoaded="{!c.jsLoaded}" />
+    <aura:handler event="c:searchMap" action="{!c.searchMap}"/>
+    
+    <aura:registerEvent name="MapLoadedEvent" type="c:ContactMapLoaded"></aura:registerEvent>
+    <div id="map"></div>    
+</aura:component>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>height</name>
+                    <value>760</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showTabs</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showToolbar</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>vizUrl</name>
+                    <value>https://mytableau.hl.com/views/FSCSponsorDashboard/SponsorReport?%3Aembed=y&amp;%3Atoolbar=n%3F%3Aembed&amp;%3Alinktarget=_blank#1</value>
+                </componentInstanceProperties>
+                <componentName>tab:tableauViz</componentName>
+                <identifier>tab_tableauViz1</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>FSC Sponsor Dashboard</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>

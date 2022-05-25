@@ -1,0 +1,196 @@
+<aura:component description="Time Record Manager Main Component" controller="HL_TimeRecordController"
+                extends="c:HL_LightningComponent"
+                implements="force:appHostable,flexipage:availableForAllPageTypes">
+    <aura:attribute name="category"
+                    type="String"
+                    description="Time Record Tracking Category"></aura:attribute>
+    <aura:attribute name="isChrome"
+                    type="Boolean"
+                    default="false"
+                    description="Checks if browser is Chrome"></aura:attribute>
+    <aura:attribute name="userId"
+                    type="String"
+                    description="Running User Id"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="isSupervisor"
+                    type="Boolean"
+                    description="Indication if Current User is a Supervisor (Elevated access to all staff)"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="selectedTimeRecordPeriod"
+                    type="Time_Record_Period__c"
+                    description="Selected Time Record Period"></aura:attribute>
+    <aura:attribute name="selectedTimeRecordPeriodStaffMember"
+                    type="Time_Record_Period_Staff_Member__c"
+                    description="Selected Time Record Period Staff Member"></aura:attribute>
+    <aura:attribute name="startDate"
+                    type="Date"
+                    description="Time Record Period Start Date"></aura:attribute>
+    <aura:attribute name="endDate"
+                    type="Date"
+                    description="Time Record Period End Date"></aura:attribute>
+    <aura:attribute name="dateRange"
+                    type="String"
+                    description="Time Record Period Date Range"></aura:attribute>
+    <aura:attribute name="projectSelections"
+                    type="Object[]"
+                    description="Selectable Projects: Opportunities, Engagements and Special Projects"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="opportunities"
+                    type="Opportunity__c[]"
+                    description="Selectable Opportunity Records for the Time Record Period Staff Member"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="engagements"
+                    type="Engagement__c[]"
+                    description="Selectable Engagement Records for the Time Record Period Staff Member"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="specialProjects"
+                    type="Special_Project__c[]"
+                    description="Selectable Special Project Records for the Time Record Period Staff Member"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="timeRecordsByProject"
+                    type="AggregateResult[]"
+                    description="Time Records - Grouped by Project"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="isTimeRecordPeriodPickerLoaded"
+                    type="Boolean"
+                    description="Indicates if the Time Record Period Picker has finished Loading"
+                    default="false"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="isTimeRecordPeriodStaffMemberTileListLoaded"
+                    type="Boolean"
+                    description="Indicates if the Time Record Period Staff Member Tile List has finished Loading"
+                    default="false"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="isStaffTimeSheetLoaded"
+                    type="Boolean"
+                    description="Indicates if the Staff Time Sheet has finished Loading"
+                    default="false"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="isStaffTimeSheetWeekLoaded"
+                    type="Boolean"
+                    description="Indicates if the Staff Time Sheet Week has finished Loading"
+                    default="false"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="suppressSpinners"
+                    type="Boolean"
+                    description="Indication if the Spinners should be Suppressed"
+                    access="PUBLIC"
+                    default="false"></aura:attribute>
+    <aura:attribute name="periodPickerClass"
+                    type="String"
+                    description="CSS Class Used to Show/Hide the Period Picker Component"
+                    access="PRIVATE"
+                    default=""></aura:attribute>
+    <aura:attribute name="staffListClass"
+                    type="String"
+                    description="CSS Class Used to Show/Hide the Staff List Component"
+                    access="PRIVATE"
+                    default=""></aura:attribute>
+    <aura:attribute name="activeTab"
+                    type="String"
+                    default="tab-staff"
+                    description="Active Tab Selected"
+                    access="PRIVATE"></aura:attribute>
+   <aura:attribute name="renderPage"
+                    type="Boolean"
+                    default="false"
+                    description="Renders page when objects are loaded"
+                    access="PRIVATE"></aura:attribute>
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"></aura:handler>
+    <aura:handler event="aura:waiting"
+                  action="{!c.showSpinner}"></aura:handler>
+    <aura:handler event="aura:doneWaiting"
+                  action="{!c.hideSpinner}"></aura:handler>
+    <aura:handler name="spinnerEvent"
+                  event="c:SpinnerEvt"
+                  action="{!c.addDeleteTimeRecordSpinner}"></aura:handler>
+    <div class="{!v.isChrome == false ? '' : 'hidden'}">
+        Time Record Manager is only supported by browsing in Google Chrome.
+    </div>
+    <div aura:id="mainContainer" class="{!v.isChrome == false ? 'hidden' : ''}">
+        <div aura:id="modalspinner"
+             class="slds-hide modalspinner">
+            <div class="centered">
+                <ui:spinner aura:id="spinner"></ui:spinner>
+            </div>
+        </div>
+        <table class="slds-table">
+            <tr>
+                <td class="slds-cell-shrink" style="text-align:left;">
+                    <div class="slds-text-heading--medium">Time Record Period:</div>
+                </td>
+                <td style="text-align:left;">
+                    <div class="{!v.periodPickerClass}">
+                        <c:TimeRecordPeriodPicker category="{!v.category}"
+                                                  componentLoadedEvent="{!c.onTimeRecordPeriodPickerLoaded}"
+                                                  timeRecordPeriodSelectionEvent="{!c.onSelectedPeriodChanged}"
+                                                  dateRangeSelectionEvent="{!c.onSelectedDateRangeChanged}"></c:TimeRecordPeriodPicker>
+                    </div>
+                    <div><ui:outputText value="{!v.periodPickerClass == 'hidden' ? 'N/A' : ''}" class="slds-text-heading--medium slds-truncate"></ui:outputText></div>
+                </td>
+            </tr>
+        </table>
+        <aura:if isTrue="{!v.isSupervisor &amp;&amp; (v.category == 'Litigation' || v.category == 'SC' || v.category == 'Beta')}">
+            <div class="slds-tabs--default">
+                <ul class="slds-tabs--default__nav" role="tablist">
+                    <li id="tab-heading-staff" class="slds-tabs__item slds-text-heading--label slds-active" title="Staff Overview" role="presentation"><a href="#" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-staff"><ui:outputText value="Staff Time Sheets" click="{!c.onTabStaffClick}"></ui:outputText></a></li>
+                    <li id="tab-heading-billing" class="slds-tabs__item slds-text-heading--label" title="Invoice Preparation" role="presentation"><a href="#" role="tab" tabindex="0" aria-selected="false" aria-controls="tab-billing"><ui:outputText value="Billing Preparation" click="{!c.onTabBillingClick}"></ui:outputText></a></li>
+                    <li id="tab-heading-ratesheet" class="slds-tabs__item slds-text-heading--label" title="Rate Sheet Management" role="presentation"><a href="#" role="tab" tabindex="0" aria-selected="false" aria-controls="tab-ratesheet"><ui:outputText value="Rate Sheet Management" click="{!c.onTabRateSheetClick}"></ui:outputText></a></li>
+                </ul>
+            </div>
+        </aura:if>
+        <div id="tab-staff" class="{!v.isSupervisor &amp;&amp; (v.category == 'Litigation' || v.category == 'SC' || v.category == 'Beta') ? 'slds-tabs__content slds-show' : ''}" role="tabpanel" style="height: 100%">
+            <div class="slds-grid slds-p-top--small">
+                <div class="slds-shrink-none slds-container--small slds-scrollable--y" style="max-height: 700px; height: 100%">
+                    <aura:if isTrue="{!v.isSupervisor}">
+                        <div class="{!v.staffListClass}">
+                            <c:TimeRecordPeriodStaffMemberTileList category="{!v.category}"
+                                                               selectedTimeRecordPeriodStaffMember="{!v.selectedTimeRecordPeriodStaffMember}"
+                                                               componentLoadedEvent="{!c.onTimeRecordPeriodStaffMemberTileListLoaded}"
+                                                               timeRecordPeriod="{!v.selectedTimeRecordPeriod}"
+                                                               selectionEvent="{!c.onSelectedStaffMemberChanged}"></c:TimeRecordPeriodStaffMemberTileList>
+                        </div>
+                    </aura:if>
+                </div>
+                <div class="slds-col slds-align-top">
+                    <aura:if isTrue="{!and(v.category != 'FR', v.renderPage)}"><c:StaffTimeSheet staffTimeSheetLoadedEvent="{!c.onStaffTimeSheetLoaded}"
+                                                                              userId="{!v.userId}"
+                                                                              isSupervisor="{!v.isSupervisor}"
+                                                                              dateRange="{!v.dateRange}"
+                                                                              startDate="{!v.startDate}"
+                                                                              endDate="{!v.endDate}"
+                                                                              timeRecordPeriod="{!v.selectedTimeRecordPeriod}"
+                                                                              timeRecordPeriodStaffMember="{!v.selectedTimeRecordPeriodStaffMember}"
+                                                                              projectSelections="{!v.projectSelections}"
+                                                                              selectableOpportunities="{!v.opportunities}"
+                                                                              selectableEngagements="{!v.engagements}"
+                                                                              selectableSpecialProjects="{!v.specialProjects}"
+                                                                              suppressLoadingIndicatorEvent="{!c.onSuppressLoadingIndicatorFired}"
+                                                                              tabSelectedEvent="{!c.onStaffTimeSheetTabSelected}"></c:StaffTimeSheet></aura:if>
+                    <aura:if isTrue="{!v.category == 'FR'}"><c:StaffTimeSheetWeek componentLoadedEvent="{!c.onStaffTimeSheetWeekLoaded}"
+                                                                                  startDate="{!v.startDate}"
+                                                                                  endDate="{!v.endDate}"
+                                                                                  timeRecordPeriod="{!v.selectedTimeRecordPeriod}"
+                                                                                  timeRecordPeriodStaffMember="{!v.selectedTimeRecordPeriodStaffMember}"
+                                                                                  suppressLoadingIndicatorEvent="{!c.onSuppressLoadingIndicatorFired}"></c:StaffTimeSheetWeek></aura:if>
+                </div>
+            </div>
+        </div>
+        <aura:if isTrue="{!v.isSupervisor &amp;&amp; (v.category == 'Litigation' || v.category == 'SC' || v.category == 'Beta')}">
+                <div id="tab-billing" class="slds-tabs__content slds-hide slds-p-top--small" role="tabpanel">
+                    <aura:if isTrue="{!v.activeTab == 'tab-billing'}">
+                        <c:TimeRecordProjectOverview timeRecordsExternal="{!v.timeRecordsByProject}" category="{!v.category}" startDate="{!v.startDate}" endDate="{!v.endDate}"></c:TimeRecordProjectOverview>
+                    </aura:if>
+                </div>
+        </aura:if>
+        <aura:if isTrue="{!v.isSupervisor &amp;&amp; (v.category == 'Litigation' || v.category == 'SC' || v.category == 'Beta')}">
+                <div id="tab-ratesheet" class="slds-tabs__content slds-hide slds-p-top--small" role="tabpanel">
+                    <aura:if isTrue="{!v.activeTab == 'tab-ratesheet'}">
+                        <c:EngagementRateSheet category="{!v.category}"></c:EngagementRateSheet>
+                    </aura:if>
+                </div>
+        </aura:if>
+    </div>
+</aura:component>

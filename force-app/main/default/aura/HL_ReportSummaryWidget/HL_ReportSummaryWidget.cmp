@@ -1,0 +1,117 @@
+<!--
+	@author	Graham MacRobie (graham.macrobie1129@hl.com)
+	@date   February 2022
+-->
+
+<aura:component controller="HL_ReportSummaryWidgetController" implements="flexipage:availableForAllPageTypes" access="global">
+	<aura:attribute name="title" type="String" access="global" description="The title displayed on the widget" />
+	<aura:attribute name="iconName" type="String" access="global" description="The icon name (i.e. standard:account)" />
+	<aura:attribute name="displayRows" type="Integer" default="5" access="global" description="The number of rows to display initially" />
+    <aura:attribute name="noResultsMessage" type="String" access="global" description="The message to be displayed when there are no results" default="There are no records matching the current filter criteria." />
+
+	<aura:attribute name="reportDeveloperName" type="String" access="global" description="The underlying report's developer name (API name)" />
+	<aura:attribute name="recordIdField" type="String" access="global" description="The API name of the field that references the record ID" />
+
+    <aura:attribute name="sortedBy" type="String" access="global" description="The initial field that the data is sorted by" />
+    <aura:attribute name="sortedDirection" type="String" default="asc" access="global" description="The initial direction that the data is sorted by" />
+
+	<aura:attribute name="columnField0" type="String" access="global" description="The API name of the field for column 0" />
+	<aura:attribute name="columnTitle0" type="String" access="global" description="The title for column 0" />
+	<aura:attribute name="columnWidth0" type="Integer" access="global" description="The initial width for column 0" />
+	<aura:attribute name="columnField1" type="String" access="global" description="The API name of the field for column 1" />
+	<aura:attribute name="columnTitle1" type="String" access="global" description="The title for column 1" />
+	<aura:attribute name="columnWidth1" type="Integer" access="global" description="The initial width for column 1" />
+	<aura:attribute name="columnField2" type="String" access="global" description="The API name of the field for column 2" />
+	<aura:attribute name="columnTitle2" type="String" access="global" description="The title for column 2" />
+	<aura:attribute name="columnWidth2" type="Integer" access="global" description="The initial width for column 2" />
+	<aura:attribute name="columnField3" type="String" access="global" description="The API name of the field for column 3" />
+	<aura:attribute name="columnTitle3" type="String" access="global" description="The title for column 3" />
+	<aura:attribute name="columnWidth3" type="Integer" access="global" description="The initial width for column 3" />
+	<aura:attribute name="columnField4" type="String" access="global" description="The API name of the field for column 4" />
+	<aura:attribute name="columnTitle4" type="String" access="global" description="The title for column 4" />
+	<aura:attribute name="columnWidth4" type="Integer" access="global" description="The initial width for column 4" />
+	<aura:attribute name="columnField5" type="String" access="global" description="The API name of the field for column 5" />
+	<aura:attribute name="columnTitle5" type="String" access="global" description="The title for column 5" />
+	<aura:attribute name="columnWidth5" type="Integer" access="global" description="The initial width for column 5" />
+	<aura:attribute name="columnField6" type="String" access="global" description="The API name of the field for column 6" />
+	<aura:attribute name="columnTitle6" type="String" access="global" description="The title for column 6" />
+	<aura:attribute name="columnWidth6" type="Integer" access="global" description="The initial width for column 6" />
+	<aura:attribute name="columnField7" type="String" access="global" description="The API name of the field for column 7" />
+	<aura:attribute name="columnTitle7" type="String" access="global" description="The title for column 7" />
+	<aura:attribute name="columnWidth7" type="Integer" access="global" description="The initial width for column 7" />
+	<aura:attribute name="columnField8" type="String" access="global" description="The API name of the field for column 8" />
+	<aura:attribute name="columnTitle8" type="String" access="global" description="The title for column 8" />
+	<aura:attribute name="columnWidth8" type="Integer" access="global" description="The initial width for column 8" />
+	<aura:attribute name="columnField9" type="String" access="global" description="The API name of the field for column 9" />
+	<aura:attribute name="columnTitle9" type="String" access="global" description="The title for column 9" />
+	<aura:attribute name="columnWidth9" type="Integer" access="global" description="The initial width for column 9" />
+
+	<aura:attribute name="linkLabel0" type="String" access="global" description="Link column 0, label" />
+	<aura:attribute name="linkURL0" type="String" access="global" description="Link column 0, URL including ID substition with $ID" />
+	<aura:attribute name="linkWidth0" type="Integer" access="global" description="The initial width for link column 0" />
+	<aura:attribute name="linkLabel1" type="String" access="global" description="Link column 1, label" />
+	<aura:attribute name="linkURL1" type="String" access="global" description="Link column 1, URL including ID substition with $ID" />
+	<aura:attribute name="linkWidth1" type="Integer" access="global" description="The initial width for link column 1" />
+	<aura:attribute name="linkLabel2" type="String" access="global" description="Link column 2, label" />
+	<aura:attribute name="linkURL2" type="String" access="global" description="Link column 2, URL including ID substition with $ID" />
+	<aura:attribute name="linkWidth2" type="Integer" access="global" description="The initial width for link column 2" />
+
+	<aura:attribute name="reportId" type="Id" access="private" />
+	<aura:attribute name="reportTitle" type="String" access="private" />
+    <aura:attribute name="data" type="List" access="private" />
+    <aura:attribute name="displayData" type="List" default="[]" access="private" />
+    <aura:attribute name="columns" type="List" access="private" />
+    <aura:attribute name="isLoading" type="Boolean" default="true" access="private" />
+    <aura:attribute name="viewButtonMode" type="String" default="All" access="private" />
+    <aura:attribute name="errorMessage" type="String" access="private" description="Holds any error message returned by the server" />
+
+    <aura:attribute name="reportMenuItems" type="List" default="[]" access="private" />
+    <aura:attribute name="currentReportDeveloperName" type="String" access="private" />
+    <aura:attribute name="currentTitle" type="String" access="private" />
+
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <lightning:card title="{!v.currentTitle + ' (' + v.data.length + ')'}" iconName="{!v.iconName}">
+        <aura:set attribute="actions">
+            <aura:if isTrue="{!v.data.length > v.displayRows}">
+                <lightning:button label="{!'View ' + v.viewButtonMode}" onclick="{!c.handleViewButton}" />
+            </aura:if>
+
+            <lightning:button label="Details" onclick="{!c.handleDetailsButton}" />
+
+            <!--<lightning:button label="New Activity" onclick="{!c.handleNewActivity}" />-->
+
+            <aura:if isTrue="{!v.reportMenuItems.length > 1}">
+                <lightning:buttonMenu class="slds-m-left_xx-small" alternativeText="Show menu" variant="border" iconName="utility:filter" onselect="{!c.handleSelect}">
+                    <aura:iteration var="reportMenuItem" items="{!v.reportMenuItems}">
+                        <lightning:menuItem aura:id="reportMenuItem" label="{!reportMenuItem.label}" value="{!reportMenuItem.value}" checked="{!v.currentTitle == reportMenuItem.label}" />
+                    </aura:iteration>
+                </lightning:buttonMenu>                
+            </aura:if>
+        </aura:set>
+
+        <aura:if isTrue="{!v.isLoading}">
+            <div class="spinnerContainer">
+                <lightning:spinner variant="brand" size="small" />
+            </div>
+        </aura:if>
+
+        <aura:if isTrue="{!v.displayData.length > 0}">
+            <p class="slds-p-horizontal_small">
+                <lightning:datatable keyField="id" data="{!v.displayData}" columns="{!v.columns}" hideCheckboxColumn="true" onsort="{!c.updateColumnSorting}" sortedBy="{!v.sortedBy}" sortedDirection="{!v.sortedDirection}" />
+            </p>
+
+            <aura:set attribute="else">
+                <p class="slds-align_absolute-center">
+                    <aura:if isTrue="{!v.errorMessage}">
+                        <i>{!v.errorMessage}</i>
+
+                        <aura:set attribute="else">
+                            <i>{!v.noResultsMessage}</i>
+                        </aura:set>
+                    </aura:if>
+                </p>
+            </aura:set>
+        </aura:if>
+    </lightning:card>	
+</aura:component>

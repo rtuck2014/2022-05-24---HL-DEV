@@ -1,0 +1,68 @@
+<aura:component controller="HL_Relationship" extends="c:HL_LightningComponent" implements="force:hasRecordId,force:lightningQuickAction">
+	<ltng:require scripts="/resource/jsFiles/jquery-1.7.1.min.js,
+                           /resource/JQueryUI/jquery-ui-1.11.2/jquery-ui.min.js"
+                  styles="/resource/JQueryUI/jquery-ui-1.11.2/jquery-ui.min.css"></ltng:require>
+    <aura:attribute name="mode" type="String"></aura:attribute>
+    <aura:attribute name="loaded" type="Boolean" default="false"></aura:attribute>
+    <aura:attribute name="contactId" type="String"></aura:attribute>
+    <aura:attribute name="contactName" type="String"></aura:attribute>
+    <aura:attribute name="employeeId" type="String"></aura:attribute>
+    <aura:attribute name="employeeName" type="String"></aura:attribute>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:registerEvent name="saveSuccessEvent" type="c:SaveSuccessEvt"/>
+  	<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <aura:renderIf isTrue="{!v.loaded}">
+            <p>
+                <h3><b>{!v.mode} Relationship</b></h3>
+                <h3>{!v.contactName}</h3>
+            </p>
+            <div>
+				<h4>Relationship With: {!v.employeeName}</h4>   
+                <aura:if isTrue="{!v.mode == 'Add'}">
+            		<c:AutoComplete inputLabel="*Lookup Employee (if relationship is not for you)" sObjectType="Contact" autocompleteEvent="{!c.handleHLEmployeeSelection}" fields="Title" subType="Employee"></c:AutoComplete>
+                </aura:if>
+        	</div>
+            <div>   
+                 <p class="title">Strength Rating</p>
+                 <ui:inputSelect aura:id="rating" required="true">
+                    <ui:inputSelectOption text=""></ui:inputSelectOption>
+                    <ui:inputSelectOption text="High"></ui:inputSelectOption>
+                    <ui:inputSelectOption text="Medium"></ui:inputSelectOption>
+                    <ui:inputSelectOption text="Low"></ui:inputSelectOption>
+                 </ui:inputSelect>
+            </div>
+            <div>   
+                 <p class="title">Type</p>
+                 <ui:inputSelect aura:id="type" required="true">
+                    <ui:inputSelectOption text="Business"></ui:inputSelectOption>
+                    <ui:inputSelectOption text="Personal"></ui:inputSelectOption>
+                 </ui:inputSelect>
+            </div>
+            <div>
+            	<p class="title">Personal Note</p>
+            	<ui:inputTextArea aura:id="description" rows="5"></ui:inputTextArea>
+        	</div>
+            <div>
+            	<p class="title">Outlook Categories</p>
+            	<ui:inputTextArea aura:id="outlookCategories" rows="5"></ui:inputTextArea>
+        	</div>
+            <div class="slds-form-element">
+            <div class="slds-form-element">
+                <label class="slds-checkbox" for="syncToOutlook">
+                    <ui:inputCheckbox aura:id="syncToOutlook" value="true"></ui:inputCheckbox>
+                    <span class="slds-checkbox--faux"></span>
+                    <span class="slds-form-element__label">Sync to Outlook</span>
+                </label>
+            </div>
+       		 </div>
+           
+            <div>
+                <ui:button aura:id="btnSave" label="{!if(v.mode=='Edit','Save Relationship', 'Create Relationship')}" press="{!c.saveRecord}" />
+            </div>
+           </aura:renderIf>
+       </div>
+     </div>
+    </div>
+</aura:component>

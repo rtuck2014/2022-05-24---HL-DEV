@@ -1,0 +1,48 @@
+<apex:component controller="HL_InternalTeamController" allowDml="true">
+    <apex:attribute name="ShowButtonPanel" id="ShowButtonPanel" type="Boolean" default="True" description="Display the Button Panel for Adding/Removing Roles"></apex:attribute>
+    <apex:form > 
+    <apex:pageBlock id="pbHLInternalTeam" title="HL Internal Team">
+            <apex:pageBlockButtons style="text-align: center;" rendered="{!ShowButtonPanel && HasModifyAccess}">
+                     <apex:commandLink action="{!editClicked}" value="Modify Roles" target="_parent" styleClass="btn" style="text-decoration: none;"></apex:commandLink>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!TeamRecords}" var="teamMember" id="team" style="table-layout:fixed">
+               <apex:column style="width:0px">
+                    <apex:outputPanel layout="block">
+                        <apex:outputLabel value="{!teamMember.ContactRecord.Name}"/>
+                    </apex:outputPanel>
+                    <apex:facet name="header">Member</apex:facet>
+                </apex:column>
+                <!--<apex:column value="{!teamMember.ContactRecord.Office__c}">
+                    <apex:facet name="header">Staff Office</apex:facet>
+                </apex:column>-->
+                 <apex:column style="width:0px" rendered="{!isEnabledProfileUser}" >
+                    <apex:outputText value="{!teamMember.OfficeAllocationText }" style="width:80px" />
+                    <apex:facet name="header">Office</apex:facet>
+                </apex:column>
+                <apex:column style="width:0px" value="{!teamMember.ContactRecord.Title}">
+                    <apex:facet name="header">Title</apex:facet>
+                </apex:column>
+                <apex:column style="width:0px" value="{!teamMember.ContactRecord.Line_of_Business__c}">
+                    <apex:facet name="header">LOB</apex:facet>
+                </apex:column>
+                <apex:repeat var="sr" value="{!StaffRolesCollection}">
+                    <apex:column title="{!sr.Display_Name__c}" styleClass="center" headerClass="center">
+                        <apex:facet name="header">{!sr.Display_Name__c}</apex:facet>
+                        <apex:outputPanel rendered="{!Contains(teamMember.ActiveRolesString,sr.Name)}"  layout="block">
+                            <input title="{!sr.Display_Name__c+' - '+teamMember.ContactRecord.Name+' - '+teamMember.OfficeAllocationText +' - '+teamMember.ContactRecord.Title +' - '+teamMember.ContactRecord.Line_of_Business__c}" type="checkbox" disabled="disabled" checked="checked" />
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!NOT(Contains(teamMember.ActiveRolesString,sr.Name))}" layout="block">
+                            <input title="{!sr.Display_Name__c+' - '+teamMember.ContactRecord.Name+' - '+teamMember.OfficeAllocationText +' - '+teamMember.ContactRecord.Title +' - '+teamMember.ContactRecord.Line_of_Business__c}" type="checkbox" disabled="disabled" />
+                        </apex:outputPanel>
+                    </apex:column>
+                </apex:repeat>
+            </apex:pageBlockTable>
+            <apex:outputLabel value="No records to display" rendered="{!TeamRecords.size == 0}"></apex:outputLabel>
+            <input id="internalTeamSize" type='hidden' value='{!TeamRecords.size}' />
+    </apex:pageBlock>
+    </apex:form> 
+    <style>
+        .pbTitle {display:none;}
+        .center {text-align:center;}
+    </style>
+</apex:component>

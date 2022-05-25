@@ -1,0 +1,31 @@
+<apex:component controller="HL_AlphabetFilterController">
+    <apex:attribute name="selectedFilter" description="Selected Filter" type="String" required="false" default="All" assignTo="{!Filter}"/>
+    <apex:attribute name="valueField" description="The ID of the field to assign the filter value to." type="String" required="true"/>
+    <apex:attribute name="actionButton" description="The ID of the action button to click when filter is changed." type="String" required="false"/>
+    <apex:attribute name="rerenderList" description="A csv list of elements to be rerendered" type="String" required="true"/>
+    <apex:repeat value="{!Alphabet}" var="a" id="repAlphabet">
+		<apex:commandLink styleClass="filterSelection" value="{!a}" rerender="{!rerenderList}" style="{!if(Filter=a,'font-weight:bold','')}">
+			<apex:param name="alpha" value="{!a}" assignTo="{!Filter}"/>
+		</apex:commandLink>
+		&nbsp;|&nbsp;
+	</apex:repeat>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <script type="text/javascript">
+    	var j$ = jQuery.noConflict();
+    	var fireFilterEvent = false;
+    	j$(document).ready(function() {   
+            j$(".filterSelection").click(function(){
+                fireFilterEvent = !fireFilterEvent;
+                if(fireFilterEvent)
+                {
+                    j$(esc('{!valueField}')).val( j$(this).text());
+                    if(j$(esc('{!actionbutton}')))
+                        j$(esc('{!actionbutton}')).trigger('click');
+                }
+            });
+        });
+       function esc(myid) {
+           return '#' + myid.replace(/(:|\.)/g,'\\\\$1');
+    	}
+    </script>
+</apex:component>

@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Fired by the Search Bar Component when Key Entered">
+    <aura:attribute name="searchTerm" type="String"></aura:attribute>
+</aura:event>

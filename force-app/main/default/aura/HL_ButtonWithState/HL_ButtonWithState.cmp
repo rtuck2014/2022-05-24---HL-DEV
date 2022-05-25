@@ -1,0 +1,56 @@
+<aura:component extends="c:HL_UIElement" access="global">
+    <aura:attribute name="accesskey" type="String" access="global" description="Specifies a shortcut key to activate or focus an element." />
+    <aura:attribute name="tabindex" type="Integer" access="global" description="Specifies the tab order of an element when the Tab key is used for navigating. The tabindex value can be set to 0 or -1. The default is 0, which means that the component is focusable and participates in sequential keyboard navigation. -1 means that the component is focusable but does not participate in keyboard navigation." />
+    <aura:attribute name="onfocus" type="Aura.Action" access="global" description="The action triggered when the element receives focus." />
+    <aura:attribute name="onblur" type="Aura.Action" access="global" description="The action triggered when the element releases focus." />
+    <aura:attribute name="class" type="String" access="global" description="A CSS class for the outer element, in addition to the component's base classes." />
+    <aura:attribute name="title" type="String" access="global" description="Displays tooltip text when the mouse moves over the element." />
+    <aura:attribute name="name" type="String" access="global" description="The name for the button element. This value is optional and can be used to identify the button in a callback." />
+    <aura:attribute name="value" type="String" access="global" description="The value for the button element. This value is optional and can be used when submitting a form." />
+    <aura:attribute name="label" type="String" access="global" description="The text to be displayed inside the button." />
+    <aura:attribute name="variant" type="String" default="neutral" access="global" description="The variant changes the appearance of the button. Accepted variants include base, neutral, brand, brand-outline, destructive, destructive-text, inverse, and success. This value defaults to neutral." />
+    <aura:attribute name="iconName" type="String" access="global" description="The Lightning Design System name of the icon. Names are written in the format 'utility:down' where 'utility' is the category, and 'down' is the specific icon to be displayed." />
+    <aura:attribute name="iconPosition" type="String" default="left" access="global" description="Describes the position of the icon with respect to body. Options include left and right. This value defaults to left." />
+    <aura:attribute name="onclick" type="Aura.Action" access="global" description="The action triggered when the button is clicked." />
+    <aura:attribute name="type" type="String" default="button" access="global" description="Specifies the type of button. Valid values are button, reset, and submit. This value defaults to button." />
+    <aura:attribute name="ariaLabel" type="String" access="global" description="Label describing the button to assistive technologies." />
+    <aura:attribute name="ariaDescribedBy" type="String" access="global" description="A space-separated list of element IDs that provides descriptive labels for the button." />
+    <aura:attribute name="ariaControls" type="String" access="global" description="A space-separated list of element IDs that this button controls the contents or presence of." />
+    <aura:attribute name="ariaExpanded" type="String" access="global" description="Indicates whether an element the button controls is expanded or collapsed. Valid values are 'true' or 'false'." />
+    <aura:attribute name="ariaLive" type="String" access="global" description="Indicates that the button will be updated. Valid values are 'assertive', 'polite', or 'off'." />
+    <aura:attribute name="ariaAtomic" type="String" access="global" description="Indicates whether assistive technologies will present all, or only parts of, the changed region. Valid values are 'true' or 'false'." />
+    
+    <aura:attribute name="state" type="String" access="global" description="The current state machine state of the button." />
+    
+    <aura:attribute name="defaultIsVisible" type="Boolean" default="true" access="global" description="Indicates whether the button defaults to visible assuming the current state is not listed in visibleStates or hiddenStates." />
+    <aura:attribute name="defaultIsEnabled" type="Boolean" default="true" access="global" description="Indicates whether the button defaults to enabled assuming the current state is not listed in enabledStates or disabledStates." />
+    
+    <aura:attribute name="visibleStates" type="String" access="global" description="A comma-separated list of state names for which the button should be visible." />
+    <aura:attribute name="hiddenStates" type="String" access="global" description="A comma-separated list of state names for which the button should be hidden." />
+    <aura:attribute name="enabledStates" type="String" access="global" description="A comma-separated list of state names for which the button should be enabled." />
+    <aura:attribute name="disabledStates" type="String" access="global" description="A comma-separated list of state names for which the button should be disabled." />
+    
+    <aura:attribute name="forceVisible" type="Boolean" default="false" access="global" description="Indicates that the button should be forced to visible, regardless of current state.  Use sparingly." />
+    <aura:attribute name="forceHidden" type="Boolean" default="false" access="global" description="Indicates that the button should be forced to hidden, regardless of current state.  Use sparingly." />
+    <aura:attribute name="forceEnabled" type="Boolean" default="false" access="global" description="Indicates that the button should be forced to enabled, regardless of current state.  Use sparingly." />
+    <aura:attribute name="forceDisabled" type="Boolean" default="false" access="global" description="Indicates that the button should be forced to disabled, regardless of current state.  Use sparingly." />
+
+    <aura:method name="focus" access="global" description="Sets focus on the element." />
+
+    <c:HL_ComponentWithState
+        aura:id="container"
+        state="{!v.state}"
+        defaultIsVisible="{!v.defaultIsVisible}"
+        defaultIsEnabled="{!v.defaultIsEnabled}"
+        visibleStates="{!v.visibleStates}"
+        hiddenStates="{!v.hiddenStates}"
+        enabledStates="{!v.enabledStates}"
+        disabledStates="{!v.disabledStates}"
+        forceVisible="{!v.forceVisible}"
+        forceHidden="{!v.forceHidden}"
+        forceEnabled="{!v.forceEnabled}"
+        forceDisabled="{!v.forceDisabled}">
+
+        <c:HL_Button label="{!v.label}" onclick="{!v.onclick}" variant="{!v.variant}" />
+    </c:HL_ComponentWithState>
+</aura:component>

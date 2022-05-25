@@ -1,0 +1,23 @@
+.THIS .slds-table tr>td:first-child {
+    padding-left: 0 !important;
+}
+
+.THIS .modalspinner .centered{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.THIS .modalspinner {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 500;
+    opacity: 0.5;
+    background-color: silver;
+}
+
+.THIS .hidden {
+    display: none;
+}

@@ -1,0 +1,35 @@
+<aura:component implements="force:appHostable" extends="c:MyObjectComponent">
+    <aura:attribute name="companies"
+                    type="Account[]"
+                    description="Array of Account/Company Result Records"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="companyId"
+                    type="String"
+                    description="Selected Account/Company Id"
+                    access="PRIVATE"></aura:attribute>
+    <aura:handler name="afterSearchEvent"
+                  action="{!c.onSearchPerformed}"></aura:handler>
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"></aura:handler>
+    <div aura:id="myCompanies" class="myCompanies">
+        <div class="slds-scrollable--y companylist">
+            <ul class="slds-list--vertical slds-has-dividers--bottom-space slds-has-selection">
+                <aura:iteration items="{!v.companies}" var="company">
+                    <li class="slds-list__item">
+                        <div class="slds-tile slds-tile--board">
+                            <div class="slds-grid">
+                                <div class="slds-col" data-key="{!company.Id}" onclick="{!c.onCompanySelection}">
+                                    <p class="slds-tile__title">
+                                        <strong>{!company.Name}</strong>
+                                    </p>
+                                    <p>{!company.BillingCity}, {!company.BillingState}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </aura:iteration>
+            </ul>
+        </div>
+    </div>
+</aura:component>

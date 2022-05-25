@@ -1,0 +1,47 @@
+<aura:component>
+  <aura:attribute name="itemData" type="Object" />
+  <aura:attribute
+    name="labelWidth"
+    type="Integer"
+    default="120"
+    description="Label width in pixels"
+  />
+  <aura:attribute
+    name="isRedirect"
+    type="Boolean"
+    default="false"
+    description="Open clicked link in same window"
+  />
+  <aura:attribute
+    name="hideEmpty"
+    type="Boolean"
+    default="false"
+    description="Hide empty values"
+  />
+
+  <aura:registerEvent
+    name="navigateToRecordEvent"
+    type="force:navigateToSObject"
+  />
+
+  <div class="slds-m-bottom_small">
+    <div>
+      <a href="#" onclick="{!c.handleLinkClick}">{!v.itemData.recordName}</a>
+    </div>
+
+    <aura:iteration items="{!v.itemData.values}" var="value">
+      <aura:if isTrue="{!(!hideEmpty) || (value.value)}">
+        <div class="slds-grid">
+          <div
+            style="{!'min-width: ' + v.labelWidth + 'px; max-width: ' + v.labelWidth + 'px'}"
+          >
+            <!-- TODO - there's probably a cleaner way to do this -->
+            {!value.label}:
+          </div>
+
+          <div class="slds-col slds-m-left_x-small">{!value.value}</div>
+        </div>
+      </aura:if>
+    </aura:iteration>
+  </div>
+</aura:component>

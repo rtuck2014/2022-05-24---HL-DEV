@@ -1,0 +1,52 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<p class="MsoNormal" style=""><font face="Arial, sans-serif" style="">This is to notify you that the
+marketing expense request for&nbsp;<font color="#ff0000" style="">{!Event_Expense__c.Event_Type_Format__c}</font>&nbsp;<i style="color: rgb(0, 0, 0);">&nbsp;</i>expense&nbsp;<i style=""><font color="#ff0000">{!Event_Expense__c.Name}</font>&nbsp;</i>has been
+rejected by<i style="color: rgb(0, 0, 0);">&nbsp;</i><font color="#ff0000" style="">{!Event_Expense__c.Current_Approver__c}</font><span style="color: rgb(0, 0, 0);"><o:p></o:p></span></font></p><div class="MsoNormal" align="center" style="color: rgb(0, 0, 0); text-align: center;"><span class="msodel0"><span class="msoDel"><del cite="mailto:Lin,%20Johnny" datetime="2018-04-17T16:05"><font face="Arial, sans-serif">
+
+<hr size="2" width="100%" align="center">
+
+</font></del></span></span></div><p class="MsoNormal" style="font-size: 12pt;"><font face="Arial, sans-serif"><b>Requestor:&nbsp;</b>{!Event_Expense__c.Requestor_Name__c}<o:p></o:p></font></p><p class="MsoNormal"><font style="font-size: 12pt;"><b>Industry Group:</b>&nbsp;</font><font face="Arial, sans-serif">{!Event_Expense__c.Industry_Group__c}</font></p><p class="MsoNormal"><b>Classification:</b>&nbsp;<font face="Arial, sans-serif">{!Event_Expense__c.Classification__c}</font></p><p class="MsoNormal" style="font-size: 12pt;"><font face="Arial, sans-serif"><b>Event Name:</b>&nbsp;{!Event_Expense__c.Event_Name__c}<o:p></o:p></font></p><p class="MsoNormal" style="font-size: 12pt;"><font face="Arial, sans-serif"><b>Request Type:</b>&nbsp;{!Event_Expense__c.Event_Type_Format__c}<o:p></o:p></font></p><p class="MsoNormal" style="font-size: 12pt;"><b style="font-family: Arial, sans-serif; font-size: 12pt;">Event Date:&nbsp;</b><span style="font-family: Arial, sans-serif; font-size: 12pt;">{!Event_Expense__c.Formatted_Start_Date__c}</span></p><p class="MsoNormal"><font style="font-size: 12pt;"><b>Est. Airfare Cost:</b>&nbsp;<font face="Arial, sans-serif"><o:p></o:p></font></font><font face="Arial, sans-serif">{!Event_Expense__c.Expected_Airfare_Cost__c}</font></p><p class="MsoNormal"><font style="font-size: 12pt;"><b>Est. Lodging Cost:</b>&nbsp;</font><font face="Arial, sans-serif">{!Event_Expense__c.Expected_Lodging_Cost__c}</font></p><div><p class="MsoNormal"><font style="font-size: 12pt;"><b>Est. Registration Cost:</b>&nbsp;</font><font face="Arial, sans-serif">{!Event_Expense__c.Expected_Registration_Fee__c}</font></p></div><div><p class="MsoNormal"><font style="font-size: 12pt;"><b>Est. Food &amp; Bev. Cost:</b>&nbsp;</font><font face="Arial, sans-serif">{!Event_Expense__c.Expected_F_B_cost__c}</font></p></div><div><font style="font-size: 12pt;"><b>Est. Other Cost:</b>&nbsp;</font><font face="Arial, sans-serif">{!Event_Expense__c.Any_additional_cost_Specify__c}</font></div><p class="MsoNormal" style="font-size: 12pt;"><b style="font-size: 12pt; font-family: Arial, sans-serif;">Total Budget Requested:&nbsp;</b><font face="Arial, sans-serif" style="font-size: 12pt;">{!Event_Expense__c.Total_Budget_Requested__c}</font></p><p class="MsoNormal" style="font-size: 12pt;"><a href="{!Event_Expense__c.Base_URL__c}"><b style="font-family: Arial, sans-serif; font-size: 12pt;"><span style="color: blue;">Review submission:</span></b><span style="font-family: Arial, sans-serif; font-size: 12pt; color: blue;">&nbsp;{!Event_Expense__c.Event_Name__c}</span></a></p><p class="MsoNoSpacing" style="color: rgb(0, 0, 0);">
+
+
+
+
+
+
+
+
+
+<font face="Arial, sans-serif"><u1:p></u1:p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</font></p><p class="MsoNormal" style="color: rgb(0, 0, 0);"><o:p style=""><font face="Arial, sans-serif" style="">&nbsp;</font></o:p></p><p class="MsoNoSpacing" style="font-size: 12pt; font-family: arial; color: rgb(0, 0, 0); line-height: 150%;"><span style="font-family: Calibri, sans-serif; font-size: 11pt;"></span></p>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[<div style=""><br><div style="color: rgb(0, 0, 0); font-family: arial; font-size: 12pt;"><br></div></div>]]></td>
+</tr>
+</table>

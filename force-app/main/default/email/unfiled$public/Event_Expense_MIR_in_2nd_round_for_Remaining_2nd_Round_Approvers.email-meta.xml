@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>HL_BlankLetterHead</letterhead>
+    <name>Event Expense MIR in 2nd round for Remaining 2nd Round Approvers</name>
+    <style>formalLetter</style>
+    <subject>Marketing Expense Request Returned for More Information *No Action Required*</subject>
+    <textOnly>This is to notify you that the marketing expense request for {!Event_Expense__c.Event_Type_Format__c}  expense {!Event_Expense__c.Name} been returned for more information by {!Event_Expense__c.Current_Approver__c}.
+
+Requestor: {!Event_Expense__c.Requestor_Name__c}
+
+Product Type: {!Event_Expense__c.Product_Type__c}
+
+Event Name: {!Event_Expense__c.Event_Name__c}
+
+Please provide additional information about your expense request: {!Event_Expense__c.Approver_s_Notes__c}
+
+
+Review submission: {!Event_Expense__c.Event_Name__c}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

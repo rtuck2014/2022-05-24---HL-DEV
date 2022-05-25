@@ -1,0 +1,15 @@
+.THIS.mainContainer {
+    position: relative;
+    height: calc(50vh);
+  }
+  
+  .THIS .attach-to-bottom {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+  }
+  
+  .THIS .internalNotesField textarea {
+    height: 200px;
+  }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>this is a base template, we actually use our own Email Template object to pull things like billing req.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Houlihan_Lokey_Letterhead</letterhead>
+    <name>Engagements - Write Bill Notification</name>
+    <style>freeForm</style>
+    <subject>Billing Request</subject>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

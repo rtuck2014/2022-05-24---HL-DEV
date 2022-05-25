@@ -1,0 +1,37 @@
+<aura:component controller="HL_TimeRecordController" implements="force:appHostable" >
+    <ltng:require styles="/resource/SLDS0120/assets/styles/salesforce-lightning-design-system-ltng.min.css" />
+    <aura:attribute name="category" 
+                    type="String" 
+                    default="FR"
+                    description="Time Record Tracking Category"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordPeriodStaffMember" 
+                    type="Time_Record_Period_Staff_Member__c"
+                    description="Time Record Period Staff Member"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="startDate" 
+                    type="Date"
+                    description="Start Date to display Existing Records For"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="endDate" 
+                    type="Date"
+                    description="End Date to display Existing Records For"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordPeriod" 
+                    type="Time_Record_Period__c"
+                    description="Time Record Period Record"
+                    access="PUBLIC"></aura:attribute>
+    <aura:handler name="init" 
+                  value="{!this}" 
+                  action="{!c.doInit}"></aura:handler> 
+    <div id="timesheet">
+        <h2>My Time Records</h2>
+        <c:TimeRecordPeriodPicker timeRecordPeriodSelectionEvent="{!c.onSelectedPeriodChanged}" dateRangeSelectionEvent="{!c.onDateRangeChanged}"></c:TimeRecordPeriodPicker>
+        <aura:if isTrue="{!v.category == 'FR'}">
+           <c:MyTimeSheetFR timeRecordPeriod="{!v.timeRecordPeriod}"></c:MyTimeSheetFR>
+        </aura:if>
+        <aura:if isTrue="{!v.category == 'Litigation'}">
+            <c:MyTimeSheetLitigation timeRecordPeriod="{!v.timeRecordPeriod}" startDate="{!v.startDate}" endDate="{!v.endDate}"></c:MyTimeSheetLitigation>
+        </aura:if>
+    </div>
+</aura:component>

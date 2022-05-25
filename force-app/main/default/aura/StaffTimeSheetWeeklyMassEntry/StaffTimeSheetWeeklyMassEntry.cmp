@@ -1,0 +1,229 @@
+<aura:component controller="HL_TimeRecordController" extends="c:HL_LightningComponent">
+    <aura:attribute name="category"
+                    type="String"
+                    description="Time Tracking Category"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordPeriodStaffMember"
+                    type="Time_Record_Period_Staff_Member__c"
+                    description="Time Record Period Staff Member"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordPeriod"
+                    type="Time_Record_Period__c"
+                    description="Time Record Period"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="startDate"
+                    type="Date"
+                    description="Start Date"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="endDate"
+                    type="Date"
+                    description="End Date"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="displayDates"
+                    type="Date[]"
+                    description="Date Array to Determine Columns Displayed"
+                    access="PRIVATE"
+                    ></aura:attribute>
+    <aura:attribute name="activityTypes"
+                    type="String[]"
+                    description="Activity Types Available for Selection"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="projectSelections"
+                    type="Object[]"
+                    description="Project Records for the Time Record Period Staff Member"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableOpportunities"
+                    type="Object[]"
+                    description="Selectable opportunities"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableEngagements"
+                    type="Object[]"
+                    description="Selectable engagements"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableSpecialProjects"
+                    type="Object[]"
+                    description="Selectable specialProjects"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordDetails"
+                    type="Time_Record__c[]"
+                    description="Time Record Detail Records"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordTotals"
+                    type="AggregateResult[]"
+                    description="Time Record Totals - Grouped by Day for the Staff Member"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordTotalValues"
+                    type="Object[]"
+                    description="Time Record Totals Array - Grouped by Day for the Staff Member"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="totalHours"
+                    type="decimal"
+                    description="Total Hours for the Weekly View"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="totalChargeableHours"
+                    type="decimal"
+                    description="Total Chargeable Hours for the Weekly View"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="totalNonChargeableHours"
+                    type="decimal"
+                    description="Total Non-Chargeable Hours for the Weekly View"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="rowValues"
+                    type="Object[]"
+                    description="Row Value Array"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="allowedHourEntry"
+                    type="integer"
+                    description="allows some records to have a greater than 24 hour time entry"
+                    access="PUBLIC"></aura:attribute>
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"></aura:handler>
+    <aura:handler name="change"
+                  value="{!v.timeRecordPeriodStaffMember}"
+                  action="{!c.onTimeRecordPeriodStaffMemberChanged}"></aura:handler>
+    <aura:handler name="change"
+                  value="{!v.timeRecordTotals}"
+                  action="{!c.onTimeRecordTotalsChanged}"></aura:handler>
+    <aura:handler name="change"
+                  value="{!v.timeRecordDetails}"
+                  action="{!c.onTimeRecordDetailsChanged}"></aura:handler>
+    <aura:handler name="change"
+                  value="{!v.startDate}"
+                  action="{!c.onDateChanged}"></aura:handler>
+    <aura:handler name="change"
+                  value="{!v.endDate}"
+                  action="{!c.onDateChanged}"></aura:handler>
+    <!--Distinguish Between Row Save and New Row Save to determine if Rows Need Refreshing-->
+    <aura:registerEvent name="calendarRowSaveSuccess"
+                        type="c:SaveSuccessEvt"></aura:registerEvent>
+    <aura:registerEvent name="calendarNewRowSaveSuccess"
+                        type="c:SaveSuccessEvt"></aura:registerEvent>
+    <aura:registerEvent name="calendarDeleteRowSuccess"
+                        type="c:SaveSuccessEvt"></aura:registerEvent>
+    <div class="staffTimeSheetWeeklyMassEdit" style="height:100%">        
+        <table class="slds-table">
+            <thead>
+                <tr>
+                    <th class="slds-theme--info slds-p-left--xx-small cell-project">
+                        Project
+                    </th>
+                    <aura:iteration items="{!v.displayDates}" var="displayDate">
+                        <th class="slds-text-align--center slds-theme--info cell-date" style="vertical-align:top;">
+                            <ui:outputDate value="{!displayDate}" format="EEE"></ui:outputDate><br />
+                            {!displayDate}
+                        </th>
+                    </aura:iteration>
+                </tr>
+                <tr>
+                    <th class="slds-theme--alt-inverse cell-project">
+                        <div class="cell-date">
+                            <span class="slds-p-right--xx-small" style="display:inline-block; width: 150px;">Weekly Totals:</span>
+                            <span style="display:inline-block; width: 40px; text-align: right;">{!v.totalHours}</span>
+                        </div>
+                    </th>
+                    <aura:iteration items="{!v.timeRecordTotalValues}" var="trtv">
+                        <th class="slds-text-align--center slds-theme--alt-inverse cell-date">
+                            <ui:outputNumber value="{!trtv.TotalHours}" format="0.0"></ui:outputNumber>
+                            <aura:if isTrue="{!trtv.TotalHours > v.allowedHourEntry}">
+                                <c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#warning" category="utility" size="small" assistiveText="warning" class="slds-icon slds-icon-text-error"/>
+                            </aura:if>
+                        </th>
+                    </aura:iteration>
+                </tr>
+            </thead>
+        </table>
+        <div class="slds-scrollable--y">
+            <table class="slds-table">
+                <tr><td class="cell-project"></td><td class="cell-date"></td><td class="cell-date"></td><td class="cell-date"></td><td class="cell-date"></td><td class="cell-date"></td><td class="cell-date"></td><td class="cell-date"></td></tr>
+                <aura:iteration items="{!v.rowValues}" var="rv">
+                    <tr>
+                        <td colspan="8">
+                            <c:AddTimeRecordCalendarRow category="{!v.category}"
+                                                        rowRecord="{!rv}"
+                                                        dateValues="{!v.displayDates}"
+                                                        activityTypes="{!v.activityTypes}"
+                                                        projectSelections="{!v.projectSelections}"
+                                                        selectableOpportunities="{!v.selectableOpportunities}"
+                                                        selectableEngagements="{!v.selectableEngagements}"
+                                                        selectableSpecialProjects="{!v.selectableSpecialProjects}"
+                                                        saveSuccessEvent="{!c.onCalendarRowSaveSuccess}"
+                                                        timeRecordPeriodStaffMember="{!v.timeRecordPeriodStaffMember}"
+                                                        beforeServerCallEvent="{!c.onBeforeServerCallEvent}" 
+                                                        allowedHourEntry="{!v.allowedHourEntry}"/>
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </table>
+        </div>
+    <br>
+    </br>
+        <br></br>
+        
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            
+            <tr class="slds-line-height_reset">
+                <td class="slds-text-align--center slds-theme--alt-inverse cell-date">
+                    <div class="slds-truncate"></div>
+                </td>
+                <td class="slds-text-align--center slds-theme--alt-inverse cell-date">
+                    <div class="slds-truncate">Weekly Totals</div>
+                </td>
+                <aura:iteration items="{!v.displayDates}" var="displayDate">
+                    <td class="slds-text-align--center slds-theme--alt-inverse cell-date">
+                        <ui:outputDate value="{!displayDate}" format="EEE"></ui:outputDate>
+                    </td>
+                </aura:iteration>
+            </tr>
+            <tr>
+                <td class="slds-text-align--left slds-theme--info cell-date">
+                    <div class="slds-truncate">Chargeable  :</div>
+                </td>
+                <td class="slds-text-align--center slds-theme--info cell-date">
+                    <div class="slds-truncate">{!v.totalChargeableHours}</div>
+                </td>
+                <aura:iteration items="{!v.timeRecordTotalValues}" var="trtv">
+                    <td class="slds-text-align--center slds-theme--info cell-date">
+                        <ui:outputNumber value="{!trtv.BillableHours}" format="0.0"></ui:outputNumber>
+                        <aura:if isTrue="{!trtv.BillableHours > v.allowedHourEntry}">
+                            <c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#warning" category="utility" size="small" assistiveText="warning" class="slds-icon slds-icon-text-error"/>
+                        </aura:if>
+                    </td>
+                </aura:iteration>
+            </tr>
+            <tr>
+                <td class="slds-text-align--left slds-theme--info cell-date">
+                    <div class="slds-truncate">Non-Chargeable  :</div>
+                </td>
+                <td class="slds-text-align--center slds-theme--info cell-date">
+                    <div class="slds-truncate">{!v.totalNonChargeableHours}</div>
+                </td>
+                <aura:iteration items="{!v.timeRecordTotalValues}" var="trtv">
+                    <td class="slds-text-align--center slds-theme--info cell-date">
+                        <ui:outputNumber value="{!trtv.NonBillableHours}" format="0.0"></ui:outputNumber>
+                        <aura:if isTrue="{!trtv.NonBillableHours > v.allowedHourEntry}">
+                            <c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#warning" category="utility" size="small" assistiveText="warning" class="slds-icon slds-icon-text-error"/>
+                        </aura:if>
+                    </td>
+                </aura:iteration>
+            </tr>
+            <tr>
+                <td class="slds-text-align--left slds-theme--info cell-date">
+                    <div class="slds-truncate">Totals  :</div>
+                </td>
+                <td class="slds-text-align--center slds-theme--info cell-date">
+                    <div class="slds-truncate">{!v.totalHours}</div>
+                </td>
+                <aura:iteration items="{!v.timeRecordTotalValues}" var="trtv">
+                    <td class="slds-text-align--center slds-theme--info cell-date">
+                        <ui:outputNumber value="{!trtv.TotalHours}" format="0.0"></ui:outputNumber>
+                        <aura:if isTrue="{!trtv.TotalHours > v.allowedHourEntry}">
+                            <c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#warning" category="utility" size="small" assistiveText="warning" class="slds-icon slds-icon-text-error"/>
+                        </aura:if>
+                    </td>
+                </aura:iteration>
+            </tr>
+        </table>
+        
+    </div>
+</aura:component>

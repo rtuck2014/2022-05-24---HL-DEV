@@ -1,0 +1,50 @@
+<aura:component access="global">
+  <aura:attribute
+    name="title"
+    type="String"
+    access="global"
+    description="The title of the quick action modal."
+  />
+  <aura:attribute
+    name="footer"
+    type="Aura.Component[]"
+    access="global"
+    description="Footer content for the quick action modal."
+  />
+  <aura:attribute
+    name="width"
+    type="Integer"
+    access="global"
+    default="50"
+    description="The width, in screen percent, of the modal."
+  />
+
+  <!-- this section must be inline, doesn't work in the bundle's CSS file -->
+  <aura:html tag="style">
+    .cuf-content { padding: 0 0rem !important; } .slds-p-around--medium {
+    padding: 0rem !important; } .slds-modal__content { overflow-y:hidden
+    !important; height:unset !important; max-height:unset !important; }
+    .slds-modal__container { max-width: {!v.width}rem !important;
+    width:{!v.width}% !important; }
+  </aura:html>
+
+  <div class="mainContainer">
+    <aura:if isTrue="{!v.title}">
+      <header>
+        <div class="modal-header slds-modal__header">
+          <h2 class="title slds-text-heading--medium slds-hyphenate">
+            {!v.title}
+          </h2>
+        </div>
+      </header>
+    </aura:if>
+
+    <div>{!v.body}</div>
+
+    <footer>
+      <div class="modal-footer slds-modal__footer attach-to-bottom">
+        {!v.footer}
+      </div>
+    </footer>
+  </div>
+</aura:component>

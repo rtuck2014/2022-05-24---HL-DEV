@@ -1,0 +1,53 @@
+<aura:component controller="AnyEventCalCtrl" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <ltng:require styles="{!$Resource.AnyEventCal + '/fullcalendar.min.css'}"/>
+    <aura:attribute name="events" type="Map"/>
+    <aura:attribute name="objectLabel" type="String"/>
+    <aura:attribute name="sObjectName" type="String"/>
+    <aura:attribute name="titleField" type="String"/>
+    <aura:attribute name="startDateTimeField" type="String"/>
+    <aura:attribute name="endDateTimeField" type="String"/>
+    <aura:attribute name="descriptionField" type="String"/>
+    <aura:attribute name="userField" type="String"/>
+    <aura:attribute name="calendarButtons" type="String"/>
+    <aura:attribute name="weekends" type="Boolean"/>
+    <aura:attribute name="eventBackgroundColor" type="String"/>
+    <aura:attribute name="eventBorderColor" type="String"/>
+    <aura:attribute name="eventTextColor" type="String"/>
+    <aura:attribute name="idVal" type="String"/>
+    <aura:attribute name="titleVal" type="String"/>
+    <aura:attribute name="descriptionVal" type="String"/>
+    <aura:attribute name="startDateTimeVal" type="DateTime"/>
+    <aura:attribute name="endDateTimeVal" type="DateTime"/>
+    <aura:attribute name="newOrEdit" type="String" default="New"/>
+    <aura:handler name="change" value="{!v.events}" action="{!c.renderCalendar}"/>
+    
+    
+    <div id="calendar" class="anyCalendar"></div>
+    <div aura:id="modal" class="slds-modal">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+
+                    <lightning:buttonIcon size="large" iconName="utility:close" variant="bare" onclick="{!c.closeModal}" alternativeText="Close window." class="slds-modal__close" />
+
+                <h2 id="header43" class="slds-text-heading--medium">{!v.newOrEdit}&nbsp;{!v.objectLabel}</h2>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium">
+                <div class="slds-form--stacked">
+                    <ui:inputText aura:id="title" label="Title" value="{!v.titleVal}" required="true"/>
+                    
+					<ui:inputTextArea aura:id="description" label="Description" value="{!v.descriptionVal}" rows="5"/>
+
+                    <ui:inputDateTime aura:id="startTime" label="Start Time" class="field" value="{!v.startDateTimeVal}" displayDatePicker="true" required="true" />
+                    
+                    <ui:inputDateTime aura:id="endTime" label="End Time" class="field" value="{!v.endDateTimeVal}" displayDatePicker="true" required="true" />
+                </div>
+            </div>
+            <div class="slds-modal__footer">
+                <lightning:button value="{!v.idVal}" onclick="{!c.deleteRecord}" label="Delete" variant="destructive" class="slds-float--left slds-float_left"/>
+                <lightning:button onclick="{!c.closeModal}" label="Cancel" variant="neutral"/>
+                <lightning:button value="{!v.idVal}" onclick="{!c.createRecord}" label="Save" variant="brand"/>
+            </div>
+        </div>
+    </div>
+    <div class="slds-backdrop" aura:id="backdrop"></div>
+</aura:component>

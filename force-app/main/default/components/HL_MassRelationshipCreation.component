@@ -1,0 +1,198 @@
+<apex:component controller="HL_MassRelationshipCreation" allowDML="true" >
+    <apex:form >
+        <apex:includeScript value="{!URLFOR($Resource.DataTables, 'jquery-1.9.1.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.DataTables, 'moment.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.DataTables, 'jquery.dataTables.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'HL_MassRelationshipCreation.js')}"/>
+        <apex:styleSheet value="{!URLFOR($Resource.DataTables, 'jquery.dataTables.css')}"/>
+        <style>
+            table{width : 100% !important;}
+            table#tableId td{font-size: 12px !important;font-weight: normal !important;}
+        </style>
+        <apex:actionfunction name="renderLoadComplete" status="processingImgUpsert" rerender="FinishedLoading"/>
+        <apex:outputPanel id="FinishedLoading"/>
+        <apex:actionfunction name="renderTableAF" status="processingImg" rerender="recordBlockId">
+            <apex:param assignTo="{!HLContactId}" value="" name="hlContact"/>
+        </apex:actionfunction>
+        <apex:actionfunction name="renderTable" status="processingImg" rerender="recordBlockId"/>
+        <table width="100%">
+            <tr width="100%">
+                <td style="font-size: 20px; font-weight: bold; width: 100%; border-bottom: 2px #3355CC solid;">
+                    <apex:outputLabel value="Mass Relationship Creator"/>
+                </td>
+            </tr>
+            <tr width="100%">
+                <td style="width: 100%; text-align: center;">
+                    <apex:commandButton value="Back to {!EntityBase}" action="{!Cancel}"/>
+                </td>
+            </tr>
+            <tr width="100%">
+                <td style="font-weight: bold; width: 100%; ">
+                    <fieldset>
+                        <legend>Filters </legend>
+                        <table>
+                            <tr>
+                                <td style="padding-left: 10px; padding-top:10px;">
+                                    <apex:outputLabel for="searchContact" value="Houlihan Contact "/>
+                                </td>
+                                <td style="padding-left: 10px; padding-top:10px;">
+                                    <apex:inputText id="inputTxtId" value="{!HLContactName}">
+                                        <apex:inputHidden value="{!HLContactId}" id="inputTxtId_lkid"/>
+                                        <c:SL_LIB32_AutoComplete objectname="Contact" sObjectFieldName="Name"
+                                                                 autocomplete_textbox="{!$Component.inputTxtId}" isInlineVF="false" bgColor="white" fontSize="11"/>
+                                    </apex:inputText>
+                                </td>
+                                <td style="padding-left: 10px;">
+                                    <apex:selectRadio id="showContact" value="{!ShowContact}" onchange="renderTable();">
+                                        <apex:selectOptions value="{!ContactOptions}"/>
+                                    </apex:selectRadio>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr width="100%">
+                <td style="font-weight: bold; width: 100%;">
+                    <fieldset>
+                        <legend>Contacts Related To {!EntityBase} </legend>
+                        <apex:outputPanel id="recordBlockId" >
+                            <apex:outputPanel rendered="{!IF(HLContactId != '', true, false)}">
+                                <table id="tableId" class="pbRecordTable, list" cellspacing="0" cellpadding="0" border="0">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="5" style="text-align:right"> Sync All Contacts to Outlook <input type="checkbox" id="syncAll" onclick="selectAll()" /></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Contact Name</th>
+                                            <th>Company</th>
+                                            <th>Appear On</th>
+                                            <th>Strength Rating</th>
+                                            <th>Sync</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tBodyContact">
+                                    </tbody>
+                                </table>
+                                <script>
+                                var hlContactId = document.getElementById('{!$Component.inputTxtId_lkid}').value;
+                                $(document).ready(function(){
+                                    dataTables('{!EntityId}', hlContactId, '{!ShowContact}', '{!PicklistValue}');
+                                });
+
+                                function selectAll(){
+                                    var ischecked= $('#syncAll').is(":checked");
+                                    if(ischecked){
+                                        var checkAll = confirm("Are you sure you want to check all contacts sync to outlook?");
+                                        if(checkAll)
+                                            commitSyncUpdates(true);
+                                        else
+                                            $('#syncAll').prop("checked", false);
+                                    }
+                                    if(!ischecked){
+                                        var uncheckAll = confirm("Are you sure you want to un-check all contacts sync to outlook?");
+                                        if(uncheckAll)
+                                            commitSyncUpdates(false);
+                                        else
+                                            $('#syncAll').prop("checked", true);
+                                    }
+                                }
+
+                                function commitSyncUpdates(sync){
+                                 	var relationshipRecords = [];
+                                  	$(".relationshipRow").each(function() {
+                                        var contactId = this.getAttribute('id');
+                                        var relationshipId = this.getElementsByTagName("td")[0].getAttribute('id');
+            							var strengthScore = document.getElementById(contactId).getElementsByTagName("select")[0].value;
+                                        var currentSyncOutlook = document.getElementById(contactId).getElementsByTagName("input")[0].checked;
+            							var syncOutlook = sync;
+                                        if(strengthScore === "none")
+                                            strengthScore = "";
+
+                                        if(currentSyncOutlook != sync){
+                                            if(relationshipId)
+                                                relationshipRecords.push({Id: relationshipId,
+                                                                          HL_Contact__c: hlContactId,
+                                                                          External_Contact__c: contactId,
+                                                                          Strength_Rating__c: strengthScore,
+                                                                          Sync_to_Outlook__c: sync});
+                                            else
+                                                relationshipRecords.push({HL_Contact__c: hlContactId,
+                                                                          External_Contact__c: contactId,
+                                                                          Strength_Rating__c: strengthScore,
+                                                                          Sync_to_Outlook__c: sync});
+                                       }
+                                    });
+
+                                    if(relationshipRecords && relationshipRecords.length > 0){
+                                        $j.blockUI({message: '<h1><img src="/img/loading.gif" />Loading......</h1>'});
+                                    	HL_MassRelationshipCreation.UpsertRelationshipRecords(relationshipRecords, function(result, event){
+                                            							 $j.unblockUI();
+                                                                         if(event.type == 'exception'){
+                                                                             alert(event.message);
+                                                                         }
+                                                                         else{
+                                                                             $('input:checkbox.OutlookCheckBox').prop("checked",sync);
+                                                                             $(".relationshipRow").each(function() {
+                                                                                 var contactId = this.getAttribute('id');
+                                                                                 result.forEach(function(r){
+                                                                                    if(r.External_Contact__c == contactId)
+                                                                                        document.getElementById(contactId).getElementsByTagName("td")[0].setAttribute('id', r.Id);
+                                                                                 });
+                                                                             });
+                                                                         }
+                                                                     });
+                                    }
+                                }
+                                </script>
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </fieldset>
+                </td>
+            </tr>
+        </table>
+        <apex:actionstatus id="processingImg" startText="Loading...">
+            <apex:facet name="start">
+                <div id="salesforceSource_blurybackground"
+                     style="position: absolute; z-index: 9999;left: 1px; top: 1px; width: 100%; height: 100%; text-align: center; vertical-align: middle; background-color: #dcdcdc; opacity: 0.5; filter: alpha(opacity = 50)"></div>
+                <div id="ManageMembersViewport_loading" class="waitingSearchDiv"
+                     style="width: 100%; height: 80%; display: '';">
+                    <div style="width: 144px; vertical-align: middle;"
+                         class="waitingHolder">
+                        <table align="center" valign="top" style="width: 100%; height: 30%">
+                            <tr align="center" valign="top" style="width: 100%; height: 30%">
+                                <td valign="top"><img class="waitingImage"
+                                                      src="/img/loading.gif" /><span class="waitingDescription">Loading......</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div id="ManageMembersViewport_loading" class="waitingSearchDiv"
+                     style="width: 100%; height: 100%; display: '';"></div><script>document.getElementById('ManageMembersViewport_loading').height = window.innerHeight * (3/4);</script>
+                </apex:facet>
+                <apex:facet name="stop"></apex:facet>
+                </apex:actionstatus>
+                <apex:actionstatus id="processingImgUpsert" startText="Updating records...">
+                    <apex:facet name="start">
+                        <div id="salesforceSource_blurybackground"
+                        style="position: absolute; z-index: 9999;left: 1px; top: 1px; width: 100%; height: 100%; text-align: center; vertical-align: middle; background-color: #dcdcdc; opacity: 0.5; filter: alpha(opacity = 50)"></div>
+                        <div id="ManageMembersViewport_loading" class="waitingSearchDiv"
+                        style="width: 100%; height: 80%; display: '';">
+                            <div style="width: 144px; vertical-align: middle;"
+                            class="waitingHolder">
+                                <table align="center" valign="top" style="width: 100%; height: 30%">
+                                    <tr align="center" valign="top" style="width: 100%; height: 30%">
+                                        <td valign="top"><img class="waitingImage"
+                                        src="/img/loading.gif" /><span class="waitingDescription">Updating records...</span></td>
+                                            </tr>
+                                        </table>
+                                        </div>
+                                        </div>
+                                        <div id="ManageMembersViewport_loading" class="waitingSearchDiv"
+                                        style="width: 100%; height: 100%; display: '';"></div><script>document.getElementById('ManageMembersViewport_loading').height = window.innerHeight * (3/4);</script>
+            </apex:facet>
+            <apex:facet name="stop"></apex:facet>
+        </apex:actionstatus>
+    </apex:form>
+    <apex:includeScript value="{!URLFOR($Resource.HL_Scripts, 'BlockUI.js')}"/>
+</apex:component>

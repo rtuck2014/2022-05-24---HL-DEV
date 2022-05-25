@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Fired upon selection of a time record period selection">
+	<aura:attribute name="timeRecordPeriod" type="Time_Record_Period__c"/>
+</aura:event>

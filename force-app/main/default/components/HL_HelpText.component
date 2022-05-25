@@ -1,0 +1,9 @@
+<apex:component selfClosing="true">
+<apex:attribute name="helpText" description="Help Text To Display" type="String" required="true"/>
+<div class="helpButtonOn" id="helpText" onfocus="addMouseOver(this)" onmouseover="addMouseOver(this)" tabindex="0">
+    <img src="/s.gif" alt="helpText" class="helpOrb" title="" />
+    <div class="mouseOverInfo" id="helperTextInfo" style="display: none; opacity: -0.19999999999999996; left: 16px;">
+        <div class="body">{!helpText}</div>
+    </div>
+</div>
+</apex:component>

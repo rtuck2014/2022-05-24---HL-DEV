@@ -1,0 +1,88 @@
+<aura:component controller="HL_TimeRecordController" extends="c:HL_LightningComponent">
+    <aura:attribute name="category"
+                    type="String"
+                    description="Time Record Category"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="startDate"
+                    type="Date"
+                    description="Start Date"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="endDate"
+                    type="Date"
+                    description="End Date"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="displayDates"
+                    type="Date[]"
+                    description="Date Array to Determine Columns Displayed"
+                    access="PRIVATE"
+                    ></aura:attribute>
+    <aura:attribute name="timeRecordsExternal"
+                    type="AggregateResult[]"
+                    description="Time Records - Passed in From Other Component"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecords"
+                    type="AggregateResult[]"
+                    description="Time Records - Grouped by Project"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="selections"
+                    type="String[]"
+                    description="Selected Projects"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="showError" 
+                    type="Boolean" 
+                    default="false"
+                    description="Indicates if an Error Message should be Displayed"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="showSuccess" 
+                    type="Boolean" 
+                    default="false"
+                    description="Indicates if a Success Message should be Displayed"
+                    access="PRIVATE"></aura:attribute>
+    <aura:handler name="init" 
+                  value="{!this}" 
+                  action="{!c.doInit}"></aura:handler>
+    <aura:handler name="change"
+                  value="{!v.startDate}"
+                  action="{!c.onDateChanged}"></aura:handler>
+    <aura:handler name="change"
+                  value="{!v.endDate}"
+                  action="{!c.onDateChanged}"></aura:handler>
+    <aura:handler name="change"
+                  value="{!v.timeRecordsExternal}"
+                  action="{!c.onTimeRecordsUpdated}"></aura:handler>
+    <div class="slds-table slds-table--striped">
+        <thead>
+            <th class="slds-cell-shrink slds-theme--info slds-text-align--center">Select</th>
+        	<th class="slds-cell-shrink slds-theme--info">Engagement</th>
+            <th class="slds-cell-shrink slds-theme--info">Engagement Number</th>
+            <th class="slds-cell-shrink slds-theme--info slds-text-align--right">Hours</th>
+            <th class="slds-cell-shrink slds-theme--info slds-text-align--right">Amount</th>
+        </thead>
+        <aura:iteration items="{!v.timeRecords}" var="tr">
+        	<tr>
+                <td class="slds-text-align--center"><input aura:id="{!tr.Engagement__c}" data-key="{!tr.Engagement__c}" type="checkbox" onchange="{!c.onSelection}"></input></td>
+            	<td>{!tr.Name}</td>
+                <td>{!tr.Engagement_Number__c}</td>
+                <td class="slds-text-align--right"><ui:outputNumber value="{!tr.Hours}" format="0.0"></ui:outputNumber></td>
+                <td class="slds-text-align--right"><c:CurrencySymbolDisplay currencyIsoCode="{!tr.CurrencyIsoCode}"></c:CurrencySymbolDisplay><ui:outputNumber value="{!tr.Amount}" format="0"></ui:outputNumber></td>
+            </tr>
+        </aura:iteration>
+    </div>
+    <div class="slds-text-align--center slds-p-top--small">
+    	<ui:button aura:id="btnSendNotification" 
+                   class="slds-button slds-button--neutral"
+                   label="Send Notification" 
+                   press="{!c.onSendNotification}"
+                   disabled="{!empty(v.selections)}"></ui:button>
+    </div>
+    <aura:if isTrue="{!v.showSuccess}">
+        <ui:message title="Success -" severity="info" closable="true">
+            <ui:outputText aura:id="successText" value=" Notification Sent"></ui:outputText>
+        </ui:message>
+    </aura:if>
+    <aura:if isTrue="{!v.showError}">
+        <ui:message title="Error -" severity="error" closable="true">
+            <ui:outputText aura:id="errorText" value=""></ui:outputText>
+        </ui:message>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initialscale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><style type="text/css">@media screen and (max-width: 480px) {
+  .contentbuilderBaseColumnRow .columnCell {display:inline-block; width:100%}
+}
+ .contentpageDefaultEmailTemplatePageTemplate .contentRoot {width:600px}
+@media only screen and (max-width: 480px) {
+  .contentpageDefaultEmailTemplatePageTemplate .contentRoot {width:320px}
+}
+ </style></head><body><table width="100%" cellpadding="0" cellspacing="0" role="presentation" class="contentpageDefaultEmailTemplatePageTemplate" id="contentpage_emailTemplateBodyContent" style="background-color:#E9EAEC;"><tr><td width="100%" align="center"><table width="600" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" role="presentation" class="contentRoot"><tr><td style="padding-right:10px;padding-bottom:10px;padding-top:10px;padding-left:10px;"><table width="100%" cellpadding="0" cellspacing="0" class="contentbuilderBaseColumnRow" role="presentation" bgcolor=""><tr valign="top"><td class="columnCell" style="vertical-align:top;" width="100%"><table style="font-size:14px;width:100%;border-collapse:collapse;word-break:break-word;" role="presentation" cellspacing="0" cellpadding="0" locked="0"><tr><td style="font-family:Arial,Helvetica,sans-serif;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Dear&nbsp;{{{Recipient.FirstName}}}<br />
+<br />
+I am writing to introduce Houlihan Lokey, a leading global investment bank with expertise in mergers and acquisitions, capital markets, financial restructuring, and valuation.</span></span><br />
+<br />
+<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Our Industrials group within Corporate Finance specializes in working with companies in the Industrial Technology space, with a particular focus on <span style="background:yellow">XXXX</span>. We look to build long-term relationships, give advice on a range of topics and offer help where we can to maximize a company’s future growth and valuation.</span></span><br />
+<br />
+<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">As you may have seen, we recently advised <b>Magnetrol International</b>, a global leader in the design, development and manufacturing of highly engineered, mission-critical level and flow control products, on its sale to <b>AMETEK</b>. (<i>Press release below</i>)<br />
+<br />
+Other examples of our work include advising:</span></span><br />
+&nbsp;
+<ul>
+	<li style="margin-left:8px"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><b><span style="background:yellow"><span style="color:black">Add relevant creds</span></span></b></span></span></li>
+</ul>
+<br />
+<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><i><span style="font-size:8.0pt">* Selected transactions were executed by Houlihan Lokey professionals while at other firms.</span></i></span></span><br />
+<br />
+<br />
+<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">{{{Recipient.Company_Name__c}}}&nbsp;has been on an impressive journey of success, as demonstrated by <span style="background:yellow">XXXX</span>. We maintain conversations with companies across the Industrial Technology sector and frequently work with companies which may represent interesting partnership or acquisition opportunities for you. Alongside this, our financial sponsors coverage team is the largest in investment banking, working closely with over 800 alternative investors. We are well-placed to connect you with alternative sources of funding.</span></span><br />
+<br />
+<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">We would be delighted to hear the&nbsp;{{{Recipient.Company_Name__c}}}<span style="background-color: rgb(255, 255, 0);"> </span>story directly, share our knowledge of the market and explore how we may be helpful to you.<br />
+&nbsp;<br />
+With this in mind, please let me know when you might have availability to schedule a quick call.<br />
+&nbsp;<br />
+Kind regards,<br />
+{{{Sender.FirstName}}}</span></span><br />
+<br />
+<br />
+<br />
+&nbsp;</td></tr></table></td></tr></table><table width="100%" cellpadding="0" cellspacing="0" class="contentbuilderBaseColumnRow" role="presentation" bgcolor=""><tr valign="top"><td class="columnCell" style="vertical-align:top;" width="100%"></td></tr></table></td></tr></table></td></tr></table></body></html>

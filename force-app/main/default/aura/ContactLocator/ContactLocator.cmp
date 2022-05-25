@@ -1,0 +1,14 @@
+<aura:component implements="force:appHostable">
+    <aura:attribute name="NElng" Type="Decimal"/>
+    <aura:attribute name="NElat" Type="Decimal"/>
+    <aura:attribute name="SWlng" Type="Decimal"/>
+    <aura:attribute name="SWlat" Type="Decimal"/>
+	 <div>
+        <div style="height: 75%">
+            <c:ContactMap MapLoadedEvent="{!c.onMapLoaded}"/>
+         </div>     
+         <div style="height: 25%">
+             <c:ContactGeoSearch />
+         </div>  
+    </div>
+</aura:component>

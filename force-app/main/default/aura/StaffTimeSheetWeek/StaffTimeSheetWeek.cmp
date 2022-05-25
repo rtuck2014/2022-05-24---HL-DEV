@@ -1,0 +1,122 @@
+<aura:component controller="HL_TimeRecordRollupWeekController" extends="c:HL_LightningComponent">
+    <aura:attribute name="category"
+                    type="String"
+                    default="FR"
+                    description="Time Record Tracking Category: FR or Litigation"></aura:attribute>
+    <aura:attribute name="timeRecordPeriodStaffMember"
+                    type="Time_Record_Period_Staff_Member__c"></aura:attribute>
+    <aura:attribute name="startDate"
+                    type="Date"
+                    description="Time Record Period Start Date"></aura:attribute>
+    <aura:attribute name="endDate"
+                    type="Date"
+                    description="Time Record Period End Date"></aura:attribute>
+    <!--Used to handle changes to date so we aren't firing for both start and end-->
+    <aura:attribute name="dateRange"
+                    type="String"
+                    description="Time Record Period Date Range"></aura:attribute>
+    <aura:attribute name="timeRecordPeriod"
+                    type="Time_Record_Period__c"
+                    description="Time Record Period"></aura:attribute>
+	<aura:attribute name="timeRecords"
+                    type="Time_Record_Rollup_Week__c[]"
+                    description="Time Record Rollup Week Records for the Time Record Period Staff Member"></aura:attribute>
+    <aura:attribute name="opportunities"
+                    type="Opportunity__c[]"
+                    description="List of Opportunity Records the Staff Member is Staffed On"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="engagements"
+                    type="Engagement__c[]"
+                    description="List of Engagement Records the Staff Member is Staffed On"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="specialProjects"
+                    type="Special_Project__c[]"
+                    description="List of Special Project Records for the Time Tracking Category"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="sortField"
+                    type="String"
+                    default="Project_Name__c"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="sortDirection"
+                    type="String"
+                    default="ASC"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="isSupervisor"
+                    type="Boolean"
+                    default="false" ></aura:attribute>
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"></aura:handler>
+    <aura:handler name="change"
+                  value="{!v.timeRecordPeriodStaffMember}"
+                  action="{!c.handleStaffMemberChangedEvent}"></aura:handler>
+    <aura:handler name="change"
+                  value="{!v.timeRecordPeriod}"
+                  action="{!c.handleTimeRecordPeriodChangedEvent}"></aura:handler>
+    <aura:registerEvent name="suppressLoadingIndicatorEvent"
+                        type="c:SuppressLoadingIndicatorEvt"></aura:registerEvent>
+    <div class="timeSheet">
+        <div class="slds-text-heading--medium slds-p-left--xx-small">
+        	{!v.timeRecordPeriodStaffMember.Contact__r.Name ? v.timeRecordPeriodStaffMember.Contact__r.Name : '(Select Staff Member)'}
+        </div>
+        <aura:if isTrue="{!v.timeRecords.length > 0}">
+        <table class="slds-table slds-p-left--xx-small">
+            <thead>
+                <th class="slds-is-sortable slds-theme--info" scope="col">
+                    <ui:outputText value="Project" click="{!c.sortByProjectName}"></ui:outputText>
+                    <aura:if isTrue="{!v.sortField == 'Project_Name__c' &amp;&amp; v.sortDirection == 'DESC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowdown" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                    <aura:if isTrue="{!v.sortField == 'Project_Name__c' &amp;&amp; v.sortDirection == 'ASC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowup" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                </th>
+                <th class="slds-is-sortable slds-theme--info slds-text-align--right" scope="col">
+                    <ui:outputText value="Weekday Hours" click="{!c.sortByHoursWorkedWeekday}"></ui:outputText>
+                    <aura:if isTrue="{!(v.sortField == 'Hours_Worked_Weekday__c' &amp;&amp; v.sortDirection == 'DESC')}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowdown" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                    <aura:if isTrue="{!v.sortField == 'Hours_Worked_Weekday__c' &amp;&amp; v.sortDirection == 'ASC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowup" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                </th>
+                <th class="slds-is-sortable slds-theme--info slds-text-align--right" scope="col">
+                    <ui:outputText value="Weekend Hours" click="{!c.sortByHoursWorkedWeekend}"></ui:outputText>
+                    <aura:if isTrue="{!(v.sortField == 'Hours_Worked_Weekend__c' &amp;&amp; v.sortDirection == 'DESC')}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowdown" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                    <aura:if isTrue="{!v.sortField == 'Hours_Worked_Weekend__c' &amp;&amp; v.sortDirection == 'ASC'}"><c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#arrowup" category="utility" size="small" assistiveText="sort" class="slds-is-sortable slds-button__icon"/></aura:if>
+                </th>
+                <th class="slds-is-sortable slds-theme--info slds-text-align--center" scope="col">
+                	<ui:outputText value="Remove"></ui:outputText>
+                </th>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.timeRecords}" var="tr">
+                    <tr class="slds-hint-parent">
+                        <td class="slds-cell-shrink">
+                            {!tr.Project_Name__c}
+                            <aura:if isTrue="{!not(empty(tr.Comments__c))}">
+                            <aura:renderIf isTrue="{!and(tr.Is_Locked__c,not(v.isSupervisor))}">
+                                <br />{!tr.Comments__c}
+                                <aura:set attribute="else">
+                                    <br /><ui:inputTextArea aura:id="comments" value="{!tr.Comments__c}" required="true" class="{!tr.Id}" rows="3" change="{!c.onCommentsChanged}"></ui:inputTextArea>
+                                </aura:set>
+                            </aura:renderIf>
+                            </aura:if>
+                        </td>
+                       <td class="slds-cell-shrink slds-text-align--right">
+                            <ui:inputNumber aura:id="{!tr.Id}" class="{!tr.Id}" value="{!tr.Hours_Worked_Weekday__c}" required="true" change="{!c.onHoursWorkedWeekdayChanged}" onError="{!c.handleError}"  size="4"></ui:inputNumber>
+                        </td>
+                        <td class="slds-cell-shrink slds-text-align--right">
+                            <ui:inputNumber aura:id="{!tr.Id}" class="{!tr.Id}" value="{!tr.Hours_Worked_Weekend__c}" required="true" change="{!c.onHoursWorkedWeekendChanged}" onError="{!c.handleError}"  size="4"></ui:inputNumber>
+                        </td>
+                        <td class="slds-cell-shrink slds-text-align--center">
+                            <ui:button class="slds-button slds-button--icon" accesskey="{!tr.Id}" press="{!c.onDeleteClicked}">
+                            	<c:svg ariaHidden="true" class="slds-button__icon" xlinkHref="/resource/SLDS0120/assets/icons/action-sprite/svg/symbols.svg#close">
+  								</c:svg>
+                            </ui:button>
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+        </aura:if>
+        <aura:if isTrue="{!v.timeRecords.length == 0}">
+            No Data to Display
+        </aura:if>
+        <div class="slds-p-left--xx-small">
+        	<c:AddTimeRecordRollupWeekRecordRow timeRecordPeriodStaffMember="{!v.timeRecordPeriodStaffMember}" saveSuccessEvent="{!c.onTimeRecordAdded}" suppressLoadingIndicatorEvent="{!c.onSuppressLoadingIndicatorFired}"></c:AddTimeRecordRollupWeekRecordRow>
+ 		</div>
+       </div>
+</aura:component>

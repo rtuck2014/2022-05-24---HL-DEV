@@ -1,0 +1,13 @@
+<aura:component controller="HL_Contact" >
+	<aura:attribute name="contact" type="Contact" default="{'sobjectType': 'Contact'}"/>
+    <aura:handler event="aura:locationChange" action="{!c.locationChange}"/>
+    <aura:registerEvent name="selectionEvent" type="c:SelectionEvt"/>
+    <div class="details">
+        <h1>{!v.contact.Contact_Full_Name__c}</h1>
+        <h3>{!v.contact.Account.Name}</h3>
+        <h3>{!v.contact.Title}</h3>
+        <p>{!v.contact.Phone}</p>
+        <p>{!v.contact.MobilePhone}</p>
+        <p>{!v.contact.Email}</p>
+    </div>
+</aura:component>

@@ -1,0 +1,153 @@
+<aura:component controller="HL_TimeRecordController" extends="c:HL_LightningComponent">
+    <aura:attribute name="gridClass"
+                    type="String"
+                    default="slds-grid"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="category"
+                    type="String"
+                    default="Litigation"
+                    description="Time Record Tracking Category"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordPeriodStaffMember"
+                    type="Time_Record_Period_Staff_Member__c"
+                    description="Time Record Period Staff Member"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="activityTypes"
+                    type="String[]"
+                    description="Array of Activity Types to Classify the Time Tracking Record"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="projectSelections"
+                    type="Object[]"
+                    description="Array of Selectable Projects to Track Time Against"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableOpportunities"
+                    type="Object[]"
+                    description="Selectable opportunities"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableEngagements"
+                    type="Object[]"
+                    description="Selectable engagements"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableSpecialProjects"
+                    type="Object[]"
+                    description="Selectable specialProjects"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectedProjectId"
+                    type="String"
+                    description="Selected Project"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="timeRecord"
+                    type="Time_Record__c"
+                    default="{'sobjectType': 'Time_Record__c'}"
+                    description="Time Record Rollup Week Tracking Record"></aura:attribute>
+    <aura:attribute name="requireComments"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if Comments are Required for the Selected Project"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="isSupervisor"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates whether the current user has Supervisor Access"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="showError"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if an Error Message should be Displayed"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="showSuccess"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if a Success Message should be Displayed"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="recordDate"
+                    type="Date"
+                    description="Indicates the selected date on the Select Date field" />
+    <aura:attribute name="showForecastActivityType"
+                    type="Boolean"
+                    default="false"
+                    description="Boolean to display only Forecast activity type for future weeks if category is Beta" />
+    <aura:attribute name="selectedProjectType"
+                    type="String"
+                    description="Holds the type of the selected projected" />
+    <aura:attribute name="currentOrPriorPeriod"
+                    type="Boolean"
+                    description="Boolean to hide/display (select activity)"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="allowedHourEntry"
+                    type="integer"
+                    description="allows some records to have a greater than 24 hour time entry"
+                    default="24"
+                    access="PUBLIC"></aura:attribute>
+    <aura:registerEvent name="saveSuccessEvent"
+                        type="c:SaveSuccessEvt"/>
+    <aura:registerEvent name="suppressLoadingIndicatorEvent"
+                        type="c:SuppressLoadingIndicatorEvt"></aura:registerEvent>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div class="slds-card slds-m-top--small">
+        <div class="slds-card__header">
+            Add Record
+        </div>
+        <div class="slds-card__body">
+            <div class="{!v.gridClass}">
+                <div class="slds-col--padded-medium">
+                    <ui:inputDate aura:id="recordDate" value="{!v.recordDate}" displayDatePicker="true" change="{!c.handleDateChanged}" class="slds-input--small date"/>
+                </div>
+                <div class="slds-col--padded-medium">
+                    <c:StaffTimeSheetProjectSelection aura:id="projectSelection"
+                                                      projectSelectionEvent="{!c.onProjectChanged}"
+                                                      projectSelections="{!v.projectSelections}"
+                                                      selectableOpportunities="{!v.selectableOpportunities}"
+                                                      selectableEngagements="{!v.selectableEngagements}"
+                                                      selectableSpecialProjects="{!v.selectableSpecialProjects}"
+                                                      selectedProjectId="{!v.selectedProjectId}"
+                                                      displayPrefix="true"
+                                                      />
+                    
+                </div>
+                <div class="slds-col--padded-medium">
+                    <ui:inputSelect aura:id="activityType" class="slds-input slds-hide">
+                        <aura:if isTrue="{!v.showForecastActivityType}">
+                            <aura:if isTrue="{!v.currentOrPriorPeriod}">
+                                <ui:inputSelectOption text="" label="(Select Activity)" />
+                            </aura:if>
+                            <ui:inputSelectOption text="Forecast" label="Forecast" />
+                            <aura:Set attribute="else">
+                                <ui:inputSelectOption text="" label="(Select Activity)" />
+                                <aura:iteration items="{!v.activityTypes}" var="at">
+                                    <ui:inputSelectOption text="{!at}" />
+                                </aura:iteration>
+                            </aura:Set>
+                        </aura:if>
+                    </ui:inputSelect>
+                </div>
+                <div class="slds-col--padded-medium">
+                    <ui:inputNumber aura:id="hoursWorked" required="{!v.category == 'Litigation'}" size="4" format="0.0" class="slds-input--small" placeholder="hrs"></ui:inputNumber>
+                </div>
+                <div class="slds-col--padded-medium">
+                    <ui:button aura:id="btnAddRecord"
+                               class="slds-button slds-button--neutral"
+                               label="Add"
+                               press="{!c.addRecord}"
+                               disabled="{!v.timeRecordPeriodStaffMember.Id == null}" />
+                </div>
+            </div>
+        </div>
+        <div class="{!if(v.requireComments, 'slds-form-element', 'hidden')}">
+            <label class="slds-form-element__label" for="comments">Comments</label>
+            <div class="slds-form-element__control">
+                <ui:inputTextArea aura:id="comments" required="{!v.requireComments}" class="comments" rows="5"></ui:inputTextArea>
+            </div>
+        </div>
+    </div>
+    <aura:if isTrue="{!v.showSuccess}">
+        <ui:message title="Success -" severity="info" closable="true">
+            <ui:outputText aura:id="successText" value=" Time Record Added"></ui:outputText>
+        </ui:message>
+    </aura:if>
+    <aura:if isTrue="{!v.showError}">
+        <ui:message title="Error -" severity="error" closable="true">
+            <ui:outputText aura:id="errorText" value=""></ui:outputText>
+        </ui:message>
+    </aura:if>
+</aura:component>

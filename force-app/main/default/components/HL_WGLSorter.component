@@ -1,0 +1,73 @@
+<apex:component >
+    <apex:attribute description="Object to query" name="objectToQuery" required="true" type="String"></apex:attribute>
+ 	<apex:attribute description="Parent Id" name="parentId" required="true" type="String"></apex:attribute>
+    <apex:attribute description="Parent Relationship Field Name" name="parentRelationshipFieldName" required="true" type="String"></apex:attribute>
+ 	<!--Since the data has been replicated, decided to use Id here in case we change the display name-->
+    <apex:attribute description="HL Report Link Id" name="hlReportLinkId" type="String" required="true"></apex:attribute>
+    <div style="background-color: white;">
+        <div id="wglTree"></div>
+        <div id="noResults" style="padding-bottom: 5px; padding-top: 5px; display:none;color:Red;">
+            <h3>
+                No Contacts with Roles Have Been Added
+            </h3>
+    	</div>
+        <div style="padding-top: 20px;">
+            <button id="viewReport" type="button" onclick="save()" class="btn" style="width:80px; height:20px">View Report</button>
+            <button id="cancel" type="button" onclick="cancel()" class="btn" style="width:80px; height:20px">Cancel</button>
+        </div>
+    </div>
+    <apex:stylesheet value="{!URLFOR($Resource.HL_JSTree, 'themes/default/style.min.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-2.1.4.min.js')}" />   
+    <apex:includeScript value="{!URLFOR($Resource.HL_JSTree, 'jstree.min.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.RestAPIToolkit, 'forcetk.js')}"></apex:includescript>
+    <apex:includescript value="{!URLFOR($Resource.HL_Scripts, 'HL_WGL_Sorter.js')}"></apex:includescript>
+    <script type="text/javascript">
+    var $ = jQuery.noConflict();
+    var client = new forcetk.Client();
+    client.setSessionToken('{!$Api.Session_ID}');
+    var objectToQuery = '{!objectToQuery}';
+    var parentId = '{!parentId}';  
+    var parentRelationshipFieldName = '{!parentRelationshipFieldName}';
+    var finishedSave = false;
+    var hasPendingChanges = false;
+    var reportLinkId = '{!hlReportLinkId}';
+    var userId = '{!$User.Id}';
+    var contactId = '';
+    var wglTree = $('#wglTree').jstree({
+        "core" : {
+            "animation" : 0,
+            'check_callback': function(operation, node, node_parent, node_position, more) {
+                    // operations can be 'create_node', 'rename_node', 'delete_node', 'move_node' or 'copy_node'
+                    if (operation === "move_node") {
+                        //only allow dropping beside same object
+                        if(node.parent === node_parent.id){
+                            hasPendingChanges = true;
+                        	return true; //only allow dropping inside nodes of type 'Parent'
+                        }
+                        else
+                        	return false;
+                    }
+                    return true;  //allow all other operations
+           }
+        },
+        "dnd": {
+                check_while_dragging: true
+            },
+        "plugins" : [ "dnd", "json_data"]
+    });
+    (function(){
+        loadRoleNodes();
+    }())
+    function getImageByType(type){
+        if(type === 'Account')   
+            return "{!URLFOR($Resource.SF_CustomColoredImages, '/4F6A92/account_60.png')}";
+        else if(type === 'Contact')
+             return "{!URLFOR($Resource.SF_CustomColoredImages, '/4F6A92/avatar_60.png')}";                                                      
+            
+        return "{!URLFOR($Resource.SF_CustomColoredImages, '/4F6A92/link_60.png')}";
+	}
+    </script>
+    <style>
+    	.jstree-themeicon-custom {background-size: contain!important;}
+    </style>
+</apex:component>

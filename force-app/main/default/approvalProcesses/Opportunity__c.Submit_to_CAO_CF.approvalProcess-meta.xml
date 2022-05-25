@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>allInternalUsers</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Engagement_Team_Assembled__c</field>
+        <field>Confidentiality_Agreement__c</field>
+        <field>Conflicts_Check_Outcome__c</field>
+        <field>Conflicts_Check_Outcome_Date__c</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Conversion_CF</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>Opportunity Review</label>
+        <name>Opportunity_Review</name>
+    </approvalStep>
+    <emailTemplate>Conversion_Templates/Opportunity_Submitted_for_Conversion</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>(RecordTypeId =&apos;012i0000000tPyF&apos; ||
+ISPICKVAL(Line_of_Business__c, &apos;CF&apos;))&amp;&amp;
+ISPICKVAL(Approval_Process__c,&apos;CONVERSION&apos;)&amp;&amp;
+ Converted_to_Engagement__c = FALSE</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Approval_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Opportunity_Conversion_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Approval_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Eng_Number_Rejection</name>
+            <type>Alert</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Approval_Pending</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Submitter_Email</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Submit to CAO CF</label>
+    <processOrder>3</processOrder>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

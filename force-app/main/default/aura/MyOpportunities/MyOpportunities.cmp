@@ -1,0 +1,40 @@
+<aura:component implements="force:appHostable" extends="c:MyObjectComponent">
+    <aura:attribute name="opps" 
+                    type="Opportunity__c[]"
+                    description="Array of Opportunity Result Records"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="opportunityId" 
+                    type="String"
+                    description="Selected Opportunity Id"
+                    access="PRIVATE"></aura:attribute>
+    <aura:handler name="afterSearchEvent"
+                  action="{!c.onSearchPerformed}"></aura:handler>
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"></aura:handler>
+    <div aura:id="myOpportunities" class="myOpportunities">
+            <div class="slds-scrollable--y opportunitylist">
+                <ul class="slds-list--vertical slds-has-dividers--bottom-space slds-has-selection">
+                    <aura:iteration items="{!v.opps}" var="opp">
+                        <li class="slds-list__item">
+                            <div class="slds-tile slds-tile--board">
+                                <div class="slds-grid">
+                                    <div class="slds-col" data-key="{!opp.Id}" onclick="{!c.onOpportunitySelection}">
+                                        <p class="slds-tile__title">
+                                            <strong>{!opp.Name}</strong>
+                                        </p>
+                                        <p>
+                                            Client: {!opp.Client__r.Name}
+                                        </p>
+                                        <p>
+                                            Subject: {!opp.Subject__r.Name}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </aura:iteration>
+                </ul>
+            </div>
+    </div>
+</aura:component>

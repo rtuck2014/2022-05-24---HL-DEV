@@ -1,0 +1,111 @@
+<aura:component controller="HL_MultiSelectLookupController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:handler name="listOfIds" event="c:populateLookupData" action="{!c.lookupData}"/>
+    <aura:attribute name="accountIds" type="List" default="[]"/>
+    <!-- -->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <aura:attribute name="eventFieldApi" type="String" default="Event__c"/>
+    <aura:attribute name="junctionObjectApiName" type="String" default="Account_Event_Junction__c"/>
+    <aura:attribute name="lookupFieldApiName" type="String" default="Company__c"/>
+    <!-- <aura:attribute name="eventRecordId" type="String" default="00U53000001UzuuEAC"/>-->
+    <aura:attribute name="buttonName" type="String" default="Add Event"/>
+    <aura:attribute name="lookupObjectApiName" type="String" default="Account"/>
+    <aura:attribute name="lookupObjectFieldLabel" type="String" default="Account Name"/>
+    <aura:attribute name="childRecords" type="List" />
+    <lightning:card> 
+        
+        <aura:set attribute="footer">
+            <lightning:button variant="brand" label="{!v.buttonName}" title="Brand action" onclick="{! c.handleClick }" />
+        </aura:set>
+        <!-- <p style="padding:10px"> <lightning:input name="input2" label="Event Record Id" value="{!v.eventRecordId}"/></p>-->
+        <c:HL_MultiSelectLookup objectName="{!v.lookupObjectApiName}" fieldName="Name" label="{!v.lookupObjectFieldLabel}" iconName="standard:account" 
+                                placeholder="Enter Value" componentId="accountIds"/>
+        
+        <aura:if isTrue="{!v.childRecords.length>0}">
+            <table class=" slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        
+                        
+                        <th class="" scope="col">
+                            Name
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.childRecords}" var="record">
+                        <tr class="slds-hint-parent">
+                           
+                            <td>
+                                <a href="{!'/'+record.Id}" target="_blank">{!record.Name}</a>
+                            </td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+        </aura:if>
+        
+    </lightning:card>
+    
+    
+    <!--
+<table class=" slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="" scope="col">
+                                            
+                                        </th>
+                                       
+                                        <th class="" scope="col">
+                                            {label.name}
+                                        </th>
+                                        <th class="" scope="col">
+                                            {label.street}
+                                        </th>
+                                        <th class="" scope="col">
+                                            {label.city}
+                                        </th>
+                                        <th class="" scope="col">
+                                            {label.neighborhood}
+                                        </th>
+                                        <th class="" scope="col">
+                                            {label.country}
+                                        </th>
+                                        <th class="" scope="col">
+                                            {label.zipCode}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={consigneeList} for:item="consignee">
+                                        <tr class="slds-hint-parent" key={consignee.Id}>
+                                            <td data-label="">
+                                                <input type="radio" id={consignee.Id}  value={consignee.Id} name="consignee" onclick={handleSelectedConsignee}/>
+
+                                            </td>
+                                          
+                                            <td data-label="Name">
+                                                {consignee.Name}
+                                            </td>
+                                            
+                                            <td data-label="Street">
+                                                {consignee.Street__c}
+                                            </td>
+                                            <td data-label="City">
+                                                <template if:true={consignee.City__c}>{consignee.City__r.Name}</template>
+                                            </td>
+                                            <td data-label="State">
+                                                <template if:true={consignee.State__c}> {consignee.State__r.Name}</template>
+                                            </td>
+                                            <td data-label="Country">
+                                                <template if:true={consignee.Country__c}>{consignee.Country__r.Name}</template>
+                                            </td>
+                                            <td data-label="Zip">
+                                                <template if:true={consignee.Zip_Code__c}>{consignee.Zip_Code__r.Name}</template>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>-->
+    
+</aura:component>

@@ -1,0 +1,102 @@
+.THIS {
+    height: 100%;
+}
+
+.THIS .hidden {
+    display: none;
+}
+
+.THIS .addActivity {
+    height: calc(100% - 50px);
+}
+
+hr.THIS {
+    height: 2px; 
+    background-color: gray;
+}
+.THIS a {
+    display: none !important;
+}
+.THIS p {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.THIS input[type=text], .THIS select {
+        width: 100%;
+        height: 35px;
+        -webkit-appearance: none;
+        line-height: 21px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        outline: none;
+    } 
+.THIS select[size]{
+    height: 35px !important;
+}
+.THIS textarea{
+    width: 100%;
+    -webkit-appearance: none;
+    line-height: 21px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+}
+.THIS button {
+        -webkit-appearance: button;
+        border-radius: 3px;
+        display: block;
+        padding: 12px;
+        width: 100%;
+        background: #eee;
+        border: solid 1px #ccc;
+}
+
+.THIS .small-button{
+    width: 45px;
+    height: 30px;
+    display:inline;
+}
+
+.THIS .small-button span{
+    margin-top: -8px;
+}
+
+.THIS .relatedItem{
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display:inline-block;
+}
+
+.THIS p {
+    margin: 0;
+}
+
+.THIS html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+.THIS .popover {
+    position: absolute;
+    left: 50%;
+    bottom: 45%;
+}
+
+.THIS .slds-button-group{
+    width: 260px;
+}
+.THIS .button-group1{
+    width: 170px;
+}
+
+.THIS .button-group2{
+    width: 90px;
+}
+
+.THIS .slds-button-group1{
+    width: 85px;
+}

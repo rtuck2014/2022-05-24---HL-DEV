@@ -1,0 +1,12 @@
+Hello! The following FEIS (Part I) Form has been submitted for review. Please click the link below to see more details about the record.
+
+Opportunity Name: {!Opportunity_Approval__c.Related_Opportunity__c}
+Opportunity Client: {!Opportunity_Approval__c.Client_Company__c}
+Opportunity Subject: {!Opportunity_Approval__c.Subject_Company__c}
+Job Type: {!Opportunity_Approval__c.Job_Type__c}
+Estimated Transaction Size: {!Opportunity_Approval__c.00Ni000000DwIOC}
+Estimated Fees: {!Opportunity_Approval__c.Estimated_Fee__c}
+Notes: {!Opportunity_Approval__c.NBC_Review_Comments__c}
+
+LINK TO FEIS (PART I) FORM:
+{!SUBSTITUTE(URLFOR('/apex/HL_FEIS', null, [id=Opportunity_Approval__c.Id]),'http:','https:')}

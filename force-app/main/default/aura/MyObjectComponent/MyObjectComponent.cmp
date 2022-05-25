@@ -1,0 +1,86 @@
+<aura:component controller="HL_MyObjectComponentController" abstract="true" extends="c:HL_LightningComponent">
+    <aura:attribute name="objectType"
+                    type="String"
+                    default="Contact"
+                    description="My Object Type"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="searchResults"
+                    type="Object[]"
+                    description="Search Results"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="resultsHeading"
+                    type="String"
+                    default="My Contacts"
+                    description="Results Type - My or Search"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="searchTerm"
+                    type="String"
+                    description="Search Term / Search Criteria"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="showingMaxRecords"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if Maximum Search Results were Returned"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="isInSearchMode"
+                    type="Boolean"
+                    default="true"
+                    description="Indicates if the Search Box and Header are Displayed"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="resultsDefaultLimit"
+                    type="Integer"
+                    default="25"
+                    description="Default Results Returned"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="resultsMaxLimit"
+                    type="Integer"
+                    default="300"
+                    description="Maximum Search Results Returned"
+                    access="PUBLIC"></aura:attribute>
+    <aura:handler name="init"
+                  value="{!this}"
+                  action="{!c.doInit}"></aura:handler>
+    <aura:handler event="aura:waiting"
+                  action="{!c.showSpinner}"></aura:handler>
+    <aura:handler event="aura:doneWaiting"
+                  action="{!c.hideSpinner}"></aura:handler>
+    <aura:handler name="onchange"
+                  value="{!v.resultsDefaultLimit}"
+                  action="{!c.onResultsDefaultLimitChanged}"></aura:handler>
+    <aura:handler name="onchange"
+                  value="{!v.resultsMaxLimit}"
+                  action="{!c.onResultsMaxLimitChanged}"></aura:handler>
+    <aura:handler name="onchange"
+                  value="{!v.objectType}"
+                  action="{!c.onObjectTypeChanged}"></aura:handler>
+    <aura:registerEvent name="afterSearchEvent"
+                        type="c:AfterSearchEvent"></aura:registerEvent>
+    <div class="slds-p-top--small slds-m-right--x-small slds-m-left--x-small">
+        <aura:renderIf isTrue="{!v.isInSearchMode}">
+            <div>
+                <c:SearchBar searchEvent="{!c.onSearchEvent}"/>
+            </div>
+            <div class="slds-text-heading--medium slds-m-top--small">
+                <div style="display: inline-block;">
+                    <ui:outputText aura:id="resultsHeading" value="{!v.resultsHeading}" class="header"></ui:outputText>
+                </div>
+                <div style="display: inline-block;">
+                    <ui:spinner aura:id="spinner"></ui:spinner>
+                </div>
+            </div>
+        </aura:renderIf>
+        <div aura:id="myobjectcomponent" class="slds-m-top--x-small">
+            {!v.body}
+        </div>
+        <aura:renderIf isTrue="{!v.isInSearchMode &amp;&amp; v.searchResults.length == v.resultsDefaultLimit}">
+            <div class="slds-p-top--small">
+               <ui:button label="Show More (Press Here)" buttonTitle="Show More" class="button-more" press="{!c.onShowMorePress}"/>
+            </div>
+        </aura:renderIf>
+        <aura:renderIf isTrue="{!v.isInSearchMode &amp;&amp; v.searchResults.length == v.resultsMaxLimit}">
+            <div>
+                <c:svgIcon svgPath="/resource/SLDS0120/assets/icons/utility-sprite/svg/symbols.svg#warning" category="utility" size="small" assistiveText="warning" class="slds-icon slds-icon-text-warning"/> Max Results Displayed - Use/Refine Search
+            </div>
+        </aura:renderIf>
+    </div>
+</aura:component>

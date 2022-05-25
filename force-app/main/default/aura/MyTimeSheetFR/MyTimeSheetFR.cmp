@@ -1,0 +1,72 @@
+<aura:component controller="HL_TimeRecordRollupWeekController">
+    <aura:attribute name="category" 
+                    type="String" 
+                    default="FR"
+                    description="Time Record Tracking Category"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordPeriodStaffMember" 
+                    type="Time_Record_Period_Staff_Member__c"
+                    description="Time Record Period Staff Member"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecordPeriod" 
+                    type="Time_Record_Period__c"
+                    description="Time Record Period"
+                    access="PUBLIC"></aura:attribute>
+	<aura:attribute name="timeRecords" 
+                    type="Time_Record_Rollup_Week__c[]"
+                    description="Existing Time Record Records to Display"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="opportunities" 
+                    type="Opportunity__c[]"
+                    description="Opportunity Records Available for Selection"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="engagements" 
+                    type="Engagement__c[]"
+                    description="Engagement Records Available for Selection"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="specialProjects" 
+                    type="Special_Project__c[]"
+                    description="Special Project Records Available for Selection"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="fireChangedEvents" 
+                    type="Boolean" 
+                    default="true"/>
+    <aura:handler name="init" 
+                  value="{!this}" 
+                  action="{!c.doInit}"></aura:handler> 
+    <aura:handler name="change" 
+                  value="{!v.timeRecordPeriod}" 
+                  action="{!c.handleTimeRecordPeriodChangedEvent}"></aura:handler>
+    <div id="timesheetFR" class="hidden">
+        <aura:if isTrue="{!v.timeRecords.length > 0}">
+			<ul class="slds-list--vertical slds-has-cards">
+                <aura:iteration items="{!v.timeRecords}" var="tr">
+                    <div class="slds-tile slds-tile--board">
+                    <p>
+                       Project: {!tr.Project_Name__c}
+                    </p>
+                    <p>Wk Day:
+                        <ui:inputNumber aura:id="{!tr.Id}" class="{!tr.Id}" value="{!tr.Hours_Worked_Weekday__c}" required="true" change="{!c.onHoursWorkedWeekdayChanged}" onError="{!c.handleError}"  size="4"></ui:inputNumber>
+                    </p>
+                    <p>Wk End:
+                        <ui:inputNumber aura:id="{!tr.Id}" class="{!tr.Id}" value="{!tr.Hours_Worked_Weekend__c}" required="true" change="{!c.onHoursWorkedWeekendChanged}" onError="{!c.handleError}"  size="4"></ui:inputNumber>
+                    </p>
+                    <p>
+                        <ui:button label="Delete" accesskey="{!tr.Id}" press="{!c.onDeleteClicked}">   
+                        </ui:button>
+                    </p>
+                    </div>
+                    <hr />
+                </aura:iteration>
+              </ul>
+        </aura:if>
+        <aura:if isTrue="{!v.timeRecords.length == 0}">
+            No Data to Display
+        </aura:if>
+        <ul class="slds-list--vertical slds-has-cards">
+            <div class="slds-tile slds-tile--board">
+        		<c:AddTimeRecordRollupWeekRecordRow timeRecordPeriodStaffMember="{!v.timeRecordPeriodStaffMember}" saveSuccessEvent="{!c.onTimeRecordAdded}" stackVertical="true"></c:AddTimeRecordRollupWeekRecordRow>
+        	</div>
+        </ul>
+        </div>
+</aura:component>

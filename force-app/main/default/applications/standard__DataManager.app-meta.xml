@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>Data Manager</label>
+    <navType>Standard</navType>
+    <tabs>standard-AnalyticsDataManager</tabs>
+    <tabs>SIC_Code__c</tabs>
+    <tabs>Coverage_Team_Comment__c</tabs>
+    <tabs>Investment_Comment__c</tabs>
+    <tabs>SL_Convert__Object_Relationship__c</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

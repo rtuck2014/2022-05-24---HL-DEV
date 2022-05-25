@@ -1,0 +1,7 @@
+<aura:component implements="lightning:isUrlAddressable">
+    <aura:attribute name="recordId" type="string"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:card >
+    <div style="padding:10px;"><c:hlEngageSumApp recordId="{!v.recordId}"/></div>
+        </lightning:card>
+</aura:component>

@@ -1,0 +1,57 @@
+<apex:component controller="ngForceController">   
+ 
+    <apex:attribute name="activityType" description="This is the type of activity" type="String" required="true"/>
+
+    <apex:stylesheet value="{!URLFOR($Resource.MeetingNoteMainOrig, 'styles/lib.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.MeetingNoteMainOrig, 'styles/main.css')}"></apex:stylesheet> 
+
+    <head>
+        <meta charset="utf-8"></meta>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"></meta>
+        <title>Meeting Note</title>
+    </head>
+ 
+    <body> 
+        <div id="sl" ng-app="slMeetingNote">
+            <div id="sl-body">  
+                <div class="container" ng-view="ng-view"></div>
+            </div>
+        </div>  
+
+        <apex:includescript value="{!URLFOR($Resource.MeetingNoteMainOrig, 'scripts/lib.js')}"></apex:includescript>
+        <apex:includescript value="{!URLFOR($Resource.MeetingNoteMainOrig, 'scripts/templates.js')}"></apex:includescript>
+        <apex:includescript value="{!URLFOR($Resource.MeetingNoteMainOrig, 'scripts/main.js')}"></apex:includescript>
+
+        <script>
+            
+            var currentObjectId='';
+
+            if('{!$CurrentPage.parameters.retURL}' !== undefined && '{!$CurrentPage.parameters.retURL}' !== '') {
+
+                currentObjectId = '{!CASESAFEID(SUBSTITUTE($CurrentPage.parameters.retURL,"/",""))}';
+
+            } else {
+
+                var index = document.referrer.lastIndexOf('/');
+                
+                currentObjectId = document.referrer.substring(index+1,document.referrer.length);
+            }
+            
+            var app=angular.module('slMeetingNote');
+            app.factory('currentPageParam',function(){
+                var PageId={
+                parentId : '{!CASESAFEID($CurrentPage.parameters.id)}',
+                objectId : currentObjectId,
+                objectType : '{!activityType}',
+                userId : '{!$User.Id}',
+                profileName : '{!$Profile.Name}',
+                userLastName : '{!$User.LastName}',
+                userFirstName : '{!$User.FirstName}',
+                activityRecordType : '{!$CurrentPage.parameters.RecordType}'
+                };
+                return PageId;
+            });
+        </script> 
+    </body> 
+    
+</apex:component>

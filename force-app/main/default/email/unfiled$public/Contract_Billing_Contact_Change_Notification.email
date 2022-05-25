@@ -1,0 +1,18 @@
+This is an automated e-mail from Salesforce to let you know that the 'Billing Contact' for Contract # {!Contract__c.Contract_Number__c} has changed.  
+
+---------------------------------------------------
+Contract Details
+---------------------------------------------------
+
+Contract #:  {!Contract__c.Contract_Number__c}
+Project Number:  {!Contract__c.ERP_Project_Number__c}
+Bill To:  {!Contract__c.Bill_To__c}
+Billing Contact:   {!Contract__c.Billing_Contact_First_Name__c} {!Contract__c.Billing_Contact_Last_Name__c} 
+Engagement: {!Contract__c.Engagement__c}
+Opportunity: {!Contract__c.Opportunity__c}
+
+Contract Link: {!Contract.Link}
+
+
+Thank You,
+Salesforce Team

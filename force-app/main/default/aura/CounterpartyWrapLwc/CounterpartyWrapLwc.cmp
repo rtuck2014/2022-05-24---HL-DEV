@@ -1,0 +1,7 @@
+<aura:component implements="lightning:isUrlAddressable,force:hasRecordId">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:workspaceAPI aura:id="workspace" />
+    <lightning:navigation aura:id="navService"/>
+    <aura:attribute name="id" type="String"/>        
+    <c:counterPartyEdit recordId="{!v.id}" />           
+</aura:component>

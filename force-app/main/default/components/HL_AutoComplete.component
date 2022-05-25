@@ -1,0 +1,185 @@
+<apex:component controller="HL_AutoCompleteController" >
+    <apex:attribute name="objectname" description="The object name you want to look for." type="String" required="true"/>
+    <apex:attribute name="sObjectFieldName" description="The object's fields name you want to display for." type="String" required="true"/>
+    <apex:attribute name="autocomplete_textbox" description="The ID for the Autocomplete List Textbox." type="String" required="true"/>
+    <apex:attribute name="autocomplete_actionbutton" description="The ID for the Autocomplete Action Button." type="String" required="false"/>
+    <apex:attribute name="bgColor" description="To set the background color of the modal window popup" type="String" />
+    <apex:attribute name="fontSize" description="To set a specific font size of the model window popup" type="String" />
+    <apex:attribute name="additionalFilter" description="To set a specific filter for a sObject" type="String" default="" />
+    <apex:attribute name="customFilter" description="Deprecated: This was never used, but is still referenced, use additionalFilter Instead" type="String" default="" />
+    <apex:attribute name="minLength" description="Minimum Number of Characters to Trigger Search" type="Integer" default="2"></apex:attribute>
+    <apex:attribute name="delay" description="Delay in Milliseconds Between a Keystroke and Search Being Performed" type="Integer" default="250"></apex:attribute>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-1.7.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jsFiles, 'jquery-ui-1.8.18.custom.min.js')}"/>
+    <apex:stylesheet value="{!$Resource.AutoCompleteCSS}"/>
+    <style>
+        .ui-autocomplete-loading { background: white url("/img/loading.gif") right center no-repeat; } 
+        .ui-menu-item
+        {
+        background:{!IF(ISBLANK(bgColor),'#fbc900',bgColor)};
+        font-size: {!IF(ISBLANK(fontSize),'12',fontSize)}px;
+        }   
+    </style> 
+    <script type="text/javascript">
+    Visualforce.remoting.timeout = 120000; // Set timeout at page level
+    var j$ = jQuery.noConflict();
+    j$(document).ready(function() {   
+        var sObjects;
+        var subType = '';
+        var queryTerm;
+        var objectName = "{!objectName}";
+        var queryObject = objectName;
+        var fields = '';
+        var additionalFilter = "{!additionalFilter}";
+        var minLength = "{!minLength}";
+        var delay = "{!delay}";
+        var namepart01 = "", namepart02 = "";
+        j$(esc('{!autocomplete_textbox}')).change(function() {
+            j$(esc('{!autocomplete_textbox}_lkid')).val(''); 
+        });
+        j$(esc('{!autocomplete_textbox}')).autocomplete({
+            delay: delay,
+            minLength: minLength,           
+            source: function(request, response) {
+                j$(".noResults").remove();
+                queryTerm = request.term;
+                queryTerm = queryTerm.trim();  
+                if(queryTerm.indexOf(' ') > 0)
+                {
+                    namepart01 = queryTerm.split(' ')[0];
+                    namepart02 = queryTerm.split(' ')[1];
+                }
+                switch(objectName){
+                    case 'Account':
+                        fields = 'BillingCity, BillingState,No_Parent_Company__c';
+                        break;
+                    case 'Country':
+                        queryObject = 'Lookup__c';
+                        fields = 'Text__c';
+                        break;
+                    case 'DistributionList': 
+                        queryObject = 'Contact';
+                        fields = 'User__c';  
+                        subType = 'DistributionList';
+                        break;
+                    case 'AllContact': 
+						queryObject = 'Contact';
+						fields = 'User__c, Title, Account.Name';  
+						break;
+					case 'ExternalContact':
+                        queryObject = 'Contact';
+                        fields = 'Title, Account.Name';
+                        subType = 'External';
+                        break;
+					case 'InternalContact':
+						queryObject = 'Contact';
+						fields = 'Title, Account.Name';
+						subType = 'Employee';
+						break;
+					case 'Opportunity__c':
+                        fields = 'Client__r.Name, Subject__r.Name';
+                        break;
+                    case 'Engagement__c':
+                        fields = 'Client__r.Name, Subject__r.Name';
+                        break;
+                    case 'UserContact':
+                        queryObject = 'Contact';
+                        fields = 'User__c';  
+                        subType = 'Employee';
+                        break;
+	                case 'Campaign':
+                        fields = 'RecordType.Name';
+                        subType = 'CampaignList';
+                        break;
+                    default:
+                        subType = 'Employee';
+                        break;
+                }
+                
+                // Remote Call to Get Results
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.HL_AutoCompleteController.GetSuggestions}',
+                    queryObject, subType, queryTerm, fields, additionalFilter, 100, 
+                    function(result, event){
+                        j$(".noResults").remove();
+                        if (event.status) {
+                            response(result);
+                            if(result.length <= 0)
+                                j$(esc('{!autocomplete_textbox}')).parent().append('<span class="noResults" style="color: red;">No Results Found</span>');
+                        } else if (event.type === 'exception') {
+                            alert(event.message);
+                        } else {
+                            alert(event.message);
+                        }
+                        
+                    }
+                ); 
+            },
+            focus: function( event, ui ) {
+                itemName = htmlDecodeString(ui.item.Name);
+                console.log(itemName+'===='+'{!autocomplete_textbox}');
+                j$(esc('{!autocomplete_textbox}')).val( itemName );
+                return false;
+            },
+            select: function( event, ui ) {
+                itemName = htmlDecodeString(ui.item.Name);
+                j$(esc('{!autocomplete_textbox}')).val( itemName );
+                if(objectName === 'UserContact')
+                    j$(esc('{!autocomplete_textbox}_lkid')).val( ui.item.User__c);
+                else
+                    j$(esc('{!autocomplete_textbox}_lkid')).val( ui.item.Id );
+                j$(esc('{!autocomplete_actionbutton}')).trigger('click');
+                return false;
+            }
+        })
+        .data( "autocomplete" )._renderItem = function( ul, item ) {
+            var entry = item.Name;
+            switch(objectName){
+                case 'Account':
+                    entry = entry + "<i>" + (item.BillingCity === null ? '' : ' - ' + item.BillingCity) + (item.BillingState === null ? '' : ', ' + item.BillingState) +(item.No_Parent_Company__c === true?', HQ':'')+ "</i>";
+                    break;
+                case 'ExternalContact':
+                    entry = entry + "<i>" + ' [' + (item.Title === null || typeof item.Title === 'undefined' ? 'N/A' : item.Title) + '] - ' + item.Account.Name + "</i>";
+                    break;
+                case 'InternalContact':
+                    entry = entry + "<i>" + ' [' + (item.Title === null || typeof item.Title === 'undefined' ? 'N/A' : item.Title) + '] - ' + item.Account.Name + "</i>";
+                    break;
+                case 'AllContact':
+                    entry = entry + "<i>" + ' [' + (item.Title === null || typeof item.Title === 'undefined' ? 'N/A' : item.Title) + '] - ' + item.Account.Name + "</i>";
+                    break;
+				case 'Opportunity__c':
+                    entry = entry + "<i> [Client: " + (item.Client__r.Name === null ? 'N/A' : item.Client__r.Name) + "] - [Subject: " + (item.Subject__r.Name === null ? 'N/A' : item.Subject__r.Name) + "]</i>";
+                    break;
+                case 'Engagement__c':
+                    entry = entry + "<i> [Client: " + (item.Client__r.Name === null ? 'N/A' : item.Client__r.Name) + "] - [Subject: " + (item.Subject__r.Name === null ? 'N/A' : item.Subject__r.Name) + "]</i>";
+                    break;
+                default:break;
+            }   
+            entry = entry.replace(queryTerm, "<b>" + queryTerm + "</b>");
+            if(namepart02 != "")
+            {
+                entry = entry.replace(namepart01, "<b>" + namepart01 + "</b>");
+                entry = entry.replace(namepart02, "<b>" + namepart02 + "</b>");
+            }
+            entry = "<a>" + entry + "</a>";
+            return j$( "<li></li>" )
+            .data( "item.autocomplete", item )
+            .append( entry )
+            .appendTo( ul );                
+        };
+    });
+    
+    function esc(myid) {
+        return '#' + myid.replace(/(:|\.)/g,'\\\\$1');
+    }
+    
+    function htmlDecodeString(s)
+    {
+        var d = document.getElementById('divDecoder');
+        d.innerHTML = s
+        return d.firstChild.nodeValue; 
+    }   
+    </script>
+    <div id="divDecoder" style="display:none">
+    </div>
+</apex:component>

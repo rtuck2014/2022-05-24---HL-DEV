@@ -1,0 +1,17 @@
+.THIS.mainContainer {
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+   bottom: 60px !important; /* compensation for the navigation bar */ 
+}
+.THIS .childContainer {
+    background-color: lightgray;
+    position: absolute;
+    top: 1px; /* compensation for the navigation bar */ 
+    left: 1px;
+    right: 1px;
+    bottom: 10px !important;
+    overflow-y: auto;
+}

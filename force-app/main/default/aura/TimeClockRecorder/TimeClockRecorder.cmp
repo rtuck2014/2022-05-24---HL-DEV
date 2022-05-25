@@ -1,0 +1,195 @@
+<aura:component controller="HL_TimeRecordController" extends="c:HL_LightningComponent">
+    <aura:attribute name="category"
+                    type="String"
+                    default="Litigation"
+                    description="Time Tracking Category"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="activityTypes"
+                    type="String[]"
+                    description="Array of Activity Types to Classify the Time Tracking Record"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="projectSelections"
+                    type="Object[]"
+                    description="Array of Selectable Projects to Track Time Against"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableOpportunities"
+                    type="Object[]"
+                    description="Selectable opportunities"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableEngagements"
+                    type="Object[]"
+                    description="Selectable engagements"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectableSpecialProjects"
+                    type="Object[]"
+                    description="Selectable specialProjects"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="timeRecord"
+                    type="Time_Record__c"
+                    default="{'sobjectType': 'Time_Record__c'}"
+                    description="Time Record Tracking Record"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="requireComments"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if Comments are Required for the Selected Project"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="requireActivityTypes"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if Activity Types are Required for the Selected Project"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectedProjectId"
+                    type="String"
+                    description="Selected Project Id"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="hasPendingRecord"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if a Pending Record has not yet been Completed"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="showClock"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if the clock should show"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="updateTimeDisabled"
+                    type="Boolean"
+                    default="true"
+                    description="Determines if time can be updated"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="isProjectSelectionDisabled"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if the Project Selection should be Displayed"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="disableComments"
+                    type="Boolean"
+                    default="true"
+                    description="Indicates if the Comments should be disabled"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="showError"
+                    type="Boolean"
+                    default="false"
+                    description="Indicates if an Error Message should be Displayed"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="comments"
+                    type="String"
+                    description="Time Tracking Comments"
+                    access="PUBLIC"></aura:attribute>
+     <aura:attribute name="timeVal"
+                    type="String"
+                     default="0:0:0:0"
+                    description="Time Tracking Comments"
+                    access="PUBLIC"></aura:attribute>
+       <aura:attribute name="disableStartButton"
+                    type="Boolean"
+                    default="false"
+                    description="Disable start button on press and enable on press of other buttons"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="toggleSpinner"
+                    type="Boolean"
+                    default="false"
+                    description="Spinner"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="allowedHourEntry"
+                    type="integer"
+                    description="allows some records to have a greater than 24 hour time entry"
+                    default="24"
+                    access="PUBLIC"></aura:attribute>
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <ltng:require styles="{!join(',',
+                          $Resource.JQueryUI + '/jquery-ui-1.11.2/jquery-ui.min.css',
+                          $Resource.HL_TimeTracking + '/flipclock.css',
+                          $Resource.HL_TimeTracking + '/custom.css')}"
+                  scripts="{!join(',',
+                           $Resource.jsFiles + '/jquery-1.7.1.min.js',
+                           $Resource.JQueryUI + '/jquery-ui-1.11.2/jquery-ui.min.js',
+                           $Resource.HL_TimeTracking + '/flipclock.min.js',
+                           $Resource.HL_Scripts + '/HL_TimeTracker.js')}"
+                  afterScriptsLoaded="{!c.afterScriptsLoaded}"></ltng:require>
+
+    <div>
+        <aura:if isTrue="{!v.toggleSpinner}">
+ <div class="slds-spinner_container">
+  <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+    <span class="slds-assistive-text">Loading</span>
+    <div class="slds-spinner__dot-a"></div>
+    <div class="slds-spinner__dot-b"></div>
+  </div>
+</div>
+ </aura:if>  
+        <div id="existingRecordWarning" class="{!v.hasPendingRecord ? '' : 'hidden'}">
+            <p class="slds-theme--error">You have an existing time record that is not finished or still in progress.  Please resume below when ready and complete the entry.</p>
+            <p class="slds-p-top--small slds-p-bottom--small" id="existingProjectName">{!v.timeRecord.Project_Name__c}</p>
+            <p>
+                <lightning:button variant="neutral" onclick="{!c.onResume}" label="Resume" class="slds-button slds-button--neutral"/>/
+            </p>
+            <br />
+            <p>
+                <lightning:button variant="neutral" onclick="{!c.onReset}" label="Reset" class="slds-button slds-button--neutral"/>
+            </p>
+        </div>
+        <div class="{!v.showClock ? '' : 'hidden'}">
+        <div class="slds-grid">
+            <div class="slds-col--padded-medium">
+                <c:StaffTimeSheetProjectSelection projectSelectionEvent="{!c.onProjectSelection}"
+                                                  projectSelections="{!v.projectSelections}"
+                                                  selectedProjectId="{!v.selectedProjectId}"
+                                                  displayPrefix="true"
+                                                  selectableOpportunities="{!v.selectableOpportunities}"
+                                                  selectableEngagements="{!v.selectableEngagements}"
+                                                  selectableSpecialProjects="{!v.selectableSpecialProjects}"
+                                                  isDisabled="{!v.isProjectSelectionDisabled}"></c:StaffTimeSheetProjectSelection>
+            </div>
+            <div class="slds-col--padded-medium">
+                <ui:inputSelect aura:id="activityType" class="{!if(v.requireActivityTypes, 'slds-input', 'hidden')}" value="{!v.timeRecord.Activity_Type__c}" disabled="{!v.isProjectSelectionDisabled}"  change="{!c.onActivitytChange}">
+                    <ui:inputSelectOption text="" label="(Select Activity)" />
+                    <aura:iteration items="{!v.activityTypes}" var="at">
+                        <ui:inputSelectOption text="{!at}" value="{!at == v.timeRecord.Activity_Type__c}" />
+                    </aura:iteration>
+                </ui:inputSelect>
+            </div>
+            <div class="{!if(v.requireComments, 'slds-col--padded-large', 'hidden')}">
+                <div class="slds-form-element__control">
+                    <ui:inputTextArea aura:id="comments" required="{!v.requireComments}" value="{!v.comments}" class="comments" cols="80" rows="2" placeholder="Enter Comments" change="{!c.onSaveComment}" disabled="{!v.disableComments}"></ui:inputTextArea>
+                </div>
+            </div>
+        </div>
+        <div class="slds-p-top--medium">
+            <div class="clock"></div>
+            <aura:if isTrue="{!v.isProjectSelectionDisabled}">
+            <div>
+              <p>   <lightning:button iconName="utility:refresh" title="Refresh"  variant="neutral" aura:id="btnUpdateMinutes" onclick="{!c.onRefresh}" label="Refresh" class="slds-button slds-button--neutral"/>
+                     <p><span style="color:red;font-weight:bold">Click the Refresh button to view elapsed time and before clicking 'Finish'</span>
+                </p>
+           
+                </p>
+            </div>
+                </aura:if>
+            <br/>          
+            <div disabled="true"><p>Add Minutes: <ui:inputNumber aura:id="updateMinutes" size="4" format="0.0" class="slds-input--small" disabled="{!!v.isProjectSelectionDisabled}"></ui:inputNumber>
+                <lightning:button variant="neutral" aura:id="btnUpdateMinutes" onclick="{!c.onUpdateTime}" label="Update" class="slds-button slds-button--neutral" disabled="{!!v.isProjectSelectionDisabled || v.updateTimeDisabled}"/>
+                </p>
+            </div>
+            <div class="slds-button-group slds-p-top--small" role="group">
+                 <lightning:button variant="neutral" onclick="{!c.onStart}" label="Start" class="slds-button slds-button--neutral" disabled="{!v.disableStartButton}"/>
+                   <lightning:button variant="neutral" onclick="{!c.onPause}" label="Pause" class="slds-button slds-button--neutral" disabled="{!!v.isProjectSelectionDisabled}"/>
+                <lightning:button variant="neutral" onclick="{!c.onFinish}" label="Finish" class="slds-button slds-button--neutral" disabled="{!!v.isProjectSelectionDisabled}"/>
+            </div>
+            <div>
+                <br />
+                <lightning:button variant="neutral" onclick="{!c.onReset}" label="Reset" class="slds-button slds-button--neutral" disabled="{!!v.isProjectSelectionDisabled}"/>
+            </div>
+        </div>
+        </div>
+        <div>
+            <aura:if isTrue="{!v.showError}">
+                <ui:message title="Error -" severity="error" closable="true">
+                    <ui:outputText aura:id="errorText" value=""></ui:outputText>
+                </ui:message>
+            </aura:if>
+        </div>
+    </div>
+
+</aura:component>

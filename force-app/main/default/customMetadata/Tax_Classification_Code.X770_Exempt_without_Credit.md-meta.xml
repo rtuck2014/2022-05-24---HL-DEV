@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>770-Exempt without Credit</label>
+    <protected>false</protected>
+    <values>
+        <field>ERP_Business_Unit__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>ERP_Entity_Code__c</field>
+        <value xsi:type="xsd:string">770</value>
+    </values>
+    <values>
+        <field>Legal_Entity_Name__c</field>
+        <value xsi:type="xsd:string">HL (Europe) GmbH – Paris</value>
+    </values>
+    <values>
+        <field>Tax_Classification_Code__c</field>
+        <value xsi:type="xsd:string">FR VAT EXEMPT</value>
+    </values>
+    <values>
+        <field>Treatment__c</field>
+        <value xsi:type="xsd:string">Exempt without Credit</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>CF Expense Requests</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>HL_BlankLetterHead</letterhead>
+    <name>Event Expense CF Submit for Approval for Approver</name>
+    <style>formalLetter</style>
+    <subject>Request for Marketing Expense Approval *Action Required*</subject>
+    <textOnly>You have been requested to approve {!Event_Expense__c.Event_Type_Format__c}  expense {!Event_Expense__c.Name}.
+
+Please review using the link below.
+
+If you have any questions, please contact the requestor, {!Event_Expense__c.Requestor_Name__c}.
+
+Requestor: {!Event_Expense__c.Requestor_Name__c}
+
+Industry Group: {!Event_Expense__c.Industry_Group__c}
+
+Classification: {!Event_Expense__c.Classification__c}
+
+Event Name: {!Event_Expense__c.Event_Name__c}
+
+Request Type: {!Event_Expense__c.Event_Type_Format__c}
+
+Event Date: {!Event_Expense__c.Formatted_Start_Date__c}
+
+Est. Airfare Cost: {!Event_Expense__c.Expected_Airfare_Cost__c}
+
+Est. Lodging Cost: {!Event_Expense__c.Expected_Lodging_Cost__c}
+
+Est. Registration Cost: {!Event_Expense__c.Expected_Registration_Fee__c}
+
+Est. Food &amp; Bev. Cost: {!Event_Expense__c.Expected_F_B_cost__c}
+
+Est. Other Cost: {!Event_Expense__c.Any_additional_cost_Specify__c}
+
+Total Budget Requested: {!Event_Expense__c.Total_Budget_Requested__c}
+
+Review submission: {!Event_Expense__c.Event_Name__c}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

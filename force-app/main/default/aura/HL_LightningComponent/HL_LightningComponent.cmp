@@ -1,0 +1,28 @@
+<aura:component abstract="true">
+    <ltng:require styles="/resource/SLDS0120/assets/styles/salesforce-lightning-design-system-ltng.min.css" />
+    <aura:registerEvent name="beforeServerCallEvent"
+                        type="c:BeforeServerCallEvt"></aura:registerEvent>
+    <aura:registerEvent name="callbackErrorEvent"
+                        type="c:CallbackErrorEvt"></aura:registerEvent>
+    <aura:registerEvent name="componentLoadedEvent"
+                        type="c:ComponentLoadedEvt"/>
+    <aura:handler event="aura:doneWaiting"
+                  action="{!c.doneWaiting}"></aura:handler>
+    <style>
+        div.pullToRefresh + div {
+        height: 100%;
+        }
+
+        .viewport {
+        height: 100%;
+        }
+
+        disable.scroller.actionBarPlugin {
+        padding-bottom: 0px !important;
+        height: 100%;
+        }
+    </style>
+    <div aura:id="hl_lightning_component" class="slds">
+        {!v.body}
+    </div>
+</aura:component>

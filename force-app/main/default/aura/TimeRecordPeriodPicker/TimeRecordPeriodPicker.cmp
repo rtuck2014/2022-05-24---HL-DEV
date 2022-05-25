@@ -1,0 +1,58 @@
+<aura:component controller="HL_TimeRecordController" extends="c:HL_LightningComponent">
+    <aura:attribute name="category"
+                    type="String"
+                    access="PUBLIC"
+                    description="Time Record Category"></aura:attribute>
+	<aura:attribute name="periods"
+                    type="Time_Record_Period__c[]"
+                    access="PRIVATE"
+                    description="Array of Selectable Time Record Period Records"></aura:attribute>
+ 	<aura:attribute name="selectedPeriod"
+                    type="Time_Record_Period__c"
+                    access="PRIVATE"
+                    description="Selected Time Record Period Record"></aura:attribute>
+    <aura:attribute name="startDate"
+                    type="Date"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="endDate"
+                    type="Date"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="existingStartDate"
+                    type="Date"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="existingEndDate"
+                    type="Date"
+                    access="PRIVATE"></aura:attribute>
+    <aura:handler name="change"
+                  value="{!v.category}"
+                  action="{!c.onCategoryChanged}"></aura:handler>
+    <aura:handler name="change"
+                  value="{!v.startDate}"
+                  action="{!c.onStartDateChanged}"/>
+    <aura:handler name="change"
+                  value="{!v.endDate}"
+                  action="{!c.onEndDateChanged}"/>
+    <aura:registerEvent name="timeRecordPeriodSelectionEvent"
+                        type="c:TimeRecordPeriodSelectionEvt"></aura:registerEvent>
+    <aura:registerEvent name="dateRangeSelectionEvent"
+                        type="c:DateRangeSelectEvt"></aura:registerEvent>
+    <!--<aura:if isTrue="{!v.category != 'FR'}">-->
+        <table class="slds-table hidden">
+            <tr>
+                <td class="slds-cell-shrink">
+                    <ui:inputDate aura:id="startDate" displayDatePicker="true" value="{!v.startDate}"></ui:inputDate>
+                </td>
+                <td class="slds-cell-shrink">
+                    <ui:inputDate aura:id="endDate" displayDatePicker="true" value="{!v.endDate}"></ui:inputDate>
+                </td>
+            </tr>
+       </table>
+    <!--</aura:if>-->
+    <!--<aura:if isTrue="{!v.category == 'FR'}">-->
+       <ui:inputSelect class="periodPicker" aura:id="timePeriodPicker" change="{!c.onSelectionChanged}">
+            <aura:iteration items="{!v.periods}" var="p">
+                <ui:inputSelectOption label="{!p.Start_Date__c + '  thru  ' + p.End_Date__c}" text="{!p.Id}" value="{!v.selectedPeriod == p}" />
+            </aura:iteration>
+       </ui:inputSelect>
+    <!--</aura:if>-->
+</aura:component>

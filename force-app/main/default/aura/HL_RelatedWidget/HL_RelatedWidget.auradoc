@@ -1,0 +1,16 @@
+<aura:documentation>
+  <aura:description>
+    <p>
+      The HL Related Widget allows for the display of related records on a
+      Lightning record page, typically in the right-hand side column. It can be
+      configured to pull specific fields from a related object, display a custom
+      icon and title, and more.
+    </p>
+
+    <p>
+      The HL Related Widget is added to a Lightning record page using Setup/User
+      Interface/Lightning App Builder. It is found in the Custom Lightning
+      Components section (left column) under the name "HL Related List Widget".
+    </p>
+  </aura:description>
+</aura:documentation>

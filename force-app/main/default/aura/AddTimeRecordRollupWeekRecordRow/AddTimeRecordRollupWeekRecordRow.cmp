@@ -1,0 +1,86 @@
+<aura:component controller="HL_TimeRecordRollupWeekController" extends="c:HL_LightningComponent">
+    <aura:attribute name="category" 
+                    type="String" 
+                    default="FR"
+                    description="Time Record Tracking Category: FR or Litigation"></aura:attribute>
+    <aura:attribute name="timeRecordPeriodStaffMember" 
+                    type="Time_Record_Period_Staff_Member__c"
+                    description="Time Record Period Staff Member"></aura:attribute>
+    <aura:attribute name="opportunities" 
+                    type="Opportunity__c[]"
+                    description="Array of Selectable Opportunities to Track Time Against"></aura:attribute>
+    <aura:attribute name="engagements" 
+                    type="Engagement__c[]"
+                    description="Array of Selectable Engagements to Track Time Against"></aura:attribute>
+    <aura:attribute name="specialProjects" 
+                    type="Special_Project__c[]"
+                    description="Array of Selectable Special Projects to Track Time Against"></aura:attribute>
+    <aura:attribute name="timeRecordRollupWeek" 
+                    type="Time_Record_Rollup_Week__c" default="{'sobjectType': 'Time_Record_Rollup_Week__c'}"
+                    description="Time Record Rollup Week Tracking Record"></aura:attribute>
+    <aura:attribute name="requireComments" 
+                    type="Boolean" 
+                    default="false"
+                    description="Indicates if Comments are Required for the Selected Project"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="showError" 
+                    type="Boolean" 
+                    default="false"
+                    description="Indicates if an Error Message should be Displayed"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="showSuccess" 
+                    type="Boolean" 
+                    default="false"
+                    description="Indicates if a Success Message should be Displayed"
+                    access="PRIVATE"></aura:attribute>
+    <aura:attribute name="stackVertical" 
+                    type="Boolean" 
+                    default="false"></aura:attribute>
+    <aura:handler name="init" 
+                  value="{!this}" 
+                  action="{!c.doInit}"></aura:handler>
+    <aura:handler name="change" 
+                  value="{!v.timeRecordPeriodStaffMember}" 
+                  action="{!c.handleStaffMemberChangedEvent}"></aura:handler>
+    <aura:registerEvent name="saveSuccessEvent" 
+                        type="c:SaveSuccessEvt"/>
+    <aura:registerEvent name="suppressLoadingIndicatorEvent" 
+                        type="c:SuppressLoadingIndicatorEvt"></aura:registerEvent>
+    <div class="slds-card slds-m-top--small">
+        <div class="slds-card__header">
+        	Add Record
+        </div>
+        <div class="slds-card__body">
+        	<div class="{!v.stackVertical ? 'slds-grid--vertical' : 'slds-grid' }">
+            <div class="slds-col">
+                <ui:inputSelect aura:id="project" multiple="false" class="slds-input" change="{!c.onProjectChanged}">   
+                </ui:inputSelect>
+            </div>
+            <div class="slds-col--padded-medium">
+                 <ui:inputNumber aura:id="hoursWorkedWeekday" required="true" size="4" class="slds-input--small" placeholder="Wk Day"></ui:inputNumber>
+            </div>
+            <div class="slds-col--padded-medium">
+                <ui:inputNumber aura:id="hoursWorkedWeekend" required="true" size="4" class="slds-input--small" placeholder="Wk End"></ui:inputNumber>
+            </div>
+            <div class="slds-col--padded-medium">
+                <ui:button aura:id="btnAddRecord" 
+                           class="slds-button slds-button--neutral" 
+                           label="Add" 
+                           press="{!c.addRecord}" 
+                           disabled="{!v.timeRecordPeriodStaffMember.Id == null}"/>
+            </div>
+        </div>
+        </div>
+        <div class="slds-card__footer"></div>
+    </div>
+    <aura:if isTrue="{!v.showSuccess}">
+        <ui:message title="Success" severity="info" closable="true">
+            <ui:outputText aura:id="successText" value="-Time Record Added"></ui:outputText>
+        </ui:message>
+    </aura:if>
+    <aura:if isTrue="{!v.showError}">
+        <ui:message title="Error" severity="error" closable="true">
+            <ui:outputText aura:id="errorText" value=""></ui:outputText>
+        </ui:message>
+    </aura:if>
+</aura:component>

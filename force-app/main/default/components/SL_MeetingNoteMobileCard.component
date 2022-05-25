@@ -1,0 +1,38 @@
+<apex:component controller="ngForceController">
+    
+    <apex:attribute name="recordId" description="This is the id of the record" type="Id" required="true"/>
+    <apex:attribute name="title" description="This is the title of mobile card" type="String" required="true"/>
+
+    <apex:stylesheet value="{!URLFOR($Resource.MeetingNoteMobileCard, 'styles/lib.css')}"></apex:stylesheet>
+    <apex:stylesheet value="{!URLFOR($Resource.MeetingNoteMobileCard, 'styles/main.css')}"></apex:stylesheet>
+      
+    <head>
+        <meta charset="utf-8"></meta>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"></meta>
+        <title>MeetingNoteMobileCard</title>
+    </head>
+    <body>
+        <div id="sl" ng-app="MeetingNoteMobileCard">
+          <div id="sl-body">
+            <div ng-view="ng-view"></div>
+          </div>
+        </div>
+        <apex:includescript value="{!URLFOR($Resource.MeetingNoteMobileCard, 'scripts/lib.js')}"></apex:includescript>
+        <apex:includescript value="{!URLFOR($Resource.MeetingNoteMobileCard, 'scripts/templates.js')}"></apex:includescript>
+        <apex:includescript value="{!URLFOR($Resource.MeetingNoteMobileCard, 'scripts/main.js')}"></apex:includescript>
+    </body>
+    <script>
+
+        var app=angular.module('MeetingNoteMobileCard');
+
+        app.factory('currentPageParam',function(){
+
+            var PageId={
+                recordId : '{!recordId}',
+                title : '{!title}'
+            };
+            return PageId;
+        });
+
+    </script>
+</apex:component>

@@ -1,0 +1,5 @@
+<aura:component controller="HL_MapGeoLocationSearch" >
+    <aura:handler event="c:ContactsLoaded" action="{!c.contactsLoaded}"/>
+	 <div class="searchbox"><ui:inputText aura:id="cityName" label="City" value="" keyup="{!c.searchEvents}"/></div>
+     <div class="searchbox"><ui:inputText aura:id="zipCode"  label="Zipcode" value="" keyup="{!c.searchEvents}"/></div>	    
+</aura:component>

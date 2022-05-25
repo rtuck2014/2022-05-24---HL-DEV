@@ -1,0 +1,9 @@
+<aura:component implements="force:appHostable">
+    <div aura:id="mainContainer" class="mainContainer">
+        <div class="childContainer">
+            <c:hLMobileCompanyNewComponent/>
+        <br/>
+        <br/>
+        </div>
+    </div>
+</aura:component>

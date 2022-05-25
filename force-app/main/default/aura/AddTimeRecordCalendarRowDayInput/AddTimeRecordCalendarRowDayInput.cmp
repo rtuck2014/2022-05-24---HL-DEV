@@ -1,0 +1,93 @@
+<aura:component controller="HL_TimeRecordController" extends="c:HL_LightningComponent">
+    <aura:attribute name="category"
+                    type="String"
+                    description="Time Tracking Category"
+                    access="PUBLIC"
+                    default="Litigation"></aura:attribute>
+    <aura:attribute name="timeRecordPeriodStaffMember"
+                    type="Time_Record_Period_Staff_Member__c"
+                    description="Time Record Period Staff Member"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="selectedProject"
+                    type="Object"
+                    description="Selected Project"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="rowRecord"
+                    type="Object"
+                    description="Row Record for the Staff Time Sheet Weekly Entry"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="dateRecord"
+                    type="Object"
+                    description="Date Value for the Staff Time Sheet Weekly Entry"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="activityRecord"
+                    type="Object"
+                    description="Activity Values for the Staff Time Sheet Weekly Entry"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="activityTypes"
+                    type="String[]"
+                    description="Array of Activity Types to Classify the Time Tracking Record"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="disableInput"
+                    type="boolean"
+                    default="false"
+                    description="Disable input while updating"></aura:attribute>
+    <aura:attribute name="showForecastActivityType"
+                    type="Boolean"
+                    description="Boolean to display only Forecast activity type for future weeks if category is Beta"
+                    access="PUBLIC"></aura:attribute>
+      <aura:attribute name="showActivityType"
+                    type="Boolean"
+                    description="Boolean to hide/display  activity type field"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="currentOrPriorPeriod"
+                    type="Boolean"
+                    description="Boolean to hide/display (select activity)"
+                    access="PUBLIC"></aura:attribute>
+    <aura:attribute name="allowedHourEntry"
+                    type="integer"
+                    description="allows some records to have a greater than 24 hour time entry"
+                    access="PUBLIC"></aura:attribute>
+    
+    <aura:registerEvent name="saveSuccessEvent"
+                        type="c:SaveSuccessEvt"></aura:registerEvent>
+    <aura:registerEvent name="spinnerEvent"
+                        type="c:SpinnerEvt"></aura:registerEvent>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="slds-form-element">
+        
+        <div class="{!if((v.activityRecord.Hours != null &amp;&amp; v.activityRecord.Hours == 0.0) || v.activityRecord.Hours > v.allowedHourEntry, 'slds-has-error', '')}" style="display:inline-block">
+            <ui:inputNumber class="slds-input activityHours" value="{!v.activityRecord.Hours}" change="{!c.onActivityRecordChanged}" disabled="{!v.disableInput}"></ui:inputNumber>
+        </div>
+        
+        <div style="display:inline-block" data-key="{!v.activityRecord.Id}">
+            <ui:button class="slds-button slds-button--icon" press="{!c.onDeleteClicked}" disabled="{!v.activityRecord.Id == null}">
+                <c:svg ariaHidden="true" class="slds-button__icon" xlinkHref="/resource/SLDS0120/assets/icons/action-sprite/svg/symbols.svg#close"></c:svg>
+            </ui:button>
+        </div>
+    </div>
+    <div class="{!if(v.showActivityType, 'input-activity', 'hidden')}">
+        <div class="{!if(v.activityRecord.ActivityType == '' &amp;&amp; v.activityRecord.Hours != null &amp;&amp; v.selectedProject.Type != 'Special_Project__c', 'slds-has-error', '')}">
+           <ui:inputSelect aura:id="activityType01"  class="slds-input"  change="{!c.onActivityRecordChanged}" disabled="{!(and(v.selectedProject.Type == 'Special_Project__c', v.category != 'Beta')|| v.disableInput)}">
+                <aura:if isTrue="{!v.showForecastActivityType}">
+                    <aura:if isTrue="{!v.currentOrPriorPeriod}">
+                    <ui:inputSelectOption text="" label="(Select Activity)" />
+                    </aura:if>
+                 <ui:inputSelectOption text="Forecast" label="Forecast" value="{!v.activityRecord.ActivityType == 'Forecast'}" />
+                 <aura:Set attribute="else">
+                <ui:inputSelectOption text="" label="(Select Activity)" />
+                <aura:iteration items="{!v.activityTypes}" var="at">
+                    <ui:inputSelectOption text="{!at}" value="{!at == v.activityRecord.ActivityType}" />
+                </aura:iteration> 
+                    </aura:Set>
+                </aura:if>
+            </ui:inputSelect> 
+        </div> 
+    </div>
+    <div class="{!if(v.selectedProject.RequireComments &amp;&amp; v.activityRecord.Id != null, 'slds-form-element', 'hidden')}">
+        <div class="slds-form-element__control">
+            <ui:inputTextArea aura:id="comments" required="{!v.selectedProject.RequireComments}" value="{!v.activityRecord.Comments}" class="slds-input comments" rows="4" placeholder="Enter Comments" change="{!c.onActivityRecordChanged}" disabled="{!v.disableInput}"></ui:inputTextArea>
+        </div>
+    </div>
+</aura:component>

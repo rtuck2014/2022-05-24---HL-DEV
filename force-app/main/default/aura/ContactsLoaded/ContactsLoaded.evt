@@ -1,0 +1,7 @@
+<aura:event type="APPLICATION" >
+ <aura:attribute name="contacts" Type="Contact[]"/>
+    <aura:attribute name="NElng" Type="Decimal"/>
+    <aura:attribute name="NElat" Type="Decimal"/>
+    <aura:attribute name="SWlng" Type="Decimal"/>
+    <aura:attribute name="SWlat" Type="Decimal"/>
+</aura:event>

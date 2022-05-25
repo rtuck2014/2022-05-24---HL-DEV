@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>standard-home</defaultLandingTab>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>Multi-Add/Multi-Edit</label>
+    <tabs>SL_Mass_Implementation__c</tabs>
+    <tabs>HL_Dashboards</tabs>
+    <tabs>Event_Expense</tabs>
+    <tabs>Account_Name_History__c</tabs>
+    <tabs>Engagement_Counterparty_Contact__c</tabs>
+    <tabs>Company_List__c</tabs>
+    <tabs>Company_List_Member__c</tabs>
+    <tabs>SIC_Code__c</tabs>
+    <tabs>Coverage_Team_Comment__c</tabs>
+    <tabs>Investment_Comment__c</tabs>
+    <tabs>SL_Convert__Object_Relationship__c</tabs>
+</CustomApplication>

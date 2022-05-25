@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Fired upon selection of a time record period staff member selection">
+	<aura:attribute name="timeRecordPeriodStaffMember" type="Time_Record_Period_Staff_Member__c"/>
+</aura:event>

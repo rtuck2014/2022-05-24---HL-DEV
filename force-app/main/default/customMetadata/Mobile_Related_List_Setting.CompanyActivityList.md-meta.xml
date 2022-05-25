@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>CompanyActivityList</label>
+    <protected>false</protected>
+    <values>
+        <field>Get_Field_Labels_from_Record__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Icon_Name__c</field>
+        <value xsi:type="xsd:string">standard:event</value>
+    </values>
+    <values>
+        <field>Object_API_Name__c</field>
+        <value xsi:type="xsd:string">Event</value>
+    </values>
+    <values>
+        <field>Record_List_Field_API_Names__c</field>
+        <value xsi:type="xsd:string">Subject,Primary_Attendee__c,Primary_External_Contact__c</value>
+    </values>
+    <values>
+        <field>Record_List_Field_Labels__c</field>
+        <value xsi:type="xsd:string">Subject,Primary HL Attendee,Primary Contact</value>
+    </values>
+    <values>
+        <field>Record_Title_Field_API_Names__c</field>
+        <value xsi:type="xsd:string">StartDateTime,Type</value>
+    </values>
+    <values>
+        <field>Redirect_Component__c</field>
+        <value xsi:type="xsd:string">c__ActivityDetails</value>
+    </values>
+    <values>
+        <field>Redirect_To__c</field>
+        <value xsi:type="xsd:string">ParentId__c</value>
+    </values>
+    <values>
+        <field>Redirect_Type__c</field>
+        <value xsi:type="xsd:string">standard__component</value>
+    </values>
+    <values>
+        <field>Related_List_Title__c</field>
+        <value xsi:type="xsd:string">Activities</value>
+    </values>
+    <values>
+        <field>Where_Clause__c</field>
+        <value xsi:type="xsd:string">AccountId =:recordId  AND Type &lt;&gt; &apos;Internal&apos; AND Type &lt;&gt; &apos;Follow-up Internal&apos; AND ParentId__c &lt;&gt; null AND (EndDateTime &gt; TODAY OR EndDateTime = LAST_N_DAYS:730) ORDER BY EndDateTime DESC</value>
+    </values>
+</CustomMetadata>

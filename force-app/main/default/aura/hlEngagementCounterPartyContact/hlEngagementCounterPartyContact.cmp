@@ -1,0 +1,5 @@
+<aura:component implements="lightning:isUrlAddressable,force:hasRecordId">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="id" type="String"/>        
+    <c:hlEngagementContactCounterParty recordId="{!v.id}" />           
+</aura:component>

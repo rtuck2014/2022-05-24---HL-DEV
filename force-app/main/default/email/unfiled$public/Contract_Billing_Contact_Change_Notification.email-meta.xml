@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to inform users that the Billing Contact of a Contract has changed.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Contract - Billing Contact Change Notification</name>
+    <style>none</style>
+    <subject>{!Contract__c.Line_of_Business__c} Contract # {!Contract__c.Contract_Number__c} - Billing Contact Change</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

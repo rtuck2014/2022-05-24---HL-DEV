@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This Custom Permission allows those assigned to edit the &quot;Staff Industry&quot; field on the Contact record and not fire the Process that sets this value.  This is only valid if the assigned is changing from a value to another value.</description>
+    <isLicensed>false</isLicensed>
+    <label>Contact - Edit Staff Industry</label>
+</CustomPermission>

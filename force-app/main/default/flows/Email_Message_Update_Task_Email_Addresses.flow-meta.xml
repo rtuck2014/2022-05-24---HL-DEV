@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <description>Update fields on Task: Email addresses, Exchange Message ID, Purpose</description>
+    <formulas>
+        <description>Combination of Email Addresses in Email Message</description>
+        <name>EmailAddressesCombo</name>
+        <dataType>String</dataType>
+        <expression>Left({!$Record.FromAddress}&amp;&quot;;&quot;&amp;{!$Record.ToAddress}&amp;&quot;;&quot;&amp;{!$Record.BccAddress}&amp;&quot;;&quot;&amp;{!$Record.CcAddress},255)</expression>
+    </formulas>
+    <interviewLabel>Email Message Update Task Email Addresses {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Email Message Update Task</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Task_Email_Address</name>
+        <label>Update Task Email Address</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ActivityId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Email_Addresses__c</field>
+            <value>
+                <elementReference>EmailAddressesCombo</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Exchange_message_ID__c</field>
+            <value>
+                <elementReference>$Record.Exchange_message_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Purpose__c</field>
+            <value>
+                <elementReference>$Record.Purpose__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Task_Email_Address</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ActivityId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>EmailMessage</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

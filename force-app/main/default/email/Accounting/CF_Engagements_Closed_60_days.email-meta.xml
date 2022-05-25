@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>CF Closed Engagement 60 days</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>CF Engagements Closed 60 days</name>
+    <style>none</style>
+    <subject>{!Engagement__c.Opportunity__c} closed for 60 days</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

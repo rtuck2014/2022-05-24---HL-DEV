@@ -1,0 +1,59 @@
+.THIS {
+    height: 100%;
+}
+
+.THIS .activityDetails {
+  height: 100%;
+}
+
+.THIS .slds-button-group{
+    width: 240px;
+}
+
+.THIS .slds-button--icon-border{
+    width: 80px;
+}
+
+.THIS div.spacer-pull-to-load-more{
+    display: none;
+}
+.THIS button.action.one.uiBlock.uiButton.forceActionButton{
+    border: none;
+}
+.THIS p {
+    margin: 0;
+}
+
+.THIS .editButton{
+    width: 18%;
+    /*margin-top: 15px!important;*/
+    background-color: green!important;
+    color: white!important;
+}
+
+.THIS .deleteButton{
+    width: 18%;
+    /*margin-top: 15px!important;*/
+    background-color: red!important;
+    color: white!important;
+}
+
+.THIS .emailButton{
+    width: 18%;
+    /*margin-top: 15px!important;*/
+    background-color: navy!important;
+    color: white!important;
+}
+
+.THIS button{
+    width: 100%;
+}
+
+.THIS html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+.THIS body {
+  margin: 0;
+}

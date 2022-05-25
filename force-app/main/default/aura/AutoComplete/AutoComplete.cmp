@@ -1,0 +1,16 @@
+<aura:component controller="HL_AutoCompleteController">
+	<ltng:require scripts="/resource/jsFiles/jquery-1.7.1.min.js,
+                           /resource/JQueryUI/jquery-ui-1.11.2/jquery-ui.min.js"
+                  styles="/resource/JQueryUI/jquery-ui-1.11.2/jquery-ui.min.css" afterScriptsLoaded="{!c.scriptsLoaded}"></ltng:require>
+    <aura:attribute name="sObjectType" required="true" type="String" description="Name of the sObject that will be filtered" />
+    <aura:attribute name="fields" type="String[]" default="" description="List of fields to get with each record"/>
+    <aura:attribute name="limit" type="Integer" default="10" description="Limits the number returned to this value" />
+    <aura:attribute name="inputLabel" type="String" default="Find" description="Label for text input"/>
+    <aura:attribute name="ready" type="Boolean" default="false" description="Used to check if resources have been loaded"/>
+    <aura:attribute name="subType" type="String" default="" description="Clarify the type of SObject to Alter the Query, Example Employee or External for Contacts"></aura:attribute>
+    <aura:registerEvent name="autocompleteEvent" type="c:AutoCompleteEvt"/>
+    <div>
+        <label>{!v.inputLabel}: </label>
+        <input class="autocomplete" type="text" />
+    </div>
+</aura:component>

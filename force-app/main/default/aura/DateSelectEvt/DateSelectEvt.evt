@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Fired by The Flex Date Picker Component when a Result is Selected" >
+    <aura:attribute name="selectedDate" type="Date"/>
+</aura:event>
