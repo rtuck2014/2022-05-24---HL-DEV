@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Focus__c</fullName>
+    <externalId>false</externalId>
+    <label>Focus</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sponsor</fullName>
+                <default>false</default>
+                <label>Sponsor</label>
+            </value>
+            <value>
+                <fullName>Management</fullName>
+                <default>false</default>
+                <label>Management</label>
+            </value>
+            <value>
+                <fullName>Board Member</fullName>
+                <default>false</default>
+                <label>Board Member</label>
+            </value>
+            <value>
+                <fullName>Advisor (non-Board Member)</fullName>
+                <default>false</default>
+                <label>Advisor (non-Board Member)</label>
+            </value>
+            <value>
+                <fullName>Shareholder (non-Sponsor)</fullName>
+                <default>false</default>
+                <label>Shareholder (non-Sponsor)</label>
+            </value>
+            <value>
+                <fullName>A</fullName>
+                <default>false</default>
+                <label>A</label>
+            </value>
+            <value>
+                <fullName>ADG</fullName>
+                <default>false</default>
+                <label>ADG</label>
+            </value>
+            <value>
+                <fullName>All</fullName>
+                <default>false</default>
+                <label>All</label>
+            </value>
+            <value>
+                <fullName>Asset Management</fullName>
+                <default>false</default>
+                <label>Asset Management</label>
+            </value>
+            <value>
+                <fullName>B</fullName>
+                <default>false</default>
+                <label>B</label>
+            </value>
+            <value>
+                <fullName>Bank Workout</fullName>
+                <default>false</default>
+                <label>Bank Workout</label>
+            </value>
+            <value>
+                <fullName>BUS</fullName>
+                <default>false</default>
+                <label>BUS</label>
+            </value>
+            <value>
+                <fullName>C</fullName>
+                <default>false</default>
+                <label>C</label>
+            </value>
+            <value>
+                <fullName>CFR</fullName>
+                <default>false</default>
+                <label>CFR</label>
+            </value>
+            <value>
+                <fullName>CORP</fullName>
+                <default>false</default>
+                <label>CORP</label>
+            </value>
+            <value>
+                <fullName>EM Bank Workout</fullName>
+                <default>false</default>
+                <label>EM Bank Workout</label>
+            </value>
+            <value>
+                <fullName>EM Par Investors - Private</fullName>
+                <default>false</default>
+                <label>EM Par Investors - Private</label>
+            </value>
+            <value>
+                <fullName>EM Par Investors - Public</fullName>
+                <default>false</default>
+                <label>EM Par Investors - Public</label>
+            </value>
+            <value>
+                <fullName>EM Secondary Investors</fullName>
+                <default>false</default>
+                <label>EM Secondary Investors</label>
+            </value>
+            <value>
+                <fullName>EM Trading Desks</fullName>
+                <default>false</default>
+                <label>EM Trading Desks</label>
+            </value>
+            <value>
+                <fullName>FIG</fullName>
+                <default>false</default>
+                <label>FIG</label>
+            </value>
+            <value>
+                <fullName>FinTech</fullName>
+                <default>false</default>
+                <label>FinTech</label>
+            </value>
+            <value>
+                <fullName>General Business Services</fullName>
+                <default>false</default>
+                <label>General Business Services</label>
+            </value>
+            <value>
+                <fullName>HC</fullName>
+                <default>false</default>
+                <label>HC</label>
+            </value>
+            <value>
+                <fullName>Hedge Fund</fullName>
+                <default>false</default>
+                <label>Hedge Fund</label>
+            </value>
+            <value>
+                <fullName>HRO</fullName>
+                <default>false</default>
+                <label>HRO</label>
+            </value>
+            <value>
+                <fullName>IG</fullName>
+                <default>false</default>
+                <label>IG</label>
+            </value>
+            <value>
+                <fullName>Info/Mktg Serv</fullName>
+                <default>false</default>
+                <label>Info/Mktg Serv</label>
+            </value>
+            <value>
+                <fullName>Information Services</fullName>
+                <default>false</default>
+                <label>Information Services</label>
+            </value>
+            <value>
+                <fullName>M&amp;A</fullName>
+                <default>false</default>
+                <label>M&amp;A</label>
+            </value>
+            <value>
+                <fullName>M&amp;T</fullName>
+                <default>false</default>
+                <label>M&amp;T</label>
+            </value>
+            <value>
+                <fullName>Marketing Services</fullName>
+                <default>false</default>
+                <label>Marketing Services</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>NRG</fullName>
+                <default>false</default>
+                <label>NRG</label>
+            </value>
+            <value>
+                <fullName>OTHER</fullName>
+                <default>false</default>
+                <label>OTHER</label>
+            </value>
+            <value>
+                <fullName>Par Investors – Private</fullName>
+                <default>false</default>
+                <label>Par Investors – Private</label>
+            </value>
+            <value>
+                <fullName>Par Investors – Public</fullName>
+                <default>false</default>
+                <label>Par Investors – Public</label>
+            </value>
+            <value>
+                <fullName>TECH</fullName>
+                <default>false</default>
+                <label>TECH</label>
+            </value>
+            <value>
+                <fullName>Trading Desks</fullName>
+                <default>false</default>
+                <label>Trading Desks</label>
+            </value>
+            <value>
+                <fullName>TRANS</fullName>
+                <default>false</default>
+                <label>TRANS</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

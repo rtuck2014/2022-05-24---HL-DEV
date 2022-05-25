@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AAKCS__Action__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>If &quot;Replace All&quot; is selected then campaign status&apos;s that are not part of the default set are removed.
+If &quot;Add/Update&quot; is selected, then any previous Campaign Status&apos;s will remain and new ones from this set will be added.</inlineHelpText>
+    <label>Action</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Replace All</fullName>
+                <default>false</default>
+                <label>Replace All</label>
+            </value>
+            <value>
+                <fullName>Add/Update</fullName>
+                <default>false</default>
+                <label>Add/Update</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

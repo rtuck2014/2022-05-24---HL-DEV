@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ERP_Expenditure_Business_Unit__c</fullName>
+    <description>The business unit of the provider business unit
+
+Maps to /mergeContract/contractHeader/ContractLine/ProjectContractLineInternalAttributes/OrganizationName</description>
+    <externalId>false</externalId>
+    <inlineHelpText>For an ICO contract, please specify the business unit of the bill to legal entity.</inlineHelpText>
+    <label>ERP Expenditure Business Unit</label>
+    <length>64</length>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

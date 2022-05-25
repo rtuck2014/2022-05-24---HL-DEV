@@ -1,0 +1,55 @@
+<template>
+    <template if:true={tableToast}>
+        <c-hl-universal-toast
+            type={tableToastType}
+            onclose={tableToastClose}
+            message={tableToastMessage} >
+        </c-hl-universal-toast>
+    </template>
+    <lightning-record-edit-form 
+            record-id={tableFormId}
+            object-api-name="Account"
+            record-type-id={tableFormRecTypeId}
+            onsubmit={handleSave}>
+        <lightning-messages>
+        </lightning-messages>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-m-top_medium slds-size_7-of-12">
+                <lightning-input-field 
+                    field-name="Name"
+                    value={entityName}
+                    variant="label-stacked">
+                </lightning-input-field>
+                <lightning-input-address
+                    street-label="Street"
+                    city-label="City"
+                    country-label="Country"
+                    province-label="State"
+                    postal-code-label="PostalCode"
+                    country-options={countryOptions}
+                    province-options={provinceOptions}
+                    street={street}
+                    city={city}
+                    country={country}
+                    province={state}
+                    postal-code={postalCode}
+                    onchange={updateState}>
+                </lightning-input-address>
+            </div>
+        </div>
+        <div class="slds-m-top_x-small">
+            <lightning-button variant="neutral"
+                label="Cancel"
+                title="Cancel"
+                type="text"
+                onclick={tableCancel}
+                class="slds-m-right_small">
+            </lightning-button>
+            <lightning-button variant="brand"
+                label="Save"
+                title="Save"
+                type="submit">
+            </lightning-button>    
+        </div>
+    </lightning-record-edit-form> 
+</template>

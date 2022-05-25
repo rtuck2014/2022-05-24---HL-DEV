@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Multi_Delete</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Delete Company</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/connection.js&quot;)}
+var records = {!GETRECORDIDS($ObjectType.Company_List_Member__c)};
+if (records[0] == null) {
+    alert(&quot;Please select at least one record.&quot;);
+} else {
+    var text = &quot;Are you sure to delete the item&quot;;
+    if (records.toString().indexOf(&apos;,&apos;) == -1){
+        text += &quot;?&quot;;
+    } else {
+        text += &quot;s?&quot;;
+    }
+    if (confirm(text)){
+        var errors = [];
+        var result = sforce.connection.deleteIds(records);
+        if (result &amp;&amp; result.length){
+            var numFailed = 0;
+            var numSucceeded = 0;
+            for (var i = 0; i &lt; result.length; i++){
+                var res = result[i];
+                if (res &amp;&amp; res.success == &apos;true&apos;){
+                    numSucceeded++;
+                } else {
+                    var es = res.getArray(&quot;errors&quot;);
+                    if (es.length &gt; 0) {
+                        errors.push(es[0].message);
+                    }
+                    numFailed++;
+                }
+            }
+        if (numFailed &gt; 0){
+            alert(&quot;Failed: &quot; + numFailed + &quot;\nSucceeded: &quot; + numSucceeded + &quot; \n Due to: &quot; + errors.join(&quot;\n&quot;));
+        }
+		}
+		navigateToUrl(window.location.href);
+    }
+}</url>
+</WebLink>

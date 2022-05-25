@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TAS_Service__c</fullName>
+    <externalId>false</externalId>
+    <label>TAS Service</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Product_Specialty__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Capital Raise</fullName>
+                <default>false</default>
+                <label>Capital Raise</label>
+            </value>
+            <value>
+                <fullName>Carve-Out</fullName>
+                <default>false</default>
+                <label>Carve-Out</label>
+            </value>
+            <value>
+                <fullName>Cross-Border GAAP</fullName>
+                <default>false</default>
+                <label>Cross-Border GAAP</label>
+            </value>
+            <value>
+                <fullName>Fresh Start Accounting</fullName>
+                <default>false</default>
+                <label>Fresh Start Accounting</label>
+            </value>
+            <value>
+                <fullName>Purchase Accounting</fullName>
+                <default>false</default>
+                <label>Purchase Accounting</label>
+            </value>
+            <value>
+                <fullName>SEC/Financial Reporting Assistance</fullName>
+                <default>false</default>
+                <label>SEC/Financial Reporting Assistance</label>
+            </value>
+            <value>
+                <fullName>Tax Advisory</fullName>
+                <default>false</default>
+                <label>Tax Advisory</label>
+            </value>
+            <value>
+                <fullName>Tax Diligence</fullName>
+                <default>false</default>
+                <label>Tax Diligence</label>
+            </value>
+            <value>
+                <fullName>Tax Structuring</fullName>
+                <default>false</default>
+                <label>Tax Structuring</label>
+            </value>
+            <value>
+                <fullName>Technical Accounting</fullName>
+                <default>false</default>
+                <label>Technical Accounting</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>TAS- TAX</controllingFieldValue>
+            <valueName>Tax Advisory</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TAS- TAX</controllingFieldValue>
+            <valueName>Tax Diligence</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TAS- TAX</controllingFieldValue>
+            <valueName>Tax Structuring</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TAS- Accounting and Financial Reporting Advisory</controllingFieldValue>
+            <valueName>Capital Raise</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TAS- Accounting and Financial Reporting Advisory</controllingFieldValue>
+            <valueName>Carve-Out</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TAS- Accounting and Financial Reporting Advisory</controllingFieldValue>
+            <valueName>Cross-Border GAAP</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TAS- Accounting and Financial Reporting Advisory</controllingFieldValue>
+            <valueName>Fresh Start Accounting</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TAS- Accounting and Financial Reporting Advisory</controllingFieldValue>
+            <valueName>Purchase Accounting</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TAS- Accounting and Financial Reporting Advisory</controllingFieldValue>
+            <valueName>SEC/Financial Reporting Assistance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>TAS- Accounting and Financial Reporting Advisory</controllingFieldValue>
+            <valueName>Technical Accounting</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

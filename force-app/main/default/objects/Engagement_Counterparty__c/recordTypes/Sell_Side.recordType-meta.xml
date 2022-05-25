@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sell_Side</fullName>
+    <active>true</active>
+    <description>Use this as the default record type (as it is most common scenario)</description>
+    <label>Sellside</label>
+    <picklistValues>
+        <picklist>Approval_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Preliminary</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Contact_Type__c</picklist>
+        <values>
+            <fullName>Primary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Secondary</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Milestone__c</picklist>
+        <values>
+            <fullName>Confidentiality_Agreement%5F%5Fc</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Sent_Teaser%5F%5Fc</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Platform_Type__c</picklist>
+        <values>
+            <fullName>Bolt-On</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>N%2FA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Platform</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product Extension</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Strategic Add-On</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Position__c</picklist>
+        <values>
+            <fullName>Adverse</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Buyer Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Buyer Financial Advisor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Buyer Legal Counsel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Client</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equity Holder</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Advisor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal Counsel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lender</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Majority Owner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Management Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seller Legal Counsel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seller Majority Owner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seller Management Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subject</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Probability__c</picklist>
+        <values>
+            <fullName>0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>100</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>15</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>20</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>30</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>35</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>40</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>45</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>50</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>55</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>60</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>65</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>70</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>75</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>80</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>85</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>90</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>95</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Process_Type__c</picklist>
+        <values>
+            <fullName>Broad Auction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Controlled Auction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DM%26A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct Negotiation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Targeted Negotiations %285 to 10 parties%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason_for_Decline__c</picklist>
+        <values>
+            <fullName>Customer Concentration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industry dynamics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No angle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No relevant portfolio company</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not a strategic fit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Size - too small%2Flarge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Timing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unattractive financial profile</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Relationship__c</picklist>
+        <values>
+            <fullName>Counterparty</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PE Firm %28Target%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post-Transaction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-Transaction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Target</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status_pl__c</picklist>
+        <values>
+            <fullName>Book Returned</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Confidentiality Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Declined %2F Passed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Executed Confidentiality Agreement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Initial Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Letter of Intent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Markup</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Met with Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Discussion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Process Letter Sent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proposal %2F Indication</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sent Book</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sent Teaser</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Structures_Provided__c</picklist>
+        <values>
+            <fullName>2nd Lien</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ABL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Convertible Notes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High-Yield Bonds</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mezzanine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Senior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Structure Equity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unitranche</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tier__c</picklist>
+        <values>
+            <fullName>A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>D</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>F</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>P</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Capital Provider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Strategic</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>P_Add_to_Pardot_List</fullName>
+    <availability>online</availability>
+    <description>Pardot&apos;s default button</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>P_Add to Pardot List</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <url>https://pi.pardot.com/list/pullCrmCampaign/fid/{!Campaign.Id}/campaignName/{!URLENCODE(Campaign.Name)}/leadCount/{!Campaign.NumberOfLeads}/contactCount/{!Campaign.NumberOfContacts}?sessionid={!$Api.Session_ID}&amp;serverurl={!$Api.Partner_Server_URL_90}</url>
+</WebLink>

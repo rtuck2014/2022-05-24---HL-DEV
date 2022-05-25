@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_Sponsor_Company</fullName>
+    <active>true</active>
+    <description>Selected &apos;Parent Sponsor Company&apos; should be a company with &apos;Is a Sponsor Company?&apos; field checked. Excludes &apos;System Adminstrator&apos; Profile.</description>
+    <errorConditionFormula>AND($User.ProfileId &lt;&gt; &apos;00ei00000016T4B&apos;,
+    ISCHANGED(Parent_Sponsor_Company__c),
+    NOT(ISNULL(Parent_Sponsor_Company__c)),
+    NOT(Parent_Sponsor_Company__r.Is_a_Sponsor_Company__c))</errorConditionFormula>
+    <errorDisplayField>Parent_Sponsor_Company__c</errorDisplayField>
+    <errorMessage>Please select a valid &apos;Parent Sponsor Company&apos;. Companies with the &apos;Is a Sponsor Company?&apos; field checked can be assigned as a &apos;Parent Sponsor Company&apos;.</errorMessage>
+</ValidationRule>

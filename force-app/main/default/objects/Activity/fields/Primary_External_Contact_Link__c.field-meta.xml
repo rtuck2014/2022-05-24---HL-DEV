@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Primary_External_Contact_Link__c</fullName>
+    <description>HYPERLINK FOR REPORTING PURPOSES</description>
+    <externalId>false</externalId>
+    <formula>IF( $User.UITheme == &apos;Theme4d&apos;, 
+HYPERLINK(&quot;/lightning/r/Contact/&quot; &amp; Primary_External_Contact_Id__c  &amp;&quot;/view&quot;,  Primary_External_Contact__c, &quot;_self&quot; )
+,
+HYPERLINK(&quot;/&quot;&amp;Primary_External_Contact_Id__c, Primary_External_Contact__c,&quot;_self&quot; ))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Primary External Contact</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

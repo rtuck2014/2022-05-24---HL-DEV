@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prospecting_Insights</fullName>
+    <availability>online</availability>
+    <description>Custom button to display Prospecting Insights from Data.com, available to Data.com licensed users, required for use on visualforce page</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Prospecting Insights</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>https://hl.my.salesforce.com/datadotcom/insights/accountInsights.apexp?retURL=%2F{!Account.Id}&amp;id={!Account.Id}</url>
+</WebLink>

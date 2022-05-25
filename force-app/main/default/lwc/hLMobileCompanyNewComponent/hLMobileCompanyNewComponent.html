@@ -1,0 +1,36 @@
+<template>
+<lightning-card>
+<lightning-record-edit-form object-api-name="Account" onsuccess={handleSuccess}>
+    <lightning-messages></lightning-messages>
+    <div class="slds-m-around_medium">
+    <template if:true={objectInfo.data}>
+    <lightning-combobox name="recordType" label="Record Type" value={recordTypeValue}  options={recordTypeId} onchange={handleRecordTypeChange}>
+    </lightning-combobox>
+    </template>
+      <lightning-input-field field-name='Name' onchange={handleNameChange}></lightning-input-field>
+      <lightning-input-address
+            onchange={updateState}
+            address-label="Mailing Address"
+            street-label="Street"
+            city-label="City"
+            country-label="Country"
+            province-label="Province/State"
+            postal-code-label="PostalCode"
+            country-options={countryOptions}
+            province-options={provinceOptions}></lightning-input-address>
+      <lightning-input-field field-name='Phone' onchange={handlePhoneChange} ></lightning-input-field>
+        <lightning-input-field field-name='Fax' onchange={handleFaxChange}></lightning-input-field> 
+        <lightning-input-field field-name='Website' onchange={handleWebsiteChange}></lightning-input-field>
+        <div class="slds-m-top_medium">
+            <lightning-button variant="brand"  name="save" label="Create Company" class="slds-align_absolute-center" onclick={handleSave} disabled={issavedisabled}>
+            </lightning-button>
+        </div>
+    </div>
+</lightning-record-edit-form>
+</lightning-card>
+
+<template if:true ={showModal}>
+<c-hl-postal-code-modal-component title ="Select City" record-list ={postalCodeRecordList} onclosemodal ={handleCloseModal} onselect={handleSelect}>  
+</c-hl-postal-code-modal-component>    
+</template>
+</template>

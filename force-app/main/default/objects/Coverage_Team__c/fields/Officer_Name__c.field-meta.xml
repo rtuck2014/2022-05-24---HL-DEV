@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Officer_Name__c</fullName>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&quot;/&quot; &amp; Id , Officer__r.FirstName+&quot; &quot;+Officer__r.LastName, &apos;_parent&apos;)</formula>
+    <label>Officer Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

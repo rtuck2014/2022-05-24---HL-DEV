@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Email_to_Username_Suffix__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>if your usernames are named like Email + Suffix (e.g. frank@acme.com.production) you can add the suffix here (including the dot). This allows the Groove Auth Provider Handler to map an email address to a username.</inlineHelpText>
+    <label>Email to Username Suffix</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

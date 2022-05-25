@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HasOptedOutOfEmail</fullName>
+    <inlineHelpText>Pardot standard Do Not Email field - selected if:
+Has a hard bounce or five soft bounces.
+Is imported as opted out.
+Is opted out in Salesforce.
+Is manually opted out in Pardot.</inlineHelpText>
+    <trackHistory>false</trackHistory>
+</CustomField>

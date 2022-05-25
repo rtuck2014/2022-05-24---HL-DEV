@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_GenerateAccrualValidation</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(	
+	AND(
+		NOT(ISNEW()),
+		ISCHANGED(Status__c), 
+		ISPICKVAL( Status__c ,&apos;Completed, Generate Accrual&apos;), 
+		NOT(ISPICKVAL(Generate_Accrual__c ,&apos;Yes&apos;))
+	), TRUE,FALSE)</errorConditionFormula>
+    <errorMessage>Please confirm this position is ready to generate a revenue accrual. If so, please mark the &quot;Generate Accrual&quot; to &quot;Yes&quot;.  Otherwise, please select a different status.</errorMessage>
+</ValidationRule>

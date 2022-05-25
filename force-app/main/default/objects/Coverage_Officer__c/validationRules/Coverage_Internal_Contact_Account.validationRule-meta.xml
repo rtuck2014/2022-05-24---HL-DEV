@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Coverage_Internal_Contact_Account</fullName>
+    <active>false</active>
+    <errorConditionFormula>Company__c &lt;&gt; Coverage_Team_Member__r.Company__r.Id</errorConditionFormula>
+    <errorDisplayField>Coverage_Contact__c</errorDisplayField>
+    <errorMessage>Coverage Contact must be at the Covered Account</errorMessage>
+</ValidationRule>

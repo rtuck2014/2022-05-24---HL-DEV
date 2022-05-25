@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Email_Message_Id__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The message id of this email on the sending user&apos;s email service. This field is used to create a link to the email message in the browser.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The message id of this email on the sending user&apos;s email service (according ti the rfc822 header field &quot;message-id&quot;). This field is used to create a link to the email message in the browser.</inlineHelpText>
+    <label>Email Message Id</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

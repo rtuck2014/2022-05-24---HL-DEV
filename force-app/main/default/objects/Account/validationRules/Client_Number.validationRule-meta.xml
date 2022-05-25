@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Client_Number</fullName>
+    <active>true</active>
+    <description>Account name can&apos;t be changed, If client number is assigned to company</description>
+    <errorConditionFormula>AND(ISCHANGED( Name), NOT(ISBLANK( Client_Number__c)), NOT( $Profile.Name == &apos;System Administrator&apos;))</errorConditionFormula>
+    <errorMessage>Client Number is assigned. You do not have the level of access to rename the Company. Please contact your administrator.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,51 @@
+<template>
+    <!--
+    <template if:true={returnedRecordId}>   
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" >Meeting/Call Notes</label>
+                    <div class="slds-form-element__control">
+                    TODO
+                    </div>
+                </div>       
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" >Purpose</label>
+                    <div class="slds-form-element__control">
+                    {event.Purpose__c}
+                    </div>
+                </div>       
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" >Industry Group</label>
+                    <div class="slds-form-element__control">
+                    {event.Industry_Group__c}
+                    </div>
+                </div>       
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" >Product Type</label>
+                    <div class="slds-form-element__control">
+                    {event.Product_Type__c}
+                    </div>
+                </div>       
+            </div>
+        </div>     
+    </template>
+    <template if:false={returnedRecordId}>
+        Syncing in progress.
+    </template>
+    -->
+    <template if:false={siteUrl}>
+        Syncing in progress.
+    </template>
+    <template if:true={siteUrl}>        
+        <div class="slds-box slds-theme_default" style="height:700px">
+            <iframe src={siteUrl} style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;position:absolute;top:0px;left:0px;right:0px;bottom:0px" height="100%" width="100%"></iframe>
+        </div>
+    </template>
+</template>

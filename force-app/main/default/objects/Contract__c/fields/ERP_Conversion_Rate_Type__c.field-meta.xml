@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ERP_Conversion_Rate_Type__c</fullName>
+    <description>The currency conversion type in ERP</description>
+    <externalId>false</externalId>
+    <label>ERP Conversion Rate Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Corporate Exchange Rate</fullName>
+                <default>true</default>
+                <label>Corporate Exchange Rate</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

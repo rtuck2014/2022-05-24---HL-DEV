@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Respect_Sharing_Rules_When_Logging__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Respect sharing rules when logging emails / calendar events.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Controls whether Groove logs emails/events to any related records, regardless of sharing rules (unchecked) or logs emails/events only to records to which the user has read access to (checked).</inlineHelpText>
+    <label>Respect Sharing Rules when Logging</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

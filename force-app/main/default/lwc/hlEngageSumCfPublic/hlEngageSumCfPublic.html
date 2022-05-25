@@ -1,0 +1,130 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <template if:false={requiredFieldsDisabled}>
+            <div class="slds-col slds-size_1-of-2" >
+                <c-hl-universal-card-form
+                    object-api="Engagement_Summary__c"
+                    record-id={engageSumId}
+                    fields={engageSumTrxStructFields}
+                    required-fields={requiredFieldsTransaction}
+                    columns="3"
+                    mode="view"
+                    title="Transaction Structure"
+                    icon="utility:open_folder"
+                    buttons="none" >
+                </c-hl-universal-card-form>
+                <c-hl-universal-card-form
+                    object-api="Engagement_Summary__c"
+                    record-id={engageSumId}
+                    fields={engageSumPurchPrem1Fields}
+                    columns="1"
+                    mode="view"
+                    title="Purchase Price Premium"
+                    icon="utility:expand_all"
+                    buttons="none" 
+                    secondary-object-api="Engagement_Summary__c"
+                    secondary-record-id={engageSumId}
+                    secondary-fields={engageSumPurchPrem2Fields}
+                    secondary-columns="2"
+                    secondary-mode="view">
+                </c-hl-universal-card-form>
+                <c-hl-universal-card-form
+                    object-api="Engagement_Summary__c"
+                    record-id={engageSumId}
+                    fields={engageSumCompanyDefenseFields}
+                    required-fields={requiredFieldsDefense}
+                    columns="2"
+                    mode="view"
+                    title="Company Defense Profile"
+                    icon="utility:display_text"
+                    buttons="none" >
+                </c-hl-universal-card-form>
+            </div>
+            <div class="slds-col slds-size_1-of-2" >
+                <c-hl-universal-card-form
+                    object-api="Engagement_Summary__c"
+                    record-id={engageSumId}
+                    fields={engageSumFiduciaryDealFields}
+                    required-fields={requiredFieldsFiduciary}
+                    columns="2"
+                    mode="view"
+                    title="Fiduciary Obligations and Deal Protection"
+                    icon="utility:locker_service_console"
+                    buttons="none" >
+                </c-hl-universal-card-form>
+                <c-hl-universal-card-form
+                    object-api="Engagement_Summary__c"
+                    record-id={engageSumId}
+                    fields={engageSumShareholdersFields}
+                    required-fields={requiredFieldsShareholders}
+                    columns="2"
+                    mode="view"
+                    title="Shareholders"
+                    icon="utility:privately_shared"
+                    buttons="none" >
+                </c-hl-universal-card-form>
+            </div>
+        </template>
+        <template if:true={requiredFieldsDisabled}>
+            <div class="slds-col slds-size_1-of-2" >
+                <c-hl-universal-card-form
+                    object-api="Engagement_Summary__c"
+                    record-id={engageSumId}
+                    fields={engageSumTrxStructFields}
+                    columns="3"
+                    mode="view"
+                    title="Transaction Structure"
+                    icon="utility:open_folder"
+                    buttons="none" >
+                </c-hl-universal-card-form>
+                <c-hl-universal-card-form
+                    object-api="Engagement_Summary__c"
+                    record-id={engageSumId}
+                    fields={engageSumPurchPrem1Fields}
+                    columns="1"
+                    mode="view"
+                    title="Purchase Price Premium"
+                    icon="utility:expand_all"
+                    buttons="none" 
+                    secondary-object-api="Engagement_Summary__c"
+                    secondary-record-id={engageSumId}
+                    secondary-fields={engageSumPurchPrem2Fields}
+                    secondary-columns="2"
+                    secondary-mode="view">
+                </c-hl-universal-card-form>
+                <c-hl-universal-card-form
+                    object-api="Engagement_Summary__c"
+                    record-id={engageSumId}
+                    fields={engageSumCompanyDefenseFields}
+                    columns="2"
+                    mode="view"
+                    title="Company Defense Profile"
+                    icon="utility:display_text"
+                    buttons="none" >
+                </c-hl-universal-card-form>
+            </div>
+            <div class="slds-col slds-size_1-of-2" >
+                <c-hl-universal-card-form
+                    object-api="Engagement_Summary__c"
+                    record-id={engageSumId}
+                    fields={engageSumFiduciaryDealFields}
+                    columns="2"
+                    mode="view"
+                    title="Fiduciary Obligations and Deal Protection"
+                    icon="utility:locker_service_console"
+                    buttons="none" >
+                </c-hl-universal-card-form>
+                <c-hl-universal-card-form
+                    object-api="Engagement_Summary__c"
+                    record-id={engageSumId}
+                    fields={engageSumShareholdersFields}
+                    columns="2"
+                    mode="view"
+                    title="Shareholders"
+                    icon="utility:privately_shared"
+                    buttons="none" >
+                </c-hl-universal-card-form>
+                </div>
+            </template>
+    </div>
+</template>

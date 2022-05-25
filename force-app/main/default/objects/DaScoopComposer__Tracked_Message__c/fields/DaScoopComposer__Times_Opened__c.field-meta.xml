@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Times_Opened__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>indicates how many times the tracked message has been opened in total by any of the recipients.</inlineHelpText>
+    <label>Times Opened</label>
+    <summaryFilterItems>
+        <field>DaScoopComposer__Tracked_Message_Event__c.DaScoopComposer__Type__c</field>
+        <operation>equals</operation>
+        <value>Email Opened</value>
+    </summaryFilterItems>
+    <summaryForeignKey>DaScoopComposer__Tracked_Message_Event__c.DaScoopComposer__Tracked_Message__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

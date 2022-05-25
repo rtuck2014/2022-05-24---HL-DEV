@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Column_API_Names__c</fullName>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Separate each column api name with a comma</inlineHelpText>
+    <label>Column API Names</label>
+    <length>32768</length>
+    <type>LongTextArea</type>
+    <visibleLines>20</visibleLines>
+</CustomField>

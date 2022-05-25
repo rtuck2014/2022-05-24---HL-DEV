@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_Employees_Name_Edit_Rights</fullName>
+    <active>true</active>
+    <description>Prevents change of employee name by anyone other than a system administrator</description>
+    <errorConditionFormula>$User.ProfileId != &apos;00ei00000016T4B&apos; &amp;&amp; 
+RecordTypeId = &apos;012i0000000tEhe&apos; &amp;&amp; 
+ OR( ISCHANGED( Salutation ),ISCHANGED( FirstName ),ISCHANGED(  MiddleName ),ISCHANGED(  LastName ))</errorConditionFormula>
+    <errorDisplayField>LastName</errorDisplayField>
+    <errorMessage>Only system administrators can change employee name and salutation</errorMessage>
+</ValidationRule>

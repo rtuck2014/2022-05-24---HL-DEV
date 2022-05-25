@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pi__Send_To_Prospect_Insight</fullName>
+    <availability>online</availability>
+    <description>Send this Person Account to Pardot</description>
+    <displayType>button</displayType>
+    <height>600</height>
+    <linkType>page</linkType>
+    <masterLabel>Send To Pardot</masterLabel>
+    <openType>sidebar</openType>
+    <page>pi__PardotAccountSendToPardot</page>
+    <protected>false</protected>
+</WebLink>

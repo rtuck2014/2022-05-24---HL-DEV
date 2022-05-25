@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Match_LOB_to_Department</fullName>
+    <active>true</active>
+    <description>CAO can only edit and create Internal Team members on Engagements that have LOBs matching CAO&apos;s Department.</description>
+    <errorConditionFormula>$User.ProfileId = &apos;00ef0000000QSxd&apos; &amp;&amp;
+NOT($User.Department =  TEXT(Engagement__r.Line_of_Business__c))</errorConditionFormula>
+    <errorMessage>CAOs can only edit Engagement Internal Teams on Engagements in their respective departments.</errorMessage>
+</ValidationRule>

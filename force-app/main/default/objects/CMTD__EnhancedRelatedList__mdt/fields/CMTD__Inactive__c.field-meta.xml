@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CMTD__Inactive__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>When this field is checked, it will not be used in the CMTD</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Flag to indicate if the CMT record is used. When this field is checked, the CMT record will be ignored and the field will not be displayed in the component.</inlineHelpText>
+    <label>Inactive</label>
+    <type>Checkbox</type>
+</CustomField>

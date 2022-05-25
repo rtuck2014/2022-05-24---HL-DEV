@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Inferred_Status__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF(INCLUDES(DaScoopComposer__Account_Tags__c, &apos;Churned Customer&apos;), &apos;Churned Customer&apos;,
+
+  IF(INCLUDES(DaScoopComposer__Account_Tags__c, &apos;Current Customer&apos;), &apos;Current Customer&apos;,
+
+    IF(INCLUDES(DaScoopComposer__Account_Tags__c, &apos;Lost Opportunity&apos;), &apos;Lost Opportunity&apos;
+    &amp; IF(INCLUDES(DaScoopComposer__Account_Tags__c, &apos;Cur. Effort&apos;), &apos; + Cur. Effort&apos;, &apos;&apos;),
+
+      IF(INCLUDES(DaScoopComposer__Account_Tags__c, &apos;Open Opportunity&apos;), &apos;Open Opportunity&apos;,
+
+        IF(INCLUDES(DaScoopComposer__Account_Tags__c, &apos;Meeting, no Opportunity&apos;), &apos;Meeting, no Opportunity&apos;,
+
+          IF(INCLUDES(DaScoopComposer__Account_Tags__c, &apos;Meeting Scheduled&apos;), &apos;Meeting Scheduled&apos;,
+
+            IF(INCLUDES(DaScoopComposer__Account_Tags__c, &apos;Past Effort&apos;), &apos;Past Effort&apos;
+            &amp; IF(NOT(ISPICKVAL(DaScoopComposer__Engagement_Status__c, &apos;No Engagement&apos;)), &apos; + Engagement&apos;, &apos;&apos;)
+            &amp; IF(ISPICKVAL(DaScoopComposer__Engagement_Status__c, &apos;No Engagement&apos;), &apos; no Engagement&apos;, &apos;&apos;),
+
+              IF(INCLUDES(DaScoopComposer__Account_Tags__c, &apos;Cur. Effort&apos;), &apos;Cur. Effort&apos;
+              &amp; IF(ISPICKVAL(DaScoopComposer__Engagement_Status__c, &apos;Recent Engagement&apos;), &apos; + Engagement&apos;, &apos;&apos;)
+              &amp; IF(NOT(ISPICKVAL(DaScoopComposer__Engagement_Status__c, &apos;Recent Engagement&apos;)), &apos; no Engagement&apos;, &apos;&apos;),
+
+                IF(INCLUDES(DaScoopComposer__Account_Tags__c, &apos;Untouched&apos;), &apos;Untouched&apos;,
+                  &apos;Unknown&apos;
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Indicates the account status in the typical customer life cycle of an account. The status is automatically inferred by looking at activities, engagement signals and opportunities.</inlineHelpText>
+    <label>Inferred Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

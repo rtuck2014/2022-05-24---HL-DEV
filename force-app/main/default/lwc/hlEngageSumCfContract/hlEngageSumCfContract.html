@@ -1,0 +1,90 @@
+<template>
+    <div class="slds-grid slds-wrap slds-gutters">
+        <div class="slds-col slds-size_1-of-1">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col insurance">
+                    <c-hl-universal-card-form
+                        object-api="Engagement_Summary__c"
+                        record-id={engageSumId}
+                        fields={engageSumRepWarrantyFields}
+                        required-fields={requiredFieldsRepWarranty}
+                        columns="1"
+                        mode="view"
+                        layout-only-sides="true"
+                        title="Insurance"
+                        sub-title="Reps and Warranties (MM)"
+                        icon="utility:shield"
+                        buttons="none"
+                        layout-top-sides="true"
+                        secondary-title="Basket (MM)"
+                        secondary-object-api="Engagement_Summary__c"
+                        secondary-record-id={engageSumId}
+                        secondary-fields={engageSumIndemnityBasketFields}
+                        secondary-required-fields={requiredFieldsBasket}
+                        secondary-columns="1"
+                        secondary-mode="view"
+                        tertiary-title="Caps (MM)"
+                        tertiary-object-api="Engagement_Summary__c"
+                        tertiary-record-id={engageSumId}
+                        tertiary-fields={engageSumIndemnityCapsFields}
+                        tertiary-required-fields={requiredFieldsCaps}
+                        tertiary-columns="1"
+                        tertiary-mode="view"
+                        quaternary-title="Escrow/Holdbacks (MM)"
+                        quaternary-object-api="Engagement_Summary__c"
+                        quaternary-record-id={engageSumId}
+                        quaternary-fields={engageSumIndemnityEscrowFields}
+                        quaternary-required-fields={requiredFieldsEscrow}
+                        quaternary-columns="1"
+                        quaternary-mode="view">
+                    </c-hl-universal-card-form>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_1-of-1">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1 carveouts">
+                    <c-hl-universal-card-form
+                        object-api="Engagement_Summary__c"
+                        record-id={engageSumId}
+                        fields={engageSumCarveOut1Fields}
+                        required-fields={requiredFieldsCarveOut1}
+                        columns="2"
+                        mode="view"
+                        title="Carveouts"
+                        sub-title="Environmental (MM)"
+                        icon="utility:reassign"
+                        buttons="none"
+                        layout-top-sides="true"
+                        secondary-title="Carveouts Included (all fields required)"
+                        secondary-object-api="Engagement_Summary__c"
+                        secondary-record-id={engageSumId}
+                        secondary-fields={engageSumCarveOut2Fields}
+                        secondary-required-fields={requiredFieldsCarveOut2}
+                        secondary-columns="3"
+                        secondary-mode="view"
+                        tertiary-title="...Details (MM)"
+                        tertiary-object-api="Engagement_Summary__c"
+                        tertiary-record-id={engageSumId}
+                        tertiary-fields={engageSumCarveOut3Fields}
+                        tertiary-columns="4"
+                        tertiary-mode="view">
+                    </c-hl-universal-card-form>
+                </div>
+                <div class="slds-col slds-size_1-of-1 comments">
+                    <c-hl-universal-card-form
+                        object-api="Engagement_Summary__c"
+                        record-id={engageSumId}
+                        fields={engaegSumKeyCommFields}
+                        columns="1"
+                        mode="view"
+                        title="Comments"
+                        icon="utility:prompt"
+                        buttons="none">
+                    </c-hl-universal-card-form>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+</template>

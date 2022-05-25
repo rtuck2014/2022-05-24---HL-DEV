@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__EmployeeCountTotal__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The total number of employees in the business organization; it should include subsidiary and branch locations.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The total number of employees in the business organization; it should include subsidiary and branch locations.</inlineHelpText>
+    <label>Employee Count Total</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

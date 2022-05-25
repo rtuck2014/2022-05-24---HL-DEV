@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__SIC4Desc1__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The business activity based on the scheme used for the industry code (e.g., &apos;highway and street construction&apos; is the description of industry code 1611 in the U.S. SIC (Standard Industrial Classification) system).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The business activity based on the scheme used for the industry code (e.g., &apos;highway and street construction&apos; is the description of industry code 1611 in the U.S. SIC (Standard Industrial Classification) system).</inlineHelpText>
+    <label>SIC4 Code 1 Description</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

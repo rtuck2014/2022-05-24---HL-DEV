@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IFA_Bid</fullName>
+    <active>true</active>
+    <label>IFA Bid</label>
+    <picklistValues>
+        <picklist>Round__c</picklist>
+        <values>
+            <fullName>Closing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Final</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>First</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Second</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Third</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

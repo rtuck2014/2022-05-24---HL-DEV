@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__StateProvinceAbbrev__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The shortened name of the locally governed area that forms part of a centrally governed nation. For example &apos;NJ&apos; for the US State New Jersey within Country United States.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The shortened name of the locally governed area that forms part of a centrally governed nation. For example &apos;NJ&apos; for the US State New Jersey within Country United States.</inlineHelpText>
+    <label>Primary Address State Province Abbrev</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

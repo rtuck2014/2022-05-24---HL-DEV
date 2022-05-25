@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ERP_Revenue_Method__c</fullName>
+    <description>The revenue method in ERP</description>
+    <externalId>false</externalId>
+    <label>ERP Revenue Method</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>As Billed Revenue</fullName>
+                <default>true</default>
+                <label>As Billed Revenue</label>
+            </value>
+            <value>
+                <fullName>Amount Based Revenue</fullName>
+                <default>false</default>
+                <label>Amount Based Revenue</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

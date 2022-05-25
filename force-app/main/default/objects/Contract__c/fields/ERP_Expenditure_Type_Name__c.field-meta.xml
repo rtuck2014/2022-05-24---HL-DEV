@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ERP_Expenditure_Type_Name__c</fullName>
+    <defaultValue>&apos;65540-Other Seminars&apos;</defaultValue>
+    <description>This is required for an ICO contract
+
+Maps to /mergeContract/contractHeader/ContractLine/ProjectContractLineInternalAttributes/ExpenditureTypeName</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Please specify an expenditure type, available in ERP.</inlineHelpText>
+    <label>ERP Expenditure Type Name</label>
+    <length>64</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

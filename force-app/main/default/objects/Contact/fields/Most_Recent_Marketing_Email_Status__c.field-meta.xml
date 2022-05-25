@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Most_Recent_Marketing_Email_Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>Most_Recent_Contact_Email_History__r.Marketing_Category__c</formula>
+    <label>Most Recent Marketing Email Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

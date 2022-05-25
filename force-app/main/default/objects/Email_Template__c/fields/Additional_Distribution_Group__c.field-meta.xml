@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Additional_Distribution_Group__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Additional Distribution Group</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Email Templates (Additional Distribution Group)</relationshipLabel>
+    <relationshipName>Email_Templates1</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

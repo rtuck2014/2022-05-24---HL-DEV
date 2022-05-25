@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PFG_Notification__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Send Notification to all PFG members</inlineHelpText>
+    <label>PFG Notification</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>PFG View Only</fullName>
+                <default>false</default>
+                <label>PFG View Only</label>
+            </value>
+            <value>
+                <fullName>PFG Send Email Notification</fullName>
+                <default>false</default>
+                <label>PFG Send Email Notification</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

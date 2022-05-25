@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Security_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Security Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Bank Debt (First Lien) - Revolver</fullName>
+                <default>false</default>
+                <label>Bank Debt (First Lien) - Revolver</label>
+            </value>
+            <value>
+                <fullName>Bank Debt (First Lien) - Term Loan A</fullName>
+                <default>false</default>
+                <label>Bank Debt (First Lien) - Term Loan A</label>
+            </value>
+            <value>
+                <fullName>Bank Debt (First Lien) - Term Loan B</fullName>
+                <default>false</default>
+                <label>Bank Debt (First Lien) - Term Loan B</label>
+            </value>
+            <value>
+                <fullName>Bank Debt (First Lien) - Synthetic LC Facility</fullName>
+                <default>false</default>
+                <label>Bank Debt (First Lien) - Synthetic LC Facility</label>
+            </value>
+            <value>
+                <fullName>ABL/ABS Facility - First Lien</fullName>
+                <default>false</default>
+                <label>ABL/ABS Facility - First Lien</label>
+            </value>
+            <value>
+                <fullName>LC Facility</fullName>
+                <default>false</default>
+                <label>LC Facility</label>
+            </value>
+            <value>
+                <fullName>Bank Debt (Second Lien)</fullName>
+                <default>false</default>
+                <label>Bank Debt (Second Lien)</label>
+            </value>
+            <value>
+                <fullName>ABL/ABS Facility - Second Lien</fullName>
+                <default>false</default>
+                <label>ABL/ABS Facility - Second Lien</label>
+            </value>
+            <value>
+                <fullName>Convertible Notes (Secured)</fullName>
+                <default>false</default>
+                <label>Convertible Notes (Secured)</label>
+            </value>
+            <value>
+                <fullName>Senior Secured Notes</fullName>
+                <default>false</default>
+                <label>Senior Secured Notes</label>
+            </value>
+            <value>
+                <fullName>Capital Leases</fullName>
+                <default>false</default>
+                <label>Capital Leases</label>
+            </value>
+            <value>
+                <fullName>Other Secured Debt</fullName>
+                <default>false</default>
+                <label>Other Secured Debt</label>
+            </value>
+            <value>
+                <fullName>Mezzanine Debt</fullName>
+                <default>false</default>
+                <label>Mezzanine Debt</label>
+            </value>
+            <value>
+                <fullName>Senior Notes (Unsecured)</fullName>
+                <default>false</default>
+                <label>Senior Notes (Unsecured)</label>
+            </value>
+            <value>
+                <fullName>Senior Subordinated Notes (Unsecured)</fullName>
+                <default>false</default>
+                <label>Senior Subordinated Notes (Unsecured)</label>
+            </value>
+            <value>
+                <fullName>Substantially All Assets</fullName>
+                <default>false</default>
+                <label>Substantially All Assets</label>
+            </value>
+            <value>
+                <fullName>Convertible Notes (Unsecured)</fullName>
+                <default>false</default>
+                <label>Convertible Notes (Unsecured)</label>
+            </value>
+            <value>
+                <fullName>Other Unsecured Debt</fullName>
+                <default>false</default>
+                <label>Other Unsecured Debt</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

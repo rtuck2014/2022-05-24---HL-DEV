@@ -1,0 +1,388 @@
+<template>
+    <lightning-card variant="base" icon-name="standard:process" title="Engagement Summary">
+        <template if:true={spinner}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+        <template if:true={engageSumStageData}>
+            <c-hl-universal-path
+                record-id={engageSumId} 
+                record-type-id={engageSumRecTypeId}
+                stage-field={engageSumStageField}
+                current-stage={engageSumStageData}
+                onstagechange={engageSumStageChange}
+                guidance-messages={engageSumStageMessages}
+                object-api="Engagement_Summary__c">
+            </c-hl-universal-path>
+        </template>
+        <template if:true={engageSumStageError}>
+            {engageSumStageError}
+        </template>
+        <template if:true={engageSumId}>
+            <div class="slds-grid slds-wrap slds-gutters">
+                <div class="slds-col" >
+                    <!-- LL20190829 Merge accordions upon LWC css corrections future release -->
+                    <ul class="slds-accordion" style="position: absolute;left: 250px; border-left: 1px solid #EEE;">
+                        <li class="slds-accordion__list-item" style="border: #fff;">
+                            <section class="slds-accordion__section slds-is-open">
+                                <div class="slds-m-bottom_xxxx-small">
+                                    <h3 class="slds-accordion__summary-heading">
+                                        <template if:true={sectionPartiesRequiredIcon}>
+                                            <c-hl-universal-pop-over
+                                                icon={sectionPartiesRequiredIcon}
+                                                icon-variant={sectionPartiesRequiredVariant}
+                                                title="Required Fields"
+                                                visible-subject={sectionPartiesRequiredSubject}
+                                                subject={sectionPartiesRequiredSubject}
+                                                body-validations={sectionPartiesRequiredFieldsStatus}>
+                                            </c-hl-universal-pop-over>
+                                        </template>
+                                    </h3>
+                                </div>
+                            </section>
+                        </li>
+                        <li class="slds-accordion__list-item" style="border: #fff; padding-bottom: 1px">
+                            <section class="slds-accordion__section slds-is-open">
+                                <div class="slds-m-bottom_xxxx-small">
+                                    <h3 class="slds-accordion__summary-heading">
+                                        <template if:true={sectionTimelineRequiredIcon}>
+                                            <c-hl-universal-pop-over
+                                                icon={sectionTimelineRequiredIcon}
+                                                icon-variant={sectionTimelineRequiredVariant}
+                                                title="Required Fields"
+                                                visible-subject={sectionTimelineRequiredSubject}
+                                                subject={sectionTimelineRequiredSubject}>
+                                            </c-hl-universal-pop-over>
+                                        </template>
+                                    </h3>
+                                </div>
+                            </section>
+                        </li>
+                        <li class="slds-accordion__list-item" style="border: #fff; padding-bottom: 1px">
+                            <section class="slds-accordion__section slds-is-open">
+                                <div class="slds-m-bottom_xxxx-small">
+                                    <h3 class="slds-accordion__summary-heading">
+                                        <template if:true={sectionMarketRequiredIcon}>
+                                            <c-hl-universal-pop-over
+                                                icon={sectionMarketRequiredIcon}
+                                                icon-variant={sectionMarketRequiredVariant}
+                                                title="Required Fields"
+                                                visible-subject={sectionMarketRequiredSubject}
+                                                subject={sectionMarketRequiredSubject}>
+                                            </c-hl-universal-pop-over>
+                                        </template>
+                                    </h3>
+                                </div>
+                            </section>
+                        </li>
+                        <template if:false={sectionPublicRequiredDisabled}>
+                            <li class="slds-accordion__list-item" style="border: #fff; padding-bottom: 1px">
+                                <section class="slds-accordion__section slds-is-open">
+                                    <div class="slds-m-bottom_xxxx-small">
+                                        <h3 class="slds-accordion__summary-heading">
+                                            <template if:true={sectionPublicRequiredIcon}>
+                                                <c-hl-universal-pop-over
+                                                    icon={sectionPublicRequiredIcon}
+                                                    icon-variant={sectionPublicRequiredVariant}
+                                                    title="Required Fields"
+                                                    visible-subject={sectionPublicRequiredSubject}
+                                                    subject={sectionPublicRequiredSubject}
+                                                    body-validations={sectionPublicRequiredFieldsStatus}>
+                                                </c-hl-universal-pop-over>
+                                            </template>
+                                        </h3>
+                                    </div>
+                                </section>
+                            </li>
+                        </template>
+                        <li class="slds-accordion__list-item" style="border: #fff; padding-bottom: 1px">
+                            <section class="slds-accordion__section slds-is-open">
+                                <div class="slds-m-bottom_xxxx-small">
+                                    <h3 class="slds-accordion__summary-heading">
+                                        <template if:true={sectionPriceRequiredIcon}>
+                                            <c-hl-universal-pop-over
+                                                icon={sectionPriceRequiredIcon}
+                                                icon-variant={sectionPriceRequiredVariant}
+                                                title="Required Fields"
+                                                visible-subject={sectionPriceRequiredSubject}
+                                                subject={sectionPriceRequiredSubject}
+                                                body-validations={sectionPriceRequiredFieldsStatus}>
+                                            </c-hl-universal-pop-over>
+                                        </template>
+                                    </h3>
+                                </div>
+                            </section>
+                        </li>
+                        <li class="slds-accordion__list-item" style="border: #fff; padding-bottom: 1px">
+                            <section class="slds-accordion__section slds-is-open">
+                                <div class="slds-m-bottom_xxxx-small">
+                                    <h3 class="slds-accordion__summary-heading">
+                                        <template if:true={sectionKeyContractRequiredIcon}>
+                                            <c-hl-universal-pop-over
+                                                icon={sectionKeyContractRequiredIcon}
+                                                icon-variant={sectionKeyContractRequiredVariant}
+                                                title="Required Fields"
+                                                visible-subject={sectionKeyContractRequiredSubject}
+                                                subject={sectionKeyContractRequiredSubject}
+                                                body-validations={sectionKeyContractRequiredFieldsStatus}>
+                                            </c-hl-universal-pop-over>
+                                        </template>
+                                    </h3>
+                                </div>
+                            </section>
+                        </li>
+                        <li class="slds-accordion__list-item" style="border: #fff; padding-bottom: 1px">
+                            <section class="slds-accordion__section slds-is-open">
+                                <div class="slds-m-bottom_xxxx-small">
+                                    <h3 class="slds-accordion__summary-heading">
+                                        <template if:true={sectionEmployeeRequiredIcon}>
+                                            <c-hl-universal-pop-over
+                                                icon={sectionEmployeeRequiredIcon}
+                                                icon-variant={sectionEmployeeRequiredVariant}
+                                                title="Required Fields"
+                                                visible-subject={sectionEmployeeRequiredSubject}
+                                                subject={sectionEmployeeRequiredSubject}
+                                                body-validations={sectionEmployeeRequiredFieldsStatus}>
+                                            </c-hl-universal-pop-over>
+                                        </template>
+                                    </h3>
+                                </div>
+                            </section>
+                        </li>
+                        <li class="slds-accordion__list-item" style="border: #fff; padding-bottom: 1px">
+                            <section class="slds-accordion__section slds-is-open">
+                                <div class="slds-m-bottom_xxxx-small">
+                                    <h3 class="slds-accordion__summary-heading">
+                                        <template if:true={sectionCapDetailsRequiredIcon}>
+                                            <c-hl-universal-pop-over
+                                                icon={sectionCapDetailsRequiredIcon}
+                                                icon-variant={sectionCapDetailsRequiredVariant}
+                                                title="Required Fields"
+                                                visible-subject={sectionCapDetailsRequiredSubject}
+                                                subject={sectionCapDetailsRequiredSubject}>
+                                            </c-hl-universal-pop-over>
+                                        </template>
+                                    </h3>
+                                </div>
+                            </section>
+                        </li>
+                        <li class="slds-accordion__list-item" style="border: #fff; padding-bottom: 1px">
+                            <section class="slds-accordion__section slds-is-open">
+                                <div class="slds-m-bottom_xxxx-small">
+                                    <h3 class="slds-accordion__summary-heading">
+                                        <template if:true={sectionCreditRequiredIcon}>
+                                            <c-hl-universal-pop-over
+                                                icon={sectionCreditRequiredIcon}
+                                                icon-variant={sectionCreditRequiredVariant}
+                                                title="Required Fields"
+                                                visible-subject={sectionCreditRequiredSubject}
+                                                subject={sectionCreditRequiredSubject}>
+                                            </c-hl-universal-pop-over>
+                                        </template>
+                                    </h3>
+                                </div>
+                            </section>
+                        </li>
+                        <li class="slds-accordion__list-item" style="border: #fff; padding-bottom: 1px">
+                            <section class="slds-accordion__section slds-is-open">
+                                <div class="slds-m-bottom_small">
+                                    <h3 class="slds-accordion__summary-heading">
+                                        <template if:true={sectionDynamicsRequiredIcon}>
+                                            <c-hl-universal-pop-over
+                                                icon={sectionDynamicsRequiredIcon}
+                                                icon-variant={sectionDynamicsRequiredVariant}
+                                                title="Required Fields"
+                                                visible-subject={sectionDynamicsRequiredSubject}
+                                                subject={sectionDynamicsRequiredSubject}>
+                                            </c-hl-universal-pop-over>
+                                        </template>
+                                    </h3>
+                                </div>
+                            </section>
+                        </li>
+                    </ul>
+                    <lightning-accordion active-section-name="collapseAll" allow-multiple-sections-open="true" onsectiontoggle={sectionRender}>
+                        <lightning-accordion-section name="sectionParties" label="Parties" >
+                            <template if:true={sectionParties}>
+                                <c-hl-engage-sum-cf-parties
+                                    engagement-id={engagementId} 
+                                    engage-sum-id={engageSumId}
+                                    job-type-buyside={jobTypeBuyside} 
+                                    job-type-sellside={jobTypeSellside} 
+                                    job-type-otherside={jobTypeNoside}
+                                    onrequiredsectionresult={requiredSectionResult}
+                                    onsectionpartyrefresh={sectionPartyRefresh}>
+                                </c-hl-engage-sum-cf-parties>
+                            </template>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section name="sectionTimeline" label="Engagement Timeline" >
+                            <template if:true={engagementId}>
+                                <template if:true={jobTypeBuyside}>
+                                    <c-hl-universal-card-form
+                                        object-api="Engagement__c"
+                                        record-id={engagementId}
+                                        fields={engageTimelineBuysideFields1}
+                                        columns="1"
+                                        mode="view"
+                                        title="Timeline"
+                                        sub-title="Bidding"
+                                        icon="utility:tracker"
+                                        layout-only-sides=true
+                                        buttons="none" 
+                                        secondary-object-api="Engagement__c"
+                                        secondary-record-id={engagementId}
+                                        secondary-title="Signing"
+                                        secondary-fields={engageTimelineFields2}
+                                        secondary-columns="1"
+                                        secondary-mode="view"
+                                        tertiary-object-api="Engagement__c"
+                                        tertiary-record-id={engagementId}
+                                        tertiary-title="Closing"
+                                        tertiary-fields={engageTimelineFields3}
+                                        tertiary-columns="1"
+                                        tertiary-mode="readonly">
+                                    </c-hl-universal-card-form>
+                                </template>
+                                <template if:true={jobTypeSellside}>
+                                    <c-hl-universal-card-form
+                                        object-api="Engagement__c"
+                                        record-id={engagementId}
+                                        fields={engageTimelineSellsideFields1}
+                                        columns="1"
+                                        mode="view"
+                                        title="Timeline"
+                                        sub-title="Bidding"
+                                        icon="utility:tracker"
+                                        layout-only-sides=true
+                                        buttons="none" 
+                                        secondary-object-api="Engagement__c"
+                                        secondary-record-id={engagementId}
+                                        secondary-title="Signing"
+                                        secondary-fields={engageTimelineFields2}
+                                        secondary-columns="1"
+                                        secondary-mode="view"
+                                        tertiary-object-api="Engagement__c"
+                                        tertiary-record-id={engagementId}
+                                        tertiary-title="Closing"
+                                        tertiary-fields={engageTimelineFields3}
+                                        tertiary-columns="1"
+                                        tertiary-mode="readonly">
+                                    </c-hl-universal-card-form>
+                                </template>
+                            </template>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section name="sectionMarket" label="Marketing Process Data" >
+                            <template if:true={sectionMarket}>
+                                <c-hl-engage-sum-cf-market
+                                    engagement-id={engagementId} 
+                                    engage-sum-id={engageSumId}
+                                    job-type-buyside={jobTypeBuyside} 
+                                    job-type-sellside={jobTypeSellside} 
+                                    job-type-otherside={jobTypeNoside}
+                                    onengagesumgenupdate={engageSumGenUpdate}>
+                                </c-hl-engage-sum-cf-market>
+                            </template> 
+                        </lightning-accordion-section>
+                        <template if:false={sectionPublicRequiredDisabled}>
+                            <lightning-accordion-section name="sectionPublic" label="Public Company" >
+                                <template if:true={sectionPublic}>
+                                    <c-hl-engage-sum-cf-public
+                                        engagement-id={engagementId} 
+                                        engage-sum-id={engageSumId}
+                                        job-type-buyside={jobTypeBuyside} 
+                                        job-type-sellside={jobTypeSellside} 
+                                        job-type-otherside={jobTypeNoside}
+                                        required-fields-disabled={sectionPublicRequiredDisabled}
+                                        required-fields-transaction={sectionPublicTransactionRequiredFields}
+                                        required-fields-defense={sectionPublicDefenseRequiredFields}
+                                        required-fields-fiduciary={sectionPublicFiduciaryRequiredFields}
+                                        required-fields-shareholders={sectionPublicShareholdersRequiredFields}>
+                                    </c-hl-engage-sum-cf-public>
+                                </template>
+                            </lightning-accordion-section>
+                        </template>
+                        <lightning-accordion-section name="sectionPrice" label="Price and Structure" >
+                            <template if:true={sectionPrice}>
+                                <c-hl-engage-sum-cf-price 
+                                    engagement-id={engagementId}
+                                    engage-sum-id={engageSumId}
+                                    job-type-buyside={jobTypeBuyside} 
+                                    job-type-sellside={jobTypeSellside} 
+                                    job-type-noside={jobTypeNoside}
+                                    required-fields-purchase={sectionPricePurchaseRequiredFields}
+                                    required-fields-detail={sectionPriceDetailRequiredFields}
+                                    required-fields-closing={sectionPriceClosingRequiredFields}
+                                    required-fields-earnout={sectionPriceEarnoutRequiredFields}
+                                    required-fields-seller-notes={sectionPriceSellerNotesRequiredFields}>
+                                </c-hl-engage-sum-cf-price>
+                            </template>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section name="sectionKeyContract" label="Key Contract Terms" >
+                            <template if:true={sectionKeyContract}>
+                                <c-hl-engage-sum-cf-contract 
+                                    engagement-id={engagementId}
+                                    engage-sum-id={engageSumId}
+                                    job-type-buyside={jobTypeBuyside} 
+                                    job-type-sellside={jobTypeSellside}
+                                    job-type-noside={jobTypeNoside}
+                                    required-fields-rep-warranty={sectionKeyContractRepWarrantyRequiredFields}
+                                    required-fields-basket={sectionKeyContractBasketRequiredFields}
+                                    required-fields-caps={sectionKeyContractCapsRequiredFields}
+                                    required-fields-escrow={sectionKeyContractEscrowRequiredFields}
+                                    required-fields-carve-out1={sectionKeyContractCarveout1RequiredFields}
+                                    required-fields-carve-out2={sectionKeyContractCarveout2RequiredFields}>
+                                </c-hl-engage-sum-cf-contract>
+                            </template>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section name="sectionEmployee" label="Employee Terms" >
+                            <template if:true={sectionEmployee}>
+                                <c-hl-engage-sum-cf-employee 
+                                    engagement-id={engagementId}
+                                    engage-sum-id={engageSumId}
+                                    job-type-buyside={jobTypeBuyside} 
+                                    job-type-sellside={jobTypeSellside} 
+                                    job-type-noside={jobTypeNoside}
+                                    required-fields-employee-pre-trx={sectionEmployeePreTrxRequiredFields}
+                                    required-fields-employee-post-trx={sectionEmployeePostTrxRequiredFields}>
+                                </c-hl-engage-sum-cf-employee>
+                            </template>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section name="sectionCapDetails" label="Capitalization Details" >
+                            <template if:true={sectionCapDetails}>
+                                <c-hl-engage-sum-cf-cap-details 
+                                    engagement-id={engagementId} 
+                                    engage-sum-id={engageSumId}
+                                    job-type-buyside={jobTypeBuyside}
+                                    job-type-sellside={jobTypeSellside} 
+                                    job-type-noside={jobTypeNoside}>
+                                </c-hl-engage-sum-cf-cap-details>
+                            </template>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section name="sectionCredit" label="Credit Facilities" >
+                            <template if:true={sectionCredit}>
+                                <c-hl-engage-sum-cf-credit
+                                    engagement-id={engagementId} 
+                                    engage-sum-id={engageSumId}
+                                    job-type-buyside={jobTypeBuyside} 
+                                    job-type-sellside={jobTypeSellside} 
+                                    job-type-noside={jobTypeNoside}
+                                    onrequiredsectionresult={requiredSectionResult}>
+                                </c-hl-engage-sum-cf-credit>
+                            </template>
+                        </lightning-accordion-section>
+                        <lightning-accordion-section name="sectionDynamics" label="EL / Engagement Dynamics" >
+                            <template if:true={sectionDynamics}>
+                                <c-hl-engage-sum-cf-dynamics
+                                    engagement-id={engagementId} 
+                                    engage-sum-id={engageSumId}
+                                    job-type-buyside={jobTypeBuyside} 
+                                    job-type-sellside={jobTypeSellside} 
+                                    job-type-noside={jobTypeNoside}>
+                                </c-hl-engage-sum-cf-dynamics>
+                            </template>
+                        </lightning-accordion-section>
+                    </lightning-accordion>
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exclude_From_Activity_List__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( 
+OR
+( LEFT( Subject, 40) = &apos;Duplicate Opportunity Internal Team Role&apos;
+, LEFT( Subject, 40) = &apos;Duplicate EngagementInternal Team Role&apos;
+, LEFT( Subject, 16) = &apos;Billing Request:&apos;
+, LEFT( Subject, 29) = &apos;Request for Marketing Expense&apos;
+, LEFT( Subject, 28) = &apos;Marketing Expense submission&apos;
+, LEFT( Subject, 25) = &apos;Marketing Expense request&apos;
+, LEFT( Subject, 13) = &apos;Gift Request:&apos;
+, LEFT( Subject, 26) = &apos;FEIS Review Requested for:&apos;
+, LEFT( Subject, 58) = &apos;Post-Transaction Opportunity Report has been submitted for&apos;
+
+, ToAddress = &apos;fvainvoices@hl.com&apos;
+, ToAddress = &apos;cfinvoices@hl.com&apos;
+, ToAddress = &apos;fasinvoices@hl.com&apos;
+, ToAddress = &apos;hl-cfnbcsubmission@hl.com&apos;
+, ToAddress = &apos;hl-m&amp;anbclegalreview@hl.com&apos;
+, ToAddress = &apos;fairnessengagementcommittee@hl.com&apos;
+, ToAddress = &apos;negotiatedfairnessengagementcommittee@hl.com&apos;
+)
+, True, False)</formula>
+    <label>Exclude From Activity List</label>
+    <type>Checkbox</type>
+</CustomField>

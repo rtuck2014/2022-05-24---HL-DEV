@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Allow_Automatic_Calendar_Sync__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Controls whether users can activate Groove&apos;s calendar sync service. Groove calendar Sync will bidirectionally sync Google calendar events with Salesforce events</inlineHelpText>
+    <label>Allow Background Calendar Sync</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

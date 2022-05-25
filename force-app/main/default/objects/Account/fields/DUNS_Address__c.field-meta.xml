@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DUNS_Address__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( 
+NOT(ISBLANK(Dun_and_Bradstreet_Company__c)), 
+Dun_and_Bradstreet_Company__r.Physical_Address__c + BR() +
+Dun_and_Bradstreet_Company__r.City__c+&quot;, &quot;+Dun_and_Bradstreet_Company__r.State__c+&quot; &quot;+  Dun_and_Bradstreet_Company__r.Postal_Code__c , 
+null)</formula>
+    <label>DUNS Address</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

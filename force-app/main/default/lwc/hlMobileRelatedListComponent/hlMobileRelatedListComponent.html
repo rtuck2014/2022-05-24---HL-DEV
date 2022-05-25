@@ -1,0 +1,30 @@
+<template>
+  <div class="slds-page-header slds-page-header_object-home">
+    <lightning-layout>
+        <lightning-layout-item>
+            <lightning-icon icon-name={iconname}></lightning-icon>
+        </lightning-layout-item>
+        <lightning-layout-item class="slds-m-left_small">
+            <p class="slds-page-header__title slds-line-height_reset">{sobject}</p>
+            <h1 class="slds-text-body_medium slds-p-right_x-small">{totalRecords} {items}</h1>
+        </lightning-layout-item>
+    </lightning-layout>
+</div>
+  <div  class="slds-scrollable_y" data-item="scrollableDiv"> 
+    <template if:true={records}>
+      <template for:each={records} for:item="record">
+        <div key={record.ParentId__c}>
+          <c-hl-mobile-related-list-record-component record={record} parentrecordid={recordId} parentapi={objectApiName}>
+          </c-hl-mobile-related-list-record-component>
+        </div>
+      </template>
+    </template>
+    <template if:true={noRecords}>
+      <div class="slds-illustration slds-illustration_small">
+        <div class="slds-text-longform">
+        <p class="slds-text-body_regular">{noRecordsMessage}</p>
+        </div>
+        </div>
+    </template>
+  </div>
+</template>

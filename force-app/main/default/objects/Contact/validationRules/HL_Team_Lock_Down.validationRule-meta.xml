@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_Team_Lock_Down</fullName>
+    <active>true</active>
+    <description>Only Maria Singer, Leslie Ward and Meissa Lee can edit</description>
+    <errorConditionFormula>ISCHANGED( HL_Team_Manager__c ) &amp;&amp; 
+$User.Username != &quot;lward@hl.com&quot; &amp;&amp; 
+$User.Username != &quot;mlee@hl.com&quot; &amp;&amp; 
+$User.Username != &quot;lward@hl.com&quot; &amp;&amp; 
+$User.Username != &quot;rbarham@hl.com&quot; &amp;&amp; 
+$User.Username != &quot;msinger@hl.com&quot; &amp;&amp; 
+$Profile.Name != &quot;System Administrator&quot;</errorConditionFormula>
+    <errorDisplayField>AccountId</errorDisplayField>
+    <errorMessage>You do not have access to modify the HL Team Manager field.</errorMessage>
+</ValidationRule>

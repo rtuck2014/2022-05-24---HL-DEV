@@ -1,0 +1,51 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-2 pre">
+            <c-hl-universal-card-form
+                object-api="Engagement_Summary__c"
+                record-id={engageSumId}
+                fields={engageSumPreFields}
+                required-fields={requiredFieldsEmployeePreTrx}
+                columns="1"
+                mode="view"
+                title="Pre-Transaction"
+                icon="utility:left"
+                buttons="none"
+                table-title="Employees"
+                table-object-api="Engagement_External_Team__c"
+                table-parent-id={engagementId}
+                table-parent-field="Engagement__c"
+                table-data={engageContactsSellerPreData}
+                table-columns={engageContactsSellerPreColumns}
+                table-form-rec-type-name="CF"
+                table-form-fields={engageContactsSellerPreTableFormFields}
+                ontablesort={engageContactsSellerSort}
+                ontablerefresh={engageContactsSellerPreRefresh}>
+            </c-hl-universal-card-form>
+        </div>
+        <div class="slds-col slds-size_1-of-2 post">
+            <c-hl-universal-card-form
+                object-api="Engagement_Summary__c"
+                record-id={engageSumId}
+                fields={engageSumPostFields}
+                required-fields={requiredFieldsEmployeePostTrx}
+                columns="2"
+                mode="view"
+                title="Post-Transaction"
+                icon="utility:right"
+                buttons="none"
+                table-title="Employees"
+                table-object-api="Engagement_External_Team__c"
+                table-parent-id={engagementId}
+                table-parent-field="Engagement__c"
+                table-data={engageContactsSellerPostData}
+                table-columns={engageContactsSellerPostColumns}
+                table-form-rec-type-name="CF"
+                table-form-fields={engageContactsSellerPostTableFormFields}
+                ontablesort={engageContactsSellerSort}
+                ontablerefresh={engageContactsSellerPostRefresh}>
+            </c-hl-universal-card-form>
+
+        </div>
+    </div>
+</template>

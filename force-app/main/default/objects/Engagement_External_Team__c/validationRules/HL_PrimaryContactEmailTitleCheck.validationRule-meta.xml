@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_PrimaryContactEmailTitleCheck</fullName>
+    <active>true</active>
+    <description>Related to DMND0023358:-
+To check if Primary contact has Title and Email</description>
+    <errorConditionFormula>((Primary__c &amp;&amp; (PRIORVALUE(Primary__c ) = false))  ||  (Billing_Contact__c &amp;&amp; (PRIORVALUE(Billing_Contact__c ) = false)) ) &amp;&amp;  
+(ISBLANK(Contact__r.Email)  ||  ISBLANK( Contact__r.Title ) ) &amp;&amp;  
+NOT( ISNEW() )</errorConditionFormula>
+    <errorMessage>Please enter the title and email of the primary/billing contact.</errorMessage>
+</ValidationRule>

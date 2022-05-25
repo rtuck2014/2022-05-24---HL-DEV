@@ -1,0 +1,35 @@
+<template>
+  <lightning-card onclick={handleClick}>
+    <div class="slds-grid slds-m-bottom_xx-small slds-m-top_xx-small">
+      <div class="slds-col slds-size_2-of-12 slds-p-horizontal_small">
+        <lightning-icon icon-name={iconname} size="small"></lightning-icon>
+      </div>
+      <div class="slds-col slds-size_10-of-12">
+        <b>
+          <p class="slds-item_detail">
+            <lightning-formatted-date-time value={record.StartDateTime} year="numeric" month="2-digit" day="2-digit" 
+            hour="2-digit" minute="2-digit"></lightning-formatted-date-time> - {record.Type}
+          </p>
+        </b>
+          <p class="slds-text-size_medium slds-hyphenate">{record.Subject}</p>
+        
+      </div>
+    </div>
+    <div class="slds-grid">
+      <div class="slds-col slds-size_1-of-2 slds-m-left_small">
+        <span>Primary HL Attendee:</span>
+      </div>
+      <div class="slds-col slds-size_1-of-2 slds-hyphenate">
+        <span>{record.Primary_Attendee__c}</span>
+      </div>
+    </div>
+    <div class="slds-grid">
+      <div class="slds-col slds-size_1-of-2 slds-m-left_small">
+        <span>Primary Contact:</span>
+      </div>
+      <div class="slds-col slds-size_1-of-2 slds-hyphenate">
+        <span>{record.Primary_External_Contact__c}</span>
+      </div>
+    </div>
+  </lightning-card>
+</template>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Filter</fullName>
+    <columns>NAME</columns>
+    <columns>Security_Type__c</columns>
+    <columns>Amoritization__c</columns>
+    <columns>Covenants__c</columns>
+    <columns>OID_Percent__c</columns>
+    <columns>Maturity_Date__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>9/1/2019 12:00 AM</value>
+    </filters>
+    <label>Filter</label>
+</ListView>

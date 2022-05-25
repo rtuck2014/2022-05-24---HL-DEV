@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Domain_Blacklist_Applies_to_Tracking__c</fullName>
+    <defaultValue>true</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Emails containing only recipients on the domain blocklist will not be tracked. This can be a good way to prevent internal emails from ever being tracked.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Emails containing only recipients on the domain blocklist will not be tracked. This can be a good way to prevent internal emails from ever being tracked.</inlineHelpText>
+    <label>Blocklist Applies to Email Open Tracking</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

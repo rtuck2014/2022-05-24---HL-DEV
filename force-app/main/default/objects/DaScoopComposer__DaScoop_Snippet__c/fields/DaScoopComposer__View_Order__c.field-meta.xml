@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__View_Order__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Determines in which order this view is displayed relative to other views (highest number first). Groove Views with no order set will be rendered after any which do have an order set.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Determines in which order this view is displayed relative to other views (highest number first). Groove Views with no order set will be rendered after any which do have an order set.</inlineHelpText>
+    <label>Display Order</label>
+    <precision>3</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

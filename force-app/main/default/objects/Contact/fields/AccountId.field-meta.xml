@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AccountId</fullName>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>(1 AND 2) OR (3 AND 4)</booleanFilter>
+        <errorMessage>External Contacts cannot be moved to Houlihan Lokey.  Please contact Salesforcesupport@hl.com</errorMessage>
+        <filterItems>
+            <field>$Source.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>External Contact</value>
+        </filterItems>
+        <filterItems>
+            <field>Account.RecordType.DeveloperName</field>
+            <operation>notContain</operation>
+            <value>Houlihan_Company</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Houlihan Employee, Distribution Lists, Conflicts Check LDCCR</value>
+        </filterItems>
+        <filterItems>
+            <field>Account.Name</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <trackHistory>true</trackHistory>
+    <type>Lookup</type>
+</CustomField>

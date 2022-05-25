@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Campaign_TEXT__c</fullName>
+    <description>Free form text to enter Campaign source of the email history record. Used when SFDC Campaign doesn&apos;t exist for lookup purposes.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Free form text to enter Campaign source of the email history record. Used when SFDC Campaign doesn&apos;t exist for lookup purposes.</inlineHelpText>
+    <label>Campaign TEXT</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

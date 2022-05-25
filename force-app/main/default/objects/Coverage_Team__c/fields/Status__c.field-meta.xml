@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Filed S1 and/or Intending to go Public</fullName>
+                <default>false</default>
+                <label>Filed S1 and/or Intending to go Public</label>
+            </value>
+            <value>
+                <fullName>Former Client</fullName>
+                <default>false</default>
+                <label>Former Client</label>
+            </value>
+            <value>
+                <fullName>Client Hold - Out of Tail</fullName>
+                <default>false</default>
+                <label>Client Hold - Out of Tail</label>
+            </value>
+            <value>
+                <fullName>Client Hold - Future Opportunity</fullName>
+                <default>false</default>
+                <label>Client Hold - Future Opportunity</label>
+            </value>
+            <value>
+                <fullName>Not Worth Calling</fullName>
+                <default>false</default>
+                <label>Not Worth Calling</label>
+            </value>
+            <value>
+                <fullName>Keep in Touch</fullName>
+                <default>false</default>
+                <label>Keep in Touch</label>
+            </value>
+            <value>
+                <fullName>Lead to Qualify</fullName>
+                <default>false</default>
+                <label>Lead to Qualify</label>
+            </value>
+            <value>
+                <fullName>Warm Lead</fullName>
+                <default>false</default>
+                <label>Warm Lead</label>
+            </value>
+            <value>
+                <fullName>Qualified Lead</fullName>
+                <default>false</default>
+                <label>Qualified Lead</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

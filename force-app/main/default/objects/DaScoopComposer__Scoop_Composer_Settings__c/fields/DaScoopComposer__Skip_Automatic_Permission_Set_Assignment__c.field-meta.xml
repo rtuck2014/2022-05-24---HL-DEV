@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Skip_Automatic_Permission_Set_Assignment__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Do not automatically assign the Groove Permission Set to all active users when they are created or updated.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>(Recommendation: disabled). When enabled, the Groove Assign Permission Set trigger will immediately exit and will not assign the Groove Permission set to newly inserted or updated users.</inlineHelpText>
+    <label>Skip Automatic Permission Set Assignment</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

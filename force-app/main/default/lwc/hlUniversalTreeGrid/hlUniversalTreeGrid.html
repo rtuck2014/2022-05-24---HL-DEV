@@ -1,0 +1,38 @@
+<template>
+    <article class="slds-card slds-card_boundary">
+        <template if:true={title}>
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container" title={title}>
+                            <lightning-icon 
+                                icon-name={icon}
+                                size="small">
+                            </lightning-icon>
+                            <span class="slds-assistive-text">{title}</span>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">
+                            <span>{title}</span>
+                        </h2>
+                    </div>
+                    <div class="slds-no-flex">
+                        <!-- LL201906042019 buttons will go here -->
+                    </div>
+                </header>
+            </div>
+        </template>
+        <div class="slds-card__body slds-card__body_inner slds-p-bottom_small" style="margin: 0;">
+            <div style="height: 200px; font-size: 12px">
+                <lightning-tree-grid
+                    style="line-height: 1"
+                    key-field="Id"
+                    data={treeGridData}
+                    columns={treeGridColumns}
+                    hide-checkbox-column>
+                </lightning-tree-grid>
+            </div>
+        </div>
+    </article>
+</template>

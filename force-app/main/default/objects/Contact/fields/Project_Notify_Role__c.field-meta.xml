@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Project_Notify_Role__c</fullName>
+    <externalId>false</externalId>
+    <label>Project Notify Role</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>All WP</fullName>
+                <default>false</default>
+                <label>All WP</label>
+            </value>
+            <value>
+                <fullName>AR_AT</fullName>
+                <default>false</default>
+                <label>AR_AT</label>
+            </value>
+            <value>
+                <fullName>AR_BE</fullName>
+                <default>false</default>
+                <label>AR_BE</label>
+            </value>
+            <value>
+                <fullName>AR_CF_BE</fullName>
+                <default>false</default>
+                <label>AR_CF_BE</label>
+            </value>
+            <value>
+                <fullName>AR_CF_HK</fullName>
+                <default>false</default>
+                <label>AR_CF_HK</label>
+            </value>
+            <value>
+                <fullName>AR_CF_TK</fullName>
+                <default>false</default>
+                <label>AR_CF_TK</label>
+            </value>
+            <value>
+                <fullName>AR_CH</fullName>
+                <default>false</default>
+                <label>AR_CH</label>
+            </value>
+            <value>
+                <fullName>AR_DC</fullName>
+                <default>false</default>
+                <label>AR_DC</label>
+            </value>
+            <value>
+                <fullName>AR_FVA_FF</fullName>
+                <default>false</default>
+                <label>AR_FVA_FF</label>
+            </value>
+            <value>
+                <fullName>AR_FVA_LO</fullName>
+                <default>false</default>
+                <label>AR_FVA_LO</label>
+            </value>
+            <value>
+                <fullName>AR_FVA_PA</fullName>
+                <default>false</default>
+                <label>AR_FVA_PA</label>
+            </value>
+            <value>
+                <fullName>AR_FRG_BE</fullName>
+                <default>false</default>
+                <label>AR_FRG_BE</label>
+            </value>
+            <value>
+                <fullName>AR_FRG_HK</fullName>
+                <default>false</default>
+                <label>AR_FRG_HK</label>
+            </value>
+            <value>
+                <fullName>AR_FRG_TK</fullName>
+                <default>false</default>
+                <label>AR_FRG_TK</label>
+            </value>
+            <value>
+                <fullName>AR_HK</fullName>
+                <default>false</default>
+                <label>AR_HK</label>
+            </value>
+            <value>
+                <fullName>AR_SF</fullName>
+                <default>false</default>
+                <label>AR_SF</label>
+            </value>
+            <value>
+                <fullName>AR Opt Out</fullName>
+                <default>false</default>
+                <label>AR Opt Out</label>
+            </value>
+            <value>
+                <fullName>Billing Coordinator</fullName>
+                <default>false</default>
+                <label>Billing Coordinator</label>
+            </value>
+            <value>
+                <fullName>Case Number Assigned</fullName>
+                <default>false</default>
+                <label>Case Number Assigned</label>
+            </value>
+            <value>
+                <fullName>CF Case Assigned</fullName>
+                <default>false</default>
+                <label>CF Case Assigned</label>
+            </value>
+            <value>
+                <fullName>Conflict Administrator</fullName>
+                <default>false</default>
+                <label>Conflict Administrator</label>
+            </value>
+            <value>
+                <fullName>Conflict Committee</fullName>
+                <default>false</default>
+                <label>Conflict Committee</label>
+            </value>
+            <value>
+                <fullName>Coverage</fullName>
+                <default>false</default>
+                <label>Coverage</label>
+            </value>
+            <value>
+                <fullName>Cross-Office Staffing</fullName>
+                <default>false</default>
+                <label>Cross-Office Staffing</label>
+            </value>
+            <value>
+                <fullName>Department</fullName>
+                <default>false</default>
+                <label>Department</label>
+            </value>
+            <value>
+                <fullName>Disclose Status - FRG</fullName>
+                <default>false</default>
+                <label>Disclose Status - FRG</label>
+            </value>
+            <value>
+                <fullName>Exam_Status_CF</fullName>
+                <default>false</default>
+                <label>Exam_Status_CF</label>
+            </value>
+            <value>
+                <fullName>Exam_Status_FVA</fullName>
+                <default>false</default>
+                <label>Exam_Status_FVA</label>
+            </value>
+            <value>
+                <fullName>Exam_Status_FR</fullName>
+                <default>false</default>
+                <label>Exam_Status_FR</label>
+            </value>
+            <value>
+                <fullName>FVA POC</fullName>
+                <default>false</default>
+                <label>FVA POC</label>
+            </value>
+            <value>
+                <fullName>FRG Euro Head</fullName>
+                <default>false</default>
+                <label>FRG Euro Head</label>
+            </value>
+            <value>
+                <fullName>FRG Private Bkg</fullName>
+                <default>false</default>
+                <label>FRG Private Bkg</label>
+            </value>
+            <value>
+                <fullName>IndAsst</fullName>
+                <default>false</default>
+                <label>IndAsst</label>
+            </value>
+            <value>
+                <fullName>IndHead</fullName>
+                <default>false</default>
+                <label>IndHead</label>
+            </value>
+            <value>
+                <fullName>Industry</fullName>
+                <default>false</default>
+                <label>Industry</label>
+            </value>
+            <value>
+                <fullName>Industry Update</fullName>
+                <default>false</default>
+                <label>Industry Update</label>
+            </value>
+            <value>
+                <fullName>IT Dev</fullName>
+                <default>false</default>
+                <label>IT Dev</label>
+            </value>
+            <value>
+                <fullName>IT Test</fullName>
+                <default>false</default>
+                <label>IT Test</label>
+            </value>
+            <value>
+                <fullName>New Office Staffing</fullName>
+                <default>false</default>
+                <label>New Office Staffing</label>
+            </value>
+            <value>
+                <fullName>Office</fullName>
+                <default>false</default>
+                <label>Office</label>
+            </value>
+            <value>
+                <fullName>Office Manager</fullName>
+                <default>false</default>
+                <label>Office Manager</label>
+            </value>
+            <value>
+                <fullName>Personal Assistant</fullName>
+                <default>false</default>
+                <label>Personal Assistant</label>
+            </value>
+            <value>
+                <fullName>Project Reopen - Accounting</fullName>
+                <default>false</default>
+                <label>Project Reopen - Accounting</label>
+            </value>
+            <value>
+                <fullName>Project Reopen - Compliance</fullName>
+                <default>false</default>
+                <label>Project Reopen - Compliance</label>
+            </value>
+            <value>
+                <fullName>RTx-CF</fullName>
+                <default>false</default>
+                <label>RTx-CF</label>
+            </value>
+            <value>
+                <fullName>RTx-FVA</fullName>
+                <default>false</default>
+                <label>RTx-FVA</label>
+            </value>
+            <value>
+                <fullName>RTx-FRG</fullName>
+                <default>false</default>
+                <label>RTx-FRG</label>
+            </value>
+            <value>
+                <fullName>RTx-OM</fullName>
+                <default>false</default>
+                <label>RTx-OM</label>
+            </value>
+            <value>
+                <fullName>Tail Expires</fullName>
+                <default>false</default>
+                <label>Tail Expires</label>
+            </value>
+            <value>
+                <fullName>UK Acctg</fullName>
+                <default>false</default>
+                <label>UK Acctg</label>
+            </value>
+            <value>
+                <fullName>Unknown AR</fullName>
+                <default>false</default>
+                <label>Unknown AR</label>
+            </value>
+            <value>
+                <fullName>User</fullName>
+                <default>false</default>
+                <label>User</label>
+            </value>
+            <value>
+                <fullName>Weekly CF Deal Progress</fullName>
+                <default>false</default>
+                <label>Weekly CF Deal Progress</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Engagement_Counterparty_Contacts</fullName>
+    <columns>NAME</columns>
+    <columns>Counterparty__c</columns>
+    <columns>Email__c</columns>
+    <columns>Engagement__c</columns>
+    <columns>Report_Counterparty_Contact_Fields__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Type__c</columns>
+    <columns>View_Details__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Counterparty__c</field>
+        <operation>startsWith</operation>
+        <value>EC - Oaktree</value>
+    </filters>
+    <label>Engagement Counterparty Contacts</label>
+</ListView>

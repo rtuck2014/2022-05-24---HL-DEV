@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Position_Asset_Classes_Validation</fullName>
+    <active>true</active>
+    <description>If Asset Calsses is &apos;Other&apos; then require value in Notes</description>
+    <errorConditionFormula>IF( AND(ISPICKVAL(Asset_Classes__c , &apos;Other&apos;),ISBLANK( Notes__c )),true, false)</errorConditionFormula>
+    <errorMessage>Notes is required if Asset Classes is &apos;Other&apos;.</errorMessage>
+</ValidationRule>

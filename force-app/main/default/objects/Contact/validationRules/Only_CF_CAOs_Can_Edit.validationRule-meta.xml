@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Only_CF_CAOs_Can_Edit</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISCHANGED(HL_Category_2__c) &amp;&amp; $User.Department != &apos;CF&apos; &amp;&amp;  $User.ProfileId != &apos;00ei00000016T4B&apos;</errorConditionFormula>
+    <errorMessage>Only CF CAOs can make changes to HL Category 2.</errorMessage>
+</ValidationRule>

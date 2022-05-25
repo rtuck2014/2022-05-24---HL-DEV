@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__TelephoneNumber__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The main phone number for the entity, including the international dialing code.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The main phone number for the entity, including the international dialing code.</inlineHelpText>
+    <isFilteringDisabled>false</isFilteringDisabled>
+    <isNameField>false</isNameField>
+    <isSortingDisabled>false</isSortingDisabled>
+    <label>Telephone Number</label>
+    <required>false</required>
+    <type>Phone</type>
+</CustomField>

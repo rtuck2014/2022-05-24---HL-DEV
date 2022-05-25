@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Do_Not_Email</fullName>
+    <active>false</active>
+    <errorConditionFormula>Do_Not_Email__c &amp;&amp;
+ISPICKVAL(Deal_Announcements__c,&apos;&apos;)&amp;&amp;
+ISPICKVAL( Events_Conferences__c,&apos;&apos;)&amp;&amp;
+ISPICKVAL( General_Announcements__c,&apos;&apos;)&amp;&amp;
+ISPICKVAL( InsightsContent__c,&apos;&apos;)</errorConditionFormula>
+    <errorDisplayField>Do_Not_Email__c</errorDisplayField>
+    <errorMessage>Please indicate which email type(s) the Contact has opted out of below:</errorMessage>
+</ValidationRule>

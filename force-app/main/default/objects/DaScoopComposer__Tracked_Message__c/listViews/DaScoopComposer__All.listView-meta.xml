@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__All</fullName>
+    <columns>NAME</columns>
+    <columns>DaScoopComposer__Sender__c</columns>
+    <columns>DaScoopComposer__Main_Recipient_Email__c</columns>
+    <columns>DaScoopComposer__Date_Sent__c</columns>
+    <columns>DaScoopComposer__Times_Opened__c</columns>
+    <columns>DaScoopComposer__Template_Used__c</columns>
+    <filterScope>Mine</filterScope>
+    <label>My Tracked Messages</label>
+</ListView>

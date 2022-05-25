@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Replied__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>indicates whether Groove detected at least one reply to this Email (Task). This only works if the respective email was logged (e.g. via Groove Email Sync or Groove for Gmail).</inlineHelpText>
+    <label>Replied</label>
+    <type>Checkbox</type>
+</CustomField>

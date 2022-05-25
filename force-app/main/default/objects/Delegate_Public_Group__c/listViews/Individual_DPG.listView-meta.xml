@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Individual_DPG</fullName>
+    <columns>NAME</columns>
+    <columns>Banker_Name__c</columns>
+    <columns>Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Banker_Name__c</field>
+        <operation>contains</operation>
+        <value>bahra</value>
+    </filters>
+    <label>Individual DPG</label>
+</ListView>

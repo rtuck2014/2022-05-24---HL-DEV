@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StaffIndustryExclusion__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is used when an allowed user changes the Staff Industry to a different value than the default criteria and it remains, so that the default Staff Industry assignment process doesn&apos;t fire and override the user&apos;s changes.  The only way to remove this exclusion is by unchecking this flag, manually, or setting the Staff Industry to NULL.</description>
+    <externalId>false</externalId>
+    <label>Staff Industry Exclusion</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,82 @@
+<template>
+    <div style="display: inline-block; position: relative;" class="slds-p-left_small">
+        <template if:true={icon}>
+            <lightning-icon 
+                icon-name={icon} 
+                size={iconSize} 
+                title="Click to keep open"
+                variant={iconVariant} 
+                alternative-text={title} 
+                onclick={clickSticky}
+                onmouseover={popOverMouse} 
+                onmouseout={popOverMouse}>
+            </lightning-icon>
+        </template>
+        <span class="slds-p-left_small" style="color: #CCC;">{visibleSubject}</span>
+        <template if:true={tooltipMode}>
+            <section aria-label={title} class="slds-popover slds-nubbin_bottom-left slds-popover_tooltip slds-popover_large" role="dialog" style="display: none; position:absolute;left:-6px;top:-125px">
+                <div class="slds-popover__body slds-popover__body_small slds-p-horizontal_none" >
+                    <div class="slds-p-vertical_x-small slds-p-horizontal_small" style="line-height: 2">
+                        <h3 class="slds-dynamic-menu__header slds-m-bottom_x-small" role="presentation">
+                            <span>{title}</span>
+                        </h3>
+                        <p>{subject}</p>
+                    </div>
+                </div>
+            </section>
+        </template>
+        <template if:false={tooltipMode}>
+            <section aria-label={title} class="slds-popover slds-nubbin_bottom-left slds-dynamic-menu slds-popover_large" role="dialog" style="display: none; position:absolute;left:-6px;top:-257px">
+                <div class="slds-popover__body slds-popover__body_small slds-p-horizontal_none" style="min-height: 15rem;">
+                    <div class="slds-p-vertical_x-small slds-p-horizontal_small" style="line-height: 2">
+                        <h3 class="slds-dynamic-menu__header slds-m-bottom_x-small" role="presentation">
+                            <span>{title}</span>
+                        </h3>
+                        <p>{subject}</p>
+                    </div>
+                    <footer class="slds-popover__footer slds-p-top_medium">
+                        <template if:true={bodyText}>
+                            <p>{bodyText}</p>
+                        </template>
+                        <template if:true={bodyValidations}>
+                            <ul style="line-height: 1.5;">
+                                <template for:each={bodyValidations} for:item="item">
+                                    <li key={item.label} style="line-height: 1.25px;">
+                                        <template if:true={item.icon}>
+                                            <lightning-icon icon-name={item.icon} alternative-text={item.label} size="x-small" variant={item.iconVariant}></lightning-icon>
+                                        </template>
+                                        <span class="slds-p-left_small" >{item.label}</span>
+                                        <template if:true={item.dependantChecks}>
+                                            <ul style="line-height: 1.5;">
+                                                <template for:each={item.dependantChecks} for:item="dependant">
+                                                    <li key={dependant.label} >
+                                                        <template if:true={dependant.icon}>
+                                                            <lightning-icon icon-name={dependant.icon} alternative-text={dependant.label} size="x-small" variant={dependant.iconVariant}></lightning-icon>
+                                                        </template>
+                                                        <span class="slds-p-left_small" >{dependant.label}</span>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </template>
+                                    </li>
+                                </template>
+                            </ul>
+                        </template>
+                        <template if:true={bodyList}>
+                            <ul style="line-height: 1.5;">
+                                <template for:each={bodyList} for:item="item">
+                                    <li key={item} >
+                                        <template if:true={bodyListIcon}>
+                                            <lightning-icon icon-name={bodyListIcon} alternative-text={item} size="x-small" variant={bodyListIconVariant}></lightning-icon>
+                                        </template>
+                                        <span class="slds-p-left_small" >{item}</span>
+                                    </li>
+                                </template>
+                            </ul>
+                        </template>
+                    </footer>
+                </div>
+            </section>
+        </template>
+    </div>
+</template>

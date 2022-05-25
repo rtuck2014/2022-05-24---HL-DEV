@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Sender__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates the user who sent the email. This user is identified by trying to match a user&apos;s email address with the the email sender&apos;s email address (which sometimes can lead to ambiguity).</inlineHelpText>
+    <label>Sender</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Tracked_Messages</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

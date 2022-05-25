@@ -1,0 +1,64 @@
+<template>
+    <lightning-card>
+        <template if:true ={showLookupField}>
+        <c-lookup-component iconname="standard:account" 
+        objectname="Account"
+        searchfield="Name"
+        subfield ="Location__c"
+        search-field-label="Company Name"
+        onselectedrec={handleAccountSelected}>
+        </c-lookup-component>
+    </template>
+    <template if:false ={showLookupField}>
+    <lightning-record-view-form
+        record-id={accountId}
+        object-api-name="Account">
+        <div class="slds-m-around_medium">
+        <lightning-output-field field-name="Name"></lightning-output-field>
+        </div>
+            </lightning-record-view-form>
+    </template>
+    <lightning-record-edit-form object-api-name="Contact" onsuccess={handleSuccess}>
+            <lightning-messages></lightning-messages>    
+        <div class="slds-m-around_medium">
+                <div style="display:none">
+                        <lightning-input-field field-name='Name'></lightning-input-field>
+                        </div>
+        <lightning-input-field field-name='Salutation' onchange={handleChangeSalutation}></lightning-input-field>
+        <lightning-input-field field-name='FirstName' onchange={handleChangeFirstName} required></lightning-input-field>
+        <lightning-input-field field-name='LastName' onchange={handleChangeLastName}></lightning-input-field>
+        <lightning-input-field field-name='Suffix__c' onchange={handleChangeSuffix}></lightning-input-field>
+        <lightning-input-field field-name='Title' onchange={handleChangeTitle}></lightning-input-field>
+        <lightning-input-field field-name='Goes_By_Nickname__c' onchange={handleChangeNickname}></lightning-input-field>
+        <lightning-input-field field-name='Email' onchange={handleChangeEmail}></lightning-input-field>
+        <lightning-input-field field-name='Phone' onchange={handleChangePhone}></lightning-input-field>
+        <lightning-input-field field-name='MobilePhone' onchange={handleChangeMobile}></lightning-input-field>
+        <lightning-input-address
+        onchange={updateState}
+        street={street}
+        city={city}
+        country={country}
+        province={province}
+        postal-code={postalcode}
+        address-label="Mailing Address"
+        street-label="Street"
+        city-label="City"
+        country-label="Country"
+        province-label="Province/State"
+        postal-code-label="PostalCode"
+        country-options={countryOptions}
+        province-options={provinceOptions}>
+    </lightning-input-address>
+        <!-- <lightning-input-field field-name='MailingAddress' value={mailingAddress} id="contactMailingAddress"></lightning-input-field> -->
+            <div class="slds-m-top_medium">
+                <lightning-button variant="brand" name="save" label="Create Contact" class="slds-align_absolute-center" onclick={handleSave} disabled={issavedisabled}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-record-edit-form>
+    </lightning-card>
+    <template if:true ={showModal}>
+            <c-hl-postal-code-modal-component title ="Select City" record-list ={postalCodeRecordList} onclosemodal ={handleCloseModal} onselect={handleSelect}>  
+            </c-hl-postal-code-modal-component>    
+            </template>                
+    </template>

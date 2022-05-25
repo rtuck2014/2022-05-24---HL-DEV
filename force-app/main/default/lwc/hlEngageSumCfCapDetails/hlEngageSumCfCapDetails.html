@@ -1,0 +1,28 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-2 sourcefunds">
+            <c-hl-universal-card-form
+                object-api="Engagement_Summary__c"
+                record-id={engageSumId}
+                fields={capDetailsEngageSumSourceFieldsEdit}
+                columns="2"
+                mode="view"
+                title="Source of Funds"
+                icon="utility:arrowdown"
+                buttons="none">
+            </c-hl-universal-card-form>
+        </div>
+        <div class="slds-col slds-size_1-of-2 usefunds"> 
+            <c-hl-universal-card-form
+                object-api="Engagement_Summary__c"
+                record-id={engageSumId}
+                fields={capDetailsEngageSumUseFieldsEdit}
+                columns="2"
+                mode="view"
+                title="Use of Funds"
+                icon="utility:arrowup"
+                buttons="none">
+            </c-hl-universal-card-form>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Industrials_Coverage_Companies</fullName>
+    <columns>Company__c</columns>
+    <columns>Officer__c</columns>
+    <columns>Tier__c</columns>
+    <columns>PrimarySectorLookup__c</columns>
+    <columns>SecondarySectorLookup__c</columns>
+    <columns>TertiarySectorLookup__c</columns>
+    <columns>Target_Engagement_Date__c</columns>
+    <columns>Estimated_EV_MM__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CoverageTypeLookup__c</field>
+        <operation>equals</operation>
+        <value>Industrials</value>
+    </filters>
+    <filters>
+        <field>Coverage_Team_Status__c</field>
+        <operation>equals</operation>
+        <value>Active</value>
+    </filters>
+    <filters>
+        <field>Officer__c</field>
+        <operation>notContain</operation>
+        <value>Alex Boden</value>
+    </filters>
+    <label>Industrials Coverage Companies</label>
+</ListView>

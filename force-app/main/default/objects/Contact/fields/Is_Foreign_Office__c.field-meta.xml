@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Foreign_Office__c</fullName>
+    <description>Used to check for a foreign office</description>
+    <externalId>false</externalId>
+    <formula>TEXT(Office__c) == &apos;AM&apos; || TEXT(Office__c) == &apos;BE&apos; || TEXT(Office__c) == &apos;DB&apos;|| TEXT(Office__c) == &apos;FF&apos; || TEXT(Office__c) == &apos;F3&apos; || TEXT(Office__c) == &apos;HK&apos; || TEXT(Office__c) == &apos;LO&apos; || TEXT(Office__c) == &apos;MD&apos; || TEXT(Office__c) == &apos;ML&apos; || TEXT(Office__c) == &apos;MU&apos; || TEXT(Office__c) == &apos;PA&apos; || TEXT(Office__c) == &apos;P2&apos; || TEXT(Office__c) == &apos;RO&apos; || TEXT(Office__c) == &apos;SG&apos; || TEXT(Office__c) == &apos;SY&apos; || TEXT(Office__c) == &apos;TK&apos; || TEXT(Office__c) == &apos;ZG&apos; || TEXT(Office__c) == &apos;BI&apos; || TEXT(Office__c) == &apos;DE&apos; || TEXT(Office__c) == &apos;FK&apos; || TEXT(Office__c) == &apos;HM&apos; || TEXT(Office__c) == &apos;KY&apos; || TEXT(Office__c) == &apos;LS&apos; || TEXT(Office__c) == &apos;LE&apos; || TEXT(Office__c) == &apos;MA&apos; || TEXT(Office__c) == &apos;MC&apos; || TEXT(Office__c) == &apos;NG&apos; || TEXT(Office__c) == &apos;OS&apos; || TEXT(Office__c) == &apos;SH&apos; || TEXT(Office__c) == &apos;ST&apos; || TEXT(Office__c) == &apos;TA&apos;|| TEXT(Office__c) == &apos;ZR&apos;</formula>
+    <label>Is Foreign Office</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

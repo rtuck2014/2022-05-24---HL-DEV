@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Face_Value_MM_Low__c</fullName>
+    <description>Purchase Price as a % of Face Value (MM)-Low</description>
+    <externalId>false</externalId>
+    <label>Face Value (MM)-Low</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__RevenueTrendYear__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The percentage change of this item as of base year compared to the trend year.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The percentage change of this item as of base year compared to the trend year.</inlineHelpText>
+    <label>Revenue Trend Year</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Allocation_boundary</fullName>
+    <active>true</active>
+    <description>Allocation boundary</description>
+    <errorConditionFormula>OR(Admin_Allocation__c&lt;0 
+,Admin_Allocation__c &gt;1
+,Analyst_Allocation__c&lt;0 
+,Analyst_Allocation__c &gt;1
+,Associate_Allocation__c&lt;0 
+,Associate_Allocation__c &gt;1
+)</errorConditionFormula>
+    <errorMessage>Allocation should be between 0 to 100%.</errorMessage>
+</ValidationRule>

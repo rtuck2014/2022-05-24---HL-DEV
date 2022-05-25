@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Create_Company</fullName>
+    <availability>online</availability>
+    <description>LEGACY: Creates a company object from Company IQ data</description>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Create_Company</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/33.0/connection.js&quot;)}
+
+var companyData= sforce.connection.query(&quot;select id,Name,CapIQ_ID__C,CapIQ_Company__c from Account where  CapIQ_Company__c  =&apos;{!CapIQ_Company__c.Id}&apos;&quot;);
+var records= companyData.getArray(&apos;records&apos;);
+var isExist = 0 ;
+var capIQName = &quot;{!CapIQ_Company__c.Name}&quot;;
+var existenceCompanyId = &apos;&apos;;
+
+for (var i=0; i&lt; records.length; i++) {
+
+    var record = records[i];
+    if( record.Name == capIQName ){
+       isExist++;
+       existenceCompanyId = record.Id;
+    }
+  }
+
+if(isExist &gt; 0 )
+{ 
+	if(confirm(&quot;The Company already exists, would you like to navigate to the Salesforce Company?&quot;))
+		{
+			window.location.href=&apos;/apex/HL_CompanyView?id=&apos;+ existenceCompanyId;
+		}
+}
+else 
+{ 		
+		var contactCheck = sforce.connection.query(&quot;select id from Investment__c where SPONSOR_CAPIQ_COMPANY__C  = &apos;{!CapIQ_Company__c.Id}&apos;&quot;);
+
+		var results = contactCheck.getArray(&quot;records&quot;);
+
+		var newCompany = new sforce.SObject(&apos;Account&apos;);
+
+		newCompany.Name = &quot;{!CapIQ_Company__c.Name}&quot;;
+		newCompany.BillingStreet = &quot;{!CapIQ_Company__c.Street_Address__c} &quot; + &quot;{!CapIQ_Company__c.StreetAddress_2__c} &quot;+&quot;{!CapIQ_Company__c.StreetAddress3__c} &quot;+&quot;{!CapIQ_Company__c.StreetAddress4__c} &quot;;
+		newCompany.BillingCity = &quot;{!CapIQ_Company__c.City__c}&quot;;
+		newCompany.BillingState = &quot;{!CapIQ_Company__c.State__c}&quot;;
+		newCompany.BillingPostalCode = &quot;{!CapIQ_Company__c.Postal_Code__c}&quot;;
+		newCompany.BillingCountry = &quot;{!CapIQ_Company__c.Country__c}&quot;;
+		newCompany.Phone = &quot;{!CapIQ_Company__c.Phone__c}&quot;;
+		newCompany.Fax = &quot;{!CapIQ_Company__c.Fax__c}&quot;;
+		newCompany.Website = &quot;{!CapIQ_Company__c.Website__c}&quot;;
+		newCompany.Description = &quot;{!CapIQ_Company__c.Business_Description__c}&quot;;
+		newCompany.TickerSymbol = &quot;{!CapIQ_Company__c.Ticker_Symbol__c}&quot;;
+		newCompany.CapIQ_Company__c  = &quot;{!CapIQ_Company__c.Id}&quot;;
+		//Check to see if the company is Capital or Operating Type
+		if(results.length &gt;0)
+		{ 
+		   newCompany.RecordTypeId= &quot;012i0000000tEhFAAU&quot;;
+		}
+		else
+		{
+		   newCompany.RecordTypeId=&quot;012i0000000tEhAAAU&quot;;
+		}
+
+		result = sforce.connection.create([newCompany]);
+
+		var str = window.location.href;
+		str = str.substring(0,str.length - 15 );
+
+                window.location.href=&apos;/&apos;+ result[0].id +&apos;/e?retURL=&apos;+str+&apos;apex/HL_CompanyView?id=&apos;+ result[0].id;
+
+}</url>
+</WebLink>

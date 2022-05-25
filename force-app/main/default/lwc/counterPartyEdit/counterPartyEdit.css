@@ -1,0 +1,84 @@
+.c-container {
+  border: 1px solid #d8dde6;
+  height:100%;
+  overflow:auto; 
+}
+ .table-scroll {
+   overflow-y: scroll;
+   overflow-x:scroll;
+   max-height:60vh;   
+ }
+
+ .freeze{
+     position: sticky;
+     left: 0;
+     z-index: 99;
+     background: #f8f8f8;
+  }
+
+  .slds-size_2-of-12, .slds-size--2-of-12 {
+    width: 12.6666666667%;
+  }
+/*
+.limitVert{
+  
+  width:3000px;
+  height:600px;
+}
+
+.page-main {
+  background: white;
+  overflow-x: auto;
+}
+.page-left{
+  float:left;
+}
+.page-right {
+  width:1600px;
+}
+
+.tableDiv{
+  height: 55vh;
+  width: 55wh;
+}
+
+
+.tableDiv table tbody{
+  display: table;
+  width:100%;
+  height:100%;
+}
+
+.tableDiv table{
+  display: block;
+  overflow: auto
+}
+ .table-scroll table {
+  background-color: rgb(231, 20, 20);
+ }
+
+ .table-scroll table th{
+   min-width: 140px;
+   height: 50px;
+   text-align: center;
+ }
+
+  .table-scroll table td{
+   height: 50px;
+   text-align: center;
+ }
+
+.tableDiv td{
+  height:500px;
+}
+
+.divFreeze {
+  width: 100%; 
+  overflow: auto;
+}
+
+.divFreeze th {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+}*/

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ERP_Non_labor_Format__c</fullName>
+    <description>The non labor format in ERP</description>
+    <externalId>false</externalId>
+    <label>ERP Non-labor Format</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>HL Nonlabor</fullName>
+                <default>true</default>
+                <label>HL Nonlabor</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

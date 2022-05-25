@@ -1,0 +1,340 @@
+<template>
+   <lightning-card title="">
+	  <div class="slds-m-aroung_small slds-align_absolute-center">
+		<lightning-spinner if:true={isSpinner} alternative-text="Loading" size="small"></lightning-spinner>
+	  </div>
+	  
+	  <template if:true={isuccess}>
+         <div class="slds-p-bottom_small">
+               <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_success" role="alert">
+                  <h2>{successMsg}</h2>
+                  <div class="slds-notify__close">
+                     <lightning-button-icon icon-name="utility:close" onclick={handleSuccessClose} alternative-text="close"
+                           variant="border-filled" class="slds-icon-small"></lightning-button-icon>
+                  </div>
+                  </div>
+               </div>
+      </template>
+      <template if:true={isErr}>
+         <div class="slds-p-bottom_small">
+               <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+                  <h2>{errorMsg}</h2>
+                  <div class="slds-notify__close">
+                     <lightning-button-icon icon-name="utility:close" onclick={handleErrClose} alternative-text="close"
+                           variant="border-filled" class="slds-icon-small"></lightning-button-icon>
+                  </div>
+                  </div>
+               </div>
+      </template>
+      <!--<template if:false={isAllSelected}>-->
+      <template if:false={isEdited}>
+         <lightning-button
+            label="Edit"
+            variant="brand-outline"
+            icon-name="utility:edit"
+            slot="actions"
+            onclick={onDoubleClickEdit}>
+         </lightning-button>
+         </template>
+      <template if:true={isEdited}>
+      <lightning-button
+         label={toggleSaveLabel}
+         variant="brand-outline"
+         icon-name="utility:save"
+         slot="actions"
+         onclick={handleSave}>
+      </lightning-button>
+      
+      <lightning-button
+         label="Cancel"
+         variant="destructive-text"
+         icon-name="utility:cancel"
+         slot="actions"
+         onclick={handleCancel}>
+      </lightning-button>
+   </template>
+<!--</template>-->
+      <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+            <span class="slds-truncate"><P class="slds-truncate">Type</P></span>
+            <lightning-combobox
+               id="pickListSelect"
+               name="Type"
+               value={value}
+               variant={variant}
+               placeholder="All"
+               options={selectTargetValues}
+               onchange={handlePicklistChangesort}>
+            </lightning-combobox>
+            </div>
+            <div class="slds-col" style="padding-top: 5px;">
+               <span class="slds-truncate"><P class="slds-truncate">Refresh</P></span>
+               <lightning-button-icon icon-name="utility:refresh" slot="actions" onclick={refresh}></lightning-button-icon>
+              
+            </div>
+            <div class="slds-col">
+               <span></span>
+            </div>
+            <div class="slds-col">
+               <span></span>
+            </div>
+         </div>
+         <br/>
+      <div class="">
+         <table  class="slds-table slds-table_bordered slds-table_col-bordered slds-table_resizable-cols" role="grid" style="border-left: solid lightgrey;border-right: solid lightgray;border-left-style: double;">
+            <thead>
+               <tr class="slds-line-height_reset">
+                  <th class="slds-text-align_right" scope="col" style="width:3.25rem" key={col}>
+   
+                  </th>
+                  <template for:each = {columnsForTable} for:item = "col" for:index="indexVar">
+                  <template if:true={col.FirstField}>
+                     <td class="slds-is-resizable slds-is-sortable" scope="col" style="width:300px;padding: 6px;" key={col}>
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                           <template if:true={col.inlineHelpText}>
+                              {col.label}&nbsp;&nbsp;<a title={col.inlineHelpText} class="tooltip"><lightning-icon icon-name="utility:info" size="xx-small"></lightning-icon></a>
+                           </template>
+                           <template if:false={col.inlineHelpText}>
+                              <span class="slds-truncate" title={col.label} style="white-space: initial;overflow: revert;">{col.label}</span>
+                           </template>
+                        </div>
+                        
+                     </td>
+                  </template>
+                  <template if:false={col.FirstField}>
+                     <td class="slds-is-resizable slds-is-sortable" scope="col" key={col} style="padding: 6px;">
+                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                           <template if:true={col.inlineHelpText}>
+                              <div >
+                                 {col.label}&nbsp;&nbsp;<a title={col.inlineHelpText} class="tooltip"><lightning-icon icon-name="utility:info" size="xx-small"></lightning-icon></a>
+                              </div>
+                           </template>
+                           <template if:false={col.inlineHelpText}>                              
+                              <span class="slds-truncate" title={col.label} style="white-space: initial;overflow: revert;">{col.label}</span>
+                           </template>                           
+                        </div>
+                           
+                     </td>
+                  </template>
+                  </template>
+               </tr>
+            </thead>
+            <tbody>
+               <template for:each = {recordDetail} for:item = "item" for:index="indexVar">
+                  <tr key={item.key} aria-selected="false" class="slds-hint-parent">
+                     <td class="slds-text-align_right" role="gridcell" key={item.Id} title="Select Checkbox for delete">
+                        <!--<input type="checkbox" label="" name="SelectedRecord"
+                           value={item.isChecked} variant="label-hidden" checked={item.isChecked}
+                           />-->
+                  <div class="slds-checkbox">
+                     <lightning-input title = "{helpTextCheckBox}" type="checkbox" variant="label-hidden" 
+                        checked={item.isChecked} value={item.RecordId}
+                        data-key={item.RecordId} label="dataCheckbox" onchange={dataChekChange}>
+                     </lightning-input>
+                  </div>
+                     </td>
+                     <template for:each = {item.fields} for:item = "coll" for:index="indexVarr">
+                  
+                     <td role="gridcell" data-label={coll.Value} key={item.id} >
+                           <div  title={coll.Value}>
+                              <template if:true={coll.isBoolean}>
+                                 <template if:true={isEdited}>
+                                    <lightning-input title = "{helpTextCheckBox}" type="checkbox" variant="label-hidden"
+                        checked={coll.boolVal} value={coll.boolVal} data-key={coll.FieldApiName}
+                        data-id={item.RecordId} label="dataCheckbox" onchange={handleNameChange}></lightning-input>
+                                 </template>
+                              </template>
+                              <template if:true={coll.isBoolean}>
+                                 <template if:false={isEdited}>
+                                    <lightning-input title = "{helpTextCheckBox}" type="checkbox" variant="label-hidden"
+                        checked={coll.boolVal} value={coll.boolVal} data-key={coll.FieldApiName}
+                        data-id={item.RecordId} label="dataCheckbox" disabled ></lightning-input>
+                                 </template>
+                              </template>
+                              <template if:true={coll.isFormula}>
+                                 <template if:true={isEdited}>
+                                    <lightning-formatted-text value={coll.perValue}></lightning-formatted-text>
+                                 </template>
+                              </template>
+                              <template if:true={coll.isCurrency}>
+                                    <template if:false={isEdited}>
+                                       <template if:false={coll.perValue}>
+                                       <lightning-formatted-text value={coll.Value}></lightning-formatted-text>
+                                    </template>
+                                    </template>
+                              </template>
+                              <template if:false={coll.isCurrency}>
+                                 <template if:true={coll.isPercentage}>
+                                    <template if:false={isEdited}>
+                                       <lightning-formatted-text value={coll.perValue}></lightning-formatted-text>
+                                    </template>
+                                 </template>
+                              </template>
+                              <template if:false={coll.isBoolean}>
+                                 <template if:false={coll.isCurrency}>
+                              <template if:false={coll.isPercentage}>
+                              <template if:false={coll.isLookup}>
+                                 <template if:false={isEdited}>
+                                    <lightning-formatted-text style="white-space: initial; overflow: revert;" value={coll.Value}></lightning-formatted-text>
+                                 </template>
+                              </template>
+                              </template>
+                              </template>
+                           </template>
+                              <template if:true={coll.isLookup}>
+                                 <template if:false={isEdited}>
+                                    <c-hl-client-subject-lookup
+                                       unique-key={item.RecordId}
+                                       value-id={coll.Value}
+                                       obj-name={coll.lookupObjectApiName}
+                                       icon-name="custom:custom85"
+                                       read-only=true>
+                                    </c-hl-client-subject-lookup>
+                                 </template>
+                              </template>
+                              <template if:false={coll.isBoolean}>
+                              <template if:false = {coll.isFormula}>
+                              <template if:false={coll.isLookup}>
+                                 <template if:false={coll.isPicklist}>
+                                    <template if:true={isEdited}>
+                                       <lightning-input key={item.id} data-key={coll.FieldApiName} data-id={item.RecordId} name="input1" value={coll.Value}
+                                          onchange={handleNameChange}></lightning-input>
+                                    </template>
+                                 </template>
+                              </template>
+                              </template>
+                              </template>
+                              <template if:true={coll.isPicklist}>                                 
+                                 <template if:true={isEdited}>
+                                    <div class="slds-form-element slds-hint-parent">
+                                       <div class="slds-form-element__control">
+                                    <c-hl-client-subject-picklist
+                                       unique-key={item.RecordId}
+                                       record-type-id={item.RecordTypeId}
+                                       object-api-name={objName}
+                                       selected-value={coll.Value}  
+                                       pick-listfield-api-name={coll.FieldApiName}
+                                       variant="label-hidden"
+                                       onpicklistchange={handlePicklistChange}>
+                                    </c-hl-client-subject-picklist>
+                                    </div>
+                                    </div>
+                                 </template>
+                              </template>
+                              <template  if:false={coll.FirstField}>
+                              <template if:true={coll.isLookup}>
+                                 <template if:true={isEdited}>
+                                    <c-hl-client-subject-lookup
+                                       unique-key={item.RecordId}
+                                       value-id={coll.Value}
+                                       obj-name={coll.lookupObjectApiName}
+                                       icon-name="custom:custom85"
+                                       onvalueselect={handleSelection}
+                                       create-record=false>
+                                    </c-hl-client-subject-lookup>
+                                 </template>
+                              </template>
+                           </template>
+                           <template  if:true={coll.FirstField}>
+                              <template if:true={coll.isLookup}>
+                                 <template if:true={isEdited}>
+                                    <c-hl-client-subject-lookup
+                                       unique-key={item.RecordId}
+                                       value-id={coll.Value}
+                                       obj-name={coll.lookupObjectApiName}
+                                       icon-name="custom:custom85"
+                                       onvalueselect={handleSelection}
+                                       create-record=false
+                                       read-only=true>
+                                    </c-hl-client-subject-lookup>
+                                 </template>
+                              </template>
+                           </template>
+                           </div>
+                        </td>                    
+                     </template>
+                  </tr>
+               </template>
+   </tbody>
+   <tbody>
+               <template for:each = {recordDetailTotal} for:item = "item" for:index="indexVar">
+                  <tr class="slds-line-height_reset" key={item.key}>
+                     <th class="slds-text-align_right" scope="col" style="width:3.25rem" key={item.key}>
+                     </th>
+                     <template for:each = {item.fields} for:item = "coll" for:index="indexVarr">
+                        <template if:true={coll.FirstField}>
+                           <td class="slds-is-resizable slds-is-sortable" scope="col" style="width:300px;padding: 6px;" key={coll.key}>
+                              <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate"><span class="slds-truncate" title={coll.Value}>{coll.Value}</span></div>
+                           </td>
+                        </template>
+                        <template if:false={coll.FirstField}>
+                           <td class="slds-is-resizable slds-is-sortable" scope="col" key={coll.key} style="padding: 6px;">
+                              <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                 <template if:false={recordDetailNull}>
+                                 <template if:true={coll.isCurrency}>
+                                    <lightning-formatted-text value={coll.Value}></lightning-formatted-text>
+                                 </template>
+                                 <template if:true={coll.isPercentage}>
+                                    <lightning-formatted-text value={coll.Value} class={coll.cssClass}></lightning-formatted-text><div class={coll.cssClass}>%</div>
+                                 </template>
+                                 <template if:false={coll.isCurrency}>  
+                                    <template if:false={coll.isPercentage}>                                    
+                                       <span class="slds-truncate " title={coll.Value} >{coll.Value}</span>
+                                    </template>
+                                 </template>
+                              </template>
+                              </div>
+                           </td>
+                        </template>
+                     </template>
+                  </tr>
+               </template>
+            </tbody>
+         </table>
+      </div>
+   
+    <!--  <div class="">
+         <table  class="slds-table slds-table_bordered slds-table_col-bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid" style="border-left: solid lightgrey;border-right: solid lightgray;border-left-style: double;">
+            <tbody>
+               <template for:each = {recordDetailTotal} for:item = "item" for:index="indexVar">
+                  <tr class="slds-line-height_reset" key={item.key}>
+                     <th class="slds-text-align_right" scope="col" style="width:3.25rem" key={item.key}>
+                     </th>
+                     <template for:each = {item.fields} for:item = "coll" for:index="indexVarr">
+                        <template if:true={coll.FirstField}>
+                           <td class="slds-is-resizable slds-is-sortable" scope="col" style="width:300px;padding: 6px;" key={coll.key}>
+                              <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate"><span class="slds-truncate" title={coll.Value}>{coll.Value}</span></div>
+                           </td>
+                        </template>
+                        <template if:false={coll.FirstField}>
+                           <td class="slds-is-resizable slds-is-sortable" scope="col" key={coll.key} style="padding: 6px;">
+                              <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                 <template if:true={coll.isCurrency}>
+                                    <lightning-formatted-number value={coll.Value}></lightning-formatted-number>
+                                 </template>
+                                 <template if:true={coll.isPercentage}>
+                                    <lightning-formatted-number value={coll.Value} format-style="percent"></lightning-formatted-number>
+                                 </template>
+                                 <template if:false={coll.isCurrency}>  
+                                    <template if:false={coll.isPercentage}>                                    
+                                       <span class="slds-truncate" title={coll.Value}>{coll.Value}</span>
+                                    </template>
+                                 </template>
+                              </div>
+                           </td>
+                        </template>
+                     </template>
+                  </tr>
+               </template>
+            </tbody>
+         </table>
+      </div>-->
+      <!--<div class="spinner slds-spinner_inline spinner-padding" if:true={isSpinner}>
+         <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+         </lightning-spinner>
+      </div>-->
+	  <!--<div class="slds-m-aroung_small slds-align_absolute-center">
+		<lightning-spinner if:true={isSpinner} alternative-text="Loading" size="small"></lightning-spinner>
+	  </div>-->
+   </lightning-card>
+   </template>

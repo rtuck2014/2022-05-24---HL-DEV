@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Flag_Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Flag Reason</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Company Acquired/Merged</fullName>
+                <default>false</default>
+                <label>Company Acquired/Merged</label>
+            </value>
+            <value>
+                <fullName>Company Out Of Business</fullName>
+                <default>false</default>
+                <label>Company Out Of Business</label>
+            </value>
+            <value>
+                <fullName>Company Renamed</fullName>
+                <default>false</default>
+                <label>Company Renamed</label>
+            </value>
+            <value>
+                <fullName>Duplicate Company</fullName>
+                <default>false</default>
+                <label>Duplicate Company</label>
+            </value>
+            <value>
+                <fullName>Change Company Type</fullName>
+                <default>false</default>
+                <label>Change Company Type</label>
+            </value>
+            <value>
+                <fullName>Update Company Hierarchy</fullName>
+                <default>false</default>
+                <label>Update Company Hierarchy</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

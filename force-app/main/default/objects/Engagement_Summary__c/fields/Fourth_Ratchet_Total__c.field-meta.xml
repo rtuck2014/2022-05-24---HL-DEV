@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fourth_Ratchet_Total__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Transaction_Value_for_Fee_Calc__c &gt;= Fourth_Ratchet_To_Amount__c, (Fourth_Ratchet_To_Amount__c - Fourth_Ratchet_From_Amount__c) *  Fourth_Ratchet_Percent__c,  IF((Transaction_Value_for_Fee_Calc__c &gt; Fourth_Ratchet_From_Amount__c) &amp;&amp; (Transaction_Value_for_Fee_Calc__c &lt; Fourth_Ratchet_To_Amount__c), (Transaction_Value_for_Fee_Calc__c -Fourth_Ratchet_From_Amount__c)*Fourth_Ratchet_Percent__c, 0) )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Fourth Ratchet Total</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

@@ -1,0 +1,101 @@
+<template>
+  
+    <lightning-card title="Engagement Counterparty Contact Search">
+      <lightning-button style="padding:5px;" label="Back" slot="actions" onclick={handleBack}></lightning-button>
+      <template if:true={callServer}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+      </template>
+        <div class="slds-box slds-p-around_small">
+            <lightning-layout multiple-rows>
+              <lightning-layout-item size="12"   padding="around-small" style="display:flex">
+                 <p> <lightning-input name="search" type="text" variant="label-hidden" label="" placeholder="type here..." onchange={handleSearchInput}></lightning-input></p>
+                <p>  <lightning-button variant="brand" label="Seacrh" title="Search" onclick={handleSearch} class="slds-m-left_x-small"></lightning-button></p>
+              </lightning-layout-item>
+              <lightning-layout-item size="12"   padding="around-small" style="display:flex">
+                <lightning-radio-group name="radioGroup"
+                            label="Radio Group"
+                            options={options}
+                            value={selectedFilter}
+                            type="radio"
+                            variant="label-hidden"
+                            onchange={handleInputChange}></lightning-radio-group>
+                </lightning-layout-item>
+            </lightning-layout>  
+            <lightning-accordion class="example-accordion" allow-multiple-sections-open>
+                <lightning-accordion-section name="Filter" label="Filters">
+                  <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12" large-device-size="3"   padding="around-small" style="text-align:right">
+                      Last Name:
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" large-device-size="3"   padding="around-small" style="display:flex">
+                      <lightning-input name="lastName" type="text" variant="label-hidden" label="" placeholder="type here..." onchange={handleFilterInput}></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" large-device-size="3"   padding="around-small" style="text-align:right">
+                      First Name:
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" large-device-size="3"   padding="around-small" style="display:flex">
+                      <lightning-input name="firstName" type="text" variant="label-hidden" label="" placeholder="type here..." onchange={handleFilterInput}></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" large-device-size="3"   padding="around-small" style="text-align:right">
+                      Title:
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" large-device-size="3"   padding="around-small" style="display:flex">
+                      <lightning-input name="title" type="text" variant="label-hidden" label="" placeholder="type here..." onchange={handleFilterInput}></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" large-device-size="3"   padding="around-small" style="text-align:right">
+                      Company Name:
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" large-device-size="3"   padding="around-small" style="display:flex">
+                      <lightning-input name="accountName" type="text" variant="label-hidden" label="" placeholder="type here..." onchange={handleFilterInput}></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" large-device-size="3"   padding="around-small" style="text-align:right">
+                      Department:
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" large-device-size="3"   padding="around-small" style="display:flex">
+                      <lightning-input name="department" type="text" variant="label-hidden" label="" placeholder="type here..." onchange={handleFilterInput}></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" large-device-size="3"   padding="around-small" style="text-align:right">
+                      Industry/Product Focus:
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" large-device-size="3"   padding="around-small" style="display:flex">
+                      <lightning-input name="industryFocus" type="text" variant="label-hidden" label="" placeholder="type here..." onchange={handleFilterInput}></lightning-input>
+                    </lightning-layout-item>
+                  </lightning-layout>
+                  <p style="text-align:center;padding:10px;"><lightning-button variant="brand" label="Apply Filters" title="filter" onclick={handleFilterAction} class="slds-m-left_x-small"></lightning-button></p>
+             
+                </lightning-accordion-section>
+            </lightning-accordion>
+               
+        </div>
+        <div class="slds-box slds-p-around_small">
+          <!--<p>This is a regular-sized box.</p>-->
+          <h1><b>{name} </b></h1>
+          <br/>
+          <b>{showFilteredBy} </b>{filteredBy}
+          <br/>
+          <br/>
+          <template if:true={showContactList}>
+            <a onclick={clearTable}> Clear Results </a>
+            <p style="text-align:center;padding-bottom:10px;"><lightning-button variant="brand" label="Add Contact" title="counterparty" onclick={handleAddCounterParty} class="slds-m-left_x-small"></lightning-button></p>
+              
+             
+                <lightning-datatable 
+                        key-field="Id"
+                        data={contactList}
+                        columns={columns}
+                        row-number-offset={rowNumberOffset}></lightning-datatable>
+                        <br/>
+                         <c-paginator records={originalContactList} 
+                            total-records={originalContactList.length} 
+                            show-search-box=false 
+                            onpaginatorchange={handlePaginatorChange}
+                            >
+                </c-paginator>
+                <b style="color:red;">{advanceFilter}</b>
+            </template>
+            <template if:false={showContactList}>
+              No Records Found
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__PostalCode__c</fullName>
+    <deprecated>false</deprecated>
+    <description>An identifier used by the local country&apos;s postal authority to identify where this address is located.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>An identifier used by the local country&apos;s postal authority to identify where this address is located.</inlineHelpText>
+    <label>Primary Address Postal Code</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

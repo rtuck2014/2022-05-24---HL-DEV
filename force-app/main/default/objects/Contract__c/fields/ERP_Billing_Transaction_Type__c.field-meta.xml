@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ERP_Billing_Transaction_Type__c</fullName>
+    <description>Transaction Type under Billing</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Please select PA Invoice for a customer contract, and PA Internal Invoice for an ICO contract</inlineHelpText>
+    <label>ERP Billing Transaction Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>PA Invoice</fullName>
+                <default>true</default>
+                <label>PA Invoice</label>
+            </value>
+            <value>
+                <fullName>PA Internal Invoice</fullName>
+                <default>false</default>
+                <label>PA Internal Invoice</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

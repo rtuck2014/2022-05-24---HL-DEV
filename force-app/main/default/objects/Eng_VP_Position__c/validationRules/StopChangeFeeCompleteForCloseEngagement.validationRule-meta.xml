@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StopChangeFeeCompleteForCloseEngagement</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(NOT(ISNEW()),AND( AND(ISCHANGED(Fee_Completed__c),ISCHANGED(Report_Fee__c)),IF(OR(ISPICKVAL(Engagement_VP__r.Engagement__r.Stage__c, &apos;Closed&apos;),ISPICKVAL(Engagement_VP__r.Engagement__r.Stage__c, &apos;Dead&apos;)), true,false)), false)</errorConditionFormula>
+    <errorMessage>Report Fee can&apos;t be modified on Closed or Dead Engagement .</errorMessage>
+</ValidationRule>

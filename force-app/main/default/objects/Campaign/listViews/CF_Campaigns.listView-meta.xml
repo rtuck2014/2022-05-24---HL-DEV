@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CF_Campaigns</fullName>
+    <columns>CAMPAIGN.NAME</columns>
+    <columns>Lines_of_Business__c</columns>
+    <columns>Industry_Groups__c</columns>
+    <columns>HL_Sub_Group__c</columns>
+    <columns>CAMPAIGN.CAMPAIGN_TYPE</columns>
+    <columns>CAMPAIGN.NUM_CONTACTS</columns>
+    <columns>CAMPAIGN.ACTIVE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Lines_of_Business__c</field>
+        <operation>equals</operation>
+        <value>CF</value>
+    </filters>
+    <label>CF Campaigns</label>
+</ListView>

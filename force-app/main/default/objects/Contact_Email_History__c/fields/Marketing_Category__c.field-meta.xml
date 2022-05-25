@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Marketing_Category__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+(Status_Category__c = &apos;Success&apos; || 
+Status_Category__c = &apos;Resend&apos;), &apos;Successful&apos;, 
+IF( 
+(Status_Category__c = &apos;Hard Bounce&apos; || 
+Status_Category__c = &apos;Invalid&apos;), 
+&apos;Failure&apos;, 
+IF( 
+(Status_Category__c = &apos;Block&apos; || 
+Status_Category__c = &apos;Soft Bounce&apos; || 
+Status_Category__c = &apos;Technical&apos; || 
+Status_Category__c = &apos;Unknown&apos;), 
+&apos;Soft Bounce&apos;, 
+IF( 
+Status_Category__c = &apos;Email Changed&apos;,
+&apos;Email Changed&apos;,
+&apos;&apos; 
+))))</formula>
+    <label>Marketing Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

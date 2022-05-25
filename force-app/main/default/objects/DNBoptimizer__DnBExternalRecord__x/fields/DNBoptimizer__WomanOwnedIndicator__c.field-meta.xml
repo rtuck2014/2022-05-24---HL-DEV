@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__WomanOwnedIndicator__c</fullName>
+    <deprecated>false</deprecated>
+    <description>When &apos;true&apos; indicates that this organization is certified as a business that is greater than 50% owned by, and whose management and daily business operations are controlled by, one or more female persons.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>When &apos;true&apos; indicates that this organization is certified as a business that is greater than 50% owned by, and whose management and daily business operations are controlled by, one or more female persons.</inlineHelpText>
+    <isFilteringDisabled>false</isFilteringDisabled>
+    <isNameField>false</isNameField>
+    <isSortingDisabled>false</isSortingDisabled>
+    <label>Woman Owned Indicator</label>
+    <length>50</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,32 @@
+<template>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <lightning-button-icon 
+                            icon-name="utility:close"
+                            class="slds-modal__close"
+                            variant="bare-inverse"
+                            size="medium"
+                            alternative-text="Close" 
+                            onclick={modalCancel}>
+                        </lightning-button-icon>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{title}</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium slds-scrollable--y" id="modal-content-id-1">
+                            <template for:each={recordList} for:item="record" for:index="index">
+                                   <div key={record.Id}>
+                                        <lightning-card variant="Narrow" icon-name="standard:location"> 
+                                                <h3  slot="title" class="slds-hyphenate">
+                                                        {record.CITY__c},{record.STATE__c}
+                                                    </h3>
+                                            <lightning-button label="Select" value={index} onclick={handleSelect}>
+                                            </lightning-button>
+                                        </lightning-card> 
+                                    </div> 
+                                  <!--  <li key={item} data-item={item} onclick={handleItemClicked}> {item.CITY__c},{item.STATE__c}</li> -->
+                                </template>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div> 
+</template>

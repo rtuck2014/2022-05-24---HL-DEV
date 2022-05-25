@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Coverage_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ADG</fullName>
+                <default>false</default>
+                <label>ADG</label>
+            </value>
+            <value>
+                <fullName>Aerospace Defense and Government</fullName>
+                <default>false</default>
+                <label>Aerospace Defense and Government</label>
+            </value>
+            <value>
+                <fullName>Alternative Investor</fullName>
+                <default>false</default>
+                <label>Alternative Investor</label>
+            </value>
+            <value>
+                <fullName>Asia Coverage</fullName>
+                <default>false</default>
+                <label>Asia Coverage</label>
+            </value>
+            <value>
+                <fullName>Building Products</fullName>
+                <default>false</default>
+                <label>Building Products</label>
+            </value>
+            <value>
+                <fullName>Business Services</fullName>
+                <default>false</default>
+                <label>Business Services</label>
+            </value>
+            <value>
+                <fullName>Business Services - 2015</fullName>
+                <default>false</default>
+                <label>Business Services - 2015</label>
+            </value>
+            <value>
+                <fullName>Cannabis</fullName>
+                <default>false</default>
+                <label>Cannabis</label>
+            </value>
+            <value>
+                <fullName>CAPE</fullName>
+                <default>false</default>
+                <label>CAPE</label>
+            </value>
+            <value>
+                <fullName>Chemical Initiative</fullName>
+                <default>false</default>
+                <label>Chemical Initiative</label>
+            </value>
+            <value>
+                <fullName>Collateralized Loan Obligation</fullName>
+                <default>false</default>
+                <label>Collateralized Loan Obligation</label>
+            </value>
+            <value>
+                <fullName>Consumer Food &amp; Retail</fullName>
+                <default>false</default>
+                <label>Consumer Food &amp; Retail</label>
+            </value>
+            <value>
+                <fullName>Corporate</fullName>
+                <default>false</default>
+                <label>Corporate</label>
+            </value>
+            <value>
+                <fullName>Credit Fund</fullName>
+                <default>false</default>
+                <label>Credit Fund</label>
+            </value>
+            <value>
+                <fullName>CVAS</fullName>
+                <default>false</default>
+                <label>CVAS</label>
+            </value>
+            <value>
+                <fullName>Education</fullName>
+                <default>false</default>
+                <label>Education</label>
+            </value>
+            <value>
+                <fullName>EU Capital Markets</fullName>
+                <default>false</default>
+                <label>EU Capital Markets</label>
+            </value>
+            <value>
+                <fullName>EU FR</fullName>
+                <default>false</default>
+                <label>EU FR</label>
+            </value>
+            <value>
+                <fullName>EU IFA</fullName>
+                <default>false</default>
+                <label>EU IFA</label>
+            </value>
+            <value>
+                <fullName>Family Office</fullName>
+                <default>false</default>
+                <label>Family Office</label>
+            </value>
+            <value>
+                <fullName>FIG</fullName>
+                <default>false</default>
+                <label>FIG</label>
+            </value>
+            <value>
+                <fullName>Fintech</fullName>
+                <default>false</default>
+                <label>Fintech</label>
+            </value>
+            <value>
+                <fullName>Firm-Wide</fullName>
+                <default>false</default>
+                <label>Firm-Wide</label>
+            </value>
+            <value>
+                <fullName>FVA Coverage</fullName>
+                <default>false</default>
+                <label>FVA Coverage</label>
+            </value>
+            <value>
+                <fullName>Global</fullName>
+                <default>false</default>
+                <label>Global</label>
+            </value>
+            <value>
+                <fullName>HC</fullName>
+                <default>false</default>
+                <label>HC</label>
+            </value>
+            <value>
+                <fullName>Healthcare</fullName>
+                <default>false</default>
+                <label>Healthcare</label>
+            </value>
+            <value>
+                <fullName>Healthcare - 2015</fullName>
+                <default>false</default>
+                <label>Healthcare - 2015</label>
+            </value>
+            <value>
+                <fullName>Hedge Fund</fullName>
+                <default>false</default>
+                <label>Hedge Fund</label>
+            </value>
+            <value>
+                <fullName>High Yield</fullName>
+                <default>false</default>
+                <label>High Yield</label>
+            </value>
+            <value>
+                <fullName>IFA</fullName>
+                <default>false</default>
+                <label>IFA</label>
+            </value>
+            <value>
+                <fullName>Industrials Group</fullName>
+                <default>false</default>
+                <label>Industrials Group</label>
+            </value>
+            <value>
+                <fullName>Italian-Centric</fullName>
+                <default>false</default>
+                <label>Italian-Centric</label>
+            </value>
+            <value>
+                <fullName>Large-Cap</fullName>
+                <default>false</default>
+                <label>Large-Cap</label>
+            </value>
+            <value>
+                <fullName>Law Firm Coverage</fullName>
+                <default>false</default>
+                <label>Law Firm Coverage</label>
+            </value>
+            <value>
+                <fullName>Longer-Term Capital</fullName>
+                <default>false</default>
+                <label>Longer-Term Capital</label>
+            </value>
+            <value>
+                <fullName>Long-Term Capital</fullName>
+                <default>false</default>
+                <label>Long-Term Capital</label>
+            </value>
+            <value>
+                <fullName>Media</fullName>
+                <default>false</default>
+                <label>Media</label>
+            </value>
+            <value>
+                <fullName>Multi-Strat</fullName>
+                <default>false</default>
+                <label>Multi-Strat</label>
+            </value>
+            <value>
+                <fullName>Nifty Fifty</fullName>
+                <default>false</default>
+                <label>Nifty Fifty</label>
+            </value>
+            <value>
+                <fullName>Oil &amp; Gas</fullName>
+                <default>false</default>
+                <label>Oil &amp; Gas</label>
+            </value>
+            <value>
+                <fullName>OTHER</fullName>
+                <default>false</default>
+                <label>OTHER</label>
+            </value>
+            <value>
+                <fullName>Other designations</fullName>
+                <default>false</default>
+                <label>Other designations</label>
+            </value>
+            <value>
+                <fullName>Pan-European</fullName>
+                <default>false</default>
+                <label>Pan-European</label>
+            </value>
+            <value>
+                <fullName>Pension Fund</fullName>
+                <default>false</default>
+                <label>Pension Fund</label>
+            </value>
+            <value>
+                <fullName>PFG - Private Funds Group</fullName>
+                <default>false</default>
+                <label>PFG - Private Funds Group</label>
+            </value>
+            <value>
+                <fullName>Private Equity</fullName>
+                <default>false</default>
+                <label>Private Equity</label>
+            </value>
+            <value>
+                <fullName>Real Estate Lodging &amp; Leisure</fullName>
+                <default>false</default>
+                <label>Real Estate Lodging &amp; Leisure</label>
+            </value>
+            <value>
+                <fullName>Sell Side Desk</fullName>
+                <default>false</default>
+                <label>Sell Side Desk</label>
+            </value>
+            <value>
+                <fullName>Software Initiative</fullName>
+                <default>false</default>
+                <label>Software Initiative</label>
+            </value>
+            <value>
+                <fullName>Sovereign Wealth Fund</fullName>
+                <default>false</default>
+                <label>Sovereign Wealth Fund</label>
+            </value>
+            <value>
+                <fullName>Specialist</fullName>
+                <default>false</default>
+                <label>Specialist</label>
+            </value>
+            <value>
+                <fullName>Specialty Distribution</fullName>
+                <default>false</default>
+                <label>Specialty Distribution</label>
+            </value>
+            <value>
+                <fullName>Tech</fullName>
+                <default>false</default>
+                <label>TECH</label>
+            </value>
+            <value>
+                <fullName>Tech+IP - Core</fullName>
+                <default>false</default>
+                <label>Tech+IP - Core</label>
+            </value>
+            <value>
+                <fullName>Tech+IP - SAM</fullName>
+                <default>false</default>
+                <label>Tech+IP - SAM</label>
+            </value>
+            <value>
+                <fullName>Tech+IP - Strategic</fullName>
+                <default>false</default>
+                <label>Tech+IP - Strategic</label>
+            </value>
+            <value>
+                <fullName>Tech+IP - TAM</fullName>
+                <default>false</default>
+                <label>Tech+IP - TAM</label>
+            </value>
+            <value>
+                <fullName>Telecom-Other</fullName>
+                <default>false</default>
+                <label>Telecom-Other</label>
+            </value>
+            <value>
+                <fullName>Transaction Advisory Services</fullName>
+                <default>false</default>
+                <label>Transaction Advisory Services</label>
+            </value>
+            <value>
+                <fullName>UK-Centric</fullName>
+                <default>false</default>
+                <label>UK-Centric</label>
+            </value>
+            <value>
+                <fullName>Wealth Management</fullName>
+                <default>false</default>
+                <label>Wealth Management</label>
+            </value>
+            <value>
+                <fullName>Women-Led</fullName>
+                <default>false</default>
+                <label>Women-Led</label>
+            </value>
+            <value>
+                <fullName>US</fullName>
+                <default>false</default>
+                <label>US</label>
+            </value>
+            <value>
+                <fullName>Industrials</fullName>
+                <default>false</default>
+                <label>Industrials</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__All</fullName>
+    <columns>NAME</columns>
+    <columns>DNBoptimizer__FirstName__c</columns>
+    <columns>DNBoptimizer__LastName__c</columns>
+    <columns>DNBoptimizer__MiddleName__c</columns>
+    <columns>DNBoptimizer__JobTitle__c</columns>
+    <columns>DNBoptimizer__BusinessName__c</columns>
+    <columns>DNBoptimizer__DUNSNumber__c</columns>
+    <columns>DNBoptimizer__ContactPhone__c</columns>
+    <columns>DNBoptimizer__Email__c</columns>
+    <columns>DNBoptimizer__EmailDeliverability__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

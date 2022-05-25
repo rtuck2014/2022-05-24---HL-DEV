@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Request_Gift_Approval</fullName>
+    <availability>online</availability>
+    <description>A button that brings the user to the gift submission page.</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Request Gift Approval</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <url>https://hl.my.salesforce.com/apex/SL_GiftPreApproval?save_new=1&amp;sfdc.override=1&amp;retURL={!Contact.Id}</url>
+</WebLink>

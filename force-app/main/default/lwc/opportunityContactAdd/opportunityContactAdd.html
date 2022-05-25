@@ -1,0 +1,23 @@
+<template>
+    <lightning-quick-action-panel header="Create Opportunity Contact">
+        <div class="slds-p-around_large">            
+            <lightning-record-edit-form object-api-name="Opportunity_External_Team__c" density="comfy" onsuccess={handleSuccess} onerror={handleError}>
+                <lightning-input-field field-name="Opportunity__c" value={recordId}></lightning-input-field>
+                    <lightning-input-field field-name="Billing_Contact__c" ></lightning-input-field>
+                    <lightning-input-field field-name="Contact__c" required="true"></lightning-input-field>
+                    <lightning-input-field field-name="Billing_Contact_Notes__c" ></lightning-input-field>
+                    <lightning-input-field field-name="Acknowledge_Billing_Contact__c" ></lightning-input-field>
+                    <lightning-input-field field-name="Type__c" ></lightning-input-field>
+                    <lightning-input-field field-name="Role__c" ></lightning-input-field>
+                    <lightning-input-field field-name="Primary__c" ></lightning-input-field>
+                    <lightning-input-field field-name="Exclude_from_Working_Party__c" ></lightning-input-field>
+                    <lightning-input-field field-name="Sub_Role__c" ></lightning-input-field>
+                    <lightning-input-field field-name="Description__c" ></lightning-input-field>
+                <lightning-button
+                    class="slds-m-top_small"
+                    type="submit"
+                    label="Save"></lightning-button>
+            </lightning-record-edit-form>
+        </div>
+    </lightning-quick-action-panel>
+</template>

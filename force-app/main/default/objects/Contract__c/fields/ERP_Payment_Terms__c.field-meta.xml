@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ERP_Payment_Terms__c</fullName>
+    <description>Payment terms in the customer information in the bill plan</description>
+    <externalId>false</externalId>
+    <label>ERP Payment Terms</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>IMMEDIATE</fullName>
+                <default>false</default>
+                <label>IMMEDIATE</label>
+            </value>
+            <value>
+                <fullName>30 Net</fullName>
+                <default>true</default>
+                <label>30 Net</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

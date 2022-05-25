@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Company__c</fullName>
+    <externalId>false</externalId>
+    <formula>CONTAINS(Coverage_Team_Aggregate__c,$User.Id)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>My Company</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

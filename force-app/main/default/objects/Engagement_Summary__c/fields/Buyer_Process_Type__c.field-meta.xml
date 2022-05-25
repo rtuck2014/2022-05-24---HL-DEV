@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Buyer_Process_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Buyer Process Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Broad Auction</fullName>
+                <default>false</default>
+                <label>Broad Auction</label>
+            </value>
+            <value>
+                <fullName>Controlled Auction</fullName>
+                <default>false</default>
+                <label>Controlled Auction</label>
+            </value>
+            <value>
+                <fullName>Direct Negotiation</fullName>
+                <default>false</default>
+                <label>Direct Negotiation</label>
+            </value>
+            <value>
+                <fullName>DM&amp;A</fullName>
+                <default>false</default>
+                <label>DM&amp;A</label>
+            </value>
+            <value>
+                <fullName>Targeted Negotiations (5 to 10 parties)</fullName>
+                <default>false</default>
+                <label>Targeted Negotiations (5 to 10 parties)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

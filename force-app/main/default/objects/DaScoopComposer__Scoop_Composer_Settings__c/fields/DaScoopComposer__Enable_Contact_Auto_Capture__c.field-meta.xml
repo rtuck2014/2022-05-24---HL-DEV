@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Enable_Contact_Auto_Capture__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Auto Contact Capture</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enable Contact Auto Capture for users to automatically uncover and capture Contacts that do not exist in Salesforce, from Accounts you are already talking to</inlineHelpText>
+    <label>Auto Contact Capture</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

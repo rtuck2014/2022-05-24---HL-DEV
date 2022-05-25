@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__ContactPhone__c</fullName>
+    <deprecated>false</deprecated>
+    <description>A sequence of digits used for voice communication with the entity.  This sequence of digits includes the area code or city code and domestic dialing code.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>A sequence of digits used for voice communication with the entity.  This sequence of digits includes the area code or city code and domestic dialing code.</inlineHelpText>
+    <label>Contact Phone</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Phone</type>
+</CustomField>

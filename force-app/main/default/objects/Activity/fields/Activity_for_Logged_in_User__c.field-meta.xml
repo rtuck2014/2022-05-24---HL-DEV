@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activity_for_Logged_in_User__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( 
+OR(
+   Contact__r.User__r.Id =$User.Id
+,  AND(IsTask = TRUE
+       , OR ( Owner:User.Id =$User.Id,   CONTAINS( LOWER(Email_Addresses__c), LOWER($User.Email) ) )
+       )
+   )
+
+, TRUE, FALSE)</formula>
+    <label>Activity for Logged in User</label>
+    <type>Checkbox</type>
+</CustomField>

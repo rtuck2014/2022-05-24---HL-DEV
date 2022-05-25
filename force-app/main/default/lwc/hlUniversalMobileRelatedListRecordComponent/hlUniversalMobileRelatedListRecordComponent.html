@@ -1,0 +1,35 @@
+<template>
+  <lightning-card onclick={handleClick}>
+    <div class="slds-grid slds-m-bottom_xx-small slds-m-top_xx-small">
+      <div class="slds-col slds-size_2-of-12 slds-p-horizontal_small">
+        <lightning-icon icon-name={iconname} size="small"></lightning-icon>
+      </div>
+      <div class="slds-col slds-size_10-of-12">
+        <b>
+          <p class="slds-item_detail">
+            <!-- {dateTimeValue} -->
+            <template for:each={record.value.relatedListTitleFieldList} for:item="field" for:index="index">
+              <span key={field.label}>
+                  <b>
+                    <c-hl-mobile-formatted-field-value-component field-value={field.fieldValue} field-data-type={field.fieldDataType} index={index} is-header-field>
+                    </c-hl-mobile-formatted-field-value-component>
+                  </b>
+                </span>
+            </template>
+          </p>
+        </b>
+      </div>
+    </div>
+    <template for:each={record.value.relatedListRecordFieldList} for:item="field">
+      <div class="slds-grid" key={field.label}>
+        <div class="slds-col slds-size_2-of-5 slds-m-left_small slds-truncate">
+          <span>{field.fieldLabel}:</span>
+        </div>
+        <div class="slds-col slds-size_3-of-5 slds-hyphenate">
+          <c-hl-mobile-formatted-field-value-component field-value={field.fieldValue} field-data-type={field.fieldDataType}>
+          </c-hl-mobile-formatted-field-value-component>
+        </div>
+      </div>
+    </template>
+  </lightning-card>
+</template>

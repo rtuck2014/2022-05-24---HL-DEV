@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_Contact</fullName>
+    <availability>online</availability>
+    <description>FOR CONTACT HOME TAB</description>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Add Contact</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>/setup/ui/recordtypeselect.jsp?ent=Contact&amp;retURL=%2F003%2Fo&amp;save_new_url=%2F003%2Fe%3FretURL%3D%252F003%252Fo</url>
+</WebLink>

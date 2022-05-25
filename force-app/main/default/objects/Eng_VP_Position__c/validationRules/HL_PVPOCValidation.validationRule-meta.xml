@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_PVPOCValidation</fullName>
+    <active>true</active>
+    <description>Validate POC before completing the position</description>
+    <errorConditionFormula>IF( 
+  AND(
+    ISPICKVAL( Status__c ,&apos;Completed, Generate Accrual&apos;)
+    ,Engagement_VP__r.Engagement__r.Percentage_of_Completion__c=0)
+  ,TRUE
+  ,FALSE)</errorConditionFormula>
+    <errorMessage>Please update the stage to generate a revenue accrual.</errorMessage>
+</ValidationRule>

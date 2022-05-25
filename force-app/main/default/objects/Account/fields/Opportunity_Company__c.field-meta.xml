@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Company__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( Opportunity_Count__c &gt; 0 || Engagement_Count__c &gt; 0, TRUE, FALSE)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Identifies company is client or subject on an opportunity or engagement.  Visible to Data Hygiene team that has no access to view opportunities and engagements.</inlineHelpText>
+    <label>Opportunity Company</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

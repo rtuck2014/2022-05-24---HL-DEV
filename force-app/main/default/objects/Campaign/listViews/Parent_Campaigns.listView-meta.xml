@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_Campaigns</fullName>
+    <columns>CAMPAIGN.NAME</columns>
+    <columns>CAMPAIGN.CAMPAIGN_TYPE</columns>
+    <columns>CAMPAIGN.STATUS</columns>
+    <columns>Lines_of_Business__c</columns>
+    <columns>Family__c</columns>
+    <columns>HL_Sub_Group__c</columns>
+    <columns>Industry_Groups__c</columns>
+    <columns>Legacy_SLX_ID__c</columns>
+    <columns>Message_Type__c</columns>
+    <columns>CAMPAIGN.RECORDTYPE</columns>
+    <columns>CAMPAIGN.ID</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CAMPAIGN.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Campaign.Parent_Campaign</value>
+    </filters>
+    <label>Parent Campaigns</label>
+</ListView>

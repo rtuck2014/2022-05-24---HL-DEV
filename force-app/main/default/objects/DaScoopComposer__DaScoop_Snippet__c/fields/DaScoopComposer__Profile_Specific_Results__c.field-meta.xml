@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Profile_Specific_Results__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>indicates whether this view shall simply be displayed to all users or only if a user is assigned to a certain profile. You can specify a list of profiles that shall be excluded or included.</inlineHelpText>
+    <label>Profile Specific Results</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>All profiles get to see this snippet</fullName>
+                <default>true</default>
+                <label>All profiles get to see this snippet</label>
+            </value>
+            <value>
+                <fullName>Only display this snippet to the profiles below.</fullName>
+                <default>false</default>
+                <label>Only display this snippet to the profiles below.</label>
+            </value>
+            <value>
+                <fullName>Do not display this snippet to the profiles below.</fullName>
+                <default>false</default>
+                <label>Do not display this snippet to the profiles below.</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

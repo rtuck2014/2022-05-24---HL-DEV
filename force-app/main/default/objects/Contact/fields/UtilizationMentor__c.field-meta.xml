@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UtilizationMentor__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field should be checked if this person should be considered for the additional Mentor load factor for the Utilization calculation.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Checked if this person is mentoring junior staff in their office and industry group</inlineHelpText>
+    <label>Utilization Mentor</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

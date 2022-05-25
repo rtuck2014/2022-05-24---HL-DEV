@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Requested_By_11__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Requested By 11</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Campaign Members (Requested By 11)</relationshipLabel>
+    <relationshipName>Campaign_MembersV4KA</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Record_Type_Change</fullName>
+    <active>true</active>
+    <description>Only allow Data Hygiene and System Admins to change record type</description>
+    <errorConditionFormula>ISCHANGED( RecordTypeId ) &amp;&amp;
+ $Profile.Name &lt;&gt; &apos;System Administrator&apos; &amp;&amp;
+ $Profile.Name &lt;&gt; &apos;Data Hygiene Outsource&apos;</errorConditionFormula>
+    <errorMessage>Please use Flag Reason field to request a record type change.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Flag_Reason</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISPICKVAL( Flag_Reason__c, &apos;&apos;))&amp;&amp;
+ISBLANK(Flag_Reason_Comment__c )</errorConditionFormula>
+    <errorDisplayField>Flag_Reason_Comment__c</errorDisplayField>
+    <errorMessage>Please provide additional information for selected Flag Reason.</errorMessage>
+</ValidationRule>

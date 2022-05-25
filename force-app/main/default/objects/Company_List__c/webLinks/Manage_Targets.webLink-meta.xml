@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Manage_Targets</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>Manage Targets</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <url>/apex/SL_LIB16_MassEdit_ManageTargets?clid={!Company_List__c.Id}&amp;extId=1&amp;mt=1</url>
+</WebLink>

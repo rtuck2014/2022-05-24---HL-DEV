@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Investment_Size__c</fullName>
+    <externalId>false</externalId>
+    <label>Investment Size</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Small: &lt;$25m</fullName>
+                <default>false</default>
+                <label>Small: &lt;$25m</label>
+            </value>
+            <value>
+                <fullName>Medium: $25-100m</fullName>
+                <default>false</default>
+                <label>Medium: $25-100m</label>
+            </value>
+            <value>
+                <fullName>Large: &gt;$100m</fullName>
+                <default>false</default>
+                <label>Large: &gt;$100m</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

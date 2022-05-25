@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ERP_Do_Not_Sync__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicate if this should sync to ERP</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicate if this should sync to ERP</inlineHelpText>
+    <label>ERP Do Not Sync</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

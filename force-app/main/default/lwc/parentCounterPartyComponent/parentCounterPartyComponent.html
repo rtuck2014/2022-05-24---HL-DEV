@@ -1,0 +1,16 @@
+<template>
+    <template if:false={showAddParty}>
+        <lightning-card title="" >
+            <lightning-button variant="brand" label="Add Counterparties" slot="actions" title="AddCounterparties" onclick={handleClick}></lightning-button>
+        </lightning-card>
+    </template>
+    <template if:false={showAddParty}>
+        <c-counter-party-edit record-id={recordId}></c-counter-party-edit>
+    </template>
+    <template if:true={showAddParty}>
+        <c-add-counter-party-component
+            record-id={recordId}
+            onclosequickaction = {handleCloseAction} 
+            onbackbutton = {handleBackButton}></c-add-counter-party-component>
+    </template>
+</template>

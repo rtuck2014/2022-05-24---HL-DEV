@@ -1,0 +1,32 @@
+<template>
+    <lightning-card >
+    <c-h-l_-multi-lookup object-name={lookupObjectApiName} field-name="Name" lookup-label={lookupObjectFieldLabel}
+                      icon-name = "standard:account" onselected={selectedRecords}></c-h-l_-multi-lookup>
+    <p slot="footer">
+        <lightning-button variant="brand" label={buttonName} title="Primary action" onclick={handleAddEvent} class="slds-m-left_x-small"></lightning-button>
+    </p>
+    <template if:true={recordList}>
+        <table class=" slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        
+                        
+                        <th class="" scope="col">
+                            Name
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                <template for:each={recordList} for:item="acc">
+                    <tr class="slds-hint-parent" key={acc.Id}>
+                        <td><a href={acc.RecordLink} target="_blank">{acc.RecordName}</a></td>
+                        
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </template>
+    </lightning-card>           
+
+</template>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Coverage_Team_Comment_Not_Empty</fullName>
+    <active>true</active>
+    <description>Cannot save empty Coverage Team Comments.</description>
+    <errorConditionFormula>ISBLANK( Comment__c ) || ISNULL( Comment__c )</errorConditionFormula>
+    <errorMessage>Cannot save empty Coverage Team Comments.</errorMessage>
+</ValidationRule>

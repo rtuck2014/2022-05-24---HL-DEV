@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( OR( RecordType.Id = &quot;012i0000000tNJN&quot; , RecordType.Id = &quot;012i0000000tKt7&quot; , RecordType.Id = &quot;012i0000001AGQM&quot; ) ,
+    Status_Sellside_Joint_Bid_Sellside__c ,
+    IF( RecordType.Id = &quot;012i0000000tKt2&quot; ,
+        Status_Buyside__c ,
+        IF( RecordType.Id = &quot;012i0000000tLTf&quot; ,
+            Status_Cap_Markets__c,
+            &quot;No Applicable Status&quot;
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

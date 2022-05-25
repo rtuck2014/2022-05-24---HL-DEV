@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ERP_Contract_Type__c</fullName>
+    <description>Contract Type for Oracle
+
+Maps to /createContract/contractHeader/ContractTypeName</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Please select Engagement for a customer contract, or ICO for an intercompany ontract</inlineHelpText>
+    <label>ERP Contract Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Engagement</fullName>
+                <default>true</default>
+                <label>Engagement</label>
+            </value>
+            <value>
+                <fullName>ICO</fullName>
+                <default>false</default>
+                <label>ICO</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

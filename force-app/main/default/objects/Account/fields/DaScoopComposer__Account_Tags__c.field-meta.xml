@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Account_Tags__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates specific tags on the account by looking at activities and opportunities.</inlineHelpText>
+    <label>Account Tags</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Unknown</fullName>
+                <default>true</default>
+                <label>Unknown</label>
+            </value>
+            <value>
+                <fullName>Untouched</fullName>
+                <default>false</default>
+                <label>Untouched</label>
+            </value>
+            <value>
+                <fullName>Cur. Effort</fullName>
+                <default>false</default>
+                <label>Cur. Effort</label>
+            </value>
+            <value>
+                <fullName>Past Effort</fullName>
+                <default>false</default>
+                <label>Past Effort</label>
+            </value>
+            <value>
+                <fullName>Meeting Scheduled</fullName>
+                <default>false</default>
+                <label>Meeting Scheduled</label>
+            </value>
+            <value>
+                <fullName>Meeting, no Opportunity</fullName>
+                <default>false</default>
+                <label>Meeting, no Opportunity</label>
+            </value>
+            <value>
+                <fullName>Open Opportunity</fullName>
+                <default>false</default>
+                <label>Open Opportunity</label>
+            </value>
+            <value>
+                <fullName>Lost Opportunity</fullName>
+                <default>false</default>
+                <label>Lost Opportunity</label>
+            </value>
+            <value>
+                <fullName>Current Customer</fullName>
+                <default>false</default>
+                <label>Current Customer</label>
+            </value>
+            <value>
+                <fullName>Churned Customer</fullName>
+                <default>false</default>
+                <label>Churned Customer</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>10</visibleLines>
+</CustomField>

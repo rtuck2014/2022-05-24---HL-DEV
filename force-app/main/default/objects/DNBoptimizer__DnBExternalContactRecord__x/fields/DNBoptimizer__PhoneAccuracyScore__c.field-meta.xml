@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__PhoneAccuracyScore__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The predicted probability (from 0 to 100) that a contact can be reached at least one of their listed phone numbers, at the time of the most recent phone verification. Decays at a rate of 2 points each month.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The predicted probability (from 0 to 100) that a contact can be reached at least one of their listed phone numbers, at the time of the most recent phone verification. Decays at a rate of 2 points each month.</inlineHelpText>
+    <isFilteringDisabled>false</isFilteringDisabled>
+    <isNameField>false</isNameField>
+    <isSortingDisabled>false</isSortingDisabled>
+    <label>Phone Accuracy Score</label>
+    <precision>3</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

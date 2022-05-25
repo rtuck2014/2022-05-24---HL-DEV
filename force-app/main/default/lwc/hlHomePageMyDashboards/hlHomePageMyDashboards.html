@@ -1,0 +1,16 @@
+<template>
+    <template if:true = {displayDashboard} >
+        <lightning-layout  class="slds-theme_shade slds-m-around_medium" multiple-rows>
+            <template for:each={dashboardlist} for:item="dashboard">
+                <lightning-layout-item size="3" large-device-size="3" medium-device-size="4" small-device-size="1"  flexibility="grow"  padding="around-medium" key={dashboard.Name}> 
+                    <c-hl-dashboard-component dashboard={dashboard}> </c-hl-dashboard-component> 
+                </lightning-layout-item>
+                </template>
+            </lightning-layout>
+    </template>
+        <template if:false={displayDashboard}>
+            <div class="slds-align_absolute-center">
+                No Dashboards found for your user.
+            </div>
+            </template>
+</template>

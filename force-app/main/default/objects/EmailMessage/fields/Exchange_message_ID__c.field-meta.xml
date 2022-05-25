@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exchange_message_ID__c</fullName>
+    <caseSensitive>true</caseSensitive>
+    <description>Used to prevent duplicate message creation by Riva</description>
+    <externalId>true</externalId>
+    <inlineHelpText>Used to prevent duplicate message creation by Riva</inlineHelpText>
+    <label>Exchange message ID</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

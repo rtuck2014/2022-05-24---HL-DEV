@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LOB_Split_Override_Percent__c</fullName>
+    <defaultValue>0.00</defaultValue>
+    <description>Override Percentage Value</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If override value is no longer needed, be sure to clear the value and do not set to 0</inlineHelpText>
+    <label>LOB Split Override Percent</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>6</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

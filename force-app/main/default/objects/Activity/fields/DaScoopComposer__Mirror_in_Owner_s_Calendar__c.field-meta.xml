@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Mirror_in_Owner_s_Calendar__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>controls whether or not this event will be mirrored in the corporate calendar of the user who is the owner of this event. This field is part of the Groove calendar integration.</inlineHelpText>
+    <label>Mirror in Owner&apos;s Calendar</label>
+    <type>Checkbox</type>
+</CustomField>

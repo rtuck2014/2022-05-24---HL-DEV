@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vaccination_Info</fullName>
+    <active>true</active>
+    <description>Vaccination info needs to be complete</description>
+    <errorConditionFormula>(Fully_Vaccinated_Verified__c)= TRUE  
+&amp;&amp;
+( OR(
+ISBLANK(Last_Vaccine_Date__c),
+ISBLANK(Verified_Date__c),
+ISBLANK(Verified_By__c)
+))</errorConditionFormula>
+    <errorMessage>Please provide full vaccination info: Last Vaccine Date, Verified Date and Verified By</errorMessage>
+</ValidationRule>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_By_Specific_Person</fullName>
+    <columns>NAME</columns>
+    <columns>Legal_Entity__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Engagement_Number__c</columns>
+    <columns>Engagement__c</columns>
+    <columns>Staff_Role__c</columns>
+    <columns>Start_Date__c</columns>
+    <columns>End_Date__c</columns>
+    <columns>Contact_LOB__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Office_Revenue_Split__c</columns>
+    <columns>Revenue_Allocation__c</columns>
+    <columns>Staff_Revenue_Split__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Engagement_Number__c</field>
+        <operation>equals</operation>
+        <value>110247</value>
+    </filters>
+    <label>All - By Specific Person</label>
+</ListView>

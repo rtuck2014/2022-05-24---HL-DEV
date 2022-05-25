@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_Category__c</fullName>
+    <description>Will show Email History status if and only if it&apos;s not a Subscription preference change.</description>
+    <externalId>false</externalId>
+    <formula>IF( RecordType.DeveloperName = &apos;Unsubscribe_History&apos;, &apos;Subscription Preferences&apos;, TEXT(Lookup__r.Status_Category__c))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Status Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

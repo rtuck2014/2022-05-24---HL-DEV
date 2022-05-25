@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Other</fullName>
+    <active>true</active>
+    <label>Other</label>
+    <picklistValues>
+        <picklist>KeyCreditorImportance__c</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Role__c</picklist>
+        <values>
+            <fullName>Adverse</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Buyer Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Buyer Financial Advisor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Buyer Legal Counsel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equity Holder</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Advisor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Advisor to Creditor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Advisor to Debtor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal Advisor to Creditor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal Advisor to Debtor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal Counsel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lender</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Majority Owner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Management Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Minority Owner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post-Transaction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-Transaction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Primary Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seller Legal Counsel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seller Majority Owner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seller Management Contact</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Other</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+</RecordType>

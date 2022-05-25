@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Departure_Date_After_Hire_Date</fullName>
+    <active>true</active>
+    <description>Departure Date cannot be before Hire Date</description>
+    <errorConditionFormula>NOT( ISBLANK(Departure_Date__c)) &amp;&amp; Departure_Date__c  &lt;  Hire_Date__c</errorConditionFormula>
+    <errorDisplayField>Departure_Date__c</errorDisplayField>
+    <errorMessage>Departure Date cannot be earlier than Hire Date</errorMessage>
+</ValidationRule>

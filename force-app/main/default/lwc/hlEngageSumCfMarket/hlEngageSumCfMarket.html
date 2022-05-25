@@ -1,0 +1,1023 @@
+<template>
+    <template if:true={engaegSumMarketSpinner}>
+        <lightning-spinner 
+            alternative-text="Loading" 
+            size="small">
+        </lightning-spinner>
+    </template>
+    <lightning-record-view-form
+        record-id={engageSumId}
+        density="comfy"
+        object-api-name="Engagement_Summary__c"
+        onload={engageMarketFormLoad}>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-wrap">
+                <div class="slds-card-wrapper">
+                    <article class="slds-card slds-card_boundary">
+                        <div class="slds-card__header slds-grid">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__figure">
+                                    <span class="slds-icon_container" title="Outreach Metrics">
+                                        <lightning-icon 
+                                            icon-name=utility:contact_request>
+                                        </lightning-icon>
+                                        <span class="slds-assistive-text">Outreach Metrics</span>
+                                    </span>
+                                </div>
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title">
+                                        <span>Outreach Metrics</span>
+                                    </h2>
+                                </div>
+                                <div class="slds-no-flex">
+                                <lightning-button label="Refresh Metrics" title="Refresh Metrics" onclick={engageSumGenUpdate} icon-name="utility:refresh" class="slds-m-left_x-small"></lightning-button>
+                                </div>
+                            </header>
+                        </div>
+                        <div class="slds-card__body slds-card__body_inner slds-m-bottom_medium">
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped slds-table_col-bordered">
+                                <thead>
+                                    <tr>
+                                        <td colspan="1"></td>
+                                        <td colspan="3"></td>
+                                        <td colspan="2"></td>
+                                        <td colspan="5">Percent of Potential Counterparties Contacted</td>
+                                        <td colspan="3">Percent of Books Sent</td>
+                                    </tr>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Metric Name">Metric</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="" title="Count of Domestic Parties Contacted">Domestic Strategics</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="" title="Count of International Parties Contacted">Intl. Strategics</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Count of Total Parties Contacted">Total Strategics</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Count of Financial Parties Contacted">Financial</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Count of Overall Total Parties Contacted">Overall Total</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Percent of Contacted Domestic">Domestic Strategics</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Percent of Contacted International">Intl Strategics</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Percent of Contacted Total">Total Strategics</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Percent of Contacted Financial">Financial</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Percent of Contacted Yielded">Yield</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Percent of Books Sent Strategic">Strategic</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Percent of Books Sent Financial">Financial</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Percent of Books Sent Total">Total</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="buyers_contacted slds-hint-parent">
+                                        <th data-label="Metric_Potential_Buyers_Contacted" scope="row">
+                                            <div class="slds-truncate" title="Potential Counterparties Contacted">
+                                            <a href="javascript:void(0);" tabindex="-1">Potential Counterparties Contacted</a>
+                                            </div>
+                                        </th>
+                                        <td data-label="Contacted_Strategic_Domestic__c">
+                                            <lightning-output-field 
+                                                title="Contacted_Strategic_Domestic__c"
+                                                field-name="Contacted_Strategic_Domestic__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Contacted_Strategic_International__c">
+                                            <lightning-output-field 
+                                                title="Contacted_Strategic_International__c"
+                                                field-name="Contacted_Strategic_International__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Contacted_Strategic_Total__c">
+                                            <lightning-output-field 
+                                                title="Contacted_Strategic_Total__c"
+                                                field-name="Contacted_Strategic_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Contacted_Financial_Total__c">
+                                            <lightning-output-field 
+                                                title="Contacted_Financial_Total__c"
+                                                field-name="Contacted_Financial_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Contacted_Total__c">
+                                            <lightning-output-field 
+                                                title="Contacted_Total__c"
+                                                field-name="Contacted_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Contacted_Strategic_Domestic_Percent__c">
+                                            <lightning-output-field 
+                                                title="Contacted_Strategic_Domestic_Percent__c"
+                                                field-name="Contacted_Strategic_Domestic_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Contacted_Strategic_Int_Percent__c">
+                                            <lightning-output-field
+                                                title="Contacted_Strategic_Int_Percent__c"
+                                                field-name="Contacted_Strategic_Int_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Contacted_Strategic_Percent__c">
+                                            <lightning-output-field 
+                                                title="Contacted_Strategic_Percent__c"
+                                                field-name="Contacted_Strategic_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Contacted_Financial_Percent__c">
+                                            <lightning-output-field 
+                                                title="Contacted_Financial_Percent__c"
+                                                field-name="Contacted_Financial_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Contacted_Yield_Percent__c">
+                                            <lightning-output-field 
+                                                title="Contacted_Yield_Percent__c"
+                                                field-name="Contacted_Yield_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                    </tr>
+                                    <tr class="books_sent slds-hint-parent">
+                                        <th data-label="Metric_Books_Sent" scope="row">
+                                            <div class="slds-truncate" title="Books Sent">
+                                            <a href="javascript:void(0);" tabindex="-1">Books Sent</a>
+                                            </div>
+                                        </th>
+                                        <td data-label="Books_Sent_Strategic_Domestic__c">
+                                            <lightning-output-field 
+                                                title="Books_Sent_Strategic_Domestic__c"
+                                                field-name="Books_Sent_Strategic_Domestic__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Books_Sent_Strategic_International__c">
+                                            <lightning-output-field 
+                                                title="Books_Sent_Strategic_International__c"
+                                                field-name="Books_Sent_Strategic_International__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Books_Sent_Strategic_Total__c">
+                                            <lightning-output-field 
+                                                title="Books_Sent_Strategic_Total__c"
+                                                field-name="Books_Sent_Strategic_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Books_Sent_Financial_Total__c">
+                                            <lightning-output-field 
+                                                title="Books_Sent_Financial_Total__c"
+                                                field-name="Books_Sent_Financial_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Books_Sent_Total__c">
+                                            <lightning-output-field 
+                                                title="Books_Sent_Total__c"
+                                                field-name="Books_Sent_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Books_Sent_Strategic_Domestic_Percent__c">
+                                            <lightning-output-field 
+                                                title="Books_Sent_Strategic_Domestic_Percent__c"
+                                                field-name="Books_Sent_Strategic_Domestic_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Books_Sent_Strategic_Int_Percent__c">
+                                            <lightning-output-field
+                                                title="Books_Sent_Strategic_Int_Percent__c"
+                                                field-name="Books_Sent_Strategic_Int_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Books_Sent_Strategic_Percent__c">
+                                            <lightning-output-field 
+                                                title="Books_Sent_Strategic_Percent__c"
+                                                field-name="Books_Sent_Strategic_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Books_Sent_Financial_Percent__c">
+                                            <lightning-output-field 
+                                                title="Books_Sent_Financial_Percent__c"
+                                                field-name="Books_Sent_Financial_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Books_Sent_Yield_Percent__c">
+                                            <lightning-output-field 
+                                                title="Books_Sent_Yield_Percent__c"
+                                                field-name="Books_Sent_Yield_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                    </tr>
+                                    <tr class="prelim_bids slds-hint-parent">
+                                        <th data-label="Metric_Preliminary_Bids" scope="row">
+                                            <div class="slds-truncate" title="Preliminary Bids">
+                                            <a href="javascript:void(0);" tabindex="-1">Preliminary Bids</a>
+                                            </div>
+                                        </th>
+                                        <td data-label="Prelim_Bids_Strategic_Domestic__c">
+                                            <lightning-output-field 
+                                                title="Prelim_Bids_Strategic_Domestic__c"
+                                                field-name="Prelim_Bids_Strategic_Domestic__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Prelim_Bids_Strategic_International__c">
+                                            <lightning-output-field 
+                                                title="Prelim_Bids_Strategic_International__c"
+                                                field-name="Prelim_Bids_Strategic_International__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Prelim_Bids_Strategic_Total__c">
+                                            <lightning-output-field 
+                                                title="Prelim_Bids_Strategic_Total__c"
+                                                field-name="Prelim_Bids_Strategic_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Prelim_Bids_Financial_Total__c">
+                                            <lightning-output-field 
+                                                title="Prelim_Bids_Financial_Total__c"
+                                                field-name="Prelim_Bids_Financial_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Prelim_Bids_Total__c">
+                                            <lightning-output-field 
+                                                title="Prelim_Bids_Total__c"
+                                                field-name="Prelim_Bids_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Prelim_Bids_Strategic_Domestic_Percent__c">
+                                            <lightning-output-field 
+                                                title="Prelim_Bids_Strategic_Domestic_Percent__c"
+                                                field-name="Prelim_Bids_Strategic_Domestic_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Prelim_Bids_Strategic_Int_Percent__c">
+                                            <lightning-output-field
+                                                title="Prelim_Bids_Strategic_Int_Percent__c"
+                                                field-name="Prelim_Bids_Strategic_Int_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Prelim_Bids_Strategic_Percent__c">
+                                            <lightning-output-field 
+                                                title="Prelim_Bids_Strategic_Percent__c"
+                                                field-name="Prelim_Bids_Strategic_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Prelim_Bids_Financial_Percent__c">
+                                            <lightning-output-field 
+                                                title="Prelim_Bids_Financial_Percent__c"
+                                                field-name="Prelim_Bids_Financial_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Prelim_Bids_Yield_Percent__c">
+                                            <lightning-output-field 
+                                                title="Prelim_Bids_Yield_Percent__c"
+                                                field-name="Prelim_Bids_Yield_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="PB_Of_BS_Strategic_Percent__c">
+                                            <lightning-output-field 
+                                                title="PB_Of_BS_Strategic_Percent__c"
+                                                field-name="PB_Of_BS_Strategic_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="PB_Of_BS_Financial_Percent__c">
+                                            <lightning-output-field 
+                                                title="PB_Of_BS_Financial_Percent__c"
+                                                field-name="PB_Of_BS_Financial_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="PB_Of_BS_Percent__c">
+                                            <lightning-output-field 
+                                                title="PB_Of_BS_Percent__c"
+                                                field-name="PB_Of_BS_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                    </tr>
+                                    <tr class="manage_Presentations slds-hint-parent">
+                                        <th data-label="Metric_Management_Presentations" scope="row">
+                                            <div class="slds-truncate" title="Management Presentations">
+                                            <a href="javascript:void(0);" tabindex="-1">Management Presentations</a>
+                                            </div>
+                                        </th>
+                                        <td data-label="Presentations_Strategic_Domestic__c">
+                                            <lightning-output-field 
+                                                title="Presentations_Strategic_Domestic__c"
+                                                field-name="Presentations_Strategic_Domestic__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Presentations_Strategic_International__c">
+                                            <lightning-output-field 
+                                                title="Presentations_Strategic_International__c"
+                                                field-name="Presentations_Strategic_International__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Presentations_Strategic_Total__c">
+                                            <lightning-output-field 
+                                                title="Presentations_Strategic_Total__c"
+                                                field-name="Presentations_Strategic_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Presentations_Financial_Total__c">
+                                            <lightning-output-field 
+                                                title="Presentations_Financial_Total__c"
+                                                field-name="Presentations_Financial_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Presentations_Total__c">
+                                            <lightning-output-field 
+                                                title="Presentations_Total__c"
+                                                field-name="Presentations_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Presentations_Strategic_Domestic_Percent__c">
+                                            <lightning-output-field 
+                                                title="Presentations_Strategic_Domestic_Percent__c"
+                                                field-name="Presentations_Strategic_Domestic_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Presentations_Strategic_Int_Percent__c">
+                                            <lightning-output-field
+                                                title="Presentations_Strategic_Int_Percent__c"
+                                                field-name="Presentations_Strategic_Int_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Presentations_Strategic_Percent__c">
+                                            <lightning-output-field 
+                                                title="Presentations_Strategic_Percent__c"
+                                                field-name="Presentations_Strategic_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Presentations_Financial_Percent__c">
+                                            <lightning-output-field 
+                                                title="Presentations_Financial_Percent__c"
+                                                field-name="Presentations_Financial_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Presentations_Yield_Percent__c">
+                                            <lightning-output-field 
+                                                title="Presentations_Yield_Percent__c"
+                                                field-name="Presentations_Yield_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Presentations_Of_BS_Strategic_Percent__c">
+                                            <lightning-output-field 
+                                                title="Presentations_Of_BS_Strategic_Percent__c"
+                                                field-name="Presentations_Of_BS_Strategic_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Presentations_Of_BS_Financial_Percent__c">
+                                            <lightning-output-field 
+                                                title="Presentations_Of_BS_Financial_Percent__c"
+                                                field-name="Presentations_Of_BS_Financial_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Presentations_Of_BS_Percent__c">
+                                            <lightning-output-field 
+                                                title="Presentations_Of_BS_Percent__c"
+                                                field-name="Presentations_Of_BS_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                    </tr>
+                                    <tr class="final_bids slds-hint-parent">
+                                        <th data-label="Metric_Management_Presentations" scope="row">
+                                            <div class="slds-truncate" title="Final Bids">
+                                            <a href="javascript:void(0);" tabindex="-1">Final Bids</a>
+                                            </div>
+                                        </th>
+                                        <td data-label="Final_Bids_Strategic_Domestic__c">
+                                            <lightning-output-field 
+                                                title="Final_Bids_Strategic_Domestic__c"
+                                                field-name="Final_Bids_Strategic_Domestic__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Final_Bids_Strategic_International__c">
+                                            <lightning-output-field 
+                                                title="Final_Bids_Strategic_International__c"
+                                                field-name="Final_Bids_Strategic_International__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Final_Bids_Strategic_Total__c">
+                                            <lightning-output-field 
+                                                title="Final_Bids_Strategic_Total__c"
+                                                field-name="Final_Bids_Strategic_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Final_Bids_Financial_Total__c">
+                                            <lightning-output-field 
+                                                title="Final_Bids_Financial_Total__c"
+                                                field-name="Final_Bids_Financial_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Final_Bids_Total__c">
+                                            <lightning-output-field 
+                                                title="Final_Bids_Total__c"
+                                                field-name="Final_Bids_Total__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Final_Bids_Strategic_Domestic_Percent__c">
+                                            <lightning-output-field 
+                                                title="Final_Bids_Strategic_Domestic_Percent__c"
+                                                field-name="Final_Bids_Strategic_Domestic_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Final_Bids_Strategic_Int_Percent__c">
+                                            <lightning-output-field
+                                                title="Final_Bids_Strategic_Int_Percent__c"
+                                                field-name="Final_Bids_Strategic_Int_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Final_Bids_Strategic_Percent__c">
+                                            <lightning-output-field 
+                                                title="Final_Bids_Strategic_Percent__c"
+                                                field-name="Final_Bids_Strategic_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Final_Bids_Financial_Percent__c">
+                                            <lightning-output-field 
+                                                title="Final_Bids_Financial_Percent__c"
+                                                field-name="Final_Bids_Financial_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Final_Bids_Yield_Percent__c">
+                                            <lightning-output-field 
+                                                title="Final_Bids_Yield_Percent__c"
+                                                field-name="Final_Bids_Yield_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="FB_Of_BS_Strategic_Percent__c">
+                                            <lightning-output-field 
+                                                title="FB_Of_BS_Strategic_Percent__c"
+                                                field-name="FB_Of_BS_Strategic_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="FB_Of_BS_Financial_Percent__c">
+                                            <lightning-output-field 
+                                                title="FB_Of_BS_Financial_Percent__c"
+                                                field-name="FB_Of_BS_Financial_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="FB_Of_BS_Percent__c">
+                                            <lightning-output-field 
+                                                title="FB_Of_BS_Percent__c"
+                                                field-name="FB_Of_BS_Percent__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </div>
+<!-- //LL20190906 - STRY0059454 - Disabled per UAT session with BA and business teams, should be re-enabled in follow up effort to fill out more data into Pitch Metrics section.
+                <div class="slds-card-wrapper">
+                    <article class="slds-card slds-card_boundary">
+                        <div class="slds-card__header slds-grid">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__figure">
+                                    <span class="slds-icon_container" title="Pitch Metrics">
+                                        <lightning-icon 
+                                            icon-name=utility:side_list>
+                                        </lightning-icon>
+                                        <span class="slds-assistive-text">Pitch Metrics</span>
+                                    </span>
+                                </div>
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title">
+                                        <span>Pitch Metrics</span>
+                                    </h2>
+                                </div>
+                            </header>
+                        </div>
+                        <div class="slds-card__body slds-card__body_inner slds-m-bottom_medium">
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped slds-table_col-bordered">
+                                <thead>
+                                    <tr>
+                                        <td colspan="1"></td>
+                                        <td colspan="3">Pitched</td>
+                                        <td colspan="4">First Round Bids</td>
+                                        <td colspan="5">Final Bids</td>
+                                    </tr>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Metric Name">Metric</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Dollar Value">Value</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="EBIDTA Multiple Last 12 Months">EBITDA Mult. LTM</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="EBITDA Multiple Fiscal Year + 1">EBITDA Mult. FY+1</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Mid-Point Dollar Value">Mid-Point Value</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="EBIDTA Multiple Last 12 Months">EBITDA Mult. LTM</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="EBITDA Multiple Fiscal Year + 1">EBITDA Mult. FY+1</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Price / Book Value">Price/Book</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Mid-Point Dollar Value">Mid-Point Value</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="EBIDTA Multiple Last 12 Months">EBITDA Mult. LTM</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="EBITDA Multiple Fiscal Year + 1">EBITDA Mult. FY+1</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Price / Book Value">Price/Book</div>
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="Percent Change Prelim">Percent Change Prelim</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="pitch_low slds-hint-parent">
+                                        <th data-label="Metric_Pitch_Low" scope="row">
+                                            <div class="slds-truncate" title="Pitch Low">
+                                            <a href="javascript:void(0);" tabindex="-1">EBITDA</a>
+                                            </div>
+                                        </th>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td data-label="Pitch_EBITDA_LTM__c">
+                                            <lightning-output-field 
+                                                title="Pitch_EBITDA_LTM__c"
+                                                field-name="Pitch_EBITDA_LTM__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Pitch_EBITDA_FYE__c">
+                                            <lightning-output-field 
+                                                title="Pitch_EBITDA_FYE__c"
+                                                field-name="Pitch_EBITDA_FYE__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td data-label="Financial_First_EBITDA_LTM__c">
+                                            <lightning-output-field 
+                                                title="Financial_First_EBITDA_LTM__c"
+                                                field-name="Financial_First_EBITDA_LTM__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Financial_First_EBITDA_FYE_1__c">
+                                            <lightning-output-field 
+                                                title="Financial_First_EBITDA_FYE_1__c"
+                                                field-name="Financial_First_EBITDA_FYE_1__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Price_Per_Book__c">
+                                            <lightning-output-field 
+                                                title="Price_Per_Book__c"
+                                                field-name="Price_Per_Book__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td data-label="Financial_Final_EBITDA_LTM__c">
+                                            <lightning-output-field 
+                                                title="Financial_Final_EBITDA_LTM__c"
+                                                field-name="Financial_Final_EBITDA_LTM__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Financial_Final_EBITDA_FYE_1__c">
+                                            <lightning-output-field 
+                                                title="Financial_Final_EBITDA_FYE_1__c"
+                                                field-name="Financial_Final_EBITDA_FYE_1__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Price_Per_Book__c">
+                                            <lightning-output-field 
+                                                title="Price_Per_Book__c"
+                                                field-name="Price_Per_Book__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                    </tr>
+                                    <tr class="pitch_low slds-hint-parent">
+                                        <th data-label="Metric_Pitch_Low" scope="row">
+                                            <div class="slds-truncate" title="Pitch Low">
+                                            <a href="javascript:void(0);" tabindex="-1">Pitch Low</a>
+                                            </div>
+                                        </th>
+                                        <td data-label="Pitch_Value_Low__c">
+                                            <lightning-output-field 
+                                                title="Pitch_Value_Low__c"
+                                                field-name="Pitch_Value_Low__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Pitch_Low_LTM__c">
+                                            <lightning-output-field
+                                                style="display: none" 
+                                                title="Pitch_Low_LTM__c"
+                                                field-name="Pitch_Low_LTM__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                            <template if:true={Pitch_Low_LTM__c}>{Pitch_Low_LTM__c}</template>
+                                        </td>
+                                        <td data-label="Pitch_Low_FYE__c">
+                                            <lightning-output-field 
+                                                style="display: none"
+                                                title="Pitch_Low_FYE__c"
+                                                field-name="Pitch_Low_FYE__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                            <template if:true={Pitch_Low_FYE__c}>{Pitch_Low_FYE__c}</template>
+                                        </td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                    </tr>
+                                    <tr class="pitch_high slds-hint-parent">
+                                        <th data-label="Metric_Pitch_High" scope="row">
+                                            <div class="slds-truncate" title="Pitch High">
+                                            <a href="javascript:void(0);" tabindex="-1">Pitch High</a>
+                                            </div>
+                                        </th>
+                                        <td data-label="Pitch_Value_High__c">
+                                            <lightning-output-field 
+                                                title="Pitch_Value_High__c"
+                                                field-name="Pitch_Value_High__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Pitch_High_LTM__c">
+                                            <lightning-output-field 
+                                                style="display: none" 
+                                                title="Pitch_High_LTM__c"
+                                                field-name="Pitch_High_LTM__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                            <template if:true={Pitch_High_LTM__c}>{Pitch_High_LTM__c}</template>
+                                        </td>
+                                        <td data-label="Pitch_High_FYE__c">
+                                            <lightning-output-field 
+                                                style="display: none"
+                                                title="Pitch_High_FYE__c"
+                                                field-name="Pitch_High_FYE__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                            <template if:true={Pitch_High_FYE__c}>{Pitch_High_FYE__c}</template>
+                                        </td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                    </tr>
+                                    <tr class="pitch_mid slds-hint-parent">
+                                        <th data-label="Metric_Pitch_Mid" scope="row">
+                                            <div class="slds-truncate" title="Pitch Mid">
+                                            <a href="javascript:void(0);" tabindex="-1">Pitch Mid-Point</a>
+                                            </div>
+                                        </th>
+                                        <td data-label="Pitch_MP__c">
+                                            <lightning-output-field 
+                                                title="Pitch_MP__c"
+                                                field-name="Pitch_MP__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Pitch_MP_LTM__c">
+                                            <lightning-output-field 
+                                                style="display: none" 
+                                                title="Pitch_MP_LTM__c"
+                                                field-name="Pitch_MP_LTM__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                            <template if:true={Pitch_MP_LTM__c}>{Pitch_MP_LTM__c}</template>
+                                        </td>
+                                        <td data-label="Pitch_MP_FYE__c">
+                                            <lightning-output-field 
+                                                style="display: none" 
+                                                title="Pitch_MP_FYE__c"
+                                                field-name="Pitch_MP_FYE__c" 
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                            <template if:true={Pitch_MP_FYE__c}>{Pitch_MP_FYE__c}</template>
+                                        </td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                    </tr>
+                                    <tr class="engagebase slds-hint-parent">
+                                        <th data-label="Metric_Engagebase" scope="row">
+                                            <div class="slds-truncate" title="Engagement Letter Base Value">
+                                            <a href="javascript:void(0);" tabindex="-1">Engagement Letter Base Value</a>
+                                            </div>
+                                        </th>
+                                        <td data-label="Engagement_Letter_Base__c">
+                                            <lightning-output-field 
+                                                title="Engagement_Letter_Base__c"
+                                                field-name="Engagement_Letter_Base__c"
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                        </td>
+                                        <td data-label="Engagement_Letter_Base_LTM__c">
+                                            <lightning-output-field 
+                                                style="display: none" 
+                                                title="Engagement_Letter_Base_LTM__c"
+                                                field-name="Engagement_Letter_Base_LTM__c"
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                            <template if:true={Engagement_Letter_Base_LTM__c}>{Engagement_Letter_Base_LTM__c}</template>
+                                        </td>
+                                        <td data-label="Engagement_Letter_Base_FYE__c">
+                                            <lightning-output-field 
+                                                style="display: none" 
+                                                title="Engagement_Letter_Base_FYE__c"
+                                                field-name="Engagement_Letter_Base_FYE__c"
+                                                variant="label-hidden">
+                                            </lightning-output-field>
+                                            <template if:true={Engagement_Letter_Base_FYE__c}>{Engagement_Letter_Base_FYE__c}</template>
+                                        </td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                        <td style="background: #EEE; color: #CCC"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </div>
+-->
+                <div class="slds-card-wrapper">
+                    <article class="slds-card slds-card_boundary">
+                        <div class="slds-card__header slds-grid">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__figure">
+                                    <span class="slds-icon_container" title="Bid History">
+                                        <lightning-icon 
+                                            icon-name=utility:choice>
+                                        </lightning-icon>
+                                        <span class="slds-assistive-text">Bid History</span>
+                                    </span>
+                                </div>
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title">
+                                        <span>Bid History</span>
+                                    </h2>
+                                </div>
+                            </header>
+                        </div>
+                        <div class="slds-card__body slds-card__body_inner slds-m-bottom_medium">
+                            <template if:true={counterpartyBidListData}>
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped slds-table_col-bordered">
+                                    <thead>
+                                        <tr>
+                                            <td colspan="1"></td>
+                                            <td colspan="4">First Round Bids</td>
+                                            <td colspan="4">Final Bids</td>
+                                            <td colspan="4">Change from First Round Bid</td>
+                                        </tr>
+                                        <tr class="slds-line-height_reset">
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Metric Name">Counterparty List</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Mid-Point Dollar Value (in Millions)">Mid-Point Value (MM)</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="EBITDA Multiple Last Twelve Months">EBITDA Mult. LTM</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="EBITDA Multiple Fiscal Year + 1">EBITDA Mult. FY+1</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Price/Book">Price/Book</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Mid-Point Dollar Value (in Millions)">Mid-Point Value (MM)</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="EBITDA Multiple Last Twelve Months">EBITDA Mult. LTM</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="EBITDA Multiple Fiscal Year + 1">EBITDA Mult. FY+1</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Price/Book">Price/Book</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Mid-Point Dollar Value (in Millions)">Percent Change</div>
+                                            </th>    
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Mid-Point Dollar Value (in Millions)">Mid-Point Value (MM)</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="Mid-Point Percent Value">Mid-Point % Value</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="EBITDA Multiple Last Twelve Months">EBITDA Multiple LTM</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <template for:each={counterpartyBidListData} for:item="cp">
+                                            <tr class="buyers_contacted slds-hint-parent" key={cp.Id}>
+                                                <th colspan="" data-label="Company" scope="row">
+                                                    <div class="slds-truncate" title="Company">
+                                                        <template if:true={cp.Company__r}>
+                                                            <a href="javascript:void(0);" tabindex="-1">{cp.Company__r.Name}</a>
+                                                        </template>
+                                                    </div>
+                                                </th>
+                                                <td data-label="Bid_First_MP__c">
+                                                    {cp.Bid_First_MP__c}
+                                                </td>
+                                                <td data-label="Bid_First_EBITDA_LTM__c">
+                                                    <template if:true={cp.Bid_First_EBITDA_LTM__c}>{cp.Bid_First_EBITDA_LTM__c}x</template>
+                                                </td>
+                                                <td data-label="Bid_First_EBITDA_FYE_1__c">
+                                                    <template if:true={cp.Bid_First_EBITDA_FYE_1__c}>{cp.Bid_First_EBITDA_FYE_1__c}x</template>
+                                                </td>
+                                                <td data-label="Bid_First_Book_Value__c">
+                                                    {cp.Bid_First_Book_Value__c}
+                                                </td>
+                                                <td data-label="Bid_Final_MP__c">
+                                                    {cp.Bid_Final_MP__c}
+                                                </td>
+                                                <td data-label="Bid_Final_EBITDA_LTM__c">
+                                                    <template if:true={cp.Bid_Final_EBITDA_LTM__c}>{cp.Bid_Final_EBITDA_LTM__c}x</template>
+                                                </td>
+                                                <td data-label="Bid_Final_EBITDA_FYE_1__c">
+                                                    <template if:true={cp.Bid_Final_EBITDA_FYE_1__c}>{cp.Bid_Final_EBITDA_FYE_1__c}x</template>
+                                                </td>
+                                                <td data-label="Bid_Final_Book_Value__c">
+                                                    {cp.Bid_Final_Book_Value__c}
+                                                </td>
+                                                <td data-label="Bid_Final_Change_From_Prelim__c">
+                                                    {cp.Bid_Final_Change_From_Prelim__c}
+                                                </td>
+                                                <td data-label="Bid_Closing_MP__c">
+                                                    {cp.Bid_Closing_MP__c}
+                                                </td>
+                                                <td data-label="Bid_Closing_Change_From_Prelim__c">
+                                                    {cp.Bid_Closing_Change_From_Prelim__c}
+                                                </td>
+                                                <td data-label="Bid_Closing_Multiple__c">
+                                                    {cp.Bid_Closing_Multiple__c}
+                                                </td>
+                                            </tr>
+                                        </template>
+                                        <!-- LL20190828 Will potentially add in the future when the overall Market Process Data section is optimized, not done due to redundancy concerns with SQL SP logic -->
+                                        <!-- <tr class="slds-hint-parent" >
+                                            <th colspan="" data-label="Mean" scope="row">
+                                                <div class="slds-truncate" title="Mean" style="text-align: right;">Mean</div>
+                                            </th>
+                                        </tr>
+                                        <tr class="slds-hint-parent" >
+                                            <th colspan="" data-label="Median" scope="row">
+                                                <div class="slds-truncate" title="Median" style="text-align: right;">Median</div>
+                                            </th>
+                                        </tr>
+                                        <tr class="slds-hint-parent" >
+                                            <th colspan="" data-label="ChangefromPitch" scope="row">
+                                                <div class="slds-truncate" title="Change from Pitch" style="text-align: right;">Change from Pitch</div>
+                                            </th>
+                                        </tr>
+                                        <tr class="slds-hint-parent" >
+                                            <th colspan="" data-label="Change from Engagement Letter" scope="row">
+                                                <div class="slds-truncate" title="ChangefromEngagementLetter" style="text-align: right;">Change from Engagement Letter</div>
+                                            </th>
+                                        </tr>
+                                        <tr class="slds-hint-parent" >
+                                            <th colspan="" data-label="High" scope="row">
+                                                <div class="slds-truncate" title="High" style="text-align: right;">High</div>
+                                            </th>
+                                        </tr>
+                                        <tr class="slds-hint-parent" >
+                                            <th colspan="" data-label="Low" scope="row">
+                                                <div class="slds-truncate" title="Low" style="text-align: right;">Low</div>
+                                            </th>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                            </template>
+                            <template if:true={counterpartyBidListError}>
+                                {counterpartyBidListError}
+                            </template>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </lightning-record-view-form>
+</template>

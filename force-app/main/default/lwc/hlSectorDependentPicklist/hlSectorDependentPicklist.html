@@ -1,0 +1,24 @@
+<template>    
+    <div class="slds-col slds-size_1-of-1">
+        <lightning-combobox name="Type" label="Type" placeholder="Select Type" options={coverageTypeItems} style="width:600px"
+            onchange={handleTypeChange} value={selectedTypeValue} required class="requiredField"></lightning-combobox>
+    </div>
+    <div class="slds-col slds-size_1-of-1">
+        <lightning-combobox name="PrimarySector" label="Primary Sector" placeholder="Select Sector" style="width:600px"
+            options={primarySectorItems} onchange={handlePrimaryChange} value={selectedPrimaryValue}
+            disabled={isPrimaryDisabled} required class="requiredField"></lightning-combobox>
+    </div>
+    <div class="slds-col slds-size_1-of-1">
+        <lightning-combobox name="SecondarySector" label="Secondary Sector" placeholder="Select Sector" style="width:600px"
+            options={secondarySectorItems} onchange={handleSecondaryChange} value={selectedSecondaryValue}
+            disabled={isSecondaryDisabled}>
+        </lightning-combobox>
+    </div>
+    <div class="slds-col slds-size_1-of-1">
+        <lightning-combobox name="TertiarySector" label="Tertiary Sector" placeholder="Select Sector" style="width:600px"
+            options={tertiarySectorItems} onchange={handleTertiaryChange} value={selectedTertiaryValue}
+            disabled={isTertiaryDisabled}>
+        </lightning-combobox>
+    </div>    
+    <div class="slds-p-bottom_xx-large"></div>
+</template>

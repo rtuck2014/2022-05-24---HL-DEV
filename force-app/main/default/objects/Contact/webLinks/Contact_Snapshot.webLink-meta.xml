@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Snapshot</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Contact Snapshot</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/33.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&apos;//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&apos;)} 
+{!REQUIRESCRIPT(&apos;//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js&apos;)} 
+
+var fname = &quot;{!Contact.FirstName}&quot;;
+var lname = &quot;{!Contact.LastName}&quot;;
+var title = &quot;{!Contact.Title}&quot;;
+var company = &quot;{!Contact.Company_Name__c}&quot;;
+var street = &quot;{!JSENCODE(Contact.MailingStreet)}&quot;;
+var city = &quot;{!Contact.MailingCity}&quot;;
+var state = &quot;{!Contact.MailingState}&quot;;
+var zip = &quot;{!Contact.MailingPostalCode}&quot;;
+var country = &quot;{!Contact.MailingCountry}&quot;;
+var email = &quot;{!Contact.Email}&quot;;
+var wphone = &quot;{!Contact.Phone}&quot;;
+var mphone = &quot;{!Contact.MobilePhone}&quot;;
+
+var html = &apos;&lt;div id=&quot;dialog&quot; style=&quot;display: none&quot; title=&quot;Contact Snapshot&quot;&gt;&lt;p&gt;&apos;+fname+&apos;&amp;nbsp;&apos;+lname+&apos;&lt;br/&gt;&apos;+title+&apos;&lt;br/&gt;&apos;+company+&apos;&lt;br/&gt;&apos;+street+&apos;&lt;br/&gt;&apos;+city+&apos;,&amp;nbsp;&apos;+state+&apos;&amp;nbsp&apos;+zip+&apos;&lt;br/&gt;&apos;+country+&apos;&lt;br/&gt;&apos;+email+&apos;&lt;br/&gt;Phone: &apos;+wphone+&apos;&lt;br/&gt;Mobile: &apos;+mphone+&apos;&lt;/p&gt;&lt;/div&gt;&apos;;
+
+var $g = jQuery.noConflict(); 
+$g(function() { 
+    $g(&apos;head&apos;).append(&apos;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css&quot; type=&quot;text/css&quot;/&gt;&apos;); 
+    $g(&apos;body&apos;).append(html);
+
+    $g(&quot;#dialog&quot;).dialog({ 
+        autoOpen: true, 
+        modal: true,
+        resizable: true, 
+        width: 300, 
+        height: 300, 
+        buttons: { 
+            &quot;OK&quot;: function() { 
+                $g(this).dialog(&quot;destroy&quot;).remove(); 
+            }
+        } 
+    }); 
+});</url>
+</WebLink>

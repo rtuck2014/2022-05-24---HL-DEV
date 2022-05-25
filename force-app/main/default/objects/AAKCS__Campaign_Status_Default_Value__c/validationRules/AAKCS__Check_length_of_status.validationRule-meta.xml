@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AAKCS__Check_length_of_status</fullName>
+    <active>true</active>
+    <description>As the custom object field can be upto 80, but the status field can only be upto 40 then this validation rule ensures the 40 character limit is not broken.</description>
+    <errorConditionFormula>LEN(Name)&gt;40</errorConditionFormula>
+    <errorDisplayField>Name</errorDisplayField>
+    <errorMessage>Status can be a maximum of 40 characters</errorMessage>
+</ValidationRule>

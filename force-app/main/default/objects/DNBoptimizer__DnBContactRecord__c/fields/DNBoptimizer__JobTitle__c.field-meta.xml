@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__JobTitle__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The job held by the entity.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The job held by the entity.</inlineHelpText>
+    <label>Job Title</label>
+    <length>200</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

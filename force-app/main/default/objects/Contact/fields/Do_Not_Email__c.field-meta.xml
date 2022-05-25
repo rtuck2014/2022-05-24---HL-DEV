@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Do_Not_Email__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>HL custom Do not Email field</description>
+    <externalId>false</externalId>
+    <inlineHelpText>HL custom Do not Email field</inlineHelpText>
+    <label>Manual Opt Out</label>
+    <trackHistory>true</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

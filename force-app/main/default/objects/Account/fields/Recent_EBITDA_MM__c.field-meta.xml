@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Recent_EBITDA_MM__c</fullName>
+    <externalId>false</externalId>
+    <formula>Most_Recent_Company_Financial__r.EBITDA_MM__c</formula>
+    <inlineHelpText>Most recent Company Financial data.</inlineHelpText>
+    <label>Recent EBITDA (MM)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

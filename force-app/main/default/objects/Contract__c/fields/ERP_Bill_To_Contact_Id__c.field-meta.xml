@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ERP_Bill_To_Contact_Id__c</fullName>
+    <description>Billing Contact of the engagement
+
+Maps to /createContract/contractHeader/BillPlan/BillToContactId</description>
+    <externalId>false</externalId>
+    <formula>Bill_To__r.ERP_Contact_ID__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Please specify the ERP contact Id of the billing contact</inlineHelpText>
+    <label>ERP Bill To Contact Id</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

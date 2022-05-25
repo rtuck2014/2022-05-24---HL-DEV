@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__Public_PrivateIndicator__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Indicates whether ownership of the business is public or private.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates whether ownership of the business is public or private.</inlineHelpText>
+    <isFilteringDisabled>false</isFilteringDisabled>
+    <isNameField>false</isNameField>
+    <isSortingDisabled>false</isSortingDisabled>
+    <label>Public Private Indicator</label>
+    <length>50</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

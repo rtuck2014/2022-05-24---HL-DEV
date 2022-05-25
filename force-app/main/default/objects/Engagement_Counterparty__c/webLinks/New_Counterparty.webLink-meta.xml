@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Counterparty</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>New Counterparty</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>var rt = &quot;{!Engagement__c.RecordTypeId}&quot;;
+var industry = &quot;{!Engagement__c.Industry_Group__c}&quot;;
+var jt = &quot;{!Engagement__c.Job_Type__c}&quot;;
+
+//ENG RT Buyside : EC Buyside
+if(rt == &quot;012i0000000tIW8&quot; &amp;&amp; industry != &quot;FIG - Financial Institutions&quot;){
+	navigateToUrl(&apos;/a0B/e?RecordType=012i0000000tKt2AAE&amp;Name=EC+{!Engagement__c.Name}&amp;retURL=/{!Engagement__c.Id}&amp;saveURL=/{!Engagement__c.Id}&amp;CF00Ni000000D7NmK={!Engagement__c.Name}&amp;CF00Ni000000D7NmK_lkid={!Engagement__c.Id}&apos;);
+}
+
+//ENG RT Buyside and Industry Grp FIG : EC FIG Buyside
+if(rt == &quot;012i0000000tIW8&quot; &amp;&amp; industry == &quot;FIG - Financial Institutions&quot;){
+	navigateToUrl(&apos;/a0B/e?RecordType=012i0000001NAsJAAW&amp;Name=EC+{!Engagement__c.Name}&amp;retURL=/{!Engagement__c.Id}&amp;saveURL=/{!Engagement__c.Id}&amp;CF00Ni000000D7NmK={!Engagement__c.Name}&amp;CF00Ni000000D7NmK_lkid={!Engagement__c.Id}&apos;);
+}
+
+//ENG RT Cap Mkt : EC Cap Mkt
+if(rt == &quot;012i0000000tIWD&quot;){
+	navigateToUrl(&apos;/a0B/e?RecordType=012i0000000tLTfAAM&amp;Name=EC+{!Engagement__c.Name}&amp;retURL=/{!Engagement__c.Id}&amp;saveURL=/{!Engagement__c.Id}&amp;CF00Ni000000D7NmK={!Engagement__c.Name}&amp;CF00Ni000000D7NmK_lkid={!Engagement__c.Id}&apos;);
+}
+
+//ENG RT Illiquid : EC IFA
+if(rt == &quot;012i0000000tIWh&quot;){
+	navigateToUrl(&apos;/a0B/e?RecordType=012i0000001AGQMAA4&amp;Name=EC+{!Engagement__c.Name}&amp;retURL=/{!Engagement__c.Id}&amp;saveURL=/{!Engagement__c.Id}&amp;CF00Ni000000D7NmK={!Engagement__c.Name}&amp;CF00Ni000000D7NmK_lkid={!Engagement__c.Id}&apos;);
+}
+
+//ENG RT Sellside : EC Sellside
+if(rt == &quot;012i0000000tIWw&quot; &amp;&amp; industry != &quot;FIG - Financial Institutions&quot;){
+	navigateToUrl(&apos;/a0B/e?RecordType=012i0000000tKt7AAE&amp;Name=EC+{!Engagement__c.Name}&amp;retURL=/{!Engagement__c.Id}&amp;saveURL=/{!Engagement__c.Id}&amp;CF00Ni000000D7NmK={!Engagement__c.Name}&amp;CF00Ni000000D7NmK_lkid={!Engagement__c.Id}&apos;);
+}
+
+//ENG RT Sellside and Industry Grp FIG : EC FIG Sellside
+if(rt == &quot;012i0000000tIWw&quot; &amp;&amp; industry == &quot;FIG - Financial Institutions&quot;){
+	navigateToUrl(&apos;/a0B/e?RecordType=012i0000001NAsKAAW&amp;Name=EC+{!Engagement__c.Name}&amp;retURL=/{!Engagement__c.Id}&amp;saveURL=/{!Engagement__c.Id}&amp;CF00Ni000000D7NmK={!Engagement__c.Name}&amp;CF00Ni000000D7NmK_lkid={!Engagement__c.Id}&apos;);
+}
+
+//ENG RT Restructuring and Job Type DM&amp;A Buyside : EC Buyside
+if(rt == &quot;012i0000000tIWS&quot; &amp;&amp; jt == &quot;DM&amp;A Buyside&quot;){
+	navigateToUrl(&apos;/a0B/e?RecordType=012i0000000tKt2AAE&amp;Name=EC+{!Engagement__c.Name}&amp;retURL=/{!Engagement__c.Id}&amp;saveURL=/{!Engagement__c.Id}&amp;CF00Ni000000D7NmK={!Engagement__c.Name}&amp;CF00Ni000000D7NmK_lkid={!Engagement__c.Id}&apos;);
+}
+
+//ENG RT Restructuring and Job Type DM&amp;A Sellside: EC Sellside
+if(rt == &quot;012i0000000tIWS&quot; &amp;&amp; jt == &quot;DM&amp;A Sellside&quot;){
+	navigateToUrl(&apos;/a0B/e?RecordType=012i0000000tKt7AAE&amp;Name=EC+{!Engagement__c.Name}&amp;retURL=/{!Engagement__c.Id}&amp;saveURL=/{!Engagement__c.Id}&amp;CF00Ni000000D7NmK={!Engagement__c.Name}&amp;CF00Ni000000D7NmK_lkid={!Engagement__c.Id}&apos;);
+}</url>
+</WebLink>

@@ -1,0 +1,72 @@
+<template>
+    <div style="height:640px; min-height: 640px;">
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                <template if:true={lookupToast}>
+                    <c-hl-universal-toast
+                        type={lookupToastType}
+                        onclose={lookupToastClose}
+                        message={lookupToastMessage} >
+                    </c-hl-universal-toast>
+                </template>
+                <header class="slds-modal__header">
+                    <lightning-button-icon 
+                        icon-name="utility:close" 
+                        onclick={lookupCancel}
+                        class="slds-modal__close"
+                        variant="bare-inverse"
+                        size="medium"
+                        alternative-text="Close">
+                    </lightning-button-icon>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{title}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-1" >
+                            <div>
+                                <lightning-input
+                                    name="lookup-search"
+                                    placeholder="Search"
+                                    value={searchVal}
+                                    onchange={lookupKeyPress}
+                                    type="search">
+                                </lightning-input>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-scrollable slds-is-relative">
+                            <template if:true={spinner}>
+                                <lightning-spinner 
+                                    alternative-text="Loading"
+                                    size="small">
+                                </lightning-spinner>
+                            </template>
+                            <c-hl-universal-datatable
+                                table-title="Search Results"
+                                table-object-api={objectApi}
+                                table-data={lookupData}
+                                table-columns={columns}
+                                table-form-fields={formFields}
+                                table-form-billing-address={formBillingAddress}
+                                table-form-rec-type-name={formRecTypeName}
+                                table-large="true"
+                                table-max-selected-rows=1
+                                sorted-by={sortField}
+                                sorted-direction={sortDirection}
+                                ontableloadmore={lookupMore}
+                                ontablesort={lookupSort}
+                                ontablerefresh={lookupRefresh}
+                                onrowselection={lookupSelectRecord}>
+                            </c-hl-universal-datatable>
+                        </div>
+                        {lookupError}
+                    </div>
+                </div>
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={lookupCancel}>Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={lookupOk}>Ok</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+</template>

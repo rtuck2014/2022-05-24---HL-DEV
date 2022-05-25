@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EBITDA_Source__c</fullName>
+    <description>EBITDA information source</description>
+    <externalId>false</externalId>
+    <label>EBITDA Source</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CapIQ</fullName>
+                <default>false</default>
+                <label>CapIQ</label>
+            </value>
+            <value>
+                <fullName>Employees</fullName>
+                <default>false</default>
+                <label>Employees</label>
+            </value>
+            <value>
+                <fullName>News Article</fullName>
+                <default>false</default>
+                <label>News Article</label>
+            </value>
+            <value>
+                <fullName>Pitchbook</fullName>
+                <default>false</default>
+                <label>Pitchbook</label>
+            </value>
+            <value>
+                <fullName>Stated by Company</fullName>
+                <default>false</default>
+                <label>Stated by Company</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

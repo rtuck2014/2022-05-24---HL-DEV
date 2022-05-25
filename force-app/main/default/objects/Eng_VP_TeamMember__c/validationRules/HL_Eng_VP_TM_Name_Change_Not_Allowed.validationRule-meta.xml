@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_Eng_VP_TM_Name_Change_Not_Allowed</fullName>
+    <active>true</active>
+    <description>To stop changing Name on VP Team Member</description>
+    <errorConditionFormula>IF(NOT(ISNEW()),IF(AND(ISCHANGED(Name),(PRIORVALUE(Name) ==   Staff__r.FirstName+&apos; &apos;+Staff__r.LastName)), true, false), false)</errorConditionFormula>
+    <errorDisplayField>Name</errorDisplayField>
+    <errorMessage>You are not allowed to change Name.</errorMessage>
+</ValidationRule>

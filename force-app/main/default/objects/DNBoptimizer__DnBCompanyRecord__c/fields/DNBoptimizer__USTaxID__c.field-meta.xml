@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__USTaxID__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The business identification number used in the United State for business registration and tax collection, also known as Federal Employer Identification Number (FEIN).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The business identification number used in the United State for business registration and tax collection, also known as Federal Employer Identification Number (FEIN).</inlineHelpText>
+    <label>US Tax ID</label>
+    <length>50</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

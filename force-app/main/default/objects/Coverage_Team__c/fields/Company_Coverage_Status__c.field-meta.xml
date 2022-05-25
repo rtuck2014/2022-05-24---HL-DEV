@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company_Coverage_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Company Coverage Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Engaged</fullName>
+                <default>false</default>
+                <label>Engaged</label>
+            </value>
+            <value>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+                <label>Opportunity</label>
+            </value>
+            <value>
+                <fullName>Qualified Lead</fullName>
+                <default>false</default>
+                <label>Qualified Lead</label>
+            </value>
+            <value>
+                <fullName>Warm Lead</fullName>
+                <default>false</default>
+                <label>Warm Lead</label>
+            </value>
+            <value>
+                <fullName>Leads to Qualify</fullName>
+                <default>false</default>
+                <label>Leads to Qualify</label>
+            </value>
+            <value>
+                <fullName>Keep In Touch</fullName>
+                <default>false</default>
+                <label>Keep In Touch</label>
+            </value>
+            <value>
+                <fullName>Not Worth Calling</fullName>
+                <default>false</default>
+                <label>Not Worth Calling</label>
+            </value>
+            <value>
+                <fullName>Pitched - Declined Mandate</fullName>
+                <default>false</default>
+                <label>Pitched - Declined Mandate</label>
+            </value>
+            <value>
+                <fullName>Pitched - Decision On Hold</fullName>
+                <default>false</default>
+                <label>Pitched - Decision On Hold</label>
+            </value>
+            <value>
+                <fullName>Pitched - Lost</fullName>
+                <default>false</default>
+                <label>Pitched - Lost</label>
+            </value>
+            <value>
+                <fullName>No Pitch - Hired Another Bank</fullName>
+                <default>false</default>
+                <label>No Pitch - Hired Another Bank</label>
+            </value>
+            <value>
+                <fullName>No Pitch - Acquired</fullName>
+                <default>false</default>
+                <label>No Pitch - Acquired</label>
+            </value>
+            <value>
+                <fullName>No Pitch - Filed S1/Intending To Go Public</fullName>
+                <default>false</default>
+                <label>No Pitch - Filed S1/Intending To Go Public</label>
+            </value>
+            <value>
+                <fullName>Client - On Hold Future Opportunity</fullName>
+                <default>false</default>
+                <label>Client - On Hold Future Opportunity</label>
+            </value>
+            <value>
+                <fullName>Client - On Hold In Tail</fullName>
+                <default>false</default>
+                <label>Client - On Hold In Tail</label>
+            </value>
+            <value>
+                <fullName>Client - Former</fullName>
+                <default>false</default>
+                <label>Client - Former</label>
+            </value>
+            <value>
+                <fullName>Hold</fullName>
+                <default>false</default>
+                <label>Hold</label>
+            </value>
+            <value>
+                <fullName>Strategic Buyer</fullName>
+                <default>false</default>
+                <label>Strategic Buyer</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

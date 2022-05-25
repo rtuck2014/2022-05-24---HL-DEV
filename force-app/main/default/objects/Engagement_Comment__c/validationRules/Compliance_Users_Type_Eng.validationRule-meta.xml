@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Compliance_Users_Type_Eng</fullName>
+    <active>true</active>
+    <description>Compliance users can only create comments of Compliance Type</description>
+    <errorConditionFormula>NOT(ISPICKVAL( Comment_Type__c, &apos;Compliance&apos;)) &amp;&amp;
+ $User.ProfileId = &apos;00ei0000001XP7O&apos;</errorConditionFormula>
+    <errorDisplayField>Comment_Type__c</errorDisplayField>
+    <errorMessage>Compliance users can only create Compliance comments.</errorMessage>
+</ValidationRule>

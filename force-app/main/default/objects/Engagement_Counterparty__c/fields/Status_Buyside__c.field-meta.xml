@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_Buyside__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( RecordType.Id = &quot;012i0000000tKt2&quot; ,
+IF( NOT( ISBLANK( Declined_Passed__c )), &quot;Declined / Passed&quot;,
+IF( NOT( ISBLANK( Signed_Agreement__c)), &quot;Signed Agreement&quot;,
+IF( NOT( ISBLANK( Due_Diligence__c)), &quot;Due Diligence&quot;,
+IF( NOT( ISBLANK( Letter_of_Intent__c )), &quot;Submitted LOI&quot;,
+IF( NOT( ISBLANK( Met_With_Management__c )), &quot;Met with Management&quot;,
+IF( NOT( ISBLANK( Proposal_Indication__c )), &quot;Submitted Proposal / IOI&quot;,
+IF( NOT( ISBLANK( Received_Book__c)), &quot;Received Book&quot;,
+IF( NOT( ISBLANK( Executed_Confidentiality_Agreement__c )), &quot;Executed CA&quot;,
+IF( NOT( ISBLANK( Phone_Discussion__c )), &quot;Phone Discussion&quot;,
+IF( NOT( ISBLANK( Initial_Contact__c )), &quot;Initial Contact&quot;, &quot;No Status&quot;)
+))))))))),&quot;No Status&quot;)</formula>
+    <label>Status (Buyside)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

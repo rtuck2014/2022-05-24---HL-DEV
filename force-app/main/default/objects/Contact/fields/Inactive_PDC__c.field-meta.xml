@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Inactive_PDC__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+(ISPICKVAL(Primary_PDC__r.Status__c, &apos;Inactive&apos;) ||
+ISPICKVAL(Secondary_PDC__r.Status__c, &apos;Inactive&apos;)), TRUE, FALSE
+)</formula>
+    <inlineHelpText>TRUE if Primary or Secondary PDCs are Inactive.</inlineHelpText>
+    <label>Inactive PDC</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__WebAddress__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The Internet URL (Uniform Resource Locator) which uniquely identifies the proprietary website of the subject or the website preferred by the subject which gives more information on the subject.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The Internet URL (Uniform Resource Locator) which uniquely identifies the proprietary website of the subject or the website preferred by the subject which gives more information on the subject.</inlineHelpText>
+    <isFilteringDisabled>false</isFilteringDisabled>
+    <isNameField>false</isNameField>
+    <isSortingDisabled>false</isSortingDisabled>
+    <label>Web Address</label>
+    <required>false</required>
+    <type>Url</type>
+</CustomField>

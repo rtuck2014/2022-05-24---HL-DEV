@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_No_Accrual_before_Eng_Num_FAS</fullName>
+    <active>true</active>
+    <description>The accrual should not be made until the engagement number is assigned. FVA rule.</description>
+    <errorConditionFormula>IF(
+	AND(
+		NOT(ISNEW()),
+		OR(ISCHANGED(Fee_Completed__c),AND(ISPICKVAL(Status__c, &apos;Completed, Generate Accrual&apos;),ISCHANGED(Status__c) )),
+		AND(ISPICKVAL(Engagement_VP__r.Engagement__r.Line_of_Business__c , &apos;FVA&apos;),ISBLANK(Engagement_VP__r.Engagement__r.Engagement_Number__c))
+	), true, false)</errorConditionFormula>
+    <errorMessage>The accrual should not be made until the engagement number is assigned. FVA rule.</errorMessage>
+</ValidationRule>

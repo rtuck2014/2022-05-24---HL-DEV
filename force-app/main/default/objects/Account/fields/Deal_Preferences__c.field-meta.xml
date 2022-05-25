@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Preferences__c</fullName>
+    <externalId>false</externalId>
+    <label>Deal Preferences</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Credit - Corporate</fullName>
+                <default>false</default>
+                <label>Credit - Corporate</label>
+            </value>
+            <value>
+                <fullName>Credit - Mezzanine</fullName>
+                <default>false</default>
+                <label>Credit - Mezzanine</label>
+            </value>
+            <value>
+                <fullName>Credit - Real Estate</fullName>
+                <default>false</default>
+                <label>Credit - Real Estate</label>
+            </value>
+            <value>
+                <fullName>Credit - Senior</fullName>
+                <default>false</default>
+                <label>Credit - Senior</label>
+            </value>
+            <value>
+                <fullName>Credit - SME</fullName>
+                <default>false</default>
+                <label>Credit - SME</label>
+            </value>
+            <value>
+                <fullName>Credit - Structured</fullName>
+                <default>false</default>
+                <label>Credit - Structured</label>
+            </value>
+            <value>
+                <fullName>Debt - Corporate</fullName>
+                <default>false</default>
+                <label>Debt - Corporate</label>
+            </value>
+            <value>
+                <fullName>Debt - Mezzanine</fullName>
+                <default>false</default>
+                <label>Debt - Mezzanine</label>
+            </value>
+            <value>
+                <fullName>Debt - Real Estate</fullName>
+                <default>false</default>
+                <label>Debt - Real Estate</label>
+            </value>
+            <value>
+                <fullName>Debt - Senior</fullName>
+                <default>false</default>
+                <label>Debt - Senior</label>
+            </value>
+            <value>
+                <fullName>Debt - Small / Medium Enterprises</fullName>
+                <default>false</default>
+                <label>Debt - Small / Medium Enterprises</label>
+            </value>
+            <value>
+                <fullName>Debt - Structured Credit</fullName>
+                <default>false</default>
+                <label>Debt - Structured Credit</label>
+            </value>
+            <value>
+                <fullName>Equity - Coinvestment</fullName>
+                <default>false</default>
+                <label>Equity - Coinvestment</label>
+            </value>
+            <value>
+                <fullName>Equity - Direct</fullName>
+                <default>false</default>
+                <label>Equity - Direct</label>
+            </value>
+            <value>
+                <fullName>Equity - Real Estate</fullName>
+                <default>false</default>
+                <label>Equity - Real Estate</label>
+            </value>
+            <value>
+                <fullName>Private Equity Portfolios - Direct</fullName>
+                <default>false</default>
+                <label>Private Equity Portfolios - Direct</label>
+            </value>
+            <value>
+                <fullName>Private Equity Portfolios - Fund Recap</fullName>
+                <default>false</default>
+                <label>Private Equity Portfolios - Fund Recap</label>
+            </value>
+            <value>
+                <fullName>Private Equity Portfolios - Syndicate</fullName>
+                <default>false</default>
+                <label>Private Equity Portfolios - Syndicate</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>9</visibleLines>
+</CustomField>

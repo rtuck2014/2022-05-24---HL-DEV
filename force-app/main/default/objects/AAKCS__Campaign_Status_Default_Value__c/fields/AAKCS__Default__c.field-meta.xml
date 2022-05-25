@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AAKCS__Default__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Check this if this status is the default campaign member status.  This value will be assigned to the campaign status &quot;Default&quot; value.  Please ensure that only one Campaign Status Default value is selected  for the set of detaults.</inlineHelpText>
+    <label>Default</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

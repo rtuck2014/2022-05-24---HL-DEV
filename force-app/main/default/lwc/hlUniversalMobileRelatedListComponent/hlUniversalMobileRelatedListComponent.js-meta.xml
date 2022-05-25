@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>47.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="height" type="Integer" default="300" min="200" max="500" label="Component height" description="Should be in pixels (px)"/>
+            <property required="true" name="componentName" type="String" default="" label="Component Name" description="Please enter the name as in metadata."/>
+            <supportedFormFactors>
+                <supportedFormFactor type="Small"/>
+                <supportedFormFactor type="Large"/>
+            </supportedFormFactors>
+        </targetConfig>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="objectApiName" type="String" label="Object Name" description="Automatically bind the page's object name to the component variable" default="{!objectApiName}"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

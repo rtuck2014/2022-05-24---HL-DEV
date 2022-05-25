@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CMTD__Colour__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Colour for Badge UI Type Override - only accept HEX</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Colour for Badge UI Type Override - only accept HEX</inlineHelpText>
+    <label>Colour</label>
+    <length>6</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

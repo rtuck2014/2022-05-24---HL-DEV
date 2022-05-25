@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Allow_Automatic_Email_Sync__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Controls whether users can set up Groove&apos;s email sync service. Groove Email Sync will automatically log all customer related emails sent and received by your users.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Controls whether users can actviate Groove&apos;s email sync service. Groove Email Sync will automatically log all customer related emails sent and received by your users.</inlineHelpText>
+    <label>Allow Background Email Sync</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Approval_Page__c</fullName>
+    <externalId>false</externalId>
+    <label>Approval Page</label>
+    <referenceTo>Approval_Page__c</referenceTo>
+    <relationshipLabel>Approval Sections</relationshipLabel>
+    <relationshipName>Approval_Sections</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

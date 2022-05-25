@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exclude_From_Activity_List__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( AND( IsTask = TRUE,
+OR( CreatedBy.Full_User_ID__c  = &apos;00531000007T00hAAC&apos;
+,  LEFT( WhatId, 3) = &apos;a30&apos;
+,  LEFT( Subject, 17) = &apos;DemandTools Error&apos;
+,  LEFT( Subject, 18) = &apos;PeopleImport Error&apos;
+,  LEFT( Subject, 24) = &apos;MassImpact Batch Results&apos;
+,  LEFT( Subject, 17) = &apos;Pardot List Email&apos;	
+,  LEFT( Subject, 19) = &apos;Single Table Dedupe&apos;
+,  ISPICKVAL(ActivitySubtype,&apos;Cadence&apos;)
+
+))
+, True, False)</formula>
+    <label>Exclude From Activity List</label>
+    <type>Checkbox</type>
+</CustomField>

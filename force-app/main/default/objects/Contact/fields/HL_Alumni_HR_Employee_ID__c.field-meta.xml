@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_Alumni_HR_Employee_ID__c</fullName>
+    <externalId>false</externalId>
+    <formula>HL_Alumni_Contact__r.HR_EMPLOYEEID__c</formula>
+    <label>HL Alumni HR Employee ID</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

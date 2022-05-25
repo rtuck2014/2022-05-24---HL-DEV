@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Engagement_Valuation_Period__c</fullName>
+    <externalId>false</externalId>
+    <label>Engagement Valuation Period</label>
+    <referenceTo>Eng_VP__c</referenceTo>
+    <relationshipLabel>Eng Valuation Period Allocations</relationshipLabel>
+    <relationshipName>Eng_Valuation_Period_Allocation</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>true</reparentableMasterDetail>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

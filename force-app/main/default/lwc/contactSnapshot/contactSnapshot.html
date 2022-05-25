@@ -1,0 +1,17 @@
+<template>
+    <lightning-quick-action-panel header="Contact Snapshot">
+        <template if:true={recordId}>
+            <lightning-record-view-form  object-api-name="Contact" record-id={recordId} density="comfy">
+                <lightning-output-field field-name="Name"> </lightning-output-field>
+                <lightning-output-field field-name="Title"> </lightning-output-field>
+                <lightning-output-field field-name="MailingAddress"> </lightning-output-field>
+                <lightning-output-field field-name="Email"> </lightning-output-field>
+                <lightning-output-field field-name="Phone"> </lightning-output-field>
+                <lightning-output-field field-name="MobilePhone"> </lightning-output-field>
+            </lightning-record-view-form>
+            <div slot="footer">
+                <lightning-button variant="neutral" label="Ok" onclick={handleClose}></lightning-button>            
+            </div>
+        </template>
+    </lightning-quick-action-panel>
+</template>

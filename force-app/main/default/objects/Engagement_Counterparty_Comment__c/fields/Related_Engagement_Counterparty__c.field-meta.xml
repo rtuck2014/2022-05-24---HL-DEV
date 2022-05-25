@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Related_Engagement_Counterparty__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Related Engagement Counterparty</label>
+    <referenceTo>Engagement_Counterparty__c</referenceTo>
+    <relationshipLabel>Engagement Counterparty Comments</relationshipLabel>
+    <relationshipName>Engagement_Counterparty_Comments</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

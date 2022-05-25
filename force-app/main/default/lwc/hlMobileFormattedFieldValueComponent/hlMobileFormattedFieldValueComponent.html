@@ -1,0 +1,23 @@
+<template>
+  <span if:true={isDate}>
+    <lightning-formatted-date-time
+      value={fieldValue}
+      year="numeric"
+      month="2-digit"
+      day="2-digit"
+      time-zone={timeZone}
+    ></lightning-formatted-date-time>
+  </span>
+  <span if:true={isDatetime}>
+    <lightning-formatted-date-time
+      value={fieldValue}
+      year="numeric"
+      month="2-digit"
+      day="2-digit"
+      hour="2-digit"
+      minute="2-digit"
+      time-zone={timeZone}
+    ></lightning-formatted-date-time>
+  </span>
+  <span if:true={isOther}> {fieldValue}</span>
+</template>

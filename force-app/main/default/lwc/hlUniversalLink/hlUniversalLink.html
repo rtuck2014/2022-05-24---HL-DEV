@@ -1,0 +1,14 @@
+<template>
+        <template if:true={formatLink}>
+            <a onclick={viewAction} title={targetLabel}>{targetLabel}</a>
+        </template>
+        <template if:true={formatButton}>
+            <lightning-button 
+                variant="neutral" 
+                label={targetLabel} 
+                title={targetLabel} 
+                onclick={viewAction} >
+            </lightning-button>
+        </template>
+        
+    </template>

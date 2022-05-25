@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__NationalIdentificationNumber__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The business identification number used in some countries for business registration and tax collection.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The business identification number used in some countries for business registration and tax collection.</inlineHelpText>
+    <label>National Identification Number 1</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

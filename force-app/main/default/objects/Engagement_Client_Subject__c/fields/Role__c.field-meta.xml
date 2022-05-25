@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Role__c</fullName>
+    <description>This is equivalent to the Account Position from SalesLogix</description>
+    <externalId>false</externalId>
+    <label>Role</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Adverse</fullName>
+                <default>false</default>
+                <label>Adverse</label>
+            </value>
+            <value>
+                <fullName>Buyer Contact</fullName>
+                <default>false</default>
+                <label>Buyer Contact</label>
+            </value>
+            <value>
+                <fullName>Buyer Financial Advisor</fullName>
+                <default>false</default>
+                <label>Buyer Financial Advisor</label>
+            </value>
+            <value>
+                <fullName>Buyer Legal Counsel</fullName>
+                <default>false</default>
+                <label>Buyer Legal Counsel</label>
+            </value>
+            <value>
+                <fullName>Equity Holder</fullName>
+                <default>false</default>
+                <label>Equity Holder</label>
+            </value>
+            <value>
+                <fullName>Financial Advisor</fullName>
+                <default>false</default>
+                <label>Financial Advisor</label>
+            </value>
+            <value>
+                <fullName>Financial Advisor to Creditor</fullName>
+                <default>false</default>
+                <label>Financial Advisor to Creditor</label>
+            </value>
+            <value>
+                <fullName>Financial Advisor to Debtor</fullName>
+                <default>false</default>
+                <label>Financial Advisor to Debtor</label>
+            </value>
+            <value>
+                <fullName>Legal Advisor to Creditor</fullName>
+                <default>false</default>
+                <label>Legal Advisor to Creditor</label>
+            </value>
+            <value>
+                <fullName>Legal Advisor to Debtor</fullName>
+                <default>false</default>
+                <label>Legal Advisor to Debtor</label>
+            </value>
+            <value>
+                <fullName>Legal Counsel</fullName>
+                <default>false</default>
+                <label>Legal Counsel</label>
+            </value>
+            <value>
+                <fullName>Lender</fullName>
+                <default>false</default>
+                <label>Lender</label>
+            </value>
+            <value>
+                <fullName>Majority Owner</fullName>
+                <default>false</default>
+                <label>Majority Owner</label>
+            </value>
+            <value>
+                <fullName>Management Contact</fullName>
+                <default>false</default>
+                <label>Management Contact</label>
+            </value>
+            <value>
+                <fullName>Minority Owner</fullName>
+                <default>false</default>
+                <label>Minority Owner</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Post-Transaction</fullName>
+                <default>false</default>
+                <label>Post-Transaction</label>
+            </value>
+            <value>
+                <fullName>Pre-Transaction</fullName>
+                <default>false</default>
+                <label>Pre-Transaction</label>
+            </value>
+            <value>
+                <fullName>Primary Contact</fullName>
+                <default>false</default>
+                <label>Primary Contact</label>
+            </value>
+            <value>
+                <fullName>Seller Legal Counsel</fullName>
+                <default>false</default>
+                <label>Seller Legal Counsel</label>
+            </value>
+            <value>
+                <fullName>Seller Majority Owner</fullName>
+                <default>false</default>
+                <label>Seller Majority Owner</label>
+            </value>
+            <value>
+                <fullName>Seller Management Contact</fullName>
+                <default>false</default>
+                <label>Seller Management Contact</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

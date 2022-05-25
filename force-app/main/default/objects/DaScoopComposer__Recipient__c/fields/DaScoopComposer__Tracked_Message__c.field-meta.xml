@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Tracked_Message__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates the tracked message associated with a contact</inlineHelpText>
+    <label>Tracked Message</label>
+    <referenceTo>DaScoopComposer__Tracked_Message__c</referenceTo>
+    <relationshipLabel>Recipients</relationshipLabel>
+    <relationshipName>Recipients</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

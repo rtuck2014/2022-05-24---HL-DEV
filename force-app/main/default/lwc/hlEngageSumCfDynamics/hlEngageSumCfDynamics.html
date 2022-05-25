@@ -1,0 +1,83 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-2">
+            <div class="slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_1-of-1 fees">
+                    <c-hl-universal-card-form
+                        object-api="Engagement_Summary__c"
+                        record-id={engageSumId}
+                        fields={dynamicsFeeEngageSumFieldsEdit}
+                        columns="2"
+                        mode="view"
+                        title="Fees (Actual Amount)"
+                        title-tooltip="Enter actual currency amounts"
+                        title-tooltip-subject="I.e. one million would be 1,000,000"
+                        icon="utility:money"
+                        buttons="none"
+                        secondary-object-api="Engagement_Summary__c"
+                        secondary-record-id={engageSumId}
+                        secondary-fields={dynamicsFeeEngageSumFieldsEdit2}
+                        secondary-columns="3"
+                        secondary-mode="view">
+                    </c-hl-universal-card-form>
+                </div>
+                <div class="slds-col slds-size_1-of-1 transation">
+                    <c-hl-universal-card-form
+                        object-api="Engagement_Summary__c"
+                        record-id={engageSumId}
+                        fields={dynamicsTransactionEngageSumFieldsEdit}
+                        columns="1"
+                        mode="view"
+                        title="Transaction (Actual Amount)"
+                        icon="utility:work_order_type"
+                        buttons="none">
+                    </c-hl-universal-card-form>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_1-of-2">
+            <div class="slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_1-of-1 feecalc">
+                        <c-hl-universal-card-form
+                        object-api="Engagement_Summary__c"
+                        record-id={engageSumId}
+                        fields={dynamicsFeeCalcEngageSumFieldsEdit}
+                        columns="1"
+                        mode="view"
+                        title="Transaction Fee Calc (Actual Amount)"
+                        icon="utility:work_order_type"
+                        buttons="none">
+                    </c-hl-universal-card-form>
+                </div>
+                <div class="slds-col slds-size_1-of-1 incentive">
+                    <c-hl-universal-card-form
+                        object-api="Engagement_Summary__c"
+                        record-id={engageSumId}
+                        fields={dynamicsIncentEngageSumFieldsEdit}
+                        columns="3"
+                        mode="view"
+                        title="Incentive Structure (Actual Amount)"
+                        title-tooltip="Enter actual currency amounts"
+                        title-tooltip-subject="I.e. one million would be 1,000,000"
+                        icon="utility:overflow"
+                        buttons="none">
+                    </c-hl-universal-card-form>
+                </div>
+                <div class="slds-col slds-size_1-of-1 totals">
+                    <c-hl-universal-card-form
+                        object-api="Engagement_Summary__c"
+                        record-id={engageSumId}
+                        fields={dynamicsTotalFieldsRead}
+                        columns="1"
+                        mode="view"
+                        title="Totals (Actual Amount)"
+                        title-tooltip="Enter actual currency amounts"
+                        title-tooltip-subject="I.e. one million would be 1,000,000"
+                        icon="utility:moneybag"
+                        buttons="none">
+                    </c-hl-universal-card-form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

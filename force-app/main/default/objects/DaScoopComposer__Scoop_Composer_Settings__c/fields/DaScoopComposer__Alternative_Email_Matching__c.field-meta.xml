@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Alternative_Email_Matching__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Controls whether the field &quot;Email 2&quot; is considered when trying to match emails to a lead or contact, as opposed to the standard email field only. To avoid performance issues, don&apos;t activate this, if you have more than 500,000 leads or contacts.</inlineHelpText>
+    <label>Alternative Email Matching</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

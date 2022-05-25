@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CMTD__Target_API_Name__c</fullName>
+    <deprecated>false</deprecated>
+    <description>When populated, the field value will have a hyperlink (only support Salesforce record id). 
+Provide field API Name of the Id of the target record.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>To enable hyperlink, provide field API Name that contains the Id of the target record. (only support Salesforce record id)</inlineHelpText>
+    <label>Target API Name</label>
+    <length>50</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

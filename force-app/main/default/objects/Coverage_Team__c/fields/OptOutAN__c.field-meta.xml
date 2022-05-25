@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OptOutAN__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is used when a Covering Officer wishes to Opt-Out of receiving the Primary and all sub-related accounts&apos; activity notifications.</description>
+    <externalId>false</externalId>
+    <label>Opt-Out (Activity Notifications)</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

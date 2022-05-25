@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__PrimaryUSMetropolitanArea__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The name assigned to the 5-digit CBSA (Core Based Statistical Area) assigned by US Census board to denote a geographical region with a relatively high population density at its core.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The name assigned to the 5-digit CBSA (Core Based Statistical Area) assigned by US Census board to denote a geographical region with a relatively high population density at its core.</inlineHelpText>
+    <isFilteringDisabled>false</isFilteringDisabled>
+    <isNameField>false</isNameField>
+    <isSortingDisabled>false</isSortingDisabled>
+    <label>Primary Address US Metropolitan Area</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

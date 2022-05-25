@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Record Type Selection">
+        <lightning-layout multiple-rows="true" vertical-align="end">
+            <lightning-layout-item size="6" small-device-size="2" medium-device-size="4" large-device-size="4" padding="around-small">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <lightning-combobox name="recordTypes"
+                                                label={label}
+                                                value={selectedValue}
+                                                placeholder="-Select-"
+                                                options={options}
+                                                onchange={handleChange} ></lightning-combobox>
+                        </div>
+                    </div>
+            </lightning-layout-item>
+        </lightning-layout>    
+</lightning-card>
+</template>

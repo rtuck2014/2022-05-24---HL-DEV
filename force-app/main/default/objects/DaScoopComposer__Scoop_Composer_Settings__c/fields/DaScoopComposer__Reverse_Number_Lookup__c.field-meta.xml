@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Reverse_Number_Lookup__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>When enabled, Groove will automatically update the normalized version of Contacts and Leads Phone and Mobile numbers to support Groove Dialer&apos;s reverse number lookup.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enable if you want to use Groove Dialer&apos;s reverse number lookup functionality</inlineHelpText>
+    <label>Reverse Number Lookup</label>
+    <securityClassification>Public</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

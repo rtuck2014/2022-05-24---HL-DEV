@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_D_B_Companies</fullName>
+    <columns>NAME</columns>
+    <columns>Business_Name__c</columns>
+    <columns>Trade_Name_AKA__c</columns>
+    <columns>Marketability__c</columns>
+    <columns>Match_Confidence__c</columns>
+    <columns>Physical_Address__c</columns>
+    <columns>City__c</columns>
+    <columns>State__c</columns>
+    <columns>Postal_Code__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All D&amp;B Companies</label>
+</ListView>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Create_Unresolved_Items__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Controls what happens if an email is logged but no related objects was found (e.g. Lead, Contact, Opportunity, Case, etc). If checked, Groove will create an &quot;orphaned task&quot; and the user can later relate the task manually to a record or delete it.</inlineHelpText>
+    <label>Create Unresolved Items</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

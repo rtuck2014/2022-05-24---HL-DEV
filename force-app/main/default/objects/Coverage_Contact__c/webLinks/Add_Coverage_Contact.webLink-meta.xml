@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_Coverage_Contact</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Add Coverage Contact</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>/a26/e?CF00Ni000000Fkn9t={!Coverage_Team__c.Name}&amp;CF00Ni000000Fkn9t_lkid={!Coverage_Team__c.Id}&amp;retURL=%2F{!Coverage_Team__c.Id}&amp;saveURL=%2F{!Coverage_Team__c.Id}</url>
+</WebLink>

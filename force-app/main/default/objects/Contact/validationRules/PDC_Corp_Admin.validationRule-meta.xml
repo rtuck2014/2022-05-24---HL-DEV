@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PDC_Corp_Admin</fullName>
+    <active>true</active>
+    <description>Standard Users can only edit primary and secondary PDC if the Staff Type is Admin or Corp.</description>
+    <errorConditionFormula>(ISCHANGED( Primary_PDC__c ) || 
+ISCHANGED( Secondary_PDC__c )) &amp;&amp; 
+(NOT(ISPICKVAL(Staff_Type__c, &apos;ADMIN&apos;)) &amp;&amp; 
+NOT(ISPICKVAL(Staff_Type__c, &apos;CORP&apos;))) &amp;&amp; 
+$User.ProfileId == &apos;00ei0000001XLGD&apos; 
+&amp;&amp; NOT($Permission.PDC_Staff_Admin &amp;&amp; $User.Department = Department)</errorConditionFormula>
+    <errorMessage>Only HL Contacts with Staff Type ADMIN or CORP can have their PDCs edited.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Suffix__c</fullName>
+    <externalId>false</externalId>
+    <label>Suffix</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CFA</fullName>
+                <default>false</default>
+                <label>CFA</label>
+            </value>
+            <value>
+                <fullName>CPA</fullName>
+                <default>false</default>
+                <label>CPA</label>
+            </value>
+            <value>
+                <fullName>Esq.</fullName>
+                <default>false</default>
+                <label>Esq.</label>
+            </value>
+            <value>
+                <fullName>II</fullName>
+                <default>false</default>
+                <label>II</label>
+            </value>
+            <value>
+                <fullName>III</fullName>
+                <default>false</default>
+                <label>III</label>
+            </value>
+            <value>
+                <fullName>IV</fullName>
+                <default>false</default>
+                <label>IV</label>
+            </value>
+            <value>
+                <fullName>JD.</fullName>
+                <default>false</default>
+                <label>JD.</label>
+            </value>
+            <value>
+                <fullName>Jr.</fullName>
+                <default>false</default>
+                <label>Jr.</label>
+            </value>
+            <value>
+                <fullName>MD.</fullName>
+                <default>false</default>
+                <label>MD.</label>
+            </value>
+            <value>
+                <fullName>Ph.D</fullName>
+                <default>false</default>
+                <label>Ph.D</label>
+            </value>
+            <value>
+                <fullName>Sr.</fullName>
+                <default>false</default>
+                <label>Sr.</label>
+            </value>
+            <value>
+                <fullName>USAF Ret.</fullName>
+                <default>false</default>
+                <label>USAF Ret.</label>
+            </value>
+            <value>
+                <fullName>USA Ret.</fullName>
+                <default>false</default>
+                <label>USA Ret.</label>
+            </value>
+            <value>
+                <fullName>USN Ret.</fullName>
+                <default>false</default>
+                <label>USN Ret.</label>
+            </value>
+            <value>
+                <fullName>V</fullName>
+                <default>false</default>
+                <label>V</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>10</visibleLines>
+</CustomField>

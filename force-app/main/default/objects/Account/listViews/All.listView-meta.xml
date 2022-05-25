@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.ADDRESS1_STATE_CODE</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>ACCOUNT.RECORDTYPE</columns>
+    <columns>Location__c</columns>
+    <columns>Minimum_Revenue_MM__c</columns>
+    <columns>Maximum_Revenue_MM__c</columns>
+    <columns>Minimum_EBITDA_MM__c</columns>
+    <columns>Maximum_EBITDA_MM__c</columns>
+    <columns>Geographical_Focus__c</columns>
+    <columns>Industry_Focus__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Companies</label>
+</ListView>

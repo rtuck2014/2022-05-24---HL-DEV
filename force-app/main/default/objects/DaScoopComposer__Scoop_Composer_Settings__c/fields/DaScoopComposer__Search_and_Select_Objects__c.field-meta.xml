@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Search_and_Select_Objects__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>is a comma separated list of all sObjects (use API names of sObjects that &quot;Allow Activities&quot;) that shall be included in a search and select result (e.g. when a user want&apos;s to attach an email or calendar event to a specific record in Salesforce).</inlineHelpText>
+    <label>Search and Select Objects</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

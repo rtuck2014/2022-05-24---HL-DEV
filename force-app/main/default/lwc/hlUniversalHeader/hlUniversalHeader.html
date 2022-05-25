@@ -1,0 +1,88 @@
+<template>
+    <lightning-record-view-form record-id={hlHeaderId} object-api-name={hlHeaderObjectApi}>
+        <div class="slds-page-header slds-page-header_record-home">
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-title">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <template if:true={hIcon}>
+                                <lightning-icon icon-name={hIcon} size="large" alternative-text={hlHeaderObjectApi} ></lightning-icon>
+                            </template>
+                        </div>
+                        <div class="slds-media__body">
+                            <div class="slds-page-header__name">
+                                <div class="slds-page-header__name-title">
+                                    <h1>
+                                        <template if:true={hNameField}>
+                                            <span>{hNameField.label}</span>
+                                            <span class="slds-page-header__title slds-truncate" title="Name">{hNameField.record.value}</span>
+                                        </template>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-page-header__col-actions">
+                    <div class="slds-page-header__controls">
+                        <div class="slds-page-header__control">
+                            <template if:true={buttonOneUrl}>
+                                <c-hl-universal-link 
+                                    format-button="true"
+                                    target-type="web"
+                                    target-label={buttonOneLabel}
+                                    target-url={buttonOneUrl} >
+                                </c-hl-universal-link>
+                            </template>
+                            <template if:true={buttonTwoLabel}>
+                                <c-hl-universal-link 
+                                    format-button="true"
+                                    target-type="web"
+                                    target-label={buttonTwoLabel}
+                                    target-url={buttonTwoUrl} >
+                                </c-hl-universal-link>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-page-header__row slds-page-header__row_gutters">
+                <div class="slds-page-header__col-details">
+                    <ul class="slds-page-header__detail-row">
+                        <template if:true={hKeyFields}>
+                            <template for:each={hKeyFields} for:item="field">
+                                <li class="slds-page-header__detail-block" key={field.apiName}>
+                                    <div class="slds-text-title slds-truncate" title={field.label}>
+                                        <span>{field.label}</span>
+                                        <template if:true={field.object.inlineHelpText}>
+                                            <lightning-helptext content={field.object.inlineHelpText}></lightning-helptext>
+                                        </template>
+                                    </div>
+                                    <template if:false={field.object.reference}>
+                                        <template if:true={field.record.displayValue}>
+                                            <div class="slds-truncate" title={field.record.displayValue}>{field.record.displayValue}</div>
+                                        </template>
+                                        <template if:false={field.record.displayValue}>
+                                            <div class="slds-truncate" title={field.record.value}>{field.record.value}</div>
+                                        </template>
+                                    </template>
+                                    <template if:true={field.object.reference}>
+                                        <template if:true={field.reference.displayValue}>
+                                            <c-hl-universal-link 
+                                                format-link="true"
+                                                target-type="record"
+                                                target-object-api={field.reference.value.apiName} 
+                                                target-label={field.reference.displayValue} 
+                                                target-id={field.reference.value.id} >
+                                            </c-hl-universal-link>
+                                        </template>
+                                    </template>
+                                </li>
+                            </template>
+                        </template>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </lightning-record-view-form>
+</template>

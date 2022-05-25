@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Default_Record_Type__c</fullName>
+    <description>Used to Trigger Appropriate Workflow Assignment</description>
+    <externalId>false</externalId>
+    <formula>/*ENG RT Buyside : EC Buyside*/
+IF(AND(Engagement__r.RecordType.DeveloperName == &apos;Buyside&apos;, TEXT(Engagement__r.Industry_Group__c) &lt;&gt; &apos;FIG - Financial Institutions&apos;),&apos;Buy_Side&apos;,
+
+/*ENG RT Buyside and Industry Grp FIG : EC FIG Buyside*/
+IF(AND(Engagement__r.RecordType.DeveloperName == &apos;Buyside&apos;, TEXT(Engagement__r.Industry_Group__c) == &apos;FIG - Financial Institutions&apos;),&apos;FIG_Buyside&apos;,
+
+/*ENG RT Cap Mkt : EC Cap Mkt*/
+IF(Engagement__r.RecordType.DeveloperName == &apos;Capital_Markets&apos;,&apos;Capital_Markets&apos;,
+
+/*ENG RT Illiquid : EC IFA*/
+IF(Engagement__r.RecordType.DeveloperName == &apos;Illiquid_Financial_Assets&apos;,&apos;IFA&apos;,
+
+/*ENG RT Sellside and Industry Grp FIG : EC FIG Sellside*/
+IF(AND(Engagement__r.RecordType.DeveloperName == &apos;Sellside&apos;,TEXT(Engagement__r.Industry_Group__c) == &apos;FIG - Financial Institutions&apos;),&apos;FIG_Sellside&apos;,
+
+/*ENG RT Restructuring and Job Type DM&amp;A Buyside : EC Buyside*/
+IF(AND(Engagement__r.RecordType.DeveloperName == &apos;Restructuring&apos;,TEXT(Engagement__r.Job_Type__c) == &apos;DM&amp;A Buyside&apos;),&apos;Buy_Side&apos;,
+
+/*This should be default record type
+-ENG RT Sellside : EC Sellside 
+-ENG RT Restructuring and Job Type DM&amp;A Sellside: EC Sellside 
+*/
+&apos;Sell_Side&apos;))))))</formula>
+    <label>Default Record Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

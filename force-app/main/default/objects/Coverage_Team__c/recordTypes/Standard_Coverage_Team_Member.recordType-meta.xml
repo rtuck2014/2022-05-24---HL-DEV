@@ -1,0 +1,5682 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Standard_Coverage_Team_Member</fullName>
+    <active>true</active>
+    <label>Standard Coverage Team Member</label>
+    <picklistValues>
+        <picklist>Arranged_by_R_D__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Company_Coverage_Status__c</picklist>
+        <values>
+            <fullName>Client - Former</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Client - On Hold Future Opportunity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Client - On Hold In Tail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engaged</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Keep In Touch</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leads to Qualify</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Pitch - Acquired</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Pitch - Filed S1%2FIntending To Go Public</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Pitch - Hired Another Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Worth Calling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Opportunity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pitched - Decision On Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pitched - Declined Mandate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pitched - Lost</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qualified Lead</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Strategic Buyer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warm Lead</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Coverage_Level__c</picklist>
+        <values>
+            <fullName>Calling Officer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Primary</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Coverage_Team_Status__c</picklist>
+        <values>
+            <fullName>Active</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Inactive</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Coverage_Type__c</picklist>
+        <values>
+            <fullName>Aerospace Defense and Government</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alternative Investor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asia Coverage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Business Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CAPE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cannabis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chemical Initiative</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collateralized Loan Obligation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consumer Food %26 Retail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EU Capital Markets</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EU FR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EU IFA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FIG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FVA Coverage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fintech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Firm-Wide</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Global</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High Yield</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IFA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrials</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrials Group</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Italian-Centric</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Large-Cap</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Law Firm Coverage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Long-Term Capital</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Longer-Term Capital</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nifty Fifty</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OTHER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oil %26 Gas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PFG - Private Funds Group</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pan-European</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Lodging %26 Leisure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sell Side Desk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Software Initiative</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialist</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialty Distribution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tech%2BIP - Core</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tech%2BIP - SAM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tech%2BIP - Strategic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tech%2BIP - TAM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Telecom-Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transaction Advisory Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UK-Centric</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>DA_Company_Type__c</picklist>
+        <values>
+            <fullName>Content</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data %26 Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Events%2C Exhibitions and Meetings</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Software</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Data_Analytics_Company_Overview__c</picklist>
+        <values>
+            <fullName>2%2E010 - Company %26 Market Intelligence General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E011 - Company %26 Market Intelligence - Corporate Data</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E012 - Company %26 Market Intelligence - Credit Data</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E013 - Company %26 Market Intelligence - Economic Analysis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E014 - Company %26 Market Intelligence - Political Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E015 - Company %26 Market Intelligence - Expert Networks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E016 - Company %26 Market Intelligence - Market Intelligence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E020 - Education Software %26 Content - General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E021 - Education Software %26 Content - K12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E022 - Education Software %26 Content %E2%80%93 Higher Education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E023 - Education Software %26 Content - Professional Training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E024 - Education Software %26 Content - Vocational Training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E030 - Energy %26 Commodities General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E031 - Energy %26 Commodities - Agriculture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E032 - Energy %26 Commodities - Chemicals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E033 - Energy %26 Commodities - ETRM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E034 - Energy %26 Commodities - Metals %26 Mining</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E035 - Energy %26 Commodities - Oil %26 Gas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E036 - Energy %26 Commodities - Renewables%2C Greentech %26 Weather</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E037 - Energy %26 Commodities - Utilities %26 Energy Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E038 - Energy %26 Commodities - Water</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E040 - Engineering %26 Construction General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E041 - Engineering %26 Construction - Construction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E042 - Engineering %26 Construction - Engineering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E050 - Financial %26 Insurance General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E051 - Financial %26 Insurance - Asset Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E052 - Financial %26 Insurance - Compliance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E053 - Financial %26 Insurance - Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E054 - Financial %26 Insurance - Payments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E055 - Financial %26 Insurance - Portfolio Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E056 - Financial %26 Insurance - Risk Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E057 - Financial %26 Insurance - Trading %26 FX</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E058 - Financial %26 Insurance - Treasury Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E059 - Financial %26 Insurance - Banking %26 Lending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E060 - Supply Chain %26 Logistics General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E061 - Supply Chain %26 Logistics - Industrial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E062 - Supply Chain %26 Logistics - Manufacturing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E064 - Supply Chain %26 Logistics - Demand %26 Planning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E065 - Supply Chain %26 Logistics - Procurement %26 Sourcing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E066 - Supply Chain %26 Logistics - Warehouse Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E067 - Supply Chain %26 Logistics - Transportation Management %26 Logistics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E068 - Supply Chain %26 Logistics - Order Fulfillment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E070 - Marketing %26 Communications General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E071 - Marketing %26 Communications - Agencies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E072 - Marketing %26 Communications - Direct Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E073 - Marketing %26 Communications - Media Buyers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E074 - Marketing %26 Communications - Market Research</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E075 - Marketing %26 Communications - News %26 Social Media Monitoring</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E076 - Marketing %26 Communications - Promotional %26 Experiential</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E080 - Pharmaceuticals%2C Life Sciences %26 Healthcare General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E081 - Pharmaceuticals%2C Life Sciences %26 Healthcare - Healthcare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E082 - Pharmaceuticals%2C Life Sciences %26 Healthcare - Life Sciences</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E083 - Pharmaceuticals%2C Life Sciences %26 Healthcare - Pharmaceuticals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E090 - Real Estate %26 GIS General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E091 - Real Estate %26 GIS - GIS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E092 - Real Estate %26 GIS - Real Estate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E100 - Tax%2C Accounting%2C HR %26 Legal General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E101 - Tax%2C Accounting%2C HR %26 Legal - Accounting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E102 - Tax%2C Accounting%2C HR %26 Legal - HR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E103 - Tax%2C Accounting%2C HR %26 Legal - Legal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E104 - Tax%2C Accounting%2C HR %26 Legal - Tax</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E105 - Tax%2C Accounting%2C HR %26 Legal - IP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E110 - TMT General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E111 - TMT - TMT Research</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E112 - TMT - Live Entertainment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E113 - TMT - Publishing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E114 - TMT - Social Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E115 - TMT - Telecoms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E116 - TMT - TV%2C Radio %26 Film</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E120 - Travel%2C Transport %26 Logistics General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E121 - Travel%2C Transport %26 Logistics - Automotive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E122 - Travel%2C Transport %26 Logistics - Aviation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E124 - Travel%2C Transport %26 Logistics - Marine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E125 - Travel%2C Transport %26 Logistics - Rail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E126 - Travel%2C Transport %26 Logistics - Tourism</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E127 - Travel%2C Transport %26 Logistics - Transit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E130 - Retail %26 Consumer - General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E140 - Enterprise Software - General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E141 - Enterprise Software - ERP%2FCRM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E142 - Enterprise Software - Enterprise Content Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E143 - Enterprise Software - Security Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E145 - Enterprise Software - Infrastructure and Network Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E146 - Enterprise Software - Software Development and Testing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E147 - Enterprise Software - BI%2C Analytics and Collaboration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E150 - GRC %26 EHS - General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E151 - GRC %26 EHS - GRC%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E152 - GRC %26 EHS - EHS%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2%2E160 - Academic - Academic%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E000 - Business Services General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E010 - Asset Rental</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E020 - BPO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E021 - BPO - Claims Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E022 - BPO - Document Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E023 - BPO - Event Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E024 - BPO - Managed Print</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E025 - BPO - Printing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E026 - BPO - Procurement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E027 - BPO - Relocation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E028 - BPO - Translation Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E029 - BPO - Travel Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E030 - Consultancy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E031 - Consultancy - Construction Consultancy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E032 - Consultancy - Government Consultancy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E033 - Consultancy - Health %26 Safety Consultancy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E034 - Consultancy - HR Consultancy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E035 - Consultancy - Management Consultancy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E036 - Consultancy - Strategy Consultancy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E040 - Contracting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E050 - Distribution %26 Logistics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E060 - Hard FM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E061 - Hard FM - Gardening and Landscaping</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E062 - Hard FM - Building Fabric Maintenance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E063 - Hard FM - Lift and Escalator Maintenance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E064 - Hard FM - Lighting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E065 - Hard FM - Building Design</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E066 - Hard FM - Plant Replacement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E067 - Hard FM - Construction Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E068 - Hard FM - Energy and Environmental Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E070 - IT Outsourcing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E071 - IT Outsourcing - Cloud Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E072 - IT Outsourcing - IT Consultancy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E073 - IT Outsourcing - IT Infrastructure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E074 - IT Outsourcing - IT Procurement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E075 - IT Outsourcing - IT Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E076 - IT Outsourcing - IT Support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E077 - IT Outsourcing - Unified Communications</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E078 - IT Outsourcing - Value Added Reseller</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E080 - Professional Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E081 - Professional Services - Financial Compliance Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E082 - Professional Services - Legal Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E083 - Professional Services - Outsourced Accountancy Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E090 - Recruitment%2FHCM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E091 - Recruitment%2FHCM - Benefits Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E092 - Recruitment%2FHCM - Payroll Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E093 - Recruitment%2FHCM - Recruitment%2FStaffing Agency</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E094 - Recruitment%2FHCM - Recruitment Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E095 - Recruitment%2FHCM - Screening Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E100 - Soft FM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E101 - Soft FM - Security Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E102 - Soft FM - Cleaning Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E103 - Soft FM - Catering Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E104 - Soft FM - Postal Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E105 - Soft FM - Secretarial Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E110 - Testing %26 Inspection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E111 - Testing %26 Inspection - Instruments%2C Equipment %26 Supplies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E112 - Testing %26 Inspection - Testing%2C Inspection%2C and Certification Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>3%2E113 - Testing %26 Inspection - Healthcare and Life Sciences Testing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4%2E000 - Education Bricks %26 Mortar and Services - General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4%2E010 - Education Bricks %26 Mortar and Services - Higher Education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4%2E020 - Education Bricks %26 Mortar and Services - K-12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4%2E030 - Education Bricks %26 Mortar and Services - Professional Education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>4%2E040 - Education Bricks %26 Mortar and Services - Vocational Training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5%2E000 - FIG General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5%2E010 - Credit %26 Specialty Finance General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5%2E011 - Credit %26 Specialty Finance - Banks %26 Building Societies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5%2E012 - Credit %26 Specialty Finance - Consumer Credit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5%2E013 - Credit %26 Specialty Finance - Mortgages%2C Corporate %26 SME Lending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5%2E014 - Credit %26 Specialty Finance - Alternative Lending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5%2E015 - Credit %26 Specialty Finance - Payments %26 FX</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5%2E016 - Credit %26 Specialty Finance - Receivables Management %26 Debt Purchase</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5%2E017 - Credit %26 Specialty Finance - Credit Broking %26 Servicing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5%2E020 - Insurance General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5%2E021 - Insurance - Broking %26 Distribution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5%2E022 - Insurance - Underwriting %26 Life Assurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5%2E030 - Asset %26 Wealth Management</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Expected_Products__c</picklist>
+        <values>
+            <fullName>Advisory</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Buyside</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Continuation Fund</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DCM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>De-SPAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ECM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FVA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sellside</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Initiative__c</picklist>
+        <values>
+            <fullName>Nifty 50</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lead_Generation_Status__c</picklist>
+        <values>
+            <fullName>Contacting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Failed to Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Interested</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profiling - Done</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profiling - In Process</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profiling - Leave</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profiling - Need</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profiling - Priority</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Relationship</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Primary_Sector__c</picklist>
+        <values>
+            <fullName>AM - Allocator</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AM - Alternatives</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AM - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AM - Traditional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Academic %26 Research%2C IP %26 Legal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ad Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aerospace%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive %26 Transportation%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive%2C Transportation %26 Logistics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Auxiliary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bank %2F Broker-Dealer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Blockchain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Broadcast Technology%2FMedia Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Products%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Business Management Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Business Process Outsourcing %28BPO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CBD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CRE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Canadian LP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Goods%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Shortfall</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chemicals%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cloud Services %2F Infrastructure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commercial Real Estate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Communication</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Communications %26 Collaboration Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Company %26 Market Intelligence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concentration Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consumer Internet Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Content Management%2FEnterprise Workflow</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corporates</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Experience%2FEngagement Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Management%2FEnterprise Workflow</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Analytics %2F Business Intelligence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Centers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dealer Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Defense%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Derivatives</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Digital Gaming</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Digital Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Digital Publishing %26 Video</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Distribution%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EdTech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Education %26 Training Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Education Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Education%2FEd Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electronic Components</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Energy %26 Commodities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Energy %2F Oil %26 Gas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Energy Services and Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engineering %26 Construction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Environmental Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Environmental Technologies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facilities Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fiber</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Film%2FTV%2FMusic Entertainment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Food Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Funding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GRC %26 EHS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gov-Tech %2F Public Sector Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Government Services%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HC Clinics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HC Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HR Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hard Facilities Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hospitality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Human Capital Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IOT %26 Mobility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IOT-Auto%2FTelematics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IOT-Commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IOT-Enterprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IOT-Industrial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IOT-Smart Cities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IOT-Utilities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT Services%2FBPO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial Services%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial Technologies%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Infrastructure_software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insurance Company</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internet Infrastructure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low Carbon Solutions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manufacturing%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Margin Pressure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing Services%2FInformation Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MedTech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Metals %26 Engineered Materials</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mortgage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mortgage Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Music</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NPLs %28Various%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non-core Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nonprofit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OpEx</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Out-of-Home Entertainment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outsourcing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Overseas Subs%2FBranches</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paper%2C Plastics%2C Pkg%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pharma</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pharma %26 Healthcare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Physical Therapy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Print%2FRadio%2FBroadcasting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>REIT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Radio Stations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate%2C Retail %26 Facilities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rental Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Residential Real Estate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail %28Non-Mortgage%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail Mortgages</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Security %26 Safety Solutions%C2%A0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shipping</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialization Shortfall</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialty Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialty Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spectrum</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sports%2FLive Entertainment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supply Chain Management%2F Manufacturing Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TV Stations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Telecom Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Telecom%2FCommunication Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Testing%2C Inspection%2C Certification %26 Compliance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Towers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transportation %26 Logistics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>US MSO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vertical Software %E2%80%93 Construction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wireless</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>e-Commerce</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority__c</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Highest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Need To Call</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Profile_Status__c</picklist>
+        <values>
+            <fullName>Done</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High Priority</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leave</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Need</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Priority</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refresh</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Secondary_Sector__c</picklist>
+        <values>
+            <fullName>API Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Academic %26 Research</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Academic %26 Research  - Books</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Academic %26 Research  - Journals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Academic %26 Research  - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Academic %26 Research  - Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Access Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Accounting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Accounts Receivable Management %28ARM%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Active - Diversified</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Active - Equities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Active - Fixed Income</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Active - Long-only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Active - MLPs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Active Components</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AdTech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adhesives%2C Sealants%2C Coatings %26 Elastomers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Advanced Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aftermarket %2F MRO Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Agent Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Agriculture %26 Food</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Agrochemicals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Agrochemicals - Custom Manufacturing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Air %26 Water Treatment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Air Handling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Air Pollution Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Air Treatment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal Health</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>App %2F Server Monitoring</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Applicant Screening</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Applicant Tracking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Application Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Applications-Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Applications-Development Environments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Applications-Device Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Applications-External Gateways</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Applications-Gateway</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Applications-Gateways</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Applications-Internal Gateways</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Assessments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset %26 Wealth Mgmt - Asset %26 Fund Servicing %28Fund Admin Software%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset %26 Wealth Mgmt - Asset %26 Fund Servicing %28Fund Admin%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset %26 Wealth Mgmt - Asset %26 Fund Servicing %28Trust Admin %26 Custody%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset %26 Wealth Mgmt - Institutional %28DD %26 Compliance%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset %26 Wealth Mgmt - Institutional %28Front-to Back Platform%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset %26 Wealth Mgmt - Institutional %28MBO Platforms%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset %26 Wealth Mgmt - Institutional %28Portfolio Mgmt%2C Reporting %26 Risk%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset %26 Wealth Mgmt - Investing %26 Distribution %28Fund Distribution%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset %26 Wealth Mgmt - Investing %26 Distribution %28Online Investment Marketplaces%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset %26 Wealth Mgmt - Investing %26 Distribution %28Tech-enabled AM%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset %26 Wealth Mgmt - Wealth Tech %28Advisor Tech%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset %26 Wealth Mgmt - Wealth Tech %28Personal Finance%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset Integrity %26 Abatement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset Performance Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset-Based Trucking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asset-Light %2F Third Party Logistics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Association Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Audio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Audio%2FVisual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Auditing and Compliance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Authentication %26 Identification %28Biometrics%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Auto Body and Repair</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automated Billing %26 Payment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automation - Factory %2F Warehouse</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automation - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive  - Automotive Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive  - Automotive Data</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive  - Automotive Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive  - Connected Car</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive  - Driver Safety %26 Education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive  - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive  - Telematics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive %26 Logistics Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive %26 Logistics Technology - Autonomous Driving</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive %26 Logistics Technology - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive Aftermarket</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive Aftermarket - Jeep%2C Truck%2C %26 Off-Road Recreational Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive Aftermarket - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive Aftermarket - Performance Enhancement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive Aftermarket - Repair%2C Replacement%2C %26 Remanufactured Parts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive Aftermarket - Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive OEM Suppliers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive OEM Suppliers - Chassis %26 Structural</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive OEM Suppliers - Drivetrain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive OEM Suppliers - Engine%2C Exhaust%2C Emissions %26 Underhood</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive OEM Suppliers - Fluid Systems</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive OEM Suppliers - Interiors %26 Seating</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive OEM Suppliers - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive OEM Suppliers - Software%2C Sensors%2C Safety %26 ADAS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive OEM Suppliers - Tire %26 Wheel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Automotive Retail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aviation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B2B %26 Wholesale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banking %26 Lending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banking %26 SpecFin - Alternative %2F Online Lending %28Consumer%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banking %26 SpecFin - Alternative %2F Online Lending %28Diversified %26 SMB%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banking %26 SpecFin - Depository Banking Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banking %26 SpecFin - Lending Tech %26 Services %28Consumer%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banking %26 SpecFin - Lending Tech %26 Services %28Diversified %26 SMB%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bar %26 Wire</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Battery Materials</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Blockchain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Broker CRM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Broker Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Broker-Free List and Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Hygiene</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Hygiene - Professional Cleaning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Hygiene - Sanitation Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Asset Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Building Data %26 Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Building Department Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Building Façade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Building Maintenance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Controls %26 Automation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Elevator %2F Escalator Maintenance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Employee Health %26 Safety</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Energy Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Engineering %26 Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Environmental Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Fire %26 Life Safety</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - HVACR Systems</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Mechanical%2C Electrical%2C %26 Plumbing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Operational Compliance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Planning %26 Design</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Program Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Systems - Property Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Building Tech %26 Automation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Business Automation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Business Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Business Process Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CBRNE %26 Testing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CRE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CRM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CRM %2F Marketing Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CSR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Campaign Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Electronic Execution %26 Trading Systems %28Commodities%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Electronic Execution %26 Trading Systems %28Crypto%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Electronic Execution %26 Trading Systems %28Equities%2C Options %26 HFT%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Electronic Execution %26 Trading Systems %28Fixed Income %26 Derivatives%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Electronic Execution %26 Trading Systems %28Foreign Exchange%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Electronic Execution %26 Trading Systems %28Multi-Asset%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Electronic Execution %26 Trading Systems %28Retail %26 Professional Trader%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Electronic Execution %26 Trading Systems %28Securities Lending%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Post-Trade %28Clearing %26 Settlement - Blockchain%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Post-Trade %28Clearing %26 Settlement - Traditional%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Post-Trade %28Post-Trade Processing%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Post-Trade %28TCA%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Trading Venues %28ATS - Equities %26 Options%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Trading Venues %28ATS - Fixed Income %26 Derivatives%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Trading Venues %28ATS - Loans%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Trading Venues %28ATS - Private Stock%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Trading Venues %28Exchange - Commodities%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Trading Venues %28Exchange - Crypto%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Trading Venues %28Exchange - Diversified%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Trading Venues %28Exchange - Equities %26 Options%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Trading Venues %28Exchange - Regional%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Workflow %26 Infrastructure %28CRM %2F Origination Software%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Workflow %26 Infrastructure %28Corporate %2F Issuer Access%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Workflow %26 Infrastructure %28IT %2F Hosting Infrastructure%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Workflow %26 Infrastructure %28MBO Platforms %2F Consulting%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Workflow %26 Infrastructure %28Market Data Delivery%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Workflow %26 Infrastructure %28Operating %26 Comms Systems%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Workflow %26 Infrastructure %28Reporting %26 Compliance%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Markets - Workflow %26 Infrastructure %28Research Management%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital Shortfall</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carbon Capture%2C Utilization %26 Storage %28CCUS%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Case %2F Outcome Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Catalysts %26 Absorbents</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ceramics %26 Inorganic Chemicals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Certification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Channel%2F Revenue Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chemical Distribution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chemicals %26 Gas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cleaning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cleaning %26 Sanitation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cleaning and Maintenance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clinics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cloud App Management %2F DevOps</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cloud Computing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cloud Connectivity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cloud Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cloud Migration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cloud Networking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cloud Performance Optimization</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cloud Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cloud Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cloud Services automation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cloud Storage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cloud%2F Mobile POS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Club Fitness</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coated Papers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collaboration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Collaboration %28Video%2C Messaging and Call%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colocation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commercial %26 Residential Data %26 Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commercial Printing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commercial Vehicle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Comms Infrastructure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Communications</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Communications Platform as a Service %28CPaaS%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Compensation %26 Benefits</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Compounding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Compression Services %26 Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concentration Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Config Provisioning %2F Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connected Home</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connectivity-Cellular</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connectivity-Multi Network Provider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connectivity-Provisioning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connectivity-Satellite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connectivity-Short Range</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connectors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Construction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Construction %26 Facilities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Construction Chemicals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Construction Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Construction Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consumer Internet Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contact Center as a Service %28CCaaS%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Containerboard %26 Corrugated Packaging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Content Development</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Content Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contingent Labor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Continuous Integration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Controls %26 Instrumentation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corporate - CFO Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corporate - Employee Benefits Outsourcing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corporate - General BPO %26 Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corporate - IR %26 Shareholder Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corporate Training Content %26 Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corporates</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cost Recovery %26 Pricing Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cost and Pricing Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Courtroom Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit - Illiquid - BDC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit - Illiquid - Direct Lender</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit - Illiquid - Distressed Debt</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit - Liquid - ABS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit - Liquid - CLO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Credit Data %26 Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crowdfunding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cultivation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Care%2FEngagement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Experience Management %28CEM%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Relationship Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cyber</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cyber Risk Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data %26 Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Backup %26 Data Recovery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Center</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Collection%2C Processing %26 Analysis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Driven %2F Performance Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data and Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data%2C Valuation %26 Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Decommissioning and Deconstruction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delivery Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Demand Planning %26 Forcasting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Derivatives</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DevOps Tools</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Device-Cellular</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Device-GPS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Device-Microcontrollers%2FSOCs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Device-Sensors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Device-Short Range Module</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Access Sensors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Acoustic %26 Optical Sensors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Autonomous Driving</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Chemical Sensors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Dynamic Movement Sensors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Electronic %26 Magnetic Sensors %26 Actuators</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-GPS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Human Machine Interfaces</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Hybrid%2FElectric Components</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Infotainment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Liquid Sensors %26 Actuators</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Mechanical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Motion Sensors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Sensors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Short Range Module</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Telematics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Utilization Sensors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devices-Wearables</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Digital Gaming %26 Virtual Reality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Digital Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Digital Music</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Digital Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Digital Transformation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dispute Resolution Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Distribution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Distribution %E2%80%93 Tools</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Distribution - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Distribution - Plumbing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Diversified Business Process Management %28BPM%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Diversified Consulting Platforms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Diversified Fitness</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Diversified Travel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Document Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Donation Enablement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Donor Relationship Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Downstream Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Drilling%2C Completion %26 Production Services %26 Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E%26C Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E-Commerce - B2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E-Commerce - B2C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EHS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EHS %26 Sustainability Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ERP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Early Childhood</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Early Childhood - School</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Early Childhood - Service Provider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Early Childhood - Technology Provider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ed Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ed Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Education</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Education%2FEd Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electrical %2F Power Components %26 Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electronic Manufacturing Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Electronics %26 Electrical Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Emergency Response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Emerging Technologies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Emission Control Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Employee Engagement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Employee Screening</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Endpoint Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Energy %2F Oil %26 Gas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Energy Efficiency Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Energy Production Consumables</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Energy Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Energy Storage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Energy Waste Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Energy-as-a-Service %28EaaS%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engineering %26 Construction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engineering and Design</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engines%2C Turbines%2C Mobile Power Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise Business Intelligence and Analytics Platforms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise Field Service Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise Risk Management%2C Investigations %26 Compliance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Environmental Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Environmental Consulting %26 Remediation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Environmental Consulting %26 Remediation - Consulting%2C Design %26 Project Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Environmental Consulting %26 Remediation - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Environmental Consulting %26 Remediation - Site Investigation %26 Remediation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Environmental Consulting %26 Remediation - Site Monitoring</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Environmental Consulting %26 Remediation - Testing %26 Analytical Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equipment Rental</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Event Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Event Marketing and Trade Shows</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Events %26 Experiential</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Execution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Expert Networks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Expert Witness and Disputes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extraction %26 Processing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extrusion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fabrication</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facilities Design</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facilities Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Facility Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fibre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Field Workforce Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Film %2F TV Content</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Film %2F TV Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Films %26 Sheets</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Filtration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance %26 Accounting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance%2C Accounting%2C %26 Transaction Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance%2C Accounting%2C and Transaction Advisory</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial %26 Market Data %26 Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Compliance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Data %26 Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Information - Data Platforms %28AI%2FNLP-powered Workflow %26 Search%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Information - Data Platforms %28Alternative Data Marketplaces %26 Brokers%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Information - Data Platforms %28Financial Publications%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Information - Data Platforms %28General Market Research%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Information - Data Platforms %28Traditional Terminals%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Information - Investment-Related Research %26 Data %28Equities %26 Macro%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Information - Investment-Related Research %26 Data %28FICC%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Information - Ratings%2C Indices %26 Flows %28AM%2FWM%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Information - Ratings%2C Indices %26 Flows %28Index Provider%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Information - Ratings%2C Indices %26 Flows %28Ratings - Consumer%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Information - Ratings%2C Indices %26 Flows %28Ratings - Diversified%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Information - Ratings%2C Indices %26 Flows %28Ratings - ESG%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Information - Ratings%2C Indices %26 Flows %28Ratings - Fixed Income%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial Workflow</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fire %26 Life Safety</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Flavors%2C Fragrances %26 Food Ingredients</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fleet Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Flexible Packaging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Flow Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fluids %26 Lubricants</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Food %26 Beverage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Food Safety and Quality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Food Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Foodservice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Forest Products</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Foundry %2F Integrated %26 Minimill Steel Production</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuel Cell %26 Backup Power Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Funding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fundraising</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GRC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GRC - CSR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GRC - Certification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GRC - Enterprise %26 Operational Risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GRC - Fraud%2C AML%2C KYC %26 Sanctions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GRC - Governance ESG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GRC - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GRC - Regtech%2C Risk %26 Compliance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gas Handling%2C Processing %26 Storage Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Industrials</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Global Logistics %26 Trade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Golf</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grants Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ground Handling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ground Transportation %26 Fleet Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grounds Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grounds Management - Utility Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Grounds Management Vegetation Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HR Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HRIS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HVAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Health %26 Wellness</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare %2F Pharmaceutical Marketing %26 Communications</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare %2F Pharmaceutical Marketing %26 Communications - Clinical Trials</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare %2F Pharmaceutical Marketing %26 Communications - Data %26 Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare %2F Pharmaceutical Marketing %26 Communications - Healthcare Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare %2F Pharmaceutical Marketing %26 Communications - Life Sciences Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare %2F Pharmaceutical Marketing %26 Communications - Market Access %2F Payer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare %2F Pharmaceutical Marketing %26 Communications - Medical Animation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare %2F Pharmaceutical Marketing %26 Communications - Medical Communications</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare %2F Pharmaceutical Marketing %26 Communications - Medical and Regulatory Writing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare %2F Pharmaceutical Marketing %26 Communications - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare %2F Pharmaceutical Marketing %26 Communications - Regulatory Affairs %2F Pharmacovigilance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare %2F Pharmaceutical Marketing %26 Communications - Research and Insights</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Healthcare%2FPharma</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavy Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavy-Duty %26 Off-Highway OEM Suppliers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavy-Duty %26 Off-Highway OEM Suppliers - Chassis %26 Structural</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavy-Duty %26 Off-Highway OEM Suppliers - Drivetrain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavy-Duty %26 Off-Highway OEM Suppliers - Engine%2C Exhaust%2C Emissions %26 Underhood</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavy-Duty %26 Off-Highway OEM Suppliers - Fluid Systems</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavy-Duty %26 Off-Highway OEM Suppliers - Interiors %26 Seating</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavy-Duty %26 Off-Highway OEM Suppliers - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavy-Duty %26 Off-Highway OEM Suppliers - Software%2C Sensors%2C Safety %26 ADAS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavy-Duty %26 Off-Highway OEM Suppliers - Tire %26 Wheel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavyside</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavyside - Aggregates %26 Ready Mix</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavyside - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hedge Fund - Hedge Fund</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Helicopter Operations and other Aviation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hiring Tools</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hosting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Housebuilding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Human Resources Outsourcing %28HRO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hydrogen infrastructure %26 Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IOT Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IOT-Auto%2FTelematics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IOT-Commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IOT-Enterprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IOT-Industrial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IOT-Smart Cities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IOT-Utilities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP %26 Trademark Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP - Brand Protection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP - Domain Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP - IPMS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP - Patent %2F Trademark Filing %2F Validation %2F Docketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP - Patent %2F Trademark Renewals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP - Patent Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP - Patent Licencing %26 Litigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP - Patent Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP - Trademark %2F Brand Search %26 Watch</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IP - Translation Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IPaaS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT %26 Coding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT Consulting - Cloud Implementation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT Consulting - Dev %2F Engineering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT Consulting - Legacy Implementation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT Dev%2E Infrastructure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT Operations Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT Outsourcing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT Solutions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT Solutions - Hardware %2F Software Resellers and Distributors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT Solutions - Systems Integrator</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IT and Coding Training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IVMS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Identity %26 Access Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial Automation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial Control System %28ICS%29 Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial Cyber</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial In Plant Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial In Plant Services - Industrial Cleaning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial In Plant Services - Multi-Craft Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial In Plant Services - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial In Plant Services - Testing %26 Inspection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial In Plant Services - Turnaround%2C Maintenance %26 Repair</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial Minerals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial Packaging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrial%2C Hazardous%2C and Specialty Waste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Industrials</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Information Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Infrastructure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Infrastructure Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Infrastructure Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Infrastructure Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Injection Moulding%2C Blow Moulding %26 Thermoforming</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inspection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insurance Data %26 Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Integrated Circuits %26 Assemblies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Integrity Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inventory Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Investment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Investment Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Investment%2F Crowdfunding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jan %2F San</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>K-12</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>K-12 - School</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>K-12 - Service Provider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>K-12 - Technology Provider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kraft Paper</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LED %2F Lighting Components</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LMS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Landscaping%2FSnow</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Language Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Laundry</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leadership Training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Learning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leasing Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leasing Management Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal -  Compliance Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal -  Courtroom Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal -  Information Governance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal -  Legal Automation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal -  Legal Contract Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal -  Legal Practice Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal -  Legal Research</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal -  Litigation Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal -  Records Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal -  eDiscovery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal Automation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal Contract Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal Practice Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal Process Outsourcing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal Research</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lightside</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lightside - Flooring %26 Cabinets</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lightside - Lighting Fixtures</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lightside - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lightside - Paints %26 Wallcovering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lightside - Siding %26 Roofing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lightside - Windows %26 Doors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liquefaction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>List and Search Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Listing and Search Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Logistics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loyalty Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>M2M Communications Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MLS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maintenance Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Managed Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Managed Services - Application</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Managed Services - Infrastructure %26 Support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Managed Services Providers %28MSPs%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Management Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Management Security Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manager of Managers - HFOF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manager of Managers - Multi-Family Office</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manager of Managers - OCIOs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manager of Managers - PE FOF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manufacturing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manufacturing Control %26 Supervision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manufacturing Operations Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Margin pressure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marine Services %26 Transportation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marine Transportation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maritime</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Market Research</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Market Research %26 Insights</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing Automation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing Data %26 Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketplace</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketplaces</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Material Handling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MedTech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medical %2F Healthcare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meeting%2FEvents</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Membership Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Messaging Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meta%2FOTA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Metal Casting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Metal Forging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Metal Stamping</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Metals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Metals %26 Mining</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Milling Consumables</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mining %26 Mineral Production</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mobile Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mobility %26 Transportation Planning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monitoring %26 Automation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mortgage Origination %2F Financing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mortgage Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Motion Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Multi-Carrier Networks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Multiplay Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Multiwall Bags %2F Paper Sacks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Music</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NPLs %28Various%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Natural Gas Infrastructure %26 Services %28LNG%2C CNG%2C RNG%2C Propane%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Navigation%2C Geospatial %26 Weather</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Network Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non-Profit Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Non-core Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nonferrous Metal Production</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>O-2-O Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OTC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Offshore Support Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oil %26 Gas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oilfield Chemicals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oilfield Chemicals and Additives</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oilfield Distribution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Onboarding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Online %26 Mobile Gaming</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>OpEx</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Operational %26 Restructuring Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Operational Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Operations%2C Maintenance%2C and Repair</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ophthalmology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Optimization %26 Risk Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Order Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Order Management %26 Fulfillment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other - Other Alternatives</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other - Other Alternatives - Infrastructure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other - Other Alternatives - Natural Resources</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Allocators - Endowment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Allocators - Family Office</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Allocators - Financial Planner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Allocators - Insurance B%2FS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Allocators - Investment Consultant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Allocators - Pension Fund</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Allocators - Private Bank%2FWealth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Allocators - Sovereign Wealth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Hotel Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Out of Home Advertising</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Out of Home Entertainment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Overseas Subs%2FBranches</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PaaS%2FIaaS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Packaging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paper Packaging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paperboard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Party%2FEvent Rentals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Passenger Transportation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Passive %2F Rules-Based - ETF%2FIndexes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Passive %2F Rules-Based - Quant Managers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Passive Components</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patient Mobility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paving</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment Processing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payments %26 Transfers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payroll</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payroll and Benefits</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Performance %26 Succession</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Perimeter Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Personal Care-Related Chemicals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pest Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Petr%2F Commodity Chemicals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Petr%2F Commodity Chemicals - Recycling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pharma</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pharma %2F Fine %2F Custom %2F Lab %2F Electronic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Physical Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipe %26 Tube</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipe%2C Profile %26 Tube Extrusion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipeline Testing and Inspection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Podcasting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post-Secondary - School</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post-Secondary - Service Provider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post-Secondary - Technology Provider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post-secondary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Power %26 Utilities</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Power Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Precious Metal Refining</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Predictive Analytics Through Artificial Intelligence %26 Machine Learning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Predictive Maintenance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Private Cloud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Private Equity - Buyout</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Private Equity - Growth</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Private Equity - VC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Process Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Process Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procure to Pay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procurement %26 Spend Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procurement %2F Group Purchasing Organizations %28GPO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procurement Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procurement Solutions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product Design %26 Development</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Professional Employer Organizations %28PEOs%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Professional Services Automation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Professional Training %26 Licensure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Professional Training and Licensure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Project Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Property Information Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Property Lead Generation and Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Property Management Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Property%2F Building Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Relations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Safety Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pumps%2C Valves%2C Fittings%2C Seals%2C %26 Gaskets</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quality Assurance%2FControl</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>R%26D Outsourcing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE %26 Mortgage - Alternative %2F Online Lending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE %26 Mortgage - Lending Tech %26 Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RE %26 Mortgage - Real Estate %2F Property Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rail %26 Related Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate - Distribution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate - Illiquid RE - Debt - commercial %26 other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate - Illiquid RE - Equity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate - Illiquid RE - Originators - residential</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate - Illiquid RE - Private Equity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate - Liquid RE - MBS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate - Liquid RE - REITs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate - Other - Exchanges %2F Investment Platforms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate - Other - RE-Related ABS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate - Other - Real Estate Developers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate PMS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Technology  - Commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Technology  - Data valuation analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Technology  - Events %26 Alternative</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Technology  - Facility Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Technology  - Listing Search Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Technology  - Mortgage %26 Lending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Technology  - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Technology  - Portfolio Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Technology  - Property Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Technology  - Property Management Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Technology  - Real Estate Agent Tools</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Technology  - Real Estate Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Technology  - Residential</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recruiting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recruiting - Commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recruiting - Healthcare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recruiting - IT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recruiting - Professional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recruiting - Specialty</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recruitment Process Outsourcing %28RPO%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recycling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recycling and Resource Recovery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>RegTech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Remediation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Remote Monitoring %26 Process Automation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Remote Monitoring and Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renewable Equipment %26 Component Manufacturing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renewable Installation%2C Operation %26 Maintenance Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renewables %26 Water</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resellers%2FDistributors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reservoir %26 Production Optimization</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Residential</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Residential Construction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resins%2C Additives %26 Intermediates</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Response %26 Restoration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Response %26 Restoration - Hazardous Materials Abatement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Response %26 Restoration - Mitigation %26 Emergency Response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Response %26 Restoration - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Response %26 Restoration - Reconstruction %26 Repair</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Restoration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail %28Non-Mortgage%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail Insights %26 Optimization</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail Marketing %26 Loyalty</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail Mortgages</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retail Store Engagement %26 Operations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Revenue and Spending Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rigid Packaging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Risk %26 Regulatory</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Risk Management%2C Investigations%2C and Compliance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Risk Mitigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Robotic Technologies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Robotics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Route Optimization</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Safety</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Safety Products %26 Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Safety Training and Compliance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Safety and Compliance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales %26 CRM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales %26 Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales Training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales and Operations Planning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sand %26 Proppants</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scrap %2F Slag Processing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Security Analysis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Security Monitoring</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Security-Alarm Systems</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Security-Device Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Security-Embedded Trust</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Security-Network Visibility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Security-Vehicle System Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seismic %26 Geophysical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sensors</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sensors %26 Optics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sensors and Advanced Metering Equipment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Service Centre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Service Networks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Services-Consulting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Services-Managed Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Services-Systems Integration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shipping</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Intelligence %26 Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Recruiting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social%2FOmni-channel Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Software Engineering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Soil Treatment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solid Waste Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Asset Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Autonomous Driving</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Connected City</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Driver Behavior</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Emergency Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Emergency Response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Energy Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Environmental</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Indoor Positioning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Infotainment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Law Enforcement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Leak Detection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Lighting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Lighting Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Maintenance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Multi-Channel Notifications</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Navigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Operating Systems</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Parking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Plant Performance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Quality Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Real-Time Monitoring</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Ride Sharing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Smart Meters</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Space Utilization</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Telematics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Theft</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Transportation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Waste Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solutions-Workforce Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sourcing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sourcing and Procurement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Speciality Distribution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialization Shortfall</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialized Surface Equipment %26 Downhole Tools</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialty Construction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialty Equipment Rental</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialty Papers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialty Waste Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialty Waste Services - Bio-Solids</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialty Waste Services - Electronics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialty Waste Services - Hazardous</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialty Waste Services - Medical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialty Waste Services - Non-Hazardous Liquid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialty Waste Services - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialty Waste Services - Waste Water</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staffing - Commercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staffing - Healthcare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staffing - IT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staffing - Professional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staffing - Specialty</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Storage Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Structured Databases</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sub sea</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supplier Sourcing %26 Contract Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supply Chain %26 Logistics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supply Chain Execution Services %26 Marketplaces</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supply Chain Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supply Chain Planning</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Supply Chain%2FInventory Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Surgical Supplies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Surveying%2C Subsurface Engineering %26 Well Construction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Systems Integration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Systems Integrations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TMC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Talent Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tech-Enabled Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tech-Enabled Solutions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tech-enabled Brokerage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technology %26 Electronics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Television and Film Production</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Test %26 Measurement Instrumentation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Testing %2F DevOps</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Testing and Measurement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Testing and Regulatory Compliance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Testing and Regulatory Compliance - Environment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Testing and Regulatory Compliance - Food</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Testing and Regulatory Compliance - Laboratory</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Testing and Regulatory Compliance - Materials</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Testing and Regulatory Compliance - Non-Destructive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Testing and Regulatory Compliance - Supply Chain Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Thermal Technology</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Threat Intelligence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tissue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Towers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Track %26 Trace</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trading Operations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transaction Security</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transport Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transport Management System</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transportation %26 Automotive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transportation %26 Logistics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transportation Equipment Leasing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transportation Forecasting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transportation%2FLogistics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trust and Corporate Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Uncoated Freesheet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unified Communications as a Service %28UCaaS%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Used Vehicles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Utility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Utility Billing and Energy Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Utility Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vacation %2F Short Term Rentals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vertically integrated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VideSurveillance %26 Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virtual %26 Augmented Reality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virtual Operators%2FCloud Networking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virtual Viewing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virtualization</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Visualization</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VoC%2FCEM Platforms</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Volunteer %2F Event Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Volunteer Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warehouse</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warehouse Control</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warehouse Logistics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warehouse Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waste %26 Recycling</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waste %26 Recycling - Construction %26 Demolition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waste %26 Recycling - Glass</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waste %26 Recycling - Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waste %26 Recycling - Paper %26 Cardboard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waste %26 Recycling - Tires</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waste-to-Energy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Waste-to-Fuel Processes %26 Technology%2C Recycling and Reuse</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Water %26 Water Infrastructure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Water Treatment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Water and Wastewater Treatment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wealth %26 Capital Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web %26 Mobile Analytics</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web Portals%2F Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wholesale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wireless Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Workforce Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Workforce Training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yellow Iron</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>eDiscovery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>eSports</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tertiary_Sector__c</picklist>
+        <values>
+            <fullName>A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>D</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>F</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>G</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>H</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>I</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tier__c</picklist>
+        <values>
+            <fullName>A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>D - Advisors</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

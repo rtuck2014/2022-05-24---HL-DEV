@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tax_Registration_Type__c</fullName>
+    <description>Oracle to populate the &quot;Tax Registration Type&quot; from the Tax Registration Section</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Oracle to populate the &quot;Tax Registration Type&quot; from the Tax Registration Section</inlineHelpText>
+    <label>Tax Registration Type</label>
+    <length>60</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

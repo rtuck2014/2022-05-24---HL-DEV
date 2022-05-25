@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StopChangeFeeCompleteForLockedRevenueAcc</fullName>
+    <active>true</active>
+    <errorConditionFormula>$Setup.HL_General__c.Revenue_Accrual_Locked__c &amp;&amp; ISCHANGED(Fee_Completed__c) &amp;&amp; $Profile.Name != &apos;System Administrator&apos; &amp;&amp; $Profile.Name != &apos;Accounting User&apos;&amp;&amp;  TEXT(Engagement_VP__r.Engagement__r.Line_of_Business__c)=&apos;FVA&apos;</errorConditionFormula>
+    <errorMessage>The current month’s revenue accrual process has been closed, please wait 1-3 days for the next month’s accrual to open.</errorMessage>
+</ValidationRule>

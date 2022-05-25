@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TertiarySector__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Tertiary Sector</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>SectorValue__c.Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>SectorValue__c.DependencyValue__c</field>
+            <operation>equals</operation>
+            <value>Tertiary</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>SectorValue__c</referenceTo>
+    <relationshipLabel>Coverage Sector Dependencies (Tertiary Sector)</relationshipLabel>
+    <relationshipName>CoverageSectorDependencies4</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

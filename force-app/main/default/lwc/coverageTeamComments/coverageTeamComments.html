@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Add Coverage Team Comment" icon-name="standard:lightning_component">
+        <lightning-layout>
+            <lightning-layout-item>
+                <lightning-record-edit-form
+                    object-api-name="Coverage_Team_Comment__c"
+                    onsuccess={handleSuccess}>
+                        <div class="comment comment--sizing slds-grid slds-wrap">
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-box slds-box_x-small slds-text-align_left slds-m-top_medium"><lightning-input-field field-name="Comment_Type__c"></lightning-input-field></div>
+                            </div>
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-hidden slds-box slds-box_x-small slds-text-align_left slds-m-top_medium"><lightning-input-field field-name="Related_Coverage_Team__c" value={recordId}></lightning-input-field></div>
+                            </div>
+                            <div class="slds-size_2-of-2">
+                                <div class="slds-box slds-box_x-small slds-text-align_left slds-m-top_medium"><lightning-input-field field-name="Comment__c"></lightning-input-field></div>
+                            </div>
+                            <div class="slds-size_2-of-2">
+                                <div class="slds-text-align_center slds-m-top_medium"><lightning-button variant="brand" type="submit" name="save" label="Save"></lightning-button></div>
+                            </div>
+                        </div>
+                                      
+                        
+                    
+                </lightning-record-edit-form>
+                
+            </lightning-layout-item>
+        </lightning-layout>
+        
+    </lightning-card>
+</template>

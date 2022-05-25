@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_DUNS__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Parent DUNS</label>
+    <referenceTo>Dun_and_Bradstreet_Company__c</referenceTo>
+    <relationshipLabel>Related Child DUNS</relationshipLabel>
+    <relationshipName>Dun_and_Bradstreet_Companies</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

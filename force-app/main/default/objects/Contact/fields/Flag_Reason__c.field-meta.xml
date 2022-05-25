@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Flag_Reason__c</fullName>
+    <externalId>false</externalId>
+    <label>Flag Reason</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Contact Has Left Company</fullName>
+                <default>false</default>
+                <label>Contact Has Left Company</label>
+            </value>
+            <value>
+                <fullName>Deceased</fullName>
+                <default>false</default>
+                <label>Deceased</label>
+            </value>
+            <value>
+                <fullName>Duplicate Contact</fullName>
+                <default>false</default>
+                <label>Duplicate Contact</label>
+            </value>
+            <value>
+                <fullName>Retired</fullName>
+                <default>false</default>
+                <label>Retired</label>
+            </value>
+            <value>
+                <fullName>Researched - Email Correct</fullName>
+                <default>false</default>
+                <label>Researched - Email Correct</label>
+            </value>
+            <value>
+                <fullName>Researched - With No Results</fullName>
+                <default>false</default>
+                <label>Researched - With No Results</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

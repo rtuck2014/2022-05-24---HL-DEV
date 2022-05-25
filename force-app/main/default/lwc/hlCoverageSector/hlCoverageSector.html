@@ -1,0 +1,28 @@
+<template>   
+    <div class="slds-align_absolute-center slds-var-p-around_small">
+    <lightning-card title="Coverage Sector" icon-name="custom:custom63">
+        <div class="slds-var-p-around_large">
+            <template if:true={error}>
+                <div class="slds-text-color_error">{error}</div>
+            </template>
+            <lightning-record-edit-form object-api-name="CoverageSector__c" density="comfy" onerror={handleError} onsubmit={handleSubmit} onsuccess={handleSuccess} record-id={coverageSectorId}>                
+                <lightning-messages></lightning-messages>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-input-field field-name="IsMain__c" value={isMain}></lightning-input-field>
+                    </div>
+                    <template if:true={hasData}>
+                        <c-hl-sector-dependent-picklist onchild={handleSectorChange} selected-type-value={type} selected-primary-value={primarySector} selected-secondary-value={secondarySector} selected-tertiary-value={tertiarySector} is-main={isMain}></c-hl-sector-dependent-picklist>
+                    </template>
+                    <template if:false={coverageSectorId}>
+                        <c-hl-sector-dependent-picklist onchild={handleSectorChange} selected-type-value={coverageTeamTypeId} is-main={isMain}></c-hl-sector-dependent-picklist>
+                    </template>
+                </div>
+                <lightning-button class="slds-var-p-around_small" type="submit" label="Save"></lightning-button>
+                <lightning-button class="slds-var-p-around_small" label="Cancel" onclick={doCancel}>
+                </lightning-button>
+            </lightning-record-edit-form>            
+        </div>
+    </lightning-card>
+    </div>
+</template>

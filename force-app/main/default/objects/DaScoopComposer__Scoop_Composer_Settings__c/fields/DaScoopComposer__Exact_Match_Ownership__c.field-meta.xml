@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Exact_Match_Ownership__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Do not log emails if the recipients do not contain the email address of a user.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Check this box if you do not want to log emails that cannot be associated to a Salesforce user by inspecting the email recipients, like emails sent from a group email address. If this box is not checked, Groove will associate the email to the running user</inlineHelpText>
+    <label>Exact Match Ownership</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

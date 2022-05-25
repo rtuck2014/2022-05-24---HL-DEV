@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Maximum_Attachment_Size__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Maximum size (in bytes) of email attachments to attach to Activity/Activity&apos;s parent.
+Blank (default) = Allow any attachments (5mb max size)
+0 = Do not allow any attachments
+1000000 = Allow attachments up to 1mb</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Maximum size (in bytes) of email attachments to attach to Activity/Activity&apos;s parent.
+Blank (default) = Allow any attachments (5mb max size)
+0 = Do not allow any attachments
+1000000 = Allow attachments up to 1mb</inlineHelpText>
+    <label>Maximum Attachment Size</label>
+    <precision>7</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

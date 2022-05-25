@@ -1,0 +1,42 @@
+<template>
+    <div class="slds-grid slds-wrap debtStructures_grid">
+        <template if:true={debtStructures}>
+            <template for:each={debtStructures} for:item="db">
+                <div class="slds-col debt_structure slds-size_1-of-3" key={db.Id}>
+                    <c-hl-engage-sum-debt-structure
+                        engagement-id={engagementId} 
+                        engage-sum-id={engageSumId}
+                        debt-structure-id={db.Id}
+                        debt-structure-name={db.Name}
+                        onrefresh={refreshDebtStructures}>
+                    </c-hl-engage-sum-debt-structure>
+                </div>
+            </template>
+        </template>
+        <div class="slds-col debt_structure slds-size_1-of-3">
+            <template if:true={debtStructuresError}>
+                <div class="slds-card-wrapper">
+                    <lightning-icon icon-name="utility:warning" alternative-text="Warning!" variant="warning"></lightning-icon>
+                    {debtStructuresError}
+                </div>
+                <c-hl-universal-card-form
+                    object-api="Engagement_Summary__c"
+                    record-id={engageSumId}
+                    fields={engageSumNoFacilityField}
+                    required-fields={engageSumNoFacilityFieldRequired}
+                    onrequiredfieldscheck={requiredSectionResult}
+                    sub-title="Nothing to Report"
+                    columns="2"
+                    mode="view"
+                    buttons="none">
+                </c-hl-universal-card-form>
+            </template>
+            <c-hl-engage-sum-debt-structure
+                engagement-id={engagementId}
+                engage-sum-id={engageSumId}
+                new-mode="true"
+                onrefresh={refreshDebtStructures}>
+            </c-hl-engage-sum-debt-structure>
+        </div>
+   </div>
+</template>

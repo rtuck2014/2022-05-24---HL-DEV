@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Registration_Number__c</fullName>
+    <description>Registration Number - Oracle to populate the Registration number from the Tax Registration Section</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Registration Number - Oracle to populate the Registration number from the Tax Registration Section</inlineHelpText>
+    <label>Registration Number</label>
+    <length>50</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

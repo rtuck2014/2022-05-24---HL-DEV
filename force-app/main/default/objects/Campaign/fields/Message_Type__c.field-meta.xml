@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Message_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Message Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Save the Date</fullName>
+                <default>false</default>
+                <label>Save the Date</label>
+            </value>
+            <value>
+                <fullName>Invitation</fullName>
+                <default>false</default>
+                <label>Invitation</label>
+            </value>
+            <value>
+                <fullName>Confirmation</fullName>
+                <default>false</default>
+                <label>Confirmation</label>
+            </value>
+            <value>
+                <fullName>Update</fullName>
+                <default>false</default>
+                <label>Update</label>
+            </value>
+            <value>
+                <fullName>Last Chance to Register</fullName>
+                <default>false</default>
+                <label>Last Chance to Register</label>
+            </value>
+            <value>
+                <fullName>Reminder</fullName>
+                <default>false</default>
+                <label>Reminder</label>
+            </value>
+            <value>
+                <fullName>Thank You</fullName>
+                <default>false</default>
+                <label>Thank You</label>
+            </value>
+            <value>
+                <fullName>No Show</fullName>
+                <default>false</default>
+                <label>No Show</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

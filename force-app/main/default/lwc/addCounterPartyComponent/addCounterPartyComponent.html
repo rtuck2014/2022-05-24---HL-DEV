@@ -1,0 +1,186 @@
+<template>   
+    <template if:true={runSpinner}>
+        <lightning-spinner alternative-text="Loading" size="large" ></lightning-spinner>
+    </template>
+    <div style="height:550px">
+        <lightning-card  title="Counterparties" >
+            <lightning-button style="padding:5px;" label="Add Counterparty" variant="brand" slot="actions" onclick={redirectNewCounterparty}></lightning-button>
+            <lightning-button style="padding:5px;" label="Back" slot="actions" onclick={handleBack}></lightning-button>
+            <lightning-accordion >
+                <lightning-accordion-section name="Engagement" label="Get Companies from existing Engagement">
+                    <lightning-layout multiple-rows>
+                        <lightning-layout-item size="12" small-device-size="12" medium-device-size="4" large-device-size="12" padding="around-small" style="display:flex">
+                            <p style="width:50%"><c-custom-search-component icon-name="standard:account"
+                                    s-object-api-name="Engagement__c"
+                                    label="Engagement"
+                                    onlookupupdate={lookupRecord}
+                                    where-clause-field-name = "Engagement_Number__c"
+                                    placeholder="Search Engagement here..."></c-custom-search-component></p>
+                                <p style="padding-top:20px">   <lightning-button variant="brand" label="Search" title="Search" onclick={handleClick} disabled={isSearchDisabled} class="slds-m-left_x-small"></lightning-button></p>
+                        </lightning-layout-item>
+                        
+                    </lightning-layout>  
+                </lightning-accordion-section>
+                <lightning-accordion-section name="Company" label="Get Companies from existing Company List">
+                    <lightning-layout multiple-rows>
+                        <lightning-layout-item size="12" small-device-size="12" medium-device-size="4" large-device-size="12" padding="around-small" style="display:flex">
+                            <p style="width:50%"><c-custom-search-component icon-name="standard:account"
+                                    s-object-api-name="Company_List__c"
+                                    label="Company List"
+                                    onlookupupdate={lookupRecordCompany}
+                                    where-clause-field-name = ""
+                                    placeholder="Search Company List here..."></c-custom-search-component></p>
+                                <p style="padding-top:20px">  
+                                     <lightning-button variant="brand" label="Search" title="Search" onclick={handleClickCL} disabled={isSearchDisabledCL} class="slds-m-left_x-small">
+                                     </lightning-button>
+                                     <lightning-button variant="brand" label="View All Company List" title="View All Company List" onclick={handleviewAll} class="slds-m-left_x-small">
+                                     </lightning-button>
+                                </p>
+                        </lightning-layout-item>
+                        
+                    </lightning-layout>  
+                </lightning-accordion-section>
+            </lightning-accordion>
+           
+            <template if:true={showCounterPartyList}>
+               <p style="text-align:center;padding-bottom:10px;"><lightning-button variant="brand" label={name} title="counterparty" onclick={handleAddCounterParty} class="slds-m-left_x-small"></lightning-button></p>
+                
+                <lightning-datatable 
+                        key-field="Id"
+                        data={tableData}
+                        columns={columns}
+                        row-number-offset={rowNumberOffset}></lightning-datatable>
+                        <br/>
+                         <c-paginator records={counterPartyList} 
+                            total-records={counterPartyList.length} 
+                            show-search-box=false 
+                            onpaginatorchange={handlePaginatorChange}
+                            >
+                </c-paginator>
+            </template>
+
+            <template if:true={showPreviouslyAddedCP}>
+                <p style="text-align:center;padding:20px;"><b style="font-size:1rem">Previously Added Counterparties</b></p>
+                <lightning-datatable 
+                        key-field="Id"
+                        data={alreadySelectedCounterparties}
+                        columns={columns}
+                        hide-checkbox-column
+                        row-number-offset={rowNumberOffsetSelectedCP}
+                        ></lightning-datatable>
+                        <br/>
+                        <c-paginator records={alreadySelectedCounterpartiesList} 
+                            total-records={alreadySelectedCounterpartiesList.length} 
+                            show-search-box=false 
+                            onpaginatorchange={handlePaginatorChangeSelectedCP}>
+                </c-paginator>
+            </template>
+
+            <template if:true={showCompanyMemberList}>
+                <p style="text-align:center;padding-bottom:10px;"><lightning-button variant="brand" label={name} title="counterparty" onclick={handleAddCounterPartyCL} class="slds-m-left_x-small"></lightning-button></p>
+                
+                <lightning-datatable 
+                        key-field="Id"
+                        data={tableDataCL}
+                        columns={columnsCL}
+                        row-number-offset={rowNumberOffsetCL}></lightning-datatable>
+                        <br/>
+                         <c-paginator records={companyMembrList} 
+                            total-records={companyMembrList.length} 
+                            show-search-box=false 
+                            onpaginatorchange={handlePaginatorChangeCL}>
+                </c-paginator>
+            </template>
+             <template if:true={showPreviouslyAddedCPCL}>
+                <p style="text-align:center;padding:20px;"><b style="font-size:1rem">Previously Added Counterparties</b></p>
+                <lightning-datatable 
+                        key-field="Id"
+                        data={alreadySelectedCounterpartiesCL}
+                        columns={columnsCL}
+                        hide-checkbox-column
+                        row-number-offset={rowNumberOffsetSelectedCPCL}
+                        ></lightning-datatable>
+                        <br/>
+                        <c-paginator records={alreadySelectedCounterpartiesCLList} 
+                            total-records={alreadySelectedCounterpartiesCLList.length} 
+                            show-search-box=false 
+                            onpaginatorchange={handlePaginatorChangeSelectedCPCL}>
+                </c-paginator>
+            </template>
+
+            
+
+            <template if:true={showNoRecordsMessage}>
+            <p style="text-align:center;padding-top:10%">{showNoRecordsMessage}</p>
+            </template>
+
+           <template if:true={showViewAll}>
+                <!-- Modal/Popup Box LWC starts here -->
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <!-- Modal/Popup Box LWC header here -->
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                                <lightning-icon icon-name="utility:close"
+                                    alternative-text="close"
+                                    variant="inverse"
+                                    size="small" ></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Company List</h2>
+                        </header>
+                        <!-- Modal/Popup Box LWC body starts here -->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            
+                            <table aria-describedby="Company-list" class="slds-table  slds-table_bordered ">
+
+                                <!--Header of the table-->
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="" scope="col">
+                                        </th>
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate " title="Company Name">Company Name</div>
+                                        </th>
+                                         <th class="" scope="col">
+                                            <div class="slds-truncate " title="Total Companies">Total Companies</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={companyList.data} for:item="company">
+                                        <tr key={company.Id} class="slds-hint-parent">
+                                            <td class="">
+                                                <div>
+                                                    <input type="radio" name="Radiobutton" value={company.Id} style="margin-right: 5px;" onchange={handleSelectedValue}>
+                                                </div>
+                                            </td>
+                                            <td class="">
+                                                <div class="slds-truncate">
+                                                    {company.Name}
+                                                </div>
+                                            </td>
+                                            <td class="">
+                                                <div class="slds-truncate">
+                                                    {company.TotalCompanies__c}
+                                                </div>
+                                            </td>
+                                            
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Modal/Popup Box LWC footer starts here -->
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                            <button class="slds-button slds-button_brand" onclick={submitDetails} title="OK">OK</button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+           
+        </lightning-card>
+    </div>
+</template>

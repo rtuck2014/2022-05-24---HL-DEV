@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StopChangeStageForCloseEngagement</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(NOT(ISNEW()),AND(AND(ISCHANGED(Fee_Completed__c),ISCHANGED(Status__c)),IF(OR(ISPICKVAL(Engagement_VP__r.Engagement__r.Stage__c, &apos;Closed&apos;),ISPICKVAL(Engagement_VP__r.Engagement__r.Stage__c, &apos;Dead&apos;)), true,false)), false)</errorConditionFormula>
+    <errorMessage>Position Status can&apos;t be changed on Closed or Dead Engagements</errorMessage>
+</ValidationRule>

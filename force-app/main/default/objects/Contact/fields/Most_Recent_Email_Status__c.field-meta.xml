@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Most_Recent_Email_Status__c</fullName>
+    <description>LEGACY DO NOT USE</description>
+    <externalId>false</externalId>
+    <label>LEGACY Most Recent Email Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Successful</fullName>
+                <default>false</default>
+                <label>Successful</label>
+            </value>
+            <value>
+                <fullName>Soft Bounce</fullName>
+                <default>false</default>
+                <label>Soft Bounce</label>
+            </value>
+            <value>
+                <fullName>Hard Bounce</fullName>
+                <default>false</default>
+                <label>Hard Bounce</label>
+            </value>
+            <value>
+                <fullName>Failure</fullName>
+                <default>false</default>
+                <label>Failure</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

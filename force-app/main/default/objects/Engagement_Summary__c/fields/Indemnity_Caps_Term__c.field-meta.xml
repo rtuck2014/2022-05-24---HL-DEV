@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Indemnity_Caps_Term__c</fullName>
+    <externalId>false</externalId>
+    <label>Survival Period</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>13 to 18 Months</fullName>
+                <default>false</default>
+                <label>13 to 18 Months</label>
+            </value>
+            <value>
+                <fullName>19 to 24 Months</fullName>
+                <default>false</default>
+                <label>19 to 24 Months</label>
+            </value>
+            <value>
+                <fullName>24+ Months</fullName>
+                <default>false</default>
+                <label>24+ Months</label>
+            </value>
+            <value>
+                <fullName>6 Months or Less</fullName>
+                <default>false</default>
+                <label>6 Months or Less</label>
+            </value>
+            <value>
+                <fullName>7 to 12 Months</fullName>
+                <default>false</default>
+                <label>7 to 12 Months</label>
+            </value>
+            <value>
+                <fullName>Express - No Survival</fullName>
+                <default>false</default>
+                <label>Express - No Survival</label>
+            </value>
+            <value>
+                <fullName>Silent</fullName>
+                <default>false</default>
+                <label>Silent</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

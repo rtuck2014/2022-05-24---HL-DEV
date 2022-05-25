@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Data_Analytics_Company_Overview__c</fullName>
+    <externalId>false</externalId>
+    <label>Data Analytics Company Overview</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>2.010 - Company &amp; Market Intelligence General</fullName>
+                <default>false</default>
+                <label>2.010 - Company &amp; Market Intelligence General</label>
+            </value>
+            <value>
+                <fullName>2.011 - Company &amp; Market Intelligence - Corporate Data</fullName>
+                <default>false</default>
+                <label>2.011 - Company &amp; Market Intelligence - Corporate Data</label>
+            </value>
+            <value>
+                <fullName>2.012 - Company &amp; Market Intelligence - Credit Data</fullName>
+                <default>false</default>
+                <label>2.012 - Company &amp; Market Intelligence - Credit Data</label>
+            </value>
+            <value>
+                <fullName>2.013 - Company &amp; Market Intelligence - Economic Analysis</fullName>
+                <default>false</default>
+                <label>2.013 - Company &amp; Market Intelligence - Economic Analysis</label>
+            </value>
+            <value>
+                <fullName>2.014 - Company &amp; Market Intelligence - Political Risk</fullName>
+                <default>false</default>
+                <label>2.014 - Company &amp; Market Intelligence - Political Risk</label>
+            </value>
+            <value>
+                <fullName>2.015 - Company &amp; Market Intelligence - Expert Networks</fullName>
+                <default>false</default>
+                <label>2.015 - Company &amp; Market Intelligence - Expert Networks</label>
+            </value>
+            <value>
+                <fullName>2.016 - Company &amp; Market Intelligence - Market Intelligence</fullName>
+                <default>false</default>
+                <label>2.016 - Company &amp; Market Intelligence - Market Intelligence</label>
+            </value>
+            <value>
+                <fullName>2.020 - Education Software &amp; Content - General</fullName>
+                <default>false</default>
+                <label>2.020 - Education Software &amp; Content - General</label>
+            </value>
+            <value>
+                <fullName>2.021 - Education Software &amp; Content - K12</fullName>
+                <default>false</default>
+                <label>2.021 - Education Software &amp; Content - K12</label>
+            </value>
+            <value>
+                <fullName>2.022 - Education Software &amp; Content – Higher Education</fullName>
+                <default>false</default>
+                <label>2.022 - Education Software &amp; Content – Higher Education</label>
+            </value>
+            <value>
+                <fullName>2.023 - Education Software &amp; Content - Professional Training</fullName>
+                <default>false</default>
+                <label>2.023 - Education Software &amp; Content - Professional Training</label>
+            </value>
+            <value>
+                <fullName>2.024 - Education Software &amp; Content - Vocational Training</fullName>
+                <default>false</default>
+                <label>2.024 - Education Software &amp; Content - Vocational Training</label>
+            </value>
+            <value>
+                <fullName>2.030 - Energy &amp; Commodities General</fullName>
+                <default>false</default>
+                <label>2.030 - Energy &amp; Commodities General</label>
+            </value>
+            <value>
+                <fullName>2.031 - Energy &amp; Commodities - Agriculture</fullName>
+                <default>false</default>
+                <label>2.031 - Energy &amp; Commodities - Agriculture</label>
+            </value>
+            <value>
+                <fullName>2.032 - Energy &amp; Commodities - Chemicals</fullName>
+                <default>false</default>
+                <label>2.032 - Energy &amp; Commodities - Chemicals</label>
+            </value>
+            <value>
+                <fullName>2.033 - Energy &amp; Commodities - ETRM</fullName>
+                <default>false</default>
+                <label>2.033 - Energy &amp; Commodities - ETRM</label>
+            </value>
+            <value>
+                <fullName>2.034 - Energy &amp; Commodities - Metals &amp; Mining</fullName>
+                <default>false</default>
+                <label>2.034 - Energy &amp; Commodities - Metals &amp; Mining</label>
+            </value>
+            <value>
+                <fullName>2.035 - Energy &amp; Commodities - Oil &amp; Gas</fullName>
+                <default>false</default>
+                <label>2.035 - Energy &amp; Commodities - Oil &amp; Gas</label>
+            </value>
+            <value>
+                <fullName>2.036 - Energy &amp; Commodities - Renewables, Greentech &amp; Weather</fullName>
+                <default>false</default>
+                <label>2.036 - Energy &amp; Commodities - Renewables, Greentech &amp; Weather</label>
+            </value>
+            <value>
+                <fullName>2.037 - Energy &amp; Commodities - Utilities &amp; Energy Management</fullName>
+                <default>false</default>
+                <label>2.037 - Energy &amp; Commodities - Utilities &amp; Energy Management</label>
+            </value>
+            <value>
+                <fullName>2.038 - Energy &amp; Commodities - Water</fullName>
+                <default>false</default>
+                <label>2.038 - Energy &amp; Commodities - Water</label>
+            </value>
+            <value>
+                <fullName>2.040 - Engineering &amp; Construction General</fullName>
+                <default>false</default>
+                <label>2.040 - Engineering &amp; Construction General</label>
+            </value>
+            <value>
+                <fullName>2.041 - Engineering &amp; Construction - Construction</fullName>
+                <default>false</default>
+                <label>2.041 - Engineering &amp; Construction - Construction</label>
+            </value>
+            <value>
+                <fullName>2.042 - Engineering &amp; Construction - Engineering</fullName>
+                <default>false</default>
+                <label>2.042 - Engineering &amp; Construction - Engineering</label>
+            </value>
+            <value>
+                <fullName>2.050 - Financial &amp; Insurance General</fullName>
+                <default>false</default>
+                <label>2.050 - Financial &amp; Insurance General</label>
+            </value>
+            <value>
+                <fullName>2.051 - Financial &amp; Insurance - Asset Management</fullName>
+                <default>false</default>
+                <label>2.051 - Financial &amp; Insurance - Asset Management</label>
+            </value>
+            <value>
+                <fullName>2.052 - Financial &amp; Insurance - Compliance</fullName>
+                <default>false</default>
+                <label>2.052 - Financial &amp; Insurance - Compliance</label>
+            </value>
+            <value>
+                <fullName>2.053 - Financial &amp; Insurance - Insurance</fullName>
+                <default>false</default>
+                <label>2.053 - Financial &amp; Insurance - Insurance</label>
+            </value>
+            <value>
+                <fullName>2.054 - Financial &amp; Insurance - Payments</fullName>
+                <default>false</default>
+                <label>2.054 - Financial &amp; Insurance - Payments</label>
+            </value>
+            <value>
+                <fullName>2.055 - Financial &amp; Insurance - Portfolio Management</fullName>
+                <default>false</default>
+                <label>2.055 - Financial &amp; Insurance - Portfolio Management</label>
+            </value>
+            <value>
+                <fullName>2.056 - Financial &amp; Insurance - Risk Management</fullName>
+                <default>false</default>
+                <label>2.056 - Financial &amp; Insurance - Risk Management</label>
+            </value>
+            <value>
+                <fullName>2.057 - Financial &amp; Insurance - Trading &amp; FX</fullName>
+                <default>false</default>
+                <label>2.057 - Financial &amp; Insurance - Trading &amp; FX</label>
+            </value>
+            <value>
+                <fullName>2.058 - Financial &amp; Insurance - Treasury Management</fullName>
+                <default>false</default>
+                <label>2.058 - Financial &amp; Insurance - Treasury Management</label>
+            </value>
+            <value>
+                <fullName>2.059 - Financial &amp; Insurance - Banking &amp; Lending</fullName>
+                <default>false</default>
+                <label>2.059 - Financial &amp; Insurance - Banking &amp; Lending</label>
+            </value>
+            <value>
+                <fullName>2.060 - Supply Chain &amp; Logistics General</fullName>
+                <default>false</default>
+                <label>2.060 - Supply Chain &amp; Logistics General</label>
+            </value>
+            <value>
+                <fullName>2.061 - Supply Chain &amp; Logistics - Industrial</fullName>
+                <default>false</default>
+                <label>2.061 - Supply Chain &amp; Logistics - Industrial</label>
+            </value>
+            <value>
+                <fullName>2.062 - Supply Chain &amp; Logistics - Manufacturing</fullName>
+                <default>false</default>
+                <label>2.062 - Supply Chain &amp; Logistics - Manufacturing</label>
+            </value>
+            <value>
+                <fullName>2.064 - Supply Chain &amp; Logistics - Demand &amp; Planning</fullName>
+                <default>false</default>
+                <label>2.064 - Supply Chain &amp; Logistics - Demand &amp; Planning</label>
+            </value>
+            <value>
+                <fullName>2.065 - Supply Chain &amp; Logistics - Procurement &amp; Sourcing</fullName>
+                <default>false</default>
+                <label>2.065 - Supply Chain &amp; Logistics - Procurement &amp; Sourcing</label>
+            </value>
+            <value>
+                <fullName>2.066 - Supply Chain &amp; Logistics - Warehouse Management</fullName>
+                <default>false</default>
+                <label>2.066 - Supply Chain &amp; Logistics - Warehouse Management</label>
+            </value>
+            <value>
+                <fullName>2.067 - Supply Chain &amp; Logistics - Transportation Management &amp; Logistics</fullName>
+                <default>false</default>
+                <label>2.067 - Supply Chain &amp; Logistics - Transportation Management &amp; Logistics</label>
+            </value>
+            <value>
+                <fullName>2.068 - Supply Chain &amp; Logistics - Order Fulfillment</fullName>
+                <default>false</default>
+                <label>2.068 - Supply Chain &amp; Logistics - Order Fulfillment</label>
+            </value>
+            <value>
+                <fullName>2.070 - Marketing &amp; Communications General</fullName>
+                <default>false</default>
+                <label>2.070 - Marketing &amp; Communications General</label>
+            </value>
+            <value>
+                <fullName>2.071 - Marketing &amp; Communications - Agencies</fullName>
+                <default>false</default>
+                <label>2.071 - Marketing &amp; Communications - Agencies</label>
+            </value>
+            <value>
+                <fullName>2.072 - Marketing &amp; Communications - Direct Marketing</fullName>
+                <default>false</default>
+                <label>2.072 - Marketing &amp; Communications - Direct Marketing</label>
+            </value>
+            <value>
+                <fullName>2.073 - Marketing &amp; Communications - Media Buyers</fullName>
+                <default>false</default>
+                <label>2.073 - Marketing &amp; Communications - Media Buyers</label>
+            </value>
+            <value>
+                <fullName>2.074 - Marketing &amp; Communications - Market Research</fullName>
+                <default>false</default>
+                <label>2.074 - Marketing &amp; Communications - Market Research</label>
+            </value>
+            <value>
+                <fullName>2.075 - Marketing &amp; Communications - News &amp; Social Media Monitoring</fullName>
+                <default>false</default>
+                <label>2.075 - Marketing &amp; Communications - News &amp; Social Media Monitoring</label>
+            </value>
+            <value>
+                <fullName>2.076 - Marketing &amp; Communications - Promotional &amp; Experiential</fullName>
+                <default>false</default>
+                <label>2.076 - Marketing &amp; Communications - Promotional &amp; Experiential</label>
+            </value>
+            <value>
+                <fullName>2.080 - Pharmaceuticals, Life Sciences &amp; Healthcare General</fullName>
+                <default>false</default>
+                <label>2.080 - Pharmaceuticals, Life Sciences &amp; Healthcare General</label>
+            </value>
+            <value>
+                <fullName>2.081 - Pharmaceuticals, Life Sciences &amp; Healthcare - Healthcare</fullName>
+                <default>false</default>
+                <label>2.081 - Pharmaceuticals, Life Sciences &amp; Healthcare - Healthcare</label>
+            </value>
+            <value>
+                <fullName>2.082 - Pharmaceuticals, Life Sciences &amp; Healthcare - Life Sciences</fullName>
+                <default>false</default>
+                <label>2.082 - Pharmaceuticals, Life Sciences &amp; Healthcare - Life Sciences</label>
+            </value>
+            <value>
+                <fullName>2.083 - Pharmaceuticals, Life Sciences &amp; Healthcare - Pharmaceuticals</fullName>
+                <default>false</default>
+                <label>2.083 - Pharmaceuticals, Life Sciences &amp; Healthcare - Pharmaceuticals</label>
+            </value>
+            <value>
+                <fullName>2.090 - Real Estate &amp; GIS General</fullName>
+                <default>false</default>
+                <label>2.090 - Real Estate &amp; GIS General</label>
+            </value>
+            <value>
+                <fullName>2.091 - Real Estate &amp; GIS - GIS</fullName>
+                <default>false</default>
+                <label>2.091 - Real Estate &amp; GIS - GIS</label>
+            </value>
+            <value>
+                <fullName>2.092 - Real Estate &amp; GIS - Real Estate</fullName>
+                <default>false</default>
+                <label>2.092 - Real Estate &amp; GIS - Real Estate</label>
+            </value>
+            <value>
+                <fullName>2.100 - Tax, Accounting, HR &amp; Legal General</fullName>
+                <default>false</default>
+                <label>2.100 - Tax, Accounting, HR &amp; Legal General</label>
+            </value>
+            <value>
+                <fullName>2.101 - Tax, Accounting, HR &amp; Legal - Accounting</fullName>
+                <default>false</default>
+                <label>2.101 - Tax, Accounting, HR &amp; Legal - Accounting</label>
+            </value>
+            <value>
+                <fullName>2.102 - Tax, Accounting, HR &amp; Legal - HR</fullName>
+                <default>false</default>
+                <label>2.102 - Tax, Accounting, HR &amp; Legal - HR</label>
+            </value>
+            <value>
+                <fullName>2.103 - Tax, Accounting, HR &amp; Legal - Legal</fullName>
+                <default>false</default>
+                <label>2.103 - Tax, Accounting, HR &amp; Legal - Legal</label>
+            </value>
+            <value>
+                <fullName>2.104 - Tax, Accounting, HR &amp; Legal - Tax</fullName>
+                <default>false</default>
+                <label>2.104 - Tax, Accounting, HR &amp; Legal - Tax</label>
+            </value>
+            <value>
+                <fullName>2.105 - Tax, Accounting, HR &amp; Legal - IP</fullName>
+                <default>false</default>
+                <label>2.105 - Tax, Accounting, HR &amp; Legal - IP</label>
+            </value>
+            <value>
+                <fullName>2.110 - TMT General</fullName>
+                <default>false</default>
+                <label>2.110 - TMT General</label>
+            </value>
+            <value>
+                <fullName>2.111 - TMT - TMT Research</fullName>
+                <default>false</default>
+                <label>2.111 - TMT - TMT Research</label>
+            </value>
+            <value>
+                <fullName>2.112 - TMT - Live Entertainment</fullName>
+                <default>false</default>
+                <label>2.112 - TMT - Live Entertainment</label>
+            </value>
+            <value>
+                <fullName>2.113 - TMT - Publishing</fullName>
+                <default>false</default>
+                <label>2.113 - TMT - Publishing</label>
+            </value>
+            <value>
+                <fullName>2.114 - TMT - Social Media</fullName>
+                <default>false</default>
+                <label>2.114 - TMT - Social Media</label>
+            </value>
+            <value>
+                <fullName>2.115 - TMT - Telecoms</fullName>
+                <default>false</default>
+                <label>2.115 - TMT - Telecoms</label>
+            </value>
+            <value>
+                <fullName>2.116 - TMT - TV, Radio &amp; Film</fullName>
+                <default>false</default>
+                <label>2.116 - TMT - TV, Radio &amp; Film</label>
+            </value>
+            <value>
+                <fullName>2.120 - Travel, Transport &amp; Logistics General</fullName>
+                <default>false</default>
+                <label>2.120 - Travel, Transport &amp; Logistics General</label>
+            </value>
+            <value>
+                <fullName>2.121 - Travel, Transport &amp; Logistics - Automotive</fullName>
+                <default>false</default>
+                <label>2.121 - Travel, Transport &amp; Logistics - Automotive</label>
+            </value>
+            <value>
+                <fullName>2.122 - Travel, Transport &amp; Logistics - Aviation</fullName>
+                <default>false</default>
+                <label>2.122 - Travel, Transport &amp; Logistics - Aviation</label>
+            </value>
+            <value>
+                <fullName>2.124 - Travel, Transport &amp; Logistics - Marine</fullName>
+                <default>false</default>
+                <label>2.124 - Travel, Transport &amp; Logistics - Marine</label>
+            </value>
+            <value>
+                <fullName>2.125 - Travel, Transport &amp; Logistics - Rail</fullName>
+                <default>false</default>
+                <label>2.125 - Travel, Transport &amp; Logistics - Rail</label>
+            </value>
+            <value>
+                <fullName>2.126 - Travel, Transport &amp; Logistics - Tourism</fullName>
+                <default>false</default>
+                <label>2.126 - Travel, Transport &amp; Logistics - Tourism</label>
+            </value>
+            <value>
+                <fullName>2.127 - Travel, Transport &amp; Logistics - Transit</fullName>
+                <default>false</default>
+                <label>2.127 - Travel, Transport &amp; Logistics - Transit</label>
+            </value>
+            <value>
+                <fullName>2.130 - Retail &amp; Consumer - General</fullName>
+                <default>false</default>
+                <label>2.130 - Retail &amp; Consumer - General</label>
+            </value>
+            <value>
+                <fullName>2.140 - Enterprise Software - General</fullName>
+                <default>false</default>
+                <label>2.140 - Enterprise Software - General</label>
+            </value>
+            <value>
+                <fullName>2.141 - Enterprise Software - ERP/CRM</fullName>
+                <default>false</default>
+                <label>2.141 - Enterprise Software - ERP/CRM</label>
+            </value>
+            <value>
+                <fullName>2.142 - Enterprise Software - Enterprise Content Management</fullName>
+                <default>false</default>
+                <label>2.142 - Enterprise Software - Enterprise Content Management</label>
+            </value>
+            <value>
+                <fullName>2.143 - Enterprise Software - Security Management</fullName>
+                <default>false</default>
+                <label>2.143 - Enterprise Software - Security Management</label>
+            </value>
+            <value>
+                <fullName>2.145 - Enterprise Software - Infrastructure and Network Management</fullName>
+                <default>false</default>
+                <label>2.145 - Enterprise Software - Infrastructure and Network Management</label>
+            </value>
+            <value>
+                <fullName>2.146 - Enterprise Software - Software Development and Testing</fullName>
+                <default>false</default>
+                <label>2.146 - Enterprise Software - Software Development and Testing</label>
+            </value>
+            <value>
+                <fullName>2.147 - Enterprise Software - BI, Analytics and Collaboration</fullName>
+                <default>false</default>
+                <label>2.147 - Enterprise Software - BI, Analytics and Collaboration</label>
+            </value>
+            <value>
+                <fullName>2.150 - GRC &amp; EHS - General</fullName>
+                <default>false</default>
+                <label>2.150 - GRC &amp; EHS - General</label>
+            </value>
+            <value>
+                <fullName>2.151 - GRC &amp; EHS - GRC</fullName>
+                <default>false</default>
+                <label>2.151 - GRC &amp; EHS - GRC</label>
+            </value>
+            <value>
+                <fullName>2.152 - GRC &amp; EHS - EHS</fullName>
+                <default>false</default>
+                <label>2.152 - GRC &amp; EHS - EHS</label>
+            </value>
+            <value>
+                <fullName>2.160 - Academic - Academic</fullName>
+                <default>false</default>
+                <label>2.160 - Academic - Academic</label>
+            </value>
+            <value>
+                <fullName>3.000 - Business Services General</fullName>
+                <default>false</default>
+                <label>3.000 - Business Services General</label>
+            </value>
+            <value>
+                <fullName>3.010 - Asset Rental</fullName>
+                <default>false</default>
+                <label>3.010 - Asset Rental</label>
+            </value>
+            <value>
+                <fullName>3.020 - BPO</fullName>
+                <default>false</default>
+                <label>3.020 - BPO</label>
+            </value>
+            <value>
+                <fullName>3.021 - BPO - Claims Management</fullName>
+                <default>false</default>
+                <label>3.021 - BPO - Claims Management</label>
+            </value>
+            <value>
+                <fullName>3.022 - BPO - Document Management</fullName>
+                <default>false</default>
+                <label>3.022 - BPO - Document Management</label>
+            </value>
+            <value>
+                <fullName>3.023 - BPO - Event Management</fullName>
+                <default>false</default>
+                <label>3.023 - BPO - Event Management</label>
+            </value>
+            <value>
+                <fullName>3.024 - BPO - Managed Print</fullName>
+                <default>false</default>
+                <label>3.024 - BPO - Managed Print</label>
+            </value>
+            <value>
+                <fullName>3.025 - BPO - Printing</fullName>
+                <default>false</default>
+                <label>3.025 - BPO - Printing</label>
+            </value>
+            <value>
+                <fullName>3.026 - BPO - Procurement</fullName>
+                <default>false</default>
+                <label>3.026 - BPO - Procurement</label>
+            </value>
+            <value>
+                <fullName>3.027 - BPO - Relocation</fullName>
+                <default>false</default>
+                <label>3.027 - BPO - Relocation</label>
+            </value>
+            <value>
+                <fullName>3.028 - BPO - Translation Services</fullName>
+                <default>false</default>
+                <label>3.028 - BPO - Translation Services</label>
+            </value>
+            <value>
+                <fullName>3.029 - BPO - Travel Management</fullName>
+                <default>false</default>
+                <label>3.029 - BPO - Travel Management</label>
+            </value>
+            <value>
+                <fullName>3.030 - Consultancy</fullName>
+                <default>false</default>
+                <label>3.030 - Consultancy</label>
+            </value>
+            <value>
+                <fullName>3.031 - Consultancy - Construction Consultancy</fullName>
+                <default>false</default>
+                <label>3.031 - Consultancy - Construction Consultancy</label>
+            </value>
+            <value>
+                <fullName>3.032 - Consultancy - Government Consultancy</fullName>
+                <default>false</default>
+                <label>3.032 - Consultancy - Government Consultancy</label>
+            </value>
+            <value>
+                <fullName>3.033 - Consultancy - Health &amp; Safety Consultancy</fullName>
+                <default>false</default>
+                <label>3.033 - Consultancy - Health &amp; Safety Consultancy</label>
+            </value>
+            <value>
+                <fullName>3.034 - Consultancy - HR Consultancy</fullName>
+                <default>false</default>
+                <label>3.034 - Consultancy - HR Consultancy</label>
+            </value>
+            <value>
+                <fullName>3.035 - Consultancy - Management Consultancy</fullName>
+                <default>false</default>
+                <label>3.035 - Consultancy - Management Consultancy</label>
+            </value>
+            <value>
+                <fullName>3.036 - Consultancy - Strategy Consultancy</fullName>
+                <default>false</default>
+                <label>3.036 - Consultancy - Strategy Consultancy</label>
+            </value>
+            <value>
+                <fullName>3.040 - Contracting</fullName>
+                <default>false</default>
+                <label>3.040 - Contracting</label>
+            </value>
+            <value>
+                <fullName>3.050 - Distribution &amp; Logistics</fullName>
+                <default>false</default>
+                <label>3.050 - Distribution &amp; Logistics</label>
+            </value>
+            <value>
+                <fullName>3.060 - Hard FM</fullName>
+                <default>false</default>
+                <label>3.060 - Hard FM</label>
+            </value>
+            <value>
+                <fullName>3.061 - Hard FM - Gardening and Landscaping</fullName>
+                <default>false</default>
+                <label>3.061 - Hard FM - Gardening and Landscaping</label>
+            </value>
+            <value>
+                <fullName>3.062 - Hard FM - Building Fabric Maintenance</fullName>
+                <default>false</default>
+                <label>3.062 - Hard FM - Building Fabric Maintenance</label>
+            </value>
+            <value>
+                <fullName>3.063 - Hard FM - Lift and Escalator Maintenance</fullName>
+                <default>false</default>
+                <label>3.063 - Hard FM - Lift and Escalator Maintenance</label>
+            </value>
+            <value>
+                <fullName>3.064 - Hard FM - Lighting</fullName>
+                <default>false</default>
+                <label>3.064 - Hard FM - Lighting</label>
+            </value>
+            <value>
+                <fullName>3.065 - Hard FM - Building Design</fullName>
+                <default>false</default>
+                <label>3.065 - Hard FM - Building Design</label>
+            </value>
+            <value>
+                <fullName>3.066 - Hard FM - Plant Replacement</fullName>
+                <default>false</default>
+                <label>3.066 - Hard FM - Plant Replacement</label>
+            </value>
+            <value>
+                <fullName>3.067 - Hard FM - Construction Management</fullName>
+                <default>false</default>
+                <label>3.067 - Hard FM - Construction Management</label>
+            </value>
+            <value>
+                <fullName>3.068 - Hard FM - Energy and Environmental Management</fullName>
+                <default>false</default>
+                <label>3.068 - Hard FM - Energy and Environmental Management</label>
+            </value>
+            <value>
+                <fullName>3.070 - IT Outsourcing</fullName>
+                <default>false</default>
+                <label>3.070 - IT Outsourcing</label>
+            </value>
+            <value>
+                <fullName>3.071 - IT Outsourcing - Cloud Services</fullName>
+                <default>false</default>
+                <label>3.071 - IT Outsourcing - Cloud Services</label>
+            </value>
+            <value>
+                <fullName>3.072 - IT Outsourcing - IT Consultancy</fullName>
+                <default>false</default>
+                <label>3.072 - IT Outsourcing - IT Consultancy</label>
+            </value>
+            <value>
+                <fullName>3.073 - IT Outsourcing - IT Infrastructure</fullName>
+                <default>false</default>
+                <label>3.073 - IT Outsourcing - IT Infrastructure</label>
+            </value>
+            <value>
+                <fullName>3.074 - IT Outsourcing - IT Procurement</fullName>
+                <default>false</default>
+                <label>3.074 - IT Outsourcing - IT Procurement</label>
+            </value>
+            <value>
+                <fullName>3.075 - IT Outsourcing - IT Security</fullName>
+                <default>false</default>
+                <label>3.075 - IT Outsourcing - IT Security</label>
+            </value>
+            <value>
+                <fullName>3.076 - IT Outsourcing - IT Support</fullName>
+                <default>false</default>
+                <label>3.076 - IT Outsourcing - IT Support</label>
+            </value>
+            <value>
+                <fullName>3.077 - IT Outsourcing - Unified Communications</fullName>
+                <default>false</default>
+                <label>3.077 - IT Outsourcing - Unified Communications</label>
+            </value>
+            <value>
+                <fullName>3.078 - IT Outsourcing - Value Added Reseller</fullName>
+                <default>false</default>
+                <label>3.078 - IT Outsourcing - Value Added Reseller</label>
+            </value>
+            <value>
+                <fullName>3.080 - Professional Services</fullName>
+                <default>false</default>
+                <label>3.080 - Professional Services</label>
+            </value>
+            <value>
+                <fullName>3.081 - Professional Services - Financial Compliance Services</fullName>
+                <default>false</default>
+                <label>3.081 - Professional Services - Financial Compliance Services</label>
+            </value>
+            <value>
+                <fullName>3.082 - Professional Services - Legal Services</fullName>
+                <default>false</default>
+                <label>3.082 - Professional Services - Legal Services</label>
+            </value>
+            <value>
+                <fullName>3.083 - Professional Services - Outsourced Accountancy Services</fullName>
+                <default>false</default>
+                <label>3.083 - Professional Services - Outsourced Accountancy Services</label>
+            </value>
+            <value>
+                <fullName>3.090 - Recruitment/HCM</fullName>
+                <default>false</default>
+                <label>3.090 - Recruitment/HCM</label>
+            </value>
+            <value>
+                <fullName>3.091 - Recruitment/HCM - Benefits Services</fullName>
+                <default>false</default>
+                <label>3.091 - Recruitment/HCM - Benefits Services</label>
+            </value>
+            <value>
+                <fullName>3.092 - Recruitment/HCM - Payroll Services</fullName>
+                <default>false</default>
+                <label>3.092 - Recruitment/HCM - Payroll Services</label>
+            </value>
+            <value>
+                <fullName>3.093 - Recruitment/HCM - Recruitment/Staffing Agency</fullName>
+                <default>false</default>
+                <label>3.093 - Recruitment/HCM - Recruitment/Staffing Agency</label>
+            </value>
+            <value>
+                <fullName>3.094 - Recruitment/HCM - Recruitment Services</fullName>
+                <default>false</default>
+                <label>3.094 - Recruitment/HCM - Recruitment Services</label>
+            </value>
+            <value>
+                <fullName>3.095 - Recruitment/HCM - Screening Services</fullName>
+                <default>false</default>
+                <label>3.095 - Recruitment/HCM - Screening Services</label>
+            </value>
+            <value>
+                <fullName>3.100 - Soft FM</fullName>
+                <default>false</default>
+                <label>3.100 - Soft FM</label>
+            </value>
+            <value>
+                <fullName>3.101 - Soft FM - Security Services</fullName>
+                <default>false</default>
+                <label>3.101 - Soft FM - Security Services</label>
+            </value>
+            <value>
+                <fullName>3.102 - Soft FM - Cleaning Services</fullName>
+                <default>false</default>
+                <label>3.102 - Soft FM - Cleaning Services</label>
+            </value>
+            <value>
+                <fullName>3.103 - Soft FM - Catering Services</fullName>
+                <default>false</default>
+                <label>3.103 - Soft FM - Catering Services</label>
+            </value>
+            <value>
+                <fullName>3.104 - Soft FM - Postal Services</fullName>
+                <default>false</default>
+                <label>3.104 - Soft FM - Postal Services</label>
+            </value>
+            <value>
+                <fullName>3.105 - Soft FM - Secretarial Services</fullName>
+                <default>false</default>
+                <label>3.105 - Soft FM - Secretarial Services</label>
+            </value>
+            <value>
+                <fullName>3.110 - Testing &amp; Inspection</fullName>
+                <default>false</default>
+                <label>3.110 - Testing &amp; Inspection</label>
+            </value>
+            <value>
+                <fullName>3.111 - Testing &amp; Inspection - Instruments, Equipment &amp; Supplies</fullName>
+                <default>false</default>
+                <label>3.111 - Testing &amp; Inspection - Instruments, Equipment &amp; Supplies</label>
+            </value>
+            <value>
+                <fullName>3.112 - Testing &amp; Inspection - Testing, Inspection, and Certification Services</fullName>
+                <default>false</default>
+                <label>3.112 - Testing &amp; Inspection - Testing, Inspection, and Certification Services</label>
+            </value>
+            <value>
+                <fullName>3.113 - Testing &amp; Inspection - Healthcare and Life Sciences Testing</fullName>
+                <default>false</default>
+                <label>3.113 - Testing &amp; Inspection - Healthcare and Life Sciences Testing</label>
+            </value>
+            <value>
+                <fullName>4.000 - Education Bricks &amp; Mortar and Services - General</fullName>
+                <default>false</default>
+                <label>4.000 - Education Bricks &amp; Mortar and Services - General</label>
+            </value>
+            <value>
+                <fullName>4.010 - Education Bricks &amp; Mortar and Services - Higher Education</fullName>
+                <default>false</default>
+                <label>4.010 - Education Bricks &amp; Mortar and Services - Higher Education</label>
+            </value>
+            <value>
+                <fullName>4.020 - Education Bricks &amp; Mortar and Services - K-12</fullName>
+                <default>false</default>
+                <label>4.020 - Education Bricks &amp; Mortar and Services - K-12</label>
+            </value>
+            <value>
+                <fullName>4.030 - Education Bricks &amp; Mortar and Services - Professional Education</fullName>
+                <default>false</default>
+                <label>4.030 - Education Bricks &amp; Mortar and Services - Professional Education</label>
+            </value>
+            <value>
+                <fullName>4.040 - Education Bricks &amp; Mortar and Services - Vocational Training</fullName>
+                <default>false</default>
+                <label>4.040 - Education Bricks &amp; Mortar and Services - Vocational Training</label>
+            </value>
+            <value>
+                <fullName>5.000 - FIG General</fullName>
+                <default>false</default>
+                <label>5.000 - FIG General</label>
+            </value>
+            <value>
+                <fullName>5.010 - Credit &amp; Specialty Finance General</fullName>
+                <default>false</default>
+                <label>5.010 - Credit &amp; Specialty Finance General</label>
+            </value>
+            <value>
+                <fullName>5.011 - Credit &amp; Specialty Finance - Banks &amp; Building Societies</fullName>
+                <default>false</default>
+                <label>5.011 - Credit &amp; Specialty Finance - Banks &amp; Building Societies</label>
+            </value>
+            <value>
+                <fullName>5.012 - Credit &amp; Specialty Finance - Consumer Credit</fullName>
+                <default>false</default>
+                <label>5.012 - Credit &amp; Specialty Finance - Consumer Credit</label>
+            </value>
+            <value>
+                <fullName>5.013 - Credit &amp; Specialty Finance - Mortgages, Corporate &amp; SME Lending</fullName>
+                <default>false</default>
+                <label>5.013 - Credit &amp; Specialty Finance - Mortgages, Corporate &amp; SME Lending</label>
+            </value>
+            <value>
+                <fullName>5.014 - Credit &amp; Specialty Finance - Alternative Lending</fullName>
+                <default>false</default>
+                <label>5.014 - Credit &amp; Specialty Finance - Alternative Lending</label>
+            </value>
+            <value>
+                <fullName>5.015 - Credit &amp; Specialty Finance - Payments &amp; FX</fullName>
+                <default>false</default>
+                <label>5.015 - Credit &amp; Specialty Finance - Payments &amp; FX</label>
+            </value>
+            <value>
+                <fullName>5.016 - Credit &amp; Specialty Finance - Receivables Management &amp; Debt Purchase</fullName>
+                <default>false</default>
+                <label>5.016 - Credit &amp; Specialty Finance - Receivables Management &amp; Debt Purchase</label>
+            </value>
+            <value>
+                <fullName>5.017 - Credit &amp; Specialty Finance - Credit Broking &amp; Servicing</fullName>
+                <default>false</default>
+                <label>5.017 - Credit &amp; Specialty Finance - Credit Broking &amp; Servicing</label>
+            </value>
+            <value>
+                <fullName>5.020 - Insurance General</fullName>
+                <default>false</default>
+                <label>5.020 - Insurance General</label>
+            </value>
+            <value>
+                <fullName>5.021 - Insurance - Broking &amp; Distribution</fullName>
+                <default>false</default>
+                <label>5.021 - Insurance - Broking &amp; Distribution</label>
+            </value>
+            <value>
+                <fullName>5.022 - Insurance - Underwriting &amp; Life Assurance</fullName>
+                <default>false</default>
+                <label>5.022 - Insurance - Underwriting &amp; Life Assurance</label>
+            </value>
+            <value>
+                <fullName>5.030 - Asset &amp; Wealth Management</fullName>
+                <default>false</default>
+                <label>5.030 - Asset &amp; Wealth Management</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

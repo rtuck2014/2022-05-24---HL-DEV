@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_External_Contact__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>To bypass Validation on External Contact and Make the company discussed as required, If the checkbox is set to true</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If No External Contact is marked, then Companies Discussed entry is required</inlineHelpText>
+    <label>No External Contact</label>
+    <type>Checkbox</type>
+</CustomField>

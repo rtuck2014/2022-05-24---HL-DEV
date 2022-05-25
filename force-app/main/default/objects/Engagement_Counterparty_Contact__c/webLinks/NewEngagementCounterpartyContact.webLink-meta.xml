@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NewEngagementCounterpartyContact</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>New Engagement Counterparty Contact(LWC)</masterLabel>
+    <openType>sidebar</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>{!URLFOR(&apos;https://hl--dev.lightning.force.com/lightning/cmp/c__hlEngagementCounterPartyContact&apos;,null,[c__id=Engagement_Counterparty__c.Id,
+c__recordId=Engagement_Counterparty__c.Id])}</url>
+</WebLink>

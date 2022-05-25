@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Book_Value__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Deprecated as of 09/2019 as part of PRJ0016603 - CF Engagement Summary (lwc). Fields have been moved to Engagement_Financials__c object. Fields will remain intact for reporting purposes only.</inlineHelpText>
+    <label>Book Value</label>
+    <precision>8</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

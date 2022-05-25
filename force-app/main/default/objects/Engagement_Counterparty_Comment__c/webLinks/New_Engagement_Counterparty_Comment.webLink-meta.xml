@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Engagement_Counterparty_Comment</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>New Engagement Counterparty Comment</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>/a2H/e?CF00Ni000000FnL9w={!Engagement_Counterparty__c.Name}&amp;CF00Ni000000FnL9w_lkid={!Engagement_Counterparty__c.Id}&amp;retURL=%2F{!Engagement_Counterparty__c.Id}&amp;saveURL=%2F{!Engagement_Counterparty__c.Id}</url>
+</WebLink>

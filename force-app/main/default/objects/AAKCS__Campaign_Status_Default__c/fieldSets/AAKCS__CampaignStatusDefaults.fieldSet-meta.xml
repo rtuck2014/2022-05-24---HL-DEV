@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AAKCS__CampaignStatusDefaults</fullName>
+    <description>Used in visualforce page campaignStatusDetault</description>
+    <displayedFields>
+        <field>AAKCS__Active__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>AAKCS__Action__c</field>
+        <isFieldManaged>true</isFieldManaged>
+        <isRequired>true</isRequired>
+    </displayedFields>
+    <label>CampaignStatusDefaults</label>
+</FieldSet>

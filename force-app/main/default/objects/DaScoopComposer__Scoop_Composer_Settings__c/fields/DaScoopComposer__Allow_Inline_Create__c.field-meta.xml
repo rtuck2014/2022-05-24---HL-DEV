@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Allow_Inline_Create__c</fullName>
+    <defaultValue>true</defaultValue>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Controls whether users can create Salesforce records from the sidebar in Groove for Gmail. Otherwise new records will be created in a new Salesforce tab.</inlineHelpText>
+    <label>Allow Inline Create</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Enable_Groove_History__c</fullName>
+    <defaultValue>true</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Groove History enables users to view their notes, call logs, and logged events for any Salesforce record right from Gmail. Groove History also makes it dead simple to log new activities and calls directly from Gmail.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Groove History enables users to view their notes, call logs, and logged events for any Salesforce record right from Gmail. Groove History also makes it dead simple to log new activities and calls directly from Gmail.</inlineHelpText>
+    <label>Enable Groove History</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

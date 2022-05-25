@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Comment_Type__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Administrative - For LOB administrators
+Internal - Internal reporting</inlineHelpText>
+    <label>Comment Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Administrative</fullName>
+                <default>false</default>
+                <label>Administrative</label>
+            </value>
+            <value>
+                <fullName>Internal</fullName>
+                <default>true</default>
+                <label>Internal</label>
+            </value>
+            <value>
+                <fullName>Next Step</fullName>
+                <default>false</default>
+                <label>Next Step</label>
+            </value>
+            <value>
+                <fullName>Compliance</fullName>
+                <default>false</default>
+                <label>Compliance</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Recipient__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF(DaScoopComposer__Lead__c = null,
+  &apos;Contact: &apos;,
+  &apos;Lead: &apos;
+)
+&amp;
+HYPERLINK(
+IF(DaScoopComposer__Lead__c = null,  &apos;/&apos; &amp; DaScoopComposer__Contact__r.Id , &apos;/&apos; &amp; DaScoopComposer__Lead__r.Id),
+  IF(DaScoopComposer__Lead__c = null,
+    DaScoopComposer__Contact__r.FirstName &amp; &apos; &apos; &amp; DaScoopComposer__Contact__r.LastName,
+    DaScoopComposer__Lead__r.FirstName &amp; &apos; &apos; &amp; DaScoopComposer__Lead__r.LastName
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>points to the recipient&apos;s lead or contact record.</inlineHelpText>
+    <label>Name</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

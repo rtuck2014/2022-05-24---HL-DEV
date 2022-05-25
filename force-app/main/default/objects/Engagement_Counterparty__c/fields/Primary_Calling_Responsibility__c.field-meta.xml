@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Primary_Calling_Responsibility__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Primary Calling Responsibility</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>HL Employee required</errorMessage>
+        <filterItems>
+            <field>Contact.RecordType.Id</field>
+            <operation>equals</operation>
+            <value>012i0000000tEhe</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Engagements as Main HL Contact</relationshipLabel>
+    <relationshipName>Engagement_Counterparties1</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

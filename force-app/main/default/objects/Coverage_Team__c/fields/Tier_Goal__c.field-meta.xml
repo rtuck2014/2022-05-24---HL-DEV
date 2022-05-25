@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tier_Goal__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+
+OR 
+(
+  AND(TEXT(Tier__c) = &apos;A&apos;, (TODAY() - Last_Activity__c)  &lt; 90)
+, AND(TEXT(Tier__c) = &apos;B&apos;, (TODAY() - Last_Activity__c)  &lt; 180)
+, AND(TEXT(Tier__c) = &apos;C&apos;, (TODAY() - Last_Activity__c)  &lt; 365)
+
+)
+
+,&apos;Y&apos;, &apos;N&apos;)</formula>
+    <label>Tier Goal</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

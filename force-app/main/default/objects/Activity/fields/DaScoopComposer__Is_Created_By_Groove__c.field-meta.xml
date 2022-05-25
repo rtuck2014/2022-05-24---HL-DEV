@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Is_Created_By_Groove__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates whether this activity was automatically created by Groove. This can be used as signal for workflows to trigger (field updates, email alerts, etc.).</inlineHelpText>
+    <label>Is Created By Groove</label>
+    <type>Checkbox</type>
+</CustomField>

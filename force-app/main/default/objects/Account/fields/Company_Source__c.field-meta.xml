@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company_Source__c</fullName>
+    <description>Used to identify companies imported from an acquisition or archived</description>
+    <externalId>false</externalId>
+    <inlineHelpText>HL - visible to all users
+All others are visible to specific sets of users</inlineHelpText>
+    <label>Company Source</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>HL</fullName>
+                <default>true</default>
+                <label>HL</label>
+            </value>
+            <value>
+                <fullName>Archived</fullName>
+                <default>false</default>
+                <label>Archived</label>
+            </value>
+            <value>
+                <fullName>Imported</fullName>
+                <default>false</default>
+                <label>Imported</label>
+            </value>
+            <value>
+                <fullName>Archpoint</fullName>
+                <default>false</default>
+                <label>Archpoint</label>
+            </value>
+            <value>
+                <fullName>Leonardo</fullName>
+                <default>false</default>
+                <label>Leonardo</label>
+            </value>
+            <value>
+                <fullName>McQueen</fullName>
+                <default>false</default>
+                <label>McQueen</label>
+            </value>
+            <value>
+                <fullName>Mesa</fullName>
+                <default>false</default>
+                <label>Mesa</label>
+            </value>
+            <value>
+                <fullName>MVP</fullName>
+                <default>false</default>
+                <label>MVP</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

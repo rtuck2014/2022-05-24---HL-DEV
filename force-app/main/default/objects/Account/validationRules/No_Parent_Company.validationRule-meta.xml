@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_Parent_Company</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISBLANK(ParentId)) &amp;&amp; No_Parent_Company__c</errorConditionFormula>
+    <errorDisplayField>No_Parent_Company__c</errorDisplayField>
+    <errorMessage>HQ cannot be true if Parent Company has a value.</errorMessage>
+</ValidationRule>

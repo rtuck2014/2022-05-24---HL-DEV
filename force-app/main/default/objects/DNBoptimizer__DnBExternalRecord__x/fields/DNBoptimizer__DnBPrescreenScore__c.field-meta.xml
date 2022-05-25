@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__DnBPrescreenScore__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This score - High, Medium, or Low Risk - predicts the likelihood of a firm paying in a severely delinquent manner (90+ days past terms) over the next 12 months, based on statistical models and  payment information in D&amp;B&apos;s commercial database.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This score - High, Medium, or Low Risk - predicts the likelihood of a firm paying in a severely delinquent manner (90+ days past terms) over the next 12 months, based on statistical models and  payment information in D&amp;B&apos;s commercial database.</inlineHelpText>
+    <isFilteringDisabled>false</isFilteringDisabled>
+    <isNameField>false</isNameField>
+    <isSortingDisabled>false</isSortingDisabled>
+    <label>D&amp;B Prescreen Score (call D&amp;B)</label>
+    <length>15</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

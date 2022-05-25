@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CounterParty__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Identifies if the account is list as an opportunity counterparty, engagement counterparty or both.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If checked then this account is listed as a counterparty.</inlineHelpText>
+    <label>CounterParty</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

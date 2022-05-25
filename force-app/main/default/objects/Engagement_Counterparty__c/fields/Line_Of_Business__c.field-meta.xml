@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Line_Of_Business__c</fullName>
+    <externalId>false</externalId>
+    <formula>Engagement__r.PIPELINE_Line_of_Business__c</formula>
+    <label>Line Of Business</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

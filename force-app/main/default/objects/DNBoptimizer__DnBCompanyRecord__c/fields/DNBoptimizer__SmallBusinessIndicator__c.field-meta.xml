@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__SmallBusinessIndicator__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Indicates whether the business is designated a small business as defined by the Small Business Administration of the US government.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates whether the business is designated a small business as defined by the Small Business Administration of the US government.</inlineHelpText>
+    <label>Small Business Indicator</label>
+    <length>50</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

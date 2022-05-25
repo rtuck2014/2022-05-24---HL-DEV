@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Lead_Created_Date__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>TEXT(DATEVALUE(DaScoopComposer__LeadId__r.CreatedDate)) &amp; &apos;, &apos; &amp;  DaScoopComposer__LeadId__r.CreatedBy.FirstName &amp; &apos; &apos; &amp; DaScoopComposer__LeadId__r.CreatedBy.LastName</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Lead Created Date</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

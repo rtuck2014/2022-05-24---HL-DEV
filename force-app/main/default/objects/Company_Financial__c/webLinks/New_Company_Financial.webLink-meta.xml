@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Company_Financial</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>New Company Financial</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>/a4G/e?CF00N3100000H19ke={!Account.Name}&amp;CF00N3100000H19ke_lkid={!Account.Id}&amp;retURL={!Account.Id}&amp;saveURL={!Account.Id}</url>
+</WebLink>

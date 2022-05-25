@@ -1,0 +1,323 @@
+<template>
+    <template if:true={tableToast}>
+        <c-hl-universal-toast
+            type={tableToastType}
+            onclose={tableToastClose}
+            message={tableToastMessage} >
+        </c-hl-universal-toast>
+    </template>
+    <template if:true={tableDelModal}>
+        <c-hl-universal-modal 
+            title={tableModalTitle} 
+            body={tableModalBody} 
+            m-data={tableModalData}
+            onok={tableDeleteOk}
+            oncancel={tableDeleteCancel}>
+        </c-hl-universal-modal>
+    </template>
+    <template if:true={tableSpinner}>
+        <lightning-spinner 
+            alternative-text="Loading" 
+            size="small">
+        </lightning-spinner>
+    </template>
+    <template if:false={tableTitle}>
+        <template if:true={tableLoading}>
+            <lightning-spinner 
+                alternative-text="Loading" 
+                size="small">
+            </lightning-spinner>
+        </template>
+        <lightning-button-group>
+            <template if:true={tableFormFields}>
+                <lightning-button-icon-stateful
+                    class={tableFormViewSelector}
+                    icon-name="utility:new"
+                    alternative-text="Add Record"
+                    title="Add Record" 
+                    selected={tableFormFlag}
+                    onclick={tableFormView}>
+                </lightning-button-icon-stateful>
+            </template>
+            <lightning-button-icon
+                icon-name="utility:refresh"
+                alternative-text="Refresh Table"
+                title="Refresh Table" 
+                onclick={tableRefresh}>
+            </lightning-button-icon>
+        </lightning-button-group>
+        <template if:true={tableFormFlag}>
+            <div class="slds-card-wrapper">
+                <article class="slds-card slds-card_boundary">
+                    <div class="slds-card__header slds-grid">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <div class="slds-media__figure">
+                                <span class="slds-icon_container" title="Add/Edit Record">
+                                    <lightning-icon 
+                                        icon-name="utility:record_update">
+                                    </lightning-icon>
+                                    <span class="slds-assistive-text">Add/Edit Record</span>
+                                </span>
+                            </div>
+                            <div class="slds-media__body">
+                                <h2 class="slds-card__header-title">
+                                    <span>Add/Edit Record</span>
+                                </h2>
+                            </div>
+                        </header>
+                    </div>
+                    <div class="slds-card__body slds-card__body_inner slds-p-bottom_medium">
+                        <template if:true={tableFormRecTypeError}>
+                            {tableFormRecTypeError}
+                        </template>
+                        <template if:true={tableFormRecTypeId}>
+                            <lightning-record-form
+                                class={tableFormSelector}
+                                record-id={tableFormId}
+                                object-api-name={tableObjectApi}
+                                record-type-id={tableFormRecTypeId}
+                                fields={tableFormFields}
+                                mode="edit"
+                                density="comfy"
+                                columns="2"
+                                onsubmit={tableFormSubmit}
+                                onsuccess={tableFormSuccess}
+                                onerror={tableFormError}
+                                oncancel={tableFormCancel}>
+                            </lightning-record-form>
+                        </template>
+                        <template if:false={tableFormRecTypeId}>
+                            <lightning-record-form
+                                class={tableFormSelector}
+                                record-id={tableFormId}
+                                object-api-name={tableObjectApi}
+                                fields={tableFormFields}
+                                mode="edit"
+                                density="comfy"
+                                columns="2"
+                                onsubmit={tableFormSubmit}
+                                onsuccess={tableFormSuccess}
+                                onerror={tableFormError}
+                                oncancel={tableFormCancel}>
+                            </lightning-record-form>
+                        </template>
+                    </div>
+                </article>
+            </div>
+        </template>
+        <template if:true={tableParentRequiredFields}>
+            <c-hl-universal-pop-over
+                icon={tableParentRequiredIcon}
+                icon-variant={tableParentRequiredVariant}
+                title="Required Fields"
+                subject={tableParentRequiredSubject}
+                body-validations={tableParentRequiredFieldsStatus}>
+            </c-hl-universal-pop-over>
+        </template>
+        <template if:true={tableParentRequiredFields}>
+            <lightning-record-form
+                record-id={tableParentId}
+                object-api-name={tableParentObjectApi}
+                fields={tableParentRequiredFields}
+                mode="view"
+                columns="2"
+                density="comfy"
+                onload={tableParentRequiredFormLoad}>
+            </lightning-record-form>
+        </template>
+        <template if:true={tableData}>
+            <div class="slds-p-top-medium">
+                <lightning-datatable
+                    key-field="Id"
+                    data={tableData}
+                    columns={tableColumns}
+                    is-loading={tableLoading}
+                    onsort={tableSort}
+                    onsave={tableSave}
+                    draft-values={tableDraftValues}
+                    max-row-selection={tableMaxSelectedRows}
+                    enable-infinite-loading
+                    load-more-offset="10"
+                    onloadmore={tableLoadMore}
+                    onerror={tableError}
+                    onrowaction={tableRowActions}
+                    onrowselection={tableRowSelection}>
+                </lightning-datatable>
+            </div>
+        </template>
+        <template if:false={tableData}>
+            No data found
+        </template>
+    </template>
+    <template if:true={tableTitle}>
+        <div class="slds-section slds-is-open slds-p-top_medium">
+            <h3 class="slds-section__title">
+                <button aria-expanded="true" class="slds-button slds-section__title-action">
+                    <span class="slds-truncate slds-p-left_small" title="Section Title">{tableTitle}</span>
+                    <template if:true={tableParentRequiredFields}>
+                        <c-hl-universal-pop-over
+                            icon={tableParentRequiredIcon}
+                            icon-variant={tableParentRequiredVariant}
+                            title="Required Fields"
+                            subject={tableParentRequiredSubject}
+                            body-validations={tableParentRequiredFieldsStatus}>
+                        </c-hl-universal-pop-over>
+                    </template>
+                </button>
+                <div class="slds-no-flex slds-m-left_xx-small" style="font-size: 14px">
+                    <lightning-button-group>
+                        <template if:true={tableFormFields}>
+                            <lightning-button-icon-stateful
+                                class={tableFormViewSelector}
+                                icon-name="utility:new"
+                                alternative-text="Add Record"
+                                title="Add Record" 
+                                selected={tableFormFlag}
+                                onclick={tableFormView}>
+                            </lightning-button-icon-stateful>
+                        </template>
+                        <template if:true={tableNewRecordButton}>
+                            <lightning-button-icon
+                                icon-name="utility:new"
+                                alternative-text="Add Record"
+                                title="Add Record" 
+                                onclick={tableNewRecord}>
+                            </lightning-button-icon>
+                        </template>
+                        <lightning-button-icon
+                            icon-name="utility:refresh"
+                            alternative-text="Refresh Table"
+                            title="Refresh Table" 
+                            onclick={tableRefresh}>
+                        </lightning-button-icon>
+                    </lightning-button-group>
+                </div>
+            </h3>
+            <div aria-hidden="false" class="slds-section__content slds-p-left_small slds-p-bottom_small">
+                <template if:true={tableFormFlag}>
+                    <div class="slds-card-wrapper">
+                        <article class="slds-card slds-card_boundary">
+                            <div class="slds-card__header slds-grid">
+                                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                    <div class="slds-media__figure">
+                                        <span class="slds-icon_container" title="Add/Edit Record">
+                                            <lightning-icon 
+                                                icon-name="utility:record_update">
+                                            </lightning-icon>
+                                            <span class="slds-assistive-text">Add/Edit Record</span>
+                                        </span>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <h2 class="slds-card__header-title">
+                                            <span>Add/Edit Record</span>
+                                        </h2>
+                                    </div>
+                                </header>
+                            </div>
+                            <div class="slds-card__body slds-card__body_inner slds-p-bottom_medium">
+                                <template if:true={tableFormRecTypeId}>
+                                    <template if:false={tableFormBillingAddress}>
+                                        <lightning-record-form
+                                            class={tableFormSelector}
+                                            record-id={tableFormId}
+                                            object-api-name={tableObjectApi}
+                                            record-type-id={tableFormRecTypeId}
+                                            fields={tableFormFields}
+                                            mode="edit"
+                                            density="comfy"
+                                            columns="2"
+                                            onsubmit={tableFormSubmit}
+                                            onsuccess={tableFormSuccess}
+                                            onerror={tableFormError}
+                                            oncancel={tableFormCancel}>
+                                        </lightning-record-form>
+                                    </template>
+                                    <template if:true={tableFormBillingAddress}>
+                                        <c-hl-universal-input-address
+                                            record-id={tableFormId}
+                                            object-api-name={tableObjectApi}
+                                            record-type-id={tableFormRecTypeId}
+                                            ontablecancel ={tableFormCancel}
+                                            ontablesuccess={tableFormSuccess}>
+                                        </c-hl-universal-input-address>          
+                                    </template>
+                                </template>
+                                <template if:false={tableFormRecTypeId}>
+                                    <lightning-record-form
+                                        class={tableFormSelector}
+                                        record-id={tableFormId}
+                                        object-api-name={tableObjectApi}
+                                        fields={tableFormFields}
+                                        mode="edit"
+                                        density="comfy"
+                                        columns="2"
+                                        onsubmit={tableFormSubmit}
+                                        onsuccess={tableFormSuccess}
+                                        onerror={tableFormError}
+                                        oncancel={tableFormCancel}>
+                                    </lightning-record-form>
+                                </template>
+                            </div>
+                        </article>
+                    </div>
+                </template>
+                <template if:true={tableParentRequiredFields}>
+                    <lightning-record-form
+                        record-id={tableParentId}
+                        object-api-name={tableParentObjectApi}
+                        fields={tableParentRequiredFields}
+                        mode="view"
+                        columns="2"
+                        density="comfy"
+                        onload={tableParentRequiredFormLoad}>
+                    </lightning-record-form>
+                </template>
+                <template if:true={tableData}>
+                    <template if:true={tableLarge}>
+                        <div class="slds-p-top-medium" style="height:450px">
+                            <lightning-datatable
+                                key-field="Id"
+                                data={tableData}
+                                columns={tableColumns}
+                                is-loading={tableLoading}
+                                onsave={tableSave}
+                                draft-values={tableDraftValues}
+                                max-row-selection={tableMaxSelectedRows}
+                                enable-infinite-loading
+                                load-more-offset=5
+                                onloadmore={tableLoadMore}
+                                onerror={tableError}
+                                onsort={tableSort}
+                                onrowaction={tableRowActions}
+                                onrowselection={tableRowSelection}>
+                            </lightning-datatable>
+                        </div>
+                    </template>
+                    <template if:false={tableLarge}>
+                        <div class="slds-p-top-medium" style="max-height:250px">
+                            <lightning-datatable
+                                class="slds-scrollable_y" 
+                                key-field="Id"
+                                data={tableData}
+                                columns={tableColumns}
+                                is-loading={tableLoading}
+                                onsave={tableSave}
+                                draft-values={tableDraftValues}
+                                max-row-selection={tableMaxSelectedRows}
+                                hide-checkbox-column
+                                onerror={tableError}
+                                onsort={tableSort}
+                                onrowaction={tableRowActions}
+                                onrowselection={tableRowSelection}>
+                            </lightning-datatable>
+                        </div>
+            
+                    </template>
+                </template>
+                <template if:false={tableData}>
+                    No data found
+                </template>
+            </div>
+        </div>
+    </template>
+</template>

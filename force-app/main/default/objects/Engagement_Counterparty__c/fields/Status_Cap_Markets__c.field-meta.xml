@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_Cap_Markets__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( RecordType.Id = &quot;012i0000000tLTf&quot; ,
+IF( NOT( ISBLANK( Declined_Passed__c )), &quot;Declined / Passed&quot;,
+IF( NOT( ISBLANK( E_Y_NRL_Executed__c)), &quot;E&amp;Y NRL Executed&quot;,
+IF( NOT( ISBLANK( Sent_E_Y_NRL__c)), &quot;Sent E&amp;Y NRL&quot;,
+IF( NOT( ISBLANK( Had_Diligence_Call__c  )), &quot;Diligence Call&quot;,
+IF( NOT( ISBLANK( Sent_BCG_Report__c)), &quot;Sent BCG Report&quot;,
+IF( NOT( ISBLANK( NRL_Status__c)), &quot;NRL Status&quot;,
+IF( NOT( ISBLANK( BCG_NRL_Executed__c)), &quot;BCG NRL Executed&quot;,
+IF( NOT( ISBLANK( Sent_BCG_NRL__c)), &quot;Sent BCG NRL&quot;,
+IF( NOT( ISBLANK( Sent_Book__c)), &quot;Sent Book&quot;,
+IF( NOT( ISBLANK( Executed_Confidentiality_Agreement__c)), &quot;Executed CA&quot;,
+IF( NOT( ISBLANK( Negotiate_Confidentiality_Agreement__c)), &quot;Negotiate NDA&quot;,
+IF( NOT( ISBLANK( Confidentiality_Agreement__c )), &quot;Sent CA&quot;,
+IF( NOT( ISBLANK( Initial_Contact__c )), &quot;Initial Contact&quot;, &quot;No Status&quot; 
+))))))))))))), &quot;No Status&quot;)</formula>
+    <label>Status (Cap Markets)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

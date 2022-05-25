@@ -1,0 +1,77 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-2"> 
+            <div class="slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_1-of-1 purchaseprice">
+                    <c-hl-universal-card-form
+                        object-api="Engagement_Summary__c"
+                        record-id={engageSumId}
+                        fields={priceEngageSumPurchaseTypeFieldsEdit}
+                        required-fields={requiredFieldsPurchase}
+                        columns="1"
+                        mode="view"
+                        title="Purchase Price"
+                        icon="utility:case"
+                        buttons="none"
+                        secondary-title="Price Detail (MM)"
+                        secondary-object-api="Engagement_Summary__c"
+                        secondary-record-id={engageSumId}
+                        secondary-fields={priceEngageSumPurchasePriceFieldsEdit}
+                        secondary-required-fields={requiredFieldsDetail}
+                        secondary-columns="1"
+                        secondary-mode="view"
+                        tertiary-title="Consideration Types (MM)"
+                        tertiary-mode="view"
+                        tertiary-object-api="Engagement_Summary__c"
+                        tertiary-record-id={engageSumId}
+                        tertiary-fields={priceEngageSumConsidFieldsEdit}
+                        tertiary-columns="2" >
+                    </c-hl-universal-card-form>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_1-of-2"> 
+            <div class="slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_1-of-1 closing">
+                    <c-hl-universal-card-form
+                        object-api="Engagement_Summary__c"
+                        record-id={engageSumId}
+                        fields={priceEngageSumClosingFieldsEdit}
+                        required-fields={requiredFieldsClosing}
+                        columns="1"
+                        mode="view"
+                        title="Post Closing Adjustment Metrics"
+                        icon="utility:cases"
+                        buttons="none">
+                    </c-hl-universal-card-form>
+                </div>
+                <div class="slds-col slds-size_1-of-1 earnouts">
+                    <c-hl-universal-card-form
+                        object-api="Engagement_Summary__c"
+                        record-id={engageSumId}
+                        fields={priceEngageSumEarnoutFieldsEdit}
+                        required-fields={requiredFieldsEarnout}
+                        columns="1"
+                        mode="view"
+                        title="Earnouts (MM)"
+                        icon="utility:record_create"
+                        buttons="none">
+                    </c-hl-universal-card-form>
+                </div>
+                <div class="slds-col slds-size_1-of-1 sellernotes">
+                    <c-hl-universal-card-form
+                        object-api="Engagement_Summary__c"
+                        record-id={engageSumId}
+                        fields={priceEngageSumSellNoteFieldsEdit}
+                        required-fields={requiredFieldsSellerNotes}
+                        columns="2"
+                        mode="view"
+                        title="Seller Notes"
+                        icon="utility:page"
+                        buttons="none">
+                    </c-hl-universal-card-form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

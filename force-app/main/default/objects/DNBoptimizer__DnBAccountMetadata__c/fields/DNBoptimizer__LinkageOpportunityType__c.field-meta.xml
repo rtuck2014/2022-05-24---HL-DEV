@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__LinkageOpportunityType__c</fullName>
+    <deprecated>false</deprecated>
+    <description>0 = Not Evaluated
+1 = Correctly Linked
+2 = Standalone (Not a Family Tree Member)
+3 = No Parent (Global Ultimate)
+4 = Link Opportunity
+5 = Create and Link Opportunity
+6 = Relink Opportunity
+7 = Create and Relink Opportunity
+8 = Duplicate Parent</description>
+    <externalId>false</externalId>
+    <inlineHelpText>0 = Not Evaluated
+1 = Correctly Linked
+2 = Standalone (Not a Family Tree Member)
+3 = No Parent (Global Ultimate)
+4 = Link Opportunity
+5 = Create and Link Opportunity
+6 = Relink Opportunity
+7 = Create and Relink Opportunity
+8 = Duplicate Parent</inlineHelpText>
+    <label>Linkage Opportunity Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>0</fullName>
+                <default>true</default>
+                <label>0</label>
+            </value>
+            <value>
+                <fullName>1</fullName>
+                <default>false</default>
+                <label>1</label>
+            </value>
+            <value>
+                <fullName>2</fullName>
+                <default>false</default>
+                <label>2</label>
+            </value>
+            <value>
+                <fullName>3</fullName>
+                <default>false</default>
+                <label>3</label>
+            </value>
+            <value>
+                <fullName>4</fullName>
+                <default>false</default>
+                <label>4</label>
+            </value>
+            <value>
+                <fullName>5</fullName>
+                <default>false</default>
+                <label>5</label>
+            </value>
+            <value>
+                <fullName>6</fullName>
+                <default>false</default>
+                <label>6</label>
+            </value>
+            <value>
+                <fullName>7</fullName>
+                <default>false</default>
+                <label>7</label>
+            </value>
+            <value>
+                <fullName>8</fullName>
+                <default>false</default>
+                <label>8</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

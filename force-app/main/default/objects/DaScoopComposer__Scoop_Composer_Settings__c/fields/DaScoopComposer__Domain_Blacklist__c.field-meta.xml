@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Domain_Blacklist__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Is a comma separated list of email domains. Groove will not log emails if all participants on the email are on the blocklist. Use this to prevent purely internal emails from being logged.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Is a comma separated list of email domains. Groove will not log emails if all participants on the email are on the blocklist. Use this to prevent purely internal emails from being logged.</inlineHelpText>
+    <label>Domain Blocklist</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

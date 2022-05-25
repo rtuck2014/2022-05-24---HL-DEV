@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>z_User_Aggregate_CHECK__c</fullName>
+    <externalId>false</externalId>
+    <formula>CONTAINS( z_User_Aggregate00__c, $User.Id)||
+CONTAINS( z_User_Aggregate01__c, $User.Id)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>z_User Aggregate CHECK</label>
+    <type>Checkbox</type>
+</CustomField>

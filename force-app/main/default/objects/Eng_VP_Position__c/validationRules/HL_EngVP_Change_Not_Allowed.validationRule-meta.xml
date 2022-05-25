@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_EngVP_Change_Not_Allowed</fullName>
+    <active>true</active>
+    <description>To stop changing Engagement Valuation Period on positon</description>
+    <errorConditionFormula>IF(NOT(ISNEW()),IF(ISCHANGED(Engagement_VP__c), true, false), false)</errorConditionFormula>
+    <errorDisplayField>Engagement_VP__c</errorDisplayField>
+    <errorMessage>You are not allowed to change &apos;Engagement Valuation Period&apos;.</errorMessage>
+</ValidationRule>

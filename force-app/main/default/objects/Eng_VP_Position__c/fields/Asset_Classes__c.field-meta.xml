@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Asset_Classes__c</fullName>
+    <externalId>false</externalId>
+    <label>Asset Classes</label>
+    <required>true</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ABL</fullName>
+                <default>false</default>
+                <label>ABL</label>
+            </value>
+            <value>
+                <fullName>ABS (Other)</fullName>
+                <default>false</default>
+                <label>ABS (Other)</label>
+            </value>
+            <value>
+                <fullName>Auction Rate Securities</fullName>
+                <default>false</default>
+                <label>Auction Rate Securities</label>
+            </value>
+            <value>
+                <fullName>Auto Loans</fullName>
+                <default>false</default>
+                <label>Auto Loans</label>
+            </value>
+            <value>
+                <fullName>Bank Assets (FDIC)</fullName>
+                <default>false</default>
+                <label>Bank Assets (FDIC)</label>
+            </value>
+            <value>
+                <fullName>CDO</fullName>
+                <default>false</default>
+                <label>CDO</label>
+            </value>
+            <value>
+                <fullName>CLO</fullName>
+                <default>false</default>
+                <label>CLO</label>
+            </value>
+            <value>
+                <fullName>CLO – MOA / CMV (Asset Manager)</fullName>
+                <default>false</default>
+                <label>CLO – MOA / CMV (Asset Manager)</label>
+            </value>
+            <value>
+                <fullName>CMBS</fullName>
+                <default>false</default>
+                <label>CMBS</label>
+            </value>
+            <value>
+                <fullName>Contingent Value Rights</fullName>
+                <default>false</default>
+                <label>Contingent Value Rights</label>
+            </value>
+            <value>
+                <fullName>Debt</fullName>
+                <default>false</default>
+                <label>Debt</label>
+            </value>
+            <value>
+                <fullName>Debt &amp; Derivatives</fullName>
+                <default>false</default>
+                <label>Debt &amp; Derivatives</label>
+            </value>
+            <value>
+                <fullName>Derivatives</fullName>
+                <default>false</default>
+                <label>Derivatives</label>
+            </value>
+            <value>
+                <fullName>Equity</fullName>
+                <default>false</default>
+                <label>Equity</label>
+            </value>
+            <value>
+                <fullName>Equity, Debt, &amp; Derivatives</fullName>
+                <default>false</default>
+                <label>Equity, Debt, &amp; Derivatives</label>
+            </value>
+            <value>
+                <fullName>Equity &amp; Debt</fullName>
+                <default>false</default>
+                <label>Equity &amp; Debt</label>
+            </value>
+            <value>
+                <fullName>Equity &amp; Derivatives</fullName>
+                <default>false</default>
+                <label>Equity &amp; Derivatives</label>
+            </value>
+            <value>
+                <fullName>Fix and Flip Mortgages</fullName>
+                <default>false</default>
+                <label>Fix and Flip Mortgages</label>
+            </value>
+            <value>
+                <fullName>Fund Manager Valuation</fullName>
+                <default>false</default>
+                <label>Fund Manager Valuation</label>
+            </value>
+            <value>
+                <fullName>Interest Rate Lock Commitments</fullName>
+                <default>false</default>
+                <label>Interest Rate Lock Commitments</label>
+            </value>
+            <value>
+                <fullName>Litigation Claims</fullName>
+                <default>false</default>
+                <label>Litigation Claims</label>
+            </value>
+            <value>
+                <fullName>Marketplace Lending</fullName>
+                <default>false</default>
+                <label>Marketplace Lending</label>
+            </value>
+            <value>
+                <fullName>Market Study</fullName>
+                <default>false</default>
+                <label>Market Study</label>
+            </value>
+            <value>
+                <fullName>Mortgage Servicing Rights</fullName>
+                <default>false</default>
+                <label>Mortgage Servicing Rights</label>
+            </value>
+            <value>
+                <fullName>Non-Performing Loans</fullName>
+                <default>false</default>
+                <label>Non-Performing Loans</label>
+            </value>
+            <value>
+                <fullName>PIPE Investments</fullName>
+                <default>false</default>
+                <label>PIPE Investments</label>
+            </value>
+            <value>
+                <fullName>Residential Mortgages</fullName>
+                <default>false</default>
+                <label>Residential Mortgages</label>
+            </value>
+            <value>
+                <fullName>Reverse Mortgages</fullName>
+                <default>false</default>
+                <label>Reverse Mortgages</label>
+            </value>
+            <value>
+                <fullName>Risk Retention</fullName>
+                <default>false</default>
+                <label>Risk Retention</label>
+            </value>
+            <value>
+                <fullName>RMBS</fullName>
+                <default>false</default>
+                <label>RMBS</label>
+            </value>
+            <value>
+                <fullName>Royalties</fullName>
+                <default>false</default>
+                <label>Royalties</label>
+            </value>
+            <value>
+                <fullName>Small Balance Commercial Loans &amp; MCAs</fullName>
+                <default>false</default>
+                <label>Small Balance Commercial Loans &amp; MCAs</label>
+            </value>
+            <value>
+                <fullName>Solar Loans</fullName>
+                <default>false</default>
+                <label>Solar Loans</label>
+            </value>
+            <value>
+                <fullName>Student Loans</fullName>
+                <default>false</default>
+                <label>Student Loans</label>
+            </value>
+            <value>
+                <fullName>Trade/Bankruptcy Claims</fullName>
+                <default>false</default>
+                <label>Trade/Bankruptcy Claims</label>
+            </value>
+            <value>
+                <fullName>Trust Preferred Securities</fullName>
+                <default>false</default>
+                <label>Trust Preferred Securities</label>
+            </value>
+            <value>
+                <fullName>Unsecured Consumer Loans</fullName>
+                <default>false</default>
+                <label>Unsecured Consumer Loans</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

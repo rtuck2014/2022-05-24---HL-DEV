@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Departure_Date_Required_for_Inactive</fullName>
+    <active>true</active>
+    <description>Departure date required for inactive employees when hire date is populated and hire date is later than 1/1/2009</description>
+    <errorConditionFormula>RecordTypeId = &apos;012i0000000tEhe&apos; 
+&amp;&amp; ((ISNULL(Hire_Date__c) &amp;&amp; NULLVALUE(Hire_Date__c , DATE(2008,12,31) ) &gt; DATE(2009,01,01)) || (NOT(ISNULL(Hire_Date__c)) &amp;&amp; Hire_Date__c  &lt;  TODAY()))
+&amp;&amp; ISPICKVAL(Status__c, &apos;Inactive&apos;) 
+&amp;&amp; ISBLANK( Departure_Date__c )</errorConditionFormula>
+    <errorDisplayField>Departure_Date__c</errorDisplayField>
+    <errorMessage>Departure Date is required for Inactive employees hired after 1/1/2009</errorMessage>
+</ValidationRule>

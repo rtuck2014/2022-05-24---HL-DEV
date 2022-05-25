@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ERP_Labor_Format__c</fullName>
+    <description>The labor format in ERP</description>
+    <externalId>false</externalId>
+    <label>ERP Labor Format</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>HL Labor</fullName>
+                <default>true</default>
+                <label>HL Labor</label>
+            </value>
+            <value>
+                <fullName>ICO LABOR</fullName>
+                <default>false</default>
+                <label>ICO LABOR</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

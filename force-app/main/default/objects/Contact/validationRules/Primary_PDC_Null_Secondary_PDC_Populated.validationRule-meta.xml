@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Primary_PDC_Null_Secondary_PDC_Populated</fullName>
+    <active>true</active>
+    <description>Do not allow the primary PDC to be null when the secondary PDC is populated</description>
+    <errorConditionFormula>ISBLANK(Primary_PDC__c )   &amp;&amp;  NOT( ISBLANK( Secondary_PDC__c ) )</errorConditionFormula>
+    <errorDisplayField>Primary_PDC__c</errorDisplayField>
+    <errorMessage>Primary PDC cannot be blank when there is a Secondary PDC</errorMessage>
+</ValidationRule>

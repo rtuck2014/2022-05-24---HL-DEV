@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__SalesVolumeUSDollars__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The monetary value of income received from customers from the sale of the entitys goods and/or services.  This is the gross sales minus any returns, rebates/discounts, allowances for damages or shortages, shipping expenses passed on to the customer.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The monetary value of income received from customers from the sale of the entitys goods and/or services.  This is the gross sales minus any returns, rebates/discounts, allowances for damages or shortages, shipping expenses passed on to the customer.</inlineHelpText>
+    <isFilteringDisabled>false</isFilteringDisabled>
+    <isNameField>false</isNameField>
+    <isSortingDisabled>false</isSortingDisabled>
+    <label>Sales Volume USD</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

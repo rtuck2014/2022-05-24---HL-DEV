@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Consumer_Food_Retail</fullName>
+    <columns>NAME</columns>
+    <columns>Active__c</columns>
+    <columns>CoverageType__c</columns>
+    <columns>PrimarySector__c</columns>
+    <columns>SecondarySector__c</columns>
+    <columns>TertiarySector__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CoverageType__c</field>
+        <operation>equals</operation>
+        <value>Consumer Food &amp; Retail</value>
+    </filters>
+    <label>Consumer Food &amp; Retail</label>
+</ListView>

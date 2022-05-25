@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-align_absolute-center slds-var-p-around_small">
+    <lightning-card title="Coverage Team" icon-name="custom:custom63">
+        {recordId}
+        <div if:true={isLoading} class="slds-is-relative">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+        <p class="slds-p-horizontal_small">
+            <c-hl-sector-dependent-picklist onchild={handleSectorChange}></c-hl-sector-dependent-picklist>
+            <lightning-record-form object-api-name="Coverage_Team__c" fields={fields} onsubmit={handleSubmit}
+            onsuccess={handleSuccess} record-type-id={recordTypeId} columns="2" oncancel={handleCancel}>           
+        </lightning-record-form>
+        
+        </p>
+    </lightning-card>
+    </div>
+</template>

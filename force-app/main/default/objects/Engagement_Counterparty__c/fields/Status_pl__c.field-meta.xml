@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_pl__c</fullName>
+    <externalId>false</externalId>
+    <label>Status _ picklist</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Initial Contact</fullName>
+                <default>false</default>
+                <label>Initial Contact</label>
+            </value>
+            <value>
+                <fullName>Phone Discussion</fullName>
+                <default>false</default>
+                <label>Phone Discussion</label>
+            </value>
+            <value>
+                <fullName>Sent Teaser</fullName>
+                <default>false</default>
+                <label>Sent Teaser</label>
+            </value>
+            <value>
+                <fullName>Confidentiality Agreement</fullName>
+                <default>false</default>
+                <label>Confidentiality Agreement</label>
+            </value>
+            <value>
+                <fullName>Executed Confidentiality Agreement</fullName>
+                <default>false</default>
+                <label>Executed Confidentiality Agreement</label>
+            </value>
+            <value>
+                <fullName>Sent Book</fullName>
+                <default>false</default>
+                <label>Sent Book</label>
+            </value>
+            <value>
+                <fullName>Proposal / Indication</fullName>
+                <default>false</default>
+                <label>Proposal / Indication</label>
+            </value>
+            <value>
+                <fullName>Schedule Management Meeting</fullName>
+                <default>false</default>
+                <label>Schedule Management Meeting</label>
+            </value>
+            <value>
+                <fullName>Met with Management</fullName>
+                <default>false</default>
+                <label>Met with Management</label>
+            </value>
+            <value>
+                <fullName>Letter of Intent</fullName>
+                <default>false</default>
+                <label>Letter of Intent</label>
+            </value>
+            <value>
+                <fullName>Declined / Passed</fullName>
+                <default>false</default>
+                <label>Declined / Passed</label>
+            </value>
+            <value>
+                <fullName>Markup</fullName>
+                <default>false</default>
+                <label>Markup</label>
+            </value>
+            <value>
+                <fullName>Had Due Diligence Call</fullName>
+                <default>false</default>
+                <label>Had Due Diligence Call</label>
+            </value>
+            <value>
+                <fullName>Invited to Dataroom</fullName>
+                <default>false</default>
+                <label>Invited to Dataroom</label>
+            </value>
+            <value>
+                <fullName>Sent Counter Executed CA</fullName>
+                <default>false</default>
+                <label>Sent Counter Executed CA</label>
+            </value>
+            <value>
+                <fullName>Received Executed CA</fullName>
+                <default>false</default>
+                <label>Received Executed CA</label>
+            </value>
+            <value>
+                <fullName>Book Returned</fullName>
+                <default>false</default>
+                <label>Book Returned</label>
+            </value>
+            <value>
+                <fullName>Process Letter Sent</fullName>
+                <default>false</default>
+                <label>Process Letter Sent</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

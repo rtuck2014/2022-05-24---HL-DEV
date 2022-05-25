@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Additional_Fields_for_Calendar_Events__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Additional fields requested from user in Calendar interface. Currently supported field types are picklists, boolean and open text fields. Enter API names separated by commas.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Additional fields requested from user in Calendar interface. Currently supported field types are picklists, boolean and open text fields. Enter API names separated by commas. To mark the field as required, add &apos;:required&apos; after the field name.</inlineHelpText>
+    <label>Additional Fields for Calendar Events</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

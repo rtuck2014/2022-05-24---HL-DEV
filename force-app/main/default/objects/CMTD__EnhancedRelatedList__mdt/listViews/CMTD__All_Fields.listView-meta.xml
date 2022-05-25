@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CMTD__All_Fields</fullName>
+    <columns>DeveloperName</columns>
+    <columns>MasterLabel</columns>
+    <columns>CMTD__Related_List_Name__c</columns>
+    <columns>CMTD__Field_API_Name__c</columns>
+    <columns>CMTD__Header__c</columns>
+    <columns>CMTD__Order__c</columns>
+    <columns>CMTD__UI_Type_Override__c</columns>
+    <columns>CMTD__Colour__c</columns>
+    <columns>CMTD__Target_API_Name__c</columns>
+    <columns>CMTD__Inactive__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Fields</label>
+</ListView>

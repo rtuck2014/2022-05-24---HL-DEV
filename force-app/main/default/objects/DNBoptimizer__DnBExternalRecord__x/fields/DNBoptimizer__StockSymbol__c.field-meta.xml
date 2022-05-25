@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__StockSymbol__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Text that identifies the subject at the Stock Exchange for share trading purposes, e.g., DNB.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Text that identifies the subject at the Stock Exchange for share trading purposes, e.g., DNB.</inlineHelpText>
+    <isFilteringDisabled>false</isFilteringDisabled>
+    <isNameField>false</isNameField>
+    <isSortingDisabled>false</isSortingDisabled>
+    <label>Stock Symbol</label>
+    <length>50</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

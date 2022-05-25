@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Indemnity_Escrow_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Escrow/Holdbacks Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Exclusive Remedy</fullName>
+                <default>false</default>
+                <label>Exclusive Remedy</label>
+            </value>
+            <value>
+                <fullName>Not Exclusive Remedy</fullName>
+                <default>false</default>
+                <label>Not Exclusive Remedy</label>
+            </value>
+            <value>
+                <fullName>Setoff to Exclusive Remedies</fullName>
+                <default>false</default>
+                <label>Setoff to Exclusive Remedies</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

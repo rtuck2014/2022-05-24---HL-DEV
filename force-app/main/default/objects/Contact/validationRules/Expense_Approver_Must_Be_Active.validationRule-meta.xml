@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expense_Approver_Must_Be_Active</fullName>
+    <active>true</active>
+    <description>Expense Approver must be active when contact is active</description>
+    <errorConditionFormula>RecordTypeId = &apos;012i0000000tEhe&apos; 
+&amp;&amp; ISPICKVAL(Status__c, &apos;active&apos;) 
+&amp;&amp; ISPICKVAL( Direct_Report__r.Status__c , &apos;inactive&apos;)
+&amp;&amp; $Profile.Name &lt;&gt; &apos;System Administrator&apos;</errorConditionFormula>
+    <errorDisplayField>Direct_Report__c</errorDisplayField>
+    <errorMessage>Expense Approver must be active when contact is active</errorMessage>
+</ValidationRule>

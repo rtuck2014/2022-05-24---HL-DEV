@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Affiliation_Contact</fullName>
+    <active>true</active>
+    <errorConditionFormula>Contact__r.RecordType.DeveloperName = &apos;Houlihan_Employee&apos; &amp;&amp;
+ ($Profile.Name != &apos;Compliance User&apos; &amp;&amp;
+ $Profile.Name != &apos;System Administrator&apos;)</errorConditionFormula>
+    <errorDisplayField>Contact__c</errorDisplayField>
+    <errorMessage>Only Compliance can add HL Employees as affiliations.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_to_Pardot_List_HL</fullName>
+    <availability>online</availability>
+    <description>HL&apos;s version of this button</description>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Add to Pardot List</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/33.0/connection.js&quot;)}
+var UProfile = &quot;{!User.ProfileId}&quot;;
+
+if(UProfile == &quot;00ei0000001XLGI&quot; || UProfile == &quot;00ei00000016T4B&quot;){
+window.location.href=&quot;https://pi.pardot.com/list/pullCrmCampaign/fid/{!Campaign.Id}/campaignName/{!JSENCODE(Campaign.Name)}/leadCount/{!Campaign.NumberOfLeads}/contactCount/{!Campaign.NumberOfContacts}?sessionid={!$Api.Session_ID}&amp;serverurl={!$Api.Partner_Server_URL_90}&quot;;
+}
+else
+alert(&quot;Function reserved for Marketing Users.&quot;);</url>
+</WebLink>

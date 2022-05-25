@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Concur_Travel__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Flag for specifying if a temp contact is allowed to use the Concur travel module. The value is used by the Concur export files SSIS package for generating the 310 CSV files.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Indicates if the contact of staff type HL-Temp will have access to the Concur travel module.</inlineHelpText>
+    <label>Concur Travel</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

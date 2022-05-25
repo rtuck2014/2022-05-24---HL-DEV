@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Riva_Sync_Ready__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates the activity is ready to be synced to the Riva Activity Object</description>
+    <externalId>false</externalId>
+    <label>Riva Sync Ready</label>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Extensity_Role__c</fullName>
+    <externalId>false</externalId>
+    <label>Extensity Role</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Accounting</fullName>
+                <default>false</default>
+                <label>Accounting</label>
+            </value>
+            <value>
+                <fullName>All Locations</fullName>
+                <default>false</default>
+                <label>All Locations</label>
+            </value>
+            <value>
+                <fullName>AP Review</fullName>
+                <default>false</default>
+                <label>AP Review</label>
+            </value>
+            <value>
+                <fullName>Archpoint</fullName>
+                <default>false</default>
+                <label>Archpoint</label>
+            </value>
+            <value>
+                <fullName>Avista</fullName>
+                <default>false</default>
+                <label>Avista</label>
+            </value>
+            <value>
+                <fullName>Blenheim</fullName>
+                <default>false</default>
+                <label>Blenheim</label>
+            </value>
+            <value>
+                <fullName>Business Forum</fullName>
+                <default>false</default>
+                <label>Business Forum</label>
+            </value>
+            <value>
+                <fullName>Bypass</fullName>
+                <default>false</default>
+                <label>Bypass</label>
+            </value>
+            <value>
+                <fullName>CF &amp; FRG L/G</fullName>
+                <default>false</default>
+                <label>CF &amp; FRG L/G</label>
+            </value>
+            <value>
+                <fullName>CF Event</fullName>
+                <default>false</default>
+                <label>CF Event</label>
+            </value>
+            <value>
+                <fullName>Corp General</fullName>
+                <default>false</default>
+                <label>Corp General</label>
+            </value>
+            <value>
+                <fullName>DAG FF</fullName>
+                <default>false</default>
+                <label>DAG FF</label>
+            </value>
+            <value>
+                <fullName>DAG LO</fullName>
+                <default>false</default>
+                <label>DAG LO</label>
+            </value>
+            <value>
+                <fullName>Due FF</fullName>
+                <default>false</default>
+                <label>Due FF</label>
+            </value>
+            <value>
+                <fullName>Due LO</fullName>
+                <default>false</default>
+                <label>Due LO</label>
+            </value>
+            <value>
+                <fullName>Due PA</fullName>
+                <default>false</default>
+                <label>Due PA</label>
+            </value>
+            <value>
+                <fullName>EHP</fullName>
+                <default>false</default>
+                <label>EHP</label>
+            </value>
+            <value>
+                <fullName>EHP1300</fullName>
+                <default>false</default>
+                <label>EHP1300</label>
+            </value>
+            <value>
+                <fullName>Ex-Pat</fullName>
+                <default>false</default>
+                <label>Ex-Pat</label>
+            </value>
+            <value>
+                <fullName>FRAM &amp; ORIX</fullName>
+                <default>false</default>
+                <label>FRAM &amp; ORIX</label>
+            </value>
+            <value>
+                <fullName>HK</fullName>
+                <default>false</default>
+                <label>HK</label>
+            </value>
+            <value>
+                <fullName>HK FVA</fullName>
+                <default>false</default>
+                <label>HK FVA</label>
+            </value>
+            <value>
+                <fullName>Hong Kong and Tokyo</fullName>
+                <default>false</default>
+                <label>Hong Kong and Tokyo</label>
+            </value>
+            <value>
+                <fullName>IHC</fullName>
+                <default>false</default>
+                <label>IHC</label>
+            </value>
+            <value>
+                <fullName>IT</fullName>
+                <default>false</default>
+                <label>IT</label>
+            </value>
+            <value>
+                <fullName>Madrid</fullName>
+                <default>false</default>
+                <label>Madrid</label>
+            </value>
+            <value>
+                <fullName>Managing Approver</fullName>
+                <default>false</default>
+                <label>Managing Approver</label>
+            </value>
+            <value>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+                <label>Marketing</label>
+            </value>
+            <value>
+                <fullName>Milestone</fullName>
+                <default>false</default>
+                <label>Milestone</label>
+            </value>
+            <value>
+                <fullName>Opp Fund</fullName>
+                <default>false</default>
+                <label>Opp Fund</label>
+            </value>
+            <value>
+                <fullName>OT Admin/Corp</fullName>
+                <default>false</default>
+                <label>OT Admin/Corp</label>
+            </value>
+            <value>
+                <fullName>OT CF and FVA</fullName>
+                <default>false</default>
+                <label>OT CF and FVA</label>
+            </value>
+            <value>
+                <fullName>OT FRG</fullName>
+                <default>false</default>
+                <label>OT FRG</label>
+            </value>
+            <value>
+                <fullName>Percentage Audit</fullName>
+                <default>false</default>
+                <label>Percentage Audit</label>
+            </value>
+            <value>
+                <fullName>Private Equity</fullName>
+                <default>false</default>
+                <label>Private Equity</label>
+            </value>
+            <value>
+                <fullName>Publishing</fullName>
+                <default>false</default>
+                <label>Publishing</label>
+            </value>
+            <value>
+                <fullName>Recruiting</fullName>
+                <default>false</default>
+                <label>Recruiting</label>
+            </value>
+            <value>
+                <fullName>Recruiting_EE</fullName>
+                <default>false</default>
+                <label>Recruiting_EE</label>
+            </value>
+            <value>
+                <fullName>Red Pine</fullName>
+                <default>false</default>
+                <label>Red Pine</label>
+            </value>
+            <value>
+                <fullName>TK</fullName>
+                <default>false</default>
+                <label>TK</label>
+            </value>
+            <value>
+                <fullName>UK PE</fullName>
+                <default>false</default>
+                <label>UK PE</label>
+            </value>
+            <value>
+                <fullName>USD</fullName>
+                <default>false</default>
+                <label>USD</label>
+            </value>
+            <value>
+                <fullName>User</fullName>
+                <default>false</default>
+                <label>User</label>
+            </value>
+            <value>
+                <fullName>WIFI - Non-Bill</fullName>
+                <default>false</default>
+                <label>WIFI - Non-Bill</label>
+            </value>
+            <value>
+                <fullName>WP</fullName>
+                <default>false</default>
+                <label>WP</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

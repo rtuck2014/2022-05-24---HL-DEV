@@ -1,0 +1,307 @@
+<template>
+    <template if:true={toast}>
+        <c-hl-universal-toast type={toastType} onclose={toastClose} message={toastMessage} ></c-hl-universal-toast>
+    </template>
+    <div class="slds-card-wrapper">
+        <article class="slds-card slds-card_boundary">
+            <div class="slds-card__header slds-grid">
+                <template if:false={newMode}>
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__figure">
+                            <span class="slds-icon_container" title="Facility">
+                                <lightning-icon 
+                                    icon-name="utility:standard_objects" 
+                                    size="small" >
+                                </lightning-icon>
+                                <span class="slds-assistive-text">Facility</span>
+                            </span>
+                        </div>
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title">
+                                <span>Facility {debtStructureName}</span>
+                            </h2>
+                        </div>
+                        <div class="slds-no-flex">
+                            <lightning-button 
+                                label="Remove" 
+                                title="Remove" 
+                                data-record-id={debtStructureId} 
+                                onclick={debtStructureDelClick} >
+                            </lightning-button>
+                        </div>
+                    </header>
+                </template>
+                <template if:true={newMode}>
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__figure">
+                            <span class="slds-icon_container" title="Facility">
+                                <lightning-button-icon 
+                                    icon-name="utility:new" 
+                                    alternative-text="New" 
+                                    onclick={debtStructureNewClick}>
+                                </lightning-button-icon>
+                                <span class="slds-assistive-text">New Facility</span>
+                            </span>
+                        </div>
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title">
+                                <span>New Facility</span>
+                            </h2>
+                        </div>
+                    </header>
+                </template>
+            </div>
+            <div class="slds-card__body slds-card__body_inner">
+                <template if:false={newMode}>
+                    <div class="slds-section slds-is-open">
+                        <h3 class="slds-section__title">
+                            <button aria-expanded="true" class="slds-button slds-section__title-action">
+                                <span class="slds-truncate slds-p-left_x-small" title="Section Title">Key Creditors</span>
+                            </button>
+                        </h3>
+                        <div aria-hidden="false" class="slds-section__content slds-p-left_small slds-p-bottom_small">
+                            <template if:true={clientSubjects}>
+                                <template iterator:it={clientSubjects} >
+                                    <li key={it.value.Id}>
+                                        <div class="slds-grid slds-m-top_medium slds-m-bottom_medium slds-p-bottom_medium" style="border-radius: 2px; border: 1px solid #DDD">
+                                            <div class="slds-col slds-size_6-of-8 slds-m-top_small">
+                                            <!-- LL20190930 Per discussions from Story STRY0059533 - Field name for Client/Subject 
+                                                    needs to be Key Creditor. Only way to accomplish this is to introduce a custom layout (above) and 
+                                                    override label. Field label can't be chaged in Setup as Client Subject is used appriately 
+                                                    elsewhere (i.e. Engagement )
+                                                <lightning-record-form
+                                                    record-id={it.value.Id}
+                                                    object-api-name=Engagement_Client_Subject__c
+                                                    fields={clientSubjectFieldsEdit}
+                                                    columns="1"
+                                                    density="comfy"
+                                                    mode="view">
+                                                </lightning-record-form> -->
+                                                <lightning-record-view-form
+                                                    record-id={it.value.Id}
+                                                    object-api-name="Engagement_Client_Subject__c">
+                                                    <div class="slds-theme_default">
+                                                        <label class="slds-form-element__label" >
+                                                            <abbr class="slds-required" title="required">* </abbr>Company
+                                                        </label>
+                                                        <div class="slds-border_bottom ">
+                                                            <lightning-output-field 
+                                                                variant="label-hidden"
+                                                                field-name="Client_Subject__c">
+                                                            </lightning-output-field>
+                                                        </div>
+                                                        <lightning-output-field
+                                                            class="slds-border_bottom slds-m-top_medium"
+                                                            field-name="Loan_Amount__c">
+                                                        </lightning-output-field>
+                                                    </div>
+                                                </lightning-record-view-form>
+                                            </div>
+                                            <div class="slds-col slds-size_2-of-8 slds-p-top_large">
+                                                <div class="slds-grid ">
+                                                    <div class="slds-col slds-size_1-of-2 slds-p-left_x-small ">
+                                                        <lightning-button-icon 
+                                                            icon-name="utility:delete" 
+                                                            size="small"
+                                                            data-record-id={it.value.Id} 
+                                                            alternative-text="Delete Key Creditor" 
+                                                            onclick={clientSubjectDelClick}>
+                                                        </lightning-button-icon>
+                                                    </div>
+                                                    <div if:true={it.last} class="slds-col slds-size_1-of-2">
+                                                        <lightning-button-icon-stateful
+                                                            class={clientSubjectNewClickSelector}
+                                                            icon-name="utility:new" 
+                                                            size="small"
+                                                            selected={clientSubjectNewFlag} 
+                                                            onclick={clientSubjectNewClick} 
+                                                            alternative-text="New Key Creditor" >
+                                                        </lightning-button-icon-stateful>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </template>
+                            </template>
+                            <template if:true={clientSubjectsError}>
+                                    <div class="slds-grid ">
+                                        <div class="slds-col">
+                                            {clientSubjectsError}
+                                        </div>
+                                    </div>
+                            </template>
+                            <template if:true={clientSubjectNewFlag}>
+                                <div class="slds-grid slds-m-top_medium slds-p-top_medium" style="border-radius: 2px; border: 1px solid #DDD">
+                                    <div class="slds-col slds-size_6-of-8">
+                                        <template if:true={companyLookupFlag}>
+                                            <c-hl-universal-lookup
+                                                class={companyLookupSelector}
+                                                object-api="Account"
+                                                title="Company Lookup"
+                                                form-fields={companyLookupFormFields}
+                                                form-billing-address={companyBillAddress}
+                                                form-rec-type-name="Capital Provider"
+                                                search-fields={companyLookupSearchFields}
+                                                columns={companyLookupColumns}
+                                                onok={companyLookupOk}
+                                                oncancel={companyLookupCancel}>
+                                            </c-hl-universal-lookup>
+                                        </template>
+                                        <template if:true={companyLookupId}>
+                                            <lightning-input 
+                                                type="text" 
+                                                name="company" 
+                                                read-only
+                                                label="Company" 
+                                                value={companyLookupName}>
+                                            </lightning-input>
+                                            <lightning-record-form
+                                                class={clientSubjectNewSelector}
+                                                object-api-name=Engagement_Client_Subject__c
+                                                fields={clientSubjectLookupFieldsEdit}
+                                                columns="1"
+                                                density="comfy"
+                                                onsubmit={clientSubjectNewSubmit}
+                                                onsuccess={clientSubjectNewSuccess}
+                                                onerror={clientSubjectNewError}
+                                                oncancel={clientSubjectNewCancel}>
+                                            </lightning-record-form>
+                                        </template>
+                                        <template if:false={companyLookupId}>
+                                            <lightning-record-edit-form
+                                                class={clientSubjectNewSelector}
+                                                object-api-name="Engagement_Client_Subject__c"
+                                                onsubmit={clientSubjectNewSubmit}
+                                                onsuccess={clientSubjectNewSuccess}
+                                                onerror={clientSubjectNewError}
+                                                oncancel={clientSubjectNewCancel}>
+                                                <label id="lenderLabel" class="slds-form-element__label" >
+                                                    <abbr class="slds-required" title="required">* </abbr>Company
+                                                </label>
+                                                <lightning-input-field 
+                                                    variant="label-hidden"
+                                                    aria-labelled-by="lenderLabel"
+                                                    field-name="Client_Subject__c">
+                                                </lightning-input-field>
+                                                <label id="loanLabel" class="slds-form-element__label" >
+                                                    <abbr class="slds-required" title="required">* </abbr>Loan Amount (MM)
+                                                </label>
+                                                <lightning-input-field 
+                                                    variant="label-hidden"
+                                                    aria-labelled-by="loanLabel"
+                                                    field-name="Loan_Amount__c">
+                                                </lightning-input-field>
+                                                <div class="slds-m-top_medium slds-m-bottom_large">
+                                                    <lightning-button
+                                                        variant="brand"
+                                                        type="submit"
+                                                        name="Save"
+                                                        label="Save">
+                                                    </lightning-button>
+                                                    <lightning-button
+                                                        class="slds-m-left_x-small"
+                                                        variant="Neutral"
+                                                        name="Cancel"
+                                                        label="Cancel"
+                                                        onclick={clientSubjectNewCancel}>
+                                                    </lightning-button>
+
+                                                </div>
+                                            </lightning-record-edit-form>
+                                            <!-- LL20190930 Per discussions from Story STRY0059533 - Field name for Client/Subject 
+                                                    needs to be Key Creditor. Only way to accomplish this is to introduce a custom layout (above) and 
+                                                    override label. Field label can't be chaged in Setup as Client Subject is used appriately 
+                                                    elsewhere (i.e. Engagement )
+                                            <lightning-record-form
+                                                class={clientSubjectNewSelector}
+                                                object-api-name=Engagement_Client_Subject__c
+                                                fields={clientSubjectFieldsEdit}
+                                                columns="1"
+                                                density="comfy"
+                                                onsubmit={clientSubjectNewSubmit}
+                                                onsuccess={clientSubjectNewSuccess}
+                                                onerror={clientSubjectNewError}
+                                                oncancel={clientSubjectNewCancel}>
+                                            </lightning-record-form> -->
+                                        </template>
+                                    </div>
+                                    <div class="slds-col slds-size_2-of-8 slds-p-top_large slds-m-left_x-small">
+                                        <lightning-button-icon-stateful 
+                                            icon-name="utility:record_lookup" 
+                                            size="medium"
+                                            selected={companyLookupFlag} 
+                                            onclick={companyLookupClick} 
+                                            alternative-text="Company Lookup" >
+                                        </lightning-button-icon-stateful>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    <div class="slds-section slds-is-open">
+                        <h3 class="slds-section__title">
+                            <button aria-expanded="true" class="slds-button slds-section__title-action">
+                                <span class="slds-truncate slds-p-left_x-small" title="Section Title">Structure</span>
+                            </button>
+                        </h3>
+                        <div aria-hidden="false" class="slds-section__content slds-p-left_small">
+                            <lightning-record-form
+                                record-id={debtStructureId}
+                                object-api-name=Debt_Structure__c
+                                fields={debtStructureFieldsEdit}
+                                columns="1"
+                                density="comfy"
+                                mode="view">
+                            </lightning-record-form>
+                        </div>
+                    </div>
+                </template>
+                <template if:true={newMode}>
+                    <template if:true={debtStructureNewFlag}>
+                        <div class="slds-section slds-is-open">
+                            <h3 class="slds-section__title">
+                                <button aria-expanded="true" class="slds-button slds-section__title-action">
+                                    <span class="slds-truncate slds-p-left_x-small" title="Section Title">Structure</span>
+                                </button>
+                            </h3>
+                            <div aria-hidden="false" class="slds-section__content slds-p-left_small">
+                                <lightning-record-form
+                                    object-api-name=Debt_Structure__c
+                                    class={debtStructureSelectorVal}
+                                    fields={debtStructureFieldsEdit}
+                                    density="comfy"
+                                    onerror={debtStructureNewError}
+                                    onsuccess={debtStructureNewSuccess}
+                                    onsubmit={debtStructureNewSubmit}
+                                    oncancel={debtStructureNewCancel}>
+                                </lightning-record-form>
+                            </div>
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </article>
+    </div>
+    <template if:true={spinner}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
+    <template if:true={clientSubjectDelModal}>
+        <c-hl-universal-modal 
+            title={modalTitle} 
+            body={modalBody} 
+            m-data={modalData}
+            onok={clientSubjectDelOk}
+            oncancel={clientSubjectDelCancel}>
+        </c-hl-universal-modal>
+    </template>
+    <template if:true={debtStructureDelModal}>
+        <c-hl-universal-modal 
+            title={modalTitle} 
+            body={modalBody} 
+            m-data={modalData}
+            onok={debtStructureDelOk}
+            oncancel={debtStructureDelCancel}>
+        </c-hl-universal-modal>
+    </template>
+</template>

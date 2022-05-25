@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ERP_Customer_Type_Description__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(RecordType.Name = &quot;Capital Provider&quot;, &quot;External&quot;,
+IF(RecordType.Name = &quot;Conflicts Check LDCCR&quot;, &quot;Internal&quot;,
+IF(RecordType.Name = &quot;Houlihan Company&quot;, &quot;Internal&quot;,
+IF(RecordType.Name = &quot;Legal Entity&quot;, &quot;Internal&quot;,
+IF(RecordType.Name = &quot;Operating Company&quot;, &quot;External&quot;,
+NULL)))))</formula>
+    <label>ERP Customer Type Description</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

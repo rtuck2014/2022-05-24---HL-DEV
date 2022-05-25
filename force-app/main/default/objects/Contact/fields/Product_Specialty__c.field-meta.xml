@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Specialty__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Specialty</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Corporate Valuation Advisory Services</fullName>
+                <default>false</default>
+                <label>Corporate Valuation Advisory Services</label>
+            </value>
+            <value>
+                <fullName>Dispute Resolution</fullName>
+                <default>false</default>
+                <label>Dispute Resolution</label>
+            </value>
+            <value>
+                <fullName>Fund Opinions</fullName>
+                <default>false</default>
+                <label>Fund Opinions</label>
+            </value>
+            <value>
+                <fullName>Generalist/ Healthcare</fullName>
+                <default>false</default>
+                <label>Generalist/ Healthcare</label>
+            </value>
+            <value>
+                <fullName>Generalist/REVS</fullName>
+                <default>false</default>
+                <label>Generalist/REVS</label>
+            </value>
+            <value>
+                <fullName>Generalist/ TMT</fullName>
+                <default>false</default>
+                <label>Generalist/ TMT</label>
+            </value>
+            <value>
+                <fullName>GEN - General</fullName>
+                <default>false</default>
+                <label>GEN - General</label>
+            </value>
+            <value>
+                <fullName>Portfolio Valuation</fullName>
+                <default>false</default>
+                <label>Portfolio Valuation</label>
+            </value>
+            <value>
+                <fullName>TAS- Accounting and Financial Reporting Advisory</fullName>
+                <default>false</default>
+                <label>TAS- Accounting and Financial Reporting Advisory</label>
+            </value>
+            <value>
+                <fullName>TAS- Due Diligence-Buyside</fullName>
+                <default>false</default>
+                <label>TAS- Due Diligence-Buyside</label>
+            </value>
+            <value>
+                <fullName>TAS- Due Diligence- Sellside</fullName>
+                <default>false</default>
+                <label>TAS- Due Diligence- Sellside</label>
+            </value>
+            <value>
+                <fullName>TAS- Lender Services</fullName>
+                <default>false</default>
+                <label>TAS- Lender Services</label>
+            </value>
+            <value>
+                <fullName>TAS- TAX</fullName>
+                <default>false</default>
+                <label>TAS- TAX</label>
+            </value>
+            <value>
+                <fullName>Tech+IP Advisory</fullName>
+                <default>false</default>
+                <label>Tech+IP Advisory</label>
+            </value>
+            <value>
+                <fullName>Transaction Advisory Services</fullName>
+                <default>false</default>
+                <label>Transaction Advisory Services</label>
+            </value>
+            <value>
+                <fullName>Transaction Opinions</fullName>
+                <default>false</default>
+                <label>Transaction Opinions</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

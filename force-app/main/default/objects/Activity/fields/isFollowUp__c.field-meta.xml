@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>isFollowUp__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>To recognize the follow-up activity.</description>
+    <externalId>false</externalId>
+    <label>Schedule Follow-up</label>
+    <type>Checkbox</type>
+</CustomField>

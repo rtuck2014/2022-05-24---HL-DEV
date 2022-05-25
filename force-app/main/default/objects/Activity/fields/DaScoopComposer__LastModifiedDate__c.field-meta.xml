@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__LastModifiedDate__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>is the most recent date/time on which Groove updated the event record or the date/time a logged email was sent by the sender.</inlineHelpText>
+    <label>Timestamp</label>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>

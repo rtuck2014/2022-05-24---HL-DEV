@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_change_banker_or_group</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISNEW()) &amp;&amp;(ISCHANGED(Banker__c) || ISCHANGED(Public_Group_ID__c))</errorConditionFormula>
+    <errorMessage>Banker and public group cannot be changed once the delegate public group is created.</errorMessage>
+</ValidationRule>

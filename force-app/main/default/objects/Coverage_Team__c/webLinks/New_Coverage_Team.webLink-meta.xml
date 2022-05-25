@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Coverage_Team</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>New Coverage Team</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>/a0F/e?CF00Nf0000000vihU={!Account.Name}&amp;
+CF00Nf0000000vihU_lkid={!Account.Id}&amp;
+saveURL=/{!Account.Id}&amp;
+retURL=/{!Account.Id}&amp;
+RecordType=012f0000000D6eq&amp;ent=01Ii0000001ptAu</url>
+</WebLink>

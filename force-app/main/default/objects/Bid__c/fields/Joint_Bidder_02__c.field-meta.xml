@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Joint_Bidder_02__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Used to store the additional joint bidders from Capital Source</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Save the Bid Record before Adding a Joint Bidder</inlineHelpText>
+    <label>Joint Bidder 02</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Engagement_Counterparty__c.Engagement__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Engagement__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Engagement_Counterparty__c</referenceTo>
+    <relationshipLabel>Bids (Additional Joint Bidder)</relationshipLabel>
+    <relationshipName>Bids2</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

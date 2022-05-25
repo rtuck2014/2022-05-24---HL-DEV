@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Standard_Coverage_Team</fullName>
+    <columns>NAME</columns>
+    <columns>Company__c</columns>
+    <columns>Tier__c</columns>
+    <columns>Ownership__c</columns>
+    <columns>Tier_Goal__c</columns>
+    <columns>Primary_Sector__c</columns>
+    <columns>Secondary_Sector__c</columns>
+    <columns>LAST_ACTIVITY</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Coverage_Team__c.Standard_Coverage_Team_Member</value>
+    </filters>
+    <filters>
+        <field>Coverage_Team_Status__c</field>
+        <operation>equals</operation>
+        <value>Active</value>
+    </filters>
+    <label>All Standard Coverage Team</label>
+</ListView>

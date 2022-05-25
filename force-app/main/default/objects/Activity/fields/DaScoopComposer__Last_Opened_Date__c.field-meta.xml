@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Last_Opened_Date__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>If a task reflects a tracked email, this field indicates the timestamp of the most recent open event (most recent email open by one of the recipients).</inlineHelpText>
+    <label>Last Opened Date</label>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>

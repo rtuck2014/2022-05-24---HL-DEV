@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+    </targets>  
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage">
+            <property name="eventFieldApi" type="String"  label="API Name of Event Field" description="Add the name of field which will store Event record Id in junction object"/>
+            <property name="junctionObjectName" type="String" label="API Name of Junction Object" description="Add the name of junction object which will store Event and custom object data" />
+            <property name="lookupFieldApi" type="String" label="API Name of Object Field" description="Add the name of field which will store object(other than Event) record Id in junction object" />
+            <property name="buttonName" type="String" label="Button Label" description="Add the name of the button"/>
+            <property name="lookupObjectApiName" type="String" label="API Name of object" description="Add the API Name of object to search through lookup" />
+            <property name="lookupObjectFieldLabel" type="String" label="Label of Lookup" description="Add the label of MultiSelect lookup" />
+            <property name="additionalField" type="String" label="Additional Field" description="Add the parent field's Name" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Revenue_Date_for_OOP_Fees__c</fullName>
+    <description>Revenue date for Admin fee, RFO and Pre Billed Expense.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Revenue date for Admin fee, RFO and Pre Billed Expense.</inlineHelpText>
+    <label>Revenue Date for OOP Fees</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

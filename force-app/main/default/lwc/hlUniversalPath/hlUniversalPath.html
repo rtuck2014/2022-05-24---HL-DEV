@@ -1,0 +1,97 @@
+<template>
+    <template if:true={pathSpinner}>
+        <lightning-spinner 
+            alternative-text="Loading" 
+            size="small">
+        </lightning-spinner>
+    </template>
+    <template if:true={stagePicklistValues}>
+        <div class="slds-grid slds-p-right_small slds-p-bottom_small" style="border-bottom: 1px solid #DDD;">
+            <div class="slds-col">
+                <article class="slds-card">
+                    <div class="slds-card__body slds-card__body_inner">
+                        <div class="slds-path slds-path_has-coaching">
+                            <div class="slds-grid slds-path__track">
+                                <div class="slds-grid slds-path__scroller-container">
+                                <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-path__trigger" onclick={toggleGuidance} title="Toggle Guidance" aria-expanded="true" aria-controls="path-coaching-1">
+                                    <template if:false={guidanceFlag}>
+                                        <lightning-button-icon icon-name="utility:chevronright" alternative-text="Show Details" variant="bare" size="small"></lightning-button-icon>
+                                        <span class="slds-assistive-text">Show Details</span>
+                                    </template>
+                                    <template if:true={guidanceFlag}>
+                                        <lightning-button-icon icon-name="utility:chevrondown" alternative-text="Hide Details" variant="bare" size="small"></lightning-button-icon>
+                                        <span class="slds-assistive-text">Hide Details</span>
+                                    </template>
+                                </button>
+                                <div class="slds-path__scroller" role="application">
+                                    <div class="slds-path__scroller_inner">
+                                        <ul class="slds-path__nav" role="listbox" aria-orientation="horizontal">
+                                            <template if:true={stageValuesData}>
+                                                <template for:each={stageValuesData} for:item="stage">
+                                                    <template if:true={stage.complete}>
+                                                        <li key={stage.value} class="slds-path__item slds-is-complete" role="presentation" data-stage={stage.value}>
+                                                            <span aria-selected="false" class="slds-path__link" onclick={pathSelect} role="option" >
+                                                                <span class="slds-path__stage">
+                                                                    <lightning-icon icon-name="utility:check" variant="inverse" alternative-text="Stage Complete" size="xx-small"></lightning-icon>
+                                                                    <span class="slds-assistive-text">Stage Complete</span>
+                                                                </span>
+                                                                <span class="slds-path__title">{stage.label}</span>
+                                                            </span>
+                                                        </li>
+                                                    </template>
+                                                    <template if:true={stage.active}>
+                                                        <li key={stage.value} class="slds-path__item slds-is-active slds-is-current" role="presentation" data-stage={stage.value}>
+                                                            <span aria-selected="false" class="slds-path__link" onclick={pathSelect} role="option" >
+                                                                <span class="slds-path__stage">
+                                                                    <lightning-icon icon-name="utility:check" variant="inverse" alternative-text="Stage Complete" size="xx-small"></lightning-icon>
+                                                                    <span class="slds-assistive-text">Current Stage:</span>
+                                                                </span>
+                                                                <span class="slds-path__title">{stage.label}</span>
+                                                            </span>
+                                                        </li>
+                                                    </template>
+                                                    <template if:true={stage.incomplete}>
+                                                        <li key={stage.value} class="slds-path__item slds-is-incomplete" role="presentation" data-stage={stage.value}>
+                                                            <span aria-selected="false" class="slds-path__link" onclick={pathSelect} role="option" >
+                                                                <span class="slds-path__stage">
+                                                                    <lightning-icon icon-name="utility:check" variant="inverse" alternative-text="Stage Complete" size="xx-small"></lightning-icon>
+                                                                </span>
+                                                                <span class="slds-path__title">{stage.label}</span>
+                                                            </span>
+                                                        </li>
+                                                    </template>
+                                                </template>
+                                            </template>
+                                        </ul>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="slds-grid slds-path__action">
+                                    <span class="slds-path__stage-name">Stage: </span>
+                                    <template if:false={stageChangeFlag}>
+                                        <lightning-button label="Mark Status Complete" onclick={stageChange} data-action="complete" title="Mark Current Status as Complete" icon-name="utility:check" class="slds-m-left_x-small" variant="brand"></lightning-button>
+                                    </template>
+                                    <template if:true={stageChangeFlag}>
+                                        <lightning-button label="Mark as Current Stage" onclick={stageChange} data-action="change" title="Mark as Current Stage" class="slds-m-left_x-small" variant="brand"></lightning-button>
+                                    </template>
+                                </div>
+                            </div>
+                            <template if:true={guidanceFlag}>
+                                <div class="slds-path__content" id="path-coaching-1">
+                                    <div class="slds-path__coach slds-grid">
+                                        <div class="slds-path__guidance">
+                                            <h2 class="slds-path__coach-title">Guidance for Success</h2>
+                                            <div class="slds-text-longform slds-path__guidance-content">
+                                                <p>{guidanceMessage}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </template>
+</template>

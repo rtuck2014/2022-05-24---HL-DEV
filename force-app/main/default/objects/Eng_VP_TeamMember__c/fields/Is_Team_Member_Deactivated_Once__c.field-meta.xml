@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Team_Member_Deactivated_Once__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field is to determine when related Opp/Eng Team Member was removed from Opp/Eng once.</description>
+    <externalId>false</externalId>
+    <label>Is Team Member Deactivated Once</label>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

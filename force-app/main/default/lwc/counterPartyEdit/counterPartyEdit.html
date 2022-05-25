@@ -1,0 +1,275 @@
+<template>
+    <template if:false={showAddParty}>
+        <div class="slds slds-theme_default">
+            <div class="c-container">
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item padding="around-small" size="12">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-12">
+                                <div class="slds-is-absolute">
+                                    <div style="position:absolute;top:2rem;">
+                                        <lightning-input type="checkbox" onchange={handleSelectAllChange}
+                                            variant="label-hidden" label="Select All"
+                                            class="allCheckbox slds-p-left_small">
+                                        </lightning-input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_2-of-12">
+                                <lightning-combobox name="view" label="View" value={viewValue} options={viewOptions}
+                                    onchange={handleViewChange}></lightning-combobox>
+                            </div>
+                            <div class="slds-col slds-size_1-of-12"></div>
+                            <div class="slds-col slds-size_8-of-12">
+                                <lightning-button-group>
+                                    <lightning-button label="Save" onclick={handleSave}></lightning-button>
+                                    <lightning-button label="Delete" onclick={handleDeleteModalShow}>
+                                    </lightning-button>
+                                    <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+                                    <lightning-button label="Add Counterparties" onclick={handleAddCounterparties}>
+                                    </lightning-button>
+                                    <lightning-button label="Bid Tracking Report" onclick={handleBidTrackingReport}>
+                                    </lightning-button>
+                                    <lightning-button label="Edit Bids" onclick={handleEditBids}></lightning-button>
+                                    <lightning-button label="Import with Dataloader" onclick={handleOpenDataLoader}>
+                                    </lightning-button>
+                                    <lightning-button label="Email" onclick={handleShowEmail}></lightning-button>
+                                    <lightning-button label="View All" onclick={handleViewAll}></lightning-button>
+                                </lightning-button-group>
+                            </div>
+                            <template if:true={error}>
+                                <div class="slds-col slds-size_1-of-1 slds-text-color_error">
+                                    {error}
+                                </div>
+                            </template>
+                        </div>
+                    </lightning-layout-item>
+                    <template if:true={recordId}>
+                        <template if:true={showSpinner}>
+                            <div class="slds-p-around_x-large">
+                                <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+                            </div>
+                        </template>
+                        
+                        <lightning-layout-item padding="around-small" size="12">                            
+                            <lightning-layout>                                
+                                <lightning-layout-item padding="around-small" size="12">
+                                   
+                                    <div class="table-scroll">
+                                        <table>
+                                            <tbody>
+                                            <template for:each={counterpartyList} for:item="cp">
+                                            <tr key={cp.Id}>
+                                                <td class="freeze">
+                                                    <div class="slds-grid">
+                                                        <div class="slds-col slds-size_2-of-7 slds-p-right_small">
+                                                            <lightning-input type="checkbox" onchange={handleCheckboxChange}
+                                                                data-checkboxid={cp.Id} class="rowCheckbox">
+                                                            </lightning-input>
+                                                            <lightning-formatted-rich-text value={cp.View_Record__c}>
+                                                            </lightning-formatted-rich-text>
+                                                        </div>
+                                                        <div class="slds-col slds-size_3-of-7"  >
+                                                            <label class="slds-form-element__label"
+                                                                for="companyName">Company</label>
+                                                            <div class="slds-form-element_control slds-truncate" title={cp.Company__r.Name}>{cp.Company__r.Name}</div>
+                                                                <template if:true={cp.Engagement_Counterparty_Contacts__r}>
+                                                                    <div data-rowid={cp.Id} onmouseover={handleMouseOver} onmouseleave={handleMouseLeave} style="color:#0176d3">Contacts</div>
+                                                                </template>
+                                                                <div class="slds-hidden" data-divid={cp.Id}>
+                                                                    <div class="slds-is-relative slds-col slds-size_5-of-12">
+                                                                        <section class="slds-popover" role="dialog">
+                                                                            <div class="slds-popover__body">
+                                                                                <template if:false={cp.Engagement_Counterparty_Contacts__r}>
+                                                                                    <p>No Contacts Defined</p>
+                                                                                </template>
+                                                                                <template for:each={cp.Engagement_Counterparty_Contacts__r} for:item="ecCon">
+                                                                                    <p key={ecCon.Id}>{ecCon.Contact__r.FirstName} {ecCon.Contact__r.LastName}: {ecCon.ContactEmail__c}</p>
+                                                                                </template>
+                                                                            </div>
+                                                                        </section>
+                                                                    </div>                                                                    
+                                                                </div>
+                                                            
+                                                        </div>
+                                                        <div class="slds-col slds-size_2-of-7">
+                                                            <label class="slds-form-element__label"
+                                                                for="companyName">Status</label>
+                                                            <div class="slds-form-element_control">{cp.Status__c}</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    
+                                                    <lightning-record-edit-form key={cp.Id} record-id={cp.Id}
+                                                    object-api-name="Engagement_Counterparty__c" density="comfy"
+                                                    onsuccess={handleSuccess} onerror={handleError} data-id={cp.Id}>
+                                                    
+                                                    <lightning-layout>
+                                                        <template for:each={fieldListArray} for:item="field">
+                                                            <lightning-layout-item key={field} size="2">
+                                                                <div class="slds-p-top_medium">
+                                                                <lightning-input-field field-name={field}
+                                                                    data-field={field} class={field}
+                                                                    onchange={handleChange}>
+                                                                </lightning-input-field>
+                                                                </div>
+                                                            </lightning-layout-item>
+                                                        </template>
+                                                    </lightning-layout>
+                                              
+                                                    </lightning-record-edit-form>
+
+                                                </td>
+                                            </tr>
+                                            </template>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </lightning-layout-item>
+                            </lightning-layout>                        
+                        </lightning-layout-item>
+                    
+                    </template>
+                    <lightning-layout-item flexibility="auto" padding="around-small" size="12">
+                        <div class="page-footer page-section">
+                            <template if:true={isDisplayNoRecords}>
+                                <div class="slds-align_absolute-center slds-p-around_xx-large slds-text-heading_large">
+                                    No records found
+                                </div>
+                            </template>
+                            <template if:false={isDisplayNoRecords}>
+                                <div class="slds-align_absolute-center">
+                                    <div class="slds-p-right_xx-small">
+                                        <lightning-button label="Prev" disabled={isPrev} onclick={handlePrev}
+                                            variant="brand" icon-name="utility:back" name="prev">
+                                        </lightning-button>
+                                    </div>
+                                    <span class="slds-badge slds-badge_lightest">
+                                        {recordStart}-{recordEnd} of {totalRecords} | Page {pageNumber} of
+                                        {totalPages}
+                                    </span>
+                                    <div class="slds-p-left_xx-small">
+                                        <lightning-button label="Next" disabled={isNext} onclick={handleNext}
+                                            variant="brand" icon-name="utility:forward" icon-position="right" name="next">
+                                        </lightning-button>
+                                    </div>
+                                </div>
+                                <div class="slds-align_absolute-center slds-p-top_small">
+                                    <lightning-button onclick={handleSave} label="Save"></lightning-button>
+                                </div>
+                            </template>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </div>
+    </template>
+
+    <template if:true={showDeleteModal}>
+        <section role="dialog" tabindex="0" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-modal__title slds-hyphenate">Cofirm Delete</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    Are you sure you want to delete the selected rows?
+                </div>
+                <footer class="slds-modal__footer slds-is-relative">
+                    <lightning-button label='Cancel' class="slds-p-horizontal_xxx-small cancelButton"
+                        onclick={handleDeleteModalCancel}></lightning-button>
+                    <lightning-button label='Delete' class="slds-p-horizontal_xxx-small confirmButton"
+                        variant="destructive" onclick={handleDoDelete}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <template if:true={showEmailModal}>
+        <section role="dialog" tabindex="0" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-modal__title slds-hyphenate">Confirm emails</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    
+                        <lightning-combobox name="ms" label="Milestone" value={selectedMilestone}
+                             options={milestoneOptions} onchange={handleMilestoneChange}>
+                        </lightning-combobox>
+                    
+                    <template if:false={templateInfo}>
+                        <div class="slds-p-bottom_xx-large">
+                            <lightning-combobox name="progress" label="Template" value={selectedTemplateId}
+                                placeholder="-Select-" options={availableTemplateOptions} onchange={handleGetContacts}>
+                            </lightning-combobox>
+                        </div>
+                        <div class="slds-p-bottom_xx-large"></div>
+                        <div class="slds-p-bottom_xx-large"></div>
+                        <div class="slds-p-bottom_xx-large"></div>
+                        <div class="slds-p-bottom_xx-large"></div>
+                    </template>
+                    <lightning-accordion>
+                        <template if:true={counterPartyContactList}>
+                            <lightning-accordion-section name='TemplateDetails' label='Template Details'>
+                                <div class="slds-box">
+                                    subject: {templateInfo.Subject}
+                                    <lightning-formatted-rich-text value={templateInfo.HtmlValue}>
+                                    </lightning-formatted-rich-text>
+                                </div>
+                            </lightning-accordion-section>
+
+                            <template for:each={counterPartyContactList} for:item="cp">
+                                <lightning-accordion-section name={cp.companyName} label={cp.companyName}
+                                    key={cp.counterPartyId}>
+                                    <!--<template for:each={cp.Engagement_Counterparty_Contacts__r} for:item="con">
+                                        <div class="slds-p-left_small" key={con.Id}>
+                                        <lightning-input key={con.Id} type="checkbox" label={con.Contact__r.Name}></lightning-input>  
+                                        {con.ContactEmail__c}
+                                        </div>                                      
+                                    </template>-->
+                                    <c-email-message key={cp.eccId} what-id={cp.eccId} template-id={selectedTemplateId}
+                                        default-selected-contact-list={cp.contactList}
+                                        default-selected-values={cp.emailList}></c-email-message>
+                                </lightning-accordion-section>
+                            </template>
+                        </template>
+                    </lightning-accordion>
+                </div>
+                <footer class="slds-modal__footer slds-is-relative">
+                    <lightning-button label='Send' class="slds-p-horizontal_xxx-small" onclick={handleSendAllEmail}>
+                    </lightning-button>
+                    <lightning-button label='Cancel' class="slds-p-horizontal_xxx-small cancelButton"
+                        onclick={handleHideEmail}></lightning-button>
+                    <!--<lightning-button label='Continue' class="slds-p-horizontal_xxx-small confirmButton"></lightning-button>-->
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+
+    <template if:true={showAddParty}>
+        <c-add-counter-party-component record-id={recordId} onclosequickaction={handleCloseAction}>
+        </c-add-counter-party-component>
+    </template>
+</template>
+    
+    <!--<div class="slds-col slds-size_1-of-12">
+                                    <div class="buttonMenu">
+                                        <lightning-button-menu alternative-text="Toggle menu">
+                                            <P onclick={navigateToRecordEditPage} data-recid={cp.Id}>
+                                                <lightning-menu-item label="Edit">
+                                                </lightning-menu-item>
+                                            </P>
+                                            <p onclick={deleteContact} data-recid={cp.Id}>
+                                                <lightning-menu-item label="Delete">
+                                                </lightning-menu-item>
+                                            </p>
+                                        </lightning-button-menu>
+                                    </div>
+                                </div>                               
+                                -->
+
+</template>

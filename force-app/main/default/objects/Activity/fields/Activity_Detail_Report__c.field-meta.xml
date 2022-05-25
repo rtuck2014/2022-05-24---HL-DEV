@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activity_Detail_Report__c</fullName>
+    <externalId>false</externalId>
+    <formula>$Setup.HL_General__c.Cognos_Protocol__c + $Setup.HL_General__c.Cognos_Domain__c + &apos;/ibmcognos/bi/v1/disp?b_action=cognosViewer&amp;run.outputFormat=PDF&amp;run.prompt=false&amp;ui.object=storeID%28%22i86E8CC1B269E436388547211095B2BCB%22%29&amp;ui.action=run&amp;cv.header=true&amp;cv.toolbar=true&amp;ui_appbar=true&amp;ui_appbar=true&amp;p_p_ActivityId=&apos; + CASESAFEID(BLANKVALUE(ParentId__c,Id))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Activity Detail Report</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

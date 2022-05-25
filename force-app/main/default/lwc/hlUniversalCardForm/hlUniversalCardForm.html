@@ -1,0 +1,642 @@
+<template>
+    <template if:true={deleteModal}>
+        <c-hl-universal-modal 
+            title={modalTitle} 
+            body={modalBody} 
+            m-data={modalData}
+            onok={deleteOk}
+            oncancel={deleteCancel}>
+        </c-hl-universal-modal>
+    </template>
+    <div class="slds-card-wrapper">
+        <article class="slds-card slds-card_boundary">
+            <template if:true={title}>
+                <div class="slds-card__header slds-grid">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__figure">
+                            <span class="slds-icon_container" title={title}>
+                                <lightning-icon 
+                                    icon-name={icon}>
+                                </lightning-icon>
+                                <span class="slds-assistive-text">{title}</span>
+                            </span>
+                        </div>
+                        <div class="slds-media__body">
+                            <h2 class="slds-card__header-title">
+                                <span>{title}</span>
+                                <template if:true={titleTooltip}>
+                                    <c-hl-universal-pop-over
+                                        icon="utility:info"
+                                        tooltip-mode=true
+                                        title={titleTooltip}
+                                        subject={titleTooltipSubject}>
+                                    </c-hl-universal-pop-over>
+                                </template>
+                                <template if:true={requiredFields}>
+                                    <template if:false={subTitle}>
+                                        <c-hl-universal-pop-over
+                                            icon={requiredIcon}
+                                            icon-variant={requiredVariant}
+                                            title="Required Fields"
+                                            subject={requiredSubject}
+                                            body-validations={requiredFieldsStatus}>
+                                        </c-hl-universal-pop-over>
+                                    </template>
+                                </template>
+                            </h2>
+                        </div>
+                        <div class="slds-no-flex">
+                            <!-- LL201906042019 buttons will go here -->
+                        </div>
+                    </header>
+                </div>
+            </template>
+            <div class="slds-card__body slds-card__body_inner slds-p-bottom_medium">
+                <template if:false={layoutOnlySides}>
+                    <template if:true={recordId}>
+                        <template if:false={subTitle}>
+                            <lightning-record-form
+                                record-id={recordId}
+                                object-api-name={objectApi} 
+                                fields={fields}
+                                columns={columns}
+                                density="comfy"
+                                onload={formLoaded}
+                                onsuccess={formSuccess}
+                                mode={mode}>
+                            </lightning-record-form>
+                        </template>
+                        <template if:true={subTitle}>
+                            <div class="slds-section slds-is-open slds-p-top_medium">
+                                <h3 class="slds-section__title">
+                                    <button aria-expanded="true" class="slds-button slds-section__title-action">
+                                        <span class="slds-truncate slds-p-left_x-small" title={subTitle}>{subTitle}</span>
+                                        <template if:true={requiredFields}>
+                                            <c-hl-universal-pop-over
+                                                icon={requiredIcon}
+                                                icon-variant={requiredVariant}
+                                                title="Required Fields"
+                                                subject={requiredSubject}
+                                                body-validations={requiredFieldsStatus}>
+                                            </c-hl-universal-pop-over>
+                                        </template>
+                                    </button>
+                                </h3>
+                                <div aria-hidden="false" class="slds-section__content slds-p-left_small slds-p-bottom_small">
+                                    <lightning-record-form
+                                        record-id={recordId}
+                                        object-api-name={objectApi} 
+                                        fields={fields}
+                                        columns={columns}
+                                        density="comfy"
+                                        onload={formLoaded}
+                                        onsuccess={formSuccess}
+                                        mode={mode}>
+                                    </lightning-record-form>
+                                </div>
+                            </div>
+                        </template>
+                    </template>
+                    <template if:false={layoutTopSides}>
+                        <template if:true={secondaryRecordId}>
+                            <template if:false={secondaryTitle}>
+                                <lightning-record-form
+                                    record-id={secondaryRecordId}
+                                    object-api-name={secondaryObjectApi} 
+                                    fields={secondaryFields}
+                                    columns={secondaryColumns}
+                                    density="comfy"
+                                    onload={secondaryFormLoaded}
+                                    onsuccess={secondaryFormSuccess}
+                                    mode={secondaryMode}>
+                                </lightning-record-form>
+                            </template>
+                            <template if:true={secondaryTitle}>
+                                <div class="slds-section slds-is-open slds-p-top_medium">
+                                    <h3 class="slds-section__title">
+                                        <button aria-expanded="true" class="slds-button slds-section__title-action">
+                                            <span class="slds-truncate slds-p-left_x-small" title={secondaryTitle}>{secondaryTitle}</span>
+                                            <template if:true={secondaryRequiredFields}>
+                                                <c-hl-universal-pop-over
+                                                    icon={secondaryRequiredIcon}
+                                                    icon-variant={secondaryRequiredVariant}
+                                                    title="Required Fields"
+                                                    subject={secondaryRequiredSubject}
+                                                    body-validations={secondaryRequiredFieldsStatus}>
+                                                </c-hl-universal-pop-over>
+                                            </template>
+                                        </button>
+                                    </h3>
+                                    <div aria-hidden="false" class="slds-section__content slds-p-left_small slds-p-bottom_small">
+                                        <lightning-record-form
+                                            record-id={secondaryRecordId}
+                                            object-api-name={secondaryObjectApi} 
+                                            fields={secondaryFields}
+                                            columns={secondaryColumns}
+                                            density="comfy"
+                                            onload={secondaryFormLoaded}
+                                            onsuccess={secondaryFormSuccess}
+                                            mode={secondaryMode}>
+                                        </lightning-record-form>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+                        <template if:true={tertiaryRecordId}>
+                            <template if:false={tertiaryTitle}>
+                                <lightning-record-form
+                                    record-id={tertiaryRecordId}
+                                    object-api-name={tertiaryObjectApi} 
+                                    fields={tertiaryFields}
+                                    columns={tertiaryColumns}
+                                    density="comfy"
+                                    onload={tertiaryFormLoaded}
+                                    onsuccess={tertiaryFormSuccess}
+                                    mode={tertiaryMode}>
+                                </lightning-record-form>
+                            </template>
+                            <template if:true={tertiaryTitle}>
+                                <div class="slds-section slds-is-open slds-p-top_medium">
+                                    <h3 class="slds-section__title">
+                                        <button aria-expanded="true" class="slds-button slds-section__title-action">
+                                            <span class="slds-truncate slds-p-right_small slds-p-left_x-small" title={tertiaryTitle}>{tertiaryTitle}</span>
+                                            <template if:true={tertiaryRequiredFields}>
+                                                <c-hl-universal-pop-over
+                                                    icon={tertiaryRequiredIcon}
+                                                    icon-variant={tertiaryRequiredVariant}
+                                                    title="Required Fields"
+                                                    subject={tertiaryRequiredSubject}
+                                                    body-validations={tertiaryRequiredFieldsStatus}>
+                                                </c-hl-universal-pop-over>
+                                            </template>
+                                        </button>
+                                    </h3>
+                                    <div aria-hidden="false" class="slds-section__content slds-p-left_small slds-p-bottom_small">
+                                        <lightning-record-form
+                                            record-id={tertiaryRecordId}
+                                            object-api-name={tertiaryObjectApi} 
+                                            fields={tertiaryFields}
+                                            columns={tertiaryColumns}
+                                            density="comfy"
+                                            onload={tertiaryFormLoaded}
+                                            onsuccess={tertiaryFormSuccess}
+                                            mode={tertiaryMode}>
+                                        </lightning-record-form>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+                        <template if:true={quaternaryRecordId}>
+                            <template if:false={quaternaryTitle}>
+                                <lightning-record-form
+                                    record-id={quaternaryRecordId}
+                                    object-api-name={quaternaryObjectApi} 
+                                    fields={quaternaryFields}
+                                    columns={quaternaryColumns}
+                                    density="comfy"
+                                    onload={quarternaryFormLoaded}
+                                    onsuccess={quaternaryFormSuccess}
+                                    mode={quaternaryMode}>
+                                </lightning-record-form>
+                            </template>
+                            <template if:true={quaternaryTitle}>
+                                <div class="slds-section slds-is-open slds-p-top_medium">
+                                    <h3 class="slds-section__title">
+                                        <button aria-expanded="true" class="slds-button slds-section__title-action">
+                                            <span class="slds-truncate slds-p-left_x-small" title={quaternaryTitle}>{quaternaryTitle}</span>
+                                            <template if:true={quaternaryRequiredFields}>
+                                                <c-hl-universal-pop-over
+                                                    icon={quaternaryRequiredIcon}
+                                                    icon-variant={quaternaryRequiredVariant}
+                                                    title="Required Fields"
+                                                    subject={quaternaryRequiredSubject}
+                                                    body-validations={quaternaryRequiredFieldsStatus}>
+                                                </c-hl-universal-pop-over>
+                                            </template>
+                                        </button>
+                                    </h3>
+                                    <div aria-hidden="false" class="slds-section__content slds-p-left_small slds-p-bottom_small">
+                                        <lightning-record-form
+                                            record-id={quaternaryRecordId}
+                                            object-api-name={quaternaryObjectApi} 
+                                            fields={quaternaryFields}
+                                            columns={quaternaryColumns}
+                                            density="comfy"
+                                            onload={quarternaryFormLoaded}
+                                            onsuccess={quaternaryFormSuccess}
+                                            mode={quaternaryMode}>
+                                        </lightning-record-form>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+                    </template>
+                    <template if:true={layoutTopSides}>
+                        <div class="slds-grid">
+                            <template if:true={secondaryRecordId}>
+                                <div class="slds-col secondaryRecord">
+                                    <template if:false={secondaryTitle}>
+                                        <lightning-record-form
+                                            record-id={secondaryRecordId}
+                                            object-api-name={secondaryObjectApi} 
+                                            fields={secondaryFields}
+                                            columns={secondaryColumns}
+                                            density="comfy"
+                                            onload={secondaryFormLoaded}
+                                            onsuccess={secondaryFormSuccess}
+                                            mode={secondaryMode}>
+                                        </lightning-record-form>
+                                    </template>
+                                    <template if:true={secondaryTitle}>
+                                        <div class="slds-section slds-is-open slds-p-top_medium">
+                                            <h3 class="slds-section__title">
+                                                <button aria-expanded="true" class="slds-button slds-section__title-action">
+                                                    <span class="slds-truncate slds-p-left_x-small" title={secondaryTitle}>{secondaryTitle}</span>
+                                                    <template if:true={secondaryRequiredFields}>
+                                                        <c-hl-universal-pop-over
+                                                            icon={secondaryRequiredIcon}
+                                                            icon-variant={secondaryRequiredVariant}
+                                                            title="Required Fields"
+                                                            subject={secondaryRequiredSubject}
+                                                            body-validations={secondaryRequiredFieldsStatus}>
+                                                        </c-hl-universal-pop-over>
+                                                    </template>
+                                                </button>
+                                            </h3>
+                                            <div aria-hidden="false" class="slds-section__content slds-p-left_small slds-p-bottom_small">
+                                                <lightning-record-form
+                                                    record-id={secondaryRecordId}
+                                                    object-api-name={secondaryObjectApi} 
+                                                    fields={secondaryFields}
+                                                    columns={secondaryColumns}
+                                                    density="comfy"
+                                                    onload={secondaryFormLoaded}
+                                                    onsuccess={secondaryFormSuccess}
+                                                    mode={secondaryMode}>
+                                                </lightning-record-form>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                            <template if:true={tertiaryRecordId}>
+                                <div class="slds-col tertiaryRecord">
+                                    <template if:false={tertiaryTitle}>
+                                        <lightning-record-form
+                                            record-id={tertiaryRecordId}
+                                            object-api-name={tertiaryObjectApi} 
+                                            fields={tertiaryFields}
+                                            columns={tertiaryColumns}
+                                            density="comfy"
+                                            onload={tertiaryFormLoaded}
+                                            onsuccess={tertiaryFormSuccess}
+                                            mode={tertiaryMode}>
+                                        </lightning-record-form>
+                                    </template>
+                                    <template if:true={tertiaryTitle}>
+                                        <div class="slds-section slds-is-open slds-p-top_medium">
+                                            <h3 class="slds-section__title">
+                                                <button aria-expanded="true" class="slds-button slds-section__title-action">
+                                                    <span class="slds-truncate slds-p-left_x-small" title={tertiaryTitle}>{tertiaryTitle}</span>
+                                                    <template if:true={tertiaryRequiredFields}>
+                                                        <c-hl-universal-pop-over
+                                                            icon={tertiaryRequiredIcon}
+                                                            icon-variant={tertiaryRequiredVariant}
+                                                            title="Required Fields"
+                                                            subject={tertiaryRequiredSubject}
+                                                            body-validations={tertiaryRequiredFieldsStatus}>
+                                                        </c-hl-universal-pop-over>
+                                                    </template>
+                                                </button>
+                                            </h3>
+                                            <div aria-hidden="false" class="slds-section__content slds-p-left_small slds-p-bottom_small">
+                                                <lightning-record-form
+                                                    record-id={tertiaryRecordId}
+                                                    object-api-name={tertiaryObjectApi} 
+                                                    fields={tertiaryFields}
+                                                    columns={tertiaryColumns}
+                                                    density="comfy"
+                                                    onload={tertiaryFormLoaded}
+                                                    onsuccess={tertiaryFormSuccess}
+                                                    mode={tertiaryMode}>
+                                                </lightning-record-form>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                            <template if:true={quaternaryRecordId}>
+                                <div class="slds-col quaternaryRecord">
+                                    <template if:false={quaternaryTitle}>
+                                        <lightning-record-form
+                                            record-id={quaternaryRecordId}
+                                            object-api-name={quaternaryObjectApi} 
+                                            fields={quaternaryFields}
+                                            columns={quaternaryColumns}
+                                            density="comfy"
+                                            onload={quarternaryFormLoaded}
+                                            onsuccess={quaternaryFormSuccess}
+                                            mode={quaternaryMode}>
+                                        </lightning-record-form>
+                                    </template>
+                                    <template if:true={quaternaryTitle}>
+                                        <div class="slds-section slds-is-open slds-p-top_medium">
+                                            <h3 class="slds-section__title">
+                                                <button aria-expanded="true" class="slds-button slds-section__title-action">
+                                                    <span class="slds-truncate slds-p-left_x-small" title={quaternaryTitle}>{quaternaryTitle}</span>
+                                                    <template if:true={quaternaryRequiredFields}>
+                                                        <c-hl-universal-pop-over
+                                                            icon={quaternaryRequiredIcon}
+                                                            icon-variant={quaternaryRequiredVariant}
+                                                            title="Required Fields"
+                                                            subject={quaternaryRequiredSubject}
+                                                            body-validations={quaternaryRequiredFieldsStatus}>
+                                                        </c-hl-universal-pop-over>
+                                                    </template>
+                                                </button>
+                                            </h3>
+                                            <div aria-hidden="false" class="slds-section__content slds-p-left_small slds-p-bottom_small">
+                                                <lightning-record-form
+                                                    record-id={quaternaryRecordId}
+                                                    object-api-name={quaternaryObjectApi} 
+                                                    fields={quaternaryFields}
+                                                    columns={quaternaryColumns}
+                                                    density="comfy"
+                                                    onload={quarternaryFormLoaded}
+                                                    onsuccess={quaternaryFormSuccess}
+                                                    mode={quaternaryMode}>
+                                                </lightning-record-form>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                    <template if:true={tableObjectApi}>
+                        <c-hl-universal-datatable
+                            table-title={tableTitle}
+                            table-object-api={tableObjectApi}
+                            table-parent-object-api={tableParentObjectApi}
+                            table-parent-id={tableParentId}
+                            table-parent-field={tableParentField}
+                            table-parent-required-fields={tableParentRequiredFields}
+                            table-data={tableData}
+                            table-columns={tableColumns}
+                            table-form-rec-type-name={tableFormRecTypeName}
+                            table-form-fields={tableFormFields}
+                            table-form-field-presets={tableFormFieldPresets}
+                            ontablesort={tableSort}
+                            ontablerefresh={tableRefresh}
+                            onrequiredfieldscheck={tableParentRequiredFieldsCheck}>
+                        </c-hl-universal-datatable>
+                    </template>
+                    <template if:true={secondaryTableObjectApi}>
+                        <c-hl-universal-datatable
+                            table-title={secondaryTableTitle}
+                            table-object-api={secondaryTableObjectApi}
+                            table-parent-object-api={secondaryTableParentObjectApi}
+                            table-parent-id={secondaryTableParentId}
+                            table-parent-field={secondaryTableParentField}
+                            table-parent-required-fields={secondaryTableParentRequiredFields}
+                            table-data={secondaryTableData}
+                            table-columns={secondaryTableColumns}
+                            table-form-rec-type-name={secondaryTableFormRecTypeName}
+                            table-form-fields={secondaryTableFormFields}
+                            table-form-field-presets={secondaryTableFormFieldPresets}
+                            ontablesort={secondaryTableSort}
+                            ontablerefresh={secondaryTableRefresh}
+                            onrequiredfieldscheck={tableParentRequiredFieldsCheck}>
+                        </c-hl-universal-datatable>
+                    </template>
+                </template>
+                <template if:true={layoutOnlySides}>
+                    <div class="slds-grid">
+                        <template if:true={recordId}>
+                            <div class="slds-col record">
+                                <template if:false={subTitle}>
+                                    <lightning-record-form
+                                        record-id={recordId}
+                                        object-api-name={objectApi} 
+                                        fields={fields}
+                                        columns={columns}
+                                        density="comfy"
+                                        onload={formLoaded}
+                                        onsuccess={formSuccess}
+                                        mode={mode}>
+                                    </lightning-record-form>
+                                </template>
+                                <template if:true={subTitle}>
+                                    <div class="slds-section slds-is-open slds-p-top_medium">
+                                        <h3 class="slds-section__title">
+                                            <button aria-expanded="true" class="slds-button slds-section__title-action">
+                                                <span class="slds-truncate slds-p-left_x-small" title={subTitle}>{subTitle}</span>
+                                                <template if:true={requiredFields}>
+                                                    <c-hl-universal-pop-over
+                                                        icon={requiredIcon}
+                                                        icon-variant={requiredVariant}
+                                                        title="Required Fields"
+                                                        subject={requiredSubject}
+                                                        body-validations={requiredFieldsStatus}>
+                                                    </c-hl-universal-pop-over>
+                                                </template>
+                                            </button>
+                                        </h3>
+                                        <div aria-hidden="false" class="slds-section__content slds-p-left_small slds-p-bottom_small">
+                                            <lightning-record-form
+                                                record-id={recordId}
+                                                object-api-name={objectApi} 
+                                                fields={fields}
+                                                columns={columns}
+                                                density="comfy"
+                                                onload={formLoaded}
+                                                onsuccess={formSuccess}
+                                                mode={mode}>
+                                            </lightning-record-form>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                        <template if:true={secondaryRecordId}>
+                            <div class="slds-col secondaryRecord">
+                                <template if:false={secondaryTitle}>
+                                    <lightning-record-form
+                                        record-id={secondaryRecordId}
+                                        object-api-name={secondaryObjectApi} 
+                                        fields={secondaryFields}
+                                        columns={secondaryColumns}
+                                        density="comfy"
+                                        onload={secondaryFormLoaded}
+                                        onsuccess={secondaryFormSuccess}
+                                        mode={secondaryMode}>
+                                    </lightning-record-form>
+                                </template>
+                                <template if:true={secondaryTitle}>
+                                    <div class="slds-section slds-is-open slds-p-top_medium">
+                                        <h3 class="slds-section__title">
+                                            <button aria-expanded="true" class="slds-button slds-section__title-action">
+                                                <span class="slds-truncate slds-p-left_x-small" title={secondaryTitle}>{secondaryTitle}</span>
+                                                <template if:true={secondaryRequiredFields}>
+                                                    <c-hl-universal-pop-over
+                                                        icon={secondaryRequiredIcon}
+                                                        icon-variant={secondaryRequiredVariant}
+                                                        title="Required Fields"
+                                                        subject={secondaryRequiredSubject}
+                                                        body-validations={secondaryRequiredFieldsStatus}>
+                                                    </c-hl-universal-pop-over>
+                                                </template>
+                                            </button>
+                                        </h3>
+                                        <div aria-hidden="false" class="slds-section__content slds-p-left_small slds-p-bottom_small">
+                                            <lightning-record-form
+                                                record-id={secondaryRecordId}
+                                                object-api-name={secondaryObjectApi} 
+                                                fields={secondaryFields}
+                                                columns={secondaryColumns}
+                                                density="comfy"
+                                                onload={secondaryFormLoaded}
+                                                onsuccess={secondaryFormSuccess}
+                                                mode={secondaryMode}>
+                                            </lightning-record-form>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                        <template if:true={tertiaryRecordId}>
+                            <div class="slds-col tertiaryRecord">
+                                <template if:false={tertiaryTitle}>
+                                    <lightning-record-form
+                                        record-id={tertiaryRecordId}
+                                        object-api-name={tertiaryObjectApi} 
+                                        fields={tertiaryFields}
+                                        columns={tertiaryColumns}
+                                        density="comfy"
+                                        onload={tertiaryFormLoaded}
+                                        onsuccess={tertiaryFormSuccess}
+                                        mode={tertiaryMode}>
+                                    </lightning-record-form>
+                                </template>
+                                <template if:true={tertiaryTitle}>
+                                    <div class="slds-section slds-is-open slds-p-top_medium">
+                                        <h3 class="slds-section__title">
+                                            <button aria-expanded="true" class="slds-button slds-section__title-action">
+                                                <span class="slds-truncate slds-p-left_x-small" title={tertiaryTitle}>{tertiaryTitle}</span>
+                                                <template if:true={tertiaryRequiredFields}>
+                                                    <c-hl-universal-pop-over
+                                                        icon={tertiaryRequiredIcon}
+                                                        icon-variant={tertiaryRequiredVariant}
+                                                        title="Required Fields"
+                                                        subject={tertiaryRequiredSubject}
+                                                        body-validations={tertiaryRequiredFieldsStatus}>
+                                                    </c-hl-universal-pop-over>
+                                                </template>
+                                            </button>
+                                        </h3>
+                                        <div aria-hidden="false" class="slds-section__content slds-p-left_small slds-p-bottom_small">
+                                            <lightning-record-form
+                                                record-id={tertiaryRecordId}
+                                                object-api-name={tertiaryObjectApi} 
+                                                fields={tertiaryFields}
+                                                columns={tertiaryColumns}
+                                                density="comfy"
+                                                onload={tertiaryFormLoaded}
+                                                onsuccess={tertiaryFormSuccess}
+                                                mode={tertiaryMode}>
+                                            </lightning-record-form>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                        <template if:true={quaternaryRecordId}>
+                            <div class="slds-col quaternaryRecord">
+                                <template if:false={quaternaryTitle}>
+                                    <lightning-record-form
+                                        record-id={quaternaryRecordId}
+                                        object-api-name={quaternaryObjectApi} 
+                                        fields={quaternaryFields}
+                                        columns={quaternaryColumns}
+                                        density="comfy"
+                                        onload={quaternaryFormLoaded}
+                                        onsuccess={quaternaryFormSuccess}
+                                        mode={quaternaryMode}>
+                                    </lightning-record-form>
+                                </template>
+                                <template if:true={quaternaryTitle}>
+                                    <div class="slds-section slds-is-open slds-p-top_medium">
+                                        <h3 class="slds-section__title">
+                                            <button aria-expanded="true" class="slds-button slds-section__title-action">
+                                                <span class="slds-truncate slds-p-left_x-small" title={quaternaryTitle}>{quaternaryTitle}</span>
+                                                <template if:true={quaternaryRequiredFields}>
+                                                    <c-hl-universal-pop-over
+                                                        icon={quaternaryRequiredIcon}
+                                                        icon-variant={quaternaryRequiredVariant}
+                                                        title="Required Fields"
+                                                        subject={quaternaryRequiredSubject}
+                                                        body-validations={quaternaryRequiredFieldsStatus}>
+                                                    </c-hl-universal-pop-over>
+                                                </template>
+                                            </button>
+                                        </h3>
+                                        <div aria-hidden="false" class="slds-section__content slds-p-left_small slds-p-bottom_small">
+                                            <lightning-record-form
+                                                record-id={quaternaryRecordId}
+                                                object-api-name={quaternaryObjectApi} 
+                                                fields={quaternaryFields}
+                                                columns={quaternaryColumns}
+                                                density="comfy"
+                                                onload={quaternaryFormLoaded}
+                                                onsuccess={quaternaryFormSuccess}
+                                                mode={quaternaryMode}>
+                                            </lightning-record-form>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                        <template if:true={tableObjectApi}>
+                            <div class="slds-col datatables">
+                                <c-hl-universal-datatable
+                                    table-title={tableTitle}
+                                    table-object-api={tableObjectApi}
+                                    table-parent-object-api={tableParentObjectApi}
+                                    table-parent-id={tableParentId}
+                                    table-parent-field={tableParentField}
+                                    table-parent-required-fields={tableParentRequiredFields}
+                                    table-data={tableData}
+                                    table-columns={tableColumns}
+                                    table-form-rec-type-name={tableFormRecTypeName}
+                                    table-form-fields={tableFormFields}
+                                    table-form-field-presets={tableFormFieldPresets}
+                                    ontablesort={tableSort}
+                                    ontablerefresh={tableRefresh}
+                                    onrequiredfieldscheck={tableParentRequiredFieldsCheck}>
+                                </c-hl-universal-datatable>
+                                <template if:true={secondaryTableObjectApi}>
+                                    <c-hl-universal-datatable
+                                        table-title={secondaryTableTitle}
+                                        table-object-api={secondaryTableObjectApi}
+                                        table-parent-object-api={secondaryTableParentObjectApi}
+                                        table-parent-id={secondaryTableParentId}
+                                        table-parent-field={secondaryTableParentField}
+                                        table-parent-required-fields={secondaryTableParentRequiredFields}
+                                        table-data={secondaryTableData}
+                                        table-columns={secondaryTableColumns}
+                                        table-form-rec-type-name={secondaryTableFormRecTypeName}
+                                        table-form-fields={secondaryTableFormFields}
+                                        table-form-field-presets={secondaryTableFormFieldPresets}
+                                        ontablesort={secondaryTableSort}
+                                        ontablerefresh={secondaryTableRefresh}
+                                        onrequiredfieldscheck={tableParentRequiredFieldsCheck}>
+                                    </c-hl-universal-datatable>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </article>
+    </div>
+</template>

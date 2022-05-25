@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HL_Category_2__c</fullName>
+    <externalId>false</externalId>
+    <label>HL Category 2</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>P/L</fullName>
+                <default>false</default>
+                <label>P/L</label>
+            </value>
+            <value>
+                <fullName>PAD</fullName>
+                <default>false</default>
+                <label>PAD</label>
+            </value>
+            <value>
+                <fullName>NS</fullName>
+                <default>false</default>
+                <label>NS</label>
+            </value>
+            <value>
+                <fullName>OP</fullName>
+                <default>false</default>
+                <label>OP</label>
+            </value>
+            <value>
+                <fullName>PC</fullName>
+                <default>false</default>
+                <label>PC</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

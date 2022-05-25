@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PFG_Record_Type__c</fullName>
+    <description>Originally the Account Record Type from Beartooth Salesforce CRM</description>
+    <externalId>false</externalId>
+    <label>PFG Record Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Fund Manager (GP)</fullName>
+                <default>false</default>
+                <label>Fund Manager (GP)</label>
+            </value>
+            <value>
+                <fullName>Investor (LP)</fullName>
+                <default>false</default>
+                <label>Investor (LP)</label>
+            </value>
+            <value>
+                <fullName>Business Partner</fullName>
+                <default>false</default>
+                <label>Business Partner</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

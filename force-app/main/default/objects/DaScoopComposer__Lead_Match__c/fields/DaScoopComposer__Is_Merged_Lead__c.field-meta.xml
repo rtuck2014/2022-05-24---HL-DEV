@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Is_Merged_Lead__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Dedupe_Key__c is the AccountId + the LeadId. It is set upon creation of the lead match record. If the lead is deleted or merged, the LeadId__c will be blank and the formula will evaluate to FALSE</description>
+    <externalId>false</externalId>
+    <formula>AND(
+NOT(ISNULL(DaScoopComposer__LeadId__c)),
+NOT(CONTAINS(DaScoopComposer__Dedupe_Key__c, DaScoopComposer__LeadId__c))
+)</formula>
+    <inlineHelpText>Indicates that the lead match no longer points to the lead it was originally linked to. This happens after the original lead was merged to a duplicate lead.</inlineHelpText>
+    <label>Is Merged Lead</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

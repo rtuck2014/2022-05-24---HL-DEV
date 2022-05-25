@@ -1,0 +1,213 @@
+<template>
+   
+    <template  if:true = {allocationRec}>
+    <lightning-card title ="Eng Valuations Period Allocations " icon-name = "custom:custom63"> 
+        <div class = "slds-m-around_medium" style="width: auto;">
+         
+                 <template if:true={isError}>
+                    <div class="slds-p-bottom_small">
+                        <div class=" slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+                            <h2>{errorMsg}</h2>
+                            <div class="slds-notify__close">
+                                <lightning-button-icon icon-name="utility:close" onclick={handleAlertClose} alternative-text="close"
+                                    variant="border-filled" class="slds-icon-small"></lightning-button-icon>
+                            </div>
+                            </div>
+                        </div>
+                 </template>
+                 <template if:true={isWarning}>
+                    <div class="slds-p-bottom_small">
+                        <div class=" slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning" role="alert">
+                            <h2>{warningrMsg}</h2>
+                            <div class="slds-notify__close">
+                                <lightning-button-icon icon-name="utility:close" onclick={handleAlertClose} alternative-text="close"
+                                    variant="border-filled" class="slds-icon-small"></lightning-button-icon>
+                            </div>
+                            </div>
+                        </div>
+                 </template>
+                 
+            <div class="spinner">
+                <template if:true={isSpinner}>
+                     <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                     </lightning-spinner>
+                </template>
+            </div>
+            <template if:true = {allocationRec}> 
+                <div class="slds-grid slds-gutters"> <div class="slds-col"> <span><p style="margin-left: 5%">Selected Records: <b style="color:rgb(19, 59, 31);">{recordsCount}</b></p></span> </div>
+                <div class="slds-col"> <span> <lightning-button label="Back to Engagement" disabled={isTrue} variant="brand" onclick={BackToEngagement} style="margin-left:5%"></lightning-button> </span> </div>
+                 <div class="slds-col"> <span> <lightning-button label="Back to Engagement Valuation Period"  disabled={isTrue} variant="brand" onclick={BackToEngagementVP} style="margin-left:5%"></lightning-button> </span> </div>
+               
+                <div class="slds-col"> <span> <lightning-button label="New Eng Valuation Period Allocation" icon-name="utility:add" disabled={isTrue} variant="brand" onclick={createAllocations} style="margin-left:8%"></lightning-button> </span> </div>
+                <template if:true={DisplayDelete}><div class="slds-col"> <span> <lightning-button label={buttonLabel} icon-name="utility:delete" disabled={isTrue} variant="destructive" onclick={deleteAllocations} style="margin-left:18%"></lightning-button> </span> </div>
+                </template>
+                   </div><br/>
+                <div> 
+                   
+                    <lightning-datatable key-field="Id" 
+                                            data={allocationRec} 
+                                            columns={columns} 
+                                           onrowselection={getSelectedRecords}
+                                            onsave={handleSave}
+                                            show-row-number-column
+                                            draft-values={draftValues}   
+                                            onrowaction={handleRowAction}
+                                            sorted-direction={sortDirection}
+                                            sorted-by={sortedBy}
+                                            onsort={onHandleSort}
+                                            >                                         > 
+                    </lightning-datatable> 
+                </br>
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">  <span style="margin-left:145%;font-size:120%"><b>Total </b></span> </div>
+                   <div class="slds-col">  <span style="margin-left:117%;font-size:120%"><b> {totalAnalystAll}% </b></span> </div>
+                        <div class="slds-col">  <span style="margin-left:75%;font-size:120%"><b>{totalAssociateAll}% </b></span>  </div>
+                            <div class="slds-col"> <span style="margin-left:35%;font-size:120%"><b> {totalAdminAll}%</b> </span>  </div>
+                </div>  
+                   
+                <lightning-layout horizontal-align="space">
+                    <lightning-layout-item flexibility="auto">
+                        <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler} disabled={previousButton}>
+                        </lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto">
+                        Page {page} of {totalPage}
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto">
+                        <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right"
+                            onclick={nextHandler} disabled={nextButton}></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+                </div>                  
+            </template>
+           
+         
+        </div> 
+      
+    </lightning-card> 
+</template>
+  
+        <template if:true={confirmBox}>
+            <div class="demo-only" style="height: 640px;">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeConfirmModal}>
+                                <lightning-icon icon-name="utility:close" size="medium">
+                                </lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-1" class="slds-text-heading_medium slds-hyphenate">{message}</h2>
+                           
+                        </header>
+                        <footer class="slds-modal__footer">
+                            <lightning-button variant="neutral"
+                            name="Yes"
+                            label="Yes"
+                            title="Yes"
+                            onclick={OkConfirmModal} ></lightning-button>
+                            <lightning-button variant="brand"
+                            name="No"
+                            label="No"
+                            title="No"
+                            onclick={closeConfirmModal} ></lightning-button>
+                            </footer>
+                </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+            </template>
+            <template if:true={openmodel}>
+                <div class="demo-only" style="height:800px; width:500px">
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container">
+                            <header class="slds-modal__header">
+                                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                                    <lightning-icon icon-name="utility:close" size="medium">
+                                    </lightning-icon>
+                                    <span class="slds-assistive-text">Close</span>
+                                </button>
+                                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Create Eng Valuation Period Allocation</h2>
+                            </header>
+                            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                               
+                                    <lightning-card>
+                                        <template if:true={isError}>
+                                            <div class="slds-p-bottom_small">
+                                                <div class=" slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+                                                    <h2>{errorMsg}</h2>
+                                                    <div class="slds-notify__close">
+                                                        <lightning-button-icon icon-name="utility:close" onclick={handleAlertClose} alternative-text="close"
+                                                            variant="border-filled" class="slds-icon-small"></lightning-button-icon>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                         </template>
+                                         <template if:true={isWarning}>
+                                            <div class="slds-p-bottom_small">
+                                                <div class=" slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning" role="alert">
+                                                    <h2>{warningrMsg}</h2>
+                                                    <div class="slds-notify__close">
+                                                        <lightning-button-icon icon-name="utility:close" onclick={handleAlertClose} alternative-text="close"
+                                                            variant="border-filled" class="slds-icon-small"></lightning-button-icon>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                         </template>
+                                  <lightning-record-edit-form
+                                              
+                                                object-api-name={objectApiName}
+                                             columns="2"
+                                             draft-values={draftValues}
+                                                mode={modeName}
+                                               onerror={handleError}
+                                                onsubmit={handleSubmit}
+                                                onsuccess={handleSuccess}
+                                                
+                                                >
+
+                                                <div class="slds-grid slds-wrap slds-gutters">
+                                                    <div class="slds-col slds-size_1-of-2">
+                                                    <lightning-input-field field-name="Engagement_Valuation_Period__c" variant="label-stacked"></lightning-input-field>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-2">
+                                                        <lightning-input-field field-name="CurrencyIsoCode" variant="label-stacked" required="true"></lightning-input-field>
+                                                        </div>
+                                                    <div class="slds-col slds-size_1-of-2">
+                                                    <lightning-input-field field-name="Week_Starting__c" variant="label-stacked" required="true"></lightning-input-field>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-2">
+                                                        <lightning-input-field field-name="Week_Ending__c" variant="label-stacked" required="true"></lightning-input-field>
+                                                        </div>
+                                                        <div class="slds-col slds-size_1-of-2">
+                                                        <lightning-input-field field-name="Analyst_Allocation__c" variant="label-stacked"></lightning-input-field>
+                                                        </div>
+                                                        <div class="slds-col slds-size_1-of-2">
+                                                            <lightning-input-field field-name="Associate_Allocation__c" variant="label-stacked"></lightning-input-field>
+                                                            </div>
+                                                            <div class="slds-col slds-size_1-of-2">
+                                                            <lightning-input-field field-name="Admin_Allocation__c" variant="label-stacked"></lightning-input-field>
+                                                            </div>
+                                                           
+                                                                <div class="slds-col slds-size_1-of-2">
+                                                              
+                                                                </div>
+                                                                <div class="slds-align_absolute-center" style="height:5rem">
+                                                                    <lightning-button class="slds-m-top_small" variant="brand" type="submit" label="Save"> </lightning-button>  &nbsp;&nbsp; &nbsp;&nbsp;
+                                                                <lightning-button class="slds-m-top_small" label="Cancel" onclick={closeModal}></lightning-button>
+                                                                </div>
+                                                                
+                                                    </div>
+                                        </lightning-record-edit-form> 
+                                       
+                                    </lightning-card>
+                              
+                            </div>
+                           
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </div>
+             
+                </template>
+</template>

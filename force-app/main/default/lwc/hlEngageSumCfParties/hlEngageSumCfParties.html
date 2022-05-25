@@ -1,0 +1,214 @@
+<template>
+    <div class="slds-grid">
+        <div class="slds-col slds-size_1-of-2 seller">
+            <template if:true={jobTypeSellside}> 
+                <c-hl-universal-card-form
+                    object-api="Engagement__c"
+                    record-id={engagementId}
+                    fields={engageSeller1SellsideEngageFieldsEdit}
+                    required-fields={engageSeller1SellsideEngageFieldsRequired}
+                    onrequiredfieldscheck={requiredSectionResult}
+                    columns="2"
+                    mode="view"
+                    title="Seller"
+                    icon="utility:company"
+                    buttons="none"
+                    onformload={engageSellerSubjectFormLoaded}
+                    secondary-title="Seller Background"
+                    secondary-object-api="Account"
+                    secondary-record-id={engageSubjectCompanyId}
+                    secondary-fields={engageSeller2CompanyFieldsEdit}
+                    secondary-required-fields={engageSeller2CompanyFieldsRequired}
+                    secondary-columns="1"
+                    secondary-mode="view"
+                    tertiary-title="Seller Details (MM)"
+                    tertiary-object-api="Engagement_Summary__c"
+                    tertiary-record-id={engageSumId}
+                    tertiary-fields={engageSeller3EngageSumFieldsEdit}
+                    tertiary-required-fields={engageSeller3EngageSumFieldsRequired}
+                    tertiary-columns="2"
+                    tertiary-mode="view"
+                    table-title="Seller Financials"
+                    table-object-api="Engagement_Financials__c"
+                    table-parent-object-api="Engagement__c"
+                    table-parent-id={engagementId}
+                    table-parent-field="Related_Engagement__c"
+                    table-parent-required-fields={engageFinancialsTableParentRequiredFields}
+                    table-data={engageFinancialsData}
+                    table-columns={engageFinancialsColumns}
+                    table-form-fields={engageFinancialsTableAddFields}
+                    ontablesort={engageFinancialsSort}
+                    ontablerefresh={engageFinancialsRefresh}
+                    secondary-table-title="Seller Contacts"
+                    secondary-table-object-api="Engagement_External_Team__c"
+                    secondary-table-parent-object-api="Engagement__c"
+                    secondary-table-parent-id={engagementId}
+                    secondary-table-parent-field="Engagement__c"
+                    secondary-table-parent-required-fields={engageContactsSellerTableParentRequiredFields}
+                    secondary-table-data={engageContactsSellerData}
+                    secondary-table-columns={engageContactsSellerColumns}
+                    secondary-table-form-rec-type-name="CF"
+                    secondary-table-form-fields={engageContactsTableAddFields}
+                    secondary-table-form-field-presets={engageContactsSellerFieldPresets}
+                    onsecondarytablesort={engageContactsSellerSort}
+                    onsecondarytablerefresh={engageContactsSellerRefresh}>
+                </c-hl-universal-card-form>
+            </template>
+            <template if:true={jobTypeBuyside}> 
+                <c-hl-universal-card-form
+                    object-api="Engagement__c"
+                    record-id={engagementId}
+                    fields={engageSeller1BuysideEngageFieldsEdit}
+                    required-fields={engageSeller1BuysideEngageFieldsRequired}
+                    onrequiredfieldscheck={requiredSectionResult}
+                    columns="2"
+                    mode="view"
+                    title="Seller"
+                    icon="utility:company"
+                    buttons="none"
+                    onformload={engageSellerSubjectFormLoaded}
+                    secondary-title="Seller Background"
+                    secondary-object-api="Account"
+                    secondary-record-id={engageSubjectCompanyId}
+                    secondary-fields={engageSeller2CompanyFieldsEdit}
+                    secondary-required-fields={engageSeller2CompanyFieldsRequired}
+                    secondary-columns="1"
+                    secondary-mode="view"
+                    tertiary-title="Seller Details (MM)"
+                    tertiary-object-api="Engagement_Summary__c"
+                    tertiary-record-id={engageSumId}
+                    tertiary-fields={engageSeller3EngageSumFieldsEdit}
+                    tertiary-required-fields={engageSeller3EngageSumFieldsRequired}
+                    tertiary-columns="2"
+                    tertiary-mode="view"
+                    table-title="Seller Financials"
+                    table-object-api="Engagement_Financials__c"
+                    table-parent-object-api="Engagement__c"
+                    table-parent-id={engagementId}
+                    table-parent-field="Related_Engagement__c"
+                    table-parent-required-fields={engageFinancialsTableParentRequiredFields}
+                    table-data={engageFinancialsData}
+                    table-columns={engageFinancialsColumns}
+                    table-form-fields={engageFinancialsTableAddFields}
+                    ontablesort={engageFinancialsSort}
+                    ontablerefresh={engageFinancialsRefresh}
+                    secondary-table-title="Seller Contacts"
+                    secondary-table-object-api="Engagement_External_Team__c"
+                    secondary-table-parent-object-api="Engagement__c"
+                    secondary-table-parent-id={engagementId}
+                    secondary-table-parent-field="Engagement__c"
+                    secondary-table-parent-required-fields={engageContactsSellerTableParentRequiredFields}
+                    secondary-table-data={engageContactsSellerData}
+                    secondary-table-columns={engageContactsSellerColumns}
+                    secondary-table-form-rec-type-name="CF"
+                    secondary-table-form-fields={engageContactsTableAddFields}
+                    secondary-table-form-field-presets={engageContactsSellerFieldPresets}
+                    onsecondarytablesort={engageContactsSellerSort}
+                    onsecondarytablerefresh={engageContactsSellerRefresh}>
+                </c-hl-universal-card-form>
+            </template>
+        </div>
+        <div class="slds-col slds-size_1-of-2 buyer" >
+            <template if:true={jobTypeSellside}>
+                <template if:true={winCounterpartiesIds}>
+                    <template for:each={winCounterpartiesIds} for:item="wcp">
+                        <li key={wcp}>
+                            <c-hl-universal-card-form
+                                object-api="Engagement_Counterparty__c"
+                                record-id={wcp}
+                                fields={engageBuyer1SellsideWinCpFieldsRead}
+                                required-fields={engageBuyer1SellsideWinCpFieldsRequired}
+                                onrequiredfieldscheck={requiredSectionResult}
+                                columns="2"
+                                mode="view"
+                                title="Buyer"
+                                icon="utility:company"
+                                buttons="none"
+                                onformload={engageBuyerWinCpFormLoaded}
+                                secondary-title="Buyer Background"
+                                secondary-object-api="Account"
+                                secondary-record-id={engageWinCpCompanyId}
+                                secondary-fields={engageBuyer2SellsideCompanyFieldsEdit}
+                                secondary-required-fields={engageBuyer2CompanyFieldsRequired}
+                                secondary-columns="1"
+                                secondary-mode="view"
+                                tertiary-title="Buyer Strategy"
+                                tertiary-object-api="Engagement_Summary__c"
+                                tertiary-record-id={engageSumId}
+                                tertiary-fields={engageBuyer3FieldsEdit}
+                                tertiary-required-fields={engageBuyer3FieldsRequired}
+                                tertiary-columns="2"
+                                tertiary-mode="view"
+                                table-title="Buyer Contacts"
+                                table-object-api="Engagement_External_Team__c"
+                                table-parent-object-api="Engagement__c"
+                                table-parent-id={engagementId}
+                                table-parent-field="Engagement__c"
+                                table-parent-required-fields={engageContactsBuyerTableParentRequiredFields}
+                                table-data={engageContactsBuyerData}
+                                table-columns={engageContactsBuyerColumns}
+                                table-form-rec-type-name="CF"
+                                table-form-fields={engageContactsTableAddFields}
+                                table-form-field-presets={engageContactsBuyerFieldPresets}
+                                ontablesort={engageContactsBuyerSort}
+                                ontablerefresh={engageContactsBuyerfresh}>
+                            </c-hl-universal-card-form>
+                        </li>
+                    </template>
+                </template>
+                <template if:true={winCounterpartiesError}>
+                    <div class="slds-card-wrapper">
+                        <lightning-icon 
+                            icon-name="utility:topic" 
+                            alternative-text="error!" 
+                            size="x-small" 
+                            variant="error"></lightning-icon>
+                        {winCounterpartiesError}
+                    </div>
+                </template>
+            </template>
+            <template if:true={jobTypeBuyside}>
+                <c-hl-universal-card-form
+                    object-api="Engagement__c"
+                    record-id={engagementId}
+                    fields={engageBuyer1BuysideClientFieldsRead}
+                    onrequiredfieldscheck={requiredSectionResult}
+                    required-fields={engageBuyer1BuysideClientFieldsRequired}
+                    columns="2"
+                    mode="view"
+                    title="Buyer"
+                    icon="utility:company"
+                    buttons="none"
+                    onformload={engageBuyerClientFormLoaded}
+                    secondary-title="Buyer Background"
+                    secondary-object-api="Account"
+                    secondary-record-id={engageClientCompanyId}
+                    secondary-fields={engageBuyer2BuysideCompanyFieldsEdit}
+                    secondary-required-fields={engageBuyer2CompanyFieldsRequired}
+                    secondary-columns="1"
+                    secondary-mode="view"
+                    tertiary-title="Buyer Strategy"
+                    tertiary-object-api="Engagement_Summary__c"
+                    tertiary-record-id={engageSumId}
+                    tertiary-fields={engageBuyer3FieldsEdit}
+                    tertiary-required-fields={engageBuyer3FieldsRequired}
+                    tertiary-columns="2"
+                    tertiary-mode="view"
+                    table-title="Buyer Contacts"
+                    table-object-api="Engagement_External_Team__c"
+                    table-parent-object-api="Engagement__c"
+                    table-parent-id={engagementId}
+                    table-parent-field="Engagement__c"
+                    table-parent-required-fields={engageContactsBuyerTableParentRequiredFields}
+                    table-data={engageContactsBuyerData}
+                    table-columns={engageContactsBuyerColumns}
+                    table-form-rec-type-name="CF"
+                    table-form-fields={engageContactsTableAddFields}
+                    table-form-field-presets={engageContactsBuyerFieldPresets}
+                    ontablesort={engageContactsBuyerSort}
+                    ontablerefresh={engageContactsBuyerfresh}>
+                </c-hl-universal-card-form>
+            </template>
+        </div>
+    </div>
+</template>

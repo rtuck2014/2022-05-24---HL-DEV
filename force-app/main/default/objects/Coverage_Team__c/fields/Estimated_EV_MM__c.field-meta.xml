@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Estimated_EV_MM__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>The default currency is your local currency. To change default currency click edit at the top of the page.</inlineHelpText>
+    <label>Estimated EV (MM)</label>
+    <precision>17</precision>
+    <required>false</required>
+    <scale>1</scale>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

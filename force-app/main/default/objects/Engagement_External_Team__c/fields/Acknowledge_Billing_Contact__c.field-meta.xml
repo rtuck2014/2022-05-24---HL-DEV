@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Acknowledge_Billing_Contact__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Acknowledge billing contact is correct.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Acknowledge billing contact is correct.</inlineHelpText>
+    <label>Acknowledge Billing Contact</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Data_Hygiene_Comments__c</fullName>
+    <externalId>false</externalId>
+    <label>Data Hygiene Comments</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Duplicate - Merge Records</fullName>
+                <default>false</default>
+                <label>Duplicate - Merge Records</label>
+            </value>
+            <value>
+                <fullName>Not Duplicate - Delete RecordSet</fullName>
+                <default>false</default>
+                <label>Not Duplicate - Delete RecordSet</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DaScoopComposer__Gmail_Id__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The Gmail Thread Id used to generate a link back to the original message in Gmail.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Only the sending user can view emails with this link when logged into the sending email account.</inlineHelpText>
+    <label>Gmail Id</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

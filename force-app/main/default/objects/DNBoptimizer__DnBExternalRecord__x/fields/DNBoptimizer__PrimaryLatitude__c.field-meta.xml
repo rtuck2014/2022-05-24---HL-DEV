@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DNBoptimizer__PrimaryLatitude__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The angular distance of the organization&apos;s primary physical address north or south from the Earth&apos;s equator measured through 90 degrees expressed in decimal numbers.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The angular distance of the organization&apos;s primary physical address north or south from the Earth&apos;s equator measured through 90 degrees expressed in decimal numbers.</inlineHelpText>
+    <isFilteringDisabled>false</isFilteringDisabled>
+    <isNameField>false</isNameField>
+    <isSortingDisabled>false</isSortingDisabled>
+    <label>Primary Address Latitude</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>6</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

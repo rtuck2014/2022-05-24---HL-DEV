@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CompanyName__c</fullName>
+    <description>This is used by the HL_Mass_Bid apex class to be able to create a blank bid object with only a company name associated for population later.  This will not be displayed on the default bid layout.</description>
+    <externalId>false</externalId>
+    <label>CompanyName</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

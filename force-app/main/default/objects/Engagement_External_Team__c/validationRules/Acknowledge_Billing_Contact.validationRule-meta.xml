@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Acknowledge_Billing_Contact</fullName>
+    <active>true</active>
+    <description>if &apos;Billing Contact&apos; field is checked, users should confirm that the Contact is a correct billing contact by checking the  &apos;Acknowledge Billing Contact&apos; field.</description>
+    <errorConditionFormula>AND(OR(ISNEW(),
+       ISCHANGED(Billing_Contact__c),
+       ISCHANGED(Acknowledge_Billing_Contact__c)),
+    Billing_Contact__c,
+    NOT(Acknowledge_Billing_Contact__c))</errorConditionFormula>
+    <errorDisplayField>Acknowledge_Billing_Contact__c</errorDisplayField>
+    <errorMessage>Please confirm this is the correct contact to receive billing for this engagement.</errorMessage>
+</ValidationRule>

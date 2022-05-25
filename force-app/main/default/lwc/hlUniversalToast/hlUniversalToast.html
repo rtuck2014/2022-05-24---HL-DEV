@@ -1,0 +1,110 @@
+<template>
+
+    <!-- LL20190603
+        
+        Due to Lightning Out limitations inherent ShowToast functionality does not function. This is a reusable component
+        designed to provide similar functionality and should be used to provide confirmation of an actions results,
+        whether positive, neutral or negative
+        
+        Properties and Events:
+            - "type" - can be anyone of the following values:
+                - "toastSuccess" - green color used for success operations, typically on DML operations
+                - "toastError" -red color used for error results, typically on DML operations
+                - "toastWarning" - yellow color used for warning messages, typically when query or security operations
+                - "toastInfo" - gray color used for informatonal messages, typically on proactive guidance
+            - "message" property - Information displayed within the toast notification
+            - "onclose" event - parent component function invoked upono closing the toast notification
+
+    -->
+    <div class="slds-notify_container slds-is-relative" style="float:left">
+        <template if:true={toastSuccess}>
+            <div class="slds-notify slds-notify_toast slds-theme_success" role="status">
+                <span class="slds-assistive-text">Success</span>
+                <span class="slds-icon_container slds-m-right_small slds-no-flex slds-align-top">
+                    <lightning-icon 
+                        icon-name="utility:success"
+                        variant="inverse" 
+                        alternative-text="Success">
+                    </lightning-icon>
+                </span>
+                <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small">{message}</h2>
+                </div>
+                <div class="slds-notify__close">
+                    <lightning-button-icon 
+                        icon-name="utility:close"
+                        variant="bare-inverse"
+                        size="Large"
+                        alternative-text="Close" 
+                        onclick={toastClose}>
+                    </lightning-button-icon>
+                </div>
+            </div>
+        </template>
+        <template if:true={toastError}>
+            <div class="slds-notify slds-notify_toast slds-theme_error" role="status">
+                <span class="slds-assistive-text">Error</span>
+                <span class="slds-icon_container slds-m-right_small slds-no-flex slds-align-top">
+                    <lightning-icon 
+                        icon-name="utility:error"
+                        variant="inverse" 
+                        alternative-text="Error">
+                    </lightning-icon>
+                </span>
+                <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small">{message}</h2>
+                </div>
+                <div class="slds-notify__close">
+                    <lightning-button-icon 
+                        icon-name="utility:close"
+                        variant="bare-inverse"
+                        size="Large"
+                        alternative-text="Close" 
+                        onclick={toastClose}>
+                    </lightning-button-icon>
+                </div>
+            </div>
+        </template>
+        <template if:true={toastWarning}>
+            <div class="slds-notify slds-notify_toast slds-theme_warning" role="status">
+                <span class="slds-assistive-text">Warning</span>
+                <span class="slds-icon_container slds-m-right_small slds-no-flex slds-align-top">
+                    <lightning-icon 
+                        icon-name="utility:warning"
+                        variant="inverse"
+                        alternative-text="Warning">
+                    </lightning-icon>
+                </span>
+                <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small">{message}</h2>
+                </div>
+                <div class="slds-notify__close">
+                    <lightning-button-icon 
+                        icon-name="utility:close"
+                        variant="bare-inverse"
+                        size="Large"
+                        alternative-text="Close" 
+                        onclick={toastClose}>
+                    </lightning-button-icon>
+                </div>
+            </div>
+        </template>
+        <template if:true={toastInfo}>
+            <div class="slds-notify slds-notify_toast slds-theme_info" role="status">
+                <span class="slds-assistive-text">Information</span>
+                <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small">{message}</h2>
+                </div>
+                <div class="slds-notify__close">
+                    <lightning-button-icon 
+                        icon-name="utility:close"
+                        variant="bare-inverse"
+                        size="Large"
+                        alternative-text="Close" 
+                        onclick={toastClose}>
+                    </lightning-button-icon>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

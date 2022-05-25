@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Requested_By_4__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Requested By 4</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Please select a Houlihan Lokey employee contact.</errorMessage>
+        <filterItems>
+            <field>Contact.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Houlihan Employee</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Campaign Members (Requested By 4)</relationshipLabel>
+    <relationshipName>Campaign_Members3</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

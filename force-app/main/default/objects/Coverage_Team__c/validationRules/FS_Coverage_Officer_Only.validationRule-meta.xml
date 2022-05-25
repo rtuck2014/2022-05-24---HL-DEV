@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FS_Coverage_Officer_Only</fullName>
+    <active>false</active>
+    <description>Only FS officers allowed to be FS Coverage Officer</description>
+    <errorConditionFormula>RecordType.DeveloperName = &quot;FS_Coverage_Team_Member&quot;  &amp;&amp;   TEXT(Officer__r.Industry_Group__c ) &lt;&gt; &quot;FS - Financial Sponsors&quot;</errorConditionFormula>
+    <errorDisplayField>Officer__c</errorDisplayField>
+    <errorMessage>Only FS Officers can be FS Coverage Team Member.  Select a FS officer or change the record type to Standard Coverage Team Member.</errorMessage>
+</ValidationRule>

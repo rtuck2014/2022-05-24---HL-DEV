@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_Object__c</fullName>
+    <externalId>false</externalId>
+    <label>Parent Object</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Opportunity_Approval__c</fullName>
+                <default>false</default>
+                <label>Opportunity_Approval__c</label>
+            </value>
+            <value>
+                <fullName>Opportunity__c</fullName>
+                <default>false</default>
+                <label>Opportunity__c</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

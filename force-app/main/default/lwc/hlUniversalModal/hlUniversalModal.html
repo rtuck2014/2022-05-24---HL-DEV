@@ -1,0 +1,57 @@
+<template>
+    
+    <!-- LL20190603
+        
+        This component can be reused by another component to display custom modal messages. 
+
+        Properties and Events:
+            - "title" property - displayed as the title of the modal
+            - "body" property - displayed as the body message of the modal
+            - "onok" event - parent component function invoked upon clicking "Ok" button in modal
+            - "oncancel" event - parent component function invoked upon clicking "Cancel" button in modal
+
+    -->
+
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <lightning-button-icon 
+                    icon-name="utility:close"
+                    class="slds-modal__close"
+                    variant="bare-inverse"
+                    size="medium"
+                    alternative-text="Close" 
+                    onclick={modalCancel}>
+                </lightning-button-icon>
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{title}</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                {body}
+                <template if:true={mData.userInput}>
+                    <lightning-textarea 
+                        name="userinput" 
+                        placeholder="Enter a message..." 
+                        onchange={modalUserInput} >
+                    </lightning-textarea>
+                </template>
+            </div>
+            <footer class="slds-modal__footer">
+                <lightning-button 
+                    label="Cancel" 
+                    title="Cancel" 
+                    onclick={modalCancel} 
+                    class="slds-m-left_x-small">
+                </lightning-button>
+                <lightning-button 
+                    label="Ok" 
+                    title="Ok" 
+                    variant="brand" 
+                    data-record-id={debtStructureId} 
+                    onclick={modalOk} 
+                    class="slds-m-left_x-small">
+                </lightning-button>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

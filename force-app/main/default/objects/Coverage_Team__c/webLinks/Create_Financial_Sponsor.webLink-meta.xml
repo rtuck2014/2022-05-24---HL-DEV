@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Create_Financial_Sponsor</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <linkType>url</linkType>
+    <masterLabel>Create Financial Sponsor</masterLabel>
+    <openType>replace</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>/a0F/e?retURL=/{!Account.Id}
+&amp;CF00Nf0000000vihU={!Account.Name}
+&amp;CF00Nf0000000vihU_lkid={!Account.Id}
+&amp;ent=01Ii0000001ptAu
+&amp;RecordType=012f0000000D6eq</url>
+</WebLink>
